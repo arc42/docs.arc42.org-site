@@ -62,7 +62,7 @@
         {% endif %}
         <h1 class="clearfix">
             <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
-            <br><span class="description"><font color=#fe5a83>{{ site.posts | size }}</font> {{ site.description }}</span>
+            <br><span class="description">{{ site.description }}</span>
         </h1>
     </div>
 </header>
@@ -88,23 +88,6 @@
             </ul>
             <hr class="with-no-margin margin-bottom"/>
 
-            <!-- GSt: comment out recent pages
-             <div class="block sticky">
-                <h1>{{ site.str_recent_posts }}</h1>
-                <ul>
-                    {% assign posts = '' | split: '' %}
-                    {% for post in site.posts %}
-                    {% if post.hide != true %}
-                    {% assign posts = posts | push: post %}
-                    {% endif %}
-                    {% endfor %}
-                    {% assign posts = posts | sort: 'date' | reverse %}
-                    {% for post in posts limit:site.recent_posts_num %}
-                    <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-          -->
         </div>
     </aside>
 

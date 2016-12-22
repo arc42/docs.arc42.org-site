@@ -127,11 +127,11 @@
             margin-bottom: $margin;
             .panel {
                 padding: 1em 1.5em;
-                background-color: rgba($page-title-color, .2);
+                background-color: rgba($site-title-color, .2);
                 h1 {
                     margin: 0;
                     &, a {
-                        color: $page-title-color;
+                        color: $dark-brand-color;
                     }
                 }
                 ul.meta, ul.tags {
@@ -195,6 +195,7 @@
                 background-color: $background-color;
                 h1 {
                     font-size: 1.3em;
+                    color: $title-color;
                     a.tag {
                         font-size: 0.7em;
                     }
