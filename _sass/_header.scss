@@ -1,0 +1,73 @@
+.site-header {
+    font-size: 2.7em;
+    padding: 0.7em 0;
+    background-color: $brand-color;
+    border-top: 3px solid rgba(#000, .5);
+    @media screen and (max-width: $mobile-width) {
+        position: relative;
+        text-align: center;
+    }
+
+    .nav-toggle {
+      display: none;
+
+      background-color: transparent;
+      border: 0;
+
+      @media screen and (max-width: $mobile-width) {
+        .js & {
+          display: inline;
+
+          position: absolute;
+          top: $side-padding;
+          right: $side-padding;
+
+          outline: none;
+
+          &.active {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .avatar {
+        height: 3em;
+        width: 3em;
+        border: 3px solid rgba(#fff, .7);
+        border-radius: 1.5em;
+        margin-right: 0.8em;
+        float: left;
+        @media screen and (max-width: $mobile-width) {
+            float: none;
+            margin-right: 0;
+        }
+    }
+
+    h1 {
+        font-size: 1em;
+        line-height: 1em;
+        margin: 0;
+        .title {
+            display: inline-block;
+            color: $site-title-color;
+            font-weight: bold;
+            margin-top: 0.5em;
+            &.slim {
+                margin-top: 0;
+            }
+            @media screen and (max-width: $mobile-width) {
+                margin-top: 0;
+            }
+        }
+        .description {
+            margin: 0;
+            font-size: 0.6em;
+            line-height: 1em;
+            margin-top: 0.5em;
+            /* original: color: lighten($site-title-color, 20%);
+            */
+            color: #d7ecf8;
+        }
+    }
+}

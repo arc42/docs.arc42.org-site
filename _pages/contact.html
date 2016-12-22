@@ -1,0 +1,13 @@
+---
+layout: page
+title: Contact
+permalink: /contact/
+order: 16
+---
+
+{% capture my-include %}{% include contact-include.md %}{% endcapture %}
+{{ my-include | markdownify }}
+
+<h4>Alternativly, just leave a comment...</h4>
+
+{% include disqus.html %}

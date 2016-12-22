@@ -1,0 +1,20 @@
+---
+layout: page
+title: All questions
+permalink: /allquestions/
+order: 15
+---
+
+<div id="search-results">
+    <hr id="first-hr" class="with-no-margin"/>
+
+    {% assign sorted_posts = (site.posts | sort_by: 'title') | reverse %}
+    {% for post in sorted_posts  %}
+    <div class="article-wrapper">
+        <article>
+            {% include article-header.html page=post link=true share=false eye_catch=false %}
+        </article>
+    </div>
+    <hr class="with-no-margin"/>
+    {% endfor %}
+</div>

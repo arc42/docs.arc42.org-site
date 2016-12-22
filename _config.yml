@@ -1,0 +1,117 @@
+#
+# URL settings
+#
+# these need to be adjusted depending on target platform,
+# local Jekyll tests need different settings than github-pages :-(
+
+# local development
+# -----------------------------------------------------
+#url: http://localhost:4000
+baseurl:
+
+# temporary deployment on arc42.github.io/faq
+# -----------------------------------------------------
+#url: http://arc42.github.io
+#baseurl: "/faq"
+
+# "real" deployment with github-pages but custom domain
+# -----------------------------------------------------
+url: http://docs.arc42.org
+#baseurl:
+#######################################################
+
+## imageurl set to url + baseurl, easier than the complex
+## {{ url }}{{ url }}{{ '<filename>' | prepend: site.baseurl }}
+#imageurl: http://localhost:4000
+#imageurl: http://arc42.github.io/faq
+imageurl: http://docs.arc42.org
+
+
+
+#
+# basic settings
+#
+title: arc42 Documentation
+description: how to use the arc42 template.
+avatar: /assets/img/arc42logosquare.png
+favicon: /assets/img/arc42logosquare.png
+language: en
+
+#
+# want (disqus) comments?
+#
+disqus: true
+
+#
+# Icons
+#
+icons:
+  rss: false
+  email: false
+  github: arc42
+  twitter: gernotstarke
+  google_plus: 105917203908419102125
+  stack_overflow: arc42
+
+#
+# Prettify url.
+#
+permalink: pretty
+
+
+#
+# Localizations.
+#
+str_next: Next
+str_prev: Prev
+str_read_more: Read more...
+str_search: Search
+str_recent_posts: Recent answers
+str_show_all_posts: Show all questions/answers
+
+#
+# Recent posts.
+#
+recent_posts_num: 10
+
+#
+# Pagination.
+#
+paginate: 10
+paginate_path: page/:num
+
+
+#
+# Gems.
+#
+gems:
+  - jekyll-paginate
+  - jemoji
+
+#
+# Styles: see "_sass/base/_variables.scss"
+#
+
+#
+# !! Danger zone !!
+#
+
+include: ["_pages"]
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+excerpt_separator: <!--more-->
+
+sass:
+  sass_dir: _sass
+  style: :compressed # or :expanded
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor

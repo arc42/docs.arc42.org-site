@@ -1,0 +1,91 @@
+html {
+    background: $background-color;
+}
+
+body {
+    color: $text-color;
+    font-family: $font-family;
+    font-size: $font-size;
+    word-wrap: break-word;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    &:hover {
+        opacity: .8;
+        text-decoration: underline;
+    }
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid #fff;
+    margin: 1em 0;
+    &.with-margin {
+        margin: $margin 0;
+    }
+    &.with-no-margin {
+        margin: 0;
+    }
+}
+
+input, select, textarea {
+    border-radius: 0.3em;
+    border: 1px solid $border-color;
+    display: inline-block;
+    padding: 0.5em 0.75em;
+}
+
+iframe, img, embed, object, video {
+    max-width: 100%;
+}
+
+
+/*****************************************************************************/
+/*
+/* Tags
+/* thx to https://github.com/lanyonm/lanyonm.github.io
+/*****************************************************************************/
+
+.tag-box {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.tag-box:before, .tag-box:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.tag-box:after {
+  clear: both;
+}
+
+.tag-box.inline li {
+  float: left;
+  font-size: 14px;
+  font-size: 1.0rem;
+  line-height: 2.5;
+}
+
+.tag-box a {
+  padding: 4px 6px;
+  margin: 2px;
+  background-color: #aee3f8;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.tag-box a span {
+  vertical-align: super;
+  font-size: 12px;
+  font-size: 0.625rem;
+}
