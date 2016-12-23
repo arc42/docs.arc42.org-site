@@ -70,18 +70,6 @@ str_recent_posts: Recent answers
 str_show_all_posts: Show all questions/answers
 
 #
-# Recent posts.
-#
-recent_posts_num: 10
-
-#
-# Pagination.
-#
-paginate: 10
-paginate_path: page/:num
-
-
-#
 # Gems.
 #
 gems:
