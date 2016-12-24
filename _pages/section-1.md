@@ -1,10 +1,13 @@
 ---
-layout: page
+layout: arc42-doc-section
 title: 1 - Introduction and Goals
 permalink: /section-1/
 order: 5
 tags: _TBD introduction goals stakeholder quality
 ---
+
+## 1. Introduction and goals
+
 ### Content
 Fassen Sie hier die wesentliche Anforderungen und treibenden Kräfte zusammen, die Softwarearchitekten und Entwicklungsteams berücksichtigen müssen. Dazu gehören:
 

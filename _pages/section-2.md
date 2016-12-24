@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: arc42-doc-section
 title: 2 - Constraints
 permalink: /section-2/
 order: 6

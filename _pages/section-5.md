@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: arc42-doc-section
 title: 5 - Building block view
 permalink: /section-5/
 order: 9

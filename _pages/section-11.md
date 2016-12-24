@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: arc42-doc-section
 title: 11 - Risks and technical debt
 permalink: /section-11/
 order: 15

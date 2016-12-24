@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: arc42-doc-section
 title: 9 - Architecture decisions
 permalink: /section-9/
 order: 13

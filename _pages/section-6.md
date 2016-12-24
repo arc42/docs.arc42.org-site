@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: arc42-doc-section
 title: 6 - Runtime view
 permalink: /section-6/
 order: 10
