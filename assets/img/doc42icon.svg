@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="1.186 1.186 13.217 15.008" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style id="bx-google-fonts">@import url(https://fonts.googleapis.com/css?family=ABeeZee:400,400italic);</style>
+  </defs>
+  <rect x="0" fill="none" width="16" height="16"/>
+  <text x="3.367" y="9.839" style="font-family: ABeeZee; font-size: 6px; font-weight: bold; white-space: pre;">42</text>
+  <rect x="2.568" y="2.435" width="8.977" height="12.365" style="fill: none; stroke: rgb(0, 0, 0); stroke-linejoin: round; stroke-width: 1.222; stroke-linecap: round;"/>
+  <path d="M 7.31 2.459 C 7.31 2.459 7.31 2.459 7.31 2.459 Z" style="stroke: black; fill: rgb(255, 255, 255);"/>
+  <path d="M 7.867 2.459 L 11.569 6.065" style="stroke: black; fill: rgb(255, 255, 255); stroke-width: 0.9;"/>
+  <path d="M 9.972 1.975 Z" style="stroke: black; fill: none;"/>
+  <path d="M 4.02 11.315 L 8.23 11.315" style="fill: none; stroke: black; stroke-linecap: round; stroke-width: 0.8;"/>
+  <path d="M 4.044 12.984 L 6.802 12.984" style="fill: none; stroke: black; stroke-linecap: round; stroke-width: 0.8;"/>
+</svg>

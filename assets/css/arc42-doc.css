@@ -1,0 +1,78 @@
+p {
+  font-family: sans-serif;
+}
+
+/* unified style for template content */
+.arc42-template-content {
+  font-family: Tahoma;
+  color: #002080;
+  padding: 5px 5px;
+  background: #ccd9ff;
+  border-radius: 5px;
+
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+  box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+}
+
+.arc42-template-content table {
+    border-collapse: collapse;
+}
+
+.arc42-template-content table, th, td {
+    border: 1px solid black;
+}
+
+.arc42-template-content th, td {
+    padding: 5px 15px 5px 5px;
+    text-align: left;
+}
+
+.arc42-template-content thead, th {
+  font-weight: bold;
+}
+
+.arc42-template-content::before {
+  display: block;
+  margin-right: 10px;
+  float: left;
+  width: 24px;
+  height: 26px;
+
+  content: "";
+  background: url("./doc42icon.svg") no-repeat;
+  background-size: 24px 26px;
+}
+
+
+/* subtle ads */
+
+.subtle-ad {
+  width: 70%;
+  margin: 5px;
+  padding: 5px;
+
+  background-color: rgba(254, 228, 228, 0.3);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #800000;
+
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+  box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: #032f7f;
+
+
+}
+
+.subtle-ad h4 {
+  line-height: 1.2pt;
+  margin-top: 5px;
+}
+
+.subtle-ad a {
+  color: ff796a;
+}
