@@ -6,60 +6,85 @@ order: 5
 tags: _TBD introduction goals stakeholder quality
 ---
 
-## 1. Introduction and goals
+### 1. Introduction and goals
 
-### Content
-Fassen Sie hier die wesentliche Anforderungen und treibenden Kräfte zusammen, die Softwarearchitekten und Entwicklungsteams berücksichtigen müssen. Dazu gehören:
 
-* zugrunde liegenden Geschäftsziele, wesentliche Aufgabenstellung und essenzielle fachliche Anforderungen an das System,
-* Qualitätsziele für die Architektur und
-* relevante Stakeholder sowie deren Erwartungshaltung
+<div class="arc42-help" markdown="1">
 
-## 1.1 Problem
+Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
 
-### Content
-Kurzbeschreibung der fachlichen Aufgabenstellung, treibenden Kräfte, Extrakt (oder Abstract) der Anforderungen.
-Verweis auf (hoffentlich vorliegende) Anforderungsdokumente (mit Versionsbezeichnungen und Ablageorten).
+* underlying business goals, essential features and functional requirements for the system,
+* quality goals for the architecture,
+* relevant stakeholders and their expectations
 
-### Motivation
-Aus Sicht der späteren Nutzer ist die Unterstützung einer fachlichen Aufgabe oder Verbesserung der Qualität der eigentliche Beweggrund, ein neues System zu schaffen oder ein bestehendes zu modifizieren.
+</div>
 
-### Form
-Kurze textuelle Beschreibung, eventuell in tabellarischer Use-Case Form.
-Sofern vorhanden sollte die Aufgabenstellung Verweise auf die entsprechenden Anforderungsdokumente enthalten.
+### 1.1 Requirements Overview
 
-Halten Sie diese Auszüge so knapp wie möglich und wägen Sie Lesbarkeit und Redundanzfreiheit gegeneinander ab.
+<div class="arc42-help" markdown="1">
 
-## 1.2 Quality goals
-
-### Content
-Die Top-3 bis Top-5 der Qualitätsziele für die Architektur, deren Erfüllung oder Einhaltung den maßgeblichen Stakeholdern besonders wichtig sind.
-Gemeint sind hier wirklich Qualitätsziele, die nicht unbedingt mit den Zielen des Projekts übereinstimmen. Beachten Sie den Unterschied.
-
+### Contents
+Short description of the functional requirements, driving forces, extract (or abstract)  of requiremnents. Link to (hopefully existing) requirements documents (with version number and information where to find it).
 
 ### Motivation
-Sie müssen die für Ihre Stakeholder relevanten Qualitätsanforderungen an das System kennen, möglichst konkret und operationalisierbar. Wenn Sie als Architekt nicht wissen, woran Ihre Arbeit gemessen wird, ....
+From the point of view of the end users a system is created or modified to improve support of a business activity and/or improve the quality.
 
 ### Form
-Einfache tabellarische Darstellung der Qualitätsziele mit möglichst konkreten Szenarien, geordnet nach Prioritäten.
+Short textual description, probably in tabular use-case format.
+If requirements documents exist this overview should refer to these documents.
+
+Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
+
+</div>
+
+#### _&lt;insert requirements overview>_
 
 
-## 1.3 Stakeholder
+### 1.2 Quality goals
+
+<div class="arc42-help" markdown="1">
+
 ### Content
-Expliziter Überblick über die Stakeholder des Systems, d.h. über alle Personen, Rollen oder Organisationen, die
-* die Architektur kennen sollten oder
-* von der Architektur überzeugt werden müssen,
-* mit Architektur oder Code arbeiten (z.B. Schnittstellen nutzen),
-* Dokumentation der Architektur für ihre eigene Arbeit benötigen,
-* Entscheidungen über das System und dessen Entwicklung treffen.
+The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
 
 ### Motivation
-Sie sollten die Projektbeteiligten und -betroffenen kennen, sonst erleben Sie später im Entwicklungsprozess Überraschungen. Diese Stakeholder bestimmen unter anderem Umfang und Detaillierungsgrad der von Ihnen zu leistenden Arbeit und Ergebnisse.
+You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
+If you as an architect do not know how the quality of your work will be judged …
 
 ### Form
-Einfache Tabelle mit Rollen- oder Personennamen, sowie deren Erwartungshaltung bezüglich der Architektur und deren Dokumentation.
+A table with quality goals and concrete scenarios, ordered by priorities.
+
+</div>
+
+_< insert table of quality goals here >_
 
 
+### 1.3 Stakeholder
+
+<div class="arc42-help" markdown="1">
+
+### Content
+Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
+
+* should know the architecture
+* have to be convinced of the architecture
+* have to work with the architecture or with code
+* need the documentation of the architecture for their work
+* have to come up with decisions about the system or its development
+
+### Motivation
+You should know all parties involved in development of the system or affected by the system. Otherwise, you may get nasty surprises later in the development process. These stakeholders determine the extent and the level of detail of your work and its results.
+
+### Form
+Table with role names, person names, and their expectations with respect to the architecture and its documentation.
+
+</div>
+
+#### _&lt;complete the stakeholder table:>_
+
+| Role/Name | Contact | Expectations |
+| ----------|---------|--------------|
+| ...       | ...     | ...          |
 
 ## Examples and tips
 

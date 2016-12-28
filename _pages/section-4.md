@@ -7,12 +7,15 @@ category: solution-strategy
 tags: _TBD solution-strategy concepts
 ---
 
-## Content
+<div class="arc42-help" markdown="1">
 
-## Motivation
+### Content
 
-## Form
+### Motivation
 
+### Form
+
+</div>
 
 ## Examples and tips
 

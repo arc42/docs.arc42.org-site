@@ -6,7 +6,7 @@ order: 7
 ---
 
 
-## 3 Context and scope
+### 3 Context and scope
 
 <div class="arc42-help" markdown="1">
 
