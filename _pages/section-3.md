@@ -40,9 +40,9 @@ All kinds of diagrams that show the system as a black box and specify the domain
 Alternatively (or additionally) you can use a table. The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
 </div>
 
-#### _&lt; insert diagram or table&gt;_
+#### _&lt;insert diagram or table>_
 
-#### <(optionally:) insert explanation of external domain interfaces>
+#### _<(optionally:) insert explanation of external domain interfaces>_
 
 
 ### 3.2 Technical context
@@ -57,10 +57,9 @@ Many stakeholders make architectural decision based on the technical interfaces 
 
 #### Form
 E.g. UML deployment diagram describing channels to neighboring systems, together with a mapping table showing the relationships between channels and input/output.
-
 </div>
 
-#### _<insert diagram or table>_
+#### _&lt;insert diagram or table>_
 
 #### _<(optionally:) Explanation of technical interfaces>_
 
