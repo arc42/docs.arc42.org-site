@@ -4,35 +4,31 @@ title: 3 - Context and scope
 permalink: /section-3/
 order: 7
 ---
-<p class="arc42-template-content">Reminder: Text marked with the small arc42 icon
-and blue background is part of the arc42 template.</p>
 
 
-<h2 class="arc42-template-content">3 Context and scope</h2>
+## 3 Context and scope
 
+<div class="arc42-help" markdown="1">
 
-#### Content
-
+### Content
 System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners (neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
 
 If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
 
-#### Motivation
-
+### Motivation
 The domain interfaces and technical interfaces to communication partners are among
 your system's most critical aspects. Make sure that you completely understand them.
 
-
-#### Form
-
+### Form
 * Various context diagrams
 * Lists of communication partners and their interfaces.
+</div>
 
+### 3.1 Business context
 
-<h2 class="arc42-template-content">3.1 Business context</h2>
+<div class="arc42-help" markdown="1">
 
 #### Content
-
 Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. Optinoally you can add domain specific formats or communication protocols.
 
 #### Motivation
@@ -42,12 +38,16 @@ All stakeholders shoud understand which data are exchanged with the environment 
 All kinds of diagrams that show the system as a black box and specify the domain interfaces to communiations partners.
 
 Alternatively (or additionally) you can use a table. The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
+</div>
 
-<h4 class="arc42-template-content">Diagram or Table</h4>
+#### _&lt; insert diagram or table&gt;_
 
-<h4 class="arc42-template-content">(optionally:) Explanation of external domain interfaces</h4>
+#### <(optionally:) insert explanation of external domain interfaces>
 
-<h2 class="arc42-template-content">3.2 Technical context</h2>
+
+### 3.2 Technical context
+
+<div class="arc42-help" markdown="1">
 
 #### Contents
 Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
@@ -58,11 +58,13 @@ Many stakeholders make architectural decision based on the technical interfaces 
 #### Form
 E.g. UML deployment diagram describing channels to neighboring systems, together with a mapping table showing the relationships between channels and input/output.
 
-<h4 class="arc42-template-content">Diagram or Table</h4>
+</div>
 
-<h4 class="arc42-template-content">(optionally:) Explanation of technical interfaces</h4>
+#### _<insert diagram or table>_
 
-<h4 class="arc42-template-content">Mapping of Input/Output to Channels</h4>
+#### _<(optionally:) Explanation of technical interfaces>_
+
+#### _<insert mapping of input/output to channels>_
 
 
 ## Examples and Tips
