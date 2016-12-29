@@ -1,5 +1,5 @@
 
-## Your still have questions?
+## You still have questions?
 
 Please let us know - we're listening:
 
