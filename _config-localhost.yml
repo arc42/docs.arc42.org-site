@@ -37,6 +37,8 @@ avatar: /assets/img/arc42logosquare.png
 favicon: /assets/img/arc42logosquare.png
 language: en
 
+str_search: Search
+
 #
 # want (disqus) comments?
 #
