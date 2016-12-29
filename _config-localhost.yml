@@ -6,9 +6,9 @@
 
 # local development
 # -----------------------------------------------------
-#url: http://localhost:4000
-#baseurl:
-#imageurl: http://localhost:4000/images
+url: http://localhost:4000
+baseurl:
+imageurl: http://localhost:4000/images
 ## imageurl set to url + baseurl + imageDir, easier than the complex
 ## {{ url }}{{ url }}{{ '<filename>' | prepend: site.baseurl }}
 
@@ -19,9 +19,9 @@
 
 # "real" deployment with github-pages on custom domain
 # -----------------------------------------------------
-url: http://docs.arc42.org
-baseurl:
-imageurl: http://docs.arc42.org/images
+#url: http://docs.arc42.org
+#baseurl:
+#imageurl: http://docs.arc42.org/images
 
 #######################################################
 
