@@ -3,9 +3,8 @@ layout: arc42-doc-section
 title: 5 - Building block view
 permalink: /section-5/
 order: 9
-category: building-blocks
-tags: _TBD building-block blackbox whitebox hierarchy
 ---
+
 
 ### 5. Building Block View
 
@@ -27,7 +26,7 @@ This allows you to communicate with your stakeholder on an abstract level withou
 ### Form
 The building block view is a hierarchial collection of black boxes and white boxes (see figure below) and their descriptions.
 
-![](05_building-block-hierarchy.png)
+![]({{ site.imageurl }}/05-building-block-hierarchy.png)
 
 * **Level 1** is the white box description of the overall system together with black box descriptions of all contained building blocks.
 * **Level 2** zooms into some building blocks of level 1.
@@ -132,18 +131,7 @@ _< insert white box template of building block x.2 >_
 #### 5.3.3 White Box _&lt;building block y.1&gt;_
 _< insert white box template of building block y.1 >_
 
-## Examples and tips
 
-<div id="search-results">
-    <hr id="first-hr" class="with-no-margin"/>
-
-    {% assign selected_posts = (site.posts | where: "category", "building-blocks") | reverse %}
-    {% for post in selected_posts  %}
-    <div class="article-wrapper">
-        <article>
-            {% include article-header.html page=post link=true share=false eye_catch=false %}
-        </article>
-    </div>
-    <hr class="with-no-margin"/>
-    {% endfor %}
-</div>
+{% include further-info.md category="building-block"
+   topic="building blocks, blackbox, whitebox and interfaces"
+   faqlink="http://faq.arc42.org/category_c/#c-sec-5" %}

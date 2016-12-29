@@ -3,7 +3,6 @@ layout: arc42-doc-section
 title: 1 - Introduction and Goals
 permalink: /section-1/
 order: 5
-tags: _TBD introduction goals stakeholder quality
 ---
 
 ### 1. Introduction and goals
@@ -86,18 +85,8 @@ Table with role names, person names, and their expectations with respect to the 
 | ----------|---------|--------------|
 | ...       | ...     | ...          |
 
-## Examples and tips
 
-<div id="search-results">
-    <hr id="first-hr" class="with-no-margin"/>
-
-    {% assign selected_posts = (site.posts | where: "category", "introduction") | reverse %}
-    {% for post in selected_posts  %}
-    <div class="article-wrapper">
-        <article>
-            {% include article-header.html page=post link=true share=false eye_catch=false %}
-        </article>
-    </div>
-    <hr class="with-no-margin"/>
-    {% endfor %}
-</div>
+{% include further-info.md
+  category="requirements"
+   topic="introduction, goals and requirements"
+   faqlink="http://faq.arc42.org/category_c/#c-sec-1" %}

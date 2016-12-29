@@ -3,29 +3,19 @@ layout: arc42-doc-section
 title: 10 - Quality
 permalink: /section-10/
 order: 14
-category: quality
-tags: _TBD quality cross-cutting
 ---
 
-## Content
+<div class="arc42-help" markdown="1">
 
-## Motivation
+### Content
 
-## Form
+### Motivation
 
+### Form
 
-## Examples and tips
-
-<div id="search-results">
-    <hr id="first-hr" class="with-no-margin"/>
-
-    {% assign selected_posts = (site.posts | where: "category", "quality") | reverse %}
-    {% for post in selected_posts  %}
-    <div class="article-wrapper">
-        <article>
-            {% include article-header.html page=post link=true share=false eye_catch=false %}
-        </article>
-    </div>
-    <hr class="with-no-margin"/>
-    {% endfor %}
 </div>
+
+{% include further-info.md
+   category="quality"
+   topic="quality requirements, quality-tree and/or quality scenarios"
+   faqlink="http://faq.arc42.org/category_c/#c-sec-10" %}

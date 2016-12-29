@@ -3,8 +3,6 @@ layout: arc42-doc-section
 title: 2 - Constraints
 permalink: /section-2/
 order: 6
-category: constraints
-tags: _TBD constraints conventions
 ---
 
 ### 2. Architecture Constraints
@@ -29,19 +27,7 @@ Simple tables of constraints with explanations. If needed you can subdivide them
 #### _&lt;insert relevant constraints>_
 
 
-
-## Examples and tips
-
-<div id="search-results">
-    <hr id="first-hr" class="with-no-margin"/>
-
-    {% assign selected_posts = (site.posts | where: "category", "constraints") | reverse %}
-    {% for post in selected_posts  %}
-    <div class="article-wrapper">
-        <article>
-            {% include article-header.html page=post link=true share=false eye_catch=false %}
-        </article>
-    </div>
-    <hr class="with-no-margin"/>
-    {% endfor %}
-</div>
+{% include further-info.md
+   category="constraints"
+   topic="constraints"
+   faqlink="http://faq.arc42.org/category_c/#c-sec-2" %}

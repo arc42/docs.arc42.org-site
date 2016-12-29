@@ -42,7 +42,7 @@ Alternatively (or additionally) you can use a table. The title of the table is t
 
 #### _&lt;insert diagram or table>_
 
-#### _<(optionally:) insert explanation of external domain interfaces>_
+#### _&lt;(optionally:) insert explanation of external domain interfaces>_
 
 
 ### 3.2 Technical context
@@ -61,22 +61,12 @@ E.g. UML deployment diagram describing channels to neighboring systems, together
 
 #### _&lt;insert diagram or table>_
 
-#### _<(optionally:) Explanation of technical interfaces>_
+#### _&lt;(optionally:) insert explanation of technical interfaces>_
 
-#### _<insert mapping of input/output to channels>_
+#### _&lt;insert mapping of input/output to channels>_
 
 
-## Examples and Tips
-
-<div id="search-results">
-    <hr class="with-no-margin"/>
-    {% assign selected_posts = (site.posts | where: "category", "context") | reverse %}
-    {% for post in selected_posts  %}
-    <div class="article-wrapper">
-        <article>
-            {% include article-header.html page=post link=true share=false eye_catch=false %}
-        </article>
-    </div>
-    <hr class="with-no-margin"/>
-    {% endfor %}
-</div>
+{% include further-info.md
+   category="context"
+   topic="context, scope and external interfaces"
+   faqlink="http://faq.arc42.org/category_c/#c-sec-3" %}
