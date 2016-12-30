@@ -4,7 +4,7 @@
 # these need to be adjusted depending on target platform,
 # local Jekyll need different settings than github-pages :-(
 
-{% include urlsetting.yaml %}
+{% include _urlsetting.yaml %}
 
 # temporary deployment on arc42.github.io/faq
 # -----------------------------------------------------
