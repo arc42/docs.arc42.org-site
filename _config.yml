@@ -4,12 +4,21 @@
 # these need to be adjusted depending on target platform,
 # local Jekyll need different settings than github-pages :-(
 
-{% include _urlsetting.yaml %}
+# deployment with github-pages on custom domain
+#url: http://docs.arc42.org
+#imageurl: http://docs.arc42.org/images
+
+
+url: http://localhost:4000
+imageurl: http://localhost:4000/images
+
+baseurl:
 
 # temporary deployment on arc42.github.io/faq
 # -----------------------------------------------------
 #url: http://arc42.github.io
 #baseurl: "/faq"
+
 
 
 

@@ -1,7 +1,0 @@
-#
-# URL settings
-#
-# these need to be adjusted depending on target platform,
-
-url: http://docs.arc42.org
-imageurl: http://docs.arc42.org/images
