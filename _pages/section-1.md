@@ -55,7 +55,7 @@ A table with quality goals and concrete scenarios, ordered by priorities.
 
 </div>
 
-_< insert table of quality goals here >_
+#### _&lt; insert table of quality goals here>_
 
 
 ### 1.3 Stakeholder
