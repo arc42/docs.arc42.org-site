@@ -4,26 +4,24 @@
 # these need to be adjusted depending on target platform,
 # local Jekyll need different settings than github-pages :-(
 
-# local development
-# -----------------------------------------------------
-#url: http://localhost:4000
-#baseurl:
-#imageurl: http://localhost:4000/images
-## imageurl set to url + baseurl + imageDir, easier than the complex
-## {{ url }}{{ url }}{{ '<filename>' | prepend: site.baseurl }}
+{% if jekyll.environment == "production" %}
+# deployment with github-pages on custom domain
+url: http://docs.arc42.org
+imageurl: http://docs.arc42.org/images
+
+{% endif %}
+
+{% if jekyll.environment == "development" %}
+url: http://localhost:4000
+imageurl: http://localhost:4000/images
+{% endif %}
+
+baseurl:
 
 # temporary deployment on arc42.github.io/faq
 # -----------------------------------------------------
 #url: http://arc42.github.io
 #baseurl: "/faq"
-
-# "real" deployment with github-pages on custom domain
-# -----------------------------------------------------
-url: http://docs.arc42.org
-baseurl:
-imageurl: http://docs.arc42.org/images
-
-#######################################################
 
 
 
@@ -34,7 +32,7 @@ imageurl: http://docs.arc42.org/images
 title: arc42 Documentation
 description: how to use the arc42 template.
 avatar: /assets/img/arc42logosquare.png
-favicon: /assets/img/arc42logosquare.png
+favicon: /assets/img/arc42-favicon.svg
 language: en
 
 str_search: Search
@@ -83,7 +81,6 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-excerpt_separator: <!--more-->
 
 sass:
   sass_dir: _sass
