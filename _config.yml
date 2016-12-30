@@ -4,27 +4,12 @@
 # these need to be adjusted depending on target platform,
 # local Jekyll need different settings than github-pages :-(
 
-{% if jekyll.environment == "development" %}
- {% url: http://docs.arc42.org  %}
-{% endif %}
-
-#url: http://localhost:4000
-#imageurl: http://localhost:4000/images
-
-
-{% if jekyll.environment == "production" %}
-   url: http://docs.arc42.org
-   imageurl: http://docs.arc42.org/images
-{% endif %}
-
-
-baseurl:
+{% include urlsetting.yaml %}
 
 # temporary deployment on arc42.github.io/faq
 # -----------------------------------------------------
 #url: http://arc42.github.io
 #baseurl: "/faq"
-
 
 
 

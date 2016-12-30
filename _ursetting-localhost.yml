@@ -1,0 +1,11 @@
+#
+# URL settings
+#
+# these need to be adjusted depending on target platform,
+# local Jekyll need different settings than github-pages :-(
+
+# local development
+# -----------------------------------------------------
+url: http://localhost:4000
+baseurl:
+imageurl: http://localhost:4000/images
