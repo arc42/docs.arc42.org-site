@@ -5,7 +5,7 @@ order: 0
 permalink: /home/
 ---
 
-Here you find documentation and tips regarding the practical application of
+Here you find documentation and [tips](/keywords) regarding the practical application of
 arc42, organized by template sections:
 
 1. [**Introduction and goals**](/section-1/): Requirements, stakeholder, (top) quality goals
@@ -19,9 +19,9 @@ arc42, organized by template sections:
 9. [**Architecture decisions**](/section-9/): Important decisions
 10. [**Quality**](/section-10/): Quality tree and quality scenarios
 11. [**Risks and technical debt**](/section-11/): Known problems, risks and technical debt
-12. [**Glossary**](/section-12/): Recurring solution approaches and patterns
+12. [**Glossary**](/section-12/): Definitions of important business and technical terms 
 
-
+Our tips are tagged by keywords
 
 ## <font color="#dd354b">Still have questions?</font>
 
