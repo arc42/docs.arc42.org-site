@@ -29,11 +29,13 @@ arc42, organized by template sections:
 
 ## <font color="#dd354b">Still have questions?</font>
 
-... then try our extensive [**FAQ**]("http://faq.arc42.org"), answering more than 110 frequently asked questions.
+<a href="http://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
+<br>... then try our [**extensive FAQ**]("http://faq.arc42.org"), answering more than 110 frequently asked questions.
 
 ## <font color="#dd354b">Need further assistance?</font>
 
-... let us [**know here**](/contact/), we're listening.
+<a href="/contact"><img src="/images/contact-icon.png" alt="!!" style="float:left;width:42px;height:42px;"></a>
+<br>... let us [**know here**](/contact/), we're listening.
 
 ## <font color="#dd354b">We're offering architecture training!</font>
 
