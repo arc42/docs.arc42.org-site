@@ -21,7 +21,8 @@ arc42, organized by template sections:
 11. [**Risks and technical debt**](/section-11/): Known problems, risks and technical debt
 12. [**Glossary**](/section-12/): Definitions of important business and technical terms
 
->Our tips are tagged by [keywords](/keywords) that will help you navigate. Three of these stand out:
+
+>Our tips are tagged by [**{{ site.tags.size }} keywords**](/keywords) that will help you navigate. Three of these stand out:
 >
 >* **[lean](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline you documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
 >* **[thorough](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and there documentation have to be audited.
