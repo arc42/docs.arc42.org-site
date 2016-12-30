@@ -23,10 +23,9 @@ arc42, organized by template sections:
 
 >Our tips are tagged by [keywords](/keywords) that will help you navigate. Three of these stand out:
 >
->* **[lean](/keywords/#lean)**: You are looking for opportunities to shorten or >streamline you documentation pragmatically. You want to reduce efforts without loosing >content or value. You are working in an agile environment and want to have lightweight >documentation – based on the motto: _travel light_.
->* **[thorough](/keywords/#thorough)**: You are working in a more formal environment, >e.g. developing very large or critical systems with hard quality requirements. Your >stakeholders require thoroughness, accuracy and attention to detail.
->Maybe your systems and there documentation have to be audited.
->* **[essential](/keywords/#essential)**: Despite lean and agile, there are some >informations about your system that you should always document; i.e. quality goals of >your architecture.
+>* **[lean](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline you documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
+>* **[thorough](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and there documentation have to be audited.
+>* **[essential](/keywords/#essential)**: Despite lean and agile, there are some informations about your system that you should always document; i.e. quality goals of your architecture.
 
 ## <font color="#dd354b">Still have questions?</font>
 
