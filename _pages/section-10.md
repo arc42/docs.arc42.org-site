@@ -44,6 +44,7 @@ In any case the tree should include links to the scenarios of the following sect
 </div>
 
 ### 10.2 Quality Scenarios
+
 <div class="arc42-help" markdown="1">
 
 ### Content
@@ -63,8 +64,6 @@ Especially when you want to assess your architecture using methods like ATAM you
 
 ### Form
 Tabular or free form text.
-
-
 
 </div>
 
