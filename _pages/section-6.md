@@ -33,7 +33,7 @@ There are many notations for describing scenarios, e.g.
 
 </div>
 
-#### <Runtime Scenario 1>
+#### 6.1 _&lt;Runtime Scenario 1>_
 
 <div class="arc42-help" markdown="1">
 
@@ -42,11 +42,16 @@ There are many notations for describing scenarios, e.g.
 building block instances depicted in this diagram.
 </div>
 
-#### <Runtime Scenario 2>
+##### _&lt;insert diagram for scenario 1>_
+
+##### _&lt;describe notable aspects of interactions >_
+
+
+#### 6.2 _&lt;Runtime Scenario 2>_
 
 #### ...
 
-#### <Runtime Scenario n>
+#### 6.n _&lt;Runtime Scenario n>_
 
 
 {% include further-info.md
