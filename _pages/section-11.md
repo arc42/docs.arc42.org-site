@@ -22,6 +22,8 @@ List of risks and/or technical debts, probably including suggested measures to m
 
 </div>
 
+_&lt;insert list or table of known problems, risks or technical debt >_
+
 {% include further-info.md
    category="risk"
    topic="risks, problems and technical debt"
