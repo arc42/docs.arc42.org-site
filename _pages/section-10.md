@@ -22,7 +22,6 @@ decisions you should know for every stakeholder what is really important to them
 concrete and measurable.
 </div>
 
-### Form
 
 ### 10.1 Quality Tree
 <div class="arc42-help" markdown="1">
@@ -42,6 +41,8 @@ The quality tree is a high-level overview of the quality goals and requirements:
 In any case the tree should include links to the scenarios of the following section.
 
 </div>
+
+_&lt;describe quality tree here >_
 
 ### 10.2 Quality Scenarios
 
@@ -66,6 +67,9 @@ Especially when you want to assess your architecture using methods like ATAM you
 Tabular or free form text.
 
 </div>
+
+_&lt;describe quality scenarios here >_
+
 
 {% include further-info.md
    category="quality"
