@@ -5,6 +5,8 @@ permalink: /section-12/
 order: 16
 ---
 
+### 12. Glossary
+
 <div class="arc42-help" markdown="1">
 
 ### Content

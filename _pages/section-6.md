@@ -5,10 +5,13 @@ permalink: /section-6/
 order: 10
 ---
 
+### 6. Runtime View
+
+
 <div class="arc42-help" markdown="1">
 
 ### Content
-This view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
+The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
 
 * important use cases or features: how do building blocks execute them?
 * interactions at critical external interfaces: how do building blocks cooperate with users and neighbouring systems?

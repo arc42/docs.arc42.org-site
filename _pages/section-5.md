@@ -5,13 +5,12 @@ permalink: /section-5/
 order: 9
 ---
 
-
 ### 5. Building Block View
 
 <div class="arc42-help" markdown="1">
 
 ### Content
-This view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes,
+The building block view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes,
 interfaces, packages, libraries, frameworks, layers, partitions, tiers, functions, macros, operations,
 datas structures, ...) as well as their dependencies (relationships, associations, ...)
 

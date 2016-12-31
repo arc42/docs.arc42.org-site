@@ -5,7 +5,6 @@ permalink: /section-3/
 order: 7
 ---
 
-
 ### 3 Context and scope
 
 <div class="arc42-help" markdown="1">

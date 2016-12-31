@@ -4,6 +4,8 @@ title: 11 - Risks and technical debt
 permalink: /section-11/
 order: 15
 ---
+### 11. Risks and Technical Debt
+
 <div class="arc42-help" markdown="1">
 
 ### Content

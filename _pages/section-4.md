@@ -5,6 +5,9 @@ permalink: /section-4/
 order: 8
 ---
 
+### 4. Solution Strategy
+
+
 <div class="arc42-help" markdown="1">
 #### Contents
 A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include

@@ -4,6 +4,10 @@ title: 8 - Concepts
 permalink: /section-8/
 order: 12
 ---
+
+### 8. Crosscutting Concepts
+
+
 <div class="arc42-help" markdown="1">
 
 ### Content
