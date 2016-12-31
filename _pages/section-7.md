@@ -5,7 +5,7 @@ permalink: /section-7/
 order: 11
 ---
 
-## 7. Deployment view
+### 7. Deployment view
 
 <div class="arc42-help" markdown="1">
 
