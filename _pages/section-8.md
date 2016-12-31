@@ -11,7 +11,7 @@ order: 12
 <div class="arc42-help" markdown="1">
 
 ### Content
-This section describes overall, principal regulations and solution ideas that are relevant in multiple parts (-> cross-cutting) of your system.
+This section describes overall, principal regulations and solution ideas that are relevant in multiple parts (&rarr; cross-cutting) of your system.
 Such concepts are often related to multiple building blocks. They include many different topics, such as
 
 * domain models
@@ -34,21 +34,25 @@ The form can be varied:
 * reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
 
 ### Structure of this Section
-A potential (but not mandatory) structure for the different concepts of this section could be:
+A potential (but not mandatory) structure for this section could be:
 
-* domain concepts
+* Domain concepts
 * User Experience concepts (UX)
 * Safety and security concepts
 * Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
+* "Under-the-hood" concepts
+* Development concepts
+* Operational concepts
 
-Note, that some individual concepts could be assigned to different sections of this list.
+Note: it might be difficult to assign individual concepts to one specific topic
+on this list.
 
 ![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
 </div>
+
+_&lt;describe concepts here >_
+
 
 {% include further-info.md
    category="concepts"

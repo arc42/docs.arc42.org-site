@@ -38,16 +38,10 @@ There are many notations for describing scenarios, e.g.
 
 #### 6.1 _&lt;Runtime Scenario 1>_
 
-<div class="arc42-help" markdown="1">
+_&lt; insert runtime diagram or textual description of the scenario>_
 
-* insert runtime diagram or textual description of the scenario
-* insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.
-</div>
-
-##### _&lt;insert diagram for scenario 1>_
-
-##### _&lt;describe notable aspects of interactions >_
+_&lt; insert description of the notable aspects of the interactions between the
+building block instances depicted in this diagram. >_
 
 
 #### 6.2 _&lt;Runtime Scenario 2>_

@@ -64,11 +64,11 @@ For multiple environments or alternative deployments please copy that section of
 
 ##### Motivation
 
-_&lt; insert describtion of motivation or explanation in text form>_
+_&lt; insert description of motivation or explanation in text form>_
 
 ##### (optional) Quality and/or Performance Features
 
-_&lt; optionally insert describtion quality or performance features >_
+_&lt; optionally insert description quality or performance features >_
 
 
 ##### Mapping
