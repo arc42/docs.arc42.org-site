@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/arc42/docs.arc42.org-site.png?label=ready&title=Ready)](https://waffle.io/arc42/docs.arc42.org-site)
 # arc42 Documentation, help and tips
 
 Here we collect tips on using arc42.
