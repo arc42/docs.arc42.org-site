@@ -5,8 +5,8 @@ order: 0
 permalink: /home/
 ---
 
-Here you find documentation and **[{{ site.posts | size }} tips](/keywords)** regarding the practical application of
-arc42, organized by template sections:
+Check out  **[{{ site.posts | size }} practical tips](/keywords)** for using arc42,
+organized by template sections:
 
 1. [**Introduction and goals**](/section-1/): Requirements, stakeholder, (top) quality goals
 2. [**Constraints**](/section-2/): Technical and organizational constraints, conventions
