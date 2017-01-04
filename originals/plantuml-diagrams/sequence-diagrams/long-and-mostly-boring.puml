@@ -1,0 +1,18 @@
+@startuml
+A -> B : a1
+B -> C : a2
+C -> D : a3
+D -> E : a4
+E -> F :a5
+F -> G : start
+G -> G : init
+G -> H : create()
+G <--H : X
+G -> I : authorize( X )
+I -> H : check(X)
+I <--H : ok
+G -> I : foo(X, H)
+I --> G : completed
+G --> A : ready
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+A -> B
+B -> C
+C -> D
+D -> E
+E -> F
+F -> G : <async> start
+G -> G : init
+G -> H : create()
+G <--H : X
+G -> I : authorize( X )
+I -> H : check(X)
+I <--H : ok
+G -> I : foo(X, H)
+G --> A : ready
+
+@enduml

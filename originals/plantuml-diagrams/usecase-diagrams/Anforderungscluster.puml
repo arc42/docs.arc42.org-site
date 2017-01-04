@@ -1,0 +1,25 @@
+@startuml
+
+(<<cluster>>\nImport Handling) as import
+(<<cluster>>\nExport Handling) as export
+(Business Rule\nValidation) as rules
+(<<cluster>>\nConfiguration) as Configuration
+:Timer\n(cron): as timer
+
+
+Admin ..> (Configuration) :write
+
+
+
+(import) .> (rules) : check\ncompliance
+(rules) ..> (Configuration)
+
+timer ..> (import) : start
+timer .> (export) : start
+
+(<<cluster>>\nReporting) .> (Configuration)
+
+
+(Configuration) <.. (import) :read
+(Configuration) <.. (export) :read
+@enduml

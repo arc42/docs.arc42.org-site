@@ -1,0 +1,18 @@
+@startuml
+
+start
+
+:authenticate;
+
+:select product;
+
+if (private customer?) then (yes)
+  :add\nVAT;
+else (no)
+  :request\nVAT_ID;
+  endif
+
+:create invoice;
+stop
+
+@enduml

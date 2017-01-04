@@ -1,0 +1,15 @@
+@startuml
+skinparam componentstyle UML2
+
+component [«ausführlich»\n\nOur System] as OSA
+component [«logistics»\nFlug] as Flug #White
+component [«logistics»\nBahn] as Bahn #White
+component [«logistics»\nLKW] as Lkw #White
+
+
+
+Bahn -> OSA
+OSA -> Flug
+Lkw -up-> OSA
+
+@enduml

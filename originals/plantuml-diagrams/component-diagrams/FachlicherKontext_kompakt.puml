@@ -1,0 +1,10 @@
+@startuml
+skinparam componentstyle UML2
+
+component [«category»\nLogistics] as L #White
+
+[«kompakt»\n\nOur-System] -> L
+
+
+
+@enduml
