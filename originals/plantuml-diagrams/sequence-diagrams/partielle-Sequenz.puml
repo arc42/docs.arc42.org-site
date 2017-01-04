@@ -1,0 +1,11 @@
+@startuml
+G -> G : init
+
+G -> H : sendEmail()
+G <--H : reply X
+G -> I : blabla( X )
+I -> H : check( X )
+
+I <--H : ok
+
+@enduml

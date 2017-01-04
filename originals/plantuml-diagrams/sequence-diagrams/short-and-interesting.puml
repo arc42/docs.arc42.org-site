@@ -1,0 +1,14 @@
+@startuml
+note right of F: before start, a1-a5 have completed
+F -> G : start
+G -> G : init
+G -> H : create()
+G <--H : X
+G -> I : authorize( X )
+I -> L : check(X)
+I <--H : ok
+G -> I : foo(X, H)
+I --> G : completed
+note right of G: G return result to A
+
+@enduml

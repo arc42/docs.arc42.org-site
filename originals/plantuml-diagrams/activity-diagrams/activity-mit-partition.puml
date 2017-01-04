@@ -1,0 +1,22 @@
+@startuml
+
+       partition Checker {
+       (*)  -> "check input"
+       -->If "verbose?" then
+       }
+
+    partition Verbalizer
+       -> [Yes] "turn on\n verbosity"
+    }
+
+       partition Runner 
+
+       --> "run\n command"
+
+       else
+       ->  [no] "run\n command"
+       -> "finalize"
+       Endif
+       ->(*)
+       }
+@enduml

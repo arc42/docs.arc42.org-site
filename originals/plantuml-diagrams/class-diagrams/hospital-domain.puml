@@ -1,0 +1,86 @@
+@startuml
+
+interface Person {
+title: String
+nachName: String
+vorname: String
+gebDatum: Date
+geschlecht: Gender
+postAdresse: Address
+}
+
+Person "1" -left- "1..*" Telefon
+
+Person <|-- Patient
+Person <|-- Personal
+
+Person "*" --right-- "*" Hospital
+
+class Hospital {
+name: String
+address: Address
+}
+
+class Abteilung {
+name: String
+location: String
+}
+
+
+Abteilung "*" -down-* "1" Hospital
+Abteilung "1" -- "1..*" Personal
+(Abteilung, Personal) -- Vertrag
+
+Hospital --- "1..*" Telefon
+
+class Telefon {
+telNr: String
+isPrivat: Boolean
+}
+
+class Personal {
+joined: Date
+ausbildung: String[]
+zeugnis: String[]
+sprachen: String[]
+}
+
+class Vertrag {
+begin: Date
+isUnlimited: Boolean
+monthSalary: Float
+contractType: ContractType
+
+}
+
+class Patient {
+id: String {id}
+name: String
+aufgenommen: Date
+allergie: String[]
+aktuelleDiagnose: Diagnosis[]
+}
+
+Personal <|-down- MedizinischesPersonal
+Personal <|-down- AdministrativesPersonal
+Personal <|-down- TechnischesPersonal
+
+
+class MedizinischesPersonal {
+fachrichtung: String[]
+approbation: Boolean
+
+
+}
+
+MedizinischesPersonal  -left-  Patient
+
+class AdministrativesPersonal {
+}
+
+class TechnischesPersonal {
+}
+
+
+
+@enduml

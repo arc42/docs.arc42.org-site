@@ -82,9 +82,4 @@ sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - vendor
+exclude: [Gemfile, Gemfile.lock, LICENSE, README.md, originals]
