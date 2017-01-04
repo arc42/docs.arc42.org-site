@@ -7,16 +7,22 @@ share: false
 ---
 
 
-
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 <!-- site_tags: {{ site_tags }} -->
 {% assign tag_words = site_tags |  split:',' | sort %}
 <!-- tag_words: {{ tag_words }} -->
 
+<!-- if-else fixes issue #18 -->
 <div id="tags">
   <ul class="tag-box inline">
   {% for tag in tag_words %}
-    <li><a href="#{{ tag | cgi_escape }}">{{ tag }} <span>{{ site.tags[tag] | size }}</span></a></li>
+    {% if tag == "lean" or tag == "essential" or tag=="thorough" %}
+       <li><a href="#{{ tag | cgi_escape }}"><font color="#dd354b"><b>{{ tag }}</b>
+       <span>{{ site.tags[tag] | size }}</span></a></font>
+    {% else %}
+        <li><a href="#{{ tag | cgi_escape }}">{{ tag }}
+        <span>{{ site.tags[tag] | size }}</span></a></li>
+    {% endif %}
   {% endfor %}
   </ul>
 
