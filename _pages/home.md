@@ -5,7 +5,7 @@ order: 0
 permalink: /home/
 ---
 
-Check out  **[{{ site.posts | size }} practical tips](/keywords)** for using arc42, organized by template sections:
+Check out  **[ practical tips](/keywords)** for using arc42, organized by template sections:
 
 1. [**Introduction and goals**](/section-1/): Requirements, stakeholder, (top) quality goals
 2. [**Constraints**](/section-2/): Technical and organizational constraints, conventions
@@ -23,9 +23,9 @@ Check out  **[{{ site.posts | size }} practical tips](/keywords)** for using arc
 
 >Our tips are tagged by [**{{ site.tags.size }} keywords**](/keywords) that will help you navigate. Three of these stand out:
 >
->* **[lean](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline you documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
->* **[thorough](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and there documentation have to be audited.
->* **[essential](/keywords/#essential)**: Despite lean and agile, there are some informations about your system that you should always document; i.e. quality goals of your architecture.
+>* **[<font color="#dd354b">lean</font>](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline you documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
+>* **[<font color="#dd354b">thorough</font>](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and there documentation have to be audited.
+>* **[<font color="#dd354b">essential</font>](/keywords/#essential)**: Despite lean and agile, there are some informations about your system that you should always document; i.e. quality goals of your architecture.
 
 ## <font color="#dd354b">Still have questions?</font>
 
