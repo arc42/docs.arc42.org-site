@@ -5,12 +5,12 @@
 # local Jekyll need different settings than github-pages :-(
 
 # deployment with github-pages on custom domain
-url: http://docs.arc42.org
-imageurl: http://docs.arc42.org/images
+#url: http://docs.arc42.org
+#imageurl: http://docs.arc42.org/images
 
 
-#url: http://localhost:4000
-#imageurl: http://localhost:4000/images
+url: http://localhost:4000
+imageurl: http://localhost:4000/images
 
 baseurl:
 
