@@ -5,8 +5,7 @@ order: 0
 permalink: /home/
 ---
 
-Check out  **[{{ site.posts | size }} practical tips](/keywords)** for using arc42,
-organized by template sections:
+Check out  **[{{ site.posts | size }} practical tips](/keywords)** for using arc42, organized by template sections:
 
 1. [**Introduction and goals**](/section-1/): Requirements, stakeholder, (top) quality goals
 2. [**Constraints**](/section-2/): Technical and organizational constraints, conventions
