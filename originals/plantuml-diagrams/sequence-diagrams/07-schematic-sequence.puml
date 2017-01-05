@@ -1,0 +1,18 @@
+@startuml
+actor AccountAdmin as AA
+participant SAP as "<external>\nSAP" #96d0ff
+AA -> SAP: confirm account
+
+participant "SAP-Adapter" as SA
+SAP -> SA : authenticate
+SAP -> SA : send\naccount\nDetails
+
+participant "Account\nDomain\nAggregate" as ADA
+
+SA -> UserDB: userExists?
+SA -> ADA: set accountID
+ADA -> ADA: activate
+ADA -> Reporting: include\nin monthly\nreport
+
+
+@enduml

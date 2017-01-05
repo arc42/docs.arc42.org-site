@@ -1,0 +1,25 @@
+@startuml
+skinparam componentStyle uml2
+skinparam handwritten true
+
+component SAP #96d0ff
+
+component "ExampleSystem" {
+component "SAP-Adapter" as SA
+component "Reporting"
+database "UserDB"
+component "Account\nDomain\nAggregate" as ADA
+
+}
+
+
+SAP -> SA
+Reporting <- SA
+SA -down-> UserDB
+SA -> ADA
+
+note left of SAP
+SAP is an external system
+end note
+
+@enduml
