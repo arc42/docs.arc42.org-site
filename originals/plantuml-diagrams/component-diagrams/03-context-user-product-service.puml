@@ -1,0 +1,16 @@
+@startuml
+skinparam componentstyle UML2
+
+component [«System»\n\nOur System] as OSA
+component [«external»\nUserDB] as UserDB #White
+component [«external»\nProductProvider] as Bahn #White
+component [«external»\nPaymentService] as Pay #White
+
+
+
+Bahn -> OSA
+OSA -> UserDB : user requests
+UserDB -> OSA: valid users
+Pay <-up-> OSA: handle\npayment
+
+@enduml
