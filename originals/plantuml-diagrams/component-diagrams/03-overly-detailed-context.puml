@@ -1,0 +1,21 @@
+@startuml
+skinparam componentstyle UML2
+
+component [«external»\nProductProvider] as Prod #White
+component [«System»\n\nOur System] as OSA
+component [«external»\nPaymentService] as Pay #White
+
+
+OSA --right--> Prod: query product
+Prod -> OSA: provideProductImage
+Prod -> OSA: provideProductDescription
+
+Pay <-- OSA: auth\nuser
+OSA --> Pay: validate\namount
+Pay <-- OSA: identify\nbank
+Pay <-- OSA: identify\naccount
+Pay <-- OSA: issue\npayment
+Pay --> OSA: handle\nrevocation
+
+
+@enduml
