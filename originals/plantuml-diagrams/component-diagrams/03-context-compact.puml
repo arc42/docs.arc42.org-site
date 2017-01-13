@@ -1,0 +1,9 @@
+@startuml
+skinparam componentstyle UML2
+
+
+component [«category»\nLogistics] as LCat #white
+[«compact»\n\nOur-System] <--left-LCat
+
+
+@enduml

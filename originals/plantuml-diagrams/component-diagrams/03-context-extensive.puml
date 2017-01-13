@@ -1,0 +1,15 @@
+@startuml
+skinparam componentstyle UML2
+
+component [«extensive»\n\nOur-System] as OSA
+component [«logistics»\nFlight] as Flight #White
+component [«logistics»\nRail] as Rail #White
+component [«logistics»\nRoad] as Road #White
+
+
+Rail -> OSA
+OSA <- Flight
+Road -up-> OSA
+
+
+@enduml
