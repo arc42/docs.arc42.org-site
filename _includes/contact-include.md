@@ -1,10 +1,13 @@
 
 ## You still have questions?
 
-Please let us know - we're listening:
+Please let us know - we're listening to you:
 
 
-* <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xoxrgx" onmouseover="this.href=this.href.replace(/x/g,'');">email (our adress is spam-protected)</a>
-* on our [github issue tracker](https://github.com/arc42/arc42-template/issues) at https://github.com/arc42/arc42-template/issues.
-* or on [Twitter (@arc42Tipps)](https://twitter.com/arc42Tipps), or
-* on [Stackoverflow](http://stackoverflow.com/questions/tagged/arc42)
+* <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xoxrgx" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email (our adress is spam-protected)</a>
+* on our [<i class="fa fa-fw fa-github"></i>github issue tracker](https://github.com/arc42/arc42-template/issues) at https://github.com/arc42/arc42-template/issues.
+* on various Twitter accounts:
+  * [<i class="fa fa-fw fa-twitter"></i>@arc42Tipps](https://twitter.com/arc42Tipps)
+  * [<i class="fa fa-fw fa-twitter"></i>@gernotstarke](https://twitter.com/gernotstarke)
+* on [<i class="fa fa-fw fa-stack-overflow"></i>Stackoverflow](http://stackoverflow.com/questions/tagged/arc42)
+* on [<i class="fa fa-fw fa-slack"></i>Slack](https://arc42.slack.com) - we're [currently working on](https://github.com/arc42/arc42.org-site/issues/3) a public slack channel.

@@ -27,6 +27,7 @@
 {% endif %}
 
 
+
 {% if icons.stack_overflow %}
 <li>
     <a href="https://stackoverflow.com/tags/{{ icons.stack_overflow }}">
@@ -40,6 +41,14 @@
 <li>
     <a href="https://plus.google.com/{{ icons.google_plus }}">
         <i class="fa fa-fw fa-google-plus"></i>
+    </a>
+</li>
+{% endif %}
+
+{% if icons.slack %}
+<li>
+    <a href="https://{{ icons.slack }}.slack.com/">
+        <i class="fa fa-fw fa-slack"></i>
     </a>
 </li>
 {% endif %}
