@@ -24,7 +24,7 @@
 
         <div class="clearfix">
             <ul class="meta">
-                
+
                 {% if page.author %}
                 <li>
                     <a href="{{ '/search/?a=' | append: page.author | prepend: site.baseurl }}">
@@ -32,6 +32,7 @@
                         {{ page.author }}
                     </a>
                 </li>
+
                 {% if page.icons %}
                 <li>
                     <ul class="icons">
@@ -40,6 +41,7 @@
                 </li>
                 {% endif %}
                 {% endif %}
+
             </ul>
         </div>
     </div>
