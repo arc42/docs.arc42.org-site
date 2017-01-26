@@ -10,5 +10,5 @@ Please let us know - we're listening to you:
   * [<i class="fa fa-fw fa-twitter"></i>@arc42Tipps](https://twitter.com/arc42Tipps)
   * [<i class="fa fa-fw fa-twitter"></i>@gernotstarke](https://twitter.com/gernotstarke)
 * on [<i class="fa fa-fw fa-stack-overflow"></i>Stackoverflow](http://stackoverflow.com/questions/tagged/arc42)
-* on [<i class="fa fa-fw fa-slack"></i>Slack](https://arc42.slack.com)
+* on [<i class="fa fa-fw fa-slack"></i>Slack](https://arc42.slack.com) <script async defer src="https://slackin-giwyfuegce.now.sh/slackin.js"></script>
    * you can [self-register here - it's free](https://slackin-giwyfuegce.now.sh).
