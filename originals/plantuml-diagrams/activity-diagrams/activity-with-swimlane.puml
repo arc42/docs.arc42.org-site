@@ -1,0 +1,17 @@
+@startuml
+|GUI|
+start
+:enter-data;
+|Core-Domain|
+:validate-address;
+:validate-credit-card;
+|Email-Provider|
+:send-optin-mail;
+:validate-smtp-return;
+|Core-Domain|
+:prepare-welcome-\npackage;
+|GUI|
+:display-success-message;
+stop
+@enduml
+
