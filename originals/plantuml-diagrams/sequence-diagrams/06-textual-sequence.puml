@@ -1,0 +1,32 @@
+@startuml
+skinparam componentStyle uml2
+
+actor Admin
+participant "Import\nHandler" as IH
+participant "ftp-in" as ftp
+participant "Optical\nArchive" as OA
+participant "Data\nManagement" as DM
+participant "Error\nHandler" as EH
+
+Admin -> IH: import( m )
+IH -> Configuration: getMandatorCfg
+IH -> ftp: readFile
+ftp --> IH: file
+IH -> OA : storeFile(file)
+IH -> IH: setupFilterChain
+IH -> IH: unzip(file)
+IH -> IH: decrypt(uzFile)
+
+alt parse file
+loop all records
+IH -> IH: parse record
+IH -> DM : store client
+else record error
+IH -> EH: log record error
+end
+else file error
+IH -> EH: log file error
+end
+
+
+@enduml
