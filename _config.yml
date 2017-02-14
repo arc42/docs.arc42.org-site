@@ -33,6 +33,13 @@ language: en
 
 str_search: Search
 
+
+#
+# want subtle ads (on post-pages)
+#
+show-subtle-ads: true
+
+
 #
 # want (disqus) comments?
 #

@@ -9,7 +9,7 @@
 #imageurl: http://docs.arc42.org/images
 
 
-url: http://localhost:4000
+url: http://localhost
 imageurl: http://localhost:4000/images
 baseurl:
 
@@ -36,6 +36,11 @@ str_search: Search
 # want (disqus) comments?
 #
 disqus: true
+
+#
+# want subtle ads (on post-pages)
+#
+show-subtle-ads: true
 
 #
 # Icons

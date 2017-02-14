@@ -1,3 +1,5 @@
+/* style for arc42 websites */
+
 p {
   font-family: sans-serif;
 }
@@ -26,7 +28,6 @@ p {
   background-size: 24px 26px;
 }
 
-
 /* subtle ads */
 
 .subtle-ad {
@@ -44,10 +45,8 @@ p {
   -moz-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
   box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
 
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
   color: #032f7f;
-
-
 }
 
 .subtle-ad h4 {
