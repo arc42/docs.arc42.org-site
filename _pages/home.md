@@ -45,7 +45,7 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 ## <font color="#dd354b">Still have questions?</font>
 
 <a href="http://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
-<br>... then try our [**extensive FAQ**](http://faq.arc42.org), answering more than 110 frequently asked questions.
+<br>... then try our [**extensive FAQ**](http://faq.arc42.org), answering more than 120 frequently asked questions.
 
 ## <font color="#dd354b">Need further assistance?</font>
 
