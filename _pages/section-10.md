@@ -70,6 +70,10 @@ Tabular or free form text.
 
 _&lt;describe quality scenarios here >_
 
+## See also
+
+arc42 provides a number of [example quality scenarios](https://github.com/arc42/quality-requirements)
+(sorry - currently only in German) on Github.
 
 {% include further-info.md
    category="quality"
