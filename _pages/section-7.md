@@ -73,8 +73,8 @@ _&lt; optionally insert description quality or performance features >_
 
 ##### Mapping
 
-&lt; insert description of mapping of building blocks /
-_<description of the mapping>_
+_&lt; insert description of mapping of building blocks >_
+
 
 
 #### 7.2 Infrastructure Level 2
