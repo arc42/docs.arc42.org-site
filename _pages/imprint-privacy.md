@@ -4,6 +4,7 @@ title: Imprint & Privacy
 permalink: /imprint/
 order: 90
 share: false
+hide: true
 ---
 
 The following text has to be included in sites provided from Germany by German citicens,

@@ -1,3 +1,26 @@
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#aa0000",
+      "text": "#ffdddd"
+    },
+    "button": {
+      "background": "#ff0000"
+    }
+  },
+  "type": "opt-out",
+  "content": {
+    "dismiss": "Accept cookies",
+    "href": "{{ site.baseurl }}/imprint"
+  }
+})});
+</script>
+
+
 <script>
 // Set to the same value as the web property used on the site
 var gaProperty = '{{ site.analytics.google.tracking_id }}';
