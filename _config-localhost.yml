@@ -43,7 +43,7 @@ show-subtle-ads: true
 # Analytics
 analytics:
   google:
-    tracking_id          : 'UA-93746670-2'
+    tracking_id : 'UA-93746670-2'
 
 #
 # Icons
