@@ -1,16 +1,16 @@
 @startuml
 actor AccountAdmin as AA
 participant SAP as "<external>\nSAP" #96d0ff
-AA -> SAP: confirm account
+AA -> SAP: eröffne Konto
 
 participant "SAP-Adapter" as SA
-SAP -> SA : authenticate
-SAP -> SA : send\naccount\nDetails
+SAP -> SA : send\naccount\ndetails
+SAP -> SA : authorize
 
 participant "Account\nDomain\nAggregate" as ADA
 
-SA -> UserDB: userExists?
-SA -> ADA: set accountID
+SA -> UserDB: userExisting?
+SA -> ADA: get accountID
 ADA -> ADA: activate
 ADA -> Reporting: include\nin monthly\nreport
 
