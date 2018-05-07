@@ -30,20 +30,13 @@ language: en
 str_search: Search
 
 #
-# want (disqus) comments?
-#
-disqus: true
-
-#
 # want subtle ads (on post-pages)
 #
 show-subtle-ads: true
 
 
 # Analytics
-analytics:
-  google:
-    tracking_id : 'UA-93746670-2'
+analytics: false
 
 #
 # Icons
@@ -53,7 +46,6 @@ icons:
   email: false
   github: arc42
   twitter: gernotstarke
-  google_plus: 105917203908419102125
   stack_overflow: arc42
   slack: arc42
 
