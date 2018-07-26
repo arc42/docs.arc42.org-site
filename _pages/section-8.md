@@ -18,7 +18,7 @@ Such concepts are often related to multiple building blocks. They include many d
 * architectur patterns or design patterns
 * rules for using specific technology
 * principal, often technical decisions of overall decisions
-* inmplementation rules
+* implementation rules
 
 ### Motivation
 Concepts form the basis for _conceptual integrity_ (consistency, homogeneity) of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
