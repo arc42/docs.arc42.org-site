@@ -28,7 +28,7 @@ your system's most critical aspects. Make sure that you completely understand th
 <div class="arc42-help" markdown="1">
 
 #### Content
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. Optinoally you can add domain specific formats or communication protocols.
+Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. Optionally you can add domain specific formats or communication protocols.
 
 #### Motivation
 All stakeholders shoud understand which data are exchanged with the environment of the system.
