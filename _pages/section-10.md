@@ -49,7 +49,7 @@ _&lt;describe quality tree here >_
 <div class="arc42-help" markdown="1">
 
 ### Content
-Concretizaion of (sometimes vague or implicit) quality requirements using (quality) scenarios.
+Concretization of (sometimes vague or implicit) quality requirements using (quality) scenarios.
 
 These scenarios describe what should happen when a stimulus arrives at the system.
 
