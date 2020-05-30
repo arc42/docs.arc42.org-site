@@ -31,7 +31,7 @@ your system's most critical aspects. Make sure that you completely understand th
 Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. Optionally you can add domain specific formats or communication protocols.
 
 #### Motivation
-All stakeholders shoud understand which data are exchanged with the environment of the system.
+All stakeholders should understand which data are exchanged with the environment of the system.
 
 #### Form
 All kinds of diagrams that show the system as a black box and specify the domain interfaces to communiations partners.
