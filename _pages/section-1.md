@@ -23,7 +23,7 @@ Describes the relevant requirements and the driving forces that software archite
 <div class="arc42-help" markdown="1">
 
 ### Contents
-Short description of the functional requirements, driving forces, extract (or abstract)  of requiremnents. Link to (hopefully existing) requirements documents (with version number and information where to find it).
+Short description of the functional requirements, driving forces, extract (or abstract)  of requirements. Link to (hopefully existing) requirements documents (with version number and information where to find it).
 
 ### Motivation
 From the point of view of the end users a system is created or modified to improve support of a business activity and/or improve the quality.
