@@ -44,8 +44,8 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 
 ## <font color="#dd354b">Still have questions?</font>
 
-<a href="http://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
-<br>... then try our [**extensive FAQ**](http://faq.arc42.org), answering more than 120 frequently asked questions.
+<a href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
+<br>... then try our [**extensive FAQ**](https://faq.arc42.org), answering more than 120 frequently asked questions.
 
 ## <font color="#dd354b">Need further assistance?</font>
 
@@ -55,8 +55,8 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 ## <font color="#dd354b">We're offering architecture training!</font>
 
 The _dynamic duo_, always two trainers in parallel, practically applicable
-knowledge from Peter Hruschka and Gernot Starke. See [arc42.de](http://www.arc42.de/training.html) for details, and schedule.
+knowledge from Peter Hruschka and Gernot Starke. See [arc42.de](https://arc42.de/termine) for details, and schedule.
 
 We've successfully trained more than 1000 developers in software architecture,
-many of them passed the [iSAQB CPSA-F](http://isaqb.org) certification.
+many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
