@@ -30,4 +30,4 @@ Simple tables of constraints with explanations. If needed you can subdivide them
 {% include further-info.md
    category="constraints"
    topic="constraints"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-2" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-2" %}
