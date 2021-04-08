@@ -27,7 +27,7 @@ concrete and measurable.
 <div class="arc42-help" markdown="1">
 
 ### Content
-The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leafs.
+The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leaves.
 
 ### Motivation
 The tree structure with priorities provides an overview for a sometimes large number of quality requirements.
