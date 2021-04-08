@@ -22,7 +22,7 @@ Remark: The main criterion for the choice of possible scenarios (sequences, work
 
 ### Motivation
 You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakholders that are less willing or able to read and understand the static models (building block view, deployment view).
+You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
 
 ### Form
 There are many notations for describing scenarios, e.g.
