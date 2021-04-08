@@ -12,7 +12,7 @@ order: 9
 ### Content
 The building block view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes,
 interfaces, packages, libraries, frameworks, layers, partitions, tiers, functions, macros, operations,
-datas structures, ...) as well as their dependencies (relationships, associations, ...)
+data structures, ...) as well as their dependencies (relationships, associations, ...)
 
 This view is mandatory for every architecture documentation.
 In analogy to a house this is the _floor plan_.
@@ -44,7 +44,7 @@ It contains
 * a motivation for the decomposition
 * black box descriptions of the contained building blocks. For these we offer you alternatives:
   * use _one_ table for a short and pragmatic overview of all contained building blocks and their interfaces
-  * use a list of black box decriptions of the building blocks according to the black box template (see below). Depending on your choice of tool this list could be sub-chapters (in text files), sub-pages (in a Wiki) or nested elements (in a modelling tool).
+  * use a list of black box descriptions of the building blocks according to the black box template (see below). Depending on your choice of tool this list could be sub-chapters (in text files), sub-pages (in a Wiki) or nested elements (in a modelling tool).
 
 * (optional:) important interfaces, that are not explained in the black box templates of a building block, but are very important for understanding the white box.
 
