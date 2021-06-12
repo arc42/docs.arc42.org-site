@@ -39,13 +39,13 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 >Our tips are tagged by [**{{ site.tags.size }} keywords**](/keywords) that will help you navigate. Three of these stand out:
 >
 >* **[<font color="#dd354b">lean</font>](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline you documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
->* **[<font color="#dd354b">thorough</font>](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and there documentation have to be audited.
+>* **[<font color="#dd354b">thorough</font>](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and their documentation have to be audited.
 >* **[<font color="#dd354b">essential</font>](/keywords/#essential)**: Despite lean and agile, there are some informations about your system that you should always document; i.e. quality goals of your architecture.
 
 ## <font color="#dd354b">Still have questions?</font>
 
-<a href="http://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
-<br>... then try our [**extensive FAQ**](http://faq.arc42.org), answering more than 120 frequently asked questions.
+<a href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
+<br>... then try our [**extensive FAQ**](https://faq.arc42.org), answering more than 120 frequently asked questions.
 
 ## <font color="#dd354b">Need further assistance?</font>
 
@@ -55,8 +55,8 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 ## <font color="#dd354b">We're offering architecture training!</font>
 
 The _dynamic duo_, always two trainers in parallel, practically applicable
-knowledge from Peter Hruschka and Gernot Starke. See [arc42.de](http://www.arc42.de/training.html) for details, and schedule.
+knowledge from Peter Hruschka and Gernot Starke. See [arc42.de](https://arc42.de/termine) for details, and schedule.
 
 We've successfully trained more than 1000 developers in software architecture,
-many of them passed the [iSAQB CPSA-F](http://isaqb.org) certification.
+many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
