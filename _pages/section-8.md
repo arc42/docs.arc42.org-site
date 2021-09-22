@@ -17,7 +17,7 @@ Such concepts are often related to multiple building blocks. They include many d
 * domain models
 * architectur patterns or design patterns
 * rules for using specific technology
-* principal, often technical decisions of overall decisions
+* principale, often technical decisions of overall decisions
 * implementation rules
 
 ### Motivation
