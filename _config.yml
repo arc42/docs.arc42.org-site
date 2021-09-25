@@ -63,7 +63,7 @@ permalink: pretty
 # Gems.
 #
 gems:
-  - jekyll-paginate
+#  - jekyll-paginate
   - jemoji
 
 #
