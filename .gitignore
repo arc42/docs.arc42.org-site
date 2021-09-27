@@ -11,3 +11,4 @@ originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
 originals/plantuml-diagrams/.idea/*
 originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
 .DS_Store
+.vscode
