@@ -30,7 +30,7 @@ share: false
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
   <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
   <ul class="posts">
-    {% assign sorted_posts = (site.tags[this_word] | sort_by: 'title' ) | reverse %}
+    {% assign sorted_posts = site.tags[this_word] | sort_by: 'title'  | reverse %}
     {% for post in sorted_posts %}{% if post.title != null %}
     <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endif %}{% endfor %}

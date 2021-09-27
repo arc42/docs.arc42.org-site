@@ -5,18 +5,18 @@ order: 0
 permalink: /home/
 ---
 
-{% assign nr_sec01_tips = (site.posts | where: "category", "requirements") | size %}
-{% assign nr_sec02_tips = (site.posts | where: "category", "constraints") | size %}
-{% assign nr_sec03_tips = (site.posts | where: "category", "context") | size %}
-{% assign nr_sec04_tips = (site.posts | where: "category", "solution-strategy") | size  %}
-{% assign nr_sec05_tips = (site.posts | where: "category", "building-block") | size %}
-{% assign nr_sec06_tips = (site.posts | where: "category", "runtime") | size %}
-{% assign nr_sec07_tips = (site.posts | where: "category", "deployment") | size %}
-{% assign nr_sec08_tips = (site.posts | where: "category", "concepts") | size %}
-{% assign nr_sec09_tips = (site.posts | where: "category", "decisions") | size %}
-{% assign nr_sec10_tips = (site.posts | where: "category", "quality") | size %}
-{% assign nr_sec11_tips = (site.posts | where: "category", "risks") | size %}
-{% assign nr_sec12_tips = (site.posts | where: "category", "glossary") | size %}
+{% assign nr_sec01_tips = site.posts | where: "category", "requirements" | size %}
+{% assign nr_sec02_tips = site.posts | where: "category", "constraints" | size %}
+{% assign nr_sec03_tips = site.posts | where: "category", "context" | size %}
+{% assign nr_sec04_tips = site.posts | where: "category", "solution-strategy" | size  %}
+{% assign nr_sec05_tips = site.posts | where: "category", "building-block" | size %}
+{% assign nr_sec06_tips = site.posts | where: "category", "runtime" | size %}
+{% assign nr_sec07_tips = site.posts | where: "category", "deployment" | size %}
+{% assign nr_sec08_tips = site.posts | where: "category", "concepts" | size %}
+{% assign nr_sec09_tips = site.posts | where: "category", "decisions" | size %}
+{% assign nr_sec10_tips = site.posts | where: "category", "quality" | size %}
+{% assign nr_sec11_tips = site.posts | where: "category", "risks" | size %}
+{% assign nr_sec12_tips = site.posts | where: "category", "glossary" | size %}
 
 
 
