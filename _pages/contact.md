@@ -15,7 +15,7 @@ Please let us know - we're listening to you:
 * on various Twitter accounts:
   * [<i class="fa fa-fw fa-twitter"></i>@arc42Tipps](https://twitter.com/arc42Tipps)
   * [<i class="fa fa-fw fa-twitter"></i>@gernotstarke](https://twitter.com/gernotstarke)
-* on [<i class="fa fa-fw fa-stack-overflow"></i>Stackoverflow](http://stackoverflow.com/questions/tagged/arc42)
+* on [<i class="fa fa-fw fa-stack-overflow"></i>Stackoverflow](https://stackoverflow.com/questions/tagged/arc42)
 
 
 This page was last built on {{ site.time | date: '%c' }}

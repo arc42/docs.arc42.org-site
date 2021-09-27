@@ -68,4 +68,4 @@ E.g. UML deployment diagram describing channels to neighboring systems, together
 {% include further-info.md
    category="context"
    topic="context, scope and external interfaces"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-3" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-3" %}

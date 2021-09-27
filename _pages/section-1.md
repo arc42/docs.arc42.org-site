@@ -89,4 +89,4 @@ Table with role names, person names, and their expectations with respect to the 
 {% include further-info.md
   category="requirements"
    topic="introduction, goals and requirements"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-1" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-1" %}
