@@ -11,8 +11,8 @@
 
 {% if icons.github %}
 <li>
-    <a href="https://github.com/{{ icons.github }}">
-        <i class="fa fa-fw fa-github"></i>
+    <a href="https://github.com/{{ icons.github }}" target="_blank">
+        <i class="fab fa-fw fa-github"></i>
     </a>
 </li>
 {% endif %}
@@ -20,35 +20,36 @@
 
 {% if icons.twitter %}
 <li>
-    <a href="https://twitter.com/{{ icons.twitter }}">
-        <i class="fa fa-fw fa-twitter"></i>
+    <a href="https://twitter.com/{{ icons.twitter }}" target="_blank">
+        <i class="fab fa-fw fa-twitter"></i>
     </a>
 </li>
 {% endif %}
+
+
+{% if icons.youtube %}
+<li>
+    <a href="https://youtube.com/{{ icons.youtube}}">
+        <i class="fab fa-fw fa-youtube"></i>
+    </a>
+</li>
+{% endif %}
+
+
+<li>
+    <a href="https://dev.to/gernotstarke">
+        <i class='fab fa-fw fa-dev'></i>
+    </a>
+</li>
 
 
 
 {% if icons.stack_overflow %}
 <li>
     <a href="https://stackoverflow.com/tags/{{ icons.stack_overflow }}">
-        <i class="fa fa-fw fa-stack-overflow"></i>
+        <i class="fab fa-fw fa-stack-overflow"></i>
     </a>
 </li>
 {% endif %}
 
 
-{% if icons.google_plus %}
-<li>
-    <a href="https://plus.google.com/{{ icons.google_plus }}">
-        <i class="fa fa-fw fa-google-plus"></i>
-    </a>
-</li>
-{% endif %}
-
-{% if icons.slack %}
-<li>
-    <a href="https://{{ icons.slack }}.slack.com/">
-        <i class="fa fa-fw fa-slack"></i>
-    </a>
-</li>
-{% endif %}

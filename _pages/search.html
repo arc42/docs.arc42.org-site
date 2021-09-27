@@ -13,7 +13,7 @@ share: false
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
 
-    {% assign sorted_posts = (site.posts | sort_by: 'title') | reverse %}
+    {% assign sorted_posts = site.posts | sort_by: 'title' | reverse %}
     {% for post in site.posts %}
     <div id="{{ post.id | replace: '/', '-' }}" style="display: none;">
         <div class="article-wrapper">
