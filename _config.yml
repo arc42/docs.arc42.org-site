@@ -39,9 +39,6 @@ str_search: Search
 #
 show-subtle-ads: true
 
-# Analytics
-analytics: false
-
 
 #
 # Icons
@@ -52,6 +49,8 @@ icons:
   github: arc42
   twitter: gernotstarke
   stack_overflow: arc42
+  youtube: arc42-video
+  devto: gernotstarke
 
 #
 # Prettify url.
@@ -60,9 +59,9 @@ permalink: pretty
 
 
 #
-# Gems.
+# plugins (formerly: Gems).
 #
-gems:
+plugins:
 #  - jekyll-paginate
   - jemoji
 
@@ -86,4 +85,4 @@ sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
-exclude: [Gemfile, Gemfile.lock, LICENSE, README.md, originals]
+exclude: [Gemfile, Gemfile.lock, LICENSE, README.md, originals,Dockerfile, _manage-site.sh, .gitignore, .vscode, _config-dev.yml, _docker-compose-dev.yml]
