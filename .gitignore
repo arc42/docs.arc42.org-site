@@ -1,12 +1,12 @@
 _site/
 .sass-cache/
 .jekyll-metadata
-.gradle
-.idea/*
-.DS_Store
+originals/plantuml-diagrams/.gradle
 originals/plantuml-diagrams/.idea
-originals/plantuml-diagrams/.idea
+originals/plantuml-diagrams/.idea/*.xml
 originals/plantuml-diagrams/.settings
-originals/plantuml-diagrams/.classpath
 originals/plantuml-diagrams/.project
+originals/plantuml-diagrams/.classpath
+originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
+originals/plantuml-diagrams/.idea/*
 originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
