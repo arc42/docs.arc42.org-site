@@ -41,7 +41,7 @@ show-subtle-ads: true
 
 
 #
-# Icons
+# Social Icons
 #
 icons:
   rss: false
@@ -69,11 +69,26 @@ plugins:
 # Styles: see "_sass/base/_variables.scss"
 #
 
+
+# define collection (as proposed in https://github.com/arc42/docs.arc42.org-site/issues/49)
+#
+# see: https://jekyllrb.com/docs/collections/
+# ============================================
+
+
+# define sample collection
+collections:
+  samples:
+    output: true
+
+
 #
 # !! Danger zone !!
 #
 
-include: ["_pages"]
+include:
+  - _pages
+  - _collections
 
 markdown: kramdown
 kramdown:
@@ -85,4 +100,16 @@ sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
-exclude: [Gemfile, Gemfile.lock, LICENSE, README.md, originals,Dockerfile, _manage-site.sh, .gitignore, .vscode, _config-dev.yml, _docker-compose-dev.yml]
+exclude: 
+  - Gemfile 
+  - Gemfile.lock 
+  - LICENSE 
+  - README.md 
+  - originals
+  - Dockerfile 
+  - _manage-site.sh 
+  - .gitignore 
+  - .vscode 
+  - _config-dev.yml 
+  - _docker-compose-dev.yml 
+  - docs-arc42-org-site.code-workspace

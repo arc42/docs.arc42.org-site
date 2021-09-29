@@ -21,6 +21,10 @@ your system's most critical aspects. Make sure that you completely understand th
 ### Form
 * Various context diagrams
 * Lists of communication partners and their interfaces.
+
+{% include sample.md category="context" %}
+
+
 </div>
 
 ### 3.1 Business context
@@ -57,6 +61,8 @@ Many stakeholders make architectural decision based on the technical interfaces 
 #### Form
 E.g. UML deployment diagram describing channels to neighboring systems, together with a mapping table showing the relationships between channels and input/output.
 </div>
+
+
 
 #### _&lt;insert diagram or table>_
 
