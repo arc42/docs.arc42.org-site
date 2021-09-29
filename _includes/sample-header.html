@@ -1,8 +1,5 @@
 {% assign page = include.page %}
 
-<header>
-    <ul>
-
         <li> 
             {% if include.link %}
             <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
@@ -10,6 +7,4 @@
             {{ page.title }}
             {% endif %}
        </li>     
-    </ul>
-
-</header>
+    

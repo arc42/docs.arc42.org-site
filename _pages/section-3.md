@@ -5,7 +5,7 @@ permalink: /section-3/
 order: 7
 ---
 
-### 3 Context and scope
+### 3. Context and scope
 
 <div class="arc42-help" markdown="1">
 
@@ -22,6 +22,7 @@ your system's most critical aspects. Make sure that you completely understand th
 * Various context diagrams
 * Lists of communication partners and their interfaces.
 
+<!-- collect all samples that are releated to this section of arc42 -->
 {% include sample.md category="context" %}
 
 
