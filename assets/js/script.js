@@ -34,7 +34,7 @@ $(function () {
     $images.closest("p").css("text-align", "center");
     $images.each(function () {
         var imgUrl = $(this).attr("src");
-        var $a = $("<a>").attr("href", imgUrl).attr("target", "_blank");
+        var $a = $("<a>").attr("href", imgUrl).attr("target", "_blank", "noopener");
         $(this).wrap($a);
     });
 
