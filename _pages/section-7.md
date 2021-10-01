@@ -104,4 +104,4 @@ _&lt; insert diagram + explanation >_
 {% include further-info.md
    category="deployment"
    topic="technical infrastructure, hardware, environments or deployment"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-7" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-7" %}

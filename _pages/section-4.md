@@ -9,7 +9,8 @@ order: 8
 
 
 <div class="arc42-help" markdown="1">
-#### Contents
+
+### Contents
 A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
 
 * technology decisions
@@ -17,10 +18,10 @@ A short summary and explanation of the fundamental decisions and solution strate
 * decisions on how to achieve key quality goals
 * relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
 
-#### Motivation
+### Motivation
 These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
 
-#### Form
+### Form
 Keep the explanation of these key decisions short.
 
 Motivate what you have decided and why you decided that way,  
@@ -33,6 +34,9 @@ You might use a list of solution-approaches or a table similar to the following:
 |----------|----------------------|-----------------------|-------------|
 | _&lt;Q-goal 1>_ | _&lt;Text>_ | _&lt;Text>_ |_&lt;Link>_ |
 | _&lt;Q-goal 2>_ | _&lt;Text>_ | _&lt;Text>_ |_&lt;Link>_ |
+
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="solution-strategy" %}
 
 </div>
 

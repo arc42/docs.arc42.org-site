@@ -5,8 +5,8 @@
 # local Jekyll need different settings than github-pages :-(
 
 # deployment with github-pages on custom domain
-url: http://docs.arc42.org
-imageurl: http://docs.arc42.org/images
+url: https://docs.arc42.org
+imageurl: https://docs.arc42.org/images
 
 
 #url: http://localhost:4000
@@ -39,12 +39,9 @@ str_search: Search
 #
 show-subtle-ads: true
 
-# Analytics
-analytics: false
-
 
 #
-# Icons
+# Social Icons
 #
 icons:
   rss: false
@@ -52,6 +49,8 @@ icons:
   github: arc42
   twitter: gernotstarke
   stack_overflow: arc42
+  youtube: arc42-video
+  devto: gernotstarke
 
 #
 # Prettify url.
@@ -60,21 +59,36 @@ permalink: pretty
 
 
 #
-# Gems.
+# plugins (formerly: Gems).
 #
-gems:
-  - jekyll-paginate
+plugins:
+#  - jekyll-paginate
   - jemoji
 
 #
 # Styles: see "_sass/base/_variables.scss"
 #
 
+
+# define collection (as proposed in https://github.com/arc42/docs.arc42.org-site/issues/49)
+#
+# see: https://jekyllrb.com/docs/collections/
+# ============================================
+
+
+# define sample collection
+collections:
+  samples:
+    output: true
+
+
 #
 # !! Danger zone !!
 #
 
-include: ["_pages"]
+include:
+  - _pages
+  - _collections
 
 markdown: kramdown
 kramdown:
@@ -86,4 +100,16 @@ sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
-exclude: [Gemfile, Gemfile.lock, LICENSE, README.md, originals]
+exclude: 
+  - Gemfile 
+  - Gemfile.lock 
+  - LICENSE 
+  - README.md 
+  - originals
+  - Dockerfile 
+  - _manage-site.sh 
+  - .gitignore 
+  - .vscode 
+  - _config-dev.yml 
+  - _docker-compose-dev.yml 
+  - docs-arc42-org-site.code-workspace

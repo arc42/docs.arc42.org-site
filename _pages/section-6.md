@@ -54,4 +54,4 @@ building block instances depicted in this diagram. >_
 {% include further-info.md
    category="runtime"
    topic="runtime scenarios"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-6" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-6" %}
