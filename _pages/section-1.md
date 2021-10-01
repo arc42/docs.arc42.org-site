@@ -34,7 +34,8 @@ If requirements documents exist this overview should refer to these documents.
 
 Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 
-### Examples
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="overview" %}
 
 </div>
 
@@ -54,6 +55,9 @@ If you as an architect do not know how the quality of your work will be judged â
 
 ### Form
 A table with quality goals and concrete scenarios, ordered by priorities.
+
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="quality-goals" %}
 
 </div>
 
