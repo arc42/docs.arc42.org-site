@@ -43,6 +43,9 @@ nested diagrams, when your infrastructure is more complex.
 * When your (hardware) stakeholders prefer other kinds of diagrams rather than UML
 deployment diagram, let them use any kind that is able to show nodes and channels of the infrastructure.
 
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="deployment" %}
+
 </div>
 
 #### 7.1 Infrastructure Level 1

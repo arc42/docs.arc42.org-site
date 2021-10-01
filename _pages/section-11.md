@@ -20,6 +20,9 @@ This should be your motto for systematic detection and evaluation of risks and t
 ### Form
 List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
 
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="risks" %}
+
 </div>
 
 _&lt;insert list or table of known problems, risks or technical debt >_

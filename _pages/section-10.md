@@ -20,6 +20,10 @@ which will not create high risks when they are not fully achieved.
 Since quality requirements will have a lot of influence on architectural
 decisions you should know for every stakeholder what is really important to them,
 concrete and measurable.
+
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="quality" %}
+
 </div>
 
 

@@ -24,6 +24,9 @@ Stakeholders of your system should be able to comprehend and retrace your decisi
 * more detailed in form of separate sections per decision
 * ADR ([architecture decision record](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)) for every important decision
 
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="decisions" %}
+
 </div>
 
 _&lt;describe important architecture decisions here >_

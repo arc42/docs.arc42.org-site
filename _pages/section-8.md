@@ -49,6 +49,9 @@ on this list.
 
 ![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="concepts" %}
+
 </div>
 
 _&lt;describe concepts here >_

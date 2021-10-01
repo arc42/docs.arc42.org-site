@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Constraints Example"
+title: "Constraints Example (HTML Sanity Checker)"
 tags: constraints sample 
 category: constraints
 permalink: /samples/constraints-1/

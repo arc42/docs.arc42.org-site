@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Solution Strategy Example"
-tags: context sample 
-category: solution-strategy
+title: "Solution Strategy Example (HTML Sanity Checker)"
+tags: solution-strategy sample 
+category: solutionstrategy
 permalink: /samples/solution-strategy-1/
 ---
 

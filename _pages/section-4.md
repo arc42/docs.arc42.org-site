@@ -36,7 +36,7 @@ You might use a list of solution-approaches or a table similar to the following:
 | _&lt;Q-goal 2>_ | _&lt;Text>_ | _&lt;Text>_ |_&lt;Link>_ |
 
 <!-- collect all samples that are releated to this section of arc42 -->
-{% include sample.md category="solution-strategy" %}
+{% include sample.md category="solutionstrategy" %}
 
 </div>
 
