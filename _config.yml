@@ -6,7 +6,8 @@
 
 # deployment with github-pages on custom domain
 url: https://docs.arc42.org
-imageurl: https://docs.arc42.org/images
+imageurl: /images
+sampleimages: /images/samples
 
 
 #url: http://localhost:4000
