@@ -6,4 +6,8 @@ category: runtime
 permalink: /samples/runtime-1/
 ---
 
-This is an example for an example.
+## 6. (Sample) Runtime View for HTML Sanity Checker
+
+<div class="arc42-help" markdown="1">
+
+</div>
