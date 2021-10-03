@@ -32,6 +32,9 @@ The building block view is a hierarchial collection of black boxes and white box
 Thus it contains the white box description of selected building blocks of level 1, together with black box descriptions of their internal building blocks.
 * **Level 3** zooms into selected building blocks of level 2, and so on.
 
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="buildingblock" %}
+
 </div>
 
 ### 5.1 Whitebox Overall System

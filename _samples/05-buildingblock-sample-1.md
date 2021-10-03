@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Solution Strategy Example"
-tags: context sample 
-category: solution-strategy
-permalink: /samples/solution-strategy-1/
+title: "Building Block Example  (HTML Sanity Checker)"
+tags: buildingblock sample 
+category: buildingblock
+permalink: /samples/buildingblock-1/
 ---
 
 This is an example for an example.

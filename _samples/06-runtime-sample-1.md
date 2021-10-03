@@ -1,9 +1,13 @@
 ---
 layout: post
-title: "Solution Strategy Example"
-tags: context sample 
-category: solution-strategy
-permalink: /samples/solution-strategy-1/
+title: "Runtine view Example (HTML Sanity Checker)"
+tags: runtime sample 
+category: runtime
+permalink: /samples/runtime-1/
 ---
 
-This is an example for an example.
+## 6. (Sample) Runtime View for HTML Sanity Checker
+
+<div class="arc42-help" markdown="1">
+
+</div>

@@ -51,7 +51,7 @@ The top three (max five) quality goals for the architecture whose fulfillment is
 
 The ISO 25010 standard provides a nice overview of potential topics of interest:
 
-![ISO 25010 categories of quality requirements]({{ site.imageurl }}/ISO-25010-overview.jpg)
+![ISO 25010 categories of quality requirements]({{ site.imageurl }}/1-2-iso-25010-topics-en.png)
 
 ### Motivation
 You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.

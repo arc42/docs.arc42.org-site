@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Constraints Example"
+title: "Constraints Example (HTML Sanity Checker)"
 tags: constraints sample 
 category: constraints
 permalink: /samples/constraints-1/
 ---
 
-## 2. (Sample) Constraints
+## 2. (Sample) Constraints for HTML Sanity Checker
 
 <div class="arc42-help" markdown="1">
 

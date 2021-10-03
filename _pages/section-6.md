@@ -34,6 +34,9 @@ There are many notations for describing scenarios, e.g.
 * state machines
 * ...
 
+<!-- collect all samples that are releated to this section of arc42 -->
+{% include sample.md category="runtime" %}
+
 </div>
 
 #### 6.1 _&lt;Runtime Scenario 1>_
