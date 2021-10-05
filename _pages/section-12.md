@@ -29,8 +29,8 @@ You should clearly define your terms, so that all stakeholders
 | &lt;Term-1>    | &lt;definition-1> |
 | &lt;Term-2>    | &lt;definition-2> |
 
-<!-- collect all samples that are releated to this section of arc42 -->
-{% include sample.md category="glossary" %}
+<!-- collect all examples that are releated to this section of arc42 -->
+{% include example.md category="glossary" %}
 
 </div>
 

@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Sample Business Context (HTML Sanity Checker)"
-tags: context sample 
+title: "example Business Context: HTML Sanity Checker"
+tags: context example 
 category: context
-permalink: /samples/business-context-1/
+permalink: /examples/business-context-1/
 ---
 
 ## 3. Context View
 
-<div class="arc42-help" markdown="1">
+<div class="arc42-example" markdown="1">
 Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. 
 Optionally you can add domain specific formats or communication protocols.
 
@@ -21,9 +21,9 @@ In addition a mapping of domain specific input/output to the channels, i.e. an e
 
 </div>
 
-### 3.1 Sample Business Context 
+### 3.1 example Business Context 
 
-![Business context]({{ site.imageurl}}/samples/htmlsc/3-hsc-business-context.png)
+![Business context]({{ site.imageurl}}/examples/htmlsc/3-hsc-business-context.png)
 
 
 |Neighbor  |Description |

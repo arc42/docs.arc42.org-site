@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Constraints Example (HTML Sanity Checker)"
-tags: constraints sample 
+title: "Constraints Example: HTML Sanity Checker"
+tags: constraints example 
 category: constraints
-permalink: /samples/constraints-1/
+permalink: /examples/constraints-1/
 ---
 
-## 2. (Sample) Constraints for HTML Sanity Checker
+## 2. (example) Constraints for HTML Sanity Checker
 
-<div class="arc42-help" markdown="1">
+<div class="arc42-example" markdown="1">
 
 #### What are Constraints?
 

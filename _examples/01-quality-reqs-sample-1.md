@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Quality Requirements Example (HTML Sanity Checker)"
-tags: quality-requirements sample 
+title: "Quality Requirements Example: HTML Sanity Checker"
+tags: quality-requirements example 
 category: quality
-permalink: /samples/quality-requirements-1/
+permalink: /examples/quality-requirements-1/
 ---
 
-### 1.2 (Sample) Quality Requirements for HTML Sanity Checker
+### 1.2 (example) Quality Requirements for HTML Sanity Checker
 
-<div class="arc42-help" markdown="1">
+<div class="arc42-example" markdown="1">
 The most important quality requirements for the architecture whose fulfillment is of highest importance to the major stakeholders. 
 The ISO 25010 standard provides a nice overview of potential topics of interest.
 

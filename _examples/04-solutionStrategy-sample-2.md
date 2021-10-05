@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Solution Strategy Example (MaMa)"
-tags: solution-strategy sample 
+tags: solution-strategy example 
 category: solutionstrategy
-permalink: /samples/solution-strategy-2/
+permalink: /examples/solution-strategy-2/
 ---
 
 ## 4. Solution Strategy for MaMa (Mass-Market CRM)

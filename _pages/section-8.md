@@ -30,7 +30,7 @@ The form can be varied:
 
 * concept papers with any kind of structure
 * cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations,especially for technical concepts
+* example implementations,especially for technical concepts
 * reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
 
 ### Structure of this Section
@@ -49,8 +49,8 @@ on this list.
 
 ![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
-<!-- collect all samples that are releated to this section of arc42 -->
-{% include sample.md category="concepts" %}
+<!-- collect all examples that are releated to this section of arc42 -->
+{% include example.md category="concepts" %}
 
 </div>
 

@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "Runtine View Example: HTML Sanity Checker"
-tags: runtime sample 
+tags: runtime example 
 category: runtime
-permalink: /samples/runtime-1/
+permalink: /examples/runtime-1/
 ---
 
-## 6. (Sample) Runtime View 
+## 6. (example) Runtime View 
 
 <div class="arc42-help" markdown="1">
 The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios.
@@ -15,7 +15,7 @@ The runtime view describes concrete behavior and interactions of the system’s 
 ### 6.1 Execute all checks
 A typical scenario within HtmlSC is the execution of _all_ available checking algorithms on a set of HTML pages.
 
-![Main Loop]({{ site.imageurl}}/samples/htmlsc/6-main-loop.png)
+![Main Loop]({{ site.imageurl}}/examples/htmlsc/6-main-loop.png)
 
 **Explanation:**
 
@@ -30,7 +30,7 @@ A typical scenario within HtmlSC is the execution of _all_ available checking al
 
 ### 6.2 Report checking results
 
-![Sequence diagram: Report results]({{ site.imageurl}}/samples/htmlsc/6-2-1-report-results.png)
+![Sequence diagram: Report results]({{ site.imageurl}}/examples/htmlsc/6-2-1-report-results.png)
 
 Reporting is done in the natural hierarchy of results (see the corresponding concept in section 8.2.1 for an example report).
 
