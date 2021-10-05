@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Solution Strategy Example"
-tags: context example 
-category: solution-strategy
-permalink: /examples/solution-strategy-1/
+title: "Example Risk:"
+tags: risk example 
+category: risk
+permalink: /examples/risk-1/
 ---
 
 This is an example for an example.

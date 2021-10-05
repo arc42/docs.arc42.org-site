@@ -1,16 +1,17 @@
 ---
 layout: post
-title: "Runtine View Example: HTML Sanity Checker"
+title: "Example Runtine View: HTML Sanity Checker"
 tags: runtime example 
 category: runtime
 permalink: /examples/runtime-1/
 ---
 
-## 6. (example) Runtime View 
 
-<div class="arc42-help" markdown="1">
+<div class="arc42-help">
 The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios.
 </div>
+
+## 6. Runtime View 
 
 ### 6.1 Execute all checks
 A typical scenario within HtmlSC is the execution of _all_ available checking algorithms on a set of HTML pages.

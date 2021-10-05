@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Solution Strategy Example"
-tags: context example 
-category: solution-strategy
-permalink: /examples/solution-strategy-1/
+title: "Example Quality Scenarios: HTML Sanity Checker"
+tags: quality example 
+category: quality
+permalink: /examples/quality-1/
 ---
 
 This is an example for an example.

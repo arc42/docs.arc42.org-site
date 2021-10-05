@@ -2,7 +2,7 @@
 layout: post
 title: "Quality Requirements Example: HTML Sanity Checker"
 tags: quality-requirements example 
-category: quality
+category: quality-goals
 permalink: /examples/quality-requirements-1/
 ---
 

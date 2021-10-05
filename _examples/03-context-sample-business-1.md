@@ -1,27 +1,16 @@
 ---
 layout: post
-title: "example Business Context: HTML Sanity Checker"
+title: "Example Business Context: HTML Sanity Checker"
 tags: context example 
 category: context
 permalink: /examples/business-context-1/
 ---
 
-## 3. Context View
-
-<div class="arc42-example" markdown="1">
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. 
-Optionally you can add domain specific formats or communication protocols.
-
-* **Business Context**: 
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces. 
-Optionally you can add domain specific formats or communication protocols.
-* **Technical Context** (aka Deployment Context): 
-Technical interfaces (channels and transmission media) linking your system to its environment. 
-In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
+<div class="arc42-example">
+This is a very simple example, created with Enterprise Architect(TM).
 </div>
 
-### 3.1 example Business Context 
+## 3. Context View
 
 ![Business context]({{ site.imageurl}}/examples/htmlsc/3-hsc-business-context.png)
 

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Building Block Example  (HTML Sanity Checker)"
+title: "Example Building Block View Level-1: HTML Sanity Checker"
 tags: buildingblock example 
-category: buildingblock
+category: building-block
 permalink: /examples/buildingblock-1/
 ---
 

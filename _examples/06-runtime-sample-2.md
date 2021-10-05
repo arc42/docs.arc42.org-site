@@ -1,16 +1,17 @@
 ---
 layout: post
-title: "Runtine View Example: MaMa CRM"
+title: "Example Runtine View: MaMa"
 tags: runtime example 
 category: runtime
 permalink: /examples/runtime-2/
 ---
 
-## 6. (example) Runtime View 
 
 <div class="arc42-help" markdown="1">
 The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios.
 </div>
+
+## 6. Runtime View 
 
 ### 6.1 Import File
 
