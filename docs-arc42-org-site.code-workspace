@@ -41,6 +41,7 @@
 			"terminal.ansiWhite": "#585260",
 			"terminal.ansiYellow": "#A06E3B"
 		},
-		"peacock.color": "#f9e64f"
+		"peacock.color": "#f9e64f",
+		"editor.bracketPairColorization.enabled": true
 	}
 }
