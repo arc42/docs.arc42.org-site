@@ -2,7 +2,7 @@
 layout: post
 title: "Example Business Context: MaMa"
 tags: context example 
-category: context
+category: business-context
 permalink: /examples/context-business-2/
 ---
 
