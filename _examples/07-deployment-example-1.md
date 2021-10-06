@@ -22,7 +22,7 @@ The following picture shows the inside of the TPU hardware, an industrial rack w
 The following UML diagram shows this hardware structure.
 
 
-![Deployment ViewLevel 1 of Traffic Pursuit Unit]({{ site.imageurl}}/examples/tpu/71_Infrastructure.jpg) 
+![Deployment ViewLevel 1 of Traffic Pursuit Unit]({{ site.imageurl}}/examples/tpu/71-Infrastructure.jpg) 
 
 ### 1. MeasuringUnit Node
 
