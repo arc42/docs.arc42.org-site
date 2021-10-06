@@ -1,20 +1,20 @@
 ---
 layout: post
-title: "Solution Strategy Example (HTML Sanity Checker)"
-tags: solution-strategy sample 
-category: solutionstrategy
-permalink: /samples/solution-strategy-1/
+title: "Example Solution Strategy: HTML Sanity Checker"
+tags: solution-strategy example 
+category: solution-strategy
+permalink: /examples/solution-strategy-1/
 ---
 
-## 4. Solution Strategy
 
-<div class="arc42-help" markdown="1">
+<div class="arc42-example">
 You need a brief summary and explanation of the fundamental solution ideas and strategies. 
 These key ideas should be familiar to everyone involved in development and architecture.
 
 Briefly explain how you achieve the most important quality requirements.
 </div>
 
+## 4. Solution Strategy
 
 1. Implement HtmlSC mostly in the Groovy programming language and partially in Java
 with minimal external dependencies.

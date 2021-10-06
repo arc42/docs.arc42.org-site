@@ -27,6 +27,27 @@ p {
   background: url("./help42.svg") no-repeat;
   background-size: 24px 26px;
 }
+/* unified style for comments for the examples */
+.arc42-example {
+  color: #002080;
+  padding: 5px 5px;
+  background: #fce3e3;
+  border-radius: 4px;
+
+}
+
+/* use before-pseudo-class to add icon */
+.arc42-example::before {
+  display: block;
+  float: right;
+  width: 24px;
+  height: 26px;
+
+  content: "";
+  background: url("./arc42-info.svg") no-repeat;
+  background-size: 24px 26px;
+}
+
 
 /* subtle ads */
 

@@ -1,19 +1,19 @@
 ---
 layout: post
-title: "Solution Strategy Example (MaMa)"
-tags: solution-strategy sample 
+title: "Example Solution Strategy: MaMa"
+tags: solution-strategy example 
 category: solutionstrategy
-permalink: /samples/solution-strategy-2/
+permalink: /examples/solution-strategy-2/
 ---
 
-## 4. Solution Strategy for MaMa (Mass-Market CRM)
-
-<div class="arc42-help" markdown="1">
+<div class="arc42-example">
 You need a brief summary and explanation of the fundamental solution ideas and strategies. 
 These key ideas should be familiar to everyone involved in development and architecture.
 
 Briefly explain how you achieve the most important quality requirements.
 </div>
+
+## 4. Solution Strategy 
 
 Please note: 
 

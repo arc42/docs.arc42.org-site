@@ -7,7 +7,7 @@
 # deployment with github-pages on custom domain
 url: https://docs.arc42.org
 imageurl: /images
-sampleimages: /images/samples
+exampleimages: /images/examples
 
 
 #url: http://localhost:4000
@@ -77,9 +77,9 @@ plugins:
 # ============================================
 
 
-# define sample collection
+# define example collection
 collections:
-  samples:
+  examples:
     output: true
 
 
