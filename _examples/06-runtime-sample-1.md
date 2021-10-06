@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Example Runtine View: HTML Sanity Checker"
+title: "Example Runtime View: HTML Sanity Checker"
 tags: runtime example 
 category: runtime
 permalink: /examples/runtime-1/
 ---
 
 
-<div class="arc42-help">
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios.
+<div class="arc42-example">
+A simple diagram with a brief textual explanation.
 </div>
 
 ## 6. Runtime View 
