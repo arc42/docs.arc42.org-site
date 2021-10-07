@@ -2,7 +2,7 @@
 layout: post
 title: "Example Technical Context: TrafficPursuitUnit"
 tags: context example 
-category: context
+category: technical-context
 permalink: /examples/technical-context-4/
 ---
 

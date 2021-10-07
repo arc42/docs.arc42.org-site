@@ -2,7 +2,7 @@
 layout: post
 title: "Example Business Context: TrafficPursuitUnit"
 tags: context example 
-category: context
+category: business-context
 permalink: /examples/business-context-3/
 ---
 

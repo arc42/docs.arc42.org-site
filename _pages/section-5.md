@@ -33,7 +33,7 @@ Thus it contains the white box description of selected building blocks of level 
 * **Level 3** zooms into selected building blocks of level 2, and so on.
 
 <!-- collect all examples that are releated to this section of arc42 -->
-{% include example.md category="buildingblock" %}
+{% include example.md category="building-block" %}
 
 </div>
 
