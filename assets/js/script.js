@@ -25,7 +25,7 @@ $(function () {
     $("a[href]").each(function() {
         var re = new RegExp(host, "g");
         if ($(this).attr("href").match(/\/\//) && !$(this).attr("href").match(re)) {
-            $(this).attr("target", "_blank");
+            $(this).attr("target", "_blank", "noopener");
         }
     });
 
