@@ -6,13 +6,12 @@ category: quality-goals
 permalink: /examples/quality-requirements-1/
 ---
 
-### 1.2 (example) Quality Requirements for HTML Sanity Checker
-
-<div class="arc42-example" markdown="1">
-The most important quality requirements for the architecture whose fulfillment is of highest importance to the major stakeholders. 
-The ISO 25010 standard provides a nice overview of potential topics of interest.
-
+<div class="arc42-example">
+This example has been created with Enterprise Architect(TM) as a data flow diagram.
 </div>
+
+
+### 1.2 (example) Quality Requirements for HTML Sanity Checker
 
 
 | Priority | Quality Goal |Scenario                                               |

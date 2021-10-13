@@ -5,7 +5,8 @@
 01 - overview
 01 - quality-goals (details also section 10 below)
 02 - constraints
-03 - context
+03 - business-context
+03 - technical-context
 04 - solution-strategy
 05 - building-block
 06 - runtime
