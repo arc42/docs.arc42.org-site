@@ -15,4 +15,4 @@ The technical context diagram shows the channels linked to the TPU-hardware (as 
 
 ![Whitebox (HtmlSC)]({{ site.imageurl }}/examples/htmlsc/5-whitebox-hsc-level-1.png)
 
-![Technical Context]({{ site.imageurl }}/examples/tpu/32-tpu-technical-context.jpg)
+![Technical Context]({{ site.imageurl }}/examples/tpu2/32-tpu-technical-context.jpg)
