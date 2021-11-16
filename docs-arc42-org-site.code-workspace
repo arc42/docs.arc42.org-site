@@ -39,7 +39,13 @@
 			"terminal.ansiMagenta": "#955AE7",
 			"terminal.ansiRed": "#BE4678",
 			"terminal.ansiWhite": "#585260",
-			"terminal.ansiYellow": "#A06E3B"
+			"terminal.ansiYellow": "#A06E3B",
+			"editorGroup.border": "#fbed80",
+			"panel.border": "#fbed80",
+			"sash.hoverBorder": "#fbed80",
+			"sideBar.border": "#fbed80",
+			"statusBarItem.remoteBackground": "#f9e64f",
+			"statusBarItem.remoteForeground": "#15202b"
 		},
 		"peacock.color": "#f9e64f",
 		"editor.bracketPairColorization.enabled": true
