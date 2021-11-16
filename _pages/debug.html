@@ -11,8 +11,15 @@ or Jekyll configuration.
 
 <h2>Jekyll Configuration</h2>
 
-JEKYLL_ENV = {{ JEKYLL_ENV }}<br>
+This site: <br>
 
-site.url = {{ site.url }}<br>
+* was last built on {{ site.time | date: '%c' }}<br>
 
-site.imageurl = {{ site.imageurl }}
+* contains {{ site.pages | size }} pages<br>
+
+* JEKYLL_ENV = {{ JEKYLL_ENV }}<br>
+
+* site.url = {{ site.url }}<br>
+
+* site.imageurl = {{ site.imageurl }}
+
