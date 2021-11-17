@@ -3,7 +3,7 @@ layout: post
 title: "Example Building Block View: HTML Sanity Checker"
 tags: buildingblock example 
 category: building-block
-permalink: /examples/buildingblock-1/
+permalink: /examples/buildingblock-hsc/
 ---
 
 
@@ -118,7 +118,7 @@ Source: `package org.aim42.htmlsanitycheck.suggest.Suggester`
 
 **Contained Blackboxes:**
 
-{width="90%"}
+
 |Building block   |Description                                           |
 |---------|:--------|
 |`Per-Run Results`|Aggregated results for potentially many HTML pages/documents.    |

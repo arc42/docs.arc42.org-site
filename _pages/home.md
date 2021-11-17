@@ -60,3 +60,8 @@ knowledge from Peter Hruschka and Gernot Starke. See [arc42.de](https://arc42.de
 We've successfully trained more than 1000 developers in software architecture,
 many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
+
+
+## <font color="#dd354b">This is open-source!</font>
+
+This site is completely open-source, maintained on a [public Github repository](https://github.com/arc42/docs.arc42.org-site/).
