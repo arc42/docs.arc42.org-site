@@ -58,7 +58,9 @@ You should know the quality goals of your most important stakeholders, since the
 If you as an architect do not know how the quality of your work will be judged …
 
 ### Form
-A table with quality goals and concrete scenarios, ordered by priorities.
+A table with the most important quality goals and concrete scenarios, ordered by priorities.
+
+See [section 10 (Quality Requirements)](/section-10/) for a complete overview of quality scenarios.
 
 <!-- collect all examples that are releated to this section of arc42 -->
 {% include example.md category="quality" %}
