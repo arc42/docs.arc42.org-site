@@ -8,7 +8,7 @@ permalink: /examples/concept-tpu-1/
 
 ## 8. Crosscutting Concepts
 
-### 8.1 Domain Entity Model
+### 8.1 Domain Entity Model 
 
 ![Fig. 8.1: Domain Entity Model]({{ site.imageurl}}/examples/tpu/III81_DomainEntityModel.jpg)
 

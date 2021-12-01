@@ -3,7 +3,7 @@ layout: post
 title: "Example Quality Scenarios: TrafficPursuitUnit"
 tags: quality example 
 category: quality
-permalink: /examples/quality-1/
+permalink: /examples/quality-tpu-1/
 ---
 
 ## 10. Quality Requirements

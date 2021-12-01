@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Example Decision: TrafficPursuitUnit"
-tags: decition example 
-category: decision
+tags: decision example 
+category: decisions
 permalink: /examples/decision-tpu-1/
 ---
 
