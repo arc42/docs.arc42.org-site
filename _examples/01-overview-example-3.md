@@ -26,7 +26,7 @@ The following goals have been established for this system:
 
 ## 1.1 Requirements
 
-![Introduction]({{ site.imageurl}}/examples/tpu/1-UseCases.jpg)
+![Introduction]({{ site.imageurl }}/examples/tpu/1-UseCases.jpg)
 
 | Id | Requirement | Explanation |
 | :--- | :--- | --- |
