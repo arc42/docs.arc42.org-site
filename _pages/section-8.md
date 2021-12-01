@@ -50,7 +50,7 @@ on this list.
 ![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
 <!-- collect all examples that are releated to this section of arc42 -->
-{% include example.md category="concepts" %}
+{% include example.md category="concept" %}
 
 </div>
 
@@ -58,6 +58,6 @@ _&lt;describe concepts here >_
 
 
 {% include further-info.md
-   category="concepts"
+   category="concept"
    topic="crosscutting and/or technical concepts"
    faqlink="http://faq.arc42.org/category_c/#c-sec-8" %}
