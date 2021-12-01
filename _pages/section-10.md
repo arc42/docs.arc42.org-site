@@ -79,6 +79,7 @@ _&lt;describe quality scenarios here >_
 arc42 provides a number of [example quality scenarios](https://github.com/arc42/quality-requirements)
 (sorry - currently only in German) on Github.
 
+
 {% include further-info.md
    category="quality"
    topic="quality requirements, quality-tree and/or quality scenarios"

@@ -2,7 +2,7 @@
 layout: post
 title: "Example Concept: TrafficPursuitUnit Domain Entity Model"
 tags: concept example 
-category: concept
+category: concepts
 permalink: /examples/concept-tpu-1/
 ---
 

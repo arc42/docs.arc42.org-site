@@ -2,7 +2,7 @@
 layout: post
 title: "Example Concept: TrafficPursuitUnit, Event Handling"
 tags: concept example 
-category: concept
+category: concepts
 permalink: /examples/concept-tpu-2/
 ---
 
