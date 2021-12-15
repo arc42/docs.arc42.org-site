@@ -5,7 +5,7 @@ permalink: /section-1/
 order: 5
 ---
 
-### 1. Introduction and goals
+### 1. Introduction and Goals
 
 
 <div class="arc42-help" >

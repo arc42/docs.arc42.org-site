@@ -5,7 +5,7 @@ permalink: /section-3/
 order: 7
 ---
 
-### 3. Context and scope
+### 3. Context and Scope
 
 <div class="arc42-help" markdown="1">
 
@@ -24,7 +24,7 @@ your system's most critical aspects. Make sure that you completely understand th
 
 ### Examples
 
-See below.
+See below, separated into business- and technical context.
 
 </div>
 
