@@ -2,7 +2,7 @@
 <hr class="with-no-margin"/>
 ## Further Info
 
-### Examples and Tips
+### Tips
 
 <div id="search-results">
     {% assign selected_posts = (site.posts | where: "category", include.category) | reverse %}
