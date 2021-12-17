@@ -8,7 +8,7 @@ order: 5
 ### 1. Introduction and Goals
 
 
-<div class="arc42-help" >
+<div class="arc42-help" markdown="1">
 
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
 
@@ -20,7 +20,7 @@ Describes the relevant requirements and the driving forces that software archite
 
 ### 1.1 Requirements Overview
 
-<div class="arc42-help" >
+<div class="arc42-help" markdown="1">
 
 ### Contents
 Short description of the functional requirements, driving forces, extract (or abstract)  of requirements. Link to (hopefully existing) requirements documents (with version number and information where to find it).
@@ -32,7 +32,9 @@ From the point of view of the end users a system is created or modified to impro
 Short textual description, probably in tabular use-case format.
 If requirements documents exist this overview should refer to these documents.
 
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
+Keep these excerpts as short as possible. 
+Balance readability of this document with potential redundancy w.r.t to requirements documents. 
+<br>
 
 <!-- collect all examples that are releated to this section of arc42 -->
 {% include example.md category="overview" %}
