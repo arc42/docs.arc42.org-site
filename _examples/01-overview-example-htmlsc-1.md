@@ -3,7 +3,7 @@ layout: post
 title: "Overview Example: HTML Sanity Checker"
 tags: overview example 
 category: overview
-permalink: /examples/overview-example-1/
+permalink: /examples/overview-example-htmlsc-1/
 ---
 
 <div class="arc42-example">
@@ -31,7 +31,4 @@ Main goal is to support authors in avoiding errors within their (generated) HTML
 
 The overall goal of HtmlSC is to create neat and clear reports, showing errors within HTML files. Below you find a example report.
 
-![example Report]({{ site.exampleimages }}/htmlsc/1-1-example-report.jpg)
-
-HtmlSanityCheck (HtmlSC) checks HTML for semantic errors, like broken links and missing images. 
-It has been created to support authors who create HTML as output format.
+![example Report]({{ site.imageurl }}/examples/htmlsc/1-1-sample-report.jpg)
