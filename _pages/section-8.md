@@ -49,7 +49,30 @@ on this list.
 
 ![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
+### Background
+Some topics within systems often concern multiple building blocks, components or elements of the system.
+It might be easier to communicate or document such _cross-cutting_ topics at a central location, instead of repeating them in the description of the concerned elements.
+
+Certain concepts might concern **all** elements of a system, others might only be relevant for a few.
+In the diagram below, logging concerns all three components, whereas security is relevant only for two components.
+
+![]({{ site.imageurl}}/concepts/crosscutting_concerns.drawio.png)
+
+Some real-life examples:
+
+* Within a system, a common format for log-messages shall be established, combined with a common convention of chosing the appropriate log-destination.
+These decisions, along with implementation examples, could be described as "logging-concept".
+* A system has numerous backend services, that communicate among each other based upon remote procedure calls or http-based REST.
+Calling services ("consumers") always need to authenticate themselves to the called service ("provider").
+For this authentication, a central common authorization service has to be used.
+The technical and organizational details such authentication could be described as "backend authentication concept". 
+* (taken from the HTML Sanity Checker, see below): 
+All (7+) checker components within the system are structured according to the strategy pattern.
+
+
+
 <!-- collect all examples that are releated to this section of arc42 -->
+<!-- ================================================================-->
 {% include example.md category="concepts" %}
 
 </div>
