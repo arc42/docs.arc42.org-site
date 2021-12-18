@@ -2,8 +2,8 @@
 layout: post
 title: "Example Solution Strategy: HTML Sanity Checker"
 tags: solution-strategy example 
-category: solution-strategy
-permalink: /examples/solution-strategy-1/
+category: solutionstrategy
+permalink: /examples/solution-strategy-htmlsc-1/
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title: "Example Building Block View Level-1: Traffic Pursuit Unit"
 tags: buildingblock example 
 category: building-block
-permalink: /examples/buildingblock-2/
+permalink: /examples/buildingblock-tpu-1/
 ---
 
 

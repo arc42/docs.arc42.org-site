@@ -3,7 +3,7 @@ layout: post
 title: "Example Solution Strategy: MaMa"
 tags: solution-strategy example 
 category: solutionstrategy
-permalink: /examples/solution-strategy-2/
+permalink: /examples/solution-strategy-mama-2/
 ---
 
 <div class="arc42-example">

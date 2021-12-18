@@ -3,7 +3,7 @@ layout: post
 title: "Example Runtime View: MaMa"
 tags: runtime example 
 category: runtime
-permalink: /examples/runtime-2/
+permalink: /examples/runtime-mama-2/
 ---
 
 
