@@ -20,7 +20,8 @@ Please let us know - we're listening to you:
 
 ## Status and Build
 
-This page was last built on {{ site.time | date: '%c' }} based upon commit {{ site.github.build_revision }}.
+This page was last built on {{ site.time | date: '%c' }}. 
+
 
 
 The content of this site is maintained in Markdown on [Github](https://github.com/arc42/docs.arc42.org-site).
@@ -29,3 +30,8 @@ The content of this site is maintained in Markdown on [Github](https://github.co
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/arc42/docs.arc42.org-site)
 ![Github issues total](https://badgen.net/github/issues/arc42/docs.arc42.org-site)
 
+### site.github info
+
+* build_revision: {{ site.github.build_revision }}
+* hostname: {{ site.github.hostname }}
+* environment: {{ site.github.environment }}

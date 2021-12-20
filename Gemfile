@@ -2,7 +2,13 @@ source 'https://rubygems.org'
 gem "json", ">= 2.3.0"
 gem "kramdown", ">= 2.3.0"
 gem "addressable", ">= 2.8.0"
+
 gem 'github-pages'
-gem 'jekyll-feed'
 gem 'jemoji'
-gem "jekyll-github-metadata"
+
+group :jekyll_plugins do
+    gem 'jekyll-sitemap'
+    gem 'jekyll-feed'
+    gem 'jekyll-seo-tag'
+    gem "jekyll-github-metadata"
+end
