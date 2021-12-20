@@ -20,7 +20,7 @@ Please let us know - we're listening to you:
 
 ## Status and Build
 
-This page was last built on {{ site.time | date: '%c' }}
+This page was last built on {{ site.time | date: '%c' }} based upon commit {{ site.github.build_revision }}.
 
 
 The content of this site is maintained in Markdown on [Github](https://github.com/arc42/docs.arc42.org-site).

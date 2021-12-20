@@ -64,7 +64,8 @@ permalink: pretty
 #
 plugins:
 #  - jekyll-paginate
-  - jemoji
+  - "jemoji"
+  - "jekyll-github-metadata"
 
 #
 # Styles: see "_sass/base/_variables.scss"
