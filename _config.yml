@@ -69,9 +69,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-#
-# Styles: see "_sass/base/_variables.scss"
-#
+
+
+
+repository: arc42/docs.arc42.org-site
 
 
 # define collection (as proposed in https://github.com/arc42/docs.arc42.org-site/issues/49)
