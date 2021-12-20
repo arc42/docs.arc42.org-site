@@ -50,7 +50,7 @@ on this list.
 ![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
 ### Background
-Some topics within systems often concern multiple building blocks, components or elements of the system.
+Some topics within systems often concern multiple building blocks, components or elements.
 It might be easier to communicate or document such _cross-cutting_ topics at a central location, instead of repeating them in the description of the concerned elements.
 
 Certain concepts might concern **all** elements of a system, others might only be relevant for a few.
