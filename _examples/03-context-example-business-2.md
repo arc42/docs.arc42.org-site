@@ -7,7 +7,7 @@ permalink: /examples/context-business-2/
 ---
 
 <div class="arc42-example">
-
+A simple diagram with a brief explanation in a table.
 </div>
 
 ## 3. Context View
