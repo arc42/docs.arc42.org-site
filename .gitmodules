@@ -1,0 +1,4 @@
+[submodule "_includes/subtle-ads"]
+	path = _includes/subtle-ads
+	url = https://github.com/arc42/subtle-ads
+	branch = main
