@@ -29,6 +29,7 @@ The content of this site is maintained in Markdown on [Github](https://github.co
 ![Github issues open](https://badgen.net/github/open-issues/arc42/docs.arc42.org-site)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/arc42/docs.arc42.org-site)
 ![Github issues total](https://badgen.net/github/issues/arc42/docs.arc42.org-site)
+[![Github stars](https://badgen.net/github/stars/arc42/arc42-template)](https://github.com/arc42/arc42-template)
 
 ### site.github info
 
