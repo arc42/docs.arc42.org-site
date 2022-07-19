@@ -1,3 +1,10 @@
+<div align="center">
+	<a href="https://vshymanskyy.github.io/StandWithUkraine">
+		<img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg">
+	</a>
+	<br>
+</div>    
+
 # arc42 Documentation, help and tips
 
 Here we collect tips on using arc42.
