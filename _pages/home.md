@@ -4,6 +4,12 @@ title: Home
 order: 0
 permalink: /home/
 ---
+<div align="center">
+	<a href="https://vshymanskyy.github.io/StandWithUkraine">
+		<img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg">
+	</a>
+	<br>
+</div>    
 
 {% assign nr_sec01_tips = site.posts | where: "category", "requirements" | size %}
 {% assign nr_sec02_tips = site.posts | where: "category", "constraints" | size %}
