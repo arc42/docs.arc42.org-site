@@ -1,3 +1,11 @@
+---
+layout: page
+title: Security Policy
+permalink: /security/
+order: 99
+hide: true
+---
+
 # Security Policy
 
 ## Supported Versions
