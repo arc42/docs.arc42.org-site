@@ -1,6 +1,6 @@
-FROM jekyll/builder:latest
+FROM jekyll/jekyll:4.2.0
 
-LABEL version="0.9.1"
+LABEL version="0.9.2"
 LABEL description="develop and generate arc42.org site"
 LABEL vendor="req42 (Peter Hruschka, Gernot Starke)"
 

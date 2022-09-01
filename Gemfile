@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 gem "json", ">= 2.3.0"
 gem "kramdown", ">= 2.3.0"
 gem "addressable", ">= 2.8.0"
