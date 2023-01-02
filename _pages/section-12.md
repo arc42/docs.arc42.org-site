@@ -40,4 +40,4 @@ _&lt;insert glossary (and optionally translation) table >_
 {% include further-info.md
    category="glossary"
    topic="glossary and terms"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-12" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-12" %}

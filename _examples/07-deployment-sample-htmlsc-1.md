@@ -17,7 +17,7 @@ permalink: /examples/deployment-htmlsc-1/
 |-------------------|------------------------------------------------------------|
 |hsc-development    |Development environment                                     |
 |-------------------|------------------------------------------------------------|
-|artifact repository|Global public _cloud_ repository for binary artifacts, similar to [mavenCentral](http://mvnrepository.com/) HtmlSC binaries are uploaded to this server.   |
+|artifact repository|Global public _cloud_ repository for binary artifacts, similar to [mavenCentral](https://mvnrepository.com/) HtmlSC binaries are uploaded to this server.   |
 |-------------------|------------------------------------------------------------|
 |hsc user computer  |Where documentation is created and compiled to HTML.      |
 |-------------------|------------------------------------------------------------|

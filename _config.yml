@@ -10,14 +10,14 @@ imageurl: /images
 exampleimages: /images/examples
 
 
-#url: http://localhost:4000
-#imageurl: http://localhost:4000/images
+#url: https://localhost:4000
+#imageurl: https://localhost:4000/images
 
 baseurl:
 
 # temporary deployment on arc42.github.io/faq
 # -----------------------------------------------------
-#url: http://arc42.github.io
+#url: https://arc42.github.io
 #baseurl: "/faq"
 
 

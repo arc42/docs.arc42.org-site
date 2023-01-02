@@ -83,4 +83,4 @@ arc42 provides a number of [example quality scenarios](https://github.com/arc42/
 {% include further-info.md
    category="quality"
    topic="quality requirements, quality-tree and/or quality scenarios"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-10" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-10" %}
