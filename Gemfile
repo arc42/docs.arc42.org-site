@@ -7,13 +7,12 @@ gem "commonmarker", ">= 0.23.4"
 gem "webrick"
 
 
-
-gem 'github-pages'
-gem 'jemoji'
+gem "jekyll"
 
 group :jekyll_plugins do
+    gem 'github-pages'
+    gem 'jemoji'
     gem 'jekyll-sitemap'
-    gem 'jekyll-feed'
     gem 'jekyll-seo-tag'
     gem "jekyll-github-metadata"
 end
