@@ -30,4 +30,4 @@ _&lt;insert list or table of known problems, risks or technical debt >_
 {% include further-info.md
    category="risks"
    topic="risks, problems and technical debt"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-11" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-11" %}

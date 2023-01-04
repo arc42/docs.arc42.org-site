@@ -20,7 +20,7 @@ Stakeholders of your system should be able to comprehend and retrace your decisi
 
 ### Form
 
-* ADR ([architecture decision record](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)) for every important decision
+* ADR ([architecture decision record](https://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)) for every important decision
 * list or table, ordered by importance and consequences or
 * more detailed in form of separate sections per decision
 
@@ -60,4 +60,4 @@ _&lt;describe important architecture decisions here >_
 {% include further-info.md
    category="decisions"
    topic="fundamental architecture and design decisions"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-9" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-9" %}

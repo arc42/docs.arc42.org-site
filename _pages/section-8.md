@@ -83,4 +83,4 @@ _&lt;describe concepts here >_
 {% include further-info.md
    category="concepts"
    topic="crosscutting and/or technical concepts"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-8" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-8" %}

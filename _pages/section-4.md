@@ -50,4 +50,4 @@ _list or table_
 {% include further-info.md
    category="solution-strategy"
    topic="solution strategy and fundamental concepts"
-   faqlink="http://faq.arc42.org/category_c/#c-sec-4" %}
+   faqlink="https://faq.arc42.org/category_c/#c-sec-4" %}
