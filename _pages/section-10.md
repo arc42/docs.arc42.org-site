@@ -27,18 +27,19 @@ concrete and measurable.
 </div>
 
 
-### 10.1 Quality Tree
+### 10.1 Quality Requirements
 <div class="arc42-help" markdown="1">
 
 ### Content
-The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leaves.
+The table or tree (as defined in ATAM – Architecture Tradeoff Analysis Method) of quality requirements, with quality/evaluation scenarios as leaves.
 
 ### Motivation
-The tree structure with priorities provides an overview for a sometimes large number of quality requirements.
+The table or tree structure with priorities provides an overview for a sometimes large number of quality requirements.
 
 ### Form
 The quality tree is a high-level overview of the quality goals and requirements:
 
+* a table, containing specific quality requirements
 * tree-like refinement of the term "quality". Use "quality" or "usefulness" as a root
 * a mind map with quality categories as main branches
 
@@ -76,8 +77,9 @@ _&lt;describe quality scenarios here >_
 
 ## See also
 
-arc42 provides a number of [example quality scenarios](https://github.com/arc42/quality-requirements)
-(sorry - currently only in German) on Github.
+Since January 2023, arc42 provides a [pragmatic quality model](https://quality.arc42.org), that does not require a strict hierarchy of quality requirements, but proposes to _label_ them, with labels "flexible, efficient, usable, operable, testable, secure, safe" and "reliable".
+0
+![Q42, the arc42 quality model, with eight labels for system qualities](/images/10-quality/arc42-system-qualities-overview.svg)
 
 
 {% include further-info.md
