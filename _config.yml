@@ -90,6 +90,8 @@ collections:
 # !! Danger zone !!
 #
 
+sitemap: true
+
 include:
   - _pages
   - _collections

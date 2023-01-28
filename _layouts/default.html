@@ -2,9 +2,9 @@
 <html lang="{{ site.language }}">
 <head>
     {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
+    {% seo %}
 
     {% include page-url-resolver.html page=page %}
-
     {% if page.excerpt %}
     {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
     {% else %}
@@ -24,17 +24,12 @@
 
     <title>{{ title }}</title>
 
-    <meta name="description" content="{{ description }}">
-
     <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
-    <link rel="canonical" href="{{ url }}">
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl }}" />
-
+   
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" crossorigin="anonymous" />
 
