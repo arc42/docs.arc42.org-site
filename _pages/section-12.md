@@ -17,7 +17,7 @@ You can also see the glossary as source for translations if you work in a multi-
 ### Motivation
 You should clearly define your terms, so that all stakeholders
 
-* have an identical understanding of these terme
+* have an identical understanding of these termes
 * do not use synonyms and homonyms
 
 ### Form
