@@ -19,3 +19,11 @@
 div.ua-background {
     background-color: #e7ddd8;
 }
+
+.parent {
+    white-space: nowrap;
+}
+
+.children {
+    display: inline-block;
+}
