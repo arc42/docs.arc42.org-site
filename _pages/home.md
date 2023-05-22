@@ -72,3 +72,7 @@ many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
 ## <font color="#dd354b">This is open-source!</font>
 
 This site is completely open-source, maintained on a [public Github repository](https://github.com/arc42/docs.arc42.org-site/).
+
+## Thanx to our partners
+
+We thank our partners [Innoq Deutschland GmbH](https://innoq.com) and [TecTrain GmbH](https://tectrain.ch).
