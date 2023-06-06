@@ -26,7 +26,7 @@ Keep the explanation of these key decisions short.
 
 Motivate what you have decided and why you decided that way,  
 based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
+Refer to details in the following sections ([section 5](/section-5) for structural details, [section 8](/section-8) for crosscutting concepts).
 
 You might use a list of solution-approaches or a table similar to the following:
 
