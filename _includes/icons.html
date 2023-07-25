@@ -1,13 +1,6 @@
 {% assign icons = include.icons %}
 
 
-{% if icons.email %}
-<li>
-    <a href="mailto:{{ icons.email }}">
-        <i class="fa fa-fw fa-envelope"></i>
-    </a>
-</li>
-{% endif %}
 
 {% if icons.github %}
 <li>
@@ -18,13 +11,14 @@
 {% endif %}
 
 
-{% if icons.twitter %}
+{% if icons.mastodon %}
 <li>
-    <a href="https://twitter.com/{{ icons.twitter }}" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-fw fa-twitter"></i> 
+    <a href="https://innoq.social/@{{ icons.mastodon }}" target="_blank">
+        <i class="fa-brands fa-mastodon"></i>
     </a>
 </li>
 {% endif %}
+
 
 
 {% if icons.youtube %}

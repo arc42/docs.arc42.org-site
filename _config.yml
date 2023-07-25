@@ -45,14 +45,12 @@ show-subtle-ads: true
 # Social Icons
 #
 icons:
-  rss: false
-  email: false
   github: arc42
   twitter: gernotstarke
   stack_overflow: arc42
   youtube: arc42-video
   devto: gernotstarke
-
+  mastodon: gernotstarke
 #
 # Prettify url.
 #
