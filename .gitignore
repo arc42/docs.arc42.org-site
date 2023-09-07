@@ -12,3 +12,8 @@ originals/plantuml-diagrams/.idea/*
 originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
 .DS_Store
 .vscode
+Gemfile.lock
+.idea/docs.arc42.org-site.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea
