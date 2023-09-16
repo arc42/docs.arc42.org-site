@@ -36,7 +36,7 @@ Keep these excerpts as short as possible.
 Balance readability of this document with potential redundancy w.r.t to requirements documents. 
 <br>
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="overview" %}
 
 </div>
@@ -64,7 +64,7 @@ A table with the most important quality goals and concrete scenarios, ordered by
 
 See [section 10 (Quality Requirements)](/section-10/) for a complete overview of quality scenarios.
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="quality" %}
 
 </div>
