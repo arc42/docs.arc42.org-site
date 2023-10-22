@@ -49,7 +49,7 @@ You might follow the Nygard-structure, which works as follows:
 
 You can find additional structures of ADR in the [ADR Github collection](https://adr.github.io/)
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="decisions" %}
 
 </div>

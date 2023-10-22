@@ -21,7 +21,7 @@ Since quality requirements will have a lot of influence on architectural
 decisions you should know for every stakeholder what is really important to them,
 concrete and measurable.
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="quality" %}
 
 </div>

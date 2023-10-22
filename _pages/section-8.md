@@ -15,7 +15,7 @@ This section describes overall, principal regulations and solution ideas that ar
 Such concepts are often related to multiple building blocks. They include many different topics, such as
 
 * domain models
-* architectur patterns or design patterns
+* architectural patterns or design patterns
 * rules for using specific technology
 * principale, often technical decisions of overall decisions
 * implementation rules
@@ -60,7 +60,7 @@ In the diagram below, logging concerns all three components, whereas security is
 
 Some real-life examples:
 
-* Within a system, a common format for log-messages shall be established, combined with a common convention of chosing the appropriate log-destination.
+* Within a system, a common format for log-messages shall be established, combined with a common convention of choosing the appropriate log-destination.
 These decisions, along with implementation examples, could be described as "logging-concept".
 * A system has numerous backend services, that communicate among each other based upon remote procedure calls or http-based REST.
 Calling services ("consumers") always need to authenticate themselves to the called service ("provider").
@@ -71,7 +71,7 @@ All (7+) checker components within the system are structured according to the st
 
 
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 <!-- ================================================================-->
 {% include example.md category="concepts" %}
 

@@ -10,7 +10,7 @@ order: 25
 Please let us know - we're listening to you:
 
 
-* <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxex" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email (our adress is spam-protected)</a>
+* <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxex" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email (our address is spam-protected)</a>
 * on our [<i class="fab fa-fw fa-github"></i>github issue tracker](https://github.com/arc42/arc42-template/issues) at https://github.com/arc42/arc42-template/issues.
 * on various Twitter accounts:
   * [<i class="fab fa-fw fa-twitter"></i>@arc42Tipps](https://twitter.com/arc42Tipps)
