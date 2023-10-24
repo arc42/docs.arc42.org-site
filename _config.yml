@@ -66,6 +66,7 @@ plugins:
   - jekyll-github-metadata
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jektex
 
 
 
@@ -99,21 +100,29 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-
 sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
-exclude: 
-  - Gemfile 
-  - Gemfile.lock 
-  - LICENSE 
-  - README.md 
+jektex:
+  cache_dir: ".jektex-cache"
+  ignore: ["*.xml"]
+  silent: false
+  macros:
+    - ["\\Q", "\\mathbb{Q}"]
+    - ["\\C", "\\mathbb{C}"]
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
   - originals
-  - Dockerfile 
-  - _manage-site.sh 
-  - .gitignore 
-  - .vscode 
-  - _config-dev.yml 
-  - _docker-compose-dev.yml 
+  - Dockerfile
+  - _manage-site.sh
+  - .gitignore
+  - .vscode
+  - _config-dev.yml
+  - _docker-compose-dev.yml
   - docs-arc42-org-site.code-workspace
+
