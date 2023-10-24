@@ -10,9 +10,10 @@ gem "webrick"
 gem "jekyll"
 
 group :jekyll_plugins do
-    gem 'github-pages'
-    gem 'jemoji'
-    gem 'jekyll-sitemap'
-    gem 'jekyll-seo-tag'
+    gem "github-pages"
+    gem "jemoji"
+    gem "jekyll-sitemap"
+    gem "jekyll-seo-tag"
     gem "jekyll-github-metadata"
+    gem "jektex"
 end
