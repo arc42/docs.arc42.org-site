@@ -22,7 +22,7 @@ Constraints must always be dealt with; they may be negotiable, though.
 ### Form
 Simple tables of constraints with explanations. If needed you can subdivide them into technical constraints, organizational and political constraints and conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="constraints" %}
 
 </div>

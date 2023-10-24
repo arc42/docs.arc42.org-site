@@ -47,7 +47,7 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 >
 >* **[<font color="#dd354b">lean</font>](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline your documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
 >* **[<font color="#dd354b">thorough</font>](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and their documentation have to be audited.
->* **[<font color="#dd354b">essential</font>](/keywords/#essential)**: Despite lean and agile, there are some informations about your system that you should always document; i.e. quality goals of your architecture.
+>* **[<font color="#dd354b">essential</font>](/keywords/#essential)**: Despite lean and agile, there is some information about your system that you should always document; i.e. quality goals of your architecture.
 
 ## <font color="#dd354b">Still have questions?</font>
 

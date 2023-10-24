@@ -32,7 +32,7 @@ The building block view is a hierarchial collection of black boxes and white box
 Thus it contains the white box description of selected building blocks of level 1, together with black box descriptions of their internal building blocks.
 * **Level 3** (not shown in the diagram above) zooms into details of selected building blocks of level 2, and so on.
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="building-block" %}
 
 </div>
@@ -79,7 +79,7 @@ boxes with name and  responsibility according to the following schema:
 | _&lt;black box 1>_ | _&lt;Text>_ |
 | _&lt;black box 2>_ | _&lt;Text>_ |
 
-If you use a list of black box decriptions then you fill in a separate black box template for every important building block .
+If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
 Its headline is the name of the black box.
 
 </div>
@@ -139,7 +139,7 @@ _&lt;black box template>_
 <div class="arc42-help" markdown="1">
 Here you can specify the inner structure of (some) building blocks from level 1 as white boxes.
 
-You have to decide which building blocks of your system are important enough to justify such a detailed description. Please prefer relevance over completeness. Specify important, surprising, risky, compelx or volatile building blocks. Leave out normal, simple, boring or standardized parts of your system
+You have to decide which building blocks of your system are important enough to justify such a detailed description. Please prefer relevance over completeness. Specify important, surprising, risky, complex or volatile building blocks. Leave out normal, simple, boring or standardized parts of your system
 
 </div>
 

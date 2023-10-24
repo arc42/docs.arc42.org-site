@@ -44,7 +44,7 @@ All kinds of diagrams that show the system as a black box and specify the domain
 
 Alternatively (or additionally) you can use a table. The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="business-context" %}
 
 </div>
@@ -68,7 +68,7 @@ Many stakeholders make architectural decision based on the technical interfaces 
 #### Form
 E.g. UML deployment diagram describing channels to neighboring systems, together with a mapping table showing the relationships between channels and input/output.
 
-<!-- collect all examples that are releated to this section of arc42 -->
+<!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="technical-context" %}
 
 
