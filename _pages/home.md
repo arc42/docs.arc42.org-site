@@ -51,12 +51,12 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 
 ## <font color="#dd354b">Still have questions?</font>
 
-<a target="_blank" rel="noopener noreferrer nofollow" href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="'Q' and 'A' in boxes - QnA Icon" style="float:left;width:42px;height:42px;"></a>
 <br>... then try our <a href="https://faq.arc42.org" target="_blank" rel="noopener noreferrer nofollow"><strong>extensive FAQ</strong></a>, answering more than 120 frequently asked questions.
 
 ## <font color="#dd354b">Need further assistance?</font>
 
-<a href="/contact"><img src="/images/contact-icon.png" alt="!!" style="float:left;width:42px;height:42px;"></a>
+<a href="/contact"><img src="/images/contact-icon.png" alt="Speechbubbles" style="float:left;width:42px;height:42px;"></a>
 <br>... let us [**know here**](/contact/), we're listening.
 
 ## <font color="#dd354b">We're offering architecture training!</font>
