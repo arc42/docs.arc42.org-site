@@ -8,7 +8,7 @@ permalink: /home/
 
 >### We stand with the people of Ukraine <span class="parent"><span class="ua-text"><i class="fas fa-heart children"></i></span><span class="ua-size children"><i class="fas fa-heart beat heart children"></i></span></span>
 >
->Please assist humanitarian efforts for the Ukrainian people and those affected by the military invasion of Ukraine by supporting international aid organizations, including the [International Committee of the Red Cross](https://www.icrc.org/en).
+>Please assist humanitarian efforts for the Ukrainian people and those affected by the military invasion of Ukraine by supporting international aid organizations, including the <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.icrc.org/en">International Committee of the Red Cross</a>.
 
 </div>
 
@@ -51,8 +51,8 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 
 ## <font color="#dd354b">Still have questions?</font>
 
-<a href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
-<br>... then try our [**extensive FAQ**](https://faq.arc42.org), answering more than 120 frequently asked questions.
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="??" style="float:left;width:42px;height:42px;"></a>
+<br>... then try our <a href="https://faq.arc42.org" target="_blank" rel="noopener noreferrer nofollow"><strong>extensive FAQ</strong></a>, answering more than 120 frequently asked questions.
 
 ## <font color="#dd354b">Need further assistance?</font>
 
@@ -62,17 +62,17 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 ## <font color="#dd354b">We're offering architecture training!</font>
 
 The _dynamic duo_, always two trainers in parallel, practically applicable
-knowledge from Peter Hruschka and Gernot Starke. See [arc42.de](https://arc42.de/termine) for details, and schedule.
+knowledge from Peter Hruschka and Gernot Starke. See <a href="https://arc42.de/termine" target="_blank" rel="noopener noreferrer nofollow">arc42.de</a> for details, and schedule.
 
 We've successfully trained more than 1000 developers in software architecture,
-many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
+many of them passed the <a target="_blank" rel="noopener noreferrer nofollow" href="https://isaqb.org">iSAQB CPSA-F</a>  certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
 
 
 ## <font color="#dd354b">This is open-source!</font>
 
-This site is completely open-source, maintained on a [public Github repository](https://github.com/arc42/docs.arc42.org-site/).
+This site is completely open-source, maintained on a <a href="https://github.com/arc42/docs.arc42.org-site/" target="_blank" rel="noopener noreferrer nofollow">public Github repository</a>.
 
 ## Thanx to our partners
 
-We thank our partners [Innoq Deutschland GmbH](https://innoq.com) and [TecTrain GmbH](https://tectrain.ch).
+We thank our partners <a target="_blank" rel="noopener noreferrer nofollow" href="https://innoq.com">Innoq Deutschland GmbH</a> and <a target="_blank" rel="noopener noreferrer nofollow" href="https://tectrain.ch">TecTrain GmbH</a>.

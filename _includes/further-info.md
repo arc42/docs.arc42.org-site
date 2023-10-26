@@ -18,4 +18,4 @@
 
 ### Related Questions
 
-See [here for questions related to {{ include.topic }}]({{ include.faqlink }}).
+See <a target="_blank" rel="noopener noreferrer nofollow" href="{{ include.faqlink }}">here for questions related to {{ include.topic }}</a>.
