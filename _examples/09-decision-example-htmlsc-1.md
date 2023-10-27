@@ -43,7 +43,7 @@ methods to the DOM-tree of the file(s) to be checked.
 * jsoup: a plain HTML parser without any dependencies (!) and a rich API to access all HTML elements in DOM-like syntax.
 
 
-### 9.3 String Similarity Checking using <a target="_blank" rel="noopener noreferrer nofollow" href="https://wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance">Jaro-Winkler-Distance</a>
+### 9.3 String Similarity Checking using <a class="headerlink" target="_blank" rel="noopener noreferrer nofollow" href="https://wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance">Jaro-Winkler-Distance</a>
 
 The small <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/rrice/java-string-similarity">java string similarity library</a>
 (by Ralph Allen Rice) contains implementations of several similarity-calculation algorithms.
