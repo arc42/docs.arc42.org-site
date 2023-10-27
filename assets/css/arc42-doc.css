@@ -4,6 +4,10 @@ p {
   font-family: sans-serif;
 }
 
+a.headerlink {
+    color: #1675b9 !important;
+}
+
 /* unified style for template help */
 .arc42-help {
   color: #002080;

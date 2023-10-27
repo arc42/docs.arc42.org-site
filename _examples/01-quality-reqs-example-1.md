@@ -6,7 +6,7 @@ category: quality-goals
 permalink: /examples/quality-requirements-1/
 ---
 
-<div class="arc42-example">
+<div class="arc42-example" markdown="1">
 This example has been created with Enterprise Architect(TM) as a data flow diagram.
 </div>
 

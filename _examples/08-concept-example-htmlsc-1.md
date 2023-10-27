@@ -28,7 +28,7 @@ Properties of the implementation classes are private, as we manipulate these via
 |-------|--------|
 |Finding        |Description of a problem found by one ->Checker within the ->Html Page.|
 |-------|--------|
-|Html Element   |HTML pages (documents) are made up by HTML elements .e.g., <a href="link target">`, `<img src="image.png">` and others. See the definition from the [W3-Consortium](https://www.w3schools.com/html/html_elements.asp)|
+|Html Element   |HTML pages (documents) are made up by HTML elements .e.g., `<a href="link target">`, `<img src="image.png">` and others. See the definition from the <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.w3schools.com/html/html_elements.asp">W3-Consortium</a>|
 |-------|--------|
 |Html Page      |A single chunk of HTML, mostly regarded as a single file. Shall comply to standard HTML syntax. Minimal requirement: Our HTML parser can successfully parse this page. Contains ->Html Elements. Synonym: _Html Document_.|
 |-------|--------|
@@ -46,7 +46,7 @@ Properties of the implementation classes are private, as we manipulate these via
 |-------|--------|
 |Single Page Result| A collection of all checks of a single ->Html Page.|
 |-------|--------|
-|URI               | Universal Resource Identifier. Defined in [RFC-2396](https://www.ietf.org/rfc/rfc2396.txt), the ultimate source of truth concerning link syntax and semantic. |
+|URI               | Universal Resource Identifier. Defined in <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.ietf.org/rfc/rfc2396.txt">RFC-2396</a>, the ultimate source of truth concerning link syntax and semantic. |
 |-------|--------|
 
 
@@ -57,7 +57,7 @@ on URI syntax might be completely evident. As we wrote this book also for
 different kind of people, we included this information anyhow.
 
 HtmlSC performs various checks on HTML links (hyperlinks), which usually
-follow the URI syntax specified by [RFC-2396](https://www.ietf.org/rfc/rfc2396.txt). URIs are generally used to link to arbitrary resources (documents, files or parts within documents).
+follow the URI syntax specified by <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.ietf.org/rfc/rfc2396.txt">RFC-2396</a>. URIs are generally used to link to arbitrary resources (documents, files or parts within documents).
 
 Their general structure is depicted in the following figure - you also find
 a unit test below.

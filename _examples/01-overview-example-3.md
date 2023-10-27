@@ -6,8 +6,9 @@ category: overview
 permalink: /examples/overview-example-3/
 ---
 
-<div class="arc42-example">
-After a short introductory text explaining the system under design a table of key project goals is given and an overview of the functionality is shown as use case diagram with accompaning table</div>
+<div class="arc42-example" markdown="1">
+After a short introductory text explaining the system under design a table of key project goals is given and an overview of the functionality is shown as use case diagram with accompaning table
+</div>
 
 ## 1. Introduction 
 This document describes the Traffic Pursuit Unit, short TPU, which is a speed measuring device equipped with video recording facilities that is installed within a policecar. It is used to measure and record the speed profile of a car driving in front of the policecar, so that speed limit violations can be proved and legal action can be taken based on the documentation and video recordings produced by the system.

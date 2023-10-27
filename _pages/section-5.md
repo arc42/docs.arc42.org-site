@@ -25,7 +25,7 @@ This allows you to communicate with your stakeholder on an abstract level withou
 ### Form
 The building block view is a hierarchial collection of black boxes and white boxes (see figure below) and their descriptions.
 
-![]({{ site.imageurl }}/05-building-block-hierarchy.png)
+![Scope and Context, Level 1 and Level 2 Diagram]({{ site.imageurl }}/05-building-block-hierarchy.png)
 
 * **Level 1** is the white box description of the overall system together with black box descriptions of all contained building blocks.
 * **Level 2** zooms into some building blocks of level 1.

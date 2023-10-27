@@ -8,7 +8,7 @@ permalink: /examples/decision-use-adrs/
 
 # 9. Architecture Decisions
 
->This example has been taken from [Nat Pryces' adr-tools site](https://github.com/npryce/adr-tools/tree/master/doc/adr)
+>This example has been taken from <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/npryce/adr-tools/tree/master/doc/adr">Nat Pryces’ adr-tools site</a>
 
 
 ## 001. Record architecture decisions
@@ -25,9 +25,9 @@ We need to record the architectural decisions made on this project.
 
 ### Decision
 
-We will use Architecture Decision Records, as [described by Michael Nygard](https://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions).
+We will use Architecture Decision Records, as <a target="_blank" rel="noopener noreferrer nofollow" href="https://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions">described by Michael Nygard</a>.
 
 
 ### Consequences
 
-See Michael Nygard's article, linked above. For a lightweight ADR toolset, see Nat Pryce's [adr-tools](https://github.com/npryce/adr-tools).
+See Michael Nygard's article, linked above. For a lightweight ADR toolset, see Nat Pryce's <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/npryce/adr-tools">adr-tools</a>.

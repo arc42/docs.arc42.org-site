@@ -77,7 +77,7 @@ _&lt;describe quality scenarios here >_
 
 ## See also
 
-Since January 2023, arc42 provides a [pragmatic quality model](https://quality.arc42.org), that does not require a strict hierarchy of quality requirements, but proposes to _label_ them, with labels "flexible, efficient, usable, operable, testable, secure, safe" and "reliable".
+Since January 2023, arc42 provides a <a target="_blank" rel="noopener noreferrer nofollow" href="https://quality.arc42.org">pragmatic quality model</a>, that does not require a strict hierarchy of quality requirements, but proposes to _label_ them, with labels "flexible, efficient, usable, operable, testable, secure, safe" and "reliable".
 0
 ![Q42, the arc42 quality model, with eight labels for system qualities](/images/10-quality/arc42-system-qualities-overview.svg)
 

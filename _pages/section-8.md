@@ -47,7 +47,7 @@ A potential (but not mandatory) structure for this section could be:
 Note: it might be difficult to assign individual concepts to one specific topic
 on this list.
 
-![]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
+![Crosscutting concepts diagram]({{ site.imageurl }}/08-Crosscutting-Concepts-Structure.png)
 
 ### Background
 Some topics within systems often concern multiple building blocks, components or elements.
@@ -56,7 +56,7 @@ It might be easier to communicate or document such _cross-cutting_ topics at a c
 Certain concepts might concern **all** elements of a system, others might only be relevant for a few.
 In the diagram below, logging concerns all three components, whereas security is relevant only for two components.
 
-![]({{ site.imageurl}}/concepts/crosscutting_concerns.drawio.png)
+![Crosscutting concerns diagram]({{ site.imageurl}}/concepts/crosscutting_concerns.drawio.png)
 
 Some real-life examples:
 
