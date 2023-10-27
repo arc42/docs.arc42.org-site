@@ -6,7 +6,7 @@ category: quality-goals
 permalink: /examples/quality-requirements-3/
 ---
 
-<div class="arc42-example">
+<div class="arc42-example" markdown="1">
 We have used a table with categories and detailed decriptions for the top-3 quality goals. More quality requirements can be found in section 10.
 </div>
 

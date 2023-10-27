@@ -6,7 +6,7 @@ category: business-context
 permalink: /examples/context-business-2/
 ---
 
-<div class="arc42-example">
+<div class="arc42-example" markdown="1">
 A simple diagram with a brief explanation in a table.
 </div>
 
@@ -15,7 +15,7 @@ A simple diagram with a brief explanation in a table.
 ### 3.1 Business Context 
 
 
-![]({{ site.imageurl}}/examples/mama/3-Mama-Business-Context.png)
+![Business Context]({{ site.imageurl}}/examples/mama/3-Mama-Business-Context.png)
 
 |Element         | Description |
 |------|:------|

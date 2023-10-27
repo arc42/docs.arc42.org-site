@@ -5,17 +5,9 @@ tags: glossary example
 category: glossary
 permalink: /examples/glossary-1/
 ---
-
----
-layout: post
-title: "Example Glossary: HTML Sanity Checker"
-tags: glossary example 
-category: glossary
-permalink: /examples/glossary-htmlsc-1/
----
-
+<div class="arc42-example" markdown="1">
 Here you find an example of a glossary. 
-
+</div>
 
 ### Tabular Glossary 
 In the case of this tiny example, the terms given here should be good friends to most developers. 

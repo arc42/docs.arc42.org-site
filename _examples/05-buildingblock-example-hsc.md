@@ -7,7 +7,7 @@ permalink: /examples/buildingblock-hsc/
 ---
 
 
-<div class="arc42-example">
+<div class="arc42-example" markdown="1">
 This example contains several levels of the building block view - ranging from the overview level-1 down to very specific and low-level-3.
 </div>
 

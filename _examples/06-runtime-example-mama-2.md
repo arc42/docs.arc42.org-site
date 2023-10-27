@@ -7,7 +7,7 @@ permalink: /examples/runtime-mama-2/
 ---
 
 
-<div class="arc42-example">
+<div class="arc42-example" markdown="1">
 
 </div>
 
