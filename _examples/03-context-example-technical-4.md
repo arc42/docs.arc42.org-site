@@ -14,4 +14,4 @@ This example has been created with Enterprise Architect(TM) as a deployment mode
 The technical context diagram shows the channels linked to the TPU-hardware (as UML stereotypes in <<...>>). The mapping of the logical input and output is shown as annotations on the channel to adjacent systems.
 
 
-![Technical Context]({{ site.imageurl }}/examples/tpu/32-tpu-technical-context.jpg)
+![Technical Context]({{ site.imageurl }}/examples/tpu/32-tpu-technical-context.webp)

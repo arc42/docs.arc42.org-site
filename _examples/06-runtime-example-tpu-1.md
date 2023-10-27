@@ -25,7 +25,7 @@ The key steps in this scenario are the following:
 
 The following sequence diagram shows this process: the repeated measurement of speedometer pulses every 40ms (in the top part of the diagram) and the complete update every second (in the lower part of the diagram).
 
-![Fig. 6.1: Sequence Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationSD.jpg)
+![Fig. 6.1: Sequence Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationSD.webp)
 
 The communication diagram is used in the style of a data flow diagram, showing the original input (speedometer pulses) on the lower left corner and all the calculated intermediate results on their way to the two inserters.
 
@@ -41,5 +41,5 @@ The following activity diagram shows the scenario - ignoring concurrency. It sho
 This extended activity diagram includes the concurrency by showing asynchonously communicating activity diagrams (using the "send-signal-action" and "accept-event-action" symbols of the UML). The diagram is overlaid with swim lanes of the level-1 building blocks.
 
 
-![Fig. 6.4: Extended Activity Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationAD-EXT.jpg)
+![Fig. 6.4: Extended Activity Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationAD-EXT.webp)
 
