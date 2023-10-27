@@ -19,7 +19,7 @@ This is a very simple example, created with Enterprise Architect(TM).
 |------|:-----|
 |user         |documents software with toolchain that generates html. Wants to ensure that links within this HTML are valid.     |
 |-----|---------|
-|build system      |mostly [Gradle](https://gradle.org)                         |
+|build system      |mostly <a target="_blank" rel="noopener noreferrer nofollow" href="https://gradle.org">Gradle</a>               |
 |------|---------|
 |local HTML files  |HtmlSC reads and parses local HTML files and performs sanity checks within those.                                |
 |------|---------|

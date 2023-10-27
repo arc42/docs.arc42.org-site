@@ -91,7 +91,7 @@ For a given input (_target_), `Suggester` searches within a set of possible valu
 *	Options = {"McUp", "McDon", "Mickey"}
 * The resulting suggestion would be "McDon", because it has the greatest similarity to the target "McDown".
 
-The implementation is based upon the [Jaro-Winkler distance](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance), one of the algorithms to calculate similarity between strings.
+The implementation is based upon the <a target="_blank" rel="noopener noreferrer nofollow" href="https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance">Jaro-Winkler distance</a>, one of the algorithms to calculate similarity between strings.
 
 
 `Suggester` is used in the following cases:

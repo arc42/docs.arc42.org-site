@@ -12,7 +12,7 @@ permalink: /examples/concept-htmlsc-2/
 
 
 ### 8.3 Multiple Checking algorithms
-HtmlSC uses the [template-method-pattern](https://sourcemaking.com/design_patterns/template_method/)
+HtmlSC uses the <a target="_blank" rel="noopener noreferrer nofollow" href="https://sourcemaking.com/design_patterns/template_method/">template-method-pattern</a>
 to enable flexible checking algorithms:
 
 > >"The Template Method defines a _skeleton of an algorithm_ in an operation, and defers some steps to subclasses".
