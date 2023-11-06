@@ -95,3 +95,33 @@ a.headerlink {
 .subtle-ad a {
   color: ff796a;
 }
+
+
+
+
+
+.supported-by-innoq {
+    margin-bottom: 13px;
+    width: 110px;
+}
+
+.supported-by-innoq:hover {
+    opacity: 0.8;
+}
+
+
+@media (max-width: 900px) {
+    .supported-by-innoq {
+        width: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .supported-by-innoq {
+        width: 90px;
+    }
+}
+
+p.footer-icons {
+    margin-bottom: 8px;
+}
