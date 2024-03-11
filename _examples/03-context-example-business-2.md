@@ -20,7 +20,7 @@ A simple diagram with a brief explanation in a table.
 |Element         | Description |
 |------|:------|
 | MaMa   | our system, (system-under-design)|
-| Mandator | the organizatino which provides MaMa with client + address data, and pays for its service |
+| Mandator | the organization which provides MaMa with client + address data, and pays for its service |
 | PrintService | company printing letters on MaMas' behalf. Takes either pdf, PostScript or AFP as input format |
 | ... | ...|
 |-
