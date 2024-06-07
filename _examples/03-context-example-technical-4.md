@@ -6,7 +6,8 @@ category: technical-context
 permalink: /examples/technical-context-4/
 ---
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 This example has been created with Enterprise Architect(TM) as a deployment model. 
 </div>
 
