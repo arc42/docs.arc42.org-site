@@ -15,7 +15,7 @@ These examples illustrate the various sections of arc42, taken from real-life sy
   <ul>
     {% assign examples = site.examples   %}
     {% for example in examples  %}            
-       {% include example-header.html page=example link=true  %}
+       {% include example-header-nonutshell.html page=example link=true  %}
     {% endfor %}
   </ul>
 
