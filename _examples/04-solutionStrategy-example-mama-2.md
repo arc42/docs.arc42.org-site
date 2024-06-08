@@ -6,10 +6,11 @@ category: solutionstrategy
 permalink: /examples/solution-strategy-mama-2/
 ---
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 You need a brief summary and explanation of the fundamental solution ideas and strategies. 
 These key ideas should be familiar to everyone involved in development and architecture.
-
+<br>
 Briefly explain how you achieve the most important quality requirements.
 </div>
 

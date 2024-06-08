@@ -7,7 +7,8 @@ permalink: /examples/buildingblock-tpu-1/
 ---
 
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 This Level 1 diagram has been created with Enterprise Architect(TM) as a component diagram. It is augmented by a list of black box descriptions for each building block. 
 </div>
 

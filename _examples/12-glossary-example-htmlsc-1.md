@@ -5,7 +5,8 @@ tags: glossary example
 category: glossary
 permalink: /examples/glossary-1/
 ---
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 Here you find an example of a glossary. 
 </div>
 

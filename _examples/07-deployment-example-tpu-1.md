@@ -7,7 +7,8 @@ permalink: /examples/deployment-1/
 ---
 
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 The example shows an Enterprise Architect (TM) deployment diagram to show the processors used to implement the complete functionality of the Traffic Pursuit Unit. Note the design decisions (i.e. the technology) for the channels connecting the processors.
 </div>
 

@@ -6,7 +6,8 @@ category: overview
 permalink: /examples/overview-example-3/
 ---
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 After a short introductory text explaining the system under design a table of key project goals is given and an overview of the functionality is shown as use case diagram with accompaning table
 </div>
 

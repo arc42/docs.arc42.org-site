@@ -6,11 +6,6 @@ category: runtime
 permalink: /examples/runtime-mama-2/
 ---
 
-
-<div class="arc42-example" markdown="1">
-
-</div>
-
 ## 6. Runtime View 
 
 ### 6.1 Import File
