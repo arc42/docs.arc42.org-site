@@ -33,7 +33,7 @@ Short textual description, probably in tabular use-case format.
 If requirements documents exist this overview should refer to these documents.
 
 Keep these excerpts as short as possible. 
-Balance readability of this document with potential redundancy w.r.t to requirements documents. 
+Balance readability of this document with potential redundancy w.r.t. requirements documents. 
 <br>
 
 <!-- collect all examples that are related to this section of arc42 -->
