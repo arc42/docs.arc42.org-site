@@ -6,6 +6,8 @@ category: concepts
 permalink: /examples/concept-htmlsc-2/
 ---
 
+<p></p>
+
 
 ## 8. Crosscutting Concepts
 

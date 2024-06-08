@@ -6,6 +6,9 @@ category: risks
 permalink: /examples/risk-tpu-1/
 ---
 
+<p></p>
+
+
 ## 11. Risks and Technical Debts
 
 

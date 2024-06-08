@@ -6,6 +6,9 @@ category: decisions
 permalink: /examples/decision-use-adrs/
 ---
 
+<p></p>
+
+
 # 9. Architecture Decisions
 
 >This example has been taken from <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/npryce/adr-tools/tree/master/doc/adr">Nat Pryces’ adr-tools site</a>

@@ -6,6 +6,9 @@ category: decisions
 permalink: /examples/decision-htmlsc/
 ---
 
+<p></p>
+
+
 ## 9. Architecture Decisions
 
 

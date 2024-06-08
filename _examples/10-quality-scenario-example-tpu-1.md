@@ -6,6 +6,9 @@ category: quality
 permalink: /examples/quality-tpu-1/
 ---
 
+<p></p>
+
+
 ## 10. Quality Requirements
 
 ### 10.1 Quality Tree

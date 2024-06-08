@@ -6,6 +6,8 @@ category: concepts
 permalink: /examples/concept-tpu-2/
 ---
 
+<p></p>
+
 
 ### 8.2 Event Handling
 

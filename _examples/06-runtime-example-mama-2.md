@@ -6,6 +6,9 @@ category: runtime
 permalink: /examples/runtime-mama-2/
 ---
 
+<p></p>
+
+
 ## 6. Runtime View 
 
 ### 6.1 Import File

@@ -6,6 +6,9 @@ category: deployment
 permalink: /examples/deployment-htmlsc-1/
 ---
 
+<p></p>
+
+
 ## 7. Deployment View
 
 ![HTML Sanity Checker Deployment Overview]({{ site.imageurl}}/examples/htmlsc/7_1-deployment.png)

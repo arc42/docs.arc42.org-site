@@ -6,6 +6,8 @@ category: concepts
 permalink: /examples/concept-tpu-1/
 ---
 
+<p></p>
+
 ## 8. Crosscutting Concepts
 
 ### 8.1 Domain Entity Model 

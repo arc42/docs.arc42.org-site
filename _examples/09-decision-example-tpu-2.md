@@ -6,6 +6,9 @@ category: decisions
 permalink: /examples/decision-tpu-1/
 ---
 
+<p></p>
+
+
 ## 9. Architecture Decisions
 
 

@@ -6,8 +6,10 @@ category: quality
 permalink: /examples/quality-htmlsc-2/
 ---
 
+<p></p>
 
-### 10.2 Quality Scenarios
+
+### 10.2 Quality Scenarios 
 
 |ID     |Description                              |
 |-------|-----------------------------------------|

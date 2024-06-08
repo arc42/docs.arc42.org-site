@@ -6,6 +6,8 @@ category: solutionstrategy
 permalink: /examples/solution-strategy-htmlsc-1/
 ---
 
+<p></p>
+
 
 <div class="arc42-example">
 <br>
