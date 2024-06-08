@@ -4,7 +4,7 @@
     {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
     {% seo %}
 
-    <script src="https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js"></script>
+    <script src="/assets/js/nutshell.js"></script>
     {% include page-url-resolver.html page=page %}
     {% if page.excerpt %}
     {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
