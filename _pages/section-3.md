@@ -27,7 +27,7 @@ your system's most critical aspects. Make sure that you completely understand th
 See below, separated into business- and technical context.
 
 </div>
-
+  
 ### 3.1 Business context
 
 <div class="arc42-help" markdown="1">

@@ -6,7 +6,8 @@ category: business-context
 permalink: /examples/context-business-2/
 ---
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 A simple diagram with a brief explanation in a table.
 </div>
 

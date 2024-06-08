@@ -6,8 +6,9 @@ category: overview
 permalink: /examples/overview-example-htmlsc-1/
 ---
 
-<div class="arc42-example" markdown="1">
-The _HTML Sanity Checker_ is an extremely simple and small system.
+<div class="arc42-example">
+<br>
+The <i>HTML Sanity Checker</i> is an extremely simple and small system.
 The overview is given as informal diagram with a brief textual explanation.
 </div>
 

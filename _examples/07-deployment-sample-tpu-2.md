@@ -7,7 +7,8 @@ permalink: /examples/deployment-2/
 ---
 
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 The example shows an Enterprise Architect (TM) deployment diagram to show the refinement of one processors.
 </div>
 

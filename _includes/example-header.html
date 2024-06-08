@@ -2,7 +2,7 @@
 
         <li> 
             {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">:{{ page.title }}</a>
             {% else %}
             {{ page.title }}
             {% endif %}

@@ -7,7 +7,8 @@ permalink: /examples/buildingblock-tpu-2/
 ---
 
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 This diagram (created with Enterprise Architect(TM) as a component model) shows the refinement of the measuring box including the level 2 black box descriptions. 
 </div>
 

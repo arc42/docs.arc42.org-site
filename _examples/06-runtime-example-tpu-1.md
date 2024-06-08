@@ -7,7 +7,8 @@ permalink: /examples/runtime-tpu-1/
 ---
 
 
-<div class="arc42-example" markdown="1">
+<div class="arc42-example">
+<br>
 A simple diagram with a brief textual explanation.
 </div>
 
