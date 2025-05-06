@@ -11,43 +11,32 @@ order: 12
 <div class="arc42-help" markdown="1">
 
 ### Content
-This section describes overall, principal regulations and solution ideas that are relevant in multiple parts (&rarr; cross-cutting) of your system.
-Such concepts are often related to multiple building blocks. They include many different topics, such as
+This section describes crosscutting concepts (practices, patterns, regulations or solution ideas).
+Such concepts are often related to multiple building blocks. 
+They may include many different topics, such as the topics shown in the following diagram:
 
-* domain models
-* architectural patterns or design patterns
-* rules for using specific technology
-* principale, often technical decisions of overall decisions
-* implementation rules
+![Crosscutting concepts diagram]({{ site.imageurl }}/8-concepts/08-concepts-EN.drawio.png)
 
 ### Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity) of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
+Concepts form the basis for _conceptual integrity_ (consistency, homogeneity) of the architecture. 
+Thus, they are an important contribution to achieve inner qualities of your system.
 
-Some of these concepts cannot be assigned to individual building blocks (e.g. security or safety). This is the place in the template that we provided for a cohesive specification of such concepts.
+This is the place in the template that we provided for a cohesive specification of such concepts.
+
+Many of these concepts relate to or influence several of your building blocks. 
 
 ### Form
 The form can be varied:
 
 * concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
 * example implementations,especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
+* cross-cutting model excerpts or scenarios using notations of the architecture views
 
-### Structure of this Section
-A potential (but not mandatory) structure for this section could be:
 
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood" concepts
-* Development concepts
-* Operational concepts
+### Structure of this section
+Pick **only** the most-needed topics for your system and assign each a level-2 heading in this section (e.g. 8.1, 8.2 etc).
 
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-![Crosscutting concepts diagram]({{ site.imageurl }}/8-concepts/08-concepts-EN.drawio.png)
+>DO NOT ATTEMPT to cover all of the topics of the aforementioned diagram.
 
 ### Background
 Some topics within systems often concern multiple building blocks, components or elements.
@@ -56,7 +45,6 @@ It might be easier to communicate or document such _cross-cutting_ topics at a c
 Certain concepts might concern **all** elements of a system, others might only be relevant for a few.
 In the diagram below, logging concerns all three components, whereas security is relevant only for two components.
 
-![Crosscutting concerns diagram]({{ site.imageurl}}/8-concepts/crosscutting_concerns.drawio.png)
 
 Some real-life examples:
 
