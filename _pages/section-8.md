@@ -39,11 +39,11 @@ Pick **only** the most-needed topics for your system and assign each a level-2 h
 >DO NOT ATTEMPT to cover all of the topics of the aforementioned diagram.
 
 ### Background
-Some topics within systems often concern multiple building blocks, components or elements.
-It might be easier to communicate or document such _cross-cutting_ topics at a central location, instead of repeating them in the description of the concerned elements.
+Some topics within systems often concern multiple building blocks, hardware elements or development processes.
+It might be easier to communicate or document such _cross-cutting_ topics at a central location, instead of repeating them in the description of the concerned building blocks, hardware elements or development processes.
 
 Certain concepts might concern **all** elements of a system, others might only be relevant for a few.
-In the diagram below, logging concerns all three components, whereas security is relevant only for two components.
+In the diagram above, logging concerns all three components, whereas security is relevant only for two components.
 
 
 Some real-life examples:
