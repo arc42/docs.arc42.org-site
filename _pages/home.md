@@ -64,15 +64,12 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 The _dynamic duo_, always two trainers in parallel, practically applicable
 knowledge from Peter Hruschka and Gernot Starke. See <a href="https://arc42.de/termine" target="_blank" rel="noopener noreferrer nofollow">arc42.de</a> for details, and schedule.
 
-We've successfully trained more than 1000 developers in software architecture,
+We've successfully trained more than 3000 developers in software architecture,
 many of them passed the <a target="_blank" rel="noopener noreferrer nofollow" href="https://isaqb.org">iSAQB CPSA-F</a>  certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
 
 
 ## <font color="#dd354b">This is open-source!</font>
 
-This site is completely open-source, maintained on a <a href="https://github.com/arc42/docs.arc42.org-site/" target="_blank" rel="noopener noreferrer nofollow">public Github repository</a>.
+This site is completely open-source, maintained on a <a href="https://github.com/arc42/docs.arc42.org-site/" target="_blank" rel="noopener noreferrer nofollow">public GitHub repository</a>.
 
-## Thanx to our partners
-
-We thank our partners <a target="_blank" rel="noopener noreferrer nofollow" href="https://innoq.com">Innoq Deutschland GmbH</a> and <a target="_blank" rel="noopener noreferrer nofollow" href="https://tectrain.ch">TecTrain GmbH</a>.
