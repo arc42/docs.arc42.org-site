@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Example Business Context: status.arc42.orgt"
+title: "Example Business Context: status.arc42.org"
 tags: context example 
 category: business-context
 permalink: /examples/business-context-4/
