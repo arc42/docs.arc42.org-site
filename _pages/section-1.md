@@ -65,7 +65,7 @@ A table with the most important quality goals and concrete scenarios, ordered by
 See [section 10 (Quality Requirements)](/section-10/) for a complete overview of quality scenarios.
 
 <!-- collect all examples that are related to this section of arc42 -->
-{% include example.md category="quality" %}
+{% include example.md category="quality-goals" %}
 
 </div>
 
