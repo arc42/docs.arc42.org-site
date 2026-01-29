@@ -2,17 +2,14 @@
 layout: post
 title: "Quality Requirements Example: Traffic Pursuit Unit"
 tags: quality-requirements example 
-category: quality-goals
+category: qualitygoals
 permalink: /examples/quality-requirements-3/
 ---
 
-<div class="arc42-example">
-<br>
-We have used a table with categories and detailed descriptions for the top-3 quality goals. More quality requirements can be found in section 10.
-</div>
 
+Simple examples of quality requirement as simple scenarios, organized in a table.
 
-### 1.2 Quality Goals for Traffic Pursuit Unit
+## 1.2 Quality Goals for Traffic Pursuit Unit
 
 | Prio | Quality Goal | Description |
 | :--- | --- | ---|

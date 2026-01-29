@@ -2,17 +2,13 @@
 layout: post
 title: "Quality Requirements Example: HTML Sanity Checker"
 tags: quality-requirements example 
-category: quality-goals
+category: qualitygoals
 permalink: /examples/quality-requirements-1/
 ---
 
-<div class="arc42-example">
-<br>
-This example has been created with Enterprise Architect(TM) as a data flow diagram.
-</div>
+Some (simple) quality requirements (as scenarios), organized by priority in a table.
 
-
-### 1.2 (example) Quality Requirements for HTML Sanity Checker
+## 1.2 (example) Quality Requirements for HTML Sanity Checker
 
 
 | Priority | Quality Goal |Scenario                                               |
