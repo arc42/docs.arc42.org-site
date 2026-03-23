@@ -109,6 +109,9 @@ exclude:
   - Gemfile.lock 
   - LICENSE 
   - README.md 
+  - CLAUDE.md
+  - SECURITY.md
+  - .github/agents
   - originals
   - Dockerfile 
   - _manage-site.sh 
