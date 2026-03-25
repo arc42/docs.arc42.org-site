@@ -105,13 +105,21 @@ sass:
   style: :compressed # or :expanded
 
 exclude: 
+  - AGENTS.md
   - Gemfile 
   - Gemfile.lock 
   - LICENSE 
   - README.md 
   - CLAUDE.md
   - SECURITY.md
+  - .codex
+  - .claude
+  - .cursor
+  - .github
   - .github/agents
+  - agents
+  - skills
+  - prompts
   - originals
   - Dockerfile 
   - _manage-site.sh 

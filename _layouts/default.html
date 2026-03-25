@@ -67,16 +67,11 @@
             <ul>
                 {% assign pages = site.pages | sort: 'order' %}
                 {% for page in pages %}
-                {% if page.title and page.hide != true %}
+                {% if page.title and page.hide != true and page.permalink != '/contact/' %}
                 <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
-            <ul class="icons">
-                {% include icons.html icons=site.icons %}
-            </ul>
-            <hr/>
-
         </div>
     </aside>
 
@@ -90,11 +85,16 @@
 <footer class="site-footer">
     <div class="inner">
         <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg"></a><br>
-            <a href="https://status.arc42.org">
-                <i class="fa fa-chart-bar fa-fw" style="color:#50C878;" ></i>Status</a><i>&nbsp;&nbsp;</i>
-            <i class="fa fa-user-secret" aria-hidden="true"></i>
-            <a href="{{ site.baseurl }}/imprint">
-                Imprint + Privacy</a></p>
+            <span class="footer-links">
+                <a href="https://status.arc42.org">
+                    <i class="fa fa-chart-bar fa-fw status-icon" aria-hidden="true"></i>Status</a>
+                <a href="{{ site.baseurl }}/imprint">
+                    <i class="fa fa-user-secret fa-fw" aria-hidden="true"></i>Imprint + Privacy</a>
+                <a href="{{ '/contact/' | prepend: site.baseurl }}">
+                    <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>Contact</a>
+                <a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener noreferrer nofollow">
+                    <i class="fab fa-github fa-fw" aria-hidden="true"></i>GitHub</a>
+            </span></p>
         <span>Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
           supported by <a target="_blank" rel="noopener noreferrer nofollow" href="http://www.peterhruschka.eu/">Peter Hruschka</a> and
             <a target="_blank" rel="noopener noreferrer nofollow" href="https://perstarke-webdev.de">Per Starke Web Development</a>
