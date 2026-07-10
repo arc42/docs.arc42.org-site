@@ -8,22 +8,35 @@ a.headerlink {
     color: #1675b9 !important;
 }
 
-/* unified style for template help */
-.arc42-help {
+/* shared shape for the arc42-help / arc42-example callouts. Line-height is set
+   explicitly (not inherited) because these boxes live inside .post-content on
+   example pages, which never picks up the .site-content p { line-height: 1.5 }
+   rule -- without this the box falls back to the browser's default line-height
+   and reads as cramped. */
+.arc42-help,
+.arc42-example {
+  position: relative;
   color: #002080;
-  padding: 5px 5px;
-  background: #dcf0ff;
+  line-height: 1.5;
+  padding: 16px 48px 16px 20px;
+  margin: 1.5em 0;
   border-radius: 4px;
+}
+
+.arc42-help {
+  background: #dcf0ff;
 
   -webkit-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
   -moz-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
   box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
 }
 
-/* use before-pseudo-class to add icon */
+/* absolutely positioned (not floated) so the icon never nudges body text
+   into a ragged first line */
 .arc42-help::before {
-  display: block;
-  float: right;
+  position: absolute;
+  top: 16px;
+  right: 20px;
   width: 24px;
   height: 26px;
 
@@ -31,19 +44,16 @@ a.headerlink {
   background: url("./help42.svg") no-repeat;
   background-size: 24px 26px;
 }
+
 /* unified style for comments for the examples */
 .arc42-example {
-  color: #002080;
-  padding: 5px 5px;
-  background: #fce3e3;
-  border-radius: 4px;
-
+  background: #fde2e5;
 }
 
-/* use before-pseudo-class to add icon */
 .arc42-example::before {
-  display: block;
-  float: right;
+  position: absolute;
+  top: 16px;
+  right: 20px;
   width: 24px;
   height: 26px;
 
