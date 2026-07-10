@@ -79,8 +79,16 @@ boxes with name and  responsibility according to the following schema:
 | _&lt;black box 1>_ | _&lt;Text>_ |
 | _&lt;black box 2>_ | _&lt;Text>_ |
 
-If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
 Its headline is the name of the black box.
+If you use a list of black box descriptions then you fill in a separate black box template for every important building block.
+
+Sometimes it can be useful to amend the table with additional columns:
+
+**Name** | **Responsibility** | **Interfaces** | **Code**
+|----------|--------------------|------|-----|
+| _&lt;black box 1>_ | _&lt;Text>_ | What are the major interfaces of this block? | Where is the code located?
+| _&lt;black box 2>_ | _&lt;Text>_ | ---"--- | ---"---
+
 
 </div>
 
@@ -143,7 +151,7 @@ You have to decide which building blocks of your system are important enough to 
 
 </div>
 
-#### 5.2.1 White Box _&lt;building block x.2&gt;_
+#### 5.2.1 White Box _&lt;building block 1&gt;_
 <div class="arc42-help" markdown="1">
 Specifies the internal structure of _building block 1_.
 

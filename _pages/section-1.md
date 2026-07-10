@@ -22,13 +22,13 @@ Describes the relevant requirements and the driving forces that software archite
 
 <div class="arc42-help" markdown="1">
 
-### Contents
-Short description of the main functional requirements, driving forces, extract (or abstract)  of requirements. Links to the (hopefully existing) requirements documents, with information where to find it.
+#### Contents
+Short description of the functional requirements, driving forces, extract (or abstract)  of requirements. Links to the (hopefully existing) requirements documents, with information where to find it.
 
-### Motivation
+#### Motivation
 From the point of view of the end users a system is created or modified to improve support of a business activity and/or improve the quality.
 
-### Form
+#### Form
 Short textual description, probably in tabular use-case format.
 If requirements documents exist this overview should refer to these documents.
 
@@ -48,28 +48,24 @@ Balance readability of this document with potential redundancy w.r.t. requiremen
 
 <div class="arc42-help" markdown="1">
 
-### Content
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. 
+#### Content
+The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
 
 For example ISO 25010 standard provides an overview of potential topics:
 
 ![ISO 25010 categories of quality requirements]({{ site.imageurl }}/1-2-iso-25010-topics-en.png)
 
-A more pragmatic starting point is our [arc42 Quality Model (Q42)](https://quality.arc42.org), which proposes using _labels_ or _hashtags_ instead of the strict ISO hierarchy.
+#### Motivation
+You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
+If you as an architect do not know how the quality of your work will be judged …
 
-
-### Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. 
-Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged, you're likely to fail.
-
-### Form
+#### Form
 A table with the most important quality goals and concrete scenarios, ordered by priorities.
 
 See [section 10 (Quality Requirements)](/section-10/) for a complete overview of quality requirements.
 
 <!-- collect all examples that are related to this section of arc42 -->
-{% include example.md category="quality" %}
+{% include example.md category="qualitygoals" %}
 
 </div>
 
@@ -80,7 +76,7 @@ See [section 10 (Quality Requirements)](/section-10/) for a complete overview of
 
 <div class="arc42-help" markdown="1">
 
-### Content
+#### Content
 Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
 
 * should know the architecture
@@ -89,10 +85,10 @@ Explicit overview of stakeholders of the system, i.e. all person, roles or organ
 * need the documentation of the architecture for their work
 * have to come up with decisions about the system or its development
 
-### Motivation
+#### Motivation
 You should know all parties involved in development of the system or affected by the system. Otherwise, you may get nasty surprises later in the development process. These stakeholders determine the extent and the level of detail of your work and its results.
 
-### Form
+#### Form
 Table with role names, person names, and their expectations with respect to the architecture and its documentation.
 
 </div>

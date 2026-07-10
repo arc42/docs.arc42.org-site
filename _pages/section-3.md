@@ -43,6 +43,7 @@ All stakeholders should understand which data are exchanged with the environment
 All kinds of diagrams that show the system as a black box and specify the domain interfaces to communiations partners.
 
 Alternatively (or additionally) you can use a table. The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
+<br>
 
 <!-- collect all examples that are related to this section of arc42 -->
 {% include example.md category="business-context" %}

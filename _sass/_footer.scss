@@ -4,4 +4,21 @@
     color: lighten($text-color, 30%);
     text-align: center;
     font-size: 1.0em;
+
+    .footer-links {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.9rem;
+    }
+
+    .footer-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.15rem;
+    }
+
+    .status-icon {
+        color: #50C878;
+    }
 }

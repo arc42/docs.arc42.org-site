@@ -38,7 +38,7 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 7. [**Deployment view**](/section-7/): Hardware and technical infrastructure, deployment ({{ nr_sec07_tips }} tips)
 8. [**Crosscutting concepts**](/section-8/): Recurring solution approaches and patterns ({{ nr_sec08_tips }} tips)
 9. [**Architecture decisions**](/section-9/): Important decisions ({{ nr_sec09_tips }} tips)
-10. [**Quality**](/section-10/): Quality tree and quality scenarios ({{ nr_sec10_tips }} tips)
+10. [**Quality**](/section-10/): Quality requirements overview and detailed quality scenarios ({{ nr_sec10_tips }} tips)
 11. [**Risks and technical debt**](/section-11/): Known problems, risks and technical debt ({{ nr_sec11_tips }} tips)
 12. [**Glossary**](/section-12/): Definitions of important business and technical terms ({{ nr_sec12_tips }} tips)
 
@@ -64,15 +64,12 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 The _dynamic duo_, always two trainers in parallel, practically applicable
 knowledge from Peter Hruschka and Gernot Starke. See <a href="https://arc42.de/termine" target="_blank" rel="noopener noreferrer nofollow">arc42.de</a> for details, and schedule.
 
-We've successfully trained more than 1000 developers in software architecture,
+We've successfully trained more than 3000 developers in software architecture,
 many of them passed the <a target="_blank" rel="noopener noreferrer nofollow" href="https://isaqb.org">iSAQB CPSA-F</a>  certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
 
 
 ## <font color="#dd354b">This is open-source!</font>
 
-This site is completely open-source, maintained on a <a href="https://github.com/arc42/docs.arc42.org-site/" target="_blank" rel="noopener noreferrer nofollow">public Github repository</a>.
+This site is completely open-source, maintained on a <a href="https://github.com/arc42/docs.arc42.org-site/" target="_blank" rel="noopener noreferrer nofollow">public GitHub repository</a>.
 
-## Thanx to our partners
-
-We thank our partners <a target="_blank" rel="noopener noreferrer nofollow" href="https://innoq.com">Innoq Deutschland GmbH</a> and <a target="_blank" rel="noopener noreferrer nofollow" href="https://tectrain.ch">TecTrain GmbH</a>.

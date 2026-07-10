@@ -40,7 +40,7 @@ An overview or summary of quality requirements.
 
 ### Motivation
 Often we encounter dozens (or even hundreds) of detailed quality requirements. 
-In this overview section you should try to summarize, e.g. by describing categories or topics (as suggested by [ISO 25010:2023](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en) or [Q42](https://quality.arc42.org)
+In this overview section you should try to summarize, e.g. by describing categories or topics (as suggested by [ISO 25010:2023](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en) or [Q42](https://quality.arc42.org)).
 
 If these summary descriptions are already precise, specific enough and measurable, you may skip section 10.2.
 
