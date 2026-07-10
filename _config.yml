@@ -104,27 +104,35 @@ sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
-exclude: 
+exclude:
   - AGENTS.md
-  - Gemfile 
-  - Gemfile.lock 
-  - LICENSE 
-  - README.md 
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
   - CLAUDE.md
   - SECURITY.md
+  - DESIGN.md
+  - PRODUCT.md
   - .codex
   - .claude
   - .cursor
+  - .impeccable
   - .github
   - .github/agents
   - agents
   - skills
   - prompts
   - originals
-  - Dockerfile 
-  - _manage-site.sh 
-  - .gitignore 
-  - .vscode 
-  - _config-dev.yml 
-  - _docker-compose-dev.yml 
+  - Dockerfile
+  - docker
+  - docker-compose.yml
+  - .dockerignore
+  - Makefile
+  - scripts
+  - _manage-site.sh
+  - .gitignore
+  - .vscode
+  - _config-dev.yml
+  - _docker-compose-dev.yml
   - docs-arc42-org-site.code-workspace
