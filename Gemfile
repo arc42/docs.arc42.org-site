@@ -16,3 +16,7 @@ group :jekyll_plugins do
     gem 'jekyll-seo-tag'
     gem "jekyll-github-metadata"
 end
+
+group :test do
+    gem "html-proofer"
+end

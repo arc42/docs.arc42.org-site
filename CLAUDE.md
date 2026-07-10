@@ -10,10 +10,16 @@ Jekyll-based static documentation site for the **arc42 software architecture tem
 
 ```bash
 make dev        # Start local dev server via Docker (port 4000)
-make clean      # Remove generated _site directory
+make site       # Build the static site into _site/
+make check      # Build + run project sanity checks (scripts/check-site.sh)
+make check-links # Build + validate internal links/HTML via html-proofer
+make clean      # Remove generated _site directory and Docker cache volumes
+make help       # List all available targets
 ```
 
-Alternative without Make: `docker compose up` (uses `bretfisher/jekyll-serve` image).
+The dev image is built from the repo's own `Dockerfile` (Ruby 3.2, gems pinned via `Gemfile.lock`), not a third-party image. Run `make install` after editing the `Gemfile` to refresh gems.
+
+Alternative without Make: `docker compose up`.
 
 Native Ruby: `bundle install && bundle exec jekyll serve`.
 
