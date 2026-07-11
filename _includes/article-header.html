@@ -1,14 +1,15 @@
 {% assign page = include.page %}
+{% assign hlevel = include.level | default: 1 %}
 
 <header>
     <div class="panel">
-        <h1>
+        <h{{ hlevel }}>
             {% if include.link %}
             <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
             {% else %}
             {{ page.title }}
             {% endif %}
-        </h1>
+        </h{{ hlevel }}>
 
         <ul class="tags">
             {% assign tags_num = (page.tags | size) %}

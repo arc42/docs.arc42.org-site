@@ -193,7 +193,8 @@
             .panel {
                 padding: 0;
                 background-color: $background-color;
-                h1 {
+                h1, h4 {
+                    margin: 0;
                     font-size: 1.3em;
                     color: $title-color;
                     a.tag {

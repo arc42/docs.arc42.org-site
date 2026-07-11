@@ -9,7 +9,7 @@
     {% for post in selected_posts  %}
     <div class="article-wrapper">
         <article>
-            {% include article-header.html page=post link=true share=false %}
+            {% include article-header.html page=post link=true share=false level=4 %}
         </article>
     </div>
     <hr class="with-no-margin"/>
