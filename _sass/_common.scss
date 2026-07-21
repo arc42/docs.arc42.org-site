@@ -77,15 +77,48 @@ iframe, img, embed, object, video {
 .tag-box a {
   padding: 4px 6px;
   margin: 2px;
-  background-color: #aee3f8;
+  background-color: $tag-bg;
+  color: $signal-blue;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   text-decoration: none;
 }
 
+.tag-box a.featured-tag {
+  background-color: $coral;
+  color: #fff;
+  font-weight: bold;
+}
+
 .tag-box a span {
   vertical-align: super;
   font-size: 12px;
   font-size: 0.625rem;
+}
+
+
+// Search result type badge (sidebar panel + /search/ page).
+.search-type {
+    display: inline-block;
+    font-size: 0.75em;
+    font-weight: normal;
+    line-height: 1.4;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 0.55em;
+    vertical-align: 0.1em;
+    background-color: $sky-tint;
+    color: $deep-blue;
+}
+.search-type-tip {
+    background-color: $tag-bg;
+}
+.search-type-example {
+    background-color: $example-bg;
+    color: $example-ink;
+}
+.search-type-page {
+    background-color: $hairline;
+    color: $ink;
 }

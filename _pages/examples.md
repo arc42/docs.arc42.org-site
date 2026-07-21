@@ -5,7 +5,7 @@ permalink: /examples/
 order: 19
 ---
 
-## Examples
+# Examples
 
 <div class="arc42-example">
 These examples illustrate the various sections of arc42, taken from real-life systems.

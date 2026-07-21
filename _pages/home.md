@@ -4,6 +4,8 @@ title: Home
 order: 0
 permalink: /home/
 ---
+<h1 class="visually-hidden">arc42 documentation: practical tips and examples</h1>
+
 <div class="ua-background" markdown="1">
 
 >### We stand with the people of Ukraine <span class="parent"><span class="ua-text"><i class="fas fa-heart children"></i></span><span class="ua-size children"><i class="fas fa-heart beat heart children"></i></span></span>
@@ -45,21 +47,21 @@ Check out  **[ practical tips](/keywords)** for using arc42, organized by templa
 
 >Our tips are tagged by [**{{ site.tags.size }} keywords**](/keywords) that will help you navigate. Three of these stand out:
 >
->* **[<font color="#dd354b">lean</font>](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline your documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
->* **[<font color="#dd354b">thorough</font>](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and their documentation have to be audited.
->* **[<font color="#dd354b">essential</font>](/keywords/#essential)**: Despite lean and agile, there is some information about your system that you should always document; i.e. quality goals of your architecture.
+>* **[lean](/keywords/#lean)**: You are looking for opportunities to shorten or  streamline your documentation pragmatically. You want to reduce efforts without loosing content or value. You are working in an agile environment and want to have lightweight documentation – based on the motto: _travel light_.
+>* **[thorough](/keywords/#thorough)**: You are working in a more formal environment, e.g. developing very large or critical systems with hard quality requirements. Your stakeholders require thoroughness, accuracy and attention to detail. Maybe your systems and their documentation have to be audited.
+>* **[essential](/keywords/#essential)**: Despite lean and agile, there is some information about your system that you should always document; i.e. quality goals of your architecture.
 
-## <font color="#dd354b">Still have questions?</font>
+## Still have questions?
 
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://faq.arc42.org"><img src="/images/faq-icon.png" alt="'Q' and 'A' in boxes - QnA Icon" style="float:left;width:42px;height:42px;"></a>
 <br>... then try our <a href="https://faq.arc42.org" target="_blank" rel="noopener noreferrer nofollow"><strong>extensive FAQ</strong></a>, answering more than 120 frequently asked questions.
 
-## <font color="#dd354b">Need further assistance?</font>
+## Need further assistance?
 
 <a href="/contact"><img src="/images/contact-icon.png" alt="Speechbubbles" style="float:left;width:42px;height:42px;"></a>
 <br>... let us [**know here**](/contact/), we're listening.
 
-## <font color="#dd354b">We're offering architecture training!</font>
+## We're offering architecture training!
 
 The _dynamic duo_, always two trainers in parallel, practically applicable
 knowledge from Peter Hruschka and Gernot Starke. See <a href="https://arc42.de/termine" target="_blank" rel="noopener noreferrer nofollow">arc42.de</a> for details, and schedule.
@@ -69,7 +71,8 @@ many of them passed the <a target="_blank" rel="noopener noreferrer nofollow" hr
 (sorry - public training currently German-only, English for inhouse trainings.)
 
 
-## <font color="#dd354b">This is open-source!</font>
+## This is open-source!
 
 This site is completely open-source, maintained on a <a href="https://github.com/arc42/docs.arc42.org-site/" target="_blank" rel="noopener noreferrer nofollow">public GitHub repository</a>.
+
 

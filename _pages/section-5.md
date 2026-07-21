@@ -5,11 +5,11 @@ permalink: /section-5/
 order: 9
 ---
 
-### 5. Building Block View
+# 5. Building Block View
 
 <div class="arc42-help" markdown="1">
 
-### Content
+## Content
 The building block view shows the static decomposition of the system into building blocks (modules, components, subsystems, classes,
 interfaces, packages, libraries, frameworks, layers, partitions, tiers, functions, macros, operations,
 data structures, ...) as well as their dependencies (relationships, associations, ...)
@@ -17,12 +17,12 @@ data structures, ...) as well as their dependencies (relationships, associations
 This view is mandatory for every architecture documentation.
 In analogy to a house this is the _floor plan_.
 
-### Motivation
+## Motivation
 Maintain an overview of your source code by making its structure understandable through abstraction.
 
 This allows you to communicate with your stakeholder on an abstract level without disclosing implementation details.
 
-### Form
+## Form
 The building block view is a hierarchial collection of black boxes and white boxes (see figure below) and their descriptions.
 
 ![Scope and Context, Level 1 and Level 2 Diagram]({{ site.imageurl }}/05-building-block-hierarchy.png)
@@ -37,7 +37,7 @@ Thus it contains the white box description of selected building blocks of level 
 
 </div>
 
-### 5.1 Whitebox Overall System
+## 5.1 Whitebox Overall System
 
 <div class="arc42-help" markdown="1">
 Here you describe the decomposition of the overall system using the following **white box template**.
@@ -58,13 +58,13 @@ signatures.
 
 </div>
 
-#### _&lt;insert overview diagram of overall system>_
+### _&lt;insert overview diagram of overall system>_
 
-#### _&lt;describe motivation/reasoning for overall system decomposition>_
+### _&lt;describe motivation/reasoning for overall system decomposition>_
 
-#### _&lt;describe contained building blocks (blackboxes)>_
+### _&lt;describe contained building blocks (blackboxes)>_
 
-#### _&lt;(optionally) describe important interfaces>_
+### _&lt;(optionally) describe important interfaces>_
 
 
 <div class="arc42-help" markdown="1">
@@ -92,7 +92,7 @@ Sometimes it can be useful to amend the table with additional columns:
 
 </div>
 
-#### _&lt;Name Blackbox 1>_
+### _&lt;Name Blackbox 1>_
 
 <div class="arc42-help" markdown="1">
 
@@ -124,25 +124,25 @@ _&lt;(optional) Open Issues/Problems/Risks>_
 
 
 
-#### &lt;Name black box 2>
+### &lt;Name black box 2>
 
 _&lt;black box template>_
 
-#### &lt;Name black box n>
+### &lt;Name black box n>
 
 _&lt;black box template>_
 
 
-#### &lt;Name interface 1>
+### &lt;Name interface 1>
 
 ...
 
-#### &lt;Name interface m>
+### &lt;Name interface m>
 
 
 
 
-### 5.2 Level 2
+## 5.2 Level 2
 
 <div class="arc42-help" markdown="1">
 Here you can specify the inner structure of (some) building blocks from level 1 as white boxes.
@@ -151,7 +151,7 @@ You have to decide which building blocks of your system are important enough to 
 
 </div>
 
-#### 5.2.1 White Box _&lt;building block 1&gt;_
+### 5.2.1 White Box _&lt;building block 1&gt;_
 <div class="arc42-help" markdown="1">
 Specifies the internal structure of _building block 1_.
 
@@ -160,15 +160,15 @@ Use the white box template (see above).
 
 _< insert white box template of building block 1 >_
 
-#### 5.2.2 White Box _&lt;building block 2&gt;_
+### 5.2.2 White Box _&lt;building block 2&gt;_
 _< insert white box template for building block 2 >_
 
 ...
 
-#### 5.2.n White Box _&lt;building block n&gt;_
+### 5.2.n White Box _&lt;building block n&gt;_
 _< insert white box template for building block n >_
 
-### 5.3 Level 3
+## 5.3 Level 3
 
 <div class="arc42-help" markdown="1">
 Here you can specify the inner structure of (some) building blocks from level 2 as white boxes.
@@ -177,7 +177,7 @@ When you need more detailed levels of your architecture please copy this
 part of arc42 for additional levels.
 </div>
 
-#### 5.3.1 White Box _&lt;building block x.1&gt;_
+### 5.3.1 White Box _&lt;building block x.1&gt;_
 
 <div class="arc42-help" markdown="1">
 Specifies the internal structure of _building block x.1_.
@@ -185,10 +185,10 @@ Specifies the internal structure of _building block x.1_.
 
 _< insert white box template of building block x.1 >_
 
-#### 5.3.2 White Box _&lt;building block x.2&gt;_
+### 5.3.2 White Box _&lt;building block x.2&gt;_
 _< insert white box template of building block x.2 >_
 
-#### 5.3.3 White Box _&lt;building block y.1&gt;_
+### 5.3.3 White Box _&lt;building block y.1&gt;_
 _< insert white box template of building block y.1 >_
 
 

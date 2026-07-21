@@ -33,6 +33,13 @@
         width: 100%;
     }
 
+    // Current section: a visible "you are here" cue that pairs with aria-current.
+    .page-link[aria-current="page"] {
+        font-weight: bold;
+        color: $dark-brand-color;
+        background-color: rgba($site-title-color, 0.12);
+    }
+
     ol, ul {
         margin: 1.5em 0;
         list-style: none;
@@ -65,5 +72,44 @@
                 padding: 0;
             }
         }
+    }
+}
+
+// Incremental search: compact top-hits panel under the search box.
+// The full result list lives on /search/.
+.site-aside .search-panel {
+    margin-top: 0.4em;
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    font-size: 0.95em;
+
+    ul {
+        margin: 0;
+        li {
+            border: none;
+            a {
+                display: block;
+                padding: 0.45em 0.5em;
+                text-decoration: none;
+            }
+            &.is-active a,
+            a:hover {
+                background-color: rgba($signal-blue, 0.1);
+            }
+        }
+    }
+
+    .search-panel-empty {
+        margin: 0;
+        padding: 0.5em 0.6em;
+        color: $muted;
+    }
+
+    .search-panel-all {
+        display: block;
+        padding: 0.45em 0.6em;
+        border-top: 1px solid $border-color;
+        font-weight: bold;
     }
 }

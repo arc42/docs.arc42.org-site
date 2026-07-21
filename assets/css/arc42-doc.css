@@ -1,9 +1,3 @@
-/* style for arc42 websites */
-
-p {
-  font-family: sans-serif;
-}
-
 a.headerlink {
     color: #1675b9 !important;
 }
@@ -16,7 +10,6 @@ a.headerlink {
 .arc42-help,
 .arc42-example {
   position: relative;
-  color: #002080;
   line-height: 1.5;
   padding: 16px 48px 16px 20px;
   margin: 1.5em 0;
@@ -24,11 +17,11 @@ a.headerlink {
 }
 
 .arc42-help {
-  background: #dcf0ff;
-
-  -webkit-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
-  -moz-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
-  box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+  background: #e3f2fe;
+  color: #0c3d66;
+  -webkit-box-shadow: 3px 3px 0 0 rgba(14, 79, 128, 1);
+  -moz-box-shadow: 3px 3px 0 0 rgba(14, 79, 128, 1);
+  box-shadow: 3px 3px 0 0 rgba(14, 79, 128, 1);
 }
 
 /* absolutely positioned (not floated) so the icon never nudges body text
@@ -47,7 +40,8 @@ a.headerlink {
 
 /* unified style for comments for the examples */
 .arc42-example {
-  background: #fde2e5;
+  background: #fdebe7;
+  color: #9a3b2e;
 }
 
 .arc42-example::before {
@@ -63,47 +57,68 @@ a.headerlink {
 }
 
 
-/* subtle ads */
+
+/* subtle ads: a quiet, honest note from the arc42 maintainers about their
+   training. Maroon is the site's quarantined sponsor colour; the hard offset
+   marks this as an aside attached to the page, not part of the guidance. */
+
+.subtle-ads {
+  margin-top: 50px;
+}
 
 .subtle-ad {
-  width: 85%;
-  margin: 5px;
-  padding: 5px;
+  max-width: 34em;
+  padding: 1em 1.25em;
 
-  background-color: rgba(254, 228, 228, 0.3);
+  background-color: #fcefef;
+  border: 1px solid #8a2e2e;
   border-radius: 4px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #800000;
 
-  -webkit-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
-  -moz-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
-  box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+  box-shadow: 3px 3px 0 0 rgba(138, 46, 46, 1);
 
-  font-family: "Palatino Linotype", "Book Antiqua", serif;
-  color: #032f7f;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #2a2e34;
+  line-height: 1.5;
 }
 
-/* use before-pseudo-class to add icon */
+/* honest labelling: a small kicker that names who is behind the note reads as
+   trustworthy, not as a hidden ad. */
 .subtle-ad::before {
   display: block;
-  float: right;
-  width: 50px;
-  height: 80px;
+  margin-bottom: 0.4em;
 
-  content: "";
-  background: url("./arc42-exclamation.svg") no-repeat;
-  background-size: 80px 80px;
+  content: "from the arc42 team";
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #8a2e2e;
 }
 
-
 .subtle-ad h4 {
-  line-height: 1.2pt;
-  margin-top: 5px;
+  margin: 0 0 0.3em;
+  font-size: 1.1em;
+  line-height: 1.3;
+  color: #8a2e2e;
+}
+
+.subtle-ad p {
+  margin: 0.3em 0;
+}
+
+.subtle-ad p:last-child {
+  margin-bottom: 0;
 }
 
 .subtle-ad a {
-  color: ff796a;
+  color: #8a2e2e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.subtle-ad a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 

@@ -5,26 +5,26 @@ permalink: /section-9/
 order: 13
 ---
 
-### 9. Architecture Decisions
+# 9. Architecture Decisions
 
 <div class="arc42-help" markdown="1">
 
 
-### Content
+## Content
 Important, expensive, large scale or risky architecture decisions including rationales. With "decisions" we mean selecting one alternative based on given criteria.
 
 Please use your judgement to decide whether an architectural decision should be documented here in this central section or whether you better document it locally (e.g. within the white box template of one building block). Avoid redundant texts. Refer to section 4, where you captured the most important decisions of your architecture already.
 
-### Motivation
+## Motivation
 Stakeholders of your system should be able to comprehend and retrace your decisions.
 
-### Form
+## Form
 
 * ADR ([architecture decision record](https://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)) for every important decision
 * list or table, ordered by importance and consequences or
 * more detailed in form of separate sections per decision
 
-### Background (on ADRs)
+## Background (on ADRs)
 Smaller pieces of documentation are easier to read, create and maintain.
 When it comes to architecture decisions, development teams will often:
 
@@ -33,7 +33,7 @@ When it comes to architecture decisions, development teams will often:
 
 Therefore you should document a few important decisions together with their motivation, reasoning
 
-#### Our proposal concerning decisions
+### Our proposal concerning decisions
 Keep a collection of _architecturally significant_ decisions,
 those decisions that affect the structure, quality characteristics, important (especially external) dependencies and interfaces, or construction techniques (thanx to Michael Nygard for [this proposal](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions))
 

@@ -5,12 +5,12 @@ permalink: /section-6/
 order: 10
 ---
 
-### 6. Runtime View
+# 6. Runtime View
 
 
 <div class="arc42-help" markdown="1">
 
-### Content
+## Content
 The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
 
 * important use cases or features: how do building blocks execute them?
@@ -20,11 +20,11 @@ The runtime view describes concrete behavior and interactions of the system’s 
 
 Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevancy*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
 
-### Motivation
+## Motivation
 You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
 You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
 
-### Form
+## Form
 There are many notations for describing scenarios, e.g.
 
 * numbered list of steps (in natural language)
@@ -39,7 +39,7 @@ There are many notations for describing scenarios, e.g.
 
 </div>
 
-#### 6.1 _&lt;Runtime Scenario 1>_
+### 6.1 _&lt;Runtime Scenario 1>_
 
 _&lt; insert runtime diagram or textual description of the scenario>_
 
@@ -47,11 +47,11 @@ _&lt; insert description of the notable aspects of the interactions between the
 building block instances depicted in this diagram. >_
 
 
-#### 6.2 _&lt;Runtime Scenario 2>_
+### 6.2 _&lt;Runtime Scenario 2>_
 
-#### ...
+### ...
 
-#### 6.n _&lt;Runtime Scenario n>_
+### 6.n _&lt;Runtime Scenario n>_
 
 
 {% include further-info.md

@@ -17,8 +17,8 @@ share: false
   <ul class="tag-box inline">
   {% for tag in tag_words %}
     {% if tag == "lean" or tag == "essential" or tag=="thorough" %}
-       <li><a href="#{{ tag | cgi_escape }}"><font color="#dd354b"><b>{{ tag }}</b>
-       <span>{{ site.tags[tag] | size }}</span></a></font>
+       <li><a class="featured-tag" href="#{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+       <span>{{ site.tags[tag] | size }}</span></a></li>
     {% else %}
         <li><a href="#{{ tag | cgi_escape }}">{{ tag }}
         <span>{{ site.tags[tag] | size }}</span></a></li>

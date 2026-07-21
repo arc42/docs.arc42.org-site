@@ -12,21 +12,21 @@ due to our sometimes strange, inconsistent and user-unfriendly data privacy laws
 
 ## Imprint
 
-#### Anbieter
+### Anbieter
 
 Dr. Gernot Starke, Willi-Lauf Allee 43, D-50858 Köln
 
-#### Contact
+### Contact
 
 Telefon: +49-177-728 2570<br>
 e-Mail: gernotstarke - dot - mailbox - dot - org<br>
 Website: [gernotstarke.de](https://www.gernotstarke.de)
 
-#### Verantwortlich nach § 6 Abs.2 MDStV
+### Verantwortlich nach § 6 Abs.2 MDStV
 
 Dr. Gernot Starke, mit Unterstützung von Dr. Peter Hruschka (Aachen).
 
-#### Web Analytics
+### Web Analytics
 This page uses privacy-friendly web analytics from [plausible.io](https://plausible.io), but sets NO COOKIES.
 
 ## Privacy Statement (Datenschutzerklärung)

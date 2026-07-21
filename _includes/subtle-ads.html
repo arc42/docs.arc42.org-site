@@ -1,0 +1,22 @@
+{% if site.show-subtle-ads %}
+<aside class="subtle-ads" aria-label="Training from the arc42 team">
+    <script src="https://unpkg.com/htmx.org@1.9.6"
+            integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+            crossorigin="anonymous"></script>
+
+    <div hx-get="https://arc42-subtle-ads-backend.vercel.app/api"
+         hx-trigger="load delay"
+         hx-swap="outerHTML"
+         hx-target="#subtle-ads">
+    </div>
+
+    <div id="subtle-ads" class="subtle-ad">
+        <h4>Prefer to learn arc42 hands-on?</h4>
+        <p>
+            The team that maintains this free reference also runs practical
+            architecture training. See upcoming dates and topics at
+            <a rel="noopener noreferrer nofollow" target="_blank" href="https://trainings.arc42.org">trainings.arc42.org</a>.
+        </p>
+    </div>
+</aside>
+{% endif %}

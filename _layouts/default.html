@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0e4f80">
 
     <title>{{ title }}</title>
 
@@ -41,50 +41,54 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
+
 <header class="site-header">
     <div class="inner clearfix">
-        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside"></button>
+        <button type="button" class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside" aria-label="Toggle navigation" aria-controls="site-aside"></button>
         {% if site.avatar %}
         <a href="{{ '/home/' | prepend: site.baseurl }}">
             <img class="avatar" src="{{ site.avatar | prepend: site.baseurl }}" alt="arc42 Logo"/>
         </a>
         {% endif %}
-        <h1 class="clearfix">
+        <div class="site-title clearfix">
             <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/home/' | prepend: site.baseurl }}">{{ site.title }}</a>
-            <br><span class="description"><font color=#fe5a83>{{ site.posts | size }} tips and {{ site.examples | size }} examples </font> {{ site.description }}</span>
-        </h1>
+            <br><span class="description"><span class="counts">{{ site.posts | size }} tips and {{ site.examples | size }} examples</span> {{ site.description }}</span>
+        </div>
     </div>
 </header>
 
 <div class="site-container">
-    <aside class="site-aside">
+    <aside class="site-aside" id="site-aside">
         <div class="inner">
             <div class="block">
-                <form action="{{ site.baseurl }}/search">
-                    <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" />
+                <form action="{{ site.baseurl }}/search/" data-baseurl="{{ site.baseurl }}">
+                    <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" aria-label="{{ site.str_search }}" />
                 </form>
             </div>
-            <ul>
-                {% assign pages = site.pages | sort: 'order' %}
-                {% for page in pages %}
-                {% if page.title and page.hide != true and page.permalink != '/contact/' %}
-                <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
+            <nav aria-label="arc42 sections">
+                <ul>
+                    {% assign nav_pages = site.pages | sort: 'order' %}
+                    {% for nav_page in nav_pages %}
+                    {% if nav_page.title and nav_page.hide != true and nav_page.permalink != '/contact/' %}
+                    <li><a class="page-link"{% if nav_page.url == page.url %} aria-current="page"{% endif %} href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
         </div>
     </aside>
 
-    <div class="site-content">
+    <main class="site-content" id="main-content">
         {{ content }}
-    </div>
+    </main>
 </div>
 
 
 
 <footer class="site-footer">
     <div class="inner">
-        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg"></a><br>
+        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ"></a><br>
             <span class="footer-links">
                 <a href="https://status.arc42.org">
                     <i class="fa fa-chart-bar fa-fw status-icon" aria-hidden="true"></i>Status</a>
@@ -109,13 +113,9 @@
 <script src="{{ '/assets/lib/garand-sticky/jquery.sticky.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
 
-{% if page.id %}
 <script src="{{ '/assets/js/header-link.js' | prepend: site.baseurl }}"></script>
-{% endif %}
 
-{% if page.permalink == '/search/' %}
 <script src="{{ '/assets/js/search.js' | prepend: site.baseurl }}"></script>
-{% endif %}
 
 
 </body>

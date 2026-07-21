@@ -5,22 +5,22 @@ permalink: /section-12/
 order: 16
 ---
 
-### 12. Glossary
+# 12. Glossary
 
 <div class="arc42-help" markdown="1">
 
-### Content
+## Content
 The most important domain and technical terms that your stakeholders use when discussing the system.
 
 You can also see the glossary as source for translations if you work in a multi-language environment (i.e. in offshore development models).
 
-### Motivation
+## Motivation
 You should clearly define your terms, so that all stakeholders
 
 * have an identical understanding of these termes
 * do not use synonyms and homonyms
 
-### Form
+## Form
 * A simple table with columns &lt;Term> and &lt;Definition>
 * Potentially more columns for translations
 

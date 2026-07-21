@@ -5,19 +5,19 @@ permalink: /section-8/
 order: 12
 ---
 
-### 8. Crosscutting Concepts
+# 8. Crosscutting Concepts
 
 
 <div class="arc42-help" markdown="1">
 
-### Content
+## Content
 This section describes crosscutting concepts (practices, patterns, regulations or solution ideas).
 Such concepts are often related to multiple building blocks. 
 They may include many different topics, such as the topics shown in the following diagram:
 
 ![Crosscutting concepts diagram]({{ site.imageurl }}/8-concepts/08-concepts-EN.drawio.png)
 
-### Motivation
+## Motivation
 Concepts form the basis for _conceptual integrity_ (consistency, homogeneity) of the architecture. 
 Thus, they are an important contribution to achieve inner qualities of your system.
 
@@ -25,7 +25,7 @@ This is the place in the template that we provided for a cohesive specification 
 
 Many of these concepts relate to or influence several of your building blocks. 
 
-### Form
+## Form
 The form can be varied:
 
 * concept papers with any kind of structure
@@ -33,12 +33,12 @@ The form can be varied:
 * cross-cutting model excerpts or scenarios using notations of the architecture views
 
 
-### Structure of this section
+## Structure of this section
 Pick **only** the most-needed topics for your system and assign each a level-2 heading in this section (e.g. 8.1, 8.2 etc).
 
 >DO NOT ATTEMPT to cover all of the topics of the aforementioned diagram.
 
-### Background
+## Background
 Some topics within systems often concern multiple building blocks, hardware elements or development processes.
 It might be easier to communicate or document such _cross-cutting_ topics at a central location, instead of repeating them in the description of the concerned building blocks, hardware elements or development processes.
 
