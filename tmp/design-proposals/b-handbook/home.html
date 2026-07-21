@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>arc42 Documentation · the working reference</title>
+<meta name="description" content="Practical tips and worked examples for the arc42 architecture template, organised by the twelve template sections.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-home">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== MASTHEAD ===== -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="home.html">
+      <img src="../../../assets/img/arc42logosquare.png" alt="arc42">
+      <span class="brand-text">
+        <span class="brand-name">arc42 Documentation</span>
+        <span class="brand-tag">The working reference for the arc42 architecture template.</span>
+      </span>
+    </a>
+    <p class="masthead-stat">
+      <b>144</b> tips<span class="dot">·</span><b>36</b> examples<span class="dot">·</span><b>12</b> sections
+    </p>
+  </div>
+</header>
+
+<!-- ===== LAYOUT ===== -->
+<div class="layout">
+
+  <!-- LEFT NAV RAIL -->
+  <aside class="rail">
+    <button class="rail-toggle" aria-expanded="false" aria-controls="rail-body">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Sections
+      <svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="rail-body" id="rail-body">
+      <form class="rail-search" role="search" action="#">
+        <label class="visually-hidden" for="q">Search the handbook</label>
+        <span class="search-ic" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <input id="q" type="search" name="q" placeholder="Search the handbook" autocomplete="off">
+      </form>
+
+      <nav aria-label="Documentation sections">
+        <p class="rail-label">Sections</p>
+        <ol class="rail-nav">
+          <li><a href="#"><span class="rail-num">01</span> Introduction and Goals</a></li>
+          <li><a href="#"><span class="rail-num">02</span> Constraints</a></li>
+          <li><a href="section-3.html"><span class="rail-num">03</span> Context and Scope</a></li>
+          <li><a href="#"><span class="rail-num">04</span> Solution Strategy</a></li>
+          <li><a href="#"><span class="rail-num">05</span> Building Block View</a></li>
+          <li><a href="#"><span class="rail-num">06</span> Runtime View</a></li>
+          <li><a href="#"><span class="rail-num">07</span> Deployment View</a></li>
+          <li><a href="#"><span class="rail-num">08</span> Crosscutting Concepts</a></li>
+          <li><a href="#"><span class="rail-num">09</span> Architecture Decisions</a></li>
+          <li><a href="#"><span class="rail-num">10</span> Quality Requirements</a></li>
+          <li><a href="#"><span class="rail-num">11</span> Risks and Technical Debt</a></li>
+          <li><a href="#"><span class="rail-num">12</span> Glossary</a></li>
+        </ol>
+        <p class="rail-label">More</p>
+        <ul class="rail-meta">
+          <li><a href="home.html" aria-current="page">Home</a></li>
+          <li><a href="#">Examples</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- CENTRE CONTENT -->
+  <main class="content content--home" id="main">
+    <p class="eyebrow">arc42 · reference handbook</p>
+    <h1>Documentation index</h1>
+    <p class="lede">Practical tips and worked examples for using arc42, organised by the twelve template sections. Jump to a section to find what belongs in it and how to do it well.</p>
+
+    <blockquote class="solidarity">
+      <strong>We stand with the people of Ukraine.</strong> Please support humanitarian efforts via the <a href="https://www.icrc.org/en">International Committee of the Red Cross</a>.
+    </blockquote>
+
+    <!-- DIRECTORY -->
+    <h2 class="section-label">The twelve template sections</h2>
+    <ol class="directory">
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">01</span>
+          <span class="dir-body"><span class="dir-name">Introduction and Goals</span><span class="dir-desc">Requirements, stakeholders, top quality goals</span></span>
+          <span class="dir-count">24<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">02</span>
+          <span class="dir-body"><span class="dir-name">Constraints</span><span class="dir-desc">Technical and organisational constraints, conventions</span></span>
+          <span class="dir-count">5<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="section-3.html">
+          <span class="dir-num">03</span>
+          <span class="dir-body"><span class="dir-name">Context and Scope</span><span class="dir-desc">Business and technical context, external interfaces</span></span>
+          <span class="dir-count">19<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">04</span>
+          <span class="dir-body"><span class="dir-name">Solution Strategy</span><span class="dir-desc">Fundamental solution decisions and ideas</span></span>
+          <span class="dir-count">6<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">05</span>
+          <span class="dir-body"><span class="dir-name">Building Block View</span><span class="dir-desc">Static decomposition, black and white boxes</span></span>
+          <span class="dir-count">28<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">06</span>
+          <span class="dir-body"><span class="dir-name">Runtime View</span><span class="dir-desc">Runtime scenarios: how building blocks interact</span></span>
+          <span class="dir-count">11<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">07</span>
+          <span class="dir-body"><span class="dir-name">Deployment View</span><span class="dir-desc">Infrastructure and technical deployment</span></span>
+          <span class="dir-count">10<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">08</span>
+          <span class="dir-body"><span class="dir-name">Crosscutting Concepts</span><span class="dir-desc">Recurring solution approaches and patterns</span></span>
+          <span class="dir-count">11<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">09</span>
+          <span class="dir-body"><span class="dir-name">Architecture Decisions</span><span class="dir-desc">Important, expensive, risky, or contentious decisions</span></span>
+          <span class="dir-count">10<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">10</span>
+          <span class="dir-body"><span class="dir-name">Quality Requirements</span><span class="dir-desc">Quality tree and detailed quality scenarios</span></span>
+          <span class="dir-count">8<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">11</span>
+          <span class="dir-body"><span class="dir-name">Risks and Technical Debt</span><span class="dir-desc">Known problems, risks, and technical debt</span></span>
+          <span class="dir-count">6<span class="unit">tips</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="dir-link" href="#">
+          <span class="dir-num">12</span>
+          <span class="dir-body"><span class="dir-name">Glossary</span><span class="dir-desc">Definitions of important business and technical terms</span></span>
+          <span class="dir-count">6<span class="unit">tips</span></span>
+        </a>
+      </li>
+    </ol>
+
+    <!-- KEYWORDS -->
+    <h2 class="section-label">Navigate by keyword</h2>
+    <dl class="keywords">
+      <div>
+        <dt><a class="kw-chip" href="#">lean</a></dt>
+        <dd><strong>lean</strong>shorten and streamline your documentation pragmatically; travel light.</dd>
+      </div>
+      <div>
+        <dt><a class="kw-chip" href="#">thorough</a></dt>
+        <dd><strong>thorough</strong>formal, large, or critical systems that demand accuracy and auditability.</dd>
+      </div>
+      <div>
+        <dt><a class="kw-chip" href="#">essential</a></dt>
+        <dd><strong>essential</strong>the things you should always document, whatever your process.</dd>
+      </div>
+    </dl>
+
+    <!-- CLOSING NOTES -->
+    <h2 class="section-label">Reference notes</h2>
+    <dl class="notes">
+      <div>
+        <dt>Still have questions?</dt>
+        <dd>Try the <a href="https://faq.arc42.org">extensive FAQ</a>, answering 120+ common questions.</dd>
+      </div>
+      <div>
+        <dt>Architecture training</dt>
+        <dd>Peter Hruschka and Gernot Starke run practical, applicable training. See <a href="https://arc42.de/termine">arc42.de</a> for dates.</dd>
+      </div>
+      <div>
+        <dt>Open source</dt>
+        <dd>This site is open source, maintained on <a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>.</dd>
+      </div>
+    </dl>
+  </main>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="foot-inner">
+    <ul class="foot-links">
+      <li><a class="status" href="#"><span class="status-dot" aria-hidden="true"></span>Status</a></li>
+      <li><a href="#">Imprint</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a></li>
+    </ul>
+    <p class="foot-maint">Maintained by Gernot Starke, supported by Peter Hruschka. CC BY-SA 4.0.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.rail-toggle');
+    var body = document.getElementById('rail-body');
+    if (!btn || !body) return;
+    btn.addEventListener('click', function () {
+      var open = body.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
+</html>

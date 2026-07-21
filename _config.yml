@@ -125,6 +125,7 @@ exclude:
   - prompts
   - originals
   - Dockerfile
+  - tmp
   - docker
   - docker-compose.yml
   - .dockerignore

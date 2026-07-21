@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3. Context and Scope · arc42 Documentation</title>
+  <meta name="description" content="Business and technical context, external interfaces: what belongs in arc42 section 3 and how to do it well.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Masthead ===== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="home.html">
+        <img class="brand-logo" src="../../../assets/img/arc42logosquare.png" alt="arc42">
+        <span class="brand-text">
+          <span class="brand-title">arc42 Documentation</span>
+          <span class="brand-tag">The working reference for the arc42 architecture template.</span>
+        </span>
+      </a>
+      <div class="masthead-right">
+        <p class="stat">144 practical tips <span class="dot">·</span> 36 worked examples <span class="dot">·</span> 12 sections</p>
+        <div class="masthead-motif big" aria-hidden="true">03</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Shell: spine + content ===== -->
+  <div class="shell">
+
+    <!-- ===== The Spine (primary nav) ===== -->
+    <nav class="spine" aria-label="arc42 sections">
+      <div class="spine-top">
+        <a class="spine-tool" href="home.html" aria-label="Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        </a>
+        <button class="spine-tool" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        </button>
+      </div>
+      <span class="spine-divider" aria-hidden="true"></span>
+      <ol class="spine-list">
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 1: Introduction and Goals">1</a><span class="spine-label" aria-hidden="true"><span class="lab-num">1.</span> Introduction and Goals</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 2: Constraints">2</a><span class="spine-label" aria-hidden="true"><span class="lab-num">2.</span> Constraints</span></li>
+        <li class="spine-item"><a class="spine-num" href="section-3.html" aria-current="page" aria-label="Section 3: Context and Scope, current page">3</a><span class="spine-label" aria-hidden="true"><span class="lab-num">3.</span> Context and Scope</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 4: Solution Strategy">4</a><span class="spine-label" aria-hidden="true"><span class="lab-num">4.</span> Solution Strategy</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 5: Building Block View">5</a><span class="spine-label" aria-hidden="true"><span class="lab-num">5.</span> Building Block View</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 6: Runtime View">6</a><span class="spine-label" aria-hidden="true"><span class="lab-num">6.</span> Runtime View</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 7: Deployment View">7</a><span class="spine-label" aria-hidden="true"><span class="lab-num">7.</span> Deployment View</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 8: Crosscutting Concepts">8</a><span class="spine-label" aria-hidden="true"><span class="lab-num">8.</span> Crosscutting Concepts</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 9: Architecture Decisions">9</a><span class="spine-label" aria-hidden="true"><span class="lab-num">9.</span> Architecture Decisions</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 10: Quality Requirements">10</a><span class="spine-label" aria-hidden="true"><span class="lab-num">10.</span> Quality Requirements</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 11: Risks and Technical Debt">11</a><span class="spine-label" aria-hidden="true"><span class="lab-num">11.</span> Risks and Technical Debt</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 12: Glossary">12</a><span class="spine-label" aria-hidden="true"><span class="lab-num">12.</span> Glossary</span></li>
+      </ol>
+    </nav>
+
+    <!-- ===== Content ===== -->
+    <main id="main" class="content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="home.html">Home</a></li>
+          <li aria-hidden="true" class="sep">›</li>
+          <li><a href="home.html#sections">Sections</a></li>
+          <li aria-hidden="true" class="sep">›</li>
+          <li aria-current="page">3. Context and Scope</li>
+        </ol>
+      </nav>
+
+      <p class="you-are-here">
+        <span class="yah-label">You are here</span>
+        <span class="yah-name"><span class="yah-num">3.</span> Context and Scope</span>
+      </p>
+
+      <div class="prose">
+        <h1>3. Context and Scope</h1>
+
+        <div class="callout arc42-help">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4"/><path d="M12 17h.01"/></svg>
+          <div class="cpart">
+            <span class="clabel">Content</span>
+            <p>System scope and context delimits your system (its scope) from all its communication partners (neighbouring systems and users, its context), and specifies the external interfaces. If useful, separate the business context (domain inputs and outputs) from the technical context (channels, protocols, hardware).</p>
+          </div>
+          <div class="cpart">
+            <span class="clabel">Motivation</span>
+            <p>The domain and technical interfaces to communication partners are among a system's most critical aspects. Make sure you completely understand them.</p>
+          </div>
+          <div class="cpart">
+            <span class="clabel">Form</span>
+            <p>Various context diagrams; lists of communication partners and their interfaces.</p>
+          </div>
+        </div>
+
+        <h2>3.1 Business context</h2>
+
+        <div class="callout arc42-help">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4"/><path d="M12 17h.01"/></svg>
+          <div class="cpart">
+            <span class="clabel">Content</span>
+            <p>Specify all communication partners (users, IT systems) with domain-specific inputs and outputs. Optionally add domain formats or protocols.</p>
+          </div>
+          <div class="cpart">
+            <span class="clabel">Motivation</span>
+            <p>All stakeholders should understand which data are exchanged with the system's environment.</p>
+          </div>
+          <div class="cpart">
+            <span class="clabel">Form</span>
+            <p>Diagrams showing the system as a black box with domain interfaces to partners, or a table (system name as title; columns: partner, input, output).</p>
+          </div>
+        </div>
+
+        <div class="callout arc42-example">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <h3 class="ex-title">Example: HTML Sanity Checker</h3>
+          <p class="ex-caption">A simple business context, drawn as a black box with its neighbours.</p>
+
+          <svg class="diagram" viewBox="0 0 600 380" role="img" aria-label="Business context diagram: HTML Sanity Checker and its neighbours">
+            <title>Business context diagram: HTML Sanity Checker and its neighbours</title>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" fill="#1675b9"></path>
+              </marker>
+            </defs>
+
+            <!-- connectors -->
+            <g stroke="#1675b9" stroke-width="2" fill="none">
+              <line x1="230" y1="160" x2="172" y2="92" marker-end="url(#arrow)"></line>   <!-- system -> user (reports) -->
+              <line x1="432" y1="92" x2="372" y2="160" marker-end="url(#arrow)"></line>   <!-- build -> system (runs) -->
+              <line x1="232" y1="222" x2="172" y2="288" marker-end="url(#arrow)"></line>  <!-- system -> local files (reads) -->
+              <line x1="370" y1="222" x2="430" y2="288" marker-end="url(#arrow)"></line>  <!-- system -> web (checks) -->
+            </g>
+
+            <!-- edge labels -->
+            <g font-family="'Hanken Grotesk', sans-serif" font-size="14" fill="#26282e" font-weight="600" text-anchor="middle">
+              <g><rect x="176" y="112" width="66" height="22" rx="4" fill="#fdfcfb" stroke="#dbe7f2"></rect><text x="209" y="127">reports</text></g>
+              <g><rect x="372" y="112" width="52" height="22" rx="4" fill="#fdfcfb" stroke="#dbe7f2"></rect><text x="398" y="127">runs</text></g>
+              <g><rect x="176" y="246" width="56" height="22" rx="4" fill="#fdfcfb" stroke="#dbe7f2"></rect><text x="204" y="261">reads</text></g>
+              <g><rect x="372" y="246" width="62" height="22" rx="4" fill="#fdfcfb" stroke="#dbe7f2"></rect><text x="403" y="261">checks</text></g>
+            </g>
+
+            <!-- central system (black box) -->
+            <rect x="220" y="152" width="160" height="76" rx="10" fill="#eaf4fc" stroke="#0e4f80" stroke-width="2.5"></rect>
+            <text x="300" y="185" text-anchor="middle" font-family="'Bricolage Grotesque', sans-serif" font-weight="700" font-size="16" fill="#0e4f80">HTML Sanity</text>
+            <text x="300" y="205" text-anchor="middle" font-family="'Bricolage Grotesque', sans-serif" font-weight="700" font-size="16" fill="#0e4f80">Checker</text>
+
+            <!-- neighbours -->
+            <g font-family="'Hanken Grotesk', sans-serif" font-size="14.5" font-weight="600" fill="#26282e" text-anchor="middle">
+              <rect x="42" y="46" width="130" height="50" rx="8" fill="#fdfcfb" stroke="#1675b9" stroke-width="1.75"></rect>
+              <text x="107" y="76">User</text>
+
+              <rect x="430" y="46" width="140" height="50" rx="8" fill="#fdfcfb" stroke="#1675b9" stroke-width="1.75"></rect>
+              <text x="500" y="76">Build system</text>
+
+              <rect x="42" y="284" width="130" height="50" rx="8" fill="#fdfcfb" stroke="#1675b9" stroke-width="1.75"></rect>
+              <text x="107" y="314">Local files</text>
+
+              <rect x="430" y="284" width="140" height="50" rx="8" fill="#fdfcfb" stroke="#1675b9" stroke-width="1.75"></rect>
+              <text x="500" y="314">Web resources</text>
+            </g>
+          </svg>
+
+          <div class="table-wrap">
+            <table class="data">
+              <caption>Communication partners of the HTML Sanity Checker</caption>
+              <thead>
+                <tr><th scope="col">Neighbour</th><th scope="col">Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">User</th><td>Documents software with a toolchain that generates HTML; wants valid links.</td></tr>
+                <tr><th scope="row">Build system</th><td>Usually Gradle; runs the checker as part of the build.</td></tr>
+                <tr><th scope="row">Local HTML files</th><td>The checker reads and parses local HTML and runs sanity checks.</td></tr>
+                <tr><th scope="row">Local image files</th><td>The checker verifies that linked images exist as local files.</td></tr>
+                <tr><th scope="row">External web resources</th><td>Optionally checks that external links resolve (slower, network-dependent).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h2>3.2 Technical context</h2>
+
+        <div class="callout arc42-help">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4"/><path d="M12 17h.01"/></svg>
+          <div class="cpart">
+            <span class="clabel">Content</span>
+            <p>Technical interfaces (channels and transmission media) linking the system to its environment, plus a mapping of domain I/O onto those channels.</p>
+          </div>
+          <div class="cpart">
+            <span class="clabel">Motivation</span>
+            <p>Many stakeholders decide architecture from technical interfaces, especially infrastructure and hardware designers.</p>
+          </div>
+          <div class="cpart">
+            <span class="clabel">Form</span>
+            <p>For example a UML deployment diagram of channels to neighbours, with a mapping table from channels to input/output.</p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data">
+            <caption>Technical channels mapped to domain input and output</caption>
+            <thead>
+              <tr><th scope="col">Channel</th><th scope="col">Protocol</th><th scope="col">Maps to (domain I/O)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">CLI invocation</th><td>Shell / exit code</td><td>Build system triggers a check, receives pass/fail</td></tr>
+              <tr><th scope="row">File system</th><td>Local read</td><td>Reads local HTML and image files</td></tr>
+              <tr><th scope="row">HTTP(S)</th><td>GET</td><td>Optional reachability check of external links</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Further Info</h2>
+
+        <h3>Tips</h3>
+        <ul class="tips-list">
+          <li class="tip-row">
+            <span class="tip-title">Keep the context diagram to one page</span>
+            <span class="tag-set"><span class="tag">#context</span><span class="tag">#lean</span></span>
+          </li>
+          <li class="tip-row">
+            <span class="tip-title">Name every external interface explicitly</span>
+            <span class="tag-set"><span class="tag">#context</span><span class="tag">#essential</span></span>
+          </li>
+        </ul>
+
+        <h3>Related questions</h3>
+        <p>See <a href="https://faq.arc42.org/category_c/#c-sec-3">FAQ: context, scope and external interfaces</a>.</p>
+      </div>
+
+      <!-- prev / next stepper -->
+      <nav class="stepper" aria-label="Section pagination">
+        <a class="step prev" href="#">
+          <span class="step-marker" aria-hidden="true">2</span>
+          <span class="step-body">
+            <span class="step-dir">&larr; Previous</span>
+            <span class="step-name">2. Constraints</span>
+          </span>
+        </a>
+        <a class="step next" href="#">
+          <span class="step-marker" aria-hidden="true">4</span>
+          <span class="step-body">
+            <span class="step-dir">Next &rarr;</span>
+            <span class="step-name">4. Solution Strategy</span>
+          </span>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="status-link" href="#"><span class="status-dot" aria-hidden="true"></span>Status</a>
+      <nav aria-label="Footer">
+        <a href="#">Imprint</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+        <a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>
+      </nav>
+      <p class="maintainer">Maintained by Gernot Starke, supported by Peter Hruschka. CC BY-SA 4.0.</p>
+    </div>
+  </footer>
+</body>
+</html>

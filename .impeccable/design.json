@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-20T00:00:00Z",
+  "title": "Design System: arc42 Documentation",
+  "extensions": {
+    "colorMeta": {
+      "signal-blue": { "role": "primary", "displayName": "Signal Blue", "canonical": "#1675b9", "tonalRamp": ["#0a2f4a", "#0e4368", "#125786", "#1675b9", "#3f92c9", "#71b0d8", "#a6cee8", "#d7ecf8"] },
+      "deep-blue": { "role": "primary", "displayName": "Deep Blue", "canonical": "#0e4f80", "tonalRamp": ["#06253c", "#093552", "#0b4269", "#0e4f80", "#2a6d9e", "#5290bc", "#8ab5d5", "#cfe3f1"] },
+      "sky-tint": { "role": "secondary", "displayName": "Sky Tint", "canonical": "#dceefa", "tonalRamp": ["#28455a", "#3a6480", "#5687a6", "#7dabc9", "#a3c9e2", "#c3ddf0", "#dceefa", "#eef7fd"] },
+      "header-tint": { "role": "secondary", "displayName": "Header Tint", "canonical": "#eaf4fc", "tonalRamp": ["#33475a", "#4a6883", "#6a8ba9", "#93b2cc", "#bcd4e8", "#d7e8f6", "#eaf4fc", "#f5fafe"] },
+      "coral": { "role": "tertiary", "displayName": "Coral", "canonical": "#ff5c7c", "tonalRamp": ["#5c1226", "#821a36", "#a82248", "#ce2a5a", "#ff5c7c", "#ff829a", "#ffadbc", "#ffd9e0"] },
+      "amber": { "role": "tertiary", "displayName": "Amber", "canonical": "#ffc95c", "tonalRamp": ["#5c4310", "#82601a", "#a87d22", "#ce9a2a", "#ffc95c", "#ffd67f", "#ffe4aa", "#fff2d5"] },
+      "help-bg": { "role": "tertiary", "displayName": "Help Blue", "canonical": "#e3f2fe", "tonalRamp": ["#2b485c", "#3d6883", "#598ba8", "#7fadca", "#a5cbe4", "#c6e0f4", "#e3f2fe", "#f2f9ff"] },
+      "example-bg": { "role": "tertiary", "displayName": "Example Blush", "canonical": "#fdebe7", "tonalRamp": ["#5c3a30", "#824f42", "#a86656", "#ce7f6c", "#f0a08a", "#f8c6b6", "#fdebe7", "#fef5f2"] },
+      "tag-bg": { "role": "tertiary", "displayName": "Tag Cyan", "canonical": "#aee3f8", "tonalRamp": ["#1f434c", "#2f636f", "#4a8a99", "#72b1c2", "#9bd0e0", "#aee3f8", "#cfeffb", "#eafaff"] },
+      "emerald": { "role": "tertiary", "displayName": "Emerald", "canonical": "#2e9e67", "tonalRamp": ["#0d3a24", "#134f31", "#1a6b42", "#218755", "#2e9e67", "#54b485", "#8acdaa", "#c6e7d4"] },
+      "maroon": { "role": "tertiary", "displayName": "Maroon", "canonical": "#8a2e2e", "tonalRamp": ["#3a1414", "#4f1b1b", "#6b2424", "#8a2e2e", "#a85050", "#c67d7d", "#dcadad", "#f0d9d9"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#2a2e34", "tonalRamp": ["#16181c", "#1f2226", "#2a2e34", "#454b54", "#666d78", "#8d939c", "#bcc0c6", "#e8eaed"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#fcfdff", "tonalRamp": ["#4a4d55", "#6a6e78", "#8d9099", "#b0b3bb", "#d0d2d8", "#e8e9ec", "#f5f6f8", "#fcfdff"] },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#5e6975", "tonalRamp": ["#23282e", "#31373f", "#414954", "#5e6975", "#828c97", "#a7afb8", "#cbd0d6", "#eaecef"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Masthead title only, once per page, in Header Tint on the Deep Blue band." },
+      "headline": { "displayName": "Headline", "purpose": "Page h1 in ink, the section name." },
+      "title": { "displayName": "Title", "purpose": "h2 subheads, colored Signal Blue for scannability." },
+      "body": { "displayName": "Body", "purpose": "All prose. Target 65 to 75 characters per line." },
+      "label": { "displayName": "Label", "purpose": "Aside nav, meta, tags, footnotes." },
+      "code": { "displayName": "Code", "purpose": "Inline code and code blocks." }
+    },
+    "typographyNote": "Typeface refresh is deferred until the arc42.org typeface is decided, so the whole family aligns at once. Target: Atkinson Hyperlegible Next (variable, engineered for legibility) for body/UI and Libre Caslon Text (editorial serif) for headings, self-hosted, matching quality.arc42.org. Until then the system Helvetica/Arial stack stands.",
+    "shadows": [
+      { "name": "callout-lift", "value": "3px 3px 0 0 rgba(14,79,128,1)", "purpose": "Signature hard offset drop shadow under .arc42-help callouts, tuned to Deep Blue, so they read as notes pinned onto the page." },
+      { "name": "sponsor-lift", "value": "3px 3px 0 0 rgba(138,46,46,1)", "purpose": "Maroon offset shadow reserved for .subtle-ad sponsor blocks." }
+    ],
+    "motion": [
+      { "name": "link-hover", "value": "color 0.2s ease", "purpose": "Links deepen and underline on hover. The only ambient motion in the system; respects prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "800px" },
+      { "name": "container", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Outlined Button",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Quiet outlined control; fills Signal Blue on hover, with a visible focus ring.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Read the section</a>",
+      "css": ".ds-btn { display: inline-block; padding: 0.5em 0.75em; border: 1px solid #1675b9; border-radius: 0.3em; color: #1675b9; background: #fcfdff; text-decoration: none; font-family: Helvetica, Arial, sans-serif; transition: background 0.2s ease, color 0.2s ease; } .ds-btn:hover { background: #1675b9; color: #fcfdff; } .ds-btn:focus-visible { outline: 2px solid #1675b9; outline-offset: 2px; }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "The fresh, family-style header: a confident Deep Blue band with light title and a single coral description line. Colour lives here so the reading surface below stays calm.",
+      "html": "<header class=\"ds-masthead\"><span class=\"ds-avatar\" aria-hidden=\"true\"></span><div><a class=\"ds-mast-title\" href=\"#\">arc42 Documentation</a><p class=\"ds-mast-desc\">what belongs in a section, and how to do it well</p></div></header>",
+      "css": ".ds-masthead { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #0e4f80; border-top: 3px solid #1675b9; border-bottom: 3px solid #1675b9; font-family: Helvetica, Arial, sans-serif; } .ds-avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; background: #eaf4fc; } .ds-mast-title { display: block; color: #eaf4fc; font-weight: 700; font-size: 1.8em; line-height: 1.1; text-decoration: none; } .ds-mast-desc { margin: 2px 0 0; color: #ff5c7c; font-size: 0.95em; }"
+    },
+    {
+      "name": "Help Callout",
+      "kind": "custom",
+      "refersTo": "callout-help",
+      "description": "The template's guidance block. Fresh cool blue, lifted with the signature Deep Blue offset shadow, help icon top-right.",
+      "html": "<div class=\"ds-help\"><span class=\"ds-help-icon\" aria-hidden=\"true\"></span><p>Motivation: why this section is useful, what belongs in it, and how to do it well.</p></div>",
+      "css": ".ds-help { color: #0c3d66; padding: 16px 48px 16px 20px; background: #e3f2fe; border-radius: 4px; box-shadow: 3px 3px 0 0 rgba(14,79,128,1); font-family: Helvetica, Arial, sans-serif; overflow: hidden; } .ds-help-icon { float: right; width: 24px; height: 24px; border-radius: 50%; background: #1675b9; } .ds-help p { margin: 0.4em 0; line-height: 1.5; }"
+    },
+    {
+      "name": "Example Callout",
+      "kind": "custom",
+      "refersTo": "callout-example",
+      "description": "Worked-example block. Warm blush with matched warm ink, flat (no shadow) so it reads lighter than a help block.",
+      "html": "<div class=\"ds-example\"><span class=\"ds-example-icon\" aria-hidden=\"true\">i</span><p>A concrete example of this section, drawn from a real system.</p></div>",
+      "css": ".ds-example { color: #9a3b2e; padding: 16px 48px 16px 20px; background: #fdebe7; border-radius: 4px; font-family: Helvetica, Arial, sans-serif; overflow: hidden; } .ds-example-icon { float: right; width: 24px; height: 24px; line-height: 24px; text-align: center; font-style: italic; font-weight: 700; color: #fdebe7; background: #9a3b2e; border-radius: 50%; } .ds-example p { margin: 0.4em 0; line-height: 1.5; }"
+    },
+    {
+      "name": "Inline Code",
+      "kind": "custom",
+      "refersTo": "code-inline",
+      "description": "Subtle code chip, not a loud highlight.",
+      "html": "<p style=\"font-family: Helvetica, Arial, sans-serif; color:#2a2e34;\">Reference the token via <code class=\"ds-code\">site.imageurl</code> in Liquid.</p>",
+      "css": ".ds-code { font-family: Consolas, Monaco, 'Andale Mono', monospace; font-size: 0.85em; margin: 0 2px; padding: 0 5px; border: 1px solid rgba(20,44,82,0.12); background: #f6f8fa; border-radius: 3px; }"
+    },
+    {
+      "name": "Tag Pill",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Small taxonomy pill in Tag Cyan.",
+      "html": "<a class=\"ds-tag\" href=\"#\">requirements</a>",
+      "css": ".ds-tag { display: inline-block; padding: 4px 6px; margin: 2px; background: #aee3f8; color: #1675b9; border-radius: 4px; text-decoration: none; font-family: Helvetica, Arial, sans-serif; font-size: 14px; } .ds-tag:hover { opacity: 0.85; }"
+    },
+    {
+      "name": "Aside Nav Item",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Section link in the sidebar list, hairline-divided.",
+      "html": "<ul class=\"ds-nav\"><li><a href=\"#\">1. Introduction and Goals</a></li><li><a href=\"#\">2. Constraints</a></li><li><a href=\"#\">3. Context and Scope</a></li></ul>",
+      "css": ".ds-nav { list-style: none; margin: 0; padding: 0; font-family: Helvetica, Arial, sans-serif; font-size: 0.95em; } .ds-nav li { border-bottom: 1px solid rgba(20,44,82,0.12); } .ds-nav li:first-child { border-top: 1px solid rgba(20,44,82,0.12); } .ds-nav a { display: block; padding: 0.5em 0.3em; color: #1675b9; text-decoration: none; } .ds-nav a:hover { text-decoration: underline; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Field Guide, refreshed",
+    "overview": "A reference you flip through fast, not a brochure you admire. Every visual decision serves one job: a practicing architect or a newcomer finds the guidance or example they need in seconds and gets back to work. The bones stay the same: clear entries, scannable structure, generous whitespace, comfortable measure, a calm reading surface where the content is the hero. What changes is the surface temperature. The site now reads as a current, colour-aware member of the arc42 family. Colour is concentrated in the chrome and the callouts, a confident deep-blue masthead and fresher warm-and-cool callout pairs, while body text stays soft ink on near-white paper. Freshness lives at the edges; the centre stays calm. Signal Blue is this site's signature within the family, the way teal-green is quality.arc42.org's.",
+    "keyCharacteristics": [
+      "Near-white paper, soft cool ink, a single confident Signal Blue carrying links, titles, and structure.",
+      "Colour concentrated at the edges: a saturated deep-blue masthead, refreshed help (cool) and example (warm) callouts, colour-coded links and tags. The reading surface stays calm.",
+      "Functional and family-aware colour: blue for structure and action, cool blue for guidance, warm blush for examples, one coral spark, plus amber, emerald, and maroon quarantined to specific jobs.",
+      "Roomy 50px vertical rhythm; a two-column read (content + aside nav) on desktop.",
+      "Flat surfaces with one signature hard offset shadow reserved for annotation-style callouts.",
+      "Typeface deferred, aligning with the arc42 family (Atkinson Hyperlegible Next plus Libre Caslon Text) once arc42.org decides."
+    ],
+    "rules": [
+      { "name": "The Functional-and-Family Colour Rule", "body": "Colour earns its place by carrying meaning or family identity, never by decorating. Blue means structure or action; cool blue means guidance; warm blush means example; coral and amber are warm accents; green means status; maroon means sponsor; the deep-blue band means arc42 masthead.", "section": "colors" },
+      { "name": "The Calm-Centre Rule", "body": "Colour is concentrated in the chrome and callouts. Body text is always soft ink on near-white paper. Never tint the reading surface behind long-form prose, and never put a saturated fill behind running text.", "section": "colors" },
+      { "name": "The One Blue Rule", "body": "There is a single editorial blue (#1675b9). Deep Blue, Sky Tint, and Header Tint are its darker and lighter family relatives for chrome. Do not introduce a second competing accent blue into content.", "section": "colors" },
+      { "name": "The Colour-Is-Never-Alone Rule", "body": "Colour never carries meaning by itself. Every coloured signal is paired with text, an icon, or a shape, so the site stays legible for colour-blind readers and in any lighting.", "section": "colors" },
+      { "name": "The Blue-Subhead Rule", "body": "h2 section headings are Signal Blue while h1 stays ink, so a reader can scan a long section's structure at a glance. It is a navigation aid, not decoration.", "section": "typography" },
+      { "name": "The Comfortable Measure Rule", "body": "Body copy targets 65 to 75 characters per line. Constrain the content column so prose never runs full desktop width.", "section": "typography" },
+      { "name": "The Flat-Page, Lifted-Note Rule", "body": "The document itself is flat. The signature offset shadow is reserved exclusively for callout and sponsor blocks, the things that are annotations on the page rather than part of it.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do concentrate colour in the chrome and callouts, and keep body text as soft Ink on near-white Paper.",
+      "Do use colour functionally and for family identity: Signal Blue for structure and action, Help Blue for guidance, Example Blush for examples, Coral and Amber as sparing warm accents, Emerald only for status, Maroon only for sponsor blocks, Deep Blue for the masthead band.",
+      "Do color h2 subheads Signal Blue so a reader can scan a long section's skeleton at a glance.",
+      "Do cap body measure at 65 to 75 characters; constrain the content column so prose never runs full desktop width.",
+      "Do reserve the signature hard offset shadow for callout and sponsor blocks only.",
+      "Do distinguish help (cool blue) from example (warm blush) callouts by temperature, every time, and always pair colour with text or an icon.",
+      "Do feel like one arc42 family: share the saturated-header style and warm-plus-cool palette logic with arc42.org and quality.arc42.org."
+    ],
+    "donts": [
+      "Don't build a salesy marketing page or brochure: no gradient heroes, no fabricated metrics, no conversion-funnel CTAs, no sales sheen.",
+      "Don't drift toward a heavy enterprise documentation portal: no dense, cluttered, bureaucratic chrome.",
+      "Don't mistake more colour for trendy or gimmicky: no neon, no glassmorphism, no dark-mode-for-cool, no gratuitous animation.",
+      "Don't settle for a sterile generic template with no arc42 identity.",
+      "Don't ship AI-generated slop: no identical icon-and-heading card grids, no gradient hero-metric templates, no decorative glassmorphism, no interchangeable stock layouts.",
+      "Don't create cluttered information overload: no stacked competing callouts, no dense sidebars fighting the text.",
+      "Don't tint the reading surface behind long-form prose, and never put a saturated fill behind running text.",
+      "Don't introduce a second competing accent blue into editorial content; there is one editorial blue.",
+      "Don't put the offset callout shadow on headings, tables, or ordinary content containers.",
+      "Don't use border-left greater than 1px as a coloured accent stripe; the gray blockquote rule is the only permitted left border.",
+      "Don't use gradient text or background-clip: text; emphasis comes from weight, size, and the one blue.",
+      "Don't let colour be the only carrier of meaning; always pair it with text, an icon, or a shape."
+    ]
+  }
+}

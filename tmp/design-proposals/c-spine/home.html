@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>arc42 Documentation · The working reference for the arc42 template</title>
+  <meta name="description" content="Practical tips and worked examples for using arc42, organised by the twelve template sections.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Masthead ===== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="home.html">
+        <img class="brand-logo" src="../../../assets/img/arc42logosquare.png" alt="arc42">
+        <span class="brand-text">
+          <span class="brand-title">arc42 Documentation</span>
+          <span class="brand-tag">The working reference for the arc42 architecture template.</span>
+        </span>
+      </a>
+      <div class="masthead-right">
+        <p class="stat">144 practical tips <span class="dot">·</span> 36 worked examples <span class="dot">·</span> 12 sections</p>
+        <div class="masthead-motif" aria-hidden="true">1&nbsp;2&nbsp;3&nbsp;4&nbsp;5&nbsp;6&nbsp;7&nbsp;8&nbsp;9&nbsp;10&nbsp;11&nbsp;12</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Shell: spine + content ===== -->
+  <div class="shell">
+
+    <!-- ===== The Spine (primary nav) ===== -->
+    <nav class="spine" aria-label="arc42 sections">
+      <div class="spine-top">
+        <a class="spine-tool" href="home.html" aria-current="page" aria-label="Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        </a>
+        <button class="spine-tool" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        </button>
+      </div>
+      <span class="spine-divider" aria-hidden="true"></span>
+      <ol class="spine-list">
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 1: Introduction and Goals">1</a><span class="spine-label" aria-hidden="true"><span class="lab-num">1.</span> Introduction and Goals</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 2: Constraints">2</a><span class="spine-label" aria-hidden="true"><span class="lab-num">2.</span> Constraints</span></li>
+        <li class="spine-item"><a class="spine-num" href="section-3.html" aria-label="Section 3: Context and Scope">3</a><span class="spine-label" aria-hidden="true"><span class="lab-num">3.</span> Context and Scope</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 4: Solution Strategy">4</a><span class="spine-label" aria-hidden="true"><span class="lab-num">4.</span> Solution Strategy</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 5: Building Block View">5</a><span class="spine-label" aria-hidden="true"><span class="lab-num">5.</span> Building Block View</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 6: Runtime View">6</a><span class="spine-label" aria-hidden="true"><span class="lab-num">6.</span> Runtime View</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 7: Deployment View">7</a><span class="spine-label" aria-hidden="true"><span class="lab-num">7.</span> Deployment View</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 8: Crosscutting Concepts">8</a><span class="spine-label" aria-hidden="true"><span class="lab-num">8.</span> Crosscutting Concepts</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 9: Architecture Decisions">9</a><span class="spine-label" aria-hidden="true"><span class="lab-num">9.</span> Architecture Decisions</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 10: Quality Requirements">10</a><span class="spine-label" aria-hidden="true"><span class="lab-num">10.</span> Quality Requirements</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 11: Risks and Technical Debt">11</a><span class="spine-label" aria-hidden="true"><span class="lab-num">11.</span> Risks and Technical Debt</span></li>
+        <li class="spine-item"><a class="spine-num" href="#" aria-label="Section 12: Glossary">12</a><span class="spine-label" aria-hidden="true"><span class="lab-num">12.</span> Glossary</span></li>
+      </ol>
+    </nav>
+
+    <!-- ===== Content ===== -->
+    <main id="main" class="home-main">
+      <div class="home-wrap">
+
+        <blockquote class="solidarity">
+          <strong>We stand with the people of Ukraine.</strong> Please support humanitarian efforts via the
+          <a href="https://www.icrc.org/en">International Committee of the Red Cross</a>.
+        </blockquote>
+
+        <h1 class="home-h1">The arc42 field guide</h1>
+        <p class="intro-lead">Practical tips and worked examples for using arc42, organised by the twelve template sections. Jump to a section to find what belongs in it and how to do it well.</p>
+
+        <h2 class="section-heading">The twelve sections</h2>
+        <p class="section-sub">Each number below matches a marker on the spine at the left. That is the whole map: twelve numbered sections, always in the same order.</p>
+
+        <ol class="section-index">
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">1</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Introduction and Goals</a>
+              <p class="idx-desc">Requirements, stakeholders, top quality goals.</p>
+            </span>
+            <span class="idx-count">24 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">2</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Constraints</a>
+              <p class="idx-desc">Technical and organisational constraints, conventions.</p>
+            </span>
+            <span class="idx-count">5 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">3</span>
+            <span class="idx-body">
+              <a class="idx-name" href="section-3.html">Context and Scope</a>
+              <p class="idx-desc">Business and technical context, external interfaces.</p>
+            </span>
+            <span class="idx-count">19 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">4</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Solution Strategy</a>
+              <p class="idx-desc">Fundamental solution decisions and ideas.</p>
+            </span>
+            <span class="idx-count">6 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">5</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Building Block View</a>
+              <p class="idx-desc">Static decomposition, black and white boxes.</p>
+            </span>
+            <span class="idx-count">28 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">6</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Runtime View</a>
+              <p class="idx-desc">Runtime scenarios: how building blocks interact.</p>
+            </span>
+            <span class="idx-count">11 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">7</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Deployment View</a>
+              <p class="idx-desc">Infrastructure and technical deployment.</p>
+            </span>
+            <span class="idx-count">10 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">8</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Crosscutting Concepts</a>
+              <p class="idx-desc">Recurring solution approaches and patterns.</p>
+            </span>
+            <span class="idx-count">11 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">9</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Architecture Decisions</a>
+              <p class="idx-desc">Important, expensive, risky, or contentious decisions.</p>
+            </span>
+            <span class="idx-count">10 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">10</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Quality Requirements</a>
+              <p class="idx-desc">Quality tree and detailed quality scenarios.</p>
+            </span>
+            <span class="idx-count">8 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">11</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Risks and Technical Debt</a>
+              <p class="idx-desc">Known problems, risks, and technical debt.</p>
+            </span>
+            <span class="idx-count">6 tips</span>
+          </li>
+          <li class="idx-row">
+            <span class="idx-marker" aria-hidden="true">12</span>
+            <span class="idx-body">
+              <a class="idx-name" href="#">Glossary</a>
+              <p class="idx-desc">Definitions of important business and technical terms.</p>
+            </span>
+            <span class="idx-count">6 tips</span>
+          </li>
+        </ol>
+
+        <h2 class="section-heading">Navigate by keyword</h2>
+        <p class="section-sub">Three ways in, depending on how much rigour your project needs.</p>
+        <div class="keyword-panel">
+          <ul class="keyword-list">
+            <li class="keyword-row">
+              <span class="kw-chip">lean</span>
+              <span class="kw-meaning">Shorten and streamline your documentation pragmatically; travel light.</span>
+            </li>
+            <li class="keyword-row">
+              <span class="kw-chip">thorough</span>
+              <span class="kw-meaning">Formal, large, or critical systems that demand accuracy and auditability.</span>
+            </li>
+            <li class="keyword-row">
+              <span class="kw-chip">essential</span>
+              <span class="kw-meaning">The things you should always document, whatever your process.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="closing">
+          <h3>Still have questions?</h3>
+          <p>Try the <a href="https://faq.arc42.org">extensive FAQ</a>, answering 120+ common questions.</p>
+
+          <h3>Architecture training</h3>
+          <p>Peter Hruschka and Gernot Starke run practical, applicable training. See <a href="https://arc42.de/termine">arc42.de</a> for dates.</p>
+
+          <h3>Open source</h3>
+          <p>This site is open source, maintained on <a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>.</p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="status-link" href="#"><span class="status-dot" aria-hidden="true"></span>Status</a>
+      <nav aria-label="Footer">
+        <a href="#">Imprint</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+        <a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>
+      </nav>
+      <p class="maintainer">Maintained by Gernot Starke, supported by Peter Hruschka. CC BY-SA 4.0.</p>
+    </div>
+  </footer>
+</body>
+</html>

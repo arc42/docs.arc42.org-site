@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3. Context and Scope · arc42 Documentation</title>
+<meta name="description" content="Business and technical context, external interfaces · arc42 template section 3.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-doc">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== MASTHEAD ===== -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="home.html">
+      <img src="../../../assets/img/arc42logosquare.png" alt="arc42">
+      <span class="brand-text">
+        <span class="brand-name">arc42 Documentation</span>
+        <span class="brand-tag">The working reference for the arc42 architecture template.</span>
+      </span>
+    </a>
+    <p class="masthead-stat">
+      <b>144</b> tips<span class="dot">·</span><b>36</b> examples<span class="dot">·</span><b>12</b> sections
+    </p>
+  </div>
+</header>
+
+<!-- ===== LAYOUT (three-pane) ===== -->
+<div class="layout layout--doc">
+
+  <!-- LEFT NAV RAIL -->
+  <aside class="rail">
+    <button class="rail-toggle" aria-expanded="false" aria-controls="rail-body">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Sections
+      <svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="rail-body" id="rail-body">
+      <form class="rail-search" role="search" action="#">
+        <label class="visually-hidden" for="q">Search the handbook</label>
+        <span class="search-ic" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <input id="q" type="search" name="q" placeholder="Search the handbook" autocomplete="off">
+      </form>
+
+      <nav aria-label="Documentation sections">
+        <p class="rail-label">Sections</p>
+        <ol class="rail-nav">
+          <li><a href="#"><span class="rail-num">01</span> Introduction and Goals</a></li>
+          <li><a href="#"><span class="rail-num">02</span> Constraints</a></li>
+          <li><a href="section-3.html" aria-current="page"><span class="rail-num">03</span> Context and Scope</a></li>
+          <li><a href="#"><span class="rail-num">04</span> Solution Strategy</a></li>
+          <li><a href="#"><span class="rail-num">05</span> Building Block View</a></li>
+          <li><a href="#"><span class="rail-num">06</span> Runtime View</a></li>
+          <li><a href="#"><span class="rail-num">07</span> Deployment View</a></li>
+          <li><a href="#"><span class="rail-num">08</span> Crosscutting Concepts</a></li>
+          <li><a href="#"><span class="rail-num">09</span> Architecture Decisions</a></li>
+          <li><a href="#"><span class="rail-num">10</span> Quality Requirements</a></li>
+          <li><a href="#"><span class="rail-num">11</span> Risks and Technical Debt</a></li>
+          <li><a href="#"><span class="rail-num">12</span> Glossary</a></li>
+        </ol>
+        <p class="rail-label">More</p>
+        <ul class="rail-meta">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#">Examples</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- CENTRE CONTENT -->
+  <main class="content" id="main">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="home.html">Home</a></li>
+        <li><span class="sep" aria-hidden="true">/</span><a href="#">Sections</a></li>
+        <li><span class="sep" aria-hidden="true">/</span><span aria-current="page">3. Context and Scope</span></li>
+      </ol>
+    </nav>
+
+    <!-- inline TOC for narrow screens -->
+    <details class="toc-inline">
+      <summary>On this page
+        <svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <ol>
+        <li><a href="#s31"><span class="toc-num">3.1</span> Business context</a></li>
+        <li><a href="#s32"><span class="toc-num">3.2</span> Technical context</a></li>
+        <li><a href="#further"><span class="toc-num">i</span> Further Info</a></li>
+      </ol>
+    </details>
+
+    <h1>3. Context and Scope</h1>
+
+    <!-- Intro help callout -->
+    <div class="callout callout--help">
+      <span class="kicker">Guide</span>
+      <svg class="callout-icon" viewBox="0 0 24 24" fill="none" role="img" aria-label="Guidance"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.6"/><path d="M9.4 9.2a2.6 2.6 0 015.1.7c0 1.7-2.5 2.1-2.5 3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.05" fill="currentColor"/></svg>
+      <dl class="cmf">
+        <dt>Content</dt>
+        <dd>System scope and context delimits your system (its scope) from all its communication partners (neighbouring systems and users, its context), and specifies the external interfaces. If useful, separate the business context (domain inputs and outputs) from the technical context (channels, protocols, hardware).</dd>
+        <dt>Motivation</dt>
+        <dd>The domain and technical interfaces to communication partners are among a system's most critical aspects. Make sure you completely understand them.</dd>
+        <dt>Form</dt>
+        <dd>Various context diagrams; lists of communication partners and their interfaces.</dd>
+      </dl>
+    </div>
+
+    <!-- 3.1 -->
+    <h2 id="s31">3.1 Business context</h2>
+
+    <div class="callout callout--help">
+      <span class="kicker">Guide</span>
+      <svg class="callout-icon" viewBox="0 0 24 24" fill="none" role="img" aria-label="Guidance"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.6"/><path d="M9.4 9.2a2.6 2.6 0 015.1.7c0 1.7-2.5 2.1-2.5 3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.05" fill="currentColor"/></svg>
+      <dl class="cmf">
+        <dt>Content</dt>
+        <dd>Specify all communication partners (users, IT systems) with domain-specific inputs and outputs. Optionally add domain formats or protocols.</dd>
+        <dt>Motivation</dt>
+        <dd>All stakeholders should understand which data are exchanged with the system's environment.</dd>
+        <dt>Form</dt>
+        <dd>Diagrams showing the system as a black box with domain interfaces to partners, or a table (system name as title; columns: partner, input, output).</dd>
+      </dl>
+    </div>
+
+    <!-- Worked example -->
+    <div class="callout callout--example">
+      <span class="kicker">Example</span>
+      <svg class="callout-icon" viewBox="0 0 24 24" fill="none" role="img" aria-label="Worked example"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="8" r="1.1" fill="currentColor"/><path d="M12 11.4v5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <p class="ex-title">Example: HTML Sanity Checker</p>
+      <p class="ex-lead">A simple business context, drawn as a black box with its neighbours.</p>
+
+      <figure class="ex-fig">
+        <svg viewBox="0 0 620 360" role="img" aria-label="Business context diagram: HTML Sanity Checker and its neighbours">
+          <defs>
+            <marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M1 1L9 5L1 9" fill="none" stroke="#1675b9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- connectors -->
+          <g stroke="#1675b9" stroke-width="1.6" fill="none" marker-end="url(#arw)">
+            <line x1="250" y1="155" x2="178" y2="88"/>   <!-- reports -> User -->
+            <line x1="444" y1="88"  x2="372" y2="150"/>  <!-- runs -> Checker -->
+            <line x1="250" y1="209" x2="178" y2="274"/>  <!-- reads -> Local files -->
+            <line x1="372" y1="209" x2="442" y2="274"/>  <!-- checks -> Web resources -->
+          </g>
+
+          <!-- connector labels -->
+          <g font-family="Public Sans, sans-serif" font-size="12.5" fill="#1c2733" text-anchor="middle">
+            <g><rect x="184" y="106" width="58" height="19" rx="3" fill="#fbfcfe"/><text x="213" y="119">reports</text></g>
+            <g><rect x="382" y="106" width="46" height="19" rx="3" fill="#fbfcfe"/><text x="405" y="119">runs</text></g>
+            <g><rect x="186" y="235" width="52" height="19" rx="3" fill="#fbfcfe"/><text x="212" y="248">reads</text></g>
+            <g><rect x="380" y="235" width="58" height="19" rx="3" fill="#fbfcfe"/><text x="409" y="248">checks</text></g>
+          </g>
+
+          <!-- neighbour boxes -->
+          <g font-family="Public Sans, sans-serif" font-size="14" font-weight="600" fill="#1c2733" text-anchor="middle">
+            <rect x="30"  y="36"  width="150" height="50" rx="7" fill="#f2f5f8" stroke="#b9c6d4" stroke-width="1.2"/>
+            <text x="105" y="66">User</text>
+            <rect x="440" y="36"  width="150" height="50" rx="7" fill="#f2f5f8" stroke="#b9c6d4" stroke-width="1.2"/>
+            <text x="515" y="66">Build system</text>
+            <rect x="30"  y="274" width="150" height="50" rx="7" fill="#f2f5f8" stroke="#b9c6d4" stroke-width="1.2"/>
+            <text x="105" y="304">Local files</text>
+            <rect x="440" y="274" width="150" height="50" rx="7" fill="#f2f5f8" stroke="#b9c6d4" stroke-width="1.2"/>
+            <text x="515" y="304">Web resources</text>
+          </g>
+
+          <!-- system (black box) -->
+          <rect x="225" y="150" width="170" height="64" rx="8" fill="#fbfcfe" stroke="#1675b9" stroke-width="2.2"/>
+          <text x="310" y="187" font-family="Public Sans, sans-serif" font-size="15" font-weight="800" fill="#0d2b46" text-anchor="middle">HTML Sanity Checker</text>
+        </svg>
+        <figcaption>Business context · system as a black box</figcaption>
+      </figure>
+
+      <table>
+        <thead>
+          <tr><th scope="col">Neighbour</th><th scope="col">Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>User</td><td>Documents software with a toolchain that generates HTML; wants valid links.</td></tr>
+          <tr><td>Build system</td><td>Usually Gradle; runs the checker as part of the build.</td></tr>
+          <tr><td>Local HTML files</td><td>The checker reads and parses local HTML and runs sanity checks.</td></tr>
+          <tr><td>Local image files</td><td>The checker verifies that linked images exist as local files.</td></tr>
+          <tr><td>External web resources</td><td>Optionally checks that external links resolve (slower, network-dependent).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3.2 -->
+    <h2 id="s32">3.2 Technical context</h2>
+
+    <div class="callout callout--help">
+      <span class="kicker">Guide</span>
+      <svg class="callout-icon" viewBox="0 0 24 24" fill="none" role="img" aria-label="Guidance"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.6"/><path d="M9.4 9.2a2.6 2.6 0 015.1.7c0 1.7-2.5 2.1-2.5 3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.05" fill="currentColor"/></svg>
+      <dl class="cmf">
+        <dt>Content</dt>
+        <dd>Technical interfaces (channels and transmission media) linking the system to its environment, plus a mapping of domain I/O onto those channels.</dd>
+        <dt>Motivation</dt>
+        <dd>Many stakeholders decide architecture from technical interfaces, especially infrastructure and hardware designers.</dd>
+        <dt>Form</dt>
+        <dd>For example a UML deployment diagram of channels to neighbours, with a mapping table from channels to input/output.</dd>
+      </dl>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Channel</th><th scope="col">Protocol</th><th scope="col">Maps to (domain I/O)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CLI invocation</td><td>Shell / exit code</td><td>Build system triggers a check, receives pass/fail</td></tr>
+          <tr><td>File system</td><td>Local read</td><td>Reads local HTML and image files</td></tr>
+          <tr><td>HTTP(S)</td><td>GET</td><td>Optional reachability check of external links</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Further info -->
+    <h2 id="further">Further Info</h2>
+
+    <h3>Tips</h3>
+    <ul class="tips">
+      <li>
+        <span class="tip-title">Keep the context diagram to one page</span>
+        <span class="tag-row"><span class="tag">#context</span><span class="tag">#lean</span></span>
+      </li>
+      <li>
+        <span class="tip-title">Name every external interface explicitly</span>
+        <span class="tag-row"><span class="tag">#context</span><span class="tag">#essential</span></span>
+      </li>
+    </ul>
+
+    <h3>Related questions</h3>
+    <p class="related"><a href="https://faq.arc42.org/category_c/#c-sec-3">FAQ: context, scope and external interfaces</a></p>
+
+    <!-- Prev / next stepper -->
+    <nav class="stepper" aria-label="Section navigation">
+      <a class="step step--prev" href="#">
+        <span class="step-dir">← Previous</span>
+        <span class="step-name">2. Constraints</span>
+      </a>
+      <a class="step step--next" href="#">
+        <span class="step-dir">Next →</span>
+        <span class="step-name">4. Solution Strategy</span>
+      </a>
+    </nav>
+  </main>
+
+  <!-- RIGHT ON-PAGE TOC -->
+  <aside class="toc" aria-label="On this page">
+    <p class="toc-title">On this page</p>
+    <ol class="toc-list">
+      <li class="active"><a href="#s31"><span class="toc-num">3.1</span> Business context</a></li>
+      <li><a href="#s32"><span class="toc-num">3.2</span> Technical context</a></li>
+      <li><a href="#further"><span class="toc-num">i</span> Further Info</a></li>
+    </ol>
+  </aside>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="foot-inner">
+    <ul class="foot-links">
+      <li><a class="status" href="#"><span class="status-dot" aria-hidden="true"></span>Status</a></li>
+      <li><a href="#">Imprint</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a></li>
+    </ul>
+    <p class="foot-maint">Maintained by Gernot Starke, supported by Peter Hruschka. CC BY-SA 4.0.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.rail-toggle');
+    var body = document.getElementById('rail-body');
+    if (!btn || !body) return;
+    btn.addEventListener('click', function () {
+      var open = body.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
+</html>

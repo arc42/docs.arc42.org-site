@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>arc42 Documentation · The working reference for the arc42 template</title>
+  <meta name="description" content="Practical tips and worked examples for using the arc42 architecture template, organised by the twelve template sections.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../../../assets/img/arc42-favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="masthead-logo" href="home.html" aria-label="arc42 Documentation home">
+        <img src="../../../assets/img/arc42logosquare.png" alt="arc42" width="52" height="52">
+      </a>
+      <div class="masthead-text">
+        <h1 class="masthead-title"><a href="home.html">arc42 Documentation</a></h1>
+        <p class="masthead-tagline">The working reference for the arc42 architecture template.</p>
+        <p class="masthead-stats">
+          <span class="spark" aria-hidden="true"></span>
+          <b>144</b> practical tips <span class="sep" aria-hidden="true">·</span>
+          <b>36</b> worked examples <span class="sep" aria-hidden="true">·</span>
+          <b>12</b> sections
+        </p>
+      </div>
+      <button class="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- ===================== SIDEBAR NAV ===================== -->
+    <nav class="sidebar" id="sidebar" aria-label="Sections" data-collapsible="true">
+      <div class="sidebar-search">
+        <label class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+          </svg>
+          <input type="search" placeholder="Search the docs…" aria-label="Search the documentation">
+        </label>
+      </div>
+
+      <p class="sidebar-heading">Template sections</p>
+      <ol class="sidebar-nav">
+        <li><a href="#"><span class="num">01</span><span class="label">Introduction and Goals</span></a></li>
+        <li><a href="#"><span class="num">02</span><span class="label">Constraints</span></a></li>
+        <li><a href="section-3.html"><span class="num">03</span><span class="label">Context and Scope</span></a></li>
+        <li><a href="#"><span class="num">04</span><span class="label">Solution Strategy</span></a></li>
+        <li><a href="#"><span class="num">05</span><span class="label">Building Block View</span></a></li>
+        <li><a href="#"><span class="num">06</span><span class="label">Runtime View</span></a></li>
+        <li><a href="#"><span class="num">07</span><span class="label">Deployment View</span></a></li>
+        <li><a href="#"><span class="num">08</span><span class="label">Crosscutting Concepts</span></a></li>
+        <li><a href="#"><span class="num">09</span><span class="label">Architecture Decisions</span></a></li>
+        <li><a href="#"><span class="num">10</span><span class="label">Quality Requirements</span></a></li>
+        <li><a href="#"><span class="num">11</span><span class="label">Risks and Technical Debt</span></a></li>
+        <li><a href="#"><span class="num">12</span><span class="label">Glossary</span></a></li>
+      </ol>
+
+      <p class="sidebar-heading">More</p>
+      <ul class="sidebar-nav sidebar-meta">
+        <li><a href="home.html" aria-current="page"><span class="label">Home</span></a></li>
+        <li><a href="#"><span class="label">Examples</span></a></li>
+        <li><a href="#"><span class="label">Contact</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- ===================== MAIN ===================== -->
+    <main id="main">
+      <blockquote class="solidarity">
+        <strong>We stand with the people of Ukraine.</strong> Please support humanitarian efforts via the
+        <a href="https://www.icrc.org/en">International Committee of the Red Cross</a>.
+      </blockquote>
+
+      <p class="lead home-intro">
+        Practical tips and worked examples for using arc42, organised by the twelve template sections.
+        Jump to a section to find what belongs in it and how to do it well.
+      </p>
+
+      <h2 class="section-index-heading">The twelve template sections</h2>
+      <ol class="section-index">
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">01</span>
+          <span class="idx-body"><span class="idx-name">Introduction and Goals</span>
+          <span class="idx-desc">Requirements, stakeholders, top quality goals</span></span>
+          <span class="idx-count">24 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">02</span>
+          <span class="idx-body"><span class="idx-name">Constraints</span>
+          <span class="idx-desc">Technical and organisational constraints, conventions</span></span>
+          <span class="idx-count">5 tips</span>
+        </a></li>
+        <li><a href="section-3.html">
+          <span class="idx-num" aria-hidden="true">03</span>
+          <span class="idx-body"><span class="idx-name">Context and Scope</span>
+          <span class="idx-desc">Business and technical context, external interfaces</span></span>
+          <span class="idx-count">19 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">04</span>
+          <span class="idx-body"><span class="idx-name">Solution Strategy</span>
+          <span class="idx-desc">Fundamental solution decisions and ideas</span></span>
+          <span class="idx-count">6 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">05</span>
+          <span class="idx-body"><span class="idx-name">Building Block View</span>
+          <span class="idx-desc">Static decomposition, black and white boxes</span></span>
+          <span class="idx-count">28 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">06</span>
+          <span class="idx-body"><span class="idx-name">Runtime View</span>
+          <span class="idx-desc">Runtime scenarios: how building blocks interact</span></span>
+          <span class="idx-count">11 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">07</span>
+          <span class="idx-body"><span class="idx-name">Deployment View</span>
+          <span class="idx-desc">Infrastructure and technical deployment</span></span>
+          <span class="idx-count">10 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">08</span>
+          <span class="idx-body"><span class="idx-name">Crosscutting Concepts</span>
+          <span class="idx-desc">Recurring solution approaches and patterns</span></span>
+          <span class="idx-count">11 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">09</span>
+          <span class="idx-body"><span class="idx-name">Architecture Decisions</span>
+          <span class="idx-desc">Important, expensive, risky, or contentious decisions</span></span>
+          <span class="idx-count">10 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">10</span>
+          <span class="idx-body"><span class="idx-name">Quality Requirements</span>
+          <span class="idx-desc">Quality tree and detailed quality scenarios</span></span>
+          <span class="idx-count">8 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">11</span>
+          <span class="idx-body"><span class="idx-name">Risks and Technical Debt</span>
+          <span class="idx-desc">Known problems, risks, and technical debt</span></span>
+          <span class="idx-count">6 tips</span>
+        </a></li>
+        <li><a href="#">
+          <span class="idx-num" aria-hidden="true">12</span>
+          <span class="idx-body"><span class="idx-name">Glossary</span>
+          <span class="idx-desc">Definitions of important business and technical terms</span></span>
+          <span class="idx-count">6 tips</span>
+        </a></li>
+      </ol>
+
+      <!-- ===================== KEYWORD PANEL ===================== -->
+      <section class="keyword-panel" aria-labelledby="kw-heading">
+        <h2 id="kw-heading">Navigate by keyword</h2>
+        <div class="keyword-list">
+          <div class="kw-row">
+            <a class="kw-chip" href="#">lean</a>
+            <span class="kw-def">Shorten and streamline your documentation pragmatically; travel light.</span>
+          </div>
+          <div class="kw-row">
+            <a class="kw-chip" href="#">thorough</a>
+            <span class="kw-def">Formal, large, or critical systems that demand accuracy and auditability.</span>
+          </div>
+          <div class="kw-row">
+            <a class="kw-chip" href="#">essential</a>
+            <span class="kw-def">The things you should always document, whatever your process.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== QUIET CLOSING SECTIONS ===================== -->
+      <div class="closing">
+        <h2>Still have questions?</h2>
+        <p>Try the <a href="https://faq.arc42.org">extensive FAQ</a>, answering 120+ common questions.</p>
+
+        <h2>Architecture training</h2>
+        <p>Peter Hruschka and Gernot Starke run practical, applicable training. See
+          <a href="https://arc42.de/termine">arc42.de</a> for dates.</p>
+
+        <h2>Open source</h2>
+        <p>This site is open source, maintained on
+          <a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a class="status" href="#"><span class="status-dot" aria-hidden="true"></span>Status</a>
+        <a href="#">Imprint</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+        <a href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>
+      </div>
+      <p class="footer-maintainer">Maintained by Gernot Starke, supported by Peter Hruschka. CC BY-SA 4.0.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle only · everything else is CSS.
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('sidebar');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function () {
+        var open = nav.getAttribute('data-open') === 'true';
+        nav.setAttribute('data-open', String(!open));
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
+      });
+    })();
+  </script>
+</body>
+</html>

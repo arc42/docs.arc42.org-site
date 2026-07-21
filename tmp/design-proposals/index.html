@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>arc42 docs — design proposals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Libre+Caslon+Text:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fcfdff; --ink:#2a2e34; --muted:#5e6975;
+    --blue:#1675b9; --deep:#0e4f80; --tint:#eaf4fc; --coral:#ff5c7c;
+    --hair:rgba(20,44,82,.12);
+    --measure:70ch;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Atkinson Hyperlegible",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55; font-size:17px;
+  }
+  a{color:var(--blue)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:3px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--deep);color:var(--tint);padding:.6em 1em}
+  .skip:focus{left:0}
+
+  header.mast{
+    background:var(--deep); color:var(--tint);
+    padding:clamp(28px,5vw,56px) clamp(20px,5vw,64px);
+  }
+  .mast .kicker{
+    font-family:"JetBrains Mono",monospace; font-size:.8rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--coral); margin-bottom:.9em;
+  }
+  .mast h1{
+    font-family:"Libre Caslon Text",Georgia,serif; font-weight:700;
+    font-size:clamp(2rem,5vw,3.1rem); line-height:1.05; letter-spacing:-.01em;
+  }
+  .mast p{max-width:60ch;margin-top:1em;color:#cfe3f6;font-size:1.05rem}
+
+  main{max-width:1180px;margin:0 auto;padding:clamp(32px,5vw,64px) clamp(20px,5vw,40px)}
+  .lede{max-width:var(--measure);margin-bottom:2.6em;color:var(--muted)}
+  .lede strong{color:var(--ink)}
+
+  .grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .card{
+    border:1px solid var(--hair); border-radius:8px; overflow:hidden;
+    display:flex; flex-direction:column; background:#fff;
+  }
+  .card .swatch{height:8px;display:flex}
+  .card .swatch i{flex:1}
+  .card .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .card .tag{
+    font-family:"JetBrains Mono",monospace; font-size:.72rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:.7em;
+  }
+  .card h2{
+    font-family:"Libre Caslon Text",Georgia,serif; font-weight:700;
+    font-size:1.5rem; line-height:1.15; margin-bottom:.15em;
+  }
+  .card .sub{color:var(--blue);font-weight:700;font-size:.98rem;margin-bottom:.9em}
+  .card p.desc{font-size:.98rem;color:var(--ink);margin-bottom:1em}
+  .card ul{list-style:none;margin:0 0 1.4em;padding:0;font-size:.9rem;color:var(--muted)}
+  .card ul li{padding:.28em 0;border-bottom:1px solid var(--hair)}
+  .card ul li:last-child{border-bottom:0}
+  .card ul li b{color:var(--ink);font-weight:700}
+  .links{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+  .links a{
+    display:inline-flex;align-items:center;gap:.4em;
+    border:1px solid var(--blue);border-radius:.35em;padding:.5em .85em;
+    font-weight:700;font-size:.92rem;text-decoration:none;
+  }
+  .links a:hover{background:var(--blue);color:#fff}
+  .links a.primary{background:var(--blue);color:#fff}
+  .links a.primary:hover{background:var(--deep);border-color:var(--deep)}
+
+  .note{
+    margin-top:3em;padding:18px 22px;background:var(--tint);border-radius:6px;
+    max-width:var(--measure);font-size:.95rem;color:var(--deep);
+  }
+  footer{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,40px) 64px;color:var(--muted);font-size:.88rem}
+  @media (prefers-reduced-motion:no-preference){.links a{transition:background .2s ease,color .2s ease}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <div class="kicker">arc42 documentation · design study</div>
+  <h1>Three directions for the refreshed site</h1>
+  <p>Same content, three distinct takes on layout, colour, and typography. Open each proposal's
+     home page and its content page (section 3, Context and Scope) to compare like for like.</p>
+</header>
+
+<main id="main">
+  <p class="lede">Each proposal answers the same brief drawn from <strong>PRODUCT.md</strong>,
+    <strong>DESIGN.md</strong>, and the <strong>/impeccable critique</strong>: a calm reading
+    surface, colour concentrated in the chrome and callouts, a correct heading outline, comfortable
+    measure, real focus states and wayfinding, and the arc42 family's Signal Blue. They diverge on
+    personality and, in proposal&nbsp;C, on the navigation model itself.</p>
+
+  <div class="grid">
+
+    <!-- A -->
+    <article class="card">
+      <div class="swatch">
+        <i style="background:#0e4f80"></i><i style="background:#1675b9"></i>
+        <i style="background:#e3f2fe"></i><i style="background:#fdebe7"></i><i style="background:#ff5c7c"></i>
+      </div>
+      <div class="body">
+        <div class="tag">Proposal A</div>
+        <h2>Field Guide, refreshed</h2>
+        <div class="sub">Classic left sidebar · on-spec</div>
+        <p class="desc">The safe, correct refresh: a confident deep-blue masthead, the familiar
+          left sidebar polished and fixed, an editorial-serif heading voice. Aligned to the arc42
+          family type target.</p>
+        <ul>
+          <li><b>Fonts</b> · Libre Caslon Text + Atkinson Hyperlegible</li>
+          <li><b>Colour</b> · DESIGN.md palette, deep-blue band</li>
+          <li><b>Nav</b> · left rail, fixed with active state</li>
+        </ul>
+        <div class="links">
+          <a class="primary" href="a-fieldguide/home.html">Home ›</a>
+          <a href="a-fieldguide/section-3.html">Content page ›</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- B -->
+    <article class="card">
+      <div class="swatch">
+        <i style="background:#0d2b46"></i><i style="background:#1675b9"></i>
+        <i style="background:#f2f5f8"></i><i style="background:#e8f2fd"></i><i style="background:#fcece7"></i>
+      </div>
+      <div class="body">
+        <div class="tag">Proposal B</div>
+        <h2>Engineer's Handbook</h2>
+        <div class="sub">Three-pane docs · on-page TOC</div>
+        <p class="desc">A precise software-manual take: a three-pane layout with a right-hand
+          on-page table of contents, flatter surfaces, cool slate neutrals, one committed workhorse
+          sans with strong weight contrast.</p>
+        <ul>
+          <li><b>Fonts</b> · Public Sans + Spline Sans Mono</li>
+          <li><b>Colour</b> · cool slate, slim navy masthead</li>
+          <li><b>Nav</b> · left rail + right on-page TOC</li>
+        </ul>
+        <div class="links">
+          <a class="primary" href="b-handbook/home.html">Home ›</a>
+          <a href="b-handbook/section-3.html">Content page ›</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- C -->
+    <article class="card">
+      <div class="swatch">
+        <i style="background:#0e4f80"></i><i style="background:#1675b9"></i>
+        <i style="background:#ff5c7c"></i><i style="background:#ffc95c"></i><i style="background:#fdebe7"></i>
+      </div>
+      <div class="body">
+        <div class="tag">Proposal C · alternative nav</div>
+        <h2>The Spine</h2>
+        <div class="sub">12-section numbered spine · stepper</div>
+        <p class="desc">Rethinks the sidebar: a slim vertical spine of the numbers 1&ndash;12 that
+          mirrors arc42's structure, names revealing on hover/focus, plus a prev/next stepper. The
+          freshest, liveliest face.</p>
+        <ul>
+          <li><b>Fonts</b> · Bricolage Grotesque + Hanken Grotesk</li>
+          <li><b>Colour</b> · warmer, coral + amber accents</li>
+          <li><b>Nav</b> · numbered spine (the alternative)</li>
+        </ul>
+        <div class="links">
+          <a class="primary" href="c-spine/home.html">Home ›</a>
+          <a href="c-spine/section-3.html">Content page ›</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="note">All three keep the calm reading centre, the cool-guidance / warm-example callout
+    split, a correct h1&nbsp;›&nbsp;h2 outline, visible focus states, and one editorial Signal Blue,
+    per the project's own design system. They are static mockups for comparison, not wired into
+    Jekyll.</p>
+</main>
+
+<footer>
+  arc42 documentation · design proposals · CC BY-SA 4.0
+</footer>
+</body>
+</html>
