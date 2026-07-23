@@ -1,10 +1,22 @@
-{% assign page = include.page %}
+{%- comment -%}
+  One row in the list of worked examples on /examples/. Emits a bare <li>; the
+  caller supplies the <ul>.
 
-        <li> 
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% else %}
-            {{ page.title }}
-            {% endif %}
-       </li>     
-    
+  Identical to example-header.html except that the link text carries no leading
+  ":" — that marker is what makes assets/js/nutshell.js turn a link into an
+  in-place expandable preview, which is wanted inside a section page and not on
+  the flat index, where the reader has come specifically to leave for an example.
+
+  Parameters
+    page  required — the _examples document to link to.
+    link  optional — false renders the title as plain text.
+{%- endcomment -%}
+
+{%- assign example = include.page -%}
+<li>
+    {%- if include.link -%}
+    <a class="post-link" href="{{ example.url | relative_url }}">{{ example.title }}</a>
+    {%- else -%}
+    {{ example.title }}
+    {%- endif -%}
+</li>

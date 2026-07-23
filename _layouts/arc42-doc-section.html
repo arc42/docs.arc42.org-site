@@ -2,12 +2,40 @@
 layout: default
 ---
 
-<div class="article-wrapper">
-    <article>
-        <section class="post-content">
-            {{ content }}
-        </section>
-    </article>
-</div>
+{%- comment -%}
+  One of the twelve arc42 template sections.
 
-{% include subtle-ads.html %}
+  Order inside <main>: breadcrumb → content (whose first element is the page's
+  own <h1>) → stepper. The inline TOC is emitted here but placed by
+  assets/js/site.js, which moves it to sit directly *under* the <h1>: the page
+  title comes from the markdown, not from front matter, so Liquid cannot get
+  between the two. The mockup put the inline TOC above the heading, which reads
+  as a table of contents for the whole site rather than for this page.
+
+  The sticky right-hand TOC pane is not emitted here — _layouts/default.html
+  puts it in the third grid column of .layout--doc.
+
+  The training note sits ABOVE the stepper, and the ordering is the whole point.
+  The arc42 trainings fund this site, so the note belongs on the twelve section
+  pages — they are what the navigation points at. But a sales pitch as the last
+  thing on the page is what the design review objected to (peak-end: the final
+  moment disproportionately shapes how the visit is remembered). Placed here it
+  is read in full, at the moment a reader has just finished a section and might
+  actually want a course, while the last word still belongs to "→ 4. Solution
+  Strategy". Visibility and a useful ending are not in conflict; only the order
+  was wrong.
+
+  _pages/examples.md also uses this layout but carries no `number:` — it is not
+  one of the twelve, so it gets the note and no stepper.
+{%- endcomment -%}
+
+{% include breadcrumb.html %}
+
+<div class="prose">
+  {% include toc.html variant="inline" %}
+  {{ content }}
+  {% include subtle-ads.html %}
+  {%- if page.number %}
+  {% include stepper.html %}
+  {%- endif %}
+</div>

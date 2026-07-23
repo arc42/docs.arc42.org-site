@@ -15,7 +15,7 @@ This Level 1 diagram has been created with Enterprise Architect(TM) as a compone
 ## 5.1 Building Block View Level 1
 The following figure shows the internal top-level decomposition of the Traffic Pursuit Unit. The decomposition is mainly driven by the deployment of these top-level building blocks to different hardware (cf. chapter 7). Note that the blue boxes are pure software blocks, while the white one is still a mixture of hardware and software functionality.
 
-![Building Block View Level 1 of Traffic Pursuit Unit]({{ site.imageurl}}/examples/tpu/51-tpu-BuildingBlocks.jpg)
+![Building Block View Level 1 of Traffic Pursuit Unit]({{ site.exampleimages }}/tpu/51-tpu-BuildingBlocks.jpg)
 
 ### 1. Measuring Unit
 

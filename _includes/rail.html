@@ -1,0 +1,62 @@
+{%- comment -%}
+  The left navigation rail.
+
+  The twelve sections come from _data/sections.yml — the single source of truth —
+  not from a `site.pages | sort: 'order'` loop, which used to mix template
+  sections and meta pages into one undifferentiated list.
+
+  The "More" group is every page carrying `group: meta` in its front matter
+  (currently Examples, Keywords, Contact), sorted by `order`. A page opts into
+  the rail by declaring the group; nothing here needs editing to add one.
+  `nav_title` wins over `title` when present, so a page can carry a long
+  editorial title ("All tips (by keyword)") and a short rail label.
+
+  Home is intentionally absent from the list: the masthead logo and wordmark are
+  the link home on every page.
+
+  The rail is NOT rendered on /home/ — see _layouts/default.html.
+
+  Mobile: the markup for the toggle is here, the behaviour is in
+  assets/js/site.js. The contract is exactly:
+    button.rail-toggle[aria-expanded]  toggles  #rail-body.open
+{%- endcomment -%}
+
+<aside class="rail">
+  <button class="rail-toggle" type="button" aria-expanded="false" aria-controls="rail-body">
+    {% include icon.html name="menu" %}
+    <span class="rail-toggle-label">Sections</span>
+    {% include icon.html name="chevron-down" class="chev" %}
+  </button>
+
+  <div class="rail-body" id="rail-body">
+    <nav aria-labelledby="rail-heading-sections">
+      <p class="rail-heading" id="rail-heading-sections">Template sections</p>
+      <ol class="rail-nav">
+        {%- for section in site.data.sections %}
+        <li>
+          <a href="{{ section.permalink | relative_url }}"{% if page.url == section.permalink %} aria-current="page"{% endif %}>
+            <span class="num">{{ section.number | prepend: '0' | slice: -2, 2 }}</span>
+            <span class="label">{{ section.name }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ol>
+    </nav>
+
+    {%- assign meta_pages = site.pages | where: 'group', 'meta' | sort: 'order' -%}
+    {%- if meta_pages.size > 0 %}
+    <nav aria-labelledby="rail-heading-more">
+      <p class="rail-heading" id="rail-heading-more">More</p>
+      <ul class="rail-nav rail-meta">
+        {%- for meta_page in meta_pages %}
+        <li>
+          <a href="{{ meta_page.url | relative_url }}"{% if page.url == meta_page.url %} aria-current="page"{% endif %}>
+            <span class="label">{{ meta_page.nav_title | default: meta_page.title }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {%- endif %}
+  </div>
+</aside>

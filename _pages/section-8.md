@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 8 - Concepts
 permalink: /section-8/
+number: 8
 order: 12
 ---
 
@@ -15,7 +16,7 @@ This section describes crosscutting concepts (practices, patterns, regulations o
 Such concepts are often related to multiple building blocks. 
 They may include many different topics, such as the topics shown in the following diagram:
 
-![Crosscutting concepts diagram]({{ site.imageurl }}/8-concepts/08-concepts-EN.drawio.png)
+![Crosscutting concepts diagram]({{ site.imageurl }}/08/concepts-EN.drawio.png)
 
 ## Motivation
 Concepts form the basis for _conceptual integrity_ (consistency, homogeneity) of the architecture. 

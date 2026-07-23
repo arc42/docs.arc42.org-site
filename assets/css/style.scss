@@ -1,16 +1,41 @@
 ---
 ---
 
-@import 'base/_reset';
-@import 'base/_syntax';
-@import 'base/_variables';
-@import 'base/_layout';
-@import 'base/_utilities';
-@import '_common';
-@import '_header';
-@import '_footer';
-@import '_aside';
-@import '_content';
-@import 'arc42-doc.css';
-@import 'ukraine.css';
-@import 'all.css'; // fontawesome
+// ============================================================================
+// The single stylesheet entry point. Jekyll compiles this file (and only this
+// file) from _sass/; everything else is a partial imported below.
+//
+// Order matters and is deliberate:
+//   1. tokens    — custom properties every later partial reads
+//   2. fonts     — @font-face, self-hosted
+//   3. reset     — the modern, ~30-line floor
+//   4. base      — element defaults: body type, links, focus, motion
+//   5. components, roughly in the order a reader meets them on the page
+//   6. syntax    — highlighter theme, scoped to .highlight
+//   7. utilities — small single-purpose classes; last so they can win
+//
+// There is no longer an @import of a plain .css file here. all.css
+// (FontAwesome), arc42-doc.css and ukraine.css are gone; their surviving rules
+// were folded into the partials below and their icons into an SVG sprite at
+// assets/icons/ui.svg.
+// ============================================================================
+
+@import 'tokens';
+@import 'fonts';
+@import 'reset';
+@import 'base';
+
+@import 'masthead';
+@import 'rail';
+@import 'search';
+@import 'breadcrumb';
+@import 'toc';
+@import 'content';
+@import 'callouts';
+@import 'home';
+@import 'legal';
+@import 'stepper';
+@import 'footer';
+
+@import 'syntax';
+@import 'utilities';

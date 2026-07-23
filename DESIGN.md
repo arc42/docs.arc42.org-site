@@ -3,6 +3,7 @@ name: arc42 Documentation
 description: The public documentation site for the arc42 architecture template.
 colors:
   signal-blue: "#1675b9"
+  signal-blue-dark: "#115e94"
   deep-blue: "#0e4f80"
   sky-tint: "#dceefa"
   header-tint: "#eaf4fc"
@@ -12,41 +13,50 @@ colors:
   help-ink: "#0c3d66"
   example-bg: "#fdebe7"
   example-ink: "#9a3b2e"
+  example-ink-dark: "#7d2f24"
+  example-icon: "#c8654f"
   tag-bg: "#aee3f8"
   emerald: "#2e9e67"
   maroon: "#8a2e2e"
+  maroon-bg: "#fcefef"
   ink: "#2a2e34"
   paper: "#fcfdff"
   muted: "#5e6975"
+  surface-1: "#f2f5f8"
+  surface-2: "#f7fafd"
+  surface-hover: "#e7eef5"
+  code-bg: "#f6f8fa"
+  hairline: "rgba(20,44,82,0.12)"
+  hairline-2: "rgba(20,44,82,0.16)"
 typography:
   display:
-    fontFamily: "Helvetica, Arial, sans-serif"
-    fontSize: "2.7em"
+    fontFamily: "'Libre Caslon Text', Georgia, serif"
+    fontSize: "clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem)"
     fontWeight: 700
-    lineHeight: 1
+    lineHeight: 1.1
   headline:
-    fontFamily: "Helvetica, Arial, sans-serif"
-    fontSize: "2.3em"
+    fontFamily: "'Libre Caslon Text', Georgia, serif"
+    fontSize: "clamp(2rem, 1.4rem + 2.4vw, 2.85rem)"
     fontWeight: 700
-    lineHeight: 1.3
+    lineHeight: 1.12
   title:
-    fontFamily: "Helvetica, Arial, sans-serif"
-    fontSize: "1.8em"
+    fontFamily: "'Libre Caslon Text', Georgia, serif"
+    fontSize: "1.55rem"
     fontWeight: 700
-    lineHeight: 1.3
-  body:
-    fontFamily: "Helvetica, Arial, sans-serif"
-    fontSize: "16px"
-    fontWeight: 400
-    lineHeight: 1.5
-  label:
-    fontFamily: "Helvetica, Arial, sans-serif"
-    fontSize: "0.95em"
-    fontWeight: 400
     lineHeight: 1.2
+  body:
+    fontFamily: "'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.65
+  label:
+    fontFamily: "'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif"
+    fontSize: "0.95rem"
+    fontWeight: 400
+    lineHeight: 1.3
   code:
-    fontFamily: "Consolas, Monaco, 'Andale Mono', monospace"
-    fontSize: "0.85em"
+    fontFamily: "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+    fontSize: "0.9em"
     fontWeight: 400
     lineHeight: 1.5
 rounded:
@@ -85,9 +95,9 @@ components:
     padding: "0 5px"
   tag:
     backgroundColor: "{colors.tag-bg}"
-    textColor: "{colors.signal-blue}"
-    rounded: "{rounded.sm}"
-    padding: "4px 6px"
+    textColor: "{colors.signal-blue-dark}"
+    rounded: "{rounded.pill}"
+    padding: "2px 10px"
   masthead:
     backgroundColor: "{colors.deep-blue}"
     textColor: "{colors.header-tint}"
@@ -139,25 +149,37 @@ A blue-forward palette on near-white, warmed and freshened so it reads as one of
 - **Paper** (#fcfdff): The page. Near-white with the faintest cool tint, never pure `#fff`. The content sits directly on it.
 - **Muted** (#5e6975): Blockquote text and de-emphasized meta, a cool grey.
 - **Hairline** (rgba(20,44,82,0.12)): Table borders, aside nav dividers, input strokes. A blue-tinted hairline.
+- **Hairline 2** (rgba(20,44,82,0.16)): The same hairline where it must actually be *seen* — the stepper's boxes, directory rows, input strokes. Plain Hairline over Paper measures 1.26:1, which reads as no border at all; anything asked to look like a container uses this instead.
+
+### Surfaces
+Three tinted surfaces, one job each. There are deliberately only three.
+- **Surface 1** (#f2f5f8): Tinted chrome panels — the navigation rail and the footer.
+- **Surface 2** (#f7fafd): The faintest wash — table headers and zebra rows.
+- **Surface Hover** (#e7eef5): Every interactive hover fill, on both Paper and Surface 1.
+- **Code** (#f6f8fa): Inline code and code blocks. Neutral, not blue-tinted — see the One Blue Rule.
 
 ### Named Rules
 **The Functional-and-Family Colour Rule.** Colour earns its place by carrying meaning or family identity, never by decorating. Blue means structure or action; cool blue means guidance; warm blush means example; coral and amber are warm accents; green means status; maroon means sponsor; the deep-blue band means "this is the arc42 masthead." If a colour is doing none of those jobs, it does not belong on the page.
 
 **The Calm-Centre Rule.** Colour is concentrated in the chrome and the callouts. Body text is always soft ink on near-white paper. Never tint the reading surface behind long-form prose, and never put a saturated fill behind running text. Freshness lives at the edges; the centre stays quiet.
 
-**The One Blue Rule.** There is a single editorial blue (#1675b9). Deep Blue, Sky Tint, and Header Tint are its darker and lighter family relatives for chrome. Do not introduce a second competing accent blue into content.
+**The One Blue Rule.** There is a single editorial blue (#1675b9). Deep Blue, Sky Tint, Header Tint, and Signal Blue Dark are its darker and lighter family relatives for chrome. Do not introduce a second competing accent blue into content.
+
+Signal Blue Dark (#115e94) is not a second accent — it is Signal Blue where Signal Blue cannot clear AA: hover states, and small or pilled text that would otherwise land in the 3.5–4.5:1 band. Reach for it because of a contrast measurement, never because of taste.
+
+**The Three-Surfaces Rule.** Tinted surfaces are limited to the three named above plus the code wash. A design draft once carried eight near-identical near-white blues, all within lightness 0.93–0.98 — indistinguishable in use and impossible to choose between. If a new surface seems necessary, it is almost certainly one of the three with a different job description.
 
 **The Colour-Is-Never-Alone Rule.** Colour never carries meaning by itself. Every coloured signal is paired with text, an icon, or a shape, so the site stays legible for colour-blind readers and in any lighting.
 
 ## 3. Typography
 
-**Display Font:** Helvetica, Arial (with sans-serif fallback) — *deferred, see below*
-**Body Font:** Helvetica, Arial (with sans-serif fallback) — *deferred, see below*
-**Label/Mono Font:** Consolas, Monaco, Andale Mono (monospace)
+**Display / Heading Font:** Libre Caslon Text (Georgia, Times New Roman, serif fallback)
+**Body Font:** Atkinson Hyperlegible Next (Atkinson Hyperlegible, system-ui fallback)
+**Mono Font:** the system monospace stack (`ui-monospace`, SF Mono, Menlo, Consolas)
 
-**Character:** One honest workhorse sans for everything, monospace for code. Nothing decorative, nothing to learn. The type gets out of the way so the words carry the weight, which is exactly what a field guide wants.
+**Character:** An editorial serif for headings over a body face engineered for maximum legibility. The serif gives the reference an authored, considered voice; the body face does the real work across long reading sessions. Monospace is reserved for the 01–12 section numbers and for code, so figures line up and read as an index rather than as prose.
 
-> **Deferred decision: family typeface alignment.** The typeface refresh is intentionally not committed yet. It will be decided together with the arc42.org typeface so the whole family lands on one system at once. The target to align to is what quality.arc42.org already ships: **Atkinson Hyperlegible Next** (a variable font engineered for maximum legibility) for body and UI, and **Libre Caslon Text** (an editorial serif) for headings, both self-hosted for privacy and offline development. Until that decision is made, the site keeps the system Helvetica/Arial stack documented above. When it lands, update this section and the frontmatter `typography` block together.
+> **Decision landed (2026-07-22).** The typeface refresh is now committed and aligns with what quality.arc42.org ships: **Atkinson Hyperlegible Next** for body and UI, **Libre Caslon Text** for headings. Both are **self-hosted** (`assets/fonts/`, SIL OFL) rather than loaded from the Google Fonts CDN — a third-party font hop is both a render-blocking dependency and a privacy liability for a site with an imprint. Plain *Atkinson Hyperlegible* is kept as the immediate fallback so the stack degrades to the right letterforms rather than to `system-ui`; the two are different families with different metrics, so the order matters. Mono is the system stack — no downloaded mono face, because its only jobs are section numbers and inline code.
 
 ### Hierarchy
 - **Display** (bold, 2.7em, line-height 1): The masthead title only. Appears once per page, in Header Tint on the Deep Blue band.
@@ -202,7 +224,9 @@ The heart of the system. Two annotation blocks that structure every documentatio
 - **Block** (`pre`): 1px hairline border, faint gray background, 3px radius, horizontal scroll on overflow. Rouge syntax highlighting.
 
 ### Tags
-- **Style:** Tag Cyan (#aee3f8) pill, Signal Blue text, 4px radius, 4px 6px padding. Small, secondary, used for post taxonomy.
+- **Style:** Tag Cyan (#aee3f8) pill, **Signal Blue Dark (#115e94)** text, full pill radius, 2px 10px padding. Small, secondary, used for post taxonomy.
+- **Contrast note:** this component previously specified Signal Blue (#1675b9) on Tag Cyan, which measures **3.54:1** and fails AA at every size a tag is ever set in. Signal Blue Dark on the unchanged Tag Cyan measures **4.96:1**. Do not revert the ink to #1675b9; the pill background is the part that carries the identity.
+- **Always a link.** Tags name a keyword that has a page. A tag that is not a link is a visible dead end — point it at `/keywords/#<tag>`.
 
 ### Navigation
 - **Aside nav:** A vertical list of section links with hairline top/bottom borders per item, roomy 0.5em padding, label-scale type. Collapses behind a toggle below 800px. Quiet and list-like; the current structure of the twelve sections, not a chrome-heavy menu.

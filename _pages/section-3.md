@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 3 - Context and scope
 permalink: /section-3/
+number: 3
 order: 7
 ---
 

@@ -6,8 +6,8 @@
 
 # deployment with github-pages on custom domain
 url: https://docs.arc42.org
-imageurl: /images
-exampleimages: /images/examples
+imageurl: /assets/images/sections
+exampleimages: /assets/images/examples
 
 
 #url: https://localhost:4000
@@ -28,8 +28,18 @@ baseurl:
 #
 title: arc42 Documentation
 description: how to use the arc42 template.
-avatar: /assets/img/arc42logosquare.webp
-favicon: /assets/img/arc42-favicon.svg
+
+# Shown under the wordmark in the full masthead on /home/. `description` is
+# written for search engines and reads as a fragment in a hero; this is the
+# human-facing line.
+tagline: The working reference for the arc42 architecture template.
+
+# The arc42 logo in the masthead already reads "arc42", so the wordmark beside
+# it says only what this site is. `title` stays the full name for <title>, SEO
+# and the logo link's accessible name. Delete this key to show the full title.
+masthead_title: Documentation
+avatar: /assets/images/brand/arc42logosquare.webp
+favicon: /assets/images/brand/arc42-favicon.svg
 language: en
 
 str_search: Search

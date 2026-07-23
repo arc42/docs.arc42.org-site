@@ -24,7 +24,7 @@ Within the TPU many different events are generated partly as a result of measure
 
 **Solution**
 
-![Fig. 8.2: Event Handling Scenario]({{ site.imageurl}}/examples/tpu/III82_EventDispatching.jpg)
+![Fig. 8.2: Event Handling Scenario]({{ site.exampleimages }}/tpu/III82_EventDispatching.jpg)
 
 
 

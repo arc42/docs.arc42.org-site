@@ -1,0 +1,288 @@
+// ============================================================================
+// The shell grid, and the tinted left navigation rail that defines its first
+// column.
+//
+// The grid lives here rather than in its own partial because every one of its
+// columns is a chrome column: the rail owns the first, the TOC the last, and the
+// breakpoints that collapse them are the same breakpoints that collapse the rail
+// into its toggle. Splitting them across two files meant two places to look
+// whenever a column changed width.
+//
+// Contract for the other partials:
+//   .layout          rail + content        (page.html, post.html)
+//   .layout--doc     rail + content + TOC  (arc42-doc-section)
+//   .layout--home    content only          (/home/)
+// _toc.scss styles the TOC's own inside; the column it sits in is declared here.
+// ============================================================================
+
+.layout {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  align-items: start;
+}
+
+.layout--doc {
+  grid-template-columns: var(--rail-w) minmax(0, 1fr) var(--toc-w);
+}
+
+// /home/ carries its own section directory — the twelve with a description and a
+// live tip count each. A rail beside it would be the same twelve, worse. Single
+// column also closes the ~176px of stranded right gutter the mockup had at
+// 1440px, where neither rail nor TOC had anything to put there.
+.layout--home {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+// The centre column's own box. Everything *inside* it belongs to _content.scss;
+// what is declared here is only what the grid needs: `min-width: 0` so a wide
+// table or <pre> scrolls inside the column instead of stretching it, and the
+// gutters that separate the prose from the rail and the TOC.
+.site-content {
+  min-width: 0;
+  padding: var(--s7) var(--s7) var(--s8);
+
+  // The 48px gutters are affordable once the shell is at its full width; below
+  // that they come straight out of the reading measure, which is the one thing
+  // on this page that must not shrink. Measured: 53ch at 900px with the wide
+  // gutters, 57ch with these.
+  @media (max-width: 1399px) {
+    padding: var(--s7) var(--s5) var(--s8);
+  }
+}
+
+// Home has no rail and no TOC, so at --shell-max its single column would run to
+// 1400px. The cap is the mockup's, and it is what keeps the two-column section
+// directory in proportion.
+.site-content--home {
+  max-width: 62rem;
+
+  // Centred, because home is the one page with no rail. On every other page the
+  // rail occupies the left of the shell and a left-aligned column is balanced by
+  // it; here the same column left-aligned in a 1400px shell strands ~380px of
+  // empty paper on the right, which reads as a layout that lost a pane rather
+  // than one that never had it.
+  margin-inline: auto;
+}
+
+// ============================================================================
+// RAIL
+// ============================================================================
+
+.rail {
+  position: sticky;
+  // The condensed masthead is sticky, so the rail parks beneath it rather than
+  // scrolling under it. Both numbers come from the same token.
+  top: var(--bar-h);
+  align-self: start;
+  z-index: 1;
+
+  max-height: calc(100vh - var(--bar-h));
+  overflow-y: auto;
+  padding: var(--s6) var(--s4) var(--s7);
+
+  background: var(--surface-1);
+  border-right: 1px solid var(--hairline);
+}
+
+// Mobile only — see the <=800px block.
+.rail-toggle {
+  display: none;
+}
+
+.rail-heading {
+  margin: var(--s5) 0 var(--s2);
+  padding: 0 var(--s2);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted); // 5.11:1 on --surface-1
+}
+
+// The first heading sits directly under the rail's own top padding.
+.rail-body > nav:first-child .rail-heading {
+  margin-top: 0;
+}
+
+.rail-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    border-top: 1px solid var(--hairline);
+  }
+
+  li:first-child {
+    border-top: 0;
+  }
+
+  a {
+    display: grid;
+    grid-template-columns: 1.9em 1fr;
+    align-items: baseline;
+    gap: var(--s2);
+    padding: var(--s3) var(--s2);
+    border-radius: var(--radius);
+    color: var(--ink); // 12.5:1 on --surface-1
+    line-height: 1.3;
+    text-decoration: none;
+    transition: background 0.14s ease, color 0.14s ease;
+  }
+
+  // --signal on --surface-1 measures 4.48:1, which fails AA for text this small.
+  // --signal-dk is the same ramp one step down: 6.29:1.
+  .num {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-align: right;
+    color: var(--signal-dk);
+  }
+
+  .label {
+    font-size: 0.95rem;
+  }
+
+  a:hover {
+    background: var(--surface-hover);
+    color: var(--signal-dk); // 5.89:1 on --surface-hover
+  }
+
+  // You are here: a row tint, bold weight, AND a coral marker. Three signals,
+  // only one of which is colour — and no thick accent stripe, which DESIGN.md
+  // reserves for nothing at all.
+  a[aria-current="page"] {
+    position: relative;
+    background: var(--row-active);
+    color: var(--signal-dk); // 5.79:1 on --row-active
+    font-weight: 700;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .num {
+      color: var(--signal-dk);
+      font-weight: 700;
+    }
+  }
+}
+
+// The "More" group has no numbers, so it drops the number column rather than
+// leaving 1.9em of hanging indent.
+.rail-meta {
+  a {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// ============================================================================
+// RESPONSIVE
+// ============================================================================
+
+// The TOC column goes first: it is the most expendable of the three, and
+// _toc.scss surfaces its inline <details> replacement in its place.
+//
+// 1399px is `$toc-bp - 1px` from _toc.scss, written out because that variable
+// is declared in a partial imported after this one. The two numbers must move
+// together: a wider window here than there leaves an empty 240px column, a
+// narrower one clips the pane's own column out from under it.
+//
+// The threshold is --shell-max, and it is arithmetic rather than taste. Three
+// panes cost the centre column rail + 240px + gutters; measured in-browser,
+// that leaves 49ch at 1200px (the mockup's 1100px threshold), 62.5ch at 1280px,
+// and 71.2ch only once the shell reaches its 1400px maximum. The pane appears
+// when the prose can still hold its measure, and not before; below that the
+// inline <details> TOC carries the same map.
+@media (max-width: 1399px) {
+  .layout--doc {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  }
+}
+
+// Below this the rail stops being a column and becomes a disclosure above the
+// content. It also stops being sticky: a sticky panel that can be a screen tall
+// on a phone is a trap.
+//
+// 1024px, not 800px, and the reason is measured rather than conventional: at
+// 900px a 220px rail plus gutters left the prose at 57.4 characters per line,
+// against DESIGN.md's 65-75 — the rule this whole redesign exists to honour.
+// Handing that band the full width brings it back inside the measure. The
+// section list is still one keystroke away behind the toggle, and the inline
+// TOC is already open by default at these widths, so nothing is hidden that
+// wayfinding depends on. (The number happens to agree with Docusaurus, VitePress
+// and MDN, all of which collapse within ~30px of here — but the arithmetic is
+// the argument.)
+@media (max-width: 1024px) {
+  .layout,
+  .layout--doc,
+  .layout--home {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: var(--s3) var(--s4);
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .site-content {
+    padding: var(--s5) var(--s5) var(--s7);
+  }
+
+  // Both the toggle and the collapse are gated on the `js` class the inline
+  // script in default.html puts on <html>. Without JS the button would be inert
+  // and the nav unreachable, so without JS neither exists: the rail simply
+  // renders open.
+  .js .rail-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--s3);
+    width: 100%;
+    padding: var(--s3) var(--s4);
+    background: var(--paper);
+    border: 1px solid var(--hairline-2);
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+
+    .chev {
+      margin-left: auto;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+
+    &[aria-expanded="true"] .chev {
+      transform: rotate(180deg);
+    }
+  }
+
+  // assets/js/site.js toggles the `open` class on #rail-body and flips
+  // aria-expanded on the button. Nothing else in the CSS depends on the JS.
+  .js .rail-body {
+    display: none;
+    padding-top: var(--s4);
+  }
+
+  .js .rail-body.open {
+    display: block;
+  }
+}

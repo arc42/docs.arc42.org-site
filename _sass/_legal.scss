@@ -1,0 +1,129 @@
+// ============================================================================
+// Legal pages — the imprint and privacy policy (/imprint/).
+//
+// _pages/imprint-privacy.md is a hybrid: the imprint is hand-written markdown,
+// the privacy policy is pasted output from Dr. Schwenke's Datenschutz-Generator
+// (one of its lines is 11,194 characters — it is pasted wholesale, and that is
+// the right workflow for a legal text that gets regenerated when the law moves).
+//
+// The generator emits five classes of its own. None of them has ever been styled
+// on this site — not in the current design, and not in the _content.scss that
+// preceded it — so the page has always rendered them as raw browser defaults.
+// That is what makes /imprint/ look unlike the rest of the site.
+//
+// Everything here is presentation only. No rule changes, reorders, or hides any
+// text: a privacy statement has to say exactly what it says, and hiding a clause
+// behind CSS would be worse than showing it plainly. The point is that the page
+// can be REGENERATED at any time and simply pick this styling up, with nobody
+// re-doing a markdown conversion and risking dropping a clause.
+//
+// The classes appear nowhere else in the repository (grepped across _pages,
+// _posts, _examples, _includes, _layouts), but they are generic words, so they
+// stay scoped under .site-content rather than styled globally.
+// ============================================================================
+
+.site-content {
+
+  // ---- The table of contents at the top of the policy ----------------------
+  // Same visual language as the on-page TOC in _toc.scss: a neutral structural
+  // rail, quiet rows, no bullets. It is navigation, not prose.
+  .index {
+    list-style: none;
+    margin: var(--s5) 0;
+    padding: 0 0 0 var(--s4);
+    border-left: 1px solid var(--hairline);
+    max-width: var(--measure);
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .index-link {
+    display: inline-block;
+    padding: 4px 0;
+    color: var(--signal-dk);
+    text-decoration: none;
+    line-height: 1.35;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  // ---- Per-section metadata lists ------------------------------------------
+  // "Verarbeitete Datenarten: …", "Betroffene Personen: …" — these are the
+  // structured facts under each heading, and they read better set apart from the
+  // surrounding prose than run into it. Tinted surface, no bullets, tighter type.
+  .m-elements {
+    list-style: none;
+    margin: var(--s4) 0;
+    padding: var(--s3) var(--s4);
+    background: var(--surface-2);
+    border-left: 3px solid var(--hairline-2);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    max-width: var(--measure);
+    font-size: 0.94rem;
+    line-height: 1.5;
+    color: var(--muted);
+
+    li {
+      margin: 0 0 var(--s2);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // The generator bolds the label ("Verarbeitete Datenarten:") inside each
+    // item; keep it in ink so the label/value contrast survives the muted body.
+    strong,
+    b {
+      color: var(--ink);
+    }
+  }
+
+  // ---- The glossary at the foot of the policy ------------------------------
+  // Term-then-definition pairs. Rendered as a plain list by the generator, so
+  // the separation has to come from spacing and a rule rather than from markup.
+  .glossary {
+    list-style: none;
+    margin: var(--s5) 0;
+    padding: 0;
+    max-width: var(--measure);
+
+    li {
+      padding: var(--s3) 0;
+      border-top: 1px solid var(--hairline);
+
+      &:first-child {
+        border-top: 0;
+      }
+    }
+  }
+
+  // ---- The generator's credit ----------------------------------------------
+  // An attribution, not editorial content. Sized and coloured to say so, and
+  // separated by a rule so it does not read as the final clause of the policy.
+  .seal {
+    margin: var(--s7) 0 0;
+    padding-top: var(--s4);
+    border-top: 1px solid var(--hairline);
+    max-width: var(--measure);
+    font-size: 0.85rem;
+    color: var(--muted);
+
+    a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: var(--signal-dk);
+      }
+    }
+  }
+}

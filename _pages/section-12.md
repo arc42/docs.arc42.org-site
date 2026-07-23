@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 12 - Glossary
 permalink: /section-12/
+number: 12
 order: 16
 ---
 

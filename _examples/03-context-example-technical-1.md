@@ -17,7 +17,7 @@ This is a very simple example, created with Enterprise Architect(TM).
 
 The following diagram shows the participating computers (nodes) with their technical connections plus the major artifacts of HtmlSC, the hsc-plugin-binary.
 
-![Technical context]({{ site.imageurl}}/examples/htmlsc/3-hsc-technical-context.png)
+![Technical context]({{ site.exampleimages }}/htmlsc/3-hsc-technical-context.png)
 
 
 

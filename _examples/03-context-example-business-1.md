@@ -14,7 +14,7 @@ This is a very simple example, created with Enterprise Architect(TM).
 
 ## 3. Context View
 
-![Business context]({{ site.imageurl}}/examples/htmlsc/3-hsc-business-context.png)
+![Business context]({{ site.exampleimages }}/htmlsc/3-hsc-business-context.png)
 
 
 |Neighbor  |Description |

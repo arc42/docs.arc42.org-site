@@ -1,0 +1,28 @@
+{%- comment -%}
+  Renders one glyph from the sprite at assets/icons/ui.svg.
+
+  Parameters
+    name   required — the symbol id, e.g. "github", "search", "chevron-down".
+    class  optional — extra class names, e.g. class="status-icon".
+    label  optional — an accessible name. Supply it ONLY when the icon is the
+                      sole content of its control or link. If there is visible
+                      text beside the icon, leave label off: the icon is then
+                      decorative and repeating the word to a screen reader is
+                      noise.
+
+  Usage
+    {% include icon.html name="github" label="GitHub" %}
+    {% include icon.html name="chart-bar" %}Status
+
+  Without a label the icon is hidden from assistive technology; with one it
+  becomes role="img" carrying a <title>. focusable="false" is present in both
+  cases because IE/Edge legacy put SVGs in the tab order otherwise, and it costs
+  nothing to keep.
+{%- endcomment -%}
+{%- assign icon_sprite = '/assets/icons/ui.svg' | relative_url -%}
+{%- capture icon_class -%}icon icon--{{ include.name }}{% if include.class %} {{ include.class }}{% endif %}{%- endcapture -%}
+{%- if include.label and include.label != '' -%}
+<svg class="{{ icon_class }}" role="img" focusable="false"><title>{{ include.label }}</title><use href="{{ icon_sprite }}#{{ include.name }}"></use></svg>
+{%- else -%}
+<svg class="{{ icon_class }}" aria-hidden="true" focusable="false"><use href="{{ icon_sprite }}#{{ include.name }}"></use></svg>
+{%- endif -%}

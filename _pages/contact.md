@@ -2,6 +2,8 @@
 layout: page
 title: Contact
 permalink: /contact/
+nav_title: Contact
+group: meta
 order: 25
 ---
 

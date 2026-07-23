@@ -1,0 +1,167 @@
+// ============================================================================
+// Search — the field in the masthead, the incremental top-hits panel that drops
+// out of it, and the full result list on /search/.
+//
+// The field moved out of the nav rail and into the masthead. The rail is not
+// rendered on /home/, so a rail-mounted search box left the landing page of a
+// documentation site with no way to search it.
+//
+// The markup contract is set by assets/js/search.js, which must not be broken:
+//   form[data-baseurl] > label.search-field > svg.icon + input#search
+//   div.search-panel   is injected by the script as the form's next sibling,
+//                      and hangs off .masthead-search's position: relative
+//   li.is-active       is the keyboard-highlighted option
+//   .search-panel-empty / .search-panel-all / .search-hit-title
+//   #search-page-results > .search-count + .search-hit
+//                        ( > h2 > .search-type + a, .search-excerpt, .search-meta )
+//
+// Already live in _utilities.scss, do not re-declare: .search-type and its
+// -tip / -example / -page variants.
+// ============================================================================
+
+// ---- The field --------------------------------------------------------------
+// It sits on the deep-blue band in both masthead variants, so it is a paper
+// panel: --ink on --paper, and --muted on --paper for the placeholder and the
+// glyph (5.50:1, clears AA).
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3);
+  background: var(--paper);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius);
+  cursor: text;
+
+  .icon {
+    flex: none;
+    font-size: 1.1em;
+    color: var(--muted);
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--ink);
+
+    // The focus ring belongs to the whole field, not to the bare input inside
+    // it — see :focus-within below. Removing one only to add the other back is
+    // deliberate, not a stripped indicator.
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  input::placeholder {
+    color: var(--muted);
+    opacity: 1; // Firefox dims placeholders by default; --muted is already the
+                // dimmed value and must not be dimmed twice.
+  }
+}
+
+// --sky is a solid pale-blue halo rather than a translucent one: against the
+// deep-blue band a low-alpha ring all but disappears.
+.search-field:focus-within {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 3px var(--sky);
+}
+
+// ---- The incremental panel --------------------------------------------------
+
+.search-panel {
+  position: absolute;
+  top: calc(100% + var(--s1));
+  left: 0;
+  right: 0;
+  z-index: 40;
+
+  background: var(--paper);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius);
+  // The site's signature hard offset, in the band's own blue — the panel reads
+  // as something the masthead dropped, not as a floating card.
+  box-shadow: 3px 3px 0 0 var(--deep);
+  font-size: 0.95rem;
+  overflow: hidden;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li a {
+    border-top: 1px solid var(--hairline);
+  }
+
+  a {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s2);
+    padding: var(--s2) var(--s3);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  // Hover and keyboard highlight are the same state and must look identical:
+  // the script drives .is-active with the arrow keys.
+  li.is-active a,
+  a:hover {
+    background: var(--surface-hover);
+    color: var(--signal-dk);
+  }
+}
+
+.search-hit-title {
+  min-width: 0;
+}
+
+.search-panel-empty {
+  margin: 0;
+  padding: var(--s3);
+  color: var(--muted);
+}
+
+.search-panel-all {
+  display: block;
+  padding: var(--s2) var(--s3);
+  border-top: 1px solid var(--hairline);
+  font-weight: 700;
+  color: var(--signal-dk);
+  text-decoration: none;
+}
+
+// ---- The /search/ results page ----------------------------------------------
+
+#search-page-results {
+  .search-count {
+    margin: var(--s2) 0 var(--s5);
+    color: var(--muted);
+  }
+
+  .search-hit {
+    margin: 0 0 var(--s5);
+
+    h2 {
+      margin: 0 0 var(--s1);
+      font-size: 1.15rem;
+    }
+
+    .search-excerpt {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .search-meta {
+      margin: var(--s1) 0 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  }
+}

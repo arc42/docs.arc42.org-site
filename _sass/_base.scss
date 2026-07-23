@@ -1,0 +1,136 @@
+// ============================================================================
+// Base — element defaults and the accessibility floor.
+//
+// Everything a page gets before a single component has been styled: body type,
+// link colour, the focus ring, the reduced-motion escape hatch, the skip link,
+// and the screen-reader-only helper.
+//
+// All values come from _tokens.scss. No hex literals live here.
+// ============================================================================
+
+body {
+  font-family: var(--sans);
+  font-size: 1.0625rem; // 17px — the long-read base from the approved design
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-wrap: break-word;
+}
+
+// On a phone the 17px base is one step too generous for the narrow measure.
+@media (max-width: 420px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+// ---- Links ------------------------------------------------------------------
+// Underlines are left to the browser here; components that suppress them
+// (nav rails, breadcrumbs, cards) opt out locally rather than opting in.
+
+a {
+  color: var(--signal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--signal-dk);
+}
+
+// ---- Focus ------------------------------------------------------------------
+// One ring, everywhere, on keyboard focus only.
+//
+// Note the absence of a `border-radius` here. The mockup carried
+// `border-radius: 2px` on this rule, which is not a focus style at all: it is a
+// shape override that lands on the focused element itself, so a 999px pill such
+// as .kw-chip snapped to near-square the moment it was tabbed to. An outline
+// already follows the element's own border radius; the declaration only ever
+// deformed things.
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+// Signal blue on the deep-blue masthead band is far too low contrast to serve
+// as a focus indicator. Brighten it to the tint that band is designed around.
+.masthead :focus-visible {
+  outline-color: var(--tint);
+}
+
+// ---- Motion -----------------------------------------------------------------
+// Universal selector plus !important on purpose. Component transitions are
+// declared inside later media queries and would otherwise out-specify a plain
+// reduced-motion block; this one has to beat all of them unconditionally.
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ---- Rules ------------------------------------------------------------------
+// `hr.with-no-margin` is used by _includes/further-info.md; the plain and
+// with-margin variants are kept so the three read as one family.
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 1em 0;
+
+  &.with-margin {
+    margin: var(--s7) 0;
+  }
+
+  &.with-no-margin {
+    margin: 0;
+  }
+}
+
+// ---- Skip link --------------------------------------------------------------
+// Parked above the viewport, slides down on focus. It is the first focusable
+// thing in the document, so it must be visible the instant it is reached.
+
+.skip-link {
+  position: absolute;
+  left: var(--s4);
+  top: -60px;
+  z-index: 100;
+  padding: var(--s2) var(--s4);
+  background: var(--paper);
+  color: var(--signal-dk);
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid var(--signal);
+  border-radius: var(--radius);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: var(--s3);
+}
+
+// ---- Screen-reader only -----------------------------------------------------
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

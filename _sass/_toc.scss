@@ -1,0 +1,208 @@
+// ============================================================================
+// TOC — the sticky right-hand on-page table of contents, and the <details>
+// inline TOC it collapses into on narrower screens.
+//
+// Two corrections to tmp/design-proposals/d-dora/style.css.
+//
+// 1. THE STICKY TAIL. The mockup's `.toc` was `position: sticky` with no
+//    max-height and no overflow-y, while `.rail` beside it correctly had both.
+//    The mockup listed three entries so it fitted; the moment a sticky element
+//    is taller than the viewport its top pins and everything below the fold
+//    becomes permanently unreachable — you cannot scroll it, because it is not
+//    a scroll container, and you cannot scroll the page to it, because it is
+//    stuck. Every sticky column needs the max-height/overflow pair.
+//
+// 2. THE BREAKPOINT MOVED FROM 1100px TO 1400px, i.e. to --shell-max. Measured
+//    on the mockup, prose fell to 49 characters per line at 1200px against a
+//    65-75 target: the TOC came back at 1101px, but --shell-max is 1400px, so
+//    between those widths a fixed three-pane grid had nothing left to give and
+//    took it out of the centre column. 1280px was tried and still measured only
+//    62.5ch; three panes do not fit until the shell is at full width, where the
+//    centre holds 71.2ch. The third pane waits until there is room for it.
+//    --rail-w is fluid (clamp) for the same reason; --toc-w stays 240px because
+//    at 210px "Crosscutting Concepts" wrapped to three lines, which roughly
+//    doubled the height of the very element that had no room to spare.
+//
+// Both containers are gated on `.is-ready`, added by assets/js/site.js only
+// once it has found headings to list. Without JavaScript, or on a page with no
+// h2, nothing is shown rather than an empty box.
+// ============================================================================
+
+$toc-bp: 1400px;
+
+// ---- The sticky pane --------------------------------------------------------
+
+.toc {
+  display: none;
+  font-size: 0.86rem;
+}
+
+// Without JS there is no TOC, so the grid must not reserve a column for one.
+// `html.js` is set by the inline script in the document head; `.has-no-toc` is
+// added by site.js when a section page turns out to have no h2 at all.
+html:not(.js) .layout--doc,
+.layout--doc.has-no-toc {
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+}
+
+@media (min-width: $toc-bp) {
+  .toc.is-ready {
+    display: block;
+    position: sticky;
+    // The condensed masthead is itself sticky at top: 0 and --bar-h tall
+    // (_sass/_masthead.scss). Sticking this pane at --s5 alone would park its
+    // first entries underneath the bar, and the same --bar-h has to come out of
+    // the height budget or the pane overflows the viewport by exactly the bar.
+    top: calc(var(--bar-h) + var(--s5));
+    align-self: start;
+    padding: var(--s7) var(--s5) var(--s5) var(--s2);
+
+    // See note 1. Without these three the tail of a long TOC is unreachable.
+    max-height: calc(100vh - var(--bar-h) - var(--s5) * 2);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.toc-title {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0 0 var(--s3);
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--hairline); // one neutral structural rail
+}
+
+.toc-list a {
+  display: flex;
+  gap: var(--s2);
+  align-items: baseline;
+  padding: 6px 10px;
+  color: var(--muted);
+  line-height: 1.3;
+  text-decoration: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+
+  &:hover {
+    color: var(--ink);
+    background: var(--surface-hover);
+  }
+}
+
+// The number column. Rendered even when a heading carries no leading number, so
+// that "Further Info" starts on the same left edge as "3.1 Business context".
+.toc-num {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--muted);
+  flex: none;
+  min-width: 2em;
+}
+
+// Active = row tint + blue bold text, no accent stripe. Keyed off
+// [aria-current], which the scroll-spy actually maintains; the mockup hardcoded
+// a `.active` class on the first item, which would have highlighted entry 1 for
+// the entire length of the page.
+.toc-list [aria-current] {
+  color: var(--signal-dk);
+  font-weight: 700;
+  background: var(--row-active);
+
+  .toc-num {
+    color: var(--signal-dk);
+  }
+}
+
+// ---- The inline <details> ---------------------------------------------------
+// Below $toc-bp this is the only page map there is, so site.js opens it by
+// default above 640px — the mockup left it closed, and between 800 and 1100px,
+// with a screenful of vertical room going spare, readers had no page map at all
+// unless they thought to click for one.
+
+.toc-inline {
+  display: none;
+}
+
+@media (max-width: $toc-bp - 1px) {
+  .toc-inline.is-ready {
+    display: block;
+    margin: 0 0 var(--s5);
+    border: 1px solid var(--hairline-2);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    max-width: var(--measure);
+  }
+
+  .toc-inline summary {
+    cursor: pointer;
+    list-style: none;
+    padding: var(--s3) var(--s4);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    min-height: 44px;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    .chev {
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .toc-inline[open] summary .chev {
+    transform: rotate(180deg);
+  }
+
+  .toc-inline-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--s4) var(--s3);
+  }
+
+  .toc-inline-list a {
+    display: flex;
+    gap: var(--s2);
+    align-items: baseline;
+    padding: var(--s2) 0;
+    min-height: 32px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--signal-dk);
+    }
+  }
+
+  .toc-inline-list [aria-current] {
+    color: var(--signal-dk);
+    font-weight: 700;
+  }
+
+  .toc-inline .toc-num {
+    font-size: 0.76rem;
+    color: var(--signal);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc-inline summary .chev {
+    transition: none;
+  }
+}

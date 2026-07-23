@@ -1,255 +1,719 @@
+// ============================================================================
+// Content — the prose column: headings, paragraphs, lists, tables, code blocks,
+// figures, and the article furniture.
+//
+// Everything here is scoped to .site-content (the <main> in _layouts/default)
+// or .post-content (the <section> the three article layouts wrap {{ content }}
+// in). .post-content always nests inside .site-content, so the shared element
+// defaults are declared once on the outer one.
+//
+// All values come from _tokens.scss. No hex literals live here.
+//
+// Carried over from `git show HEAD:_sass/_content.scss`:
+//   · the heading scale and the "h2 is a link-coloured subhead" rule, now
+//     tokenised and re-typed onto the serif/sans pairing;
+//   · the callout heading flattening (see the block near the bottom);
+//   · the .header-link reveal-on-hover behaviour;
+//   · blockquote, table, list, code and dl defaults.
+// Dropped, because nothing in the repo emits them (grepped across _pages,
+// _posts, _examples, _includes, _layouts, assets/js): ul.inline / ol.inline,
+// .pagination, .comments, the header .panel float furniture, and the
+// #search-results / #search-page-results rules — search now belongs to
+// _search.scss.
+// ============================================================================
+
+// ---- Measure ----------------------------------------------------------------
+// The longest-standing P1 on this site: body copy ran the full width of the
+// content column, measuring ~110 characters per line against a 65-75 target.
+//
+// The cap is applied to the text elements rather than to a wrapper, because the
+// content is Markdown: every block is a direct child of .post-content and there
+// is no per-block wrapper to hang a container query off. Media and tables are
+// deliberately NOT capped — a context diagram or a five-column mapping table has
+// no measure to protect and reads worse when squeezed. The callout boxes carry
+// the cap on the box itself (see _callouts.scss) and release their paragraphs,
+// so their text fills the frame instead of stopping 68ch into it.
+
 .site-content {
-    h1, h2, h3, h4, h5, h6 {
-        line-height: 1.3;
-        margin: 1em 0;
-        a {
-            color: $text-color;
-        }
-        .header-link {
-            margin-left: 0.2em;
-            color: $link-color;
-            opacity: 0;
-        }
-        &:hover .header-link {
-            opacity: 1;
-        }
-    }
+  p,
+  li,
+  dt,
+  dd,
+  blockquote,
+  figcaption,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .lead {
+    max-width: var(--measure);
+  }
 
-    h1 {
-        font-size: 2.3em;
-    }
-
-    h2 {
-        font-size: 1.8em;
-        color: $link-color
-    }
-
-    h3 {
-        font-size: 1.3em;
-    }
-
-    h4 {
-        font-size: 1.1em;
-    }
-
-    // Headings inside guidance / example callouts are compact labels
-    // (Content / Motivation / Form). Keep them modest regardless of their
-    // semantic level, so the document outline stays correct without shouting.
-    .arc42-help, .arc42-example {
-        h1, h2, h3, h4, h5, h6 {
-            font-size: 1.05em;
-            color: inherit;
-            margin: 1.2em 0 0.2em;
-        }
-    }
-
-    blockquote {
-        border-left: 5px solid #ddd;
-        color: $blockquote-color;
-        padding: 0.5em 1em;
-        p:first-child {
-            margin-top: 0;
-        }
-        p:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        td, th {
-            padding: 0.5em 1em;
-            border: 1px solid $border-color;
-            text-align: left;
-        }
-    }
-
-    p, ol, ul, dl, table, blockquote, kbd, pre, samp {
-        margin: 1.5em 0;
-    }
-
-    ul, ol {
-        padding-left: 1em;
-        ul, ol {
-            margin: 0;
-        }
-    }
-
-    ul, ol {
-        &.inline {
-            @extend .clearfix;
-            list-style: none;
-            padding-left: 0;
-            li {
-                float: left;
-                margin-right: 1em;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-
-    dt {
-        font-weight: bold;
-    }
-
-    dd {
-        margin-left: 2em;
-    }
-
-    p, ol, ul, dl {
-        line-height: 1.5;
-    }
-
-    ol, ul {
-        list-style-position: outside;
-    }
-
-    code {
-        font-family: $code-font-family;
-        font-size: $code-font-size;
-        margin: 0 2px;
-        padding: 0 5px;
-        border: 1px solid #ddd;
-        background-color: rgba(#ddd, .1);
-        border-radius: 3px;
-    }
-
-    pre {
-        border: 1px solid #ccc;
-        background-color: rgba(#ddd, .1);
-        overflow: auto;
-        padding: 10px 15px;
-        line-height: 1em;
-        border-radius: 3px;
-        code {
-            margin: 0;
-            padding: 0;
-            word-wrap: normal;
-            white-space: pre;
-            border: none;
-            background: transparent;
-        }
-    }
-
-    .article-wrapper {
-        @extend .clearfix;
-        margin: $margin 0;
-    }
-
-    article {
-        width: 100%;
-        float: left;
-        header {
-            margin-bottom: $margin;
-            .panel {
-                padding: 1em 1.5em;
-                background-color: rgba($site-title-color, .2);
-                h1 {
-                    margin: 0;
-                    &, a {
-                        color: $dark-brand-color;
-                    }
-                }
-                ul.meta, ul.tags {
-                    list-style: none;
-                    margin: 0;
-                    padding: 0;
-                    li {
-                        display: inline-block;
-                        color: rgba($text-color, .5);
-                        font-size: 0.95em;
-                        margin-right: 0.5em;
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                    }
-                }
-                ul.meta {
-                    float: right;
-                }
-                ul.icons {
-                    margin: 0;
-                    padding: 0;
-                    li {
-                        margin-right: 0;
-                    }
-                }
-            }
-        }
-        p:last-child {
-            margin-bottom: 0;
-        }
-        footer {
-            margin-top: $margin;
-        }
-        .footnotes {
-            font-size: 0.9em;
-        }
-    }
-
-    .comments {
-        margin-bottom: $margin;
-    }
-
-    .pagination {
-        margin: $margin 0;
-        padding: 0 10%;
-        text-align: center;
-        .btn:first-child {
-            margin-right: 1em;
-        }
-    }
-
-    #search-results {
-        .article-wrapper {
-            margin: 1em 0;
-        }
-        article header {
-            margin-bottom: 0;
-            .panel {
-                padding: 0;
-                background-color: $background-color;
-                h1, h4 {
-                    margin: 0;
-                    font-size: 1.3em;
-                    color: $title-color;
-                    a.tag {
-                        font-size: 0.7em;
-                    }
-                }
-            }
-        }
-    }
+  // An image-only paragraph is a figure in disguise; let diagrams use the full
+  // column.
+  //
+  // The class is set by assets/js/site.js, not by `p:has(> img)`. :has() cannot
+  // express "image-ONLY", and kramdown emits paragraphs that carry a sentence
+  // and a diagram together — /section-10/ has one running 250 characters. Those
+  // matched the :has() rule and lost their measure entirely, which is the exact
+  // defect this redesign set out to fix. Without JS every paragraph simply keeps
+  // the cap: diagrams are then bounded by the measure, which is survivable in a
+  // way that uncapped prose is not.
+  p.is-figure {
+    max-width: none;
+  }
 }
 
-// Full search results on /search/.
-#search-page-results {
-    .search-count {
-        color: $muted;
-        margin: 0.5em 0 1.5em;
+// ---- Headings ---------------------------------------------------------------
+// Editorial serif voice for h1/h2, sans for h3 and below. h2 carries the Blue
+// Subhead Rule from DESIGN.md: --signal on the subheads is what lets a reader
+// scan a long section's skeleton by colour alone, without reading a word.
+
+.site-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // A condensed sticky masthead is --bar-h tall. Without this, every TOC and
+    // #anchor jump parks its target underneath the bar.
+    scroll-margin-top: calc(var(--bar-h) + var(--s5));
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    // The middle term is wrapped in calc() on purpose: the site builds on
+    // jekyll-sass-converter 1.5.2 (Ruby Sass 3.7), which evaluates a bare
+    // `1.4rem + 2.4vw` as arithmetic and aborts with "Incompatible units".
+    // calc() contents are passed through untouched. Same fix is needed in
+    // _masthead.scss line 114 — see report.
+    font-size: clamp(2rem, calc(1.4rem + 2.4vw), 2.85rem);
+    line-height: 1.12;
+    letter-spacing: 0.2px;
+    color: var(--ink);
+    margin: 0 0 var(--s4);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.55rem;
+    line-height: 1.2;
+    color: var(--signal);
+    margin: 3.1rem 0 var(--s4);
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1.12rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: var(--s6) 0 var(--s3);
+  }
+
+  h4 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: var(--s5) 0 var(--s2);
+  }
+
+  h5,
+  h6 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--muted);
+    margin: var(--s5) 0 var(--s2);
+  }
+
+  // The first heading of a section should not push a hole above itself.
+  > :first-child,
+  .post-content > :first-child {
+    margin-top: 0;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: inherit;
+  }
+
+  // ---- Anchor link on headings ----------------------------------------------
+  // Appended by assets/js to every heading that has an id, as
+  // {% include icon.html name="link" %}. Hidden until the heading is hovered,
+  // but ALSO revealed on focus: it is a real link in the tab order and a
+  // keyboard user must be able to see what they have landed on.
+  .header-link {
+    margin-left: 0.3em;
+    color: var(--signal);
+    opacity: 0;
+    transition: opacity 0.14s ease;
+
+    .icon {
+      width: 0.7em;
+      height: 0.7em;
+    }
+  }
+
+  h1:hover .header-link,
+  h2:hover .header-link,
+  h3:hover .header-link,
+  h4:hover .header-link,
+  h5:hover .header-link,
+  h6:hover .header-link,
+  .header-link:focus-visible {
+    opacity: 1;
+  }
+}
+
+// ---- Block rhythm -----------------------------------------------------------
+
+.site-content {
+  p {
+    margin: 0 0 var(--s4);
+  }
+
+  .lead {
+    font-size: 1.16rem;
+    margin-bottom: var(--s6);
+  }
+
+  dl,
+  blockquote,
+  figure,
+  pre {
+    margin: var(--s4) 0 var(--s5);
+  }
+
+  // Prose lists only. `:not([class])` is doing real work here: every list in
+  // this file's own components — .tags, .tips-list, .article-meta,
+  // .author-icons, and .tag-box over in _utilities.scss — is a <ul>, and a
+  // descendant selector like `.site-content ul` out-specifies the component's
+  // own `padding: 0`. Without the guard, every pill row on the site picks up a
+  // 1.4em indent and a bullet rhythm it does not want.
+  ul:not([class]),
+  ol:not([class]) {
+    margin: var(--s4) 0 var(--s5);
+    padding-left: 1.4em;
+    list-style-position: outside;
+
+    ul,
+    ol {
+      margin: var(--s1) 0 var(--s2);
+    }
+  }
+
+  ul:not([class]) > li + li,
+  ol:not([class]) > li + li {
+    margin-top: var(--s1);
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0 0 var(--s3) var(--s5);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // assets/js/site.js centres an image-only paragraph with
+  // `p.style.textAlign = 'center'`. That does nothing at all to the images
+  // themselves, because _reset.scss makes every <img> a block — a block box is
+  // not inline content and text-align cannot move it. Auto side margins are
+  // what actually centres it, so the script's intent lands.
+  p > img,
+  p > a > img {
+    margin-inline: auto;
+  }
+
+  // …except jemoji's, which are inline glyphs inside a sentence. The blanket
+  // `img { display: block }` in the reset would otherwise drop every 🙂 onto a
+  // line of its own.
+  img.emoji {
+    display: inline;
+    width: 1em;
+    height: 1em;
+    margin: 0 0.05em;
+    vertical-align: -0.15em;
+  }
+
+  figure {
+    margin-inline: 0;
+  }
+
+  figcaption {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: var(--s2);
+  }
+
+  .footnotes {
+    font-size: 0.9em;
+    color: var(--muted);
+    border-top: 1px solid var(--hairline);
+    margin-top: var(--s7);
+    padding-top: var(--s3);
+  }
+}
+
+// ---- Blockquote -------------------------------------------------------------
+// The one sanctioned thick left border on the whole site. DESIGN.md is explicit
+// that it stays grey: it reads as a conventional quotation mark, not as a
+// brand-coloured accent stripe. Never a blue, never on a card or an alert.
+
+.site-content blockquote {
+  border-left: 5px solid var(--rule);
+  padding: var(--s2) var(--s5);
+  color: var(--muted);
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ---- Tables -----------------------------------------------------------------
+// Markdown emits a bare <table>; the hand-written mockup markup uses
+// <table class="data">. Both get the same rules so authors never have to
+// remember a class.
+//
+// .table-scroll is the horizontal scroller. It MUST be emitted with
+//   <div class="table-scroll" tabindex="0" role="region" aria-label="…">
+// so the hidden columns are reachable by keyboard — at 390px a 32rem table
+// leaves ~244px off-screen with no other way to get at it. The wrapper is added
+// by the table-wrapping script (see report; it is another agent's file).
+
+.site-content {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.96rem;
+  }
+
+  caption {
+    text-align: left;
+    color: var(--muted);
+    font-size: 0.88rem;
+    padding-bottom: var(--s2);
+  }
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: var(--s3) var(--s4);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  thead th {
+    color: var(--deep);
+    font-weight: 700;
+    background: var(--surface-2);
+    border-bottom: 2px solid var(--hairline-2);
+  }
+
+  tbody tr:hover {
+    background: var(--surface-2);
+  }
+}
+
+.table-scroll {
+  --scroll-bg: var(--paper);
+
+  overflow-x: auto;
+  margin: var(--s4) 0 var(--s5);
+
+  // A visible scrollbar is half the affordance …
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) var(--surface-2);
+
+  // … and the other half is a shadow at whichever edge still has content behind
+  // it. The two `local` layers are opaque covers that travel with the content
+  // and hide the shadow when the corresponding edge is reached; the two
+  // `scroll` layers are the shadows themselves, pinned to the box.
+  background-image:
+    linear-gradient(to right, var(--scroll-bg), transparent),
+    linear-gradient(to left, var(--scroll-bg), transparent),
+    radial-gradient(farthest-side at 0 50%, var(--hairline-2), transparent),
+    radial-gradient(farthest-side at 100% 50%, var(--hairline-2), transparent);
+  background-position: 0 0, 100% 0, 0 0, 100% 0;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 100%, 2.5rem 100%, 0.9rem 100%, 0.9rem 100%;
+  background-attachment: local, local, scroll, scroll;
+
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--surface-2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--rule);
+    border-radius: var(--radius-pill);
+  }
+
+  // The wrapper is tabbable, so it needs the focus ring to be unmistakable —
+  // offset it inwards so it is not clipped by the scroller's own overflow.
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+
+  // The floor below which columns are crushed rather than merely narrow. It is
+  // set HERE and not on `.site-content table`, because an unwrapped table with a
+  // min-width has nowhere to overflow to except the page, and would give the
+  // whole document a horizontal scrollbar on a phone.
+  table {
+    min-width: 32rem;
+  }
+}
+
+// ---- Code -------------------------------------------------------------------
+// Inline code stays in --ink. The mockup coloured it --signal-dk, which put a
+// fourth, meaningless blue on the reading surface: a token name in running text
+// is not a link and must not look like one.
+
+.site-content {
+  code,
+  kbd,
+  samp {
+    font-family: var(--mono);
+    font-size: 0.9em;
+  }
+
+  code {
+    padding: 0.1em 0.4em;
+    background: var(--code-bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    border-radius: 3px;
+  }
+
+  pre {
+    overflow: auto;
+    padding: var(--s3) var(--s4);
+    line-height: 1.5;
+    background: var(--code-bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline-2);
+    border-radius: var(--radius);
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) var(--code-bg);
+
+    code {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background: transparent;
+      white-space: pre;
+      word-wrap: normal;
+    }
+  }
+
+  // Rouge wraps <pre> in <div class="highlight">; the theme in _syntax.scss
+  // already paints the surface, so the inner pre must not paint it twice.
+  .highlight {
+    margin: var(--s4) 0 var(--s5);
+    border: 1px solid var(--hairline-2);
+    border-radius: var(--radius);
+
+    pre {
+      margin: 0;
+      border: 0;
+      background: transparent;
+    }
+  }
+}
+
+// ---- Headings inside callouts -----------------------------------------------
+// Section pages write `## Content` / `## Motivation` / `## Form` inside an
+// .arc42-help box. Semantically those really are the section's subheads, so the
+// levels stay; visually they are compact labels and must not shout — an h2 in
+// here would otherwise render as a 1.55rem Signal-Blue serif subhead and
+// out-weigh the section title above the box.
+//
+// Quoted in _callouts.scss; it lives here because it belongs to the heading
+// scale it is overriding.
+
+.site-content {
+  .arc42-help,
+  .arc42-example {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--sans);
+      font-size: 1.05em;
+      font-weight: 700;
+      line-height: 1.35;
+      color: inherit;
+      margin: 1.2em 0 0.2em;
+      max-width: none;
     }
 
-    .search-hit {
-        margin: 0 0 1.4em;
-
-        h2 {
-            font-size: 1.15em;
-            margin: 0 0 0.15em;
-        }
-
-        .search-excerpt {
-            margin: 0;
-            font-size: 0.95em;
-            color: $muted;
-        }
-
-        .search-meta {
-            margin: 0.1em 0 0;
-            font-size: 0.85em;
-            color: $muted;
-        }
+    > :first-child {
+      margin-top: 0;
     }
+  }
+}
+
+// ---- Article furniture ------------------------------------------------------
+
+.site-content {
+  .article-wrapper {
+    margin: 0 0 var(--s6);
+  }
+
+  article > footer {
+    margin-top: var(--s6);
+  }
+
+  article > header {
+    margin-bottom: var(--s5);
+  }
+}
+
+// ---- Article header: title, tags, byline ------------------------------------
+// _includes/article-header.html. The old version floated a tinted .panel and
+// pushed the meta list to the right; on the grid shell it is a plain stack.
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2) var(--s4);
+  margin: var(--s3) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92rem;
+  color: var(--muted);
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    margin: 0;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    color: var(--muted);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--signal-dk);
+      text-decoration: underline;
+    }
+  }
+}
+
+.author-icons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: var(--muted);
+
+    &:hover {
+      color: var(--signal-dk);
+    }
+  }
+
+  .icon {
+    width: 1.05em;
+    height: 1.05em;
+  }
+}
+
+// ---- Tags -------------------------------------------------------------------
+// Real links to /keywords/#<tag>, which is where the tip index lives. Until now
+// a tag sat inches from that page and could not reach it.
+//
+// --pill-ink is --signal-dk, NOT --signal. Signal Blue on Tag Cyan measures
+// 3.54:1 and fails AA at every size a tag is ever set in; the darker ramp
+// member measures 4.96:1. Do not "restore" the brighter blue.
+
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+  margin: var(--s3) 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-flex;
+    margin: 0;
+  }
+
+  // The leading tags glyph is decorative next to the pills it labels.
+  .tags-icon {
+    color: var(--muted);
+  }
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: var(--pill-bg);
+  color: var(--pill-ink);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--pill-ink);
+    background: var(--sky);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+// ---- Further Info: the tip list ---------------------------------------------
+// _includes/further-info.md. Every title is a link to the tip's own page; the
+// site advertises 144 tips in the masthead and, before this, not one of them was
+// reachable from a section page.
+
+.tips-list {
+  list-style: none;
+  margin: var(--s3) 0 var(--s6);
+  padding: 0;
+  max-width: var(--measure);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s2) var(--s3);
+    margin: 0;
+    padding: var(--s3) 0;
+    border-top: 1px solid var(--hairline);
+    max-width: none;
+  }
+
+  li:first-child {
+    border-top: 0;
+  }
+
+  // Inside a row the tag group is already inline; kill the block margin it
+  // carries when it stands on its own under an article title.
+  .tags {
+    margin: 0;
+  }
+}
+
+.tip-title {
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--signal-dk);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.tips-empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+// ---- Example lists ----------------------------------------------------------
+// _includes/example-header.html and -nonutshell.html render <li> rows into the
+// list opened by _includes/example.md and _pages/examples.md.
+
+.site-content a.post-link {
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+// ---- Share buttons ----------------------------------------------------------
+// _includes/share-buttons.html, rendered only when site.share_buttons is set.
+
+// Scoped, because it is a <p> and `.site-content p` would otherwise out-specify
+// its margin reset.
+.site-content .share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  margin: 0;
+  padding-top: var(--s4);
+  border-top: 1px solid var(--hairline);
+  font-size: 0.92rem;
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s1) var(--s3);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius);
+  color: var(--signal-dk);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--surface-hover);
+    border-color: var(--signal);
+  }
+}
+
+// ---- Narrow viewports -------------------------------------------------------
+
+@media (max-width: 640px) {
+  .site-content {
+    h2 {
+      margin-top: var(--s6);
+    }
+
+    th,
+    td {
+      padding: var(--s2) var(--s3);
+    }
+  }
 }

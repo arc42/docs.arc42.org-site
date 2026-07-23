@@ -1,22 +1,84 @@
-{% if site.show-subtle-ads %}
-<aside class="subtle-ads" aria-label="Training from the arc42 team">
-    <script src="https://unpkg.com/htmx.org@1.9.6"
-            integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
-            crossorigin="anonymous"></script>
+{%- comment -%}
+  The arc42 training note. These trainings fund this site, so the note appears
+  on essentially every page — but in two different weights.
 
-    <div hx-get="https://arc42-subtle-ads-backend.vercel.app/api"
-         hx-trigger="load delay"
-         hx-swap="outerHTML"
-         hx-target="#subtle-ads">
-    </div>
+    {% include subtle-ads.html %}                  full, with live dates
+    {% include subtle-ads.html variant="brief" %}  the offer only, no dates
 
-    <div id="subtle-ads" class="subtle-ad">
+  DEFAULT (full) — section pages, tips, examples, meta pages.
+  htmx swaps in the current course list from the arc42 backend: three courses
+  with their scheduled dates. A reader deep in section 3 has already chosen a
+  topic, so concrete dates are useful there.
+
+  BRIEF — the home page.
+  Home is where someone decides whether this site is worth their time. A dated
+  schedule of three courses is a wall of detail before they have read anything,
+  and it dates the front page the moment a course sells out. The brief variant
+  says arc42 offers training and points at where the dates live. It also loads
+  no htmx at all, so the home page keeps zero third-party fetches beyond
+  analytics.
+
+  Both variants render the same .subtle-ad component — same maroon quarantine,
+  same kicker, same hard offset shadow — so a reader recognises it as one thing
+  wherever they meet it, and never mistakes it for editorial guidance.
+{%- endcomment -%}
+{%- if site.show-subtle-ads -%}
+{%- assign brief = false -%}
+{%- if include.variant == 'brief' %}{% assign brief = true %}{% endif -%}
+
+<aside class="subtle-ads{% if brief %} subtle-ads--brief{% endif %}" aria-label="Training from the arc42 team">
+    {%- if brief -%}
+    {%- comment -%}
+      Written here rather than pulled from the source: the brief variant is
+      deliberately date-free, so there is nothing to refresh.
+    {%- endcomment -%}
+    <div class="subtle-ad">
         <h4>Prefer to learn arc42 hands-on?</h4>
         <p>
             The team that maintains this free reference also runs practical
-            architecture training. See upcoming dates and topics at
+            architecture training — always two trainers in the room, and solid
+            preparation for
+            <a rel="noopener noreferrer nofollow" target="_blank" href="https://www.isaqb.org">iSAQB CPSA-Foundation</a>
+            certification.
+        </p>
+        <p>
+            See upcoming dates and topics at
             <a rel="noopener noreferrer nofollow" target="_blank" href="https://trainings.arc42.org">trainings.arc42.org</a>.
         </p>
     </div>
+    {%- else -%}
+    {%- comment -%}
+      The current course list, fetched at BUILD time by
+      .github/workflows/refresh-trainings.yml and committed to the repository —
+      not fetched in the reader's browser.
+
+      What this buys, in order of importance: the dates are under version
+      control, so nothing appears on ~200 pages without a reviewable commit; they
+      are in the HTML, so search engines and readers without JavaScript see them;
+      a backend outage fails the workflow loudly instead of silently showing every
+      visitor a generic fallback; and every page drops htmx (~14 KB from unpkg)
+      plus a second third-party request.
+
+      This file is generated. Do not hand-edit it — the next refresh overwrites
+      it. To change the copy, change it at the source.
+    {%- endcomment -%}
+    {% include generated/trainings.html %}
+    {%- endif -%}
+
+    {%- comment -%}
+      This site is written in English and read internationally, but most public
+      arc42 courses are held in German. Saying so here is not a disclaimer, it is
+      the single most useful fact for a reader deciding whether to click.
+
+      It is a sentence rather than a per-course DE/EN badge because the source
+      cannot yet support badges: of the four courses the backend returns today,
+      one is labelled "(in German)", one "in English", and two carry no language
+      marker at all. Per-date badges need a `language` field from the training
+      site — see tmp/training-dates-integration-concept.md.
+    {%- endcomment -%}
+    <p class="subtle-ad-lang">
+        <b>DE</b> Public courses are held in German unless a date says otherwise.
+        In-house training is available in English.
+    </p>
 </aside>
-{% endif %}
+{%- endif -%}

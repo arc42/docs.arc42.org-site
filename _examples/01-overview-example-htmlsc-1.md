@@ -28,8 +28,8 @@ Main goal is to support authors in avoiding errors within their (generated) HTML
 2. HtmlSC checks the generated HTML for broken links, missing images and other semantic issues.
 3. HtmlSC creates a test report, similar to the well-known unit test report (see below).
 
-![HtmlSC goal: Semantic checking of HTML pages]({{ site.imageurl}}/examples/htmlsc/1-1-overview.png)
+![HtmlSC goal: Semantic checking of HTML pages]({{ site.exampleimages }}/htmlsc/1-1-overview.png)
 
 The overall goal of HtmlSC is to create neat and clear reports, showing errors within HTML files. Below you find a example report.
 
-![example Report]({{ site.imageurl }}/examples/htmlsc/1-1-sample-report.jpg)
+![example Report]({{ site.exampleimages }}/htmlsc/1-1-sample-report.jpg)

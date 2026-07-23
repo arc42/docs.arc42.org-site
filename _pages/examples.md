@@ -2,6 +2,8 @@
 layout: arc42-doc-section
 title: All examples
 permalink: /examples/
+nav_title: Examples
+group: meta
 order: 19
 ---
 

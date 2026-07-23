@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 11 - Risks and technical debt
 permalink: /section-11/
+number: 11
 order: 15
 ---
 # 11. Risks and Technical Debt

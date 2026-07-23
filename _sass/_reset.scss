@@ -1,0 +1,69 @@
+// ============================================================================
+// Reset — the modern floor.
+//
+// This replaces normalize.css v3.0.2 (427 lines), which spent most of its bulk
+// on IE8/IE9 and on `display: block` declarations for HTML5 elements that every
+// browser has shipped natively for a decade. None of that is load-bearing now.
+//
+// What is kept is only what browsers still genuinely disagree about, or what
+// every page here would otherwise have to undo by hand.
+// ============================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  // Stop iOS Safari inflating type when the device is turned to landscape.
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+// Vertical rhythm is set deliberately per component, never inherited from the
+// user-agent stylesheet.
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd,
+ul, ol, pre {
+  margin: 0;
+}
+
+// Media behaves as a block and never overflows its column.
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Form controls do not inherit type by default in any browser.
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+// Never let a long URL or identifier force a horizontal scrollbar.
+input,
+button,
+textarea,
+select {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+// Keep the accessible name of an <svg> icon out of the layout while still
+// letting the sprite's <title> be announced.
+svg:not(:root) {
+  overflow: hidden;
+}

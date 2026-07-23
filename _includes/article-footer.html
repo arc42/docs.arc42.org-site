@@ -1,4 +1,21 @@
+{%- comment -%}
+  Foot of a tip / example article.
+
+  The previous version always emitted an empty <footer> element: the share-button
+  branch inside it had been gutted, leaving an if/endif pair wrapped around
+  nothing at all. An empty landmark on every article page is noise in a screen
+  reader's element list, so the element is only emitted when it has content.
+
+  site.share_buttons is currently unset in _config.yml, so this renders nothing
+  at all today. See share-buttons.html for the shape it expects.
+
+  Parameters
+    page   required — the page or post being rendered.
+    share  optional — false to suppress sharing on an individual page.
+{%- endcomment -%}
+
+{%- if site.share_buttons and include.share != false -%}
 <footer>
-    {% if site.share_buttons and include.share != false %}
-    {% endif %}
+    {%- include share-buttons.html page=include.page -%}
 </footer>
+{%- endif -%}

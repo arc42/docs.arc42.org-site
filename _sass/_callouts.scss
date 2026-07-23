@@ -1,0 +1,250 @@
+// ============================================================================
+// Callouts — .arc42-help (cool guidance) and .arc42-example (warm example).
+//
+// The signature component of this site. Ported from the deleted
+// assets/css/arc42-doc.css, tokenised, with the mockup's border, sub-label and
+// in-callout table rules folded in.
+//
+// THE TEMPERATURE PAIRING IS LOAD-BEARING. Cool blue means "arc42 is telling you
+// what belongs here"; warm terracotta means "here is somebody's actual
+// documentation". A reader separates advice from illustration by temperature
+// before reading a word, so the two palettes must never be allowed to converge —
+// and --help-bg in particular is reserved for guidance alone (the active nav row
+// uses --sky for exactly this reason, see _tokens.scss).
+//
+// Two things carried over verbatim in spirit from the original rules:
+//
+//  1. line-height is set EXPLICITLY, not inherited. These boxes appear inside
+//     .post-content on example pages, which never picked up the ambient
+//     `p { line-height: 1.5 }`; without the explicit value the box fell back to
+//     the browser default and read as cramped against the prose around it.
+//
+//  2. the icon is absolutely positioned, never floated, so it cannot nudge the
+//     body text into a ragged first line. The right padding on the box is what
+//     reserves its lane.
+//
+// The two icon files moved during the asset consolidation:
+//   assets/css/help42.svg      → assets/icons/help42.svg
+//   assets/css/arc42-info.svg  → assets/icons/arc42-info.svg
+// The original `url("./help42.svg")` was relative to the compiled stylesheet
+// and 404s today. Both URLs below are absolute for that reason.
+//
+// The heading-flattening rule (`## Content` / `## Motivation` / `## Form` inside
+// a box render as compact 1.05em labels while keeping their semantic level)
+// lives in _content.scss, next to the heading scale it overrides.
+// ============================================================================
+
+.arc42-help,
+.arc42-example {
+  position: relative;
+  margin: var(--s5) 0;
+
+  // 16px 48px 16px 24px. The wide right inset is the icon's lane.
+  padding: var(--s4) var(--s7) var(--s4) var(--s5);
+  border-radius: var(--radius);
+
+  // Not inherited — see note 1 in the header.
+  line-height: 1.5;
+
+  // The box, not its paragraphs, carries the measure. _content.scss caps prose
+  // elements at --measure; if the box were left to run the full column its text
+  // would stop 68ch in and leave a ragged right edge inside a much wider frame.
+  //
+  // The padding has to be added back, or the box's own --s7 + --s5 of horizontal
+  // padding is taken OUT of the reading measure: capping the box at a bare
+  // --measure put callout text at ~61 characters per line, under the 65-75 band
+  // — and on this site most of the reading happens inside these boxes.
+  max-width: calc(var(--measure) + var(--s7) + var(--s5));
+
+  p {
+    margin: 0 0 var(--s3);
+    max-width: none;
+  }
+
+  li,
+  dt,
+  dd {
+    max-width: none;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // The icon sits in the reserved lane at the top right.
+  &::before {
+    content: "";
+    position: absolute;
+    top: var(--s4);
+    right: var(--s5);
+    width: 24px;
+    height: 26px;
+    background-repeat: no-repeat;
+    background-size: 24px 26px;
+  }
+}
+
+// ---- Cool guidance ----------------------------------------------------------
+// The hard 3px offset shadow is the site's signature. It is a paper-on-paper
+// cue, not a soft elevation blur, and it belongs to this box alone.
+
+.arc42-help {
+  background: var(--help-bg);
+  color: var(--help-ink);
+  border: 1px solid var(--hairline-2);
+  box-shadow: 3px 3px 0 0 var(--deep);
+
+  &::before {
+    background-image: url("/assets/icons/help42.svg");
+  }
+
+  // Links inside the box sit on a tinted surface; --signal on --help-bg is too
+  // close for comfort, so the darker ramp member carries them.
+  a {
+    color: var(--signal-dk);
+
+    &:hover {
+      color: var(--deep);
+    }
+  }
+}
+
+// ---- Warm worked example ----------------------------------------------------
+// Deliberately NO shadow. The example is an illustration hanging off the
+// guidance, and reads lighter for the absence.
+
+.arc42-example {
+  // Component-local aliases, not global tokens. The warm palette has three
+  // opaque members (--ex-bg / --ex-ink / --ex-ink-dk) and no hairline or wash,
+  // so the four values a table needs are mixed here from --ex-ink rather than
+  // minted as hex. If they turn out to be wanted anywhere else they should
+  // graduate into _tokens.scss — see report.
+  --ex-hairline:   color-mix(in srgb, var(--ex-ink) 24%, transparent);
+  --ex-hairline-2: color-mix(in srgb, var(--ex-ink) 40%, transparent);
+  --ex-wash:       color-mix(in srgb, var(--ex-ink) 8%, transparent);
+  --ex-wash-soft:  color-mix(in srgb, var(--ex-ink) 6%, transparent);
+
+  background: var(--ex-bg);
+  color: var(--ex-ink);
+  border: 1px solid var(--ex-hairline);
+
+  &::before {
+    background-image: url("/assets/icons/arc42-info.svg");
+  }
+
+  // The hover declaration is not redundant: without it the base
+  // `a:hover { color: var(--signal-dk) }` fires and drops a cool blue into the
+  // warm box on every mouseover. The emphasis is carried by the underline
+  // instead, which is the one channel this palette has left.
+  a {
+    color: var(--ex-ink-dk);
+    text-decoration-thickness: 1px;
+
+    &:hover {
+      color: var(--ex-ink-dk);
+      text-decoration-thickness: 2px;
+    }
+  }
+}
+
+// ---- Sub-labels -------------------------------------------------------------
+// `<span class="callout-label">Content</span>:` — the inline variant of the
+// Content / Motivation / Form headings, for boxes written as running prose.
+
+.callout-label {
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+.arc42-help .callout-label {
+  color: var(--deep);
+}
+
+.arc42-example .callout-label {
+  color: var(--ex-ink-dk);
+}
+
+// The example box's own title, when it has one.
+.example-title {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ex-ink);
+  margin: 0 0 var(--s3);
+}
+
+.example-lead {
+  font-style: italic;
+  margin-bottom: var(--s4);
+}
+
+// ---- Tables inside a callout ------------------------------------------------
+// _content.scss paints tables for the cool paper surface: --surface-2 headers
+// and a blue-grey hairline. Dropped unchanged into the warm box, the header wash
+// and — worse — the row hover read as a cool highlight on a warm ground, which
+// is exactly the temperature collision the two palettes exist to avoid. Everything
+// below is the same table, restated in the example's own hue.
+
+.arc42-example {
+  th,
+  td {
+    border-bottom-color: var(--ex-hairline);
+  }
+
+  thead th {
+    color: var(--ex-ink-dk);
+    background: var(--ex-wash);
+    border-bottom: 2px solid var(--ex-hairline-2);
+  }
+
+  tbody tr:hover {
+    background: var(--ex-wash-soft);
+  }
+
+  // The scroll-shadow covers in _content.scss are painted in --paper so they can
+  // hide the shadow when an edge is reached. On the warm ground they have to be
+  // the warm ground, or two pale rectangles float over the table.
+  .table-scroll {
+    --scroll-bg: var(--ex-bg);
+  }
+
+  blockquote {
+    border-left-color: var(--ex-hairline-2);
+    color: var(--ex-ink);
+  }
+
+  code {
+    background: var(--ex-wash);
+    color: var(--ex-ink-dk);
+    border-color: var(--ex-hairline);
+  }
+}
+
+// ---- Nested example inside guidance -----------------------------------------
+// Section pages open an .arc42-help box, then drop {% include example.md %}
+// inside it. The inner box must not inherit the outer box's measure cap twice
+// over, and must not carry the shadow.
+
+.arc42-help .arc42-example {
+  max-width: none;
+  box-shadow: none;
+}
+
+// ---- Narrow viewports -------------------------------------------------------
+// Below the icon's lane the padding is not worth 48px of a 390px screen; the
+// icon shrinks with it rather than colliding with the first line.
+
+@media (max-width: 640px) {
+  .arc42-help,
+  .arc42-example {
+    padding: var(--s4) var(--s6) var(--s4) var(--s4);
+
+    &::before {
+      top: var(--s3);
+      right: var(--s3);
+      width: 18px;
+      height: 20px;
+      background-size: 18px 20px;
+    }
+  }
+}

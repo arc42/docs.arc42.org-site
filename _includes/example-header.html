@@ -1,10 +1,24 @@
-{% assign page = include.page %}
+{%- comment -%}
+  One row in the list of worked examples for a section, as opened by
+  _includes/example.md. Emits a bare <li>; the caller supplies the <ul>.
 
-        <li> 
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">:{{ page.title }}</a>
-            {% else %}
-            {{ page.title }}
-            {% endif %}
-       </li>     
-    
+  The leading ":" on the link text is NOT decoration and must not be tidied
+  away: assets/js/nutshell.js looks for links whose text begins with a colon
+  (see its `link.innerText.trim().indexOf(':')==0` check) and turns those into
+  in-place expandable previews. The non-nutshell twin of this file,
+  example-header-nonutshell.html, is the same row without that marker, used on
+  /examples/ where the whole page is already a list.
+
+  Parameters
+    page  required — the _examples document to link to.
+    link  optional — false renders the title as plain text.
+{%- endcomment -%}
+
+{%- assign example = include.page -%}
+<li>
+    {%- if include.link -%}
+    <a class="post-link" href="{{ example.url | relative_url }}">:{{ example.title }}</a>
+    {%- else -%}
+    {{ example.title }}
+    {%- endif -%}
+</li>

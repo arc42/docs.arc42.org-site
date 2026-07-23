@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ site.language }}">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
     {% seo %}
-
-    <script src="/assets/js/nutshell.js"></script>
     {% include page-url-resolver.html page=page %}
     {% if page.excerpt %}
     {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
@@ -12,110 +14,102 @@
     {% assign description = site.description %}
     {% endif %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="theme-color" content="#0e4f80">
-
     <title>{{ title }}</title>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/assets/favicon/manifest.json">
+    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#0e4f80">
+    <meta name="theme-color" content="#0e4f80">
     <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
-   
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    {%- comment -%}
+      The two latin subsets carry every glyph above the fold on every page. They
+      are discovered otherwise only after the stylesheet has parsed, which costs
+      a full round trip of fallback text. The latin-ext siblings are deliberately
+      not preloaded: most readers never hit a codepoint in them.
+    {%- endcomment -%}
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/fonts/atkinson-hyperlegible-next-latin.woff2' | relative_url }}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/fonts/libre-caslon-text-400-latin.woff2' | relative_url }}">
 
     <script>
       try { document.getElementsByTagName('html')[0].className += ' js'; } catch(e) { /* NO-JS */ }
     </script>
 
     <link href="{{ '/assets/css/style.css' | prepend: site.baseurl }}" rel="stylesheet">
-     <script defer data-domain="docs.arc42.org" src="https://plausible.io/js/script.js"></script>
+
+    {%- comment -%}
+      Nutshell is 2281 lines and used to load un-deferred, in <head>, on every
+      page in the site. It only ever activates on `.nutshell-expandable` markup,
+      which appears on the examples page alone.
+    {%- endcomment -%}
+    {% if page.url == '/examples/' %}
+    <script defer src="{{ '/assets/js/nutshell.js' | relative_url }}"></script>
+    {% endif %}
+
+    <script defer data-domain="docs.arc42.org" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
 
-<header class="site-header">
-    <div class="inner clearfix">
-        <button type="button" class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside" aria-label="Toggle navigation" aria-controls="site-aside"></button>
-        {% if site.avatar %}
-        <a href="{{ '/home/' | prepend: site.baseurl }}">
-            <img class="avatar" src="{{ site.avatar | prepend: site.baseurl }}" alt="arc42 Logo"/>
-        </a>
-        {% endif %}
-        <div class="site-title clearfix">
-            <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/home/' | prepend: site.baseurl }}">{{ site.title }}</a>
-            <br><span class="description"><span class="counts">{{ site.posts | size }} tips and {{ site.examples | size }} examples</span> {{ site.description }}</span>
-        </div>
-    </div>
-</header>
+{% include masthead.html %}
 
-<div class="site-container">
-    <aside class="site-aside" id="site-aside">
-        <div class="inner">
-            <div class="block">
-                <form action="{{ site.baseurl }}/search/" data-baseurl="{{ site.baseurl }}">
-                    <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" aria-label="{{ site.str_search }}" />
-                </form>
-            </div>
-            <nav aria-label="arc42 sections">
-                <ul>
-                    {% assign nav_pages = site.pages | sort: 'order' %}
-                    {% for nav_page in nav_pages %}
-                    {% if nav_page.title and nav_page.hide != true and nav_page.permalink != '/contact/' %}
-                    <li><a class="page-link"{% if nav_page.url == page.url %} aria-current="page"{% endif %} href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </nav>
-        </div>
-    </aside>
+{%- comment -%}
+  Home only. See _includes/solidarity.html for why it sits here rather than in
+  the article.
+{%- endcomment -%}
+{% if page.hero == 'full' %}{% include solidarity.html %}{% endif %}
 
-    <main class="site-content" id="main-content">
+{%- comment -%}
+  The shell.
+
+    /home/            single content column, no rail. The home page's own
+                      section directory carries the twelve with descriptions and
+                      live tip counts; repeating them in a rail beside it is
+                      duplicated navigation, and dropping the rail also closes
+                      the stranded right-hand gutter the mockup had at 1440px.
+    doc sections      rail + content + on-page TOC (.layout--doc)
+    everything else   rail + content
+
+  toc.html is Agent D's; this layout only reserves the slot.
+{%- endcomment -%}
+{%- assign is_home = false -%}
+{%- if page.url == '/home/' -%}{%- assign is_home = true -%}{%- endif -%}
+{%- assign is_doc = false -%}
+{%- if page.layout == 'arc42-doc-section' -%}{%- assign is_doc = true -%}{%- endif -%}
+
+<div class="layout{% if is_home %} layout--home{% elsif is_doc %} layout--doc{% endif %}">
+    {% unless is_home %}{% include rail.html %}{% endunless %}
+
+    {%- comment -%}
+      tabindex="-1" is load-bearing: without it the skip link moves the browser's
+      scroll position but not focus in Safari, so the next Tab returns to the top
+      of the page.
+
+      The class stays `site-content` rather than the mockup's `content`: it is
+      the selector the whole of _sass/_content.scss is scoped to, and renaming it
+      would have bought a shorter word at the cost of every prose rule on the
+      site.
+    {%- endcomment -%}
+    <main class="site-content{% if is_home %} site-content--home{% endif %}" id="main-content" tabindex="-1">
         {{ content }}
     </main>
+
+    {% if is_doc %}{% include toc.html %}{% endif %}
 </div>
 
+{% include site-footer.html %}
 
-
-<footer class="site-footer">
-    <div class="inner">
-        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg" alt="Supported by INNOQ"></a><br>
-            <span class="footer-links">
-                <a href="https://status.arc42.org">
-                    <i class="fa fa-chart-bar fa-fw status-icon" aria-hidden="true"></i>Status</a>
-                <a href="{{ site.baseurl }}/imprint">
-                    <i class="fa fa-user-secret fa-fw" aria-hidden="true"></i>Imprint + Privacy</a>
-                <a href="{{ '/contact/' | prepend: site.baseurl }}">
-                    <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>Contact</a>
-                <a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener noreferrer nofollow">
-                    <i class="fab fa-github fa-fw" aria-hidden="true"></i>GitHub</a>
-            </span></p>
-        <span>Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
-          supported by <a target="_blank" rel="noopener noreferrer nofollow" href="http://www.peterhruschka.eu/">Peter Hruschka</a> and
-            <a target="_blank" rel="noopener noreferrer" href="https://kroener-starke.ch/projekte/">Kröner & Starke Web Development</a>
-
-
-
-        </span>
-    </div>
-</footer>
-
-<script src="/assets/jquery/jquery-3.7.1-min.js"></script>
-<script src="{{ '/assets/lib/garand-sticky/jquery.sticky.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
-
-<script src="{{ '/assets/js/header-link.js' | prepend: site.baseurl }}"></script>
-
-<script src="{{ '/assets/js/search.js' | prepend: site.baseurl }}"></script>
+{%- comment -%}
+  site.js replaces jQuery 3.7.1 (87.5 KB), the garand-sticky plugin (5.7 KB, and
+  bound to a `.sticky` class that existed nowhere in the repo), script.js and
+  header-link.js. Both files are deferred, so neither blocks the first paint.
+  search.js stays separate: it lazy-loads lunr only once someone searches.
+{%- endcomment -%}
+<script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/search.js' | relative_url }}"></script>
 
 
 </body>

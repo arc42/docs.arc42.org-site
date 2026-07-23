@@ -16,14 +16,14 @@ The example shows an Enterprise Architect (TM) deployment diagram to show the pr
 
 The following picture shows the inside of the TPU hardware, an industrial rack with the main PC-board and several other Printed Circuit Boards (PCBs).
 
-![Deployment ViewLevel 1 of Traffic Pursuit Unit]({{ site.imageurl}}/examples/tpu/71-HardwareVonOben.webp)
+![Deployment ViewLevel 1 of Traffic Pursuit Unit]({{ site.exampleimages }}/tpu/71-HardwareVonOben.webp)
 
 
 ## 7.1 Deployment Level 1
 The following UML diagram shows this hardware structure.
 
 
-![Deployment ViewLevel 1 of Traffic Pursuit Unit]({{ site.imageurl}}/examples/tpu/71-Infrastructure.webp) 
+![Deployment ViewLevel 1 of Traffic Pursuit Unit]({{ site.exampleimages }}/tpu/71-Infrastructure.webp) 
 
 ### 1. MeasuringUnit Node
 

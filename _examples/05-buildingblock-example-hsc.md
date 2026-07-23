@@ -15,7 +15,7 @@ This example contains several levels of the building block view - ranging from t
 
 ### 5.1 Whitebox HtmlSanityChecker
 
-![Whitebox (HtmlSC)]({{ site.imageurl}}/examples/htmlsc/5-whitebox-hsc-level-1.png)
+![Whitebox (HtmlSC)]({{ site.exampleimages }}/htmlsc/5-whitebox-hsc-level-1.png)
 
 
 **Rationale:** We used _functional decomposition_ to separate responsibilities:
@@ -48,7 +48,7 @@ This example contains several levels of the building block view - ranging from t
 #### 5.2.1 HSC Core (Whitebox)
 
 
-![HSC-Core (Whitebox)]({{ site.imageurl}}/examples/htmlsc/5-2-1-hsc-core.png)
+![HSC-Core (Whitebox)]({{ site.exampleimages }}/htmlsc/5-2-1-hsc-core.png)
 
 
 **Rationale:**
@@ -65,7 +65,7 @@ The internal structure of `HSC Core` follows a functional decomposition:
 
 |Building block  |Description                                           |
 |---------|:--------|
-|`Checker`        |Contains the pure checking functionality.  See its [blackbox description](#checker-blackbox) below.  |
+|`Checker`        |Contains the pure checking functionality.  See its [blackbox description](#5211-checker-blackbox) below.  |
 |---------|--------|
 |`AllChecksRunner`  |Facade to the Checkers. Provides a (configurable) interface. Source: `org.aim42.htmlsanitycheck.AllChecksRunner`. Called by `HSC GradlePlugin` |
 |---------|--------|
@@ -82,8 +82,7 @@ The internal structure of `HSC Core` follows a functional decomposition:
 
 The abstract class `Checker` provides the uniform interface (`public void check()`) to different checking algorithms.
 
-Based upon polymorphism, the actual checking is handled by subclasses of the abstract `Checker`class, uses the template-method pattern. It uses the
-[concept of extensible checking algorithms](#section-ii-8-checking-algorithm).
+Based upon polymorphism, the actual checking is handled by subclasses of the abstract `Checker`class, uses the template-method pattern. It uses the concept of extensible checking algorithms.
 
 ##### 5.2.1.2 Suggester (Blackbox)
 For a given input (_target_), `Suggester` searches within a set of possible values (_options_) to find the n most similar values. For example:
@@ -108,7 +107,7 @@ Source: `package org.aim42.htmlsanitycheck.suggest.Suggester`
 #### 5.3.1 ResultsCollector (Whitebox)
 
 
-![Results Collector (Whitebox)]({{ site.imageurl}}/examples/htmlsc/5-3-results-collector.png)
+![Results Collector (Whitebox)]({{ site.exampleimages }}/htmlsc/5-3-results-collector.png)
 
 **Rationale:** This structures follows the hierarchy of checks, managing results for:
 

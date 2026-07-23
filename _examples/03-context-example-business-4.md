@@ -14,4 +14,4 @@ This example has been created with drawio/diagrams.net.
 ## 3. Business Context View
 The following figure shows the major inputs and outputs of the [status.arc42.org](https://status.arc42.org) website.
 
-![Business Context]({{ site.imageurl}}/examples/status/03-context-status.drawio.png)
+![Business Context]({{ site.exampleimages }}/status/03-context-status.drawio.png)

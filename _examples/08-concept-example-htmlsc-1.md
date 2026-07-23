@@ -13,7 +13,7 @@ Showing two crosscutting concepts useful for HTML Sanity Checking.
 ### 8.1 Domain Terminology 
 
 
-![HTML Checking Domain Model]({{ site.imageurl }}/examples/htmlsc/8-1-checking-domain.png)
+![HTML Checking Domain Model]({{ site.exampleimages }}/htmlsc/8-1-checking-domain.png)
 
 Properties of the implementation classes are private, as we manipulate these via getter/setter methods.
 
@@ -63,7 +63,7 @@ Their general structure is depicted in the following figure - you also find
 a unit test below.
 
 
-![Figure: Generic URI structure]({{ site.imageurl}}/examples/htmlsc/8-uri-generic-example.png)
+![Figure: Generic URI structure]({{ site.exampleimages }}/htmlsc/8-uri-generic-example.png)
 
 ~~~~
 @Test

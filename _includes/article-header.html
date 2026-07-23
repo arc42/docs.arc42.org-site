@@ -1,51 +1,79 @@
-{% assign page = include.page %}
-{% assign hlevel = include.level | default: 1 %}
+{%- comment -%}
+  Article header — title, tags, byline. Used by the page / post / doc-section
+  layouts for tips and examples.
+
+  Parameters
+    page   required — the page or post object to render.
+    link   optional — true to make the title a link to the item itself.
+    level  optional — heading level, default 1.
+
+  Two things changed here beyond the markup:
+
+  · TAGS ARE NOW LINKS TO THE KEYWORD INDEX. They used to point at
+    /search/?t=<tag>, a client-side query that renders nothing without
+    JavaScript and cannot be linked to or bookmarked meaningfully. The site
+    already publishes a server-rendered index of every tip by keyword at
+    /keywords/, where _pages/keywords.html emits `id="{{ tag | cgi_escape }}"`
+    for each one — hence the cgi_escape here, so the fragment matches the id it
+    is aiming at. A tag sat inches from that page for years without being able
+    to reach it.
+
+  · FontAwesome is gone. Every glyph comes from the sprite via icon.html.
+{%- endcomment -%}
+
+{%- assign article = include.page -%}
+{%- assign hlevel = include.level | default: 1 -%}
 
 <header>
-    <div class="panel">
-        <h{{ hlevel }}>
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% else %}
-            {{ page.title }}
-            {% endif %}
-        </h{{ hlevel }}>
+    <h{{ hlevel }}>
+        {%- if include.link -%}
+        <a class="post-link" href="{{ article.url | relative_url }}">{{ article.title }}</a>
+        {%- else -%}
+        {{ article.title }}
+        {%- endif -%}
+    </h{{ hlevel }}>
 
-        <ul class="tags">
-            {% assign tags_num = (page.tags | size) %}
-            {% if tags_num > 0 %}
-            <li><i class="fa fa-tags"></i></li>
-            {% endif %}
-            {% for tag in page.tags %}
-            <li>
-                <a class="tag" href="{{ '/search/?t=' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+    {%- assign tags_num = article.tags | size -%}
+    {%- if tags_num > 0 %}
+    <ul class="tags">
+        <li class="tags-icon">
+            {%- include icon.html name="tags" -%}
+            <span class="visually-hidden">Tagged</span>
+        </li>
+        {%- comment -%}
+          site.tags aggregates POSTS only — Jekyll does not fold collection tags
+          into it. _pages/keywords.html iterates site.tags, so a tag that lives
+          only on an _examples entry (runtime, buildingblock, deployment …) has
+          no anchor there, and linking to it lands the reader at the top of a
+          page that never mentions their tag. Those fall back to the search
+          route, which assets/js/search.js reads via ?t=.
+        {%- endcomment -%}
+        {%- for tag in article.tags %}
+        {%- assign tag_id = tag | cgi_escape %}
+        {%- if site.tags[tag] %}
+        <li><a class="tag" href="{{ '/keywords/#' | append: tag_id | relative_url }}">#{{ tag }}</a></li>
+        {%- else %}
+        <li><a class="tag" href="{{ '/search/?t=' | append: tag_id | relative_url }}">#{{ tag }}</a></li>
+        {%- endif %}
+        {%- endfor %}
+    </ul>
+    {%- endif %}
 
-        <div class="clearfix">
-            <ul class="meta">
-
-                {% if page.author %}
-                <li>
-                    <a href="{{ '/search/?a=' | append: page.author | prepend: site.baseurl }}">
-                        <i class="fa fa-user"></i>
-                        {{ page.author }}
-                    </a>
-                </li>
-
-                {% if page.icons %}
-                <li>
-                    <ul class="icons">
-                        {% include icons.html icons=page.icons %}
-                    </ul>
-                </li>
-                {% endif %}
-                {% endif %}
-
+    {%- if article.author %}
+    <ul class="article-meta">
+        <li>
+            <a href="{{ '/search/?a=' | append: article.author | relative_url }}">
+                {%- include icon.html name="user" -%}
+                <span>{{ article.author }}</span>
+            </a>
+        </li>
+        {%- if article.icons %}
+        <li>
+            <ul class="author-icons">
+                {%- include icons.html icons=article.icons author=article.author -%}
             </ul>
-        </div>
-    </div>
-
-
+        </li>
+        {%- endif %}
+    </ul>
+    {%- endif %}
 </header>

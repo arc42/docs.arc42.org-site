@@ -1,13 +1,45 @@
-{% include page-url-resolver.html page=include.page %}
-{% assign title = include.page.title | append: ' | ' | append: site.title %}
-<div class="clearfix">
-    <div style="float: right !important;">
-        {% if site.share_buttons.twitter %}
-        <div style="margin-right: 5px !important; float: left !important;">
-            <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="{{ url }}" data-text="{{ title }}">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </div>
-        {% endif %}
-        
-    </div>
-</div>
+{%- comment -%}
+  Share links for a tip or example. Rendered only from article-footer.html, and
+  only when site.share_buttons is configured — it is not, today, so this emits
+  nothing on the live site.
+
+  What was here before: a Twitter share button that (a) contained the literal
+  text `{count}` in the middle of its attribute list, a syntax error left over
+  from the widget's old data-count API; (b) injected platform.twitter.com's
+  widgets.js on every article page — a third-party script, on a documentation
+  site with no other trackers; and (c) chose between http and https by sniffing
+  document.location, so on an http page it would have loaded that script over
+  http. All three are gone. These are plain links; nothing is loaded from
+  anywhere.
+
+  Configure with, e.g.
+
+    share_buttons:
+      mastodon_instance: https://mastodon.social
+      linkedin: true
+
+  Parameters
+    page  required — the page or post being shared.
+{%- endcomment -%}
+
+{%- include page-url-resolver.html page=include.page -%}
+{%- capture share_title -%}{{ include.page.title }} | {{ site.title }}{%- endcapture -%}
+{%- assign share_url = url | uri_escape -%}
+{%- assign share_text = share_title | uri_escape -%}
+
+<p class="share-buttons">
+    {%- if site.share_buttons.mastodon_instance %}
+    <a class="share-button" href="{{ site.share_buttons.mastodon_instance }}/share?text={{ share_text }}%20{{ share_url }}"
+       target="_blank" rel="noopener noreferrer nofollow">
+        {%- include icon.html name="mastodon" -%}
+        <span>Share on Mastodon</span>
+    </a>
+    {%- endif %}
+    {%- if site.share_buttons.linkedin %}
+    <a class="share-button" href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}"
+       target="_blank" rel="noopener noreferrer nofollow">
+        {%- include icon.html name="linkedin" -%}
+        <span>Share on LinkedIn</span>
+    </a>
+    {%- endif %}
+</p>

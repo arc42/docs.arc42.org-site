@@ -1,0 +1,28 @@
+{%- comment -%}
+  Breadcrumb trail for a template section page: Home › Sections › current.
+
+  The current crumb's label comes from _data/sections.yml, joined on the page's
+  front-matter `number:`, not from page.title — the data file says "Context and
+  Scope" where the title says "3 - Context and scope", and the trail should read
+  the same as the nav rail the reader just came from.
+
+  The mockup set the `›` separator in #9fb0c0, which measures 2.18:1 on paper.
+  It is --muted here (5.50:1). The separator is generated content on the <li>,
+  so it is decorative and never announced.
+
+  _pages/examples.md also uses the arc42-doc-section layout but carries no
+  `number:`, so the "Sections" crumb is conditional: a trail that claims a page
+  sits under a parent it does not sit under is worse than a shorter trail.
+{%- endcomment -%}
+{%- assign crumb = site.data.sections | where: 'number', page.number | first -%}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ '/home/' | relative_url }}">Home</a></li>
+    {%- if crumb %}
+    <li><a href="{{ '/home/' | relative_url }}#template-sections">Sections</a></li>
+    <li aria-current="page">{{ crumb.number }}. {{ crumb.name }}</li>
+    {%- else %}
+    <li aria-current="page">{{ page.title }}</li>
+    {%- endif %}
+  </ol>
+</nav>

@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 9 - Architecture decisions
 permalink: /section-9/
+number: 9
 order: 13
 ---
 

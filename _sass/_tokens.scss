@@ -1,0 +1,120 @@
+// ============================================================================
+// Design tokens — the single source of truth for colour, type, and metrics.
+//
+// Before this file the same values lived in three places that drifted apart:
+// _sass/base/_variables.scss, hardcoded hex in assets/css/arc42-doc.css, and the
+// DESIGN.md front matter. Everything is a CSS custom property here so there is
+// exactly one definition and the browser resolves it.
+//
+// Rule for every partial that imports this: use var(--token). Do not introduce a
+// new hex value. If a value is missing, add it here and to DESIGN.md together.
+//
+// Note on SCSS colour functions: darken()/lighten() cannot operate on custom
+// properties. The old _header/_footer/_common partials used them; those call
+// sites are resolved to literals in this file instead.
+// ============================================================================
+
+:root {
+  // ---- Surfaces & text -----------------------------------------------------
+  --paper:      #fcfdff;   // near-white with the faintest cool tint, never #fff
+  --ink:        #2a2e34;   // soft near-black, cool-tinted
+  --muted:      #5e6975;   // de-emphasized meta — 5.50:1 on paper
+  --hairline:   rgba(20, 44, 82, 0.12);   // table borders, nav dividers
+  --hairline-2: rgba(20, 44, 82, 0.16);   // borders that must actually be seen
+  // The one sanctioned thick left rule: a conventional quotation mark, never a
+  // brand-coloured accent stripe. DESIGN.md is explicit that it stays grey.
+  --rule:       #c6ccd4;
+
+  // ---- Structure blues -----------------------------------------------------
+  // DESIGN.md's One Blue Rule: --signal is the single editorial blue. The others
+  // are its darker/lighter family relatives, reserved for chrome.
+  --signal:     #1675b9;   // links, h2 subheads, structure, active nav
+  --deep:       #0e4f80;   // masthead band, footer rule, callout shadow
+  --tint:       #eaf4fc;   // text/logo/title ON the deep-blue band — 7.70:1
+  --tint-soft:  #d3e6f7;   // secondary text on the band (tagline) — 6.71:1
+  --sky:        #dceefa;   // pale calm wash for soft secondary surfaces
+
+  // There is deliberately NO darker-than---deep token. The mockup carried a
+  // `border-bottom: 3px solid #0b3f68` on the masthead, which measures 1.16:1
+  // against --deep: an invisible rule costing a paint. The band ends at the band.
+
+  // --signal-dk is --signal darkened to clear AA where --signal cannot. It is a
+  // documented member of the ramp, not an accent: hover states, and any small or
+  // pilled text that would otherwise land in the 3.5-4.5:1 band.
+  --signal-dk:  #115e94;
+
+  // ---- The one warm spark --------------------------------------------------
+  --coral:      #ff5c7c;   // masthead accent only, never on body content
+
+  // ---- Chrome surfaces -----------------------------------------------------
+  // Three tokens, one job each. The mockup had eight near-identical near-white
+  // washes (#f2f5f8 #f4f7fb #f1f7fd #f3f8fd #f7fafd #eef4fa #eef2f6 #e7eef5), all
+  // sitting in lightness 0.93-0.98 across hues 210-214 and individually
+  // indistinguishable. Nobody could have told which to reach for.
+  --surface-1:     #f2f5f8;   // tinted chrome panels: nav rail, footer
+  --surface-2:     #f7fafd;   // faintest wash: table headers, zebra rows
+  --surface-hover: #e7eef5;   // every interactive hover fill
+
+  // Active nav row. Deliberately NOT --help-bg: in the mockup those were the same
+  // hex under two names, so one colour meant "arc42's guidance", "you are here",
+  // and "navigate by keyword" at once. Sky Tint is documented in DESIGN.md for
+  // exactly this job and was otherwise unused.
+  --row-active: var(--sky);
+
+  // ---- Callouts ------------------------------------------------------------
+  // Cool guidance vs warm example. The temperature pairing is how a reader tells
+  // advice from illustration at a glance, so these never converge.
+  --help-bg:    #e3f2fe;   // COOL guidance — reserved, means only this
+  --help-ink:   #0c3d66;   // 9.81:1 on --help-bg
+  --ex-bg:      #fdebe7;   // WARM worked example
+  --ex-ink:     #9a3b2e;   // 5.99:1 on --ex-bg
+  --ex-ink-dk:  #7d2f24;   // example table headers, sub-labels
+  --ex-icon:    #c8654f;
+
+  // ---- Bits ----------------------------------------------------------------
+  --pill-bg:    #aee3f8;   // Tag Cyan
+  // --signal on --pill-bg measures 3.54:1 and fails AA at every size a tag is
+  // ever set in. DESIGN.md itself prescribed that pair; both are corrected here.
+  --pill-ink:   var(--signal-dk);   // 4.96:1 on --pill-bg
+  --code-bg:    #f6f8fa;
+  --green:      #2e9e67;   // footer status only
+  --maroon:     #8a2e2e;   // sponsor/training blocks only, never editorial
+  --maroon-bg:  #fcefef;
+  --amber:      #ffc95c;   // sparing warm accent, always paired with text or icon
+
+  // ---- Type ----------------------------------------------------------------
+  // Self-hosted (see _base.scss). "Next" is the current Braille Institute release
+  // and the family quality.arc42.org ships; plain Atkinson Hyperlegible is kept as
+  // a fallback so the stack degrades to the right shapes rather than to system-ui.
+  --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --sans:  "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui,
+           -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono:  ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+           "Liberation Mono", monospace;
+
+  // ---- Spacing scale -------------------------------------------------------
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
+
+  // ---- Metrics -------------------------------------------------------------
+  --shell-max: 1400px;
+
+  // Fluid rails. Fixed 280px + 210px starved the centre column: measured 49
+  // characters per line at 1200px, against a 65-75 target. The rails now give way
+  // before the prose does.
+  --rail-w:    clamp(220px, 20vw, 280px);
+  --toc-w:     240px;   // 210px left ~126px for labels; "Crosscutting Concepts" wrapped to three lines
+  --measure:   68ch;
+
+  // The ceiling for scannable, non-prose blocks — the home directory, wide
+  // tables. Reading measure does not apply to a two-column index of twelve
+  // links, but *some* ceiling must, or it runs the full shell on a 1920 screen.
+  --measure-wide: calc(var(--measure) * 1.7);   // ~116ch
+
+  // Height of the condensed masthead bar on non-home pages. Anchors need to clear
+  // it, so headings take their scroll-margin from this.
+  --bar-h:     56px;
+
+  --radius:    4px;
+  --radius-pill: 999px;
+}

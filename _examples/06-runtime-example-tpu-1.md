@@ -26,21 +26,21 @@ The key steps in this scenario are the following:
 
 The following sequence diagram shows this process: the repeated measurement of speedometer pulses every 40ms (in the top part of the diagram) and the complete update every second (in the lower part of the diagram).
 
-![Fig. 6.1: Sequence Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationSD.webp)
+![Fig. 6.1: Sequence Diagram]({{ site.exampleimages }}/tpu/III61_MeasurementPropagationSD.webp)
 
 The communication diagram is used in the style of a data flow diagram, showing the original input (speedometer pulses) on the lower left corner and all the calculated intermediate results on their way to the two inserters.
 
 The continuous measurement of the speedometer pulses is marked as step 1 (in black), the propegation of the distance per frame  to the legal inserter is shown with red numbers. The final calculation every second is shown with green numbers.
 
-![Fig. 6.2: Communication Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationCD.jpg)
+![Fig. 6.2: Communication Diagram]({{ site.exampleimages }}/tpu/III61_MeasurementPropagationCD.jpg)
 
 The following activity diagram shows the scenario - ignoring concurrency. It shows the data flows between activities in the building blocks. The names of the building blocks are denoted below the activity names in curly braces.
 
 
-![Fig. 6.3: Activity Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationAD.jpg)
+![Fig. 6.3: Activity Diagram]({{ site.exampleimages }}/tpu/III61_MeasurementPropagationAD.jpg)
 
 This extended activity diagram includes the concurrency by showing asynchonously communicating activity diagrams (using the "send-signal-action" and "accept-event-action" symbols of the UML). The diagram is overlaid with swim lanes of the level-1 building blocks.
 
 
-![Fig. 6.4: Extended Activity Diagram]({{ site.imageurl}}/examples/tpu/III61_MeasurementPropagationAD-EXT.webp)
+![Fig. 6.4: Extended Activity Diagram]({{ site.exampleimages }}/tpu/III61_MeasurementPropagationAD-EXT.webp)
 

@@ -1,0 +1,94 @@
+# The twelve arc42 template sections — the single source of truth.
+#
+# Consumed by:
+#   _includes/rail.html      — the left navigation rail
+#   _pages/home.md           — the section directory on the home page
+#   _includes/stepper.html   — the prev/next stepper at the foot of a section page
+#   _includes/breadcrumb.html
+#
+# Before this file, the same twelve sections were described in three places: twelve
+# {% assign nr_secNN_tips %} lines plus a hand-written list in _pages/home.md, and a
+# `site.pages | sort: 'order'` loop in _layouts/default.html. Add a section here, or
+# rename one, and every view follows.
+#
+# Fields
+#   number     1-12, the arc42 section number. Rendered zero-padded in the nav rail.
+#   name       Short form for navigation and the directory. The page's own <h1> still
+#              comes from its front-matter `title` ("3 - Context and scope").
+#   blurb      One line: what belongs in this section. Copy is the site's own, carried
+#              over from _pages/home.md — not rewritten.
+#   category   Matches the `category:` front matter on _posts/**, so tip counts are
+#              `site.posts | where: "category", section.category | size`.
+#   permalink  Matches the `permalink:` front matter on _pages/section-N.md.
+
+- number: 1
+  name: Introduction and Goals
+  blurb: Requirements, stakeholder, (top) quality goals
+  category: requirements
+  permalink: /section-1/
+
+- number: 2
+  name: Constraints
+  blurb: Technical and organizational constraints, conventions
+  category: constraints
+  permalink: /section-2/
+
+- number: 3
+  name: Context and Scope
+  blurb: Business and technical context, external interfaces
+  category: context
+  permalink: /section-3/
+
+- number: 4
+  name: Solution Strategy
+  blurb: Fundamental solution decisions and ideas
+  category: solution-strategy
+  permalink: /section-4/
+
+- number: 5
+  name: Building Block View
+  blurb: Abstractions of source code, black-/whiteboxes
+  category: building-block
+  permalink: /section-5/
+
+- number: 6
+  name: Runtime View
+  blurb: "Runtime scenarios: how do building blocks interact"
+  category: runtime
+  permalink: /section-6/
+
+- number: 7
+  name: Deployment View
+  blurb: Hardware and technical infrastructure, deployment
+  category: deployment
+  permalink: /section-7/
+
+- number: 8
+  name: Crosscutting Concepts
+  blurb: Recurring solution approaches and patterns
+  category: concepts
+  permalink: /section-8/
+
+- number: 9
+  name: Architecture Decisions
+  blurb: Important, expensive, risky or contentious decisions
+  category: decisions
+  permalink: /section-9/
+
+- number: 10
+  name: Quality Requirements
+  blurb: Quality requirements overview and detailed quality scenarios
+  category: quality
+  permalink: /section-10/
+
+- number: 11
+  name: Risks and Technical Debt
+  blurb: Known problems, risks and technical debt
+  category: risks
+  permalink: /section-11/
+
+- number: 12
+  name: Glossary
+  blurb: Definitions of important business and technical terms
+  category: glossary
+  permalink: /section-12/

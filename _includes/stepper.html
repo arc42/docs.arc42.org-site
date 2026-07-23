@@ -1,0 +1,43 @@
+{%- comment -%}
+  Previous / next pager at the foot of a template section page. Driven entirely
+  by _data/sections.yml, joined on the page's front-matter `number:`.
+
+  It replaces the training advert that used to close a section page. The advert
+  stays on _layouts/page.html and _layouts/post.html — this only displaces it
+  where the reader has an obvious next move.
+
+  Three corrections to the mockup's version:
+    · its 1px --hairline borders measure 1.26:1 on paper, i.e. invisible. These
+      are --hairline-2, the token that exists for borders that must be seen.
+    · prev and next were styled identically, so the design recommended nothing
+      at the one moment it is there to recommend something. "Next" carries the
+      --signal border and the --row-active fill; "previous" is quiet.
+    · each box now carries the target section's one-line blurb, so
+      "4. Solution Strategy" tells the reader what they would be going to.
+
+  Layout is a two-column grid rather than flex, so section 1 (no previous) and
+  section 12 (no next) keep their single box in the correct half.
+{%- endcomment -%}
+{%- assign here = page.number | plus: 0 -%}
+{%- assign prev_nr = here | minus: 1 -%}
+{%- assign next_nr = here | plus: 1 -%}
+{%- assign prev = site.data.sections | where: 'number', prev_nr | first -%}
+{%- assign next = site.data.sections | where: 'number', next_nr | first -%}
+{%- if prev or next -%}
+<nav class="stepper" aria-label="Section pagination">
+  {%- if prev %}
+  <a class="step step-prev" rel="prev" href="{{ prev.permalink | relative_url }}">
+    <span class="step-dir"><span class="step-arrow" aria-hidden="true">&#8592;</span> Previous</span>
+    <span class="step-name">{{ prev.number }}. {{ prev.name }}</span>
+    <span class="step-blurb">{{ prev.blurb }}</span>
+  </a>
+  {%- endif %}
+  {%- if next %}
+  <a class="step step-next" rel="next" href="{{ next.permalink | relative_url }}">
+    <span class="step-dir">Next <span class="step-arrow" aria-hidden="true">&#8594;</span></span>
+    <span class="step-name">{{ next.number }}. {{ next.name }}</span>
+    <span class="step-blurb">{{ next.blurb }}</span>
+  </a>
+  {%- endif %}
+</nav>
+{%- endif -%}

@@ -2,7 +2,13 @@
 layout: default
 ---
 
-<div class="article-wrapper">
+{%- comment -%}
+  A standalone page (examples, keywords, contact …). Unchanged apart from the
+  `prose` class, which is what caps the column at --measure in the grid shell;
+  the old floated .site-content used to do that job. The training advert stays:
+  only section pages replace it with the prev/next stepper.
+{%- endcomment -%}
+<div class="article-wrapper prose">
     <article>
         {% include article-header.html page=page link=false share=page.share %}
         <section class="post-content">

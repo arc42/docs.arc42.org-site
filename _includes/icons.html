@@ -1,48 +1,97 @@
-{% assign icons = include.icons %}
+{%- comment -%}
+  Social icon links for an author byline. Emits bare <li> elements; the caller
+  supplies the <ul> (see _includes/article-header.html, which wraps them in
+  <ul class="author-icons">).
 
+  Parameters
+    icons   optional — a hash of handles, e.g. page.icons. Falls back to
+                       site.icons so a byline without its own hash still gets
+                       the project accounts.
+    author  optional — name, folded into each link's accessible label so a
+                       screen-reader user hears whose GitHub this is, and so two
+                       bylines on one page do not produce two links called
+                       "GitHub".
 
+  Changes from the FontAwesome version:
 
-{% if icons.github %}
+  · Every glyph now comes from assets/icons/ui.svg via icon.html. Each link is
+    icon-only, so each one passes `label` — an unlabelled icon link announces as
+    its bare href, and four of them in a row announce as nothing useful at all.
+    The labels are built with `capture` rather than written inline, because
+    Jekyll's include tag does NOT interpolate Liquid inside a quoted parameter
+    value: label="GitHub{{ who }}" would emit those six characters literally.
+
+  · The dev.to entry used to be UNCONDITIONAL and hardcoded to a single
+    person's profile, so every author on the site was credited with Gernot
+    Starke's dev.to account. It is behind a key now like the rest.
+
+  · `devto` and `dev` are both accepted: _config.yml spells it `devto`, the old
+    template looked for `dev`.
+
+  · There is no Twitter/X entry. The sprite has no such glyph, and site.icons's
+    twitter handle points at a service the project does not post to; Mastodon is
+    the account that is actually maintained. Re-add it here if that changes, and
+    add the glyph to the sprite first.
+{%- endcomment -%}
+
+{%- assign icons = include.icons | default: site.icons -%}
+{%- if include.author and include.author != '' -%}
+  {%- capture who %} — {{ include.author }}{% endcapture -%}
+{%- else -%}
+  {%- assign who = '' -%}
+{%- endif -%}
+
+{%- if icons.github -%}
+{%- capture lbl_github %}GitHub{{ who }}{% endcapture %}
 <li>
     <a href="https://github.com/{{ icons.github }}" target="_blank" rel="noopener noreferrer nofollow">
-        <i class="fab fa-fw fa-github"></i>
+        {%- include icon.html name="github" label=lbl_github -%}
     </a>
 </li>
-{% endif %}
+{%- endif %}
 
-
-{% if icons.mastodon %}
+{%- if icons.mastodon -%}
+{%- capture lbl_mastodon %}Mastodon{{ who }}{% endcapture %}
 <li>
     <a href="https://innoq.social/@{{ icons.mastodon }}" target="_blank" rel="noopener noreferrer nofollow">
-        <i class="fab fa-mastodon"></i>
+        {%- include icon.html name="mastodon" label=lbl_mastodon -%}
     </a>
 </li>
-{% endif %}
+{%- endif %}
 
-
-
-{% if icons.youtube %}
+{%- if icons.youtube -%}
+{%- capture lbl_youtube %}YouTube{{ who }}{% endcapture %}
 <li>
-    <a href="https://youtube.com/{{ icons.youtube}}" target="_blank" rel="noopener noreferrer nofollow">
-        <i class="fab fa-fw fa-youtube"></i>
+    <a href="https://youtube.com/{{ icons.youtube }}" target="_blank" rel="noopener noreferrer nofollow">
+        {%- include icon.html name="youtube" label=lbl_youtube -%}
     </a>
 </li>
-{% endif %}
+{%- endif %}
 
-
+{%- assign devto = icons.devto | default: icons.dev -%}
+{%- if devto -%}
+{%- capture lbl_devto %}dev.to{{ who }}{% endcapture %}
 <li>
-    <a href="https://dev.to/gernotstarke" target="_blank" rel="noopener noreferrer nofollow">
-        <i class='fab fa-fw fa-dev'></i>
+    <a href="https://dev.to/{{ devto }}" target="_blank" rel="noopener noreferrer nofollow">
+        {%- include icon.html name="dev" label=lbl_devto -%}
     </a>
 </li>
+{%- endif %}
 
-
-
-{% if icons.stack_overflow %}
+{%- if icons.stack_overflow -%}
+{%- capture lbl_so %}Stack Overflow{{ who }}{% endcapture %}
 <li>
     <a href="https://stackoverflow.com/tags/{{ icons.stack_overflow }}" target="_blank" rel="noopener noreferrer nofollow">
-        <i class="fab fa-fw fa-stack-overflow"></i>
+        {%- include icon.html name="stack-overflow" label=lbl_so -%}
     </a>
 </li>
-{% endif %}
+{%- endif %}
 
+{%- if icons.linkedin -%}
+{%- capture lbl_linkedin %}LinkedIn{{ who }}{% endcapture %}
+<li>
+    <a href="https://www.linkedin.com/in/{{ icons.linkedin }}" target="_blank" rel="noopener noreferrer nofollow">
+        {%- include icon.html name="linkedin" label=lbl_linkedin -%}
+    </a>
+</li>
+{%- endif %}

@@ -35,7 +35,7 @@ public CheckingResultsCollector performCheck() {
 }
 ~~~~
 
-![Template Method (excerpt)]({{ site.imageurl }}/examples/htmlsc/8-3-template-method.png)
+![Template Method (excerpt)]({{ site.exampleimages }}/htmlsc/8-3-template-method.png)
 
 |Component         | Description |
 |------|:------|

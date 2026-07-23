@@ -1,24 +1,74 @@
+// ============================================================================
+// Footer — the site footer band.
+//
+// Already live in _utilities.scss, do not re-declare: .supported-by-innoq and
+// p.footer-icons.
+//
+// Colour pairs, measured:
+//   --signal-dk on --surface-1   6.29:1   (links)
+//   --muted     on --surface-1   5.11:1   (maintainer line)
+//   --green     on --surface-1   3.09:1   — decorative only, see below
+// ============================================================================
+
 .site-footer {
-    border-top: 3px solid $dark-brand-color;
-    padding: $margin/3 0;
-    color: lighten($text-color, 30%);
-    text-align: center;
-    font-size: 1.0em;
+  background: var(--surface-1);
+  // The one place besides the masthead where --deep appears full strength: it
+  // closes the page against the band that opened it.
+  border-top: 3px solid var(--deep);
+}
 
-    .footer-links {
-        display: inline-flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.9rem;
-    }
+.footer-inner {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: var(--s6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s5) var(--s6);
+  font-size: 0.92rem;
+}
 
-    .footer-links a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.15rem;
-    }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3) var(--s5);
 
-    .status-icon {
-        color: #50C878;
-    }
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    color: var(--signal-dk);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+// The mockup signalled "operational" with a green dot and nothing else, which is
+// meaning carried by hue alone — invisible to a reader with deuteranopia and to
+// anyone in monochrome. Here green only tints a glyph that already carries the
+// meaning by shape, beside the visible word "Status", so removing the colour
+// costs nothing. That is also why the 3.09:1 contrast is acceptable: the icon is
+// decorative, not the sole carrier of information.
+.footer-links .status-icon {
+  color: var(--green);
+}
+
+.footer-maintainer {
+  flex-basis: 100%;
+  margin: 0;
+  padding-top: var(--s4);
+  border-top: 1px solid var(--hairline);
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .footer-inner {
+    padding: var(--s5) var(--s4);
+    gap: var(--s4);
+  }
 }

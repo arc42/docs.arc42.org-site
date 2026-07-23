@@ -1,0 +1,211 @@
+// ============================================================================
+// Masthead — the deep-blue hero band, and the condensed bar on inner pages.
+//
+// Two variants of one component, keyed off `hero: full` in front matter:
+//
+//   .masthead--hero   /home/ only. The full band: logo, wordmark, tagline, and
+//                     the coral-sparked live counts.
+//   .masthead--bar    everywhere else. --bar-h tall, sticky.
+//
+// The bar keeps --deep and it keeps the coral spark. Both are load-bearing:
+// condensed down to 56px, the blue band and that one warm mark are — together
+// with the help/example callouts — very nearly the whole of the site's visual
+// identity on an inner page. A white or grey bar here would leave a section page
+// indistinguishable from any other documentation site.
+//
+// Because the bar is sticky, everything that scrolls under it takes its offset
+// from --bar-h: the rail's `top`, and heading scroll-margin (see _content.scss).
+//
+// Colour pairs used here, all measured:
+//   --tint      on --deep   7.70:1
+//   --tint-soft on --deep   6.71:1
+//   --paper     on --deep   8.43:1   (wordmark hover only)
+// The mockup's `border-bottom: 3px solid #0b3f68` is deliberately absent: it
+// measures 1.16:1 against --deep. See the note in _tokens.scss.
+// ============================================================================
+
+.masthead {
+  background: var(--deep);
+  color: var(--tint);
+}
+
+.masthead-inner {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+}
+
+// ---- Shared parts -----------------------------------------------------------
+
+// The 2025 arc42 logo, white, on the deep-blue band. It is a horizontal
+// wordmark (450x126, ~3.56:1) rather than the old square avatar, so it needs no
+// rounding and no plate behind it: the previous square sat in a white box on the
+// blue, which read as a sticker rather than as a masthead.
+.masthead-logo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+
+  img {
+    width: auto;
+    display: block;
+  }
+}
+
+.masthead-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+
+  a {
+    color: var(--tint);
+    text-decoration: none;
+  }
+
+  // Near-white, and only on hover — the resting state stays at the measured
+  // 7.70:1 tint so the wordmark never relies on a hover to be legible.
+  a:hover {
+    color: var(--paper);
+  }
+}
+
+// The one warm mark on the whole page. A rotated square rather than a dot, so it
+// still reads as deliberate at 9px next to a serif wordmark.
+.masthead .spark {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  background: var(--coral);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+// Search is anchored here rather than in the rail: the rail is suppressed on
+// /home/, and a documentation site whose landing page cannot be searched has the
+// box in the wrong place. position: relative is the hook the .search-panel that
+// assets/js/search.js injects after the form hangs from.
+.masthead-search {
+  position: relative;
+  flex: 1 1 15rem;
+  min-width: 0;
+  max-width: 26rem;
+  margin-left: auto;
+}
+
+// ---- Hero variant -----------------------------------------------------------
+
+.masthead--hero {
+  .masthead-inner {
+    padding: clamp(28px, 4vw, 44px) var(--s6);
+    gap: var(--s5);
+  }
+
+  .masthead-logo img {
+    height: 44px;
+  }
+
+  .masthead-text {
+    flex: 1 1 16rem;
+    min-width: 0;
+  }
+
+  .masthead-title {
+    // calc() around the middle term is not decoration: jekyll-sass-converter
+    // 1.5.2 runs Ruby Sass 3.7, which evaluates `1.2rem + 2.2vw` itself and
+    // aborts the build with "Incompatible units: 'vw' and 'rem'". Inside calc()
+    // the expression is passed through to the browser untouched.
+    font-size: clamp(1.8rem, calc(1.2rem + 2.2vw), 2.6rem);
+  }
+}
+
+.masthead-tagline {
+  margin: var(--s2) 0 0;
+  color: var(--tint-soft);
+  font-size: 1.05rem;
+}
+
+// Coral is the accent — the leading mark and the separator. The figures
+// themselves stay in --tint, because coral on --deep does not clear AA at this
+// size and these are the numbers people actually read.
+.masthead-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin: var(--s3) 0 0;
+  color: var(--tint);
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+
+  b {
+    font-weight: 700;
+  }
+
+  .sep {
+    color: var(--coral);
+    font-weight: 700;
+  }
+}
+
+// ---- Condensed bar variant --------------------------------------------------
+
+.masthead--bar {
+  position: sticky;
+  top: 0;
+  // Above the sticky rail, which also creates a stacking context.
+  z-index: 30;
+
+  .masthead-inner {
+    min-height: var(--bar-h);
+    padding: var(--s2) var(--s5);
+    gap: var(--s3);
+  }
+
+  .masthead-logo img {
+    height: 26px;
+  }
+
+  .masthead-title {
+    font-size: 1.05rem;
+    // Never let the wordmark push the search field off the bar.
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .spark {
+    margin-inline: var(--s1);
+  }
+}
+
+// ---- Narrow ------------------------------------------------------------------
+
+@media (max-width: 800px) {
+  .masthead--hero .masthead-inner {
+    padding: var(--s5);
+    gap: var(--s4);
+  }
+}
+
+// Below this the bar cannot hold wordmark and field on one line without
+// squeezing the field to uselessness, so the field takes its own row and the bar
+// grows past --bar-h. min-height, not height, is why that works.
+@media (max-width: 560px) {
+  .masthead--bar {
+    .masthead-inner {
+      padding: var(--s2) var(--s4) var(--s3);
+    }
+
+    .masthead-search {
+      flex-basis: 100%;
+      max-width: none;
+      margin-left: 0;
+    }
+  }
+}

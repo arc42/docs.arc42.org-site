@@ -16,7 +16,7 @@ A simple diagram with a brief explanation in a table.
 ### 3.1 Business Context 
 
 
-![Business Context]({{ site.imageurl}}/examples/mama/3-Mama-Business-Context.png)
+![Business Context]({{ site.exampleimages }}/mama/3-Mama-Business-Context.png)
 
 |Element         | Description |
 |------|:------|

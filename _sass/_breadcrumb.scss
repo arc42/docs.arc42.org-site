@@ -1,0 +1,70 @@
+// ============================================================================
+// Breadcrumb — the trail above the page title on section pages.
+//
+// Two corrections to tmp/design-proposals/d-dora/style.css:
+//
+//   · the `›` separator was #9fb0c0, which measures 2.18:1 against --paper. It
+//     is a hairline of a glyph carrying the entire structure of the trail. It is
+//     --muted here (5.50:1), the token that already exists for de-emphasised
+//     meta text, so no new near-grey enters the palette.
+//
+//   · the links were 37.6 × 23.8px touch targets at 390px, well under the 44px
+//     minimum, and they sit at the very top of the page where a thumb reaching
+//     up is least accurate. Below 480px each crumb gets a full 44px of height.
+//     It costs nothing above that width, where a pointer is precise.
+// ============================================================================
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 var(--s4);
+
+  ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s2);
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+  }
+
+  // Decorative: generated content is not announced, so the trail reads as
+  // "Home, Sections, 3. Context and Scope" rather than as punctuation.
+  li + li::before {
+    content: "\203A";
+    color: var(--muted);
+  }
+
+  a {
+    color: var(--muted);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--signal-dk);
+      text-decoration: underline;
+    }
+  }
+
+  [aria-current="page"] {
+    color: var(--ink);
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    a,
+    [aria-current="page"] {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+  }
+}

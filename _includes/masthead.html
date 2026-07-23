@@ -1,0 +1,75 @@
+{%- comment -%}
+  The masthead, in two variants.
+
+    hero: full   →  .masthead--hero, the deep-blue hero band. Set only on
+                    _pages/home.md. Logo, serif wordmark, tagline, and the
+                    coral-sparked stat line.
+    anything else → .masthead--bar, a condensed bar of --bar-h (56px).
+
+  Both variants keep --deep and the coral spark. That is deliberate: once the
+  band is condensed, the blue and the spark plus the callouts are very nearly
+  all the arc42-specific identity a section page has left. A white or neutral
+  bar would make the site interchangeable with every other docs template.
+
+  The wordmark is a <p class="masthead-title"> on EVERY page, home included. A
+  linked site title inside <header> is a logo, not a document heading; the page's
+  real <h1> belongs to <main>.
+
+  SEARCH lives here rather than in the rail, because the rail is suppressed on
+  /home/ and the home page would otherwise have no search at all.
+
+  Do not restructure the <form>/<input> pair: assets/js/search.js looks up
+  document.getElementById('search'), requires input.form to exist, and reads
+  data-baseurl off that form. It then injects <div class="search-panel"> with
+  form.insertAdjacentElement('afterend', …) — which is why .masthead-search is
+  the positioned ancestor the panel hangs from.
+{%- endcomment -%}
+
+{%- assign home_url = '/home/' | relative_url -%}
+
+{%- capture search_form -%}
+<div class="masthead-search">
+  <form action="{{ site.baseurl }}/search/" data-baseurl="{{ site.baseurl }}" role="search">
+    <label class="search-field" for="search">
+      {% include icon.html name="search" %}
+      <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" aria-label="{{ site.str_search }}">
+    </label>
+  </form>
+</div>
+{%- endcapture -%}
+
+{%- if page.hero == 'full' -%}
+
+<header class="masthead masthead--hero">
+  <div class="masthead-inner">
+    <a class="masthead-logo" href="{{ home_url }}" aria-label="{{ site.title }} home">
+      <img src="{{ '/assets/images/brand/arc42-logo-white.svg' | relative_url }}" alt="" width="157" height="44" decoding="async">
+    </a>
+    <div class="masthead-text">
+      <p class="masthead-title"><a href="{{ home_url }}">{{ site.masthead_title | default: site.title }}</a></p>
+      <p class="masthead-tagline">{{ site.tagline | default: site.description }}</p>
+      <p class="masthead-stats">
+        <span class="spark" aria-hidden="true"></span>
+        <b>{{ site.posts | size }}</b> practical tips
+        <span class="sep" aria-hidden="true">·</span>
+        <b>{{ site.examples | size }}</b> worked examples
+      </p>
+    </div>
+    {{ search_form }}
+  </div>
+</header>
+
+{%- else -%}
+
+<header class="masthead masthead--bar">
+  <div class="masthead-inner">
+    <a class="masthead-logo" href="{{ home_url }}" aria-label="{{ site.title }} home">
+      <img src="{{ '/assets/images/brand/arc42-logo-white.svg' | relative_url }}" alt="" width="93" height="26" decoding="async">
+    </a>
+    <p class="masthead-title"><a href="{{ home_url }}">{{ site.masthead_title | default: site.title }}</a></p>
+    <span class="spark" aria-hidden="true"></span>
+    {{ search_form }}
+  </div>
+</header>
+
+{%- endif -%}

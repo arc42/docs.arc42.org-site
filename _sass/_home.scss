@@ -1,0 +1,316 @@
+// ============================================================================
+// Home — the section directory, the keyword panel and the closing block.
+//
+// Home is the one page with no navigation rail (see _layouts/default.html and
+// the `hero: full` front matter): the directory below IS the site's primary
+// navigation, so it gets the full content column rather than sharing it with a
+// duplicate twelve-item list.
+//
+// Everything on this page is capped at --measure except .directory, which is
+// the single deliberate exception. Two right edges on one page was a mockup
+// defect; one exception, documented here, is not.
+// ============================================================================
+
+.home {
+  > h1 {
+    max-width: var(--measure);
+  }
+}
+
+// ============================================================================
+// THE SECTION DIRECTORY
+// ============================================================================
+
+.directory-heading {
+  max-width: var(--measure);
+}
+
+// Grid, not `columns: 2`.
+//
+// Multicol's column-fill: balance decides the split from content height, so a
+// single description that wraps to three lines silently rebalances 6/6 into 5/7
+// and the "left column is sections 1-6" mental model breaks without warning.
+// An explicit six-row, column-flow grid pins the split, and — because a grid row
+// spans both columns — the row rules line up across the gap by construction.
+.directory {
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: column;
+  column-gap: var(--s7);
+
+  max-width: var(--measure-wide);
+  margin: var(--s5) 0 var(--s7);
+  padding: 0;
+  list-style: none;
+
+  // The <li> stretches to the row height so the border on .dir-link lands on
+  // the row's baseline grid, not on a short link floating inside a tall row.
+  > li {
+    display: grid;
+  }
+}
+
+.dir-link {
+  display: grid;
+  grid-template-columns: 2.4em minmax(0, 1fr) auto;
+  column-gap: var(--s3);
+  align-items: baseline;
+
+  height: 100%;
+  padding: var(--s3) var(--s2);
+
+  // --hairline (0.12 alpha) measures 1.26:1 over --paper and reads as no border
+  // at all. The rules that separate twelve navigation targets have to be seen.
+  border-bottom: 1px solid var(--hairline-2);
+
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.14s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--surface-hover);
+  }
+
+  &:hover .dir-name,
+  &:focus-visible .dir-name {
+    color: var(--signal-dk);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+// NOT aria-hidden in the markup. The section number is arc42's whole organising
+// principle — "section 5" is how people refer to these in conversation — so it
+// is announced, prefixed by a visually-hidden "Section" so it reads as an
+// ordinal rather than as a bare number floating beside a name.
+.dir-num {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--signal);
+}
+
+.dir-body {
+  min-width: 0;
+}
+
+.dir-name {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.dir-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.dir-count {
+  font-family: var(--mono);
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  text-align: right;
+  white-space: nowrap;
+
+  // 0.6rem is 9.6px — below any practical reading floor, and this is the label
+  // that tells you what the number counts. 0.75rem is the smallest size on the
+  // site that any running eye is asked to resolve.
+  .unit {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
+
+// ============================================================================
+// KEYWORD PANEL
+// ============================================================================
+//
+// On --paper with a visible hairline border, NOT on --help-bg. The help tint is
+// reserved for arc42's own guidance; reusing it here made one colour mean
+// "guidance", "you are here" and "navigate by keyword" at once, and it put a
+// tint behind running text in the centre column, which the Calm-Centre Rule
+// forbids. A border does the same containment job with no colour cost.
+.keyword-panel {
+  max-width: var(--measure);
+  margin: var(--s7) 0 0;
+  padding: var(--s5) var(--s6);
+  background: var(--paper);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius);
+
+  // Colour is deliberately NOT overridden: h2 stays --signal like every other
+  // subhead on the site (the Blue-Subhead Rule). Only the top margin goes, so
+  // the heading sits against the panel's own padding.
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.kw-intro {
+  max-width: var(--measure);
+  color: var(--ink);
+}
+
+.kw-row {
+  display: grid;
+  grid-template-columns: 8.5em minmax(0, 1fr);
+  gap: var(--s4);
+  align-items: baseline;
+  padding: var(--s3) 0;
+  border-top: 1px solid var(--hairline-2);
+
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+.kw-chip {
+  justify-self: start;
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+
+  // --pill-ink is --signal-dk. The brighter --signal on --pill-bg measures
+  // 3.54:1 and fails AA at every size a chip is ever set in.
+  background: var(--pill-bg);
+  color: var(--pill-ink);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+
+  // Shape cue, so the chips are not distinguished by colour alone.
+  &::before {
+    content: "› ";
+    opacity: 0.7;
+  }
+
+  &:hover {
+    color: var(--pill-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+// Capped like every other text block on the page. The mockup left this one
+// uncapped; it only looked fine because the three strings were one line each.
+.kw-def {
+  display: block;
+  max-width: var(--measure);
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.kw-all {
+  margin: var(--s4) 0 0;
+  padding-top: var(--s3);
+  border-top: 1px solid var(--hairline-2);
+  font-size: 0.98rem;
+
+  a {
+    color: var(--signal-dk);
+    font-weight: 700;
+  }
+}
+
+// ============================================================================
+// CLOSING BLOCK
+// ============================================================================
+//
+// One section, one heading. The mockup closed home with three one-sentence
+// <h2> blocks: three stops in the document outline for three sentences, and it
+// left the training pitch as the page's last impression. The four notes are now
+// a list under a single modest heading, with the open-source note last.
+.closing {
+  max-width: var(--measure);
+  margin-top: var(--s7);
+}
+
+.closing-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    column-gap: var(--s4);
+    align-items: start;
+    padding: var(--s4) 0;
+    border-top: 1px solid var(--hairline-2);
+
+    // Notes without an icon keep the same text edge as the ones with one.
+    > *:not(.closing-icon) {
+      grid-column: 2;
+    }
+
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Decorative: every icon here sits beside a link to the very destination it
+// depicts, so it carries alt="" and is not itself a second link to the same
+// place. Width/height are on the element so the row cannot reflow on load.
+.closing-icon {
+  width: 42px;
+  height: 42px;
+  margin-top: 2px;
+}
+
+// ============================================================================
+// RESPONSIVE
+// ============================================================================
+
+// 800px, not 640. The shell itself goes single-column at 800; a 640 threshold
+// left two ~300px directory columns inside a one-column page for the whole band
+// between, with row rules that no longer aligned across the gap.
+@media (max-width: 800px) {
+  .directory {
+    grid-template-rows: none;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-flow: row;
+    column-gap: 0;
+    max-width: var(--measure);
+  }
+}
+
+@media (max-width: 420px) {
+  .kw-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s2);
+  }
+
+  .dir-link {
+    grid-template-columns: 2.4em minmax(0, 1fr) auto;
+    column-gap: var(--s2);
+  }
+
+  .keyword-panel {
+    padding: var(--s4) var(--s4);
+  }
+
+  .closing-list > li {
+    grid-template-columns: 32px minmax(0, 1fr);
+    column-gap: var(--s3);
+  }
+
+  .closing-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

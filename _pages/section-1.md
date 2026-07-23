@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 1 - Introduction and Goals
 permalink: /section-1/
+number: 1
 order: 5
 ---
 
@@ -53,7 +54,7 @@ The top three (max five) quality goals for the architecture whose fulfillment is
 
 For example ISO 25010 standard provides an overview of potential topics:
 
-![ISO 25010 categories of quality requirements]({{ site.imageurl }}/1-2-iso-25010-topics-en.png)
+![ISO 25010 categories of quality requirements]({{ site.imageurl }}/01/iso-25010-topics-en.png)
 
 ### Motivation
 You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.

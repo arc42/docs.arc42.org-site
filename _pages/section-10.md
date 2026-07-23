@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 10 - Quality
 permalink: /section-10/
+number: 10
 order: 14
 ---
 
@@ -112,8 +113,8 @@ _&lt;describe quality scenarios here >_
 ## See also
 
 Since January 2023, arc42 provides a <a target="_blank" rel="noopener noreferrer nofollow" href="https://quality.arc42.org">pragmatic quality model</a>, that proposes to _label_ quality requirements, with _hashtags_ or _labels_ like #flexible, #efficient, #usable, #operable, #testable, #secure, #safe" and #reliable.
-0
-![Q42, the arc42 quality model, with eight labels for system qualities](/images/10-quality/arc42-system-qualities-overview.svg)
+
+![Q42, the arc42 quality model, with tags/labels for system qualities](/assets/images/sections/10/arc42-system-qualities-overview.svg)
 
 
 {% include further-info.md

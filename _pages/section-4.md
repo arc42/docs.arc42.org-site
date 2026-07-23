@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 4 - Solution strategy
 permalink: /section-4/
+number: 4
 order: 8
 ---
 

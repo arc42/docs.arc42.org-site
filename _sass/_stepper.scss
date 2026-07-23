@@ -1,0 +1,99 @@
+// ============================================================================
+// Stepper — the previous / next section pager at the foot of a section page.
+//
+// Three corrections to tmp/design-proposals/d-dora/style.css:
+//
+//   · its 1px borders were --hairline, which measures 1.26:1 on --paper. A box
+//     you cannot see is not a box: the two targets read as loose text. They are
+//     --hairline-2, the token that exists precisely for borders that must be
+//     seen.
+//
+//   · prev and next were styled identically, so the design recommended nothing
+//     at the single moment it exists to recommend something. "Next" now carries
+//     the --signal border and the --row-active fill; "previous" stays quiet.
+//     One emphasised target, one direction.
+//
+//   · each box carries the target section's blurb from _data/sections.yml, so
+//     "4. Solution Strategy" says what it is rather than only where it is.
+//
+// Grid rather than flex so that section 1 (no previous) and section 12 (no
+// next) keep their single box in the correct half of the row.
+// ============================================================================
+
+.stepper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  margin: var(--s8) 0 0;
+  padding-top: var(--s5);
+  border-top: 1px solid var(--hairline-2);
+  max-width: var(--measure);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  text-decoration: none;
+  padding: var(--s3) var(--s4);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius);
+  background: var(--paper);
+  transition: border-color 0.14s ease, background 0.14s ease;
+
+  &:hover {
+    border-color: var(--signal);
+    background: var(--surface-hover);
+  }
+}
+
+.step-dir {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.step-name {
+  font-weight: 700;
+  color: var(--signal-dk);
+}
+
+.step-blurb {
+  font-size: 0.86rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+// Forward is the recommendation. It is also the only box on section 1, and
+// grid-column keeps it on the right where a "next" belongs.
+.step-next {
+  grid-column: 2;
+  text-align: right;
+  border-color: var(--signal);
+  background: var(--row-active);
+
+  &:hover {
+    border-color: var(--signal-dk);
+    background: var(--sky);
+  }
+}
+
+// Below the single-column layout breakpoint the two boxes stack, and a
+// right-aligned "next" sitting under a left-aligned "prev" reads as a mistake.
+@media (max-width: 800px) {
+  .stepper {
+    grid-template-columns: 1fr;
+  }
+
+  .step-next {
+    grid-column: 1;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step {
+    transition: none;
+  }
+}

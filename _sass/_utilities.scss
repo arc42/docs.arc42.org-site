@@ -1,0 +1,337 @@
+// ============================================================================
+// Utilities — small, single-purpose classes, plus the handful of standalone
+// blocks that have no component of their own.
+//
+// Imported last so a utility can win a specificity tie against a component.
+//
+// This file is also where three deleted stylesheets landed:
+//   · _sass/_common.scss      → .tag-box, .search-type*
+//   · assets/css/arc42-doc.css → a.headerlink, .subtle-ad*, .supported-by-innoq
+//   · assets/css/ukraine.css   → .ua-*, .parent, .children
+// The arc42-help / arc42-example callout shapes from arc42-doc.css went to
+// _callouts.scss instead, where Agent B picks them up.
+//
+// Dropped in the move, because nothing in the repo references them (grepped
+// across _includes, _layouts, _pages, _posts, _examples, _data, assets/js):
+//   .margin, .margin-top, .margin-bottom  — the old 50px $margin helpers
+//   .btn                                   — no `class="btn"` anywhere; the
+//                                            only mention was a .pagination
+//                                            descendant rule in _content.scss
+//   .disabled                              — never applied
+// ============================================================================
+
+// ---- Icons ------------------------------------------------------------------
+// One rule for every glyph from assets/icons/ui.svg, rendered via
+// {% include icon.html name="…" %}. Sized in em so an icon always matches the
+// type it sits next to, and coloured by currentColor so it inherits from its
+// link or heading without a per-context override.
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  flex: none;
+}
+
+// ---- Clearfix ---------------------------------------------------------------
+// Still referenced by _includes/article-header.html, _includes/share-buttons.html
+// and _layouts/default.html. Kept until those templates are rewritten onto the
+// grid layout; it costs four declarations.
+
+.clearfix {
+  &::before,
+  &::after {
+    content: " ";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+// ---- Anchor links on headings ----------------------------------------------
+// Manual `<a class="headerlink">` in _examples content. The !important is
+// carried over from arc42-doc.css, where it existed to beat the
+// `.site-content h1…h6 a { color: <text> }` rule that used to inherit into it.
+
+a.headerlink {
+  color: var(--signal) !important;
+}
+
+// ============================================================================
+// TAG BOXES — used by _pages/keywords.html
+// thx to https://github.com/lanyonm/lanyonm.github.io
+// ============================================================================
+
+.tag-box {
+  list-style: none;
+  margin: 0;
+  padding: var(--s1) 0;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &::after {
+    clear: both;
+  }
+
+  &.inline li {
+    float: left;
+    font-size: 0.875rem;
+    line-height: 2.5;
+  }
+
+  // The old pairing was Signal Blue on Tag Cyan: 3.54:1, which fails AA at
+  // every size a tag is ever set in. --pill-ink is the corrected token
+  // (Signal Dark on Tag Cyan, 4.96:1).
+  a {
+    padding: var(--s1) 6px;
+    margin: 2px;
+    background-color: var(--pill-bg);
+    color: var(--pill-ink);
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  a.featured-tag {
+    background-color: var(--coral);
+    color: var(--paper);
+    font-weight: bold;
+  }
+
+  a span {
+    vertical-align: super;
+    font-size: 0.625rem;
+  }
+}
+
+// ============================================================================
+// SEARCH RESULT TYPE BADGES
+// Emitted by assets/js/search.js for the sidebar panel and the /search/ page.
+// They live here rather than in _search.scss because they are badges the search
+// code stamps onto a class name, not part of the search panel's own layout.
+// ============================================================================
+
+.search-type {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 1px 7px;
+  border-radius: var(--radius);
+  margin-right: 0.55em;
+  vertical-align: 0.1em;
+  background-color: var(--sky);
+  color: var(--deep);
+}
+
+.search-type-tip {
+  background-color: var(--pill-bg);
+  color: var(--pill-ink);
+}
+
+.search-type-example {
+  background-color: var(--ex-bg);
+  color: var(--ex-ink);
+}
+
+.search-type-page {
+  background-color: var(--surface-1);
+  color: var(--ink);
+}
+
+// ============================================================================
+// SUBTLE ADS — a quiet, honest note from the arc42 maintainers about their
+// training. Maroon is the site's quarantined sponsor colour; the hard offset
+// shadow marks this as an aside attached to the page, not part of the guidance.
+// ============================================================================
+
+.subtle-ads {
+  margin-top: var(--s7);
+}
+
+// The language note sits OUTSIDE the .subtle-ad box, beneath it: this is the
+// site talking about the offer, not part of the offer. Small and muted, led by
+// a literal "DE" chip so the fact is scannable without reading the sentence —
+// most public arc42 courses are German, and this site is read internationally.
+.subtle-ad-lang {
+  max-width: 34em;   // matches .subtle-ad's own cap
+  margin: var(--s2) 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--muted);
+
+  b {
+    display: inline-block;
+    margin-right: 0.4em;
+    padding: 0 6px;
+    border: 1px solid var(--maroon);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--maroon);
+  }
+}
+
+.subtle-ad {
+  max-width: 34em;
+  padding: 1em 1.25em;
+
+  background-color: var(--maroon-bg);
+  border: 1px solid var(--maroon);
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 0 var(--maroon);
+
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.5;
+
+  // Honest labelling: a small kicker naming who is behind the note reads as
+  // trustworthy, not as a hidden ad.
+  &::before {
+    display: block;
+    margin-bottom: 0.4em;
+
+    content: "from the arc42 team";
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--maroon);
+  }
+
+  h4 {
+    margin: 0 0 0.3em;
+    font-size: 1.1em;
+    line-height: 1.3;
+    color: var(--maroon);
+  }
+
+  p {
+    margin: 0.3em 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--maroon);
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+// ---- Sponsor mark in the footer ---------------------------------------------
+
+.supported-by-innoq {
+  margin-bottom: 13px;
+  width: 110px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 900px) {
+  .supported-by-innoq {
+    width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .supported-by-innoq {
+    width: 90px;
+  }
+}
+
+p.footer-icons {
+  margin-bottom: var(--s2);
+}
+
+// ============================================================================
+// UKRAINE SOLIDARITY NOTE
+// Folded in from assets/css/ukraine.css. Set on _pages/home.md and intended to
+// be liftable onto other arc42 pages unchanged.
+//
+// The three colours here are the Ukrainian flag's, not arc42's: they are a
+// quotation, deliberately outside the palette, and must never be reached for by
+// anything else. That is why they are literals rather than tokens — see report.
+// ============================================================================
+
+// The band sits between the deep-blue masthead and the content on /home/ only.
+// It has to read as the site speaking rather than as an article, and it must not
+// compete with the masthead directly above it — so: no fill of its own, a single
+// hairline to close the masthead off, and the flag carried by a 3px rule rather
+// than by a coloured background. That rule is the only place these two colours
+// appear anywhere on the site.
+.solidarity {
+  border-bottom: 1px solid var(--hairline);
+  background: var(--paper);
+}
+
+.solidarity-inner {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  // --s6 matches .masthead-inner's horizontal padding: the band sits directly
+  // beneath it and the two are both site chrome, so they must share a left edge.
+  // (The content column below is centred at its own width and deliberately does
+  // not align with either.)
+  padding: var(--s4) var(--s6);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s4);
+
+  p {
+    margin: 0;
+    max-width: var(--measure);
+    font-size: 0.94rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  strong {
+    color: var(--ink);
+  }
+}
+
+// The flag, as a shape rather than a fill. It carries the meaning that the old
+// heart glyphs did, without a heading, without an icon font, and without tinting
+// the reading surface.
+//
+// 24x16 is the flag's real 3:2 proportion. An earlier 24x6 read as a thin bar or
+// an underline rather than as a flag — at that ratio the two bands are 3px each
+// and the eye resolves them as one striped rule, not as an emblem.
+//
+// The hairline matters more than it looks: the lower band is #fed401 on
+// near-white paper, about 1.6:1, so without an edge the flag appears to be a
+// blue rectangle floating above nothing.
+.solidarity-flag {
+  flex: none;
+  width: 24px;
+  height: 16px;
+  margin-top: 0.2em;   // optically centres on the first line of the statement
+  border: 1px solid var(--hairline-2);
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #005bbb 0 50%, #fed401 50% 100%);
+}
+
+@media (max-width: 1024px) {
+  .solidarity-inner {
+    padding: var(--s4) var(--s5);
+  }
+}

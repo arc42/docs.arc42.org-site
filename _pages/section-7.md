@@ -2,6 +2,7 @@
 layout: arc42-doc-section
 title: 7 - Deployment view
 permalink: /section-7/
+number: 7
 order: 11
 ---
 
