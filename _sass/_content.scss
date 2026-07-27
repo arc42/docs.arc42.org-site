@@ -656,13 +656,17 @@
   }
 
   // Inside a row the tag group is already inline; kill the block margin it
-  // carries when it stands on its own under an article title.
+  // carries when it stands on its own under an article title. flex-basis:
+  // 100% forces it onto its own flex line regardless of how short the title
+  // is, so pills never crowd in next to a short heading.
   .tags {
     margin: 0;
+    flex-basis: 100%;
   }
 }
 
 .tip-title {
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--ink);
   text-decoration: none;
