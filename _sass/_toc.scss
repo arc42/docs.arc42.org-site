@@ -97,8 +97,18 @@ html:not(.js) .layout--doc,
   }
 }
 
+// The first entry is the page's own h1, and the only one that is not a part of
+// the page — ink rather than muted marks it as the root the rest hang from.
+// :not([aria-current]) keeps it clear of the active-row rule below, which is
+// one class less specific and would otherwise lose whenever the title is the
+// current entry — i.e. for the whole top of every page.
+.toc-list .is-title a:not([aria-current]) {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 // The number column. Rendered even when a heading carries no leading number, so
-// that "Further Info" starts on the same left edge as "3.1 Business context".
+// that "Practical Tips" starts on the same left edge as "3.1 Business context".
 .toc-num {
   font-family: var(--mono);
   font-size: 0.74rem;
@@ -188,6 +198,11 @@ html:not(.js) .layout--doc,
     &:hover {
       color: var(--signal-dk);
     }
+  }
+
+  .toc-inline-list .is-title a:not([aria-current]) {
+    color: var(--ink);
+    font-weight: 600;
   }
 
   .toc-inline-list [aria-current] {

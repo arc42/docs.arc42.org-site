@@ -1,6 +1,12 @@
 {%- comment -%}
-  "Further Info" block at the foot of every arc42 section page: the tips written
-  for that section, plus a link into the FAQ.
+  "Practical Tips" block at the foot of every arc42 section page: the tips
+  written for that section, plus a link into the FAQ. (The file keeps its old
+  name so the twelve `{% include further-info.md %}` call sites stay put.)
+
+  The tips list carries no heading of its own. It used to sit under "### Tips"
+  below an h2 named "Further Info"; once the h2 became "Practical Tips" that
+  subheading only restated its parent, so it is gone and the list runs straight
+  on from the h2.
 
   Parameters
     category  required — the _posts category to pull tips from.
@@ -25,9 +31,7 @@
 
 <hr class="with-no-margin"/>
 
-## Further Info
-
-### Tips
+## Practical Tips
 
 {% assign section_tips = site.posts | where: "category", include.category | reverse -%}
 {%- if section_tips.size > 0 %}

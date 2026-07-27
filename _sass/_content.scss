@@ -254,6 +254,27 @@
     vertical-align: -0.15em;
   }
 
+  // GitHub status badges (contact.md): kramdown wraps each `![]()` line in its
+  // own <p>, and the reset's `img { display: block }` would stack them one per
+  // row regardless. Flexing the wrapper puts them in a single row and
+  // overrides the auto-centering above, since these read left-to-right as a
+  // group, not as individually centered figures.
+  // Kramdown wraps the whole `markdown="1"` block in a single <p>, so the
+  // flex context has to sit on that <p> — the images are its direct/near
+  // children, not .status-badges'.
+  .status-badges p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s2);
+    margin: 0;
+
+    img,
+    a > img {
+      margin-inline: 0;
+    }
+  }
+
   figure {
     margin-inline: 0;
   }
@@ -608,7 +629,7 @@
   }
 }
 
-// ---- Further Info: the tip list ---------------------------------------------
+// ---- Practical Tips: the tip list ---------------------------------------------
 // _includes/further-info.md. Every title is a link to the tip's own page; the
 // site advertises 144 tips in the masthead and, before this, not one of them was
 // reachable from a section page.

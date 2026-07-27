@@ -64,7 +64,7 @@
     }
 
     // "3.1 Business context" → ["3.1", "Business context"].
-    // "Further Info"         → ["",    "Further Info"].
+    // "Practical Tips"       → ["",    "Practical Tips"].
     // The number column is rendered either way so that the labels line up; an
     // unnumbered entry starting 2em left of its neighbours reads as a mistake.
     function splitNumber(text) {
@@ -156,18 +156,28 @@
         var details = document.getElementById('toc-inline');
         if (!aside && !details) return;
 
-        var headings = toArray(main.querySelectorAll('h2[id]')).filter(function (h) {
+        var subheads = toArray(main.querySelectorAll('h2[id]')).filter(function (h) {
             return !inExcluded(h);
         });
 
         var layout = document.querySelector('.layout--doc');
 
-        if (!headings.length) {
+        if (!subheads.length) {
             // No entries: do not leave a 240px column of nothing beside the
-            // prose, and do not show an empty grey disclosure box either.
+            // prose, and do not show an empty grey disclosure box either. The
+            // gate counts h2s only — the title added below must never be the
+            // thing that keeps an otherwise empty TOC on the page.
             if (layout) layout.classList.add('has-no-toc');
             return;
         }
+
+        // The section title leads the list. Eight of the twelve arc42 sections
+        // keep every subheading inside .arc42-help, which is excluded above, so
+        // their TOC listed one entry — "Practical Tips" — naming the appendix at
+        // the foot of the page and never the page itself. The h1 gives the box a
+        // subject, and a way back to the top once the reader has scrolled off it.
+        var title = main.querySelector('h1[id]');
+        var headings = title ? [title].concat(subheads) : subheads;
 
         var links = [];   // every <a> in both lists, in document order
 
@@ -175,6 +185,7 @@
             headings.forEach(function (h) {
                 var parts = splitNumber(h.textContent);
                 var li = document.createElement('li');
+                if (h === title) li.className = 'is-title';
                 var a = document.createElement('a');
                 a.href = '#' + h.id;
                 if (extraLinkClass) a.className = extraLinkClass;

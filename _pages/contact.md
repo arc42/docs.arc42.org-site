@@ -32,10 +32,13 @@ The site was last built on {{ site.time | date: '%c' }}.
 
 
 
-![Github issues open](https://badgen.net/github/open-issues/arc42/docs.arc42.org-site)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/arc42/docs.arc42.org-site)
-![Github issues total](https://badgen.net/github/issues/arc42/docs.arc42.org-site)
+<div class="status-badges" markdown="1">
+[![Github issues open](https://badgen.net/github/open-issues/arc42/docs.arc42.org-site)](https://github.com/arc42/docs.arc42.org-site/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/arc42/docs.arc42.org-site)](https://github.com/arc42/docs.arc42.org-site/issues?q=is%3Aissue+is%3Aclosed)
+[![Github issues total](https://badgen.net/github/issues/arc42/docs.arc42.org-site)](https://github.com/arc42/docs.arc42.org-site/issues?q=is%3Aissue)
 [![Github stars](https://badgen.net/github/stars/arc42/arc42-template)](https://github.com/arc42/arc42-template)
+[![License CC BY-SA 4.0](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)](https://github.com/arc42/docs.arc42.org-site/blob/main/LICENSE)
+</div>
 
 
 ### site.github info

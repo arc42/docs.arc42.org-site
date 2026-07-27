@@ -161,9 +161,17 @@ a.headerlink {
 // site talking about the offer, not part of the offer. Small and muted, led by
 // a literal "DE" chip so the fact is scannable without reading the sentence —
 // most public arc42 courses are German, and this site is read internationally.
-.subtle-ad-lang {
+// The .subtle-ads prefix is load-bearing, not decoration: this is a <p> inside
+// .site-content, so `.site-content p` (0,1,1) outranks a bare `.subtle-ad-lang`
+// (0,1,0) and silently zeroes the margin-top below. Do not flatten this selector.
+.subtle-ads .subtle-ad-lang {
   max-width: 34em;   // matches .subtle-ad's own cap
-  margin: var(--s2) 0 0;
+  // Sits between two other gaps and has to be legible as distinct from both:
+  // wider than .subtle-ad's own 1em padding, so the note reads as outside the
+  // box rather than a stray last line inside it — but well under the --s7 that
+  // detaches the whole aside from the page. The +3px pays back .subtle-ad's
+  // hard offset shadow, which occupies the first 3px beneath the border.
+  margin: calc(var(--s5) + 3px) 0 0;
   font-size: 0.85rem;
   line-height: 1.4;
   color: var(--muted);
