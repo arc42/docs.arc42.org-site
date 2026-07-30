@@ -105,6 +105,15 @@
     gap: var(--s5);
   }
 
+  .masthead-logo {
+    // The inner row centers items vertically, which floats the logo in the
+    // middle of the three-line text block — reads as a lost element, not a
+    // wordmark. Pin it to the top, nudged to sit on the title's cap height
+    // (the bar variant needs no such fix: one line tall, centre IS top).
+    align-self: flex-start;
+    margin-top: 0.4rem;
+  }
+
   .masthead-logo img {
     height: 44px;
   }

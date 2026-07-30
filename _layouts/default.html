@@ -20,7 +20,8 @@
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="/assets/favicon/manifest.json">
-    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#0e4f80">
+    {%- comment -%} No mask-icon: Safari ≥12 pins tabs with the standard
+        favicon; the monochrome pinned-tab SVG served Safari 9–11 only. {%- endcomment -%}
     <meta name="theme-color" content="#0e4f80">
     <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
 
