@@ -1,7 +1,7 @@
 
 ### Examples
 
-<div id="search-results">
+<div class="example-list">
   <ul>
     {% assign selected_examples = (site.examples | where: "category", include.category)  %}
     {% for example in selected_examples  %}            

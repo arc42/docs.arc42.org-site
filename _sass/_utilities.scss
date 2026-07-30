@@ -101,7 +101,9 @@ a.headerlink {
   }
 
   a.featured-tag {
-    background-color: var(--coral);
+    // --coral under --paper text measured 2.9:1 and failed AA on the three
+    // most prominent keywords on the page; --coral-deep clears it at 5.3:1.
+    background-color: var(--coral-deep);
     color: var(--paper);
     font-weight: bold;
   }

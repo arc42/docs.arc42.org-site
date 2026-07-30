@@ -75,7 +75,10 @@
 
   &:hover {
     border-color: var(--signal-dk);
-    background: var(--sky);
+    // was var(--sky) — identical to the resting fill (--row-active resolves to
+    // --sky), so the emphasised "next" box was the only stepper target with no
+    // visible hover. --tint-soft is one step deeper in the same blue.
+    background: var(--tint-soft);
   }
 }
 

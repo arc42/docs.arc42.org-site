@@ -7,7 +7,10 @@ colors:
   deep-blue: "#0e4f80"
   sky-tint: "#dceefa"
   header-tint: "#eaf4fc"
+  tint-soft: "#d3e6f7"
+  rule: "#c6ccd4"
   coral: "#ff5c7c"
+  coral-deep: "#c22b47"
   amber: "#ffc95c"
   help-bg: "#e3f2fe"
   help-ink: "#0c3d66"
@@ -60,38 +63,25 @@ typography:
     fontWeight: 400
     lineHeight: 1.5
 rounded:
-  xs: "3px"
-  sm: "4px"
-  input: "0.3em"
-  pill: "1.5em"
+  sm: "4px"          # --radius: callouts, panels, code blocks
+  pill: "999px"      # --radius-pill: tags, chips
 spacing:
-  side: "10px"
-  section: "50px"
+  scale: "--s1 4px … --s8 64px (see _tokens.scss); section rhythm --s7 48px"
 components:
-  button-default:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.signal-blue}"
-    rounded: "{rounded.input}"
-    padding: "0.5em 0.75em"
-  button-hover:
-    backgroundColor: "{colors.signal-blue}"
-    textColor: "{colors.paper}"
-    rounded: "{rounded.input}"
-    padding: "0.5em 0.75em"
   callout-help:
     backgroundColor: "{colors.help-bg}"
     textColor: "{colors.help-ink}"
     rounded: "{rounded.sm}"
-    padding: "16px 48px 16px 20px"
+    padding: "var(--s4) var(--s7) var(--s4) var(--s5)"
   callout-example:
     backgroundColor: "{colors.example-bg}"
     textColor: "{colors.example-ink}"
     rounded: "{rounded.sm}"
-    padding: "16px 48px 16px 20px"
+    padding: "var(--s4) var(--s7) var(--s4) var(--s5)"
   code-inline:
-    backgroundColor: "#f6f8fa"
+    backgroundColor: "{colors.code-bg}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.xs}"
+    rounded: "3px"
     padding: "0 5px"
   tag:
     backgroundColor: "{colors.tag-bg}"
@@ -139,7 +129,7 @@ A blue-forward palette on near-white, warmed and freshened so it reads as one of
 - **Help Blue** (#e3f2fe background / #0c3d66 ink): The `.arc42-help` guidance callout. A fresher, slightly brighter cool blue than before, with a deep readable blue ink (replacing the old near-black-blue). Cool, quiet, clearly "the template's advice."
 - **Example Blush** (#fdebe7 background / #9a3b2e ink): The `.arc42-example` block. Warmed from the old flat pink toward a fresh blush, with a matched warm ink instead of the previous blue ink, echoing the family habit of pairing a warm background with a warm text colour. A clear warm counterpoint to the cool help block, so guidance and worked example read apart at a glance.
 - **Coral** (#ff5c7c): The single warm spark. Used for the masthead description line and small header accents (counters, markers), never on body content. One warm note against the deep blue.
-- **Amber** (#ffc95c): A secondary warm accent for tips and lightweight emphasis, borrowed from the family's "standards" colour. Used sparingly, always paired with text or an icon, never as the sole signal.
+- **Amber** (#ffc95c): A secondary warm accent for tips, borrowed from the family's "standards" colour. Its one visible job: the rotated-square tip markers on the Practical Tips lists (`.tips-list li::before`, with an amber-ink keyline). Used sparingly, always paired with text or an icon, never as the sole signal. (Per meta.arc42.org ADR-0003 a shared family token must have a visible job on every site — this is amber's.)
 - **Tag Cyan** (#aee3f8): Tag and label pills.
 - **Emerald** (#2e9e67): The footer status indicator only. Signals "operational" and nothing else, deepened from the old value for legibility.
 - **Maroon** (#8a2e2e): The subtle-ad border and accent. Quarantined to sponsor blocks; never used in editorial content.
@@ -182,12 +172,15 @@ Signal Blue Dark (#115e94) is not a second accent — it is Signal Blue where Si
 > **Decision landed (2026-07-22).** The typeface refresh is now committed and aligns with what quality.arc42.org ships: **Atkinson Hyperlegible Next** for body and UI, **Libre Caslon Text** for headings. Both are **self-hosted** (`assets/fonts/`, SIL OFL) rather than loaded from the Google Fonts CDN — a third-party font hop is both a render-blocking dependency and a privacy liability for a site with an imprint. Plain *Atkinson Hyperlegible* is kept as the immediate fallback so the stack degrades to the right letterforms rather than to `system-ui`; the two are different families with different metrics, so the order matters. Mono is the system stack — no downloaded mono face, because its only jobs are section numbers and inline code.
 
 ### Hierarchy
-- **Display** (bold, 2.7em, line-height 1): The masthead title only. Appears once per page, in Header Tint on the Deep Blue band.
-- **Headline** (bold, 2.3em, line-height 1.3): Page `h1`, in ink. The section's name.
-- **Title** (bold, 1.8em, line-height 1.3, Signal Blue): Major `h2` subheads. Blue on purpose, so the reader can scan the structural skeleton of a long page by colour alone.
-- **Body** (regular, 16px, line-height 1.5): All prose. Comfortable leading for extended reading. Target 65 to 75 characters per line.
-- **Label** (regular, 0.95em, line-height 1.2): Aside navigation, meta lines, tags, footnotes.
-- **Code** (regular, 0.85em monospace): Inline code and code blocks.
+(Values mirror the front matter and `_masthead.scss` / `_content.scss` /
+`_base.scss` — reconciled 2026-07-30; the previous prose table documented a
+retired generation.)
+- **Display** (700, `clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem)`, line-height 1.1): The masthead title only. Appears once per page, in Header Tint on the Deep Blue band.
+- **Headline** (700, `clamp(2rem, 1.4rem + 2.4vw, 2.85rem)`, line-height 1.12): Page `h1`, in ink. The section's name.
+- **Title** (700, 1.55rem, line-height 1.2, Signal Blue): Major `h2` subheads. Blue on purpose, so the reader can scan the structural skeleton of a long page by colour alone.
+- **Body** (400, 1.0625rem, line-height 1.65): All prose. Comfortable leading for extended reading. Target 65 to 75 characters per line; 16px below 420px viewports.
+- **Label** (400, 0.95rem, line-height 1.3): Aside navigation, meta lines, tags, footnotes.
+- **Code** (400, 0.9em monospace): Inline code and code blocks.
 
 ### Named Rules
 **The Blue-Subhead Rule.** `h2` section headings are Signal Blue while `h1` stays ink. This lets a reader scan a long section page and perceive its structure at a glance. It is a navigation aid, not decoration, so do not extend the blue to `h1` or body text.
@@ -207,12 +200,6 @@ Mostly flat. The page is near-white, the content sits directly on it, and struct
 
 ## 5. Components
 
-### Buttons
-- **Shape:** Gently rounded (0.3em radius), 1px solid border.
-- **Default:** Paper fill, Signal Blue text and border, padding 0.5em 0.75em. Reads as a quiet outlined control.
-- **Hover:** Fills with Signal Blue, text flips to Paper, underline removed. A clear, confident state flip with no ornament.
-- **Focus:** A visible 2px Signal Blue outline with 2px offset. Keyboard users must always see where they are.
-
 ### Callouts (signature component)
 The heart of the system. Two annotation blocks that structure every documentation section.
 - **Help block** (`.arc42-help`): Help Blue background (#e3f2fe), deep-blue ink (#0c3d66), 4px radius, Callout Lift shadow, roomy 16px/48px/16px/20px padding, 1.5 line-height, and a `help42.svg` icon pinned top-right (absolutely positioned, not floated, so it never crowds the first line of text). Carries the template's guidance.
@@ -230,10 +217,10 @@ The heart of the system. Two annotation blocks that structure every documentatio
 
 ### Navigation
 - **Aside nav:** A vertical list of section links with hairline top/bottom borders per item, roomy 0.5em padding, label-scale type. Collapses behind a toggle below 800px. Quiet and list-like; the current structure of the twelve sections, not a chrome-heavy menu.
-- **Masthead:** A confident Deep Blue (#0e4f80) band with a circular avatar, Header Tint (#eaf4fc) title and logo, and a single Coral (#ff5c7c) description line. This is the fresh, family-style header: colour lives here so the reading surface below can stay calm.
+- **Masthead:** A confident Deep Blue (#0e4f80) band in two variants — the full hero band on the home page and a condensed 56px sticky bar (`--bar-h`) everywhere else. Horizontal wordmark and logo in Header Tint (#eaf4fc), tagline in Tint Soft (#d3e6f7), and coral confined to a small rotated lozenge and the stat separators. This is the fresh, family-style header: colour lives here so the reading surface below can stay calm. (No avatar, no coral text line — that described an earlier revision.)
 
 ### Blockquotes
-- **Style:** 5px gray left border (#ddd), Muted text, 0.5em 1em padding. This is a conventional quotation mark, not a coloured accent stripe on a card. The left border stays gray, never a brand colour.
+- **Style:** 5px cool-gray left border (`--rule` #c6ccd4), Muted text, 0.5em 1em padding. This is a conventional quotation mark, not a coloured accent stripe on a card. The left border stays gray, never a brand colour.
 
 ### Sponsor / training note (`.subtle-ad`)
 The arc42 training funds this free site, so the note stays, but it must read as an honest pointer from the maintainers, never a foreign ad. Site sans (never a serif that appears nowhere else), a small maroon "from the arc42 team" kicker, information-first copy, and one quiet maroon link (no shouting button). Warm maroon-tinted background (#fcefef) with a 1px Maroon (#8a2e2e) border and the maroon Sponsor Lift hard offset, so it reads as an aside attached to the page. It lives in an `<aside aria-label>`, outside the editorial flow. The colour and the kicker openly declare "this is us, and it is a sponsor note," which is exactly what keeps it from feeling like a hidden ad.
@@ -262,3 +249,23 @@ The arc42 training funds this free site, so the note stays, but it must read as 
 - **Don't** use `border-left` greater than 1px as a coloured accent stripe on cards, list items, or alerts. The gray blockquote rule is the only permitted left border, and it stays gray.
 - **Don't** use gradient text or `background-clip: text`. Emphasis comes from weight, size, and the one blue.
 - **Don't** let colour be the only carrier of meaning; always pair it with text, an icon, or a shape.
+
+## 7. Family
+
+docs.arc42.org is a satellite of the arc42 site family. The normative family
+documents live in **meta.arc42.org** (`BRAND.md`, `DESIGN.md`, `adr/`):
+
+- **Signature hue** (owned by this site, ADR-0013): Signal Blue `#1675b9`,
+  masthead Deep Blue `#0e4f80`. No other family site may use them; this site
+  uses no other site's hue.
+- **Inherited constants**: the Caslon/Atkinson type pair (self-hosted), the
+  saturated masthead band, paper-flat surfaces with hairlines, light-only,
+  WCAG 2.2 AA with measured contrast at the declaration site, the hard-offset
+  pinned-note shadow (this site's implementation is the family's canonical
+  form, ADR-0002), and the shared accents amber `#ffc95c`, coral `#ff5c7c`,
+  coral-deep `#c22b47`, emerald `#2e9e67`.
+- **Site-local, never exported**: the help/example callout hues, Tag Cyan,
+  the maroon sponsor quarantine, the syntax-highlighting palette.
+
+Changing a shared token or family constant is an ecosystem decision (ADR in
+meta), not a site edit.

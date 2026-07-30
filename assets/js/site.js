@@ -40,7 +40,7 @@
     // "## Form" inside <div class="arc42-help">). They are labels inside a box,
     // not landmarks on the page, and section 10 alone has seven of them. The TOC
     // lists only headings that belong to the document itself.
-    var EXCLUDED_ANCESTORS = '.arc42-help, .arc42-example, #search-results, .toc, .toc-inline';
+    var EXCLUDED_ANCESTORS = '.arc42-help, .arc42-example, .example-list, .toc, .toc-inline';
 
     // ---- small helpers ------------------------------------------------------
 

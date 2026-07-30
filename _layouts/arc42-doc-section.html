@@ -34,7 +34,9 @@ layout: default
 <div class="prose">
   {% include toc.html variant="inline" %}
   {{ content }}
+  {%- unless page.hide_ads %}
   {% include subtle-ads.html %}
+  {%- endunless %}
   {%- if page.number %}
   {% include stepper.html %}
   {%- endif %}

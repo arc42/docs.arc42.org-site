@@ -655,6 +655,22 @@
     border-top: 0;
   }
 
+  // The amber tip marker — the family's shared amber earning its visible job
+  // on this site (meta.arc42.org ADR-0003; DESIGN.md already promised amber
+  // "for tips"). A small rotated square, amber fill with an amber-ink keyline
+  // so the shape reads without relying on the fill's low contrast; decorative
+  // (the list is already headed "Practical Tips"), so no text content.
+  li::before {
+    content: "";
+    flex: none;
+    align-self: center;
+    width: 0.5em;
+    height: 0.5em;
+    background: var(--amber);
+    border: 1px solid #8a6a14;
+    transform: rotate(45deg);
+  }
+
   // Inside a row the tag group is already inline; kill the block margin it
   // carries when it stands on its own under an article title. flex-basis:
   // 100% forces it onto its own flex line regardless of how short the title

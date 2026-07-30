@@ -7,30 +7,20 @@ group: meta
 order: 25
 ---
 
-## You still have questions?
+We're listening:
 
-Please let us know - we're listening to you:
-
-
-<ul>
-<li><a target="_blank" rel="noopener noreferrer nofollow" href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxex" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i> Email (our adress is spam-protected)</a></li>
-<li><a target="_blank" rel="noopener noreferrer nofollow" href="https://linkedin.com/in/gernotstarke"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-
-<li><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/arc42/docs.arc42.org-site/issues"><i class="fab fa-fw fa-github" aria-hidden="true"></i>github issue tracker</a></li>
-<li>
-    <a target="_blank" rel="noopener noreferrer nofollow" href="https://stackoverflow.com/questions/tagged/arc42">
-        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>Stackoverflow</a>
-</li>
+<ul class="contact-list">
+<li><a href="mailto:info@arc42.de">{% include icon.html name="envelope" %} info@arc42.de</a></li>
+<li><a target="_blank" rel="noopener noreferrer nofollow" href="https://linkedin.com/in/gernotstarke">{% include icon.html name="linkedin" %} LinkedIn</a></li>
+<li><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/arc42/docs.arc42.org-site/issues">{% include icon.html name="github" %} GitHub issue tracker</a></li>
+<li><a target="_blank" rel="noopener noreferrer nofollow" href="https://stackoverflow.com/questions/tagged/arc42">{% include icon.html name="stack-overflow" %} Stack Overflow</a></li>
 </ul>
 
-## Status and Build
+## Status and build
 
-
-The content of this site is maintained in Markdown on <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/arc42/docs.arc42.org-site">Github</a>.
-
-The site was last built on {{ site.time | date: '%c' }}. 
-
-
+The content of this site is maintained in Markdown on
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/arc42/docs.arc42.org-site">GitHub</a>.
+The site was last built on {{ site.time | date: '%F' }}.
 
 <div class="status-badges" markdown="1">
 [![Github issues open](https://badgen.net/github/open-issues/arc42/docs.arc42.org-site)](https://github.com/arc42/docs.arc42.org-site/issues)
@@ -39,10 +29,3 @@ The site was last built on {{ site.time | date: '%c' }}.
 [![Github stars](https://badgen.net/github/stars/arc42/arc42-template)](https://github.com/arc42/arc42-template)
 [![License CC BY-SA 4.0](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)](https://github.com/arc42/docs.arc42.org-site/blob/main/LICENSE)
 </div>
-
-
-### site.github info
-
-* build_revision: {{ site.github.build_revision }}
-* hostname: {{ site.github.hostname }}
-* environment: {{ site.github.environment }}

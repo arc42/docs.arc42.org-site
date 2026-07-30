@@ -45,6 +45,10 @@
 
   // ---- The one warm spark --------------------------------------------------
   --coral:      #ff5c7c;   // masthead accent only, never on body content
+  --coral-deep: #c22b47;   // family token (meta.arc42.org BRAND.md): coral for
+                           // fills that carry light text — --paper on it
+                           // measures 5.3:1. Bright --coral with --paper is
+                           // 2.9:1 and fails AA, which is why this exists.
 
   // ---- Chrome surfaces -----------------------------------------------------
   // Three tokens, one job each. The mockup had eight near-identical near-white
