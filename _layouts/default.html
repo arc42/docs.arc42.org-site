@@ -49,7 +49,14 @@
     <script defer src="{{ '/assets/js/nutshell.js' | relative_url }}"></script>
     {% endif %}
 
-    <script defer data-domain="docs.arc42.org" src="https://plausible.io/js/script.js"></script>
+    {%- comment -%}
+      Legacy Plausible script on purpose: the comma-separated data-domain
+      feeds this site's own dashboard AND the rollup.arc42.com journey
+      dashboard — the new per-site snippet cannot do that. Enhanced
+      measurements are selected via the src filename.
+      See meta.arc42.org/plausible-journey-tracking.md before changing.
+    {%- endcomment %}
+    <script defer data-domain="docs.arc42.org,rollup.arc42.com" src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
 </head>
 <body>
 
