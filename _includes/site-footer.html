@@ -1,13 +1,11 @@
 {%- comment -%}
-  The site footer. Same content and the same four links as before; only the
-  structure and the icons changed.
+  The site footer. The link list is a real <nav aria-label="Site">.
 
-    · the link list is a real <nav aria-label="Site">, not a <span> inside a <p>
-    · every <i class="fa …"> is now {% include icon.html %} against the sprite at
-      assets/icons/ui.svg — FontAwesome is gone
-    · the status link no longer signals "operational" by a green dot alone. The
-      colour now decorates a glyph that already carries the meaning, next to the
-      visible word "Status", so nothing is conveyed by hue on its own.
+  2026-07-30: the per-link sprite icons were removed family-wide — at footer
+  size the labels carry all the meaning and the glyphs only added noise
+  (same treatment as arc42.org and quality). Links separate with middots
+  (CSS ::before, skipped by screen readers). The sprite itself stays: the
+  masthead/search/UI still use it.
 {%- endcomment -%}
 
 <footer class="site-footer">
@@ -19,10 +17,10 @@
     </p>
 
     <nav class="footer-links" aria-label="Site">
-      <a href="https://status.arc42.org">{% include icon.html name="chart-bar" class="status-icon" %}Status</a>
-      <a href="{{ '/imprint/' | relative_url }}">{% include icon.html name="user-secret" %}Imprint + Privacy</a>
-      <a href="{{ '/contact/' | relative_url }}">{% include icon.html name="envelope" %}Contact</a>
-      <a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener noreferrer nofollow">{% include icon.html name="github" %}GitHub</a>
+      <a href="https://status.arc42.org">Status</a>
+      <a href="{{ '/imprint/' | relative_url }}">Imprint + Privacy</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      <a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
     </nav>
 
     <p class="footer-maintainer">

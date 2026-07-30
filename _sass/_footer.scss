@@ -31,15 +31,21 @@
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s3) var(--s5);
+  align-items: baseline;
+  gap: var(--s3) var(--s3);
 
   a {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--s2);
     color: var(--signal-dk);
     text-decoration: none;
+  }
+
+  // Middot separators between links (matches quality's footer-colophon and
+  // arc42.org's .footer-links) — replaced the per-link sprite icons.
+  // Pseudo-content, so screen readers only hear the nav links themselves.
+  a + a::before {
+    content: "\00B7";
+    margin-right: var(--s3);
+    color: var(--muted);
   }
 
   a:hover {
@@ -48,15 +54,8 @@
   }
 }
 
-// The mockup signalled "operational" with a green dot and nothing else, which is
-// meaning carried by hue alone — invisible to a reader with deuteranopia and to
-// anyone in monochrome. Here green only tints a glyph that already carries the
-// meaning by shape, beside the visible word "Status", so removing the colour
-// costs nothing. That is also why the 3.09:1 contrast is acceptable: the icon is
-// decorative, not the sole carrier of information.
-.footer-links .status-icon {
-  color: var(--green);
-}
+// (The green status glyph and its colour-not-alone rationale left with the
+// footer icons, 2026-07-30 — the plain word "Status" carries everything.)
 
 .footer-maintainer {
   flex-basis: 100%;
