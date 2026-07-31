@@ -1,17 +1,19 @@
 {
-	"name": "",
+	"name": "arc42 docs",
+	"short_name": "arc42 docs",
 	"icons": [
 		{
-			"src": "\/assets\/favicon\/android-chrome-192x192.png",
+			"src": "/assets/favicon/android-chrome-192x192.png",
 			"sizes": "192x192",
-			"type": "image\/png"
+			"type": "image/png"
 		},
 		{
-			"src": "\/assets\/favicon\/android-chrome-512x512.png",
+			"src": "/assets/favicon/android-chrome-512x512.png",
 			"sizes": "512x512",
-			"type": "image\/png"
+			"type": "image/png"
 		}
 	],
-	"theme_color": "#ffffff",
+	"theme_color": "#0e4f80",
+	"background_color": "#ffffff",
 	"display": "standalone"
 }

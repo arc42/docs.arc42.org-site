@@ -23,7 +23,11 @@
     {%- comment -%} No mask-icon: Safari ≥12 pins tabs with the standard
         favicon; the monochrome pinned-tab SVG served Safari 9–11 only. {%- endcomment -%}
     <meta name="theme-color" content="#0e4f80">
-    <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
+    {%- comment -%} The legacy `rel="shortcut icon"` line that used to sit here
+        pointed at site.favicon (assets/images/brand/arc42-favicon.svg — a
+        potrace autotrace of the old wordmark), so it competed with the icons
+        above and won in some browsers. The 42-circle set plus /favicon.ico is
+        the whole declaration now. {%- endcomment -%}
 
     {%- comment -%}
       The two latin subsets carry every glyph above the fold on every page. They
