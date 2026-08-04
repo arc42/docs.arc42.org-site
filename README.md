@@ -37,3 +37,16 @@ This work is licensed under a
 For documentation on this theme, see the [original documentation](https://ttskch.github.io/jekyll-ttskch-theme/).
 
 We implemented several enhancements over the original theme (e.g. responsive navigation, thx to Falk Hoppe)
+
+## Training dates
+
+The training block at the foot of ~200 section pages is rendered at build time
+from `_data/trainings.json` — an expiry-filtered copy of
+<https://trainings.arc42.org/api/trainings.json> that
+`.github/workflows/refresh-trainings.yml` refreshes weekly (Mondays 04:47 UTC,
+or manually via workflow dispatch) and commits only when the dates actually
+changed. Edit dates in the trainings repo's `_data/trainings.yml`, never here;
+`_includes/training-dates.html` owns the rendering, `_sass/_utilities.scss` the
+styling. This replaced the former runtime htmx fetch from the Vercel fragment
+backend (see the integration spec in the arc42 workspace's
+`docs/superpowers/specs/2026-08-04-docs-faq-training-dates-design.md`).
