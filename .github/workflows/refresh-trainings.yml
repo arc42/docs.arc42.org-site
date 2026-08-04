@@ -1,0 +1,50 @@
+name: Refresh training dates
+# Consumer side of the training-dates architecture: trainings.arc42.org publishes
+# /api/trainings.json (schema-validated in its own CI); this workflow pulls it,
+# drops expired dates, and commits to _data/trainings.json, from which
+# _includes/training-dates.html renders the block on every section page.
+# Adapted from arc42.de-site's refresh-trainings.yml — keep the two aligned.
+on:
+  schedule:
+    - cron: "47 4 * * 1"   # Mondays 04:47 UTC, staggered from arc42.de's 04:17
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    if: github.repository == 'arc42/docs.arc42.org-site'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch trainings.json
+        run: |
+          curl --fail --silent --show-error --location \
+            --output /tmp/trainings.json \
+            https://trainings.arc42.org/api/trainings.json
+      - name: Validate payload (a CDN error page arrives as 200 - check content)
+        run: |
+          jq -e '.courses | length > 0' /tmp/trainings.json
+          jq -e '[.courses[].dates[]? | select(.language == null or .start == null or .end == null or .code == null)] | length == 0' /tmp/trainings.json
+          jq -e '.generated | type == "string"' /tmp/trainings.json
+      - name: Update _data/trainings.json when courses changed
+        run: |
+          # Store the EXPIRY-FILTERED payload, not the raw fetch. The stored file is
+          # what we diff against next run, so a date that merely expires between runs
+          # (no upstream edit at all) still makes the filtered payload differ from what's
+          # committed - turning "time passing" into a content change that triggers a
+          # commit + Pages rebuild, instead of silently advertising an ended course.
+          jq --arg today "$(date -u +%Y-%m-%d)" \
+            '.courses[].dates |= map(select(.end >= $today))' \
+            /tmp/trainings.json > /tmp/filtered.json
+          jq -S 'del(.generated)' /tmp/filtered.json > /tmp/new.json
+          jq -S 'del(.generated)' _data/trainings.json > /tmp/old.json || echo '{}' > /tmp/old.json
+          if cmp -s /tmp/new.json /tmp/old.json; then
+            echo "No content change (ignoring 'generated' timestamp)"
+            exit 0
+          fi
+          jq . /tmp/filtered.json > _data/trainings.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/trainings.json
+          git commit -m "chore: refresh training dates from trainings.arc42.org"
+          git push

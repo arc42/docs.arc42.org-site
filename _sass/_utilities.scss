@@ -159,37 +159,88 @@ a.headerlink {
   margin-top: var(--s7);
 }
 
-// The language note sits OUTSIDE the .subtle-ad box, beneath it: this is the
-// site talking about the offer, not part of the offer. Small and muted, led by
-// a literal "DE" chip so the fact is scannable without reading the sentence —
-// most public arc42 courses are German, and this site is read internationally.
-// The .subtle-ads prefix is load-bearing, not decoration: this is a <p> inside
-// .site-content, so `.site-content p` (0,1,1) outranks a bare `.subtle-ad-lang`
-// (0,1,0) and silently zeroes the margin-top below. Do not flatten this selector.
-.subtle-ads .subtle-ad-lang {
-  max-width: 34em;   // matches .subtle-ad's own cap
-  // Sits between two other gaps and has to be legible as distinct from both:
-  // wider than .subtle-ad's own 1em padding, so the note reads as outside the
-  // box rather than a stray last line inside it — but well under the --s7 that
-  // detaches the whole aside from the page. The +3px pays back .subtle-ad's
-  // hard offset shadow, which occupies the first 3px beneath the border.
-  margin: calc(var(--s5) + 3px) 0 0;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: var(--muted);
+// The old .subtle-ad-lang site-level language note ("public courses are held in
+// German…") is retired: the feed now guarantees `language` on every date, so
+// _includes/training-dates.html badges each date DE/EN individually. Its chip
+// styling lives on in .training-dates__lang below.
 
-  b {
-    display: inline-block;
-    margin-right: 0.4em;
-    padding: 0 6px;
-    border: 1px solid var(--maroon);
-    border-radius: var(--radius);
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--maroon);
+// ---- Training dates strip ---------------------------------------------------
+// The mini-timeline inside the full .subtle-ad, rendered at build time by
+// _includes/training-dates.html from _data/trainings.json. A quiet echo of
+// trainings.arc42.org's timeline — one rail, a node per date, chronological —
+// but in this site's own tokens: the feed carries facts, never markup
+// (docs/superpowers/specs/2026-08-04-docs-faq-training-dates-design.md).
+
+// Same voice as .subtle-ad's own "from the arc42 team" kicker.
+.training-dates__label {
+  margin: 0.9em 0 0.35em;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+
+.training-dates {
+  margin: 0 0 0.6em 0.2em;
+  padding: 0.1em 0 0.1em 1em;
+  list-style: none;
+  border-left: 1px solid var(--maroon);
+}
+
+.training-dates__row {
+  position: relative;
+  margin: 0.4em 0;
+
+  // The node, centred on the rail: 1em list padding + half the 1px rail +
+  // half the 7px dot.
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(-1em - 4px);
+    top: 0.4em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--maroon);
   }
+}
+
+.training-dates__when {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+
+// The chip inherited from the retired .subtle-ad-lang note.
+.training-dates__lang {
+  display: inline-block;
+  margin: 0 0.1em;
+  padding: 0 5px;
+  border: 1px solid var(--maroon);
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--maroon);
+}
+
+.training-dates__where {
+  color: var(--muted);
+}
+
+.training-dates__waitlist {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+
+.training-dates__asof {
+  font-size: 0.82em;
+  color: var(--muted);
 }
 
 .subtle-ad {

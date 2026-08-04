@@ -1,0 +1,81 @@
+{%- comment -%}
+  The full training note: offer plus a mini-timeline of the next few dates,
+  rendered at build time from _data/trainings.json — the expiry-filtered copy of
+  https://trainings.arc42.org/api/trainings.json that
+  .github/workflows/refresh-trainings.yml commits weekly (and on demand).
+
+  Rendering rules (docs/superpowers/specs/2026-08-04-docs-faq-training-dates-design.md):
+  · strictly chronological across ALL courses, capped at the next 5 dates —
+    a schedule is not documentation; the link out covers the rest
+  · expiry-filtered again here (belt and braces over the workflow's filter),
+    so a stale data file degrades to fewer dates, never to ended courses
+  · cancelled and full dates never render; waitlist renders with a marker
+  · every date carries a visible DE/EN badge — language is a required feed
+    field precisely so no consumer has to guess from city names
+  · zero upcoming dates degrades to the date-free offer (the brief variant's copy)
+
+  The sort walks all dates once, collecting "start|course_index|date_index"
+  strings: Liquid cannot sort across nested arrays, but it can sort strings, and
+  ISO dates sort lexicographically.
+{%- endcomment -%}
+{%- assign today = 'now' | date: '%Y-%m-%d' -%}
+{%- assign keys = "" | split: "" -%}
+{%- for course in site.data.trainings.courses -%}
+  {%- for d in course.dates -%}
+    {%- if d.end >= today and d.status != 'cancelled' and d.status != 'full' -%}
+      {%- capture key -%}{{ d.start }}|{{ forloop.parentloop.index0 }}|{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign keys = keys | push: key -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign keys = keys | sort -%}
+
+<div class="subtle-ad">
+    <h4>Prefer to learn arc42 hands-on?</h4>
+    <p>
+        Practical architecture training from the team that maintains this free
+        reference — always two trainers in the room, and solid preparation for
+        <a rel="noopener noreferrer nofollow" target="_blank" href="https://www.isaqb.org">iSAQB CPSA-Foundation</a>
+        certification.
+    </p>
+    {%- if keys.size > 0 %}
+    <p class="training-dates__label" id="training-dates-label">Next dates</p>
+    <ul class="training-dates" aria-labelledby="training-dates-label">
+        {%- for key in keys limit: 5 %}
+        {%- assign parts = key | split: '|' -%}
+        {%- assign ci = parts[1] | plus: 0 -%}
+        {%- assign di = parts[2] | plus: 0 -%}
+        {%- assign course = site.data.trainings.courses[ci] -%}
+        {%- assign d = course.dates[di] -%}
+        {%- capture when -%}
+            {%- assign start_month = d.start | date: "%Y-%m" -%}
+            {%- assign end_month = d.end | date: "%Y-%m" -%}
+            {%- if start_month == end_month -%}
+                {{- d.start | date: "%-d" }}&#8211;{{ d.end | date: "%-d&nbsp;%b&nbsp;%Y" -}}
+            {%- else -%}
+                {{- d.start | date: "%-d&nbsp;%b" }}&#8211;{{ d.end | date: "%-d&nbsp;%b&nbsp;%Y" -}}
+            {%- endif -%}
+        {%- endcapture -%}
+        <li class="training-dates__row">
+            <a class="training-dates__when" rel="noopener noreferrer nofollow" target="_blank" href="{{ d.url }}">{{ when }}</a>
+            <b class="training-dates__lang" title="held in {% if d.language == 'de' %}German{% else %}English{% endif %}">{{ d.language | upcase }}</b>
+            <span class="training-dates__what">
+                <a class="training-dates__course" rel="noopener noreferrer nofollow" target="_blank" href="{{ course.url }}">{{ course.short_title }}</a>
+                <span class="training-dates__where">&middot; {% if d.format == "online" %}online{% else %}{{ d.city }}{% endif %}</span>
+                {%- if d.status == "waitlist" %} <span class="training-dates__waitlist">waitlist</span>{% endif %}
+            </span>
+        </li>
+        {%- endfor %}
+    </ul>
+    <p class="training-dates__more">
+        All courses and dates:
+        <a rel="noopener noreferrer nofollow" target="_blank" href="https://trainings.arc42.org">trainings.arc42.org</a>
+        <span class="training-dates__asof">&middot; as of {{ site.data.trainings.generated | date: "%-d %b %Y" }}</span>
+    </p>
+    {%- else %}
+    <p>
+        See upcoming dates and topics at
+        <a rel="noopener noreferrer nofollow" target="_blank" href="https://trainings.arc42.org">trainings.arc42.org</a>.
+    </p>
+    {%- endif %}
+</div>

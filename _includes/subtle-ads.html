@@ -48,9 +48,10 @@
     </div>
     {%- else -%}
     {%- comment -%}
-      The current course list, fetched at BUILD time by
-      .github/workflows/refresh-trainings.yml and committed to the repository —
-      not fetched in the reader's browser.
+      The current dates, rendered at BUILD time from _data/trainings.json — the
+      expiry-filtered copy of https://trainings.arc42.org/api/trainings.json that
+      .github/workflows/refresh-trainings.yml commits weekly. Nothing is fetched
+      in the reader's browser.
 
       What this buys, in order of importance: the dates are under version
       control, so nothing appears on ~200 pages without a reviewable commit; they
@@ -59,26 +60,12 @@
       visitor a generic fallback; and every page drops htmx (~14 KB from unpkg)
       plus a second third-party request.
 
-      This file is generated. Do not hand-edit it — the next refresh overwrites
-      it. To change the copy, change it at the source.
+      The old site-level sentence "Public courses are held in German unless a
+      date says otherwise" is gone: the feed now guarantees a `language` field on
+      every date, so the include badges each date DE/EN individually — the
+      per-date marker this block waited for since the 2026-07 integration concept.
     {%- endcomment -%}
-    {% include generated/trainings.html %}
+    {% include training-dates.html %}
     {%- endif -%}
-
-    {%- comment -%}
-      This site is written in English and read internationally, but most public
-      arc42 courses are held in German. Saying so here is not a disclaimer, it is
-      the single most useful fact for a reader deciding whether to click.
-
-      It is a sentence rather than a per-course DE/EN badge because the source
-      cannot yet support badges: of the four courses the backend returns today,
-      one is labelled "(in German)", one "in English", and two carry no language
-      marker at all. Per-date badges need a `language` field from the training
-      site — see tmp/training-dates-integration-concept.md.
-    {%- endcomment -%}
-    <p class="subtle-ad-lang">
-        <b>DE</b> Public courses are held in German unless a date says otherwise.
-        In-house training is available in English.
-    </p>
 </aside>
 {%- endif -%}

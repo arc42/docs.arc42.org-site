@@ -1,0 +1,243 @@
+{
+  "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
+  "generated": "2026-08-04T13:55:44+00:00",
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "Mastering SW Architectures",
+      "title": "Mastering Software Architectures",
+      "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
+      "certification": "iSAQB CPSA-Foundation",
+      "credits": null,
+      "url": "https://www.arc42.de/info-msa/",
+      "trainers": [
+        "Peter Hruschka",
+        "Gernot Starke"
+      ],
+      "dates": [
+        {
+          "id": "msa-online-sep-2026",
+          "code": "26-09 MSA-EN",
+          "start": "2026-09-29",
+          "end": "2026-10-01",
+          "language": "en",
+          "format": "online",
+          "trainers": [
+            "Wolfgang Reimesch"
+          ],
+          "url": "https://www.arc42.de/termine#msa-online-sep-2026",
+          "status": "open"
+        },
+        {
+          "id": "msa-dez-2026",
+          "code": "26-12 MSA",
+          "start": "2026-12-01",
+          "end": "2026-12-04",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 8. August 2026: € 2690, Normalpreis: € 2890",
+          "url": "https://www.arc42.de/termine#msa-dez-2026",
+          "status": "open"
+        },
+        {
+          "id": "msa-mar-2027",
+          "code": "27-03 MSA",
+          "start": "2027-03-02",
+          "end": "2027-03-05",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 2. November 2026: € 2690, Normalpreis: € 2890",
+          "url": "https://www.arc42.de/termine#msa-mar-2027",
+          "status": "open"
+        },
+        {
+          "id": "msa-jun-2027",
+          "code": "27-06 MSA",
+          "start": "2027-06-08",
+          "end": "2027-06-11",
+          "city": "Mannheim oder Frankfurt (t.b.d.)",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 8. Februar 2027: € 2690, Normalpreis: € 2890",
+          "url": "https://www.arc42.de/termine#msa-jun-2027",
+          "status": "open"
+        },
+        {
+          "id": "msa-sep-2027",
+          "code": "27-09 MSA",
+          "start": "2027-09-14",
+          "end": "2027-09-17",
+          "city": "Mannheim oder Frankfurt (t.b.d.)",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 14. Mai 2027: € 2690, Normalpreis: € 2890",
+          "url": "https://www.arc42.de/termine#msa-sep-2027",
+          "status": "open"
+        },
+        {
+          "id": "msa-dez-2027",
+          "code": "27-12 MSA",
+          "start": "2027-11-30",
+          "end": "2027-12-03",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 30. Juli 2027: € 2690, Normalpreis: € 2890",
+          "url": "https://www.arc42.de/termine#msa-dez-2027",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "improve",
+      "short_title": "IMPROVE",
+      "title": "IMPROVE: Evolve and maintain systems",
+      "blurb": "Learn to effectively evolve and maintain systems.",
+      "certification": "iSAQB CPSA-A (Advanced)",
+      "credits": "20 methodische und 10 technische Punkte",
+      "url": "https://www.arc42.de/info-improve/",
+      "trainers": [
+        "Carola Lilienthal",
+        "Gernot Starke"
+      ],
+      "dates": [
+        {
+          "id": "improve-nov-2026",
+          "code": "26-11 IMPROVE",
+          "start": "2026-11-24",
+          "end": "2026-11-26",
+          "city": "Hamburg",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#improve-nov-2026",
+          "status": "open"
+        },
+        {
+          "id": "improve-jun-2027",
+          "code": "27-06 IMPROVE",
+          "start": "2027-06-22",
+          "end": "2027-06-24",
+          "city": "Hamburg",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#improve-jun-2027",
+          "status": "open"
+        },
+        {
+          "id": "improve-nov-2027",
+          "code": "27-11 IMPROVE",
+          "start": "2027-11-23",
+          "end": "2027-11-25",
+          "city": "Hamburg",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#improve-nov-2027",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "req4arc",
+      "short_title": "Req4Arc",
+      "title": "Req4Arc: Getting your Requirements right",
+      "blurb": "What to do if your requirements need improvement.",
+      "certification": "iSAQB CPSA-A (Advanced)",
+      "credits": "20 methodische und 10 kommunikative Punkte",
+      "url": "https://www.arc42.de/info-req4arc/",
+      "trainers": [
+        "Peter Hruschka",
+        "Gernot Starke"
+      ],
+      "dates": [
+        {
+          "id": "req4arc-sep-2026",
+          "code": "26-09 Req4Arc",
+          "start": "2026-09-15",
+          "end": "2026-09-17",
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026",
+          "status": "open"
+        },
+        {
+          "id": "req4arc-mar-2027",
+          "code": "27-03 Req4Arc",
+          "start": "2027-03-09",
+          "end": "2027-03-11",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#req4arc-mar-2027",
+          "status": "open"
+        },
+        {
+          "id": "req4arc-sep-2027",
+          "code": "27-09 Req4Arc",
+          "start": "2027-09-21",
+          "end": "2027-09-23",
+          "city": "Mannheim oder Frankfurt (t.b.d.)",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#req4arc-sep-2027",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "ADOC: Architecture Documentation",
+      "blurb": "How to efficiently and effectively create and maintain useful technical documentation, with a strong focus on arc42. Within this practical course you improve your own documentation! From the founders and maintainers of arc42.",
+      "certification": "iSAQB CPSA-A (Advanced)",
+      "credits": "20 methodische Punkte",
+      "url": "https://www.arc42.de/info-adoc/",
+      "trainers": [
+        "Peter Hruschka",
+        "Gernot Starke"
+      ],
+      "dates": [
+        {
+          "id": "adoc-oct-2026",
+          "code": "26-10 ADOC",
+          "start": "2026-10-27",
+          "end": "2026-10-28",
+          "city": "Zürich",
+          "country": "CH",
+          "language": "de",
+          "format": "public",
+          "trainers": [
+            "Gernot Starke"
+          ],
+          "url": "https://www.arc42.de/termine#adoc-oct-2026",
+          "status": "open"
+        },
+        {
+          "id": "adoc-jun-2027",
+          "code": "27-06 ADOC",
+          "start": "2027-06-02",
+          "end": "2027-06-03",
+          "city": "Mannheim oder Frankfurt (t.b.d.)",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "url": "https://www.arc42.de/termine#adoc-jun-2027",
+          "status": "open"
+        }
+      ]
+    }
+  ]
+}
