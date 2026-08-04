@@ -5,7 +5,7 @@
   .github/workflows/refresh-trainings.yml commits weekly (and on demand).
 
   Rendering rules (docs/superpowers/specs/2026-08-04-docs-faq-training-dates-design.md):
-  · strictly chronological across ALL courses, capped at the next 5 dates —
+  · strictly chronological across ALL courses, capped at the next 8 dates —
     a schedule is not documentation; the link out covers the rest
   · expiry-filtered again here (belt and braces over the workflow's filter),
     so a stale data file degrades to fewer dates, never to ended courses
@@ -41,7 +41,7 @@
     {%- if keys.size > 0 %}
     <p class="training-dates__label" id="training-dates-label">Next dates</p>
     <ul class="training-dates" aria-labelledby="training-dates-label">
-        {%- for key in keys limit: 5 %}
+        {%- for key in keys limit: 8 %}
         {%- assign parts = key | split: '|' -%}
         {%- assign ci = parts[1] | plus: 0 -%}
         {%- assign di = parts[2] | plus: 0 -%}
@@ -59,12 +59,19 @@
         {%- comment -%}
           The topic slug: labels like Req4Arc, IMPROVE or ADOC mean nothing to a
           first-time reader, and the feed's `title` already glosses them in the
-          form "LABEL: explanation". Everything after the first ": " becomes a
-          muted second line; a title without one (Mastering Software
-          Architectures) needs no gloss and gets none.
+          form "LABEL: explanation" — everything after the first ": " becomes a
+          muted second line. A title without a colon falls back to the course's
+          certification (today: Mastering Software Architectures → "perfect
+          preparation for iSAQB CPSA-Foundation certification"); only a course
+          with neither gets no gloss.
         {%- endcomment -%}
         {%- assign title_head = course.title | split: ": " | first -%}
-        {%- assign slug = course.title | remove_first: title_head | remove_first: ": " -%}
+        {%- comment -%} Title prose is downcased to read as an aside; the
+            certification fallback keeps its casing (iSAQB CPSA-Foundation). {%- endcomment -%}
+        {%- assign slug = course.title | remove_first: title_head | remove_first: ": " | downcase -%}
+        {%- if slug == "" and course.certification -%}
+          {%- capture slug -%}perfect preparation for {{ course.certification }} certification{%- endcapture -%}
+        {%- endif -%}
         <li class="training-dates__row">
             <a class="training-dates__when" rel="noopener noreferrer nofollow" target="_blank" href="{{ d.url }}">{{ when }}</a>
             <b class="training-dates__lang" title="held in {% if d.language == 'de' %}German{% else %}English{% endif %}">{{ d.language | upcase }}</b>
@@ -72,7 +79,7 @@
                 <a class="training-dates__course" rel="noopener noreferrer nofollow" target="_blank" href="{{ course.url }}">{{ course.short_title }}</a>
                 <span class="training-dates__where">&middot; {% if d.format == "online" %}online{% else %}{{ d.city }}{% endif %}</span>
                 {%- if d.status == "waitlist" %} <span class="training-dates__waitlist">waitlist</span>{% endif %}
-                {%- if slug != "" %}<span class="training-dates__slug">{{ slug | downcase }}</span>{% endif %}
+                {%- if slug != "" %}<span class="training-dates__slug">{{ slug }}</span>{% endif %}
             </span>
         </li>
         {%- endfor %}
