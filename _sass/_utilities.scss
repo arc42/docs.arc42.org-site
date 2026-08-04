@@ -230,6 +230,16 @@ a.headerlink {
   color: var(--muted);
 }
 
+// The gloss under a row, derived from the feed title's "LABEL: explanation"
+// form — what Req4Arc, IMPROVE or ADOC actually mean. Downcased in the
+// template so it reads as an aside, not a second title.
+.training-dates__slug {
+  display: block;
+  margin-top: 1px;
+  font-size: 0.82em;
+  color: var(--muted);
+}
+
 .training-dates__waitlist {
   font-size: 0.75em;
   font-weight: 700;

@@ -56,6 +56,15 @@
                 {{- d.start | date: "%-d&nbsp;%b" }}&#8211;{{ d.end | date: "%-d&nbsp;%b&nbsp;%Y" -}}
             {%- endif -%}
         {%- endcapture -%}
+        {%- comment -%}
+          The topic slug: labels like Req4Arc, IMPROVE or ADOC mean nothing to a
+          first-time reader, and the feed's `title` already glosses them in the
+          form "LABEL: explanation". Everything after the first ": " becomes a
+          muted second line; a title without one (Mastering Software
+          Architectures) needs no gloss and gets none.
+        {%- endcomment -%}
+        {%- assign title_head = course.title | split: ": " | first -%}
+        {%- assign slug = course.title | remove_first: title_head | remove_first: ": " -%}
         <li class="training-dates__row">
             <a class="training-dates__when" rel="noopener noreferrer nofollow" target="_blank" href="{{ d.url }}">{{ when }}</a>
             <b class="training-dates__lang" title="held in {% if d.language == 'de' %}German{% else %}English{% endif %}">{{ d.language | upcase }}</b>
@@ -63,6 +72,7 @@
                 <a class="training-dates__course" rel="noopener noreferrer nofollow" target="_blank" href="{{ course.url }}">{{ course.short_title }}</a>
                 <span class="training-dates__where">&middot; {% if d.format == "online" %}online{% else %}{{ d.city }}{% endif %}</span>
                 {%- if d.status == "waitlist" %} <span class="training-dates__waitlist">waitlist</span>{% endif %}
+                {%- if slug != "" %}<span class="training-dates__slug">{{ slug | downcase }}</span>{% endif %}
             </span>
         </li>
         {%- endfor %}
