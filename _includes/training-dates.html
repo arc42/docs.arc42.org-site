@@ -30,13 +30,21 @@
 {%- endfor -%}
 {%- assign keys = keys | sort -%}
 
+{%- comment -%}
+  The trainer claim is precise on purpose: most classes are taught by the two
+  people who created arc42 and maintain this reference, but not all — so the
+  intro says "most", and every date whose trainers differ from that baseline
+  names them on its row (from the feed's per-date/per-course `trainers`).
+{%- endcomment -%}
+{%- assign baseline_duo = "Peter Hruschka, Gernot Starke" -%}
 <div class="subtle-ad">
     <h4>Prefer to learn arc42 hands-on?</h4>
     <p>
-        Practical architecture training from the team that maintains this free
-        reference — always two trainers in the room, and solid preparation for
-        <a rel="noopener noreferrer nofollow" target="_blank" href="https://www.isaqb.org">iSAQB CPSA-Foundation</a>
-        certification.
+        Practical architecture training, most classes taught by Peter Hruschka
+        and Gernot Starke — the people who created arc42 and maintain this free
+        reference (dates with other trainers say so) — and solid preparation for
+        <a rel="noopener noreferrer nofollow" target="_blank" href="https://www.isaqb.org">iSAQB</a>
+        certifications.
     </p>
     {%- if keys.size > 0 %}
     <p class="training-dates__label" id="training-dates-label">Next dates</p>
@@ -79,7 +87,18 @@
                 <a class="training-dates__course" rel="noopener noreferrer nofollow" target="_blank" href="{{ course.url }}">{{ course.short_title }}</a>
                 <span class="training-dates__where">&middot; {% if d.format == "online" %}online{% else %}{{ d.city }}{% endif %}</span>
                 {%- if d.status == "waitlist" %} <span class="training-dates__waitlist">waitlist</span>{% endif %}
-                {%- if slug != "" %}<span class="training-dates__slug">{{ slug }}</span>{% endif %}
+                {%- comment -%} Exceptions to the intro's trainer claim: a date's
+                    trainers override its course's; anything but the baseline duo
+                    is named on the gloss line. {%- endcomment -%}
+                {%- assign trainers = d.trainers | default: course.trainers -%}
+                {%- assign trainers_key = trainers | join: ", " -%}
+                {%- capture gloss -%}
+                    {%- if slug != "" %}{{ slug }}{% endif -%}
+                    {%- if trainers_key != baseline_duo and trainers_key != "" -%}
+                        {%- if slug != "" %} &middot; {% endif -%}with {{ trainers | join: " &amp; " }}
+                    {%- endif -%}
+                {%- endcapture -%}
+                {%- if gloss != "" %}<span class="training-dates__slug">{{ gloss }}</span>{% endif %}
             </span>
         </li>
         {%- endfor %}
