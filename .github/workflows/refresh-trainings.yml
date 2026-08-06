@@ -8,6 +8,8 @@ on:
   schedule:
     - cron: "47 4 * * 1"   # Mondays 04:47 UTC, staggered from arc42.de's 04:17
   workflow_dispatch:
+  repository_dispatch:
+    types: [trainings-updated]   # pushed by trainings.arc42.org-site right after the feed republishes
 permissions:
   contents: write
 jobs:

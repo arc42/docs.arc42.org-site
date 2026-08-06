@@ -43,9 +43,14 @@ We implemented several enhancements over the original theme (e.g. responsive nav
 The training block at the foot of ~200 section pages is rendered at build time
 from `_data/trainings.json` — an expiry-filtered copy of
 <https://trainings.arc42.org/api/trainings.json> that
-`.github/workflows/refresh-trainings.yml` refreshes weekly (Mondays 04:47 UTC,
-or manually via workflow dispatch) and commits only when the dates actually
-changed. Edit dates in the trainings repo's `_data/trainings.yml`, never here;
+`.github/workflows/refresh-trainings.yml` refreshes weekly (Mondays 04:47 UTC),
+manually via workflow dispatch, or immediately on a `repository_dispatch` event
+(`trainings-updated`) pushed by trainings.arc42.org-site right after its feed
+republishes — committing only when the dates actually changed. The push
+dispatch is an accelerator, never a dependency (ADR-0006 in meta.arc42.org):
+if it doesn't arrive, the weekly cron still bounds staleness at one week, and
+a failed fetch simply keeps the last committed snapshot. Edit dates in the
+trainings repo's `_data/trainings.yml`, never here;
 `_includes/training-dates.html` owns the rendering, `_sass/_utilities.scss` the
 styling. This replaced the former runtime htmx fetch from the Vercel fragment
 backend (see the integration spec in the arc42 workspace's
