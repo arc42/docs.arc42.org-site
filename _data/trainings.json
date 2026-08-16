@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-08-04T13:55:44+00:00",
+  "generated": "2026-08-16T10:32:31+00:00",
   "courses": [
     {
       "id": "msa",
@@ -91,6 +91,21 @@
           "format": "public",
           "pricing": "Frühbucherpreis bei Anmeldung bis 30. Juli 2027: € 2690, Normalpreis: € 2890",
           "url": "https://www.arc42.de/termine#msa-dez-2027",
+          "status": "open"
+        },
+        {
+          "id": "msa-27-02-online",
+          "code": "27-02 MSA-EN",
+          "start": "2027-02-23",
+          "end": "2027-02-25",
+          "language": "en",
+          "format": "online",
+          "trainers": [
+            "Wolfgang Reimesch"
+          ],
+          "pricing": "€2200",
+          "few_seats": "only few seats available",
+          "url": "https://www.arc42.de/termine#msa-27-02-online",
           "status": "open"
         }
       ]
