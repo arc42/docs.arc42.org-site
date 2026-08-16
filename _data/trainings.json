@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-08-16T10:32:31+00:00",
+  "generated": "2026-08-16T12:15:49+00:00",
   "courses": [
     {
       "id": "msa",
@@ -10,6 +10,7 @@
       "certification": "iSAQB CPSA-Foundation",
       "credits": null,
       "url": "https://www.arc42.de/info-msa/",
+      "url_en": "https://trainings.arc42.org/courses/msa/",
       "trainers": [
         "Peter Hruschka",
         "Gernot Starke"
