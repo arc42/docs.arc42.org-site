@@ -12,6 +12,7 @@
   · cancelled and full dates never render; waitlist renders with a marker
   · every date carries a visible DE/EN badge — language is a required feed
     field precisely so no consumer has to guess from city names
+  · course title links prefer the English detail page (url_en), falling back to url
   · zero upcoming dates degrades to the date-free offer (the brief variant's copy)
 
   The sort walks all dates once, collecting "start|course_index|date_index"
@@ -84,7 +85,7 @@
             <a class="training-dates__when" rel="noopener noreferrer nofollow" target="_blank" href="{{ d.url }}">{{ when }}</a>
             <b class="training-dates__lang" title="held in {% if d.language == 'de' %}German{% else %}English{% endif %}">{{ d.language | upcase }}</b>
             <span class="training-dates__what">
-                <a class="training-dates__course" rel="noopener noreferrer nofollow" target="_blank" href="{{ course.url }}">{{ course.short_title }}</a>
+                <a class="training-dates__course" rel="noopener noreferrer nofollow" target="_blank" href="{{ course.url_en | default: course.url }}">{{ course.short_title }}</a>
                 <span class="training-dates__where">&middot; {% if d.format == "online" %}online{% else %}{{ d.city }}{% endif %}</span>
                 {%- if d.status == "waitlist" %} <span class="training-dates__waitlist">waitlist</span>{% endif %}
                 {%- comment -%} Exceptions to the intro's trainer claim: a date's
