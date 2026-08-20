@@ -81,6 +81,11 @@ hero: full
 
     <ul class="closing-list">
       <li>
+        <p><strong>Want to see it all put together?</strong> Read
+          <a href="https://examples.arc42.org" target="_blank" rel="noopener noreferrer nofollow">complete architecture
+          documentation</a> of real systems, written with arc42 from context to glossary.</p>
+      </li>
+      <li>
         <img class="closing-icon" src="/assets/images/brand/faq-icon.png" alt="" width="42" height="42" loading="lazy">
         <p><strong>Still have questions?</strong> Try our
           <a href="https://faq.arc42.org" target="_blank" rel="noopener noreferrer nofollow">extensive FAQ</a>,
