@@ -75,53 +75,71 @@ while [ "$i" -le 12 ]; do
     i=$((i + 1))
 done
 
-section "Check sidebar navigation items"
+section "Check rail navigation items"
+# The rail, and read off a SECTION page rather than /home/: the rail is
+# deliberately not rendered on the home page (_layouts/default.html, the
+# `unless is_home` guard), so there is nothing to scrape there. The version of
+# this check that preceded the rail rewrite looked for class="page-link" in
+# _site/home/index.html — markup inherited from the faq.arc42.org copy that the
+# rewrite removed — and so reported every item missing on every run.
+#
+# The expected list is literal on purpose. Deriving it from _data/sections.yml
+# would make a renamed section pass silently, and a renamed section is exactly
+# the change worth being told about. The twelve sections come from that file;
+# the "More" group is every page carrying `group: meta`, ordered by `order`.
+# Add a section or a meta page, and this list wants the same edit.
+nav_page="$SITE_DIR/section-1/index.html"
 expected_nav_file=$(mktemp)
 actual_nav_file=$(mktemp)
 
 cat <<'EOF' > "$expected_nav_file"
-Home
-1 - Introduction and Goals
-2 - Constraints
-3 - Context and scope
-4 - Solution strategy
-5 - Building block view
-6 - Runtime view
-7 - Deployment view
-8 - Concepts
-9 - Architecture decisions
-10 - Quality
-11 - Risks and technical debt
-12 - Glossary
-All examples
-All tips (by keyword)
+Introduction and Goals
+Constraints
+Context and Scope
+Solution Strategy
+Building Block View
+Runtime View
+Deployment View
+Crosscutting Concepts
+Architecture Decisions
+Quality Requirements
+Risks and Technical Debt
+Glossary
+Examples
+Keywords
+Contact
 EOF
 
-rg 'class="page-link"' "$SITE_DIR/home/index.html" \
-    | sed -E 's/.*>([^<]+)<.*/\1/' > "$actual_nav_file"
+# Scoped to the <aside class="rail"> block. `class="label"` is generic enough
+# that a component added elsewhere on the page could otherwise join the list and
+# fail this check for no reason. The range ends at the first </aside>, which is
+# the rail's own.
+sed -n '/<aside class="rail">/,/<\/aside>/p' "$nav_page" \
+    | rg -o 'class="label">[^<]*' \
+    | sed -E 's/^class="label">//' > "$actual_nav_file"
 
 expected_count=$(wc -l < "$expected_nav_file" | tr -d ' ')
 actual_count=$(wc -l < "$actual_nav_file" | tr -d ' ')
 
 if [ "$actual_count" -ne "$expected_count" ]; then
-    fail "Sidebar contains $actual_count items, expected $expected_count."
+    fail "Rail contains $actual_count items, expected $expected_count."
 fi
 
 line_no=1
 while IFS= read -r expected_item; do
     actual_item=$(sed -n "${line_no}p" "$actual_nav_file")
     if [ "$actual_item" = "$expected_item" ]; then
-        pass "Sidebar item $line_no matches: $expected_item"
+        pass "Rail item $line_no matches: $expected_item"
     else
-        fail "Sidebar item $line_no mismatch. Expected '$expected_item', got '${actual_item:-<missing>}'"
+        fail "Rail item $line_no mismatch. Expected '$expected_item', got '${actual_item:-<missing>}'"
     fi
     line_no=$((line_no + 1))
 done < "$expected_nav_file"
 
 if ! cmp -s "$expected_nav_file" "$actual_nav_file"; then
-    printf 'Expected sidebar items:\n'
+    printf 'Expected rail items:\n'
     cat "$expected_nav_file"
-    printf 'Actual sidebar items:\n'
+    printf 'Actual rail items:\n'
     cat "$actual_nav_file"
 fi
 
