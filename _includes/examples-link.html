@@ -1,0 +1,61 @@
+{%- comment -%}
+============================================================================
+  The link from an arc42 section page to the same section on
+  examples.arc42.org, where whole architecture documentations live.
+
+  NO PARAMETERS BEYOND `variant`. The section resolves from `page.number`,
+  which every _pages/section-N.md already carries, against _data/sections.yml,
+  which is already this site's single source of truth for the twelve. That is
+  why _includes/further-info.md gains a call without any of its twelve call
+  sites changing.
+
+  TWO SITES, TWO MEANINGS OF "EXAMPLE", and this copy has to keep them apart.
+  This site's own _examples collection holds EXCERPTS: one section, lifted out
+  of a document and shown alone, rendered in the warm .arc42-example box
+  further up the page. examples.arc42.org holds COMPLETE documentation of real
+  systems. The wording below always says which.
+
+  "the <name> of real systems" is the one phrasing that stays grammatical
+  across all twelve: "the glossary of real systems", "the building block view
+  of real systems", "the risks and technical debt of real systems". Shapes like
+  "how real systems document <name>" read fine at section 5 and break at 12.
+
+  NO COUNTS. Never how many systems are over there, never how many sections
+  they have. The corpus grows; a number dates the sentence. Same rule as the
+  two pointers added on 2026-08-21 (_pages/examples.md, _pages/home.md).
+
+  RENDERS NOTHING IF IT CANNOT RESOLVE. A half-configured section ships no
+  link rather than a broken one. scripts/check-site.sh is what makes sure the
+  silence is never reached.
+
+  Parameters
+    variant  required — "block" or "inline".
+
+    block    A labelled block for the foot of the page, beside "Related
+             Questions" in _includes/further-info.md. Markdown, because that
+             file is markdown and its headings feed the page outline.
+
+    inline   One sentence directly under the guidance box near the top, for
+             the reader who has just read what belongs in this section and
+             wants to see one.
+
+  OUTSIDE THE CALLOUT, both of them. _sass/_callouts.scss reserves cool blue
+  for arc42's own guidance and warm terracotta for somebody's actual
+  documentation, and the temperature pairing is load-bearing. A link to real
+  documentation is neither: it is navigation, so it takes neither box.
+============================================================================
+{%- endcomment -%}
+{%- assign ex_section = site.data.sections | where: 'number', page.number | first -%}
+{%- if ex_section and ex_section.examples_slug and site.examples_url -%}
+{%- assign ex_url = site.examples_url | append: '/sections/' | append: ex_section.examples_slug | append: '/' -%}
+{%- assign ex_name = ex_section.name | downcase -%}
+{%- if include.variant == 'block' -%}
+
+### Complete Examples
+
+See <a target="_blank" rel="noopener noreferrer nofollow" href="{{ ex_url }}">the {{ ex_name }} of real systems</a>, documented in full at examples.arc42.org.
+{%- elsif include.variant == 'inline' -%}
+<p class="examples-link">Want to see this section inside a whole document?
+Read <a target="_blank" rel="noopener noreferrer nofollow" href="{{ ex_url }}">the {{ ex_name }} of real systems</a> at examples.arc42.org.</p>
+{%- endif -%}
+{%- endif -%}

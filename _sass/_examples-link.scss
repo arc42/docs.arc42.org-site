@@ -1,0 +1,32 @@
+// ============================================================================
+// .examples-link — the one-line pointer from a section page to the same
+// section on examples.arc42.org.
+//
+// IT SITS DIRECTLY UNDER AN .arc42-help BOX AND MUST NOT LOOK LIKE ONE. The
+// temperature pairing in _callouts.scss is load-bearing: cool blue means
+// "arc42 is telling you what belongs here", warm terracotta means "here is
+// somebody's actual documentation". This is neither — it is a signpost — so it
+// takes no fill, no border, no icon and neither hue. A third box here would
+// put a third temperature on the page and break the two-way reading the whole
+// component depends on.
+//
+// What separates it from the box above is space and size, which is all a
+// signpost needs: --s5 of air, one step down from body size, --muted ink.
+//
+// Colour pairs (ADR-0002 over on the sibling site; the same discipline here):
+//   --muted   on --paper   5.50:1   (the sentence)
+//   --signal  on --paper            (the link, at the site's ordinary link ink)
+// ============================================================================
+
+.examples-link {
+  margin: var(--s5) 0;
+  max-width: var(--measure);
+  font-size: 0.9375rem;
+  color: var(--muted);
+
+  a {
+    // The link keeps the site's ordinary link ink. The sentence around it is
+    // quiet; the thing to click is not.
+    color: var(--signal);
+  }
+}

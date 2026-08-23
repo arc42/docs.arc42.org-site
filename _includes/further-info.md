@@ -13,6 +13,11 @@
     topic     required — human-readable topic name for the FAQ sentence.
     faqlink   required — URL of the matching FAQ category.
 
+  The block at the foot pointing at examples.arc42.org takes NO parameter from
+  here — _includes/examples-link.html resolves the section from `page.number`
+  against _data/sections.yml. That is on purpose: this include has twelve call
+  sites and none of them had to change.
+
   Rewritten from the version that reused _includes/article-header.html inside a
   `<div id="search-results">`. Two problems with that:
 
@@ -57,3 +62,5 @@
 ### Related Questions
 
 See <a target="_blank" rel="noopener noreferrer nofollow" href="{{ include.faqlink }}">here for questions related to {{ include.topic }}</a>.
+
+{% include examples-link.html variant="block" %}
