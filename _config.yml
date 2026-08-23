@@ -9,6 +9,16 @@ url: https://docs.arc42.org
 imageurl: /assets/images/sections
 exampleimages: /assets/images/examples
 
+# The sibling site carrying COMPLETE architecture documentation of real
+# systems, one page per arc42 section. Absolute and without a trailing slash:
+# _includes/examples-link.html appends the path.
+#
+# Everything that varies over there — which systems exist, how deep they go,
+# which are worth reading first — stays over there. This site renders one
+# thing: a link. That is the whole coupling, and it is deliberate: a count or
+# a system name here would date the moment it was written.
+examples_url: https://examples.arc42.org
+
 
 #url: https://localhost:4000
 #imageurl: https://localhost:4000/images

@@ -20,75 +20,92 @@
 #   category   Matches the `category:` front matter on _posts/**, so tip counts are
 #              `site.posts | where: "category", section.category | size`.
 #   permalink  Matches the `permalink:` front matter on _pages/section-N.md.
+#   examples_slug  The matching page on examples.arc42.org, at
+#              <examples_url>/sections/<examples_slug>/. It is that site's own
+#              section filename, asserted against its template by
+#              scripts/check-sections.sh over there — which is what makes these
+#              twelve hard-coded strings safe. Renaming one is one word here.
 
 - number: 1
   name: Introduction and Goals
   blurb: Requirements, stakeholder, (top) quality goals
   category: requirements
   permalink: /section-1/
+  examples_slug: 01-introduction-and-goals
 
 - number: 2
   name: Constraints
   blurb: Technical and organizational constraints, conventions
   category: constraints
   permalink: /section-2/
+  examples_slug: 02-architecture-constraints
 
 - number: 3
   name: Context and Scope
   blurb: Business and technical context, external interfaces
   category: context
   permalink: /section-3/
+  examples_slug: 03-context-and-scope
 
 - number: 4
   name: Solution Strategy
   blurb: Fundamental solution decisions and ideas
   category: solution-strategy
   permalink: /section-4/
+  examples_slug: 04-solution-strategy
 
 - number: 5
   name: Building Block View
   blurb: Abstractions of source code, black-/whiteboxes
   category: building-block
   permalink: /section-5/
+  examples_slug: 05-building-block-view
 
 - number: 6
   name: Runtime View
   blurb: "Runtime scenarios: how do building blocks interact"
   category: runtime
   permalink: /section-6/
+  examples_slug: 06-runtime-view
 
 - number: 7
   name: Deployment View
   blurb: Hardware and technical infrastructure, deployment
   category: deployment
   permalink: /section-7/
+  examples_slug: 07-deployment-view
 
 - number: 8
   name: Crosscutting Concepts
   blurb: Recurring solution approaches and patterns
   category: concepts
   permalink: /section-8/
+  examples_slug: 08-crosscutting-concepts
 
 - number: 9
   name: Architecture Decisions
   blurb: Important, expensive, risky or contentious decisions
   category: decisions
   permalink: /section-9/
+  examples_slug: 09-architecture-decisions
 
 - number: 10
   name: Quality Requirements
   blurb: Quality requirements overview and detailed quality scenarios
   category: quality
   permalink: /section-10/
+  examples_slug: 10-quality-requirements
 
 - number: 11
   name: Risks and Technical Debt
   blurb: Known problems, risks and technical debt
   category: risks
   permalink: /section-11/
+  examples_slug: 11-risks-and-technical-debt
 
 - number: 12
   name: Glossary
   blurb: Definitions of important business and technical terms
   category: glossary
   permalink: /section-12/
+  examples_slug: 12-glossary

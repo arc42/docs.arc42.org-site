@@ -75,6 +75,36 @@ while [ "$i" -le 12 ]; do
     i=$((i + 1))
 done
 
+section "Check every section carries an examples_slug"
+# _includes/examples-link.html renders NOTHING when it cannot resolve a slug —
+# no link, no error, no empty box. That is the right behaviour at runtime (a
+# half-configured section should not ship a broken link) and it is exactly why
+# the omission has to be caught here: adding a thirteenth section, or dropping
+# the field in a merge, would silently remove a link from a page and tell
+# nobody.
+#
+# The counterpart check lives in the other repository:
+# examples.arc42.org-site/scripts/check-sections.sh asserts the twelve routes
+# match its own section template. Between the two, these twelve URLs cannot rot
+# without something going red.
+sections_file="_data/sections.yml"
+if [ ! -f "$sections_file" ]; then
+    fail "Missing $sections_file"
+else
+    numbers_count=$(rg -c '^- number: [0-9]+' "$sections_file" || true)
+    slugs_count=$(rg -c '^  examples_slug: [0-9a-z-]+' "$sections_file" || true)
+    numbers_count=${numbers_count:-0}
+    slugs_count=${slugs_count:-0}
+
+    if [ "$numbers_count" -eq 0 ]; then
+        fail "No sections found in $sections_file"
+    elif [ "$slugs_count" -eq "$numbers_count" ]; then
+        pass "All $numbers_count sections carry an examples_slug."
+    else
+        fail "$slugs_count of $numbers_count sections carry an examples_slug."
+    fi
+fi
+
 section "Check rail navigation items"
 # The rail, and read off a SECTION page rather than /home/: the rail is
 # deliberately not rendered on the home page (_layouts/default.html, the
