@@ -49,6 +49,9 @@ deployment diagram, let them use any kind that is able to show nodes and channel
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ### 7.1 Infrastructure Level 1
 
 <div class="arc42-help" markdown="1">

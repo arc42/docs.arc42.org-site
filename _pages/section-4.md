@@ -41,6 +41,9 @@ You might use a list of solution-approaches or a table similar to the following:
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ### _&lt;insert solution strategy>_
 
 _list or table_

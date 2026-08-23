@@ -51,6 +51,9 @@ Alternatively (or additionally) you can use a table. The title of the table is t
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ### _&lt;insert diagram or table>_
 
 ### _&lt;(optionally:) insert explanation of external domain interfaces>_

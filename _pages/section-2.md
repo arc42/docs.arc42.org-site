@@ -28,6 +28,9 @@ Simple tables of constraints with explanations. If needed you can subdivide them
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ### _&lt;insert relevant constraints>_
 
 

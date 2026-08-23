@@ -40,6 +40,9 @@ There are many notations for describing scenarios, e.g.
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ### 6.1 _&lt;Runtime Scenario 1>_
 
 _&lt; insert runtime diagram or textual description of the scenario>_

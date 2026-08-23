@@ -26,6 +26,9 @@ List of risks and/or technical debts, probably including suggested measures to m
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 _&lt;insert list or table of known problems, risks or technical debt >_
 
 {% include further-info.md

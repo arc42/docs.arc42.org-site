@@ -38,6 +38,9 @@ Thus it contains the white box description of selected building blocks of level 
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ## 5.1 Whitebox Overall System
 
 <div class="arc42-help" markdown="1">

@@ -55,6 +55,9 @@ You can find additional structures of ADR in the [ADR Github collection](https:/
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 _&lt;describe important architecture decisions here >_
 
 
