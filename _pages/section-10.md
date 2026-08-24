@@ -30,6 +30,9 @@ See the extensive [Q42 quality model on https://quality.arc42.org](https://quali
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 
 ## 10.1 Quality Requirements Overview
 <div class="arc42-help" markdown="1">

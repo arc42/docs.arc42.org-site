@@ -35,6 +35,9 @@ You should clearly define your terms, so that all stakeholders
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 _&lt;insert glossary (and optionally translation) table >_
 
 

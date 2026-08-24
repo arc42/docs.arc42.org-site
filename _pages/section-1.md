@@ -42,6 +42,9 @@ Balance readability of this document with potential redundancy w.r.t. requiremen
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 ### _&lt;insert requirements overview>_
 
 

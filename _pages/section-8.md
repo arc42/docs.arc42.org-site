@@ -66,6 +66,9 @@ All (7+) checker components within the system are structured according to the st
 
 </div>
 
+<!-- the same section, inside complete documentation of real systems -->
+{% include examples-link.html variant="inline" %}
+
 _&lt;describe concepts here >_
 
 
