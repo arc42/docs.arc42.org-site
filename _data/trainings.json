@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-08-16T12:15:49+00:00",
+  "generated": "2026-08-25T20:06:29+00:00",
   "courses": [
     {
       "id": "msa",
@@ -26,6 +26,7 @@
           "trainers": [
             "Wolfgang Reimesch"
           ],
+          "pricing": "€2100",
           "url": "https://www.arc42.de/termine#msa-online-sep-2026",
           "status": "open"
         },
@@ -104,7 +105,7 @@
           "trainers": [
             "Wolfgang Reimesch"
           ],
-          "pricing": "€2200",
+          "pricing": "€2100",
           "few_seats": "only few seats available",
           "url": "https://www.arc42.de/termine#msa-27-02-online",
           "status": "open"
