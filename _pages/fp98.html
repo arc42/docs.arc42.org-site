@@ -1,0 +1,284 @@
+---
+layout: fp98
+title: FrontPage 98 Edition (fp98)
+permalink: /fp98/
+description: >-
+  What docs.arc42.org would have looked like in 1998, if it had been built in
+  Microsoft FrontPage 98. The same twelve arc42 template sections, in battleship
+  grey, inside a fake application window, with a hit counter that has never once
+  incremented.
+tags:
+  - fp98
+  - frontpage
+  - frontpage98
+  - frontpage 98
+  - microsoft frontpage
+  - 1998
+  - windows 98
+  - nineties
+  - retro
+  - nostalgia
+  - web 1.0
+  - time machine
+  - easter egg
+---
+{%- comment -%}
+  /fp98/ — the period reconstruction. See _layouts/fp98.html for why this page
+  inherits nothing from the modern shell.
+
+  A .html file, not .md, so kramdown never touches this markup.
+
+  THE PALETTE IS THE WINDOWS 16-COLOUR VGA SET, and that constraint is the whole
+  design. #c0c0c0 silver, #008080 teal, #000080 navy, #ffff00 yellow, #ff0000
+  red, #800080 purple, black, white. No arc42 brand colour appears anywhere: the
+  deep blue and the coral spark are *pretty*, and this page is under instruction
+  not to be. Nothing here reads _tokens.scss and nothing here should.
+
+  Every fact below is generated from _data/sections.yml, the same source the real
+  home page, the rail, the stepper and the breadcrumb read. Nothing is
+  hand-copied, so the 1998 page cannot drift away from the 2026 one.
+
+  The standing no-counts rule (never WRITE how many examples, sections or tips
+  exist) is honoured: the tip counts are computed at build time exactly as
+  _pages/home.md computes them. No number on this page is typed.
+
+  The clip art is hand-drawn pixel SVG, inline. It is deliberately NOT lifted
+  from a real FrontPage theme or a GIF archive: period Microsoft theme art is
+  still under copyright, and a 16x16 grid of <rect> costs less than sourcing a
+  licence.
+{%- endcomment -%}
+
+<div class="win">
+
+  {%- comment -%} Title bar. The chrome is the point: the reference is a
+    screenshot of a whole application window, not of a page. {%- endcomment -%}
+  <div class="win-title">
+    <span class="win-title-icon">
+      <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false">
+        <rect x="1" y="0" width="12" height="16" fill="#ffffff"/>
+        <rect x="1" y="0" width="12" height="1" fill="#000000"/>
+        <rect x="1" y="15" width="12" height="1" fill="#000000"/>
+        <rect x="1" y="0" width="1" height="16" fill="#000000"/>
+        <rect x="12" y="0" width="1" height="16" fill="#000000"/>
+        <rect x="3" y="3" width="8" height="1" fill="#000080"/>
+        <rect x="3" y="6" width="8" height="1" fill="#808080"/>
+        <rect x="3" y="9" width="8" height="1" fill="#808080"/>
+        <rect x="3" y="12" width="5" height="1" fill="#808080"/>
+      </svg>
+    </span>
+    <span class="win-title-text">arc42 Documentation - Welcome to our homepage</span>
+    <span class="win-title-btns">
+      <span class="win-btn">_</span>
+      <span class="win-btn">&#9744;</span>
+      <span class="win-btn">&#10005;</span>
+    </span>
+  </div>
+
+  <div class="win-body">
+    <div class="page">
+
+      {%- comment -%} The themed banner GIF, rebuilt as a teal box with yellow
+        pixel-shadowed type. {%- endcomment -%}
+      <div class="banner">
+        <span class="banner-art" aria-hidden="true">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" focusable="false">
+            <rect width="16" height="16" fill="#ffffff"/>
+            <rect x="2" y="2" width="5" height="4" fill="#000080"/>
+            <rect x="9" y="2" width="5" height="4" fill="#000080"/>
+            <rect x="5" y="11" width="6" height="4" fill="#800000"/>
+            <rect x="4" y="6" width="1" height="3" fill="#000000"/>
+            <rect x="11" y="6" width="1" height="3" fill="#000000"/>
+            <rect x="4" y="8" width="8" height="1" fill="#000000"/>
+            <rect x="7" y="8" width="1" height="3" fill="#000000"/>
+          </svg>
+        </span>
+        <span class="banner-text">
+          <span class="banner-h">arc42 Documentation</span>
+          <span class="banner-sub">Practical tips and examples for the arc42 template!</span>
+        </span>
+        <span class="banner-art banner-art-r" aria-hidden="true">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" focusable="false">
+            <rect x="1" y="2" width="14" height="10" fill="#c0c0c0"/>
+            <rect x="1" y="2" width="14" height="1" fill="#ffffff"/>
+            <rect x="1" y="2" width="1" height="10" fill="#ffffff"/>
+            <rect x="1" y="11" width="14" height="1" fill="#000000"/>
+            <rect x="14" y="2" width="1" height="10" fill="#000000"/>
+            <rect x="3" y="4" width="10" height="6" fill="#000080"/>
+            <rect x="4" y="5" width="3" height="2" fill="#ffff00"/>
+            <rect x="9" y="5" width="3" height="2" fill="#ffff00"/>
+            <rect x="5" y="8" width="6" height="1" fill="#00ffff"/>
+            <rect x="6" y="12" width="4" height="2" fill="#808080"/>
+            <rect x="4" y="14" width="8" height="1" fill="#000000"/>
+          </svg>
+        </span>
+      </div>
+
+      <div class="cols">
+
+        {%- comment -%} Left: the FrontPage "Navigation" group box. Six bracketed
+          buttons, as in the reference — the twelve sections are the page's
+          content, not its navigation, so they live in the yellow box instead of
+          making sixteen stacked buttons. {%- endcomment -%}
+        <div class="col-nav">
+          <div class="groupbox">
+            <p class="groupbox-title">Navigation</p>
+            <div class="groupbox-body">
+              <a class="btn98" href="{{ '/home/' | relative_url }}">[HOME]</a>
+              <a class="btn98" href="#sections">[THE 12 SECTIONS]</a>
+              <a class="btn98" href="{{ '/examples/' | relative_url }}">[EXAMPLES]</a>
+              <a class="btn98" href="{{ '/keywords/' | relative_url }}">[KEYWORDS]</a>
+              <a class="btn98" href="{{ '/search/' | relative_url }}">[SEARCH]</a>
+              <a class="btn98" href="{{ '/contact/' | relative_url }}">[CONTACT]</a>
+            </div>
+          </div>
+
+          <p class="counter-line">
+            Visitors:
+            {%- comment -%}
+              Decorative and frozen. A live counter needs a backend this static
+              site does not have, and a broken counter is more period-accurate
+              than a working one — most of them were. Do not wire this up.
+            {%- endcomment -%}
+            <span class="counter"><span>0</span><span>0</span><span>0</span><span>0</span><span>4</span><span>5</span><span>2</span><span>1</span></span>
+          </p>
+        </div>
+
+        {%- comment -%} Centre column. {%- endcomment -%}
+        <div class="col-main">
+
+          <div class="welcome">
+            <span class="welcome-art" aria-hidden="true">
+              <svg viewBox="0 0 16 16" shape-rendering="crispEdges" focusable="false">
+                <rect x="2" y="1" width="12" height="13" fill="#ffffff"/>
+                <rect x="2" y="1" width="12" height="1" fill="#000000"/>
+                <rect x="2" y="13" width="12" height="1" fill="#000000"/>
+                <rect x="2" y="1" width="1" height="13" fill="#000000"/>
+                <rect x="13" y="1" width="1" height="13" fill="#000000"/>
+                <rect x="4" y="3" width="3" height="3" fill="#ff0000"/>
+                <rect x="9" y="3" width="3" height="3" fill="#008080"/>
+                <rect x="4" y="9" width="3" height="3" fill="#000080"/>
+                <rect x="9" y="9" width="3" height="3" fill="#ffff00"/>
+                <rect x="5" y="6" width="1" height="3" fill="#000000"/>
+                <rect x="10" y="6" width="1" height="3" fill="#000000"/>
+                <rect x="5" y="7" width="6" height="1" fill="#000000"/>
+              </svg>
+            </span>
+            <h1 class="welcome-h">Welcome!</h1>
+            <p class="welcome-p">
+              This page collects practical tips and worked examples for the
+              <b>arc42</b> template for software architecture documentation.
+              Everything is organized by the twelve template sections.
+            </p>
+          </div>
+
+          <div class="yellowbox" id="sections">
+            <h2 class="yellowbox-h">THE 12 SECTIONS</h2>
+            <p class="yellowbox-i">Click a section to see what belongs in it!</p>
+            <ul class="seclist">
+              {%- for section in site.data.sections -%}
+              {%- assign tip_count = site.posts | where: "category", section.category | size -%}
+              <li>
+                <a href="{{ section.permalink | relative_url }}">{{ section.number }}. {{ section.name }}</a>
+                <span class="sec-tips">({{ tip_count }} tips)</span>
+                <span class="sec-blurb">{{ section.blurb }}</span>
+              </li>
+              {%- endfor -%}
+            </ul>
+            <span class="starburst" aria-hidden="true"><span>NEW!</span></span>
+          </div>
+
+          <div class="marquee">
+            <span class="marquee-t">
+              *** WELCOME TO THE ARC42 DOCUMENTATION HOMEPAGE *** NEW TIPS ADDED REGULARLY *** SIGN OUR GUESTBOOK *** BEST VIEWED AT 1024x768 ***
+            </span>
+          </div>
+
+          <div class="aboutbox">
+            <h2 class="about-h">ABOUT THIS PAGE</h2>
+            <p>
+              You have reached <b>fp98</b> &#8212; the <b>FrontPage&nbsp;98
+              edition</b> of docs.arc42.org. It is a period reconstruction: what
+              this documentation site might have looked like had it been
+              published in 1998 and built in <i>Microsoft FrontPage&nbsp;98</i>.
+            </p>
+            <p>
+              The content is not a mock-up. The twelve sections, their
+              descriptions and their tip counts come from the same source of
+              truth the modern site reads, so this page cannot fall out of date.
+              Only the presentation is from 1998, and the links lead to the real,
+              current pages &#8212; which is where the illusion ends.
+            </p>
+            <p class="about-back">
+              <a href="{{ '/home/' | relative_url }}"><b>&#9658; Visit our NEW site!</b></a>
+            </p>
+          </div>
+
+        </div>
+
+        {%- comment -%} Right: the badge column. Every one of these is a period
+          artifact rebuilt in CSS. The wordmarks are set in plain type inside
+          generic beveled boxes rather than redrawn as logos — the phrases are
+          what date the page, and reproducing Netscape's or Microsoft's actual
+          badge art would be copying someone's trademark for no gain.
+        {%- endcomment -%}
+        <div class="col-badges">
+          <a class="badge" href="https://ghostty.org">
+            <span class="badge-glyph badge-glyph-term">&gt;_</span>
+            <span class="badge-t">Made with<br>Ghostty</span>
+          </a>
+          <a class="badge" href="https://vivaldi.com">
+            <span class="badge-glyph badge-glyph-v">V</span>
+            <span class="badge-t">Best viewed with<br>Vivaldi</span>
+          </a>
+
+          {%- comment -%} Same loud red-on-yellow sign slot the UNDER
+            CONSTRUCTION badge occupied, minus the diagonal hazard stripes:
+            those read specifically as "building work", which would contradict
+            the label now that the slot points at the books. {%- endcomment -%}
+          <a class="signbadge" href="https://arc42.org/resources/?type=book">
+            <span class="sign-t">OUR<br>PUBLICATIONS</span>
+          </a>
+
+          <div class="hotline">
+            <p class="hotline-h">GET THE TEMPLATE</p>
+            <p class="hotline-n"><a href="https://arc42.org">arc42.org</a></p>
+          </div>
+
+          <div class="award">
+            <p class="award-t">COOL SITE<br>OF THE DAY</p>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="footrule">
+
+      <div class="pagefoot">
+        <span class="pf-l">
+          <a href="{{ '/imprint/' | relative_url }}">Imprint</a> |
+          <a href="{{ '/contact/' | relative_url }}">Contact</a> |
+          <a href="https://github.com/{{ site.repository }}">Source</a>
+        </span>
+        <span class="pf-c">Website created with Microsoft FrontPage 98</span>
+        <span class="pf-r">Last updated: {{ site.time | date: "%B %Y" }}</span>
+      </div>
+
+    </div>
+
+    {%- comment -%} Decorative scrollbar. The window frame is fake, so its
+      scrollbar has to be too — a real one would scroll the fake window's
+      contents inside the real browser's own scroll, which is worse than
+      useless. {%- endcomment -%}
+    <div class="scrollbar" aria-hidden="true">
+      <span class="sb-btn">&#9650;</span>
+      <span class="sb-track"><span class="sb-thumb"></span></span>
+      <span class="sb-btn">&#9660;</span>
+    </div>
+  </div>
+
+  <div class="win-status">
+    <span class="status-cell status-cell-main">Done</span>
+    <span class="status-cell status-cell-end">made with 😄 in Cologne by Gernot</span>
+  </div>
+
+</div>
