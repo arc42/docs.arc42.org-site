@@ -54,7 +54,8 @@ for page in \
     "$SITE_DIR/examples/index.html" \
     "$SITE_DIR/keywords/index.html" \
     "$SITE_DIR/contact/index.html" \
-    "$SITE_DIR/imprint/index.html"
+    "$SITE_DIR/imprint/index.html" \
+    "$SITE_DIR/fp98/index.html"
 do
     if [ -f "$page" ]; then
         pass "Found $page"
@@ -174,6 +175,50 @@ if ! cmp -s "$expected_nav_file" "$actual_nav_file"; then
 fi
 
 rm -f "$expected_nav_file" "$actual_nav_file"
+
+section "Check the fp98 page stays findable"
+# /fp98/ is the FrontPage 98 period reconstruction. It is deliberately not
+# linked from anywhere on the site, so the only two ways anyone reaches it are
+# a search engine and this site's own search box. Both are silent failure
+# modes: setting `hide: true` or dropping the page title would remove it from
+# search.json, and `sitemap: false` would remove it from the sitemap, and in
+# neither case would anything visibly break. Hence these three assertions.
+#
+# The literal keywords are the ones Gernot asked for: someone typing "fp98" or
+# "frontpage" must land on it.
+fp98_page="$SITE_DIR/fp98/index.html"
+if [ ! -f "$fp98_page" ]; then
+    fail "Missing $fp98_page — the fp98 findability checks cannot run."
+else
+    for keyword in fp98 FrontPage; do
+        if rg -q -- "$keyword" "$fp98_page"; then
+            pass "fp98 page mentions '$keyword'."
+        else
+            fail "fp98 page never mentions '$keyword' — searchers will not find it."
+        fi
+    done
+
+    if rg -q '<meta name="description" content="[^"]' "$fp98_page"; then
+        pass "fp98 page carries a non-empty meta description."
+    else
+        fail "fp98 page has an empty or missing meta description."
+    fi
+fi
+
+if rg -q '<loc>[^<]*/fp98/</loc>' "$SITE_DIR/sitemap.xml" 2>/dev/null; then
+    pass "fp98 page is listed in sitemap.xml."
+else
+    fail "fp98 page is absent from sitemap.xml — check for 'sitemap: false'."
+fi
+
+# search.json feeds the site's own lunr index. Pages land in it via
+# `site.pages | where_exp: "p", "p.title" | where_exp: "p", "p.hide != true"`,
+# so a stray `hide: true` would silently drop fp98 out of the search box.
+if rg -q '"url":"/fp98/"' "$SITE_DIR/search.json" 2>/dev/null; then
+    pass "fp98 page is present in search.json."
+else
+    fail "fp98 page is absent from search.json — check for 'hide: true' or a missing title."
+fi
 
 section "Check for unresolved Liquid tags in generated HTML/XML"
 if rg -n '\{\{|\{%' "$SITE_DIR" --glob '*.html' --glob '*.xml'; then

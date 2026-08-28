@@ -1,0 +1,82 @@
+{%- comment -%}
+  The FrontPage 98 shell — a deliberate alternate history of this site, served
+  at /fp98/.
+
+  This layout inherits NOTHING from default.html, and that is the whole point.
+  It drops, on purpose: <meta viewport>, {% seo %}, the two woff2 preloads, the
+  skip link, masthead.html, the .layout grid, rail.html, toc.html,
+  site-footer.html, site.js and search.js. A 1998 page had none of them, and
+  pulling any one of them in would drag the 2026 token pipeline behind it.
+
+  Accessibility is dropped here by explicit decision — this is a period exhibit,
+  not a document anyone has to be able to use. Two carve-outs survive, because
+  both are invisible to a visitor and expensive to omit:
+
+    lang + charset   Without them, text encoding and screen-reader language
+                     genuinely break. No period detail is lost: 1998 pages
+                     carried charset too.
+    alt="" on images html-proofer flags a missing alt by default, so `make
+                     check-links` would go red and stay red. An empty alt costs
+                     nothing visually and is the correct value for decoration
+                     anyway.
+
+  Everything else — focus rings, reduced motion, landmarks, contrast discipline,
+  responsive reflow — is gone.
+{%- endcomment -%}
+<!doctype html>
+{%- comment -%}
+  A period-correct `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">`
+  is tempting and wrong here. It puts the browser in almost-standards mode, where
+  inline images in table cells keep their baseline gap — which would break the
+  CSS costume this page is built out of. The costume is the deliverable; the
+  doctype is not visible to anyone who is not reading this file.
+{%- endcomment -%}
+<html lang="{{ site.language }}">
+<head>
+    <meta charset="utf-8">
+
+    {%- comment -%}
+      No <meta name="viewport"> — deliberate, and the single most period-accurate
+      line in this file. Phones will zoom-to-fit the fixed 780px canvas exactly
+      as a 1998 desktop browser presented it. It is unreadable on a handset. That
+      is the correct behaviour for this page.
+    {%- endcomment -%}
+
+    <title>{{ page.title }} &#183; arc42 Documentation</title>
+    <meta name="description" content="{{ page.description }}">
+
+    {%- comment -%}
+      <meta name="keywords"> is dead to search engines and has been for years.
+      It is here because it is period-correct — every FrontPage 98 page had one —
+      and because it costs nothing. The findability this page actually relies on
+      is the <title>, the description, the h1, the "About this page" prose, the
+      sitemap entry, and the site's own lunr index (which reads page.tags).
+    {%- endcomment -%}
+    <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+    <meta name="author" content="Gernot Starke">
+    <meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16">
+
+    {%- comment -%}
+      A plain .css file, NOT a _sass partial. assets/css/style.scss is the single
+      compiled entry point for the real site; adding `@import 'fp98'` there would
+      ship this stylesheet to all thirty modern pages. Keeping it separate means
+      _tokens and _reset can never leak in, and fp98 can never leak out.
+    {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/fp98.css' | relative_url }}">
+
+    {%- comment -%}
+      Analytics stay. Anachronistic, invisible, and the only way to learn whether
+      anyone actually opens this. Same comma-separated data-domain as
+      default.html so the rollup.arc42.com journey dashboard still sees the hit.
+    {%- endcomment %}
+    <script defer data-domain="docs.arc42.org,rollup.arc42.com" src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
+</head>
+<body>
+
+{{ content }}
+
+</body>
+</html>

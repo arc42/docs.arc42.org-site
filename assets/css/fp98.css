@@ -1,0 +1,690 @@
+/* ==========================================================================
+   fp98.css — the FrontPage 98 costume, worn by /fp98/ and nothing else.
+   ==========================================================================
+
+   PLAIN CSS ON PURPOSE. This is not a _sass partial and must never become one.
+   assets/css/style.scss is the single compiled entry point for the real site;
+   an `@import 'fp98'` there would ship every rule below to all thirty modern
+   pages. Kept separate, _tokens and _reset cannot leak in, and fp98 cannot leak
+   out. That isolation is the only reason this file is allowed to be as
+   irresponsible as it is.
+
+   THE PALETTE IS THE WINDOWS 16-COLOUR VGA SET. That constraint is the design,
+   and it is what makes the page reliably ugly rather than tastefully retro:
+
+     #c0c0c0  silver    every surface, every bevel face
+     #ffffff  white     bevel highlight
+     #808080  grey      bevel shadow
+     #dfdfdf            bevel inner highlight (the one off-palette value, and
+                        the authentic Win98 one — a pure-white inner edge reads
+                        as a flat outline instead of a bevel)
+     #000000  black
+     #000080  navy      title bar, headings, group-box caption
+     #1084d0            title-bar gradient end (authentic Win98 active caption)
+     #008080  teal      the banner
+     #ffff00  yellow    banner type, warning signs
+     #ff0000  red       alerts, the NEW! burst
+     #800080  purple    visited links
+     #0000ff  blue      links
+     #800000  maroon
+
+   NO arc42 BRAND COLOUR APPEARS ANYWHERE. --deep #0e4f80 and --coral #ff5c7c
+   are pretty, and this page is under instruction not to be. _tokens.scss says
+   "use var(--token), do not introduce a new hex value" — that rule governs the
+   stylesheet this file is deliberately not part of.
+
+   ACCESSIBILITY IS DROPPED HERE BY DECISION. No focus-visible styling, no
+   prefers-reduced-motion, no contrast discipline, no responsive reflow. The
+   canvas is a fixed 920px application window and does not reflow on a phone.
+   That is the exhibit.
+   ========================================================================== */
+
+/* The three bevels the entire Windows 98 widget set is built from. Every raised
+   surface below is one of these; nothing invents its own edge treatment. */
+
+body {
+    margin: 0;
+    padding: 22px 0 40px;
+    /* The Win98 desktop teal, so the fake window sits on a plausible desktop
+       rather than floating on white. */
+    background: #008080;
+    font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    color: #000000;
+}
+
+/* ---- The application window --------------------------------------------- */
+
+.win {
+    /* No viewport meta on this page, so a handset renders the 980px default
+       canvas and zooms out, exactly as a 1998 desktop browser presented it. */
+    width: 920px;
+    margin: 0 auto;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #000000 #000000 #dfdfdf;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #ffffff;
+    padding: 3px;
+}
+
+.win-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+    padding: 0 2px 0 3px;
+    /* The active-caption gradient. The single gradient on the page. */
+    background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+}
+
+.win-title-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+}
+
+.win-title-icon svg,
+.banner-art svg,
+.welcome-art svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.win-title-text {
+    flex: 1 1 auto;
+    font-weight: 700;
+    font-size: 13px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.win-title-btns {
+    display: flex;
+    gap: 2px;
+}
+
+.win-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #000000;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+.win-body {
+    display: flex;
+    margin-top: 3px;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset -1px -1px 0 #dfdfdf, inset 1px 1px 0 #000000;
+}
+
+/* ---- Fake scrollbar ------------------------------------------------------ */
+
+.scrollbar {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 16px;
+    width: 16px;
+    background: #c0c0c0;
+}
+
+.sb-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    font-size: 7px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+.sb-track {
+    flex: 1 1 auto;
+    padding: 0;
+    /* The classic 50% dither, drawn as a 2px checker. */
+    background-color: #c0c0c0;
+    background-image:
+        repeating-linear-gradient(0deg, #ffffff 0 1px, transparent 1px 2px),
+        repeating-linear-gradient(90deg, #ffffff 0 1px, transparent 1px 2px);
+}
+
+.sb-thumb {
+    display: block;
+    height: 56px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+/* ---- Status bar ---------------------------------------------------------- */
+
+.win-status {
+    display: flex;
+    gap: 3px;
+    margin-top: 3px;
+}
+
+.status-cell {
+    padding: 2px 5px;
+    font-size: 11px;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.status-cell-main {
+    flex: 1 1 auto;
+}
+
+.status-cell-end {
+    flex: 0 0 auto;
+}
+
+/* ---- The page inside the window ------------------------------------------ */
+
+.page {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 10px;
+    /* Battleship grey. Not white. This single value does more retro work than
+       anything else in the file. */
+    background: #c0c0c0;
+}
+
+.page a {
+    color: #0000ff;
+}
+
+.page a:visited {
+    color: #800080;
+}
+
+.page a:active {
+    color: #ff0000;
+}
+
+/* ---- Banner -------------------------------------------------------------- */
+
+.banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    background: #008080;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px #000000;
+}
+
+.banner-art {
+    display: block;
+    flex: 0 0 62px;
+    width: 62px;
+    height: 62px;
+}
+
+.banner-text {
+    flex: 1 1 auto;
+    text-align: center;
+    min-width: 0;
+}
+
+/* Yellow on teal with a hard black offset shadow — the WordArt of the era, and
+   an actively bad colour pair, which is the brief. */
+.banner-h {
+    display: block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ffff00;
+    text-shadow: 3px 3px 0 #000000;
+}
+
+.banner-sub {
+    display: block;
+    margin-top: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+/* ---- Three columns ------------------------------------------------------- */
+
+.cols {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    align-items: flex-start;
+}
+
+.col-nav {
+    flex: 0 0 178px;
+    width: 178px;
+}
+
+.col-main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.col-badges {
+    flex: 0 0 168px;
+    width: 168px;
+}
+
+/* ---- Navigation group box ------------------------------------------------ */
+
+.groupbox {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+    padding: 3px;
+}
+
+.groupbox-title {
+    margin: 0 0 6px;
+    padding: 3px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #000080;
+}
+
+.groupbox-body {
+    padding: 0 4px 4px;
+}
+
+/* The bracketed 3D push buttons. */
+.btn98 {
+    display: block;
+    margin-bottom: 7px;
+    padding: 7px 4px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    color: #000000 !important;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+.btn98:active {
+    border-color: #000000 #ffffff #ffffff #000000;
+    box-shadow: inset -1px -1px 0 #dfdfdf, inset 1px 1px 0 #808080;
+    padding: 8px 3px 6px 5px;
+}
+
+/* ---- Hit counter --------------------------------------------------------- */
+
+.counter-line {
+    margin: 14px 0 0;
+    font-size: 13px;
+}
+
+.counter {
+    display: inline-block;
+    margin-left: 3px;
+    padding: 2px;
+    vertical-align: middle;
+    background: #000000;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.counter span {
+    display: inline-block;
+    width: 13px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    background: #000000;
+}
+
+/* ---- Welcome block ------------------------------------------------------- */
+
+.welcome {
+    overflow: hidden;
+}
+
+.welcome-art {
+    display: block;
+    float: left;
+    width: 76px;
+    height: 76px;
+    margin: 0 12px 6px 0;
+}
+
+.welcome-h {
+    margin: 0 0 6px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000000;
+}
+
+.welcome-p {
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+/* ---- The yellow content box ---------------------------------------------- */
+
+.yellowbox {
+    position: relative;
+    margin-top: 14px;
+    padding: 10px 13px 13px;
+    background: #ffffaa;
+    border: 2px solid #808080;
+}
+
+.yellowbox-h {
+    margin: 0 0 4px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    color: #000000;
+}
+
+.yellowbox-i {
+    margin: 0 0 9px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+
+.seclist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.seclist li {
+    position: relative;
+    margin-bottom: 5px;
+    padding-left: 18px;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+/* The themed bullet GIF, as a beveled square. */
+.seclist li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 8px;
+    height: 8px;
+    background: #008080;
+    border: 1px solid #000000;
+    box-shadow: inset 1px 1px 0 #00ffff;
+}
+
+.seclist a {
+    font-weight: 700;
+}
+
+.sec-tips {
+    font-size: 13px;
+    color: #800000;
+}
+
+.sec-blurb {
+    display: block;
+    font-size: 13px;
+    color: #000000;
+}
+
+/* The NEW! starburst. A 12-point clip-path polygon rather than a GIF. */
+.starburst {
+    position: absolute;
+    right: -14px;
+    bottom: -16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 78px;
+    height: 78px;
+    background: #ff0000;
+    transform: rotate(-12deg);
+    clip-path: polygon(
+        50% 0%, 58.3% 19.1%, 75% 6.7%, 72.6% 27.4%, 93.3% 25%, 80.9% 41.7%,
+        100% 50%, 80.9% 58.3%, 93.3% 75%, 72.6% 72.6%, 75% 93.3%, 58.3% 80.9%,
+        50% 100%, 41.7% 80.9%, 25% 93.3%, 27.4% 72.6%, 6.7% 75%, 19.1% 58.3%,
+        0% 50%, 19.1% 41.7%, 6.7% 25%, 27.4% 27.4%, 25% 6.7%, 41.7% 19.1%
+    );
+}
+
+.starburst span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    font-style: italic;
+    color: #ffffff;
+}
+
+/* ---- The scrolling alert bar --------------------------------------------- */
+
+.marquee {
+    margin-top: 12px;
+    padding: 4px 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* A CSS animation rather than the <marquee> element: same effect, and the page
+   keeps working the day browsers finally drop the tag. No reduced-motion query
+   — see the accessibility note at the top of this file. */
+.marquee-t {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ff0000;
+    animation: fp98-scroll 24s linear infinite;
+}
+
+@keyframes fp98-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ---- About box ----------------------------------------------------------- */
+
+.aboutbox {
+    margin-top: 12px;
+    padding: 9px 12px;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.about-h {
+    margin: 0 0 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #000080;
+}
+
+.aboutbox p {
+    margin: 0 0 8px;
+}
+
+.about-back {
+    margin: 0 !important;
+}
+
+/* ---- Badge column -------------------------------------------------------- */
+
+.badge {
+    display: flex;
+    text-decoration: none;
+    color: #000000 !important;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 9px;
+    padding: 6px 7px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+.badge-glyph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 26px;
+    width: 26px;
+    height: 26px;
+    font-size: 17px;
+    font-weight: 700;
+    border: 1px solid #000000;
+}
+
+/* A shell prompt, white on black — reads as "terminal" at 26px in a way an
+   abstract glyph does not. */
+.badge-glyph-term {
+    color: #ffffff;
+    background: #000000;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+}
+
+/* Vivaldi red, which happens to be plain #ff0000 from the VGA sixteen — so the
+   nod to the brand costs nothing against the palette rule. */
+.badge-glyph-v {
+    color: #ffffff;
+    background: #ff0000;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+}
+
+.badge-t {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+/* The loud sign slot. Still red-on-yellow at maximum volume, but the diagonal
+   hazard stripes are gone with the UNDER CONSTRUCTION label they belonged to —
+   they mean "building work", which would fight the wording now that this points
+   at the books. Solid black rules carry the same weight and say nothing. */
+.signbadge {
+    display: block;
+    margin-bottom: 9px;
+    padding: 4px;
+    text-decoration: none;
+    background: #ffff00;
+    border: 3px solid #ff0000;
+}
+
+.sign-t {
+    display: block;
+    padding: 7px 2px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000000;
+    border-top: 4px solid #000000;
+    border-bottom: 4px solid #000000;
+}
+
+.hotline {
+    margin-bottom: 9px;
+    padding: 7px 5px;
+    text-align: center;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.hotline-h {
+    margin: 0 0 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hotline-n {
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.award {
+    padding: 9px 4px;
+    text-align: center;
+    background: #000080;
+    border: 2px solid #ffff00;
+}
+
+.award-t {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 1px;
+    color: #ffff00;
+}
+
+/* ---- Page footer --------------------------------------------------------- */
+
+.footrule {
+    height: 3px;
+    margin: 14px 0 7px;
+    border: 0;
+    background: #000080;
+}
+
+.pagefoot {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 11px;
+}
+
+.pf-l {
+    flex: 0 0 auto;
+}
+
+.pf-c {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.pf-r {
+    flex: 0 0 auto;
+}
