@@ -20,8 +20,8 @@ exampleimages: /assets/images/examples
 examples_url: https://examples.arc42.org
 
 
-#url: https://localhost:4000
-#imageurl: https://localhost:4000/images
+#url: https://localhost:4010
+#imageurl: https://localhost:4010/images
 
 baseurl:
 

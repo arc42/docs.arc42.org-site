@@ -9,7 +9,7 @@ Jekyll-based static documentation site for the **arc42 software architecture tem
 ## Build & Serve
 
 ```bash
-make dev        # Start local dev server via Docker (port 4000)
+make dev        # Start local dev server via Docker (port 4010)
 make site       # Build the static site into _site/
 make check      # Build + run project sanity checks (scripts/check-site.sh)
 make check-links # Build + validate internal links/HTML via html-proofer

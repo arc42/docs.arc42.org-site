@@ -10,12 +10,17 @@ services:
       - .:/site
       - jekyll_cache:/site/.jekyll-cache
       - sass_cache:/site/.sass-cache
+    # 4010 is this site's fixed dev port (see raw/port-assignment.md in
+    # meta.arc42.org). --port is passed to Jekyll as well as mapped: Jekyll's
+    # "Server address:" banner reports whatever port it is told to bind, so a
+    # bare 4010:4000 mapping left it announcing 4000 while the site answered
+    # on 4010.
     ports:
-      - '4000:4000'
+      - '4010:4010'
     # No --incremental: full rebuild on change. Incremental silently
     # leaves stale/relocated output when permalinks or front matter change.
     command: >
-      sh -c "bundle exec jekyll serve --host 0.0.0.0 --watch $${POLLING}"
+      sh -c "bundle exec jekyll serve --host 0.0.0.0 --port 4010 --watch $${POLLING}"
 
 volumes:
   jekyll_cache:
