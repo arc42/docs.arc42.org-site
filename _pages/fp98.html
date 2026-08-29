@@ -1,12 +1,11 @@
 ---
 layout: fp98
-title: FrontPage 98 Edition (fp98)
+title: History Edition
 permalink: /fp98/
 description: >-
   What docs.arc42.org would have looked like in 1998, if it had been built in
   Microsoft FrontPage 98. The same twelve arc42 template sections, in battleship
-  grey, inside a fake application window, with a hit counter that has never once
-  incremented.
+  grey, inside a fake application window.
 tags:
   - fp98
   - frontpage
@@ -80,16 +79,27 @@ tags:
       {%- comment -%} The themed banner GIF, rebuilt as a teal box with yellow
         pixel-shadowed type. {%- endcomment -%}
       <div class="banner">
+        {%- comment -%} Three stacked building blocks, narrowing toward the
+          top — a pixel nod to arc42's building-block view, swapped in for the
+          old generic "webpage" glyph this banner used to carry. {%- endcomment -%}
         <span class="banner-art" aria-hidden="true">
           <svg viewBox="0 0 16 16" shape-rendering="crispEdges" focusable="false">
             <rect width="16" height="16" fill="#ffffff"/>
-            <rect x="2" y="2" width="5" height="4" fill="#000080"/>
-            <rect x="9" y="2" width="5" height="4" fill="#000080"/>
-            <rect x="5" y="11" width="6" height="4" fill="#800000"/>
-            <rect x="4" y="6" width="1" height="3" fill="#000000"/>
-            <rect x="11" y="6" width="1" height="3" fill="#000000"/>
-            <rect x="4" y="8" width="8" height="1" fill="#000000"/>
-            <rect x="7" y="8" width="1" height="3" fill="#000000"/>
+            <rect x="2" y="10" width="12" height="4" fill="#ff0000"/>
+            <rect x="4" y="6" width="8" height="4" fill="#008080"/>
+            <rect x="6" y="2" width="4" height="4" fill="#000080"/>
+            <rect x="2" y="10" width="12" height="1" fill="#000000"/>
+            <rect x="2" y="13" width="12" height="1" fill="#000000"/>
+            <rect x="2" y="10" width="1" height="4" fill="#000000"/>
+            <rect x="13" y="10" width="1" height="4" fill="#000000"/>
+            <rect x="4" y="6" width="8" height="1" fill="#000000"/>
+            <rect x="4" y="9" width="8" height="1" fill="#000000"/>
+            <rect x="4" y="6" width="1" height="4" fill="#000000"/>
+            <rect x="11" y="6" width="1" height="4" fill="#000000"/>
+            <rect x="6" y="2" width="4" height="1" fill="#000000"/>
+            <rect x="6" y="5" width="4" height="1" fill="#000000"/>
+            <rect x="6" y="2" width="1" height="4" fill="#000000"/>
+            <rect x="9" y="2" width="1" height="4" fill="#000000"/>
           </svg>
         </span>
         <span class="banner-text">
@@ -115,7 +125,7 @@ tags:
 
       <div class="cols">
 
-        {%- comment -%} Left: the FrontPage "Navigation" group box. Six bracketed
+        {%- comment -%} Left: the FrontPage "Navigation" group box. Six
           buttons, as in the reference — the twelve sections are the page's
           content, not its navigation, so they live in the yellow box instead of
           making sixteen stacked buttons. {%- endcomment -%}
@@ -123,24 +133,14 @@ tags:
           <div class="groupbox">
             <p class="groupbox-title">Navigation</p>
             <div class="groupbox-body">
-              <a class="btn98" href="{{ '/home/' | relative_url }}">[HOME]</a>
-              <a class="btn98" href="#sections">[THE 12 SECTIONS]</a>
-              <a class="btn98" href="{{ '/examples/' | relative_url }}">[EXAMPLES]</a>
-              <a class="btn98" href="{{ '/keywords/' | relative_url }}">[KEYWORDS]</a>
-              <a class="btn98" href="{{ '/search/' | relative_url }}">[SEARCH]</a>
-              <a class="btn98" href="{{ '/contact/' | relative_url }}">[CONTACT]</a>
+              <a class="btn98" href="{{ '/home/' | relative_url }}">HOME</a>
+              <a class="btn98" href="#sections">THE 12 SECTIONS</a>
+              <a class="btn98" href="{{ '/examples/' | relative_url }}">EXAMPLES</a>
+              <a class="btn98" href="{{ '/keywords/' | relative_url }}">KEYWORDS</a>
+              <a class="btn98" href="{{ '/search/' | relative_url }}">SEARCH</a>
+              <a class="btn98" href="{{ '/contact/' | relative_url }}">CONTACT</a>
             </div>
           </div>
-
-          <p class="counter-line">
-            Visitors:
-            {%- comment -%}
-              Decorative and frozen. A live counter needs a backend this static
-              site does not have, and a broken counter is more period-accurate
-              than a working one — most of them were. Do not wire this up.
-            {%- endcomment -%}
-            <span class="counter"><span>0</span><span>0</span><span>0</span><span>0</span><span>4</span><span>5</span><span>2</span><span>1</span></span>
-          </p>
         </div>
 
         {%- comment -%} Centre column. {%- endcomment -%}
@@ -189,16 +189,16 @@ tags:
 
           <div class="marquee">
             <span class="marquee-t">
-              *** WELCOME TO THE ARC42 DOCUMENTATION HOMEPAGE *** NEW TIPS ADDED REGULARLY *** SIGN OUR GUESTBOOK *** BEST VIEWED AT 1024x768 ***
+              *** WELCOME TO THE ARC42 DOCUMENTATION HOMEPAGE *** NEW TIPS ADDED REGULARLY *** BEST VIEWED AT 1024x768 ***
             </span>
           </div>
 
           <div class="aboutbox">
             <h2 class="about-h">ABOUT THIS PAGE</h2>
             <p>
-              You have reached <b>fp98</b> &#8212; the <b>FrontPage&nbsp;98
-              edition</b> of docs.arc42.org. It is a period reconstruction: what
-              this documentation site might have looked like had it been
+              You have reached the <b>History&nbsp;Edition</b> of
+              docs.arc42.org. It is a period reconstruction: what this
+              documentation site might have looked like had it been
               published in 1998 and built in <i>Microsoft FrontPage&nbsp;98</i>.
             </p>
             <p>
@@ -244,9 +244,9 @@ tags:
             <p class="hotline-n"><a href="https://arc42.org">arc42.org</a></p>
           </div>
 
-          <div class="award">
+          <a class="award" href="https://quality.arc42.org">
             <p class="award-t">COOL SITE<br>OF THE DAY</p>
-          </div>
+          </a>
         </div>
 
       </div>

@@ -330,34 +330,6 @@ body {
     padding: 8px 3px 6px 5px;
 }
 
-/* ---- Hit counter --------------------------------------------------------- */
-
-.counter-line {
-    margin: 14px 0 0;
-    font-size: 13px;
-}
-
-.counter {
-    display: inline-block;
-    margin-left: 3px;
-    padding: 2px;
-    vertical-align: middle;
-    background: #000000;
-    border: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080;
-}
-
-.counter span {
-    display: inline-block;
-    width: 13px;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
-    color: #ffffff;
-    background: #000000;
-}
-
 /* ---- Welcome block ------------------------------------------------------- */
 
 .welcome {
@@ -645,8 +617,10 @@ body {
 }
 
 .award {
+    display: block;
     padding: 9px 4px;
     text-align: center;
+    text-decoration: none;
     background: #000080;
     border: 2px solid #ffff00;
 }
