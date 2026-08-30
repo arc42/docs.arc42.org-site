@@ -16,7 +16,7 @@ DRAWIO="${DRAWIO:-/Applications/draw.io.app/Contents/MacOS/draw.io}"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 OUT="$HERE/../../assets/images/sections/01"
 
-for name in iso-25010-2023-topics-en iso-25010-2023-tree-en; do
+for name in iso-25010-2023-topics-en iso-25010-2023-tree-en quality-example-loop; do
   "$DRAWIO" "$HERE/$name.drawio.png" -x -f svg -o "$OUT/$name.svg" \
     --svg-theme light --embed-svg-fonts false --no-sandbox --disable-gpu
   # draw.io emits bare family names; give them a fallback stack so the diagram
