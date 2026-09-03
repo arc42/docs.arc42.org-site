@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Re-export every diagram in originals/ to the SVG the site ships.
 #
-# Each source is a draw.io PNG with the diagram XML embedded, so draw.io opens
-# it by double-click and this script turns it back into an SVG. Sources live in
-# originals/<NN>-<topic>/*.drawio.png and land in assets/images/sections/<NN>/.
+# Sources live in originals/<NN>-<topic>/ and land in assets/images/sections/<NN>/.
+# Both source forms are picked up: a plain .drawio file, and a .drawio.png, which
+# is a rendering with the diagram XML embedded so draw.io opens it by double-click.
 #
 # Two flags are not optional:
 #   --embed-svg-fonts false   the default inlines a base64 webfont (25 KB -> 794 KB)
@@ -18,10 +18,10 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$HERE/.."
 
 shopt -s nullglob
-for src in "$HERE"/*/*.drawio.png; do
+for src in "$HERE"/*/*.drawio.png "$HERE"/*/*.drawio; do
   dir="$(basename "$(dirname "$src")")"   # e.g. 08-concepts
   section="${dir%%-*}"                    # e.g. 08
-  name="$(basename "$src" .drawio.png)"
+  name="$(basename "$src" .drawio.png)"; name="${name%.drawio}"
   out="$ROOT/assets/images/sections/$section/$name.svg"
   mkdir -p "$(dirname "$out")"
   "$DRAWIO" "$src" -x -f svg -o "$out" \
