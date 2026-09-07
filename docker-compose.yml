@@ -13,8 +13,8 @@ services:
     # 4210 is this site's fixed dev port (see raw/port-assignment.md in
     # meta.arc42.org). --port is passed to Jekyll as well as mapped: Jekyll's
     # "Server address:" banner reports whatever port it is told to bind, so a
-    # bare 4210:4000 mapping left it announcing 4000 while the site answered
-    # on 4210.
+    # bare 4210:4000 mapping would leave it announcing 4000 while the site
+    # answered on 4210.
     ports:
       - '4210:4210'
     # No --incremental: full rebuild on change. Incremental silently
