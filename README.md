@@ -34,13 +34,13 @@ This work is licensed under a
 
 ## Local Development
 
-`make dev` serves this site at <http://localhost:4010>. This port is
+`make dev` serves this site at <http://localhost:4210>. This port is
 fixed (not the Jekyll default of 4000) as part of a port assignment across
 arc42 sites, so multiple sites' dev servers can run side by side without
 clashing — see `raw/port-assignment.md` in meta.arc42.org. The number lives in
 three places that must stay in step: `SITE_PORT` in the `Makefile`, the mapping
 and `--port` flag in `docker-compose.yml`, and `EXPOSE`/`CMD` in the
-`Dockerfile` — the last two so Jekyll's own startup banner announces 4010
+`Dockerfile` — the last two so Jekyll's own startup banner announces 4210
 rather than the 4000 it binds by default.
 
 ## Jekyll TTSCK Theme
