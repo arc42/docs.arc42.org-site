@@ -1,124 +1,172 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-08-25T20:06:29+00:00",
+  "generated": "2026-09-09T18:33:00+00:00",
   "courses": [
     {
+      "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
+      "certification": "iSAQB CPSA-Foundation",
+      "url_en": "https://trainings.arc42.org/courses/msa/",
       "id": "msa",
       "short_title": "Mastering SW Architectures",
       "title": "Mastering Software Architectures",
-      "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
-      "certification": "iSAQB CPSA-Foundation",
-      "credits": null,
       "url": "https://www.arc42.de/info-msa/",
-      "url_en": "https://trainings.arc42.org/courses/msa/",
       "trainers": [
         "Peter Hruschka",
         "Gernot Starke"
       ],
       "dates": [
         {
+          "trainers": [
+            "Wolfgang Reimesch"
+          ],
+          "pricing": "2.100 €",
+          "price": {
+            "amount": 2100,
+            "currency": "EUR"
+          },
           "id": "msa-online-sep-2026",
           "code": "26-09 MSA-EN",
           "start": "2026-09-29",
           "end": "2026-10-01",
           "language": "en",
           "format": "online",
-          "trainers": [
-            "Wolfgang Reimesch"
-          ],
-          "pricing": "€2100",
-          "url": "https://www.arc42.de/termine#msa-online-sep-2026",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-online-sep-2026"
         },
         {
+          "city": "München",
+          "country": "DE",
+          "pricing": "2.890 €",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR"
+          },
           "id": "msa-dez-2026",
           "code": "26-12 MSA",
           "start": "2026-12-01",
           "end": "2026-12-04",
-          "city": "München",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "pricing": "Frühbucherpreis bei Anmeldung bis 8. August 2026: € 2690, Normalpreis: € 2890",
-          "url": "https://www.arc42.de/termine#msa-dez-2026",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-dez-2026"
         },
         {
+          "city": "München",
+          "country": "DE",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 2. November 2026: 2.690 €, Normalpreis: 2.890 €",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR",
+            "early_bird": {
+              "amount": 2690,
+              "until": "2026-11-02"
+            }
+          },
           "id": "msa-mar-2027",
           "code": "27-03 MSA",
           "start": "2027-03-02",
           "end": "2027-03-05",
-          "city": "München",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "pricing": "Frühbucherpreis bei Anmeldung bis 2. November 2026: € 2690, Normalpreis: € 2890",
-          "url": "https://www.arc42.de/termine#msa-mar-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-mar-2027"
         },
         {
+          "city": "Mannheim / Frankfurt (t.b.d.)",
+          "country": "DE",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 8. Februar 2027: 2.690 €, Normalpreis: 2.890 €",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR",
+            "early_bird": {
+              "amount": 2690,
+              "until": "2027-02-08"
+            }
+          },
           "id": "msa-jun-2027",
           "code": "27-06 MSA",
           "start": "2027-06-08",
           "end": "2027-06-11",
-          "city": "Mannheim oder Frankfurt (t.b.d.)",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "pricing": "Frühbucherpreis bei Anmeldung bis 8. Februar 2027: € 2690, Normalpreis: € 2890",
-          "url": "https://www.arc42.de/termine#msa-jun-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-jun-2027"
         },
         {
+          "city": "Mannheim / Frankfurt (t.b.d.)",
+          "country": "DE",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 14. Mai 2027: 2.690 €, Normalpreis: 2.890 €",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR",
+            "early_bird": {
+              "amount": 2690,
+              "until": "2027-05-14"
+            }
+          },
           "id": "msa-sep-2027",
           "code": "27-09 MSA",
           "start": "2027-09-14",
           "end": "2027-09-17",
-          "city": "Mannheim oder Frankfurt (t.b.d.)",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "pricing": "Frühbucherpreis bei Anmeldung bis 14. Mai 2027: € 2690, Normalpreis: € 2890",
-          "url": "https://www.arc42.de/termine#msa-sep-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-sep-2027"
         },
         {
+          "city": "München",
+          "country": "DE",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 30. Juli 2027: 2.690 €, Normalpreis: 2.890 €",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR",
+            "early_bird": {
+              "amount": 2690,
+              "until": "2027-07-30"
+            }
+          },
           "id": "msa-dez-2027",
           "code": "27-12 MSA",
           "start": "2027-11-30",
           "end": "2027-12-03",
-          "city": "München",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "pricing": "Frühbucherpreis bei Anmeldung bis 30. Juli 2027: € 2690, Normalpreis: € 2890",
-          "url": "https://www.arc42.de/termine#msa-dez-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-dez-2027"
         },
         {
+          "trainers": [
+            "Wolfgang Reimesch"
+          ],
+          "pricing": "2.100 €",
+          "price": {
+            "amount": 2100,
+            "currency": "EUR"
+          },
+          "few_seats": "only few seats available",
+          "seats_limited": true,
           "id": "msa-27-02-online",
           "code": "27-02 MSA-EN",
           "start": "2027-02-23",
           "end": "2027-02-25",
           "language": "en",
           "format": "online",
-          "trainers": [
-            "Wolfgang Reimesch"
-          ],
-          "pricing": "€2100",
-          "few_seats": "only few seats available",
-          "url": "https://www.arc42.de/termine#msa-27-02-online",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-27-02-online"
         }
       ]
     },
     {
-      "id": "improve",
-      "short_title": "IMPROVE",
-      "title": "IMPROVE: Evolve and maintain systems",
       "blurb": "Learn to effectively evolve and maintain systems.",
       "certification": "iSAQB CPSA-A (Advanced)",
       "credits": "20 methodische und 10 technische Punkte",
+      "credit_points": {
+        "methodical": 20,
+        "technical": 10
+      },
+      "id": "improve",
+      "short_title": "IMPROVE",
+      "title": "IMPROVE: Evolve and maintain systems",
       "url": "https://www.arc42.de/info-improve/",
       "trainers": [
         "Carola Lilienthal",
@@ -126,50 +174,90 @@
       ],
       "dates": [
         {
+          "city": "Hamburg",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "improve-nov-2026",
           "code": "26-11 IMPROVE",
           "start": "2026-11-24",
           "end": "2026-11-26",
-          "city": "Hamburg",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#improve-nov-2026",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#improve-nov-2026"
         },
         {
+          "city": "Hamburg",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "improve-jun-2027",
           "code": "27-06 IMPROVE",
           "start": "2027-06-22",
           "end": "2027-06-24",
-          "city": "Hamburg",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#improve-jun-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#improve-jun-2027"
         },
         {
+          "city": "Hamburg",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "improve-nov-2027",
           "code": "27-11 IMPROVE",
           "start": "2027-11-23",
           "end": "2027-11-25",
-          "city": "Hamburg",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#improve-nov-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#improve-nov-2027"
+        },
+        {
+          "trainers": [
+            "Wolfgang Reimesch"
+          ],
+          "pricing": "2.100 €",
+          "price": {
+            "amount": 2100,
+            "currency": "EUR"
+          },
+          "id": "improve-apr-2027",
+          "code": "27-04 IMPROVE-EN",
+          "start": "2027-04-13",
+          "end": "2027-04-15",
+          "language": "en",
+          "format": "online",
+          "status": "open",
+          "url": "https://www.arc42.de/termine#improve-apr-2027"
         }
       ]
     },
     {
-      "id": "req4arc",
-      "short_title": "Req4Arc",
-      "title": "Req4Arc: Getting your Requirements right",
       "blurb": "What to do if your requirements need improvement.",
       "certification": "iSAQB CPSA-A (Advanced)",
       "credits": "20 methodische und 10 kommunikative Punkte",
+      "credit_points": {
+        "methodical": 20,
+        "communication": 10
+      },
+      "id": "req4arc",
+      "short_title": "Req4Arc",
+      "title": "Req4Arc: Getting your Requirements right",
       "url": "https://www.arc42.de/info-req4arc/",
       "trainers": [
         "Peter Hruschka",
@@ -177,50 +265,71 @@
       ],
       "dates": [
         {
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "req4arc-sep-2026",
           "code": "26-09 Req4Arc",
           "start": "2026-09-15",
           "end": "2026-09-17",
-          "city": "Frankfurt/Main",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#req4arc-sep-2026",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
         },
         {
+          "city": "München",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "req4arc-mar-2027",
           "code": "27-03 Req4Arc",
           "start": "2027-03-09",
           "end": "2027-03-11",
-          "city": "München",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#req4arc-mar-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#req4arc-mar-2027"
         },
         {
+          "city": "Mannheim / Frankfurt (t.b.d.)",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "req4arc-sep-2027",
           "code": "27-09 Req4Arc",
           "start": "2027-09-21",
           "end": "2027-09-23",
-          "city": "Mannheim oder Frankfurt (t.b.d.)",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#req4arc-sep-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#req4arc-sep-2027"
         }
       ]
     },
     {
-      "id": "adoc",
-      "short_title": "ADOC",
-      "title": "ADOC: Architecture Documentation",
       "blurb": "How to efficiently and effectively create and maintain useful technical documentation, with a strong focus on arc42. Within this practical course you improve your own documentation! From the founders and maintainers of arc42.",
       "certification": "iSAQB CPSA-A (Advanced)",
       "credits": "20 methodische Punkte",
+      "credit_points": {
+        "methodical": 20
+      },
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "ADOC: Architecture Documentation",
       "url": "https://www.arc42.de/info-adoc/",
       "trainers": [
         "Peter Hruschka",
@@ -228,31 +337,43 @@
       ],
       "dates": [
         {
+          "city": "Zürich",
+          "country": "CH",
+          "trainers": [
+            "Gernot Starke"
+          ],
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "adoc-oct-2026",
           "code": "26-10 ADOC",
           "start": "2026-10-27",
           "end": "2026-10-28",
-          "city": "Zürich",
-          "country": "CH",
           "language": "de",
           "format": "public",
-          "trainers": [
-            "Gernot Starke"
-          ],
-          "url": "https://www.arc42.de/termine#adoc-oct-2026",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#adoc-oct-2026"
         },
         {
+          "city": "Mannheim / Frankfurt (t.b.d.)",
+          "country": "DE",
+          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR",
+            "alumni": 2050
+          },
           "id": "adoc-jun-2027",
           "code": "27-06 ADOC",
           "start": "2027-06-02",
           "end": "2027-06-03",
-          "city": "Mannheim oder Frankfurt (t.b.d.)",
-          "country": "DE",
           "language": "de",
           "format": "public",
-          "url": "https://www.arc42.de/termine#adoc-jun-2027",
-          "status": "open"
+          "status": "open",
+          "url": "https://www.arc42.de/termine#adoc-jun-2027"
         }
       ]
     }
