@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-09T18:38:17+00:00",
+  "generated": "2026-09-09T18:50:03+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -151,6 +151,24 @@
           "format": "online",
           "status": "open",
           "url": "https://www.arc42.de/termine#msa-27-02-online"
+        },
+        {
+          "trainers": [
+            "Wolfgang Reimesch"
+          ],
+          "pricing": "2.100 €",
+          "price": {
+            "amount": 2100,
+            "currency": "EUR"
+          },
+          "id": "msa-06-2027",
+          "code": "27-06-MSA-EN",
+          "start": "2027-06-22",
+          "end": "2027-06-24",
+          "language": "en",
+          "format": "online",
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-06-2027"
         }
       ]
     },
