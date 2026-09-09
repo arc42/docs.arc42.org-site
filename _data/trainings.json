@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-09T18:33:00+00:00",
+  "generated": "2026-09-09T18:38:17+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -143,8 +143,6 @@
             "amount": 2100,
             "currency": "EUR"
           },
-          "few_seats": "only few seats available",
-          "seats_limited": true,
           "id": "msa-27-02-online",
           "code": "27-02 MSA-EN",
           "start": "2027-02-23",
