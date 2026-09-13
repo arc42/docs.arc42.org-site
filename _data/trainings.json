@@ -1,13 +1,13 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-12T15:13:04+00:00",
+  "generated": "2026-09-13T17:43:30+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
       "certification": "iSAQB CPSA-Foundation",
       "url_en": "https://trainings.arc42.org/courses/msa/",
       "id": "msa",
-      "short_title": "Mastering SW Architectures",
+      "short_title": "MSA",
       "title": "Mastering Software Architectures",
       "url": "https://www.arc42.de/info-msa/",
       "trainers": [
