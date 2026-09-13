@@ -1,0 +1,33 @@
+{
+  "courses": [
+    {
+      "id": "req4arc",
+      "short_title": "Req4Arc",
+      "title": "Req4Arc training",
+      "dates": [
+        {
+          "code": "26-09 Req4Arc",
+          "id": "req4arc-sep-2026",
+          "start": "2026-09-15",
+          "end": "2026-09-17",
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026",
+          "seats_limited": true,
+          "few_seats": "only few seats available"
+        }
+      ]
+    }
+  ]
+}

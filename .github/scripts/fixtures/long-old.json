@@ -1,0 +1,28 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "Mastering Software Architectures",
+      "title": "Mastering Software Architectures training",
+      "dates": []
+    },
+    {
+      "id": "improve",
+      "short_title": "IMPROVE your architecture",
+      "title": "IMPROVE your architecture training",
+      "dates": []
+    },
+    {
+      "id": "req4arc",
+      "short_title": "Requirements for Architects",
+      "title": "Requirements for Architects training",
+      "dates": []
+    },
+    {
+      "id": "adoc",
+      "short_title": "AsciiDoc for Architects",
+      "title": "AsciiDoc for Architects training",
+      "dates": []
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "MSA",
+      "title": "MSA training",
+      "dates": [
+        {
+          "code": "26-12 MSA",
+          "id": "msa-dez-2026",
+          "start": "2026-12-01",
+          "end": "2026-12-04",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "full",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR"
+          },
+          "pricing": "2.890 €",
+          "trainers": [
+            "Gernot Starke"
+          ],
+          "url": "https://www.arc42.de/termine#msa-dez-2026"
+        },
+        {
+          "code": "28-01 MSA",
+          "id": "msa-jan-2028",
+          "start": "2028-01-10",
+          "end": "2028-01-13",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        }
+      ]
+    },
+    {
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "ADOC training",
+      "dates": [
+        {
+          "code": "27-10 ADOC-EN",
+          "id": "adoc-oct-2027",
+          "start": "2027-11-02",
+          "end": "2027-11-03",
+          "language": "en",
+          "format": "online",
+          "status": "open",
+          "price": {
+            "amount": 1200,
+            "currency": "EUR"
+          },
+          "pricing": "1.200 €",
+          "trainers": [
+            "Ralf D. Müller"
+          ],
+          "url": "https://www.arc42.de/termine#adoc-oct-2027"
+        }
+      ]
+    }
+  ]
+}

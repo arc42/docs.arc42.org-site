@@ -1,0 +1,38 @@
+{
+  "courses": [
+    {
+      "blurb": "How to efficiently and effectively create architecture documentation.",
+      "certification": "iSAQB CPSA-A (Advanced)",
+      "url_en": "https://trainings.arc42.org/courses/adoc/",
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "Architecture Documentation",
+      "url": "https://www.arc42.de/info-adoc/",
+      "trainers": [
+        "Peter Hruschka",
+        "Gernot Starke"
+      ],
+      "credit_points": {
+        "methodical": 20
+      },
+      "credits": "20 methodische Punkte",
+      "dates": [
+        {
+          "pricing": "1.200 €",
+          "price": {
+            "amount": 1200,
+            "currency": "EUR"
+          },
+          "id": "adoc-mar-2027",
+          "code": "27-03 ADOC",
+          "start": "2027-03-08",
+          "end": "2027-03-09",
+          "language": "de",
+          "format": "online",
+          "status": "open",
+          "url": "https://www.arc42.de/termine#adoc-mar-2027"
+        }
+      ]
+    }
+  ]
+}

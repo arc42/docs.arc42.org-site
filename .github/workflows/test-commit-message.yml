@@ -1,0 +1,15 @@
+name: Test commit-message generator
+on:
+  pull_request:
+    paths:
+      - .github/trainings-commit-message.jq
+      - .github/scripts/**
+      - .github/workflows/refresh-trainings.yml
+      - .github/workflows/test-commit-message.yml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # jq is preinstalled on the GitHub runners; the script needs nothing else.
+      - run: .github/scripts/test-commit-message.sh

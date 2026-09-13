@@ -1,0 +1,38 @@
+{
+  "courses": [
+    {
+      "blurb": "Two expert trainers at all times, highly practical and pragmatic.",
+      "certification": "iSAQB CPSA-Foundation",
+      "url_en": "https://trainings.arc42.org/courses/msa/",
+      "id": "msa",
+      "short_title": "MSA",
+      "title": "Mastering Software Architectures",
+      "url": "https://www.arc42.de/info-msa/",
+      "trainers": [
+        "Peter Hruschka",
+        "Gernot Starke"
+      ],
+      "credit_points": null,
+      "credits": null,
+      "dates": [
+        {
+          "city": "München",
+          "country": "DE",
+          "pricing": "2.890 €",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR"
+          },
+          "id": "msa-dez-2026",
+          "code": "26-12 MSA",
+          "start": "2026-12-01",
+          "end": "2026-12-04",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "url": "https://www.arc42.de/termine#msa-dez-2026"
+        }
+      ]
+    }
+  ]
+}

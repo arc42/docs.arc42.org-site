@@ -1,0 +1,28 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "Mastering SW Architectures",
+      "title": "Mastering SW Architectures training",
+      "dates": []
+    },
+    {
+      "id": "improve",
+      "short_title": "IMPROVE",
+      "title": "IMPROVE training",
+      "dates": []
+    },
+    {
+      "id": "req4arc",
+      "short_title": "Req4Arc",
+      "title": "Req4Arc training",
+      "dates": []
+    },
+    {
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "ADOC training",
+      "dates": []
+    }
+  ]
+}
