@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-13T17:43:30+00:00",
+  "generated": "2026-09-14T10:54:24+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -298,26 +298,6 @@
         "Gernot Starke"
       ],
       "dates": [
-        {
-          "city": "Frankfurt/Main",
-          "country": "DE",
-          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
-          "price": {
-            "amount": 2200,
-            "currency": "EUR",
-            "alumni": 2050
-          },
-          "few_seats": "only few seats available",
-          "seats_limited": true,
-          "id": "req4arc-sep-2026",
-          "code": "26-09 Req4Arc",
-          "start": "2026-09-15",
-          "end": "2026-09-17",
-          "language": "de",
-          "format": "public",
-          "status": "open",
-          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
-        },
         {
           "city": "München",
           "country": "DE",
