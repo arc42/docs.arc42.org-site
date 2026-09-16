@@ -1,0 +1,69 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "MSA",
+      "title": "MSA training",
+      "dates": [
+        {
+          "code": "25-11 MSA",
+          "id": "msa-nov-2025",
+          "start": "2025-11-25",
+          "end": "2025-11-28",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        },
+        {
+          "code": "27-06 MSA-EN",
+          "id": "msa-06-2027",
+          "start": "2027-06-08",
+          "end": "2027-06-11",
+          "language": "en",
+          "format": "online",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        },
+        {
+          "code": "26-12 MSA",
+          "id": "msa-dez-2026",
+          "start": "2026-12-01",
+          "end": "2026-12-04",
+          "city": "München",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR"
+          },
+          "pricing": "2.890 €",
+          "trainers": [
+            "Gernot Starke"
+          ],
+          "url": "https://www.arc42.de/termine#msa-dez-2026"
+        }
+      ]
+    }
+  ]
+}

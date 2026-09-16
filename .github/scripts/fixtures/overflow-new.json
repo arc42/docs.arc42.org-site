@@ -1,0 +1,43 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "Mastering Software Architectures for Large Organisations",
+      "title": "Mastering Software Architectures for Large Organisations training",
+      "dates": [
+        {
+          "code": "27-02 MSA",
+          "id": "msa-feb-2027",
+          "start": "2027-02-01",
+          "end": "2027-02-04",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "2.200 €"
+        },
+        {
+          "code": "27-07 MSA",
+          "id": "msa-jul-2027",
+          "start": "2027-07-05",
+          "end": "2027-07-08",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "2.200 €"
+        }
+      ]
+    }
+  ]
+}

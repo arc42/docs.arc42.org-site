@@ -1,0 +1,112 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "Mastering Software Architectures",
+      "title": "Mastering Software Architectures training",
+      "dates": [
+        {
+          "code": "27-01 Master",
+          "id": "msa-x0",
+          "start": "2027-01-05",
+          "end": "2027-01-07",
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        }
+      ]
+    },
+    {
+      "id": "improve",
+      "short_title": "IMPROVE your architecture",
+      "title": "IMPROVE your architecture training",
+      "dates": [
+        {
+          "code": "27-02 IMPROV",
+          "id": "improve-x1",
+          "start": "2027-02-05",
+          "end": "2027-02-07",
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        }
+      ]
+    },
+    {
+      "id": "req4arc",
+      "short_title": "Requirements for Architects",
+      "title": "Requirements for Architects training",
+      "dates": [
+        {
+          "code": "27-03 Requir",
+          "id": "req4arc-x2",
+          "start": "2027-03-05",
+          "end": "2027-03-07",
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        }
+      ]
+    },
+    {
+      "id": "adoc",
+      "short_title": "AsciiDoc for Architects",
+      "title": "AsciiDoc for Architects training",
+      "dates": [
+        {
+          "code": "27-04 AsciiD",
+          "id": "adoc-x3",
+          "start": "2027-04-05",
+          "end": "2027-04-07",
+          "city": "Frankfurt/Main",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "Normalpreis: 2.200 €",
+          "trainers": [
+            "Peter Hruschka"
+          ],
+          "url": "https://www.arc42.de/termine#req4arc-sep-2026"
+        }
+      ]
+    }
+  ]
+}

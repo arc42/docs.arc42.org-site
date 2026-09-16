@@ -48,5 +48,30 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add _data/trainings.json
-          git commit -m "chore: refresh training dates from trainings.arc42.org"
+
+          # Describe what actually moved, so the history is readable without
+          # diffing every commit. The generator gets today's date as a parameter
+          # because it has to tell "this date expired" from "this date was
+          # withdrawn", and a pinned date is what makes that testable
+          # (.github/scripts/test-commit-message.sh).
+          #
+          # Publishing matters, a nice subject line does not: this repo once went
+          # a week without a Pages build because one step failed. So every failure
+          # mode of the generator - bad jq, unexpected payload, missing file, no
+          # output - falls back to the old generic message instead of aborting the
+          # step. `|| true` inside the substitution keeps the runner's `set -e`
+          # (GitHub runs this with `bash -e`) from killing the job on a non-zero
+          # exit, and the emptiness check covers the rest.
+          fallback="chore: refresh training dates from trainings.arc42.org"
+          message=$(jq -n -r --arg today "$(date -u +%Y-%m-%d)" \
+            --slurpfile old /tmp/old.json \
+            --slurpfile new /tmp/new.json \
+            -f .github/trainings-commit-message.jq 2>/tmp/commit-message.err || true)
+          if [ -z "$(printf '%s' "$message" | tr -d '[:space:]')" ]; then
+            echo "Commit-message generator produced nothing - using the generic subject:"
+            cat /tmp/commit-message.err || true
+            message="$fallback"
+          fi
+
+          printf '%s\n' "$message" | git commit -F - || git commit -m "$fallback"
           git push

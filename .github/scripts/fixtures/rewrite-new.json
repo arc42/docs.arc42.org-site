@@ -1,0 +1,32 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "MSA",
+      "title": "MSA training",
+      "dates": [
+        {
+          "code": "26-12 MSA",
+          "id": "msa-dez-2026",
+          "start": "2026-12-08",
+          "end": "2026-12-11",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "full",
+          "price": {
+            "amount": 2990,
+            "currency": "EUR"
+          },
+          "pricing": "2.890 €",
+          "trainers": [
+            "Gernot Starke"
+          ],
+          "url": "https://www.arc42.de/termine#msa-dez-2026",
+          "seats_limited": true
+        }
+      ]
+    }
+  ]
+}

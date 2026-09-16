@@ -1,0 +1,27 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "Mastering SW\nArchitectures",
+      "title": "x",
+      "dates": [
+        {
+          "code": "27-05 MSA",
+          "id": "msa-mai-2027",
+          "start": "2027-05-03",
+          "end": "2027-05-06",
+          "city": "Mannheim / Frankfurt\n(t.b.d., depending on how many people register in time)",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2890,
+            "currency": "EUR"
+          },
+          "pricing": "2.890 €"
+        }
+      ]
+    }
+  ]
+}

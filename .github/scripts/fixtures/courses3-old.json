@@ -1,0 +1,22 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "MSA",
+      "title": "MSA training",
+      "dates": []
+    },
+    {
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "ADOC training",
+      "dates": []
+    },
+    {
+      "id": "improve",
+      "short_title": "IMPROVE",
+      "title": "IMPROVE training",
+      "dates": []
+    }
+  ]
+}

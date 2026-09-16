@@ -1,0 +1,73 @@
+{
+  "courses": [
+    {
+      "id": "msa",
+      "short_title": "MSA",
+      "title": "MSA training",
+      "dates": [
+        {
+          "code": "27-02 MSA",
+          "id": "msa-feb-2027",
+          "start": "2027-02-01",
+          "end": "2027-02-04",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "2.200 €"
+        }
+      ]
+    },
+    {
+      "id": "adoc",
+      "short_title": "ADOC",
+      "title": "ADOC training",
+      "dates": [
+        {
+          "code": "27-03 ADOC",
+          "id": "adoc-mar-2027",
+          "start": "2027-03-08",
+          "end": "2027-03-09",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "2.200 €"
+        }
+      ]
+    },
+    {
+      "id": "improve",
+      "short_title": "IMPROVE",
+      "title": "IMPROVE training",
+      "dates": [
+        {
+          "code": "27-04 IMPROVE",
+          "id": "improve-apr-2027",
+          "start": "2027-04-19",
+          "end": "2027-04-20",
+          "city": "Köln",
+          "country": "DE",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "price": {
+            "amount": 2200,
+            "currency": "EUR"
+          },
+          "pricing": "2.200 €"
+        }
+      ]
+    }
+  ]
+}
