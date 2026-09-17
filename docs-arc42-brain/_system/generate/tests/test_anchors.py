@@ -107,6 +107,9 @@ def test_the_include_injected_examples_heading_takes_the_bare_id():
     assert assign_anchors(["Examples", "Examples"]) == ["examples", "examples-1"]
 
 
-def test_id_less_headings_do_not_join_the_duplicate_counter():
-    # No id is emitted, so there is nothing for a later heading to collide with.
+def test_id_less_headings_stay_empty():
+    # Deliberate divergence, unreachable from the corpus: kramdown counts the
+    # empty id like any other (kramdown-parser-gfm 1.1.0 gfm.rb:113), so a
+    # second id-less heading on one page would be "-1" there. No page in
+    # _pages/ or the vault has two, and no id is emitted for them anyway.
     assert assign_anchors(["...", "Content", "..."]) == ["", "content", ""]
