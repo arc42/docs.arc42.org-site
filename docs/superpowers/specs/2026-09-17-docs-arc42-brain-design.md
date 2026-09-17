@@ -1,6 +1,6 @@
 # docs-arc42-brain — design
 
-Status: draft for review · 2026-09-17 · branch `docs-arc42-brain`
+Status: phase 1 implemented · 2026-09-17 · branch docs-arc42-brain
 
 ## 1. Purpose
 

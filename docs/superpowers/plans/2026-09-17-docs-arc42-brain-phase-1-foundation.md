@@ -2675,7 +2675,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Files:**
 - Modify: `docs/superpowers/specs/2026-09-17-docs-arc42-brain-design.md` (status line only)
 
-- [ ] **Step 1: Run every check**
+- [x] **Step 1: Run every check**
 
 ```bash
 make brain-test
@@ -2685,9 +2685,11 @@ make check
 
 Expected: tests pass; lint zero errors; `make check` builds the Jekyll site in Docker and passes its sanity checks, proving the `docs`/`docs-arc42-brain` excludes keep the vault out of `_site/`. Confirm with `ls _site | grep -c brain` → `0`.
 
-- [ ] **Step 2: Open the vault in Obsidian** (`open -a Obsidian docs-arc42-brain` or File → Open folder as vault) and check: `section-9` renders its callouts, `tip-9-5` shows its related links, the graph view connects tips, terms, examples and section 9. Record any rendering problem as an issue page; do not fix the schema ad hoc.
+- [x] **Step 2: Open the vault in Obsidian** (`open -a Obsidian docs-arc42-brain` or File → Open folder as vault) and check: `section-9` renders its callouts, `tip-9-5` shows its related links, the graph view connects tips, terms, examples and section 9. Record any rendering problem as an issue page; do not fix the schema ad hoc.
 
-- [ ] **Step 3: Mark the spec**
+  Adjusted: driven non-interactively, so the GUI check was replaced with a read-only structural stand-in (confirmed `section-9.md` has `> [!arc42-help]`, `tip-9-5.md` has a non-empty `related:` list, and cited the lint's `0 errors` as proof every wikilink resolves). The Obsidian rendering/graph-view check itself is left to the human.
+
+- [x] **Step 3: Mark the spec**
 
 Change the spec's first status line to `Status: phase 1 implemented · 2026-09-17 · branch docs-arc42-brain` and commit:
 
@@ -2698,7 +2700,7 @@ git commit -m "docs: mark brain spec phase 1 as implemented
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
 
-- [ ] **Step 4: Report** the phase exit to the user: number of pages by type, open issues, lint warnings, and what phase 2 (generator + parity check on section 9) needs first.
+- [x] **Step 4: Report** the phase exit to the user: number of pages by type, open issues, lint warnings, and what phase 2 (generator + parity check on section 9) needs first.
 
 ---
 
