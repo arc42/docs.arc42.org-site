@@ -1442,7 +1442,7 @@ Conversion rules (spec §4.3, §4.4):
 
 Frontmatter key order matters for humans reading the vault; the emitter writes keys in the order given below and never sorts.
 
-- [ ] **Step 1: Write the failing importer tests**
+- [x] **Step 1: Write the failing importer tests**
 
 Create `tests/test_importer.py`:
 
@@ -1570,12 +1570,12 @@ Add an empty `tests/__init__.py` so `from tests.test_raw import …` works:
 touch docs-arc42-brain/_system/generate/tests/__init__.py
 ```
 
-- [ ] **Step 2: Run to verify failure**
+- [x] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_importer.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.importer'`
 
-- [ ] **Step 3: Implement `importer.py`**
+- [x] **Step 3: Implement `importer.py`**
 
 ```python
 """Convert a raw/ batch (see raw.py) into draft wiki pages plus a source record.
@@ -1819,7 +1819,7 @@ def import_batch(vault: Path, batch_name: str, today: str) -> ImportReport:
 
 The `id` of the source record must be `SRC-NNN`; with `source_slug = "SRC-001-section-9-all"` the expression `source_slug.split("-section-")[0]` gives `SRC-001`. Keep the batch naming `section-N-<what>` so this holds.
 
-- [ ] **Step 4: Add the `import` subcommand to `cli.py`**
+- [x] **Step 4: Add the `import` subcommand to `cli.py`**
 
 ```python
 def cmd_import(args: argparse.Namespace) -> int:
@@ -1844,12 +1844,12 @@ In `build_parser()`:
     i.set_defaults(func=cmd_import)
 ```
 
-- [ ] **Step 5: Run all tests**
+- [x] **Step 5: Run all tests**
 
 Run: `make brain-test`
 Expected: `40 passed` (1 smoke + 6 wikilinks + 6 anchors + 5 parse + 10 lint + 4 raw + 8 importer). If the count differs, every file must still report 0 failures.
 
-- [ ] **Step 6: Add the `brain-import` target**
+- [x] **Step 6: Add the `brain-import` target**
 
 Append to `brain.mk` (add `brain-import` to `.PHONY`):
 
@@ -1861,7 +1861,7 @@ brain-import: ## Convert a raw batch into draft wiki pages (BATCH=section-9-all)
 	$(BRAINGEN) import --vault $(BRAIN_DIR) --batch $(BATCH)
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add docs-arc42-brain/_system

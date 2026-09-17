@@ -26,6 +26,18 @@ def cmd_raw(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_import(args: argparse.Namespace) -> int:
+    from datetime import date
+
+    from .importer import import_batch
+
+    report = import_batch(args.vault, args.batch, args.today or date.today().isoformat())
+    for p in report.written:
+        print(f"wrote {p.relative_to(args.vault)}")
+    print(f"source record: {report.source_slug}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="braingen", description="docs-arc42-brain tooling")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -38,6 +50,11 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--section", type=int, required=True)
     r.add_argument("--what", choices=["all", "page", "content"], default="all")
     r.set_defaults(func=cmd_raw)
+    i = sub.add_parser("import", help="convert a raw batch into draft wiki pages")
+    i.add_argument("--vault", type=Path, required=True)
+    i.add_argument("--batch", required=True, help="batch folder name under raw/, e.g. section-9-all")
+    i.add_argument("--today", default=None, help="override the date written into created/updated")
+    i.set_defaults(func=cmd_import)
     return ap
 
 
