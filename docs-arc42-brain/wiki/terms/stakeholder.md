@@ -2,7 +2,7 @@
 id: stakeholder
 type: term
 title: Stakeholder
-status: draft
+status: review
 created: '2026-09-17'
 updated: '2026-09-17'
 sources:

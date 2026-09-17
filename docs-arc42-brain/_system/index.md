@@ -70,7 +70,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies of section 9 carry legacy raw HTML
 - [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
 - [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
-- [ISS-010](../wiki/issues/ISS-010-terms-cannot-leave-draft-with-legacy-tags.md) — open, contradiction: term pages cannot leave draft because the lint forbids legacy-tags
+- [ISS-010](../wiki/issues/ISS-010-terms-cannot-leave-draft-with-legacy-tags.md) — resolved 2026-09-17, contradiction: term pages cannot leave draft because the lint forbids legacy-tags — L13 now exempts type `term`
 
 ## Sources
 

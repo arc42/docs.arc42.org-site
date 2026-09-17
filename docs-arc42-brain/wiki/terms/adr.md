@@ -2,7 +2,7 @@
 id: adr
 type: term
 title: Architecture Decision Record (ADR)
-status: draft
+status: review
 created: '2026-09-17'
 updated: '2026-09-17'
 sources:

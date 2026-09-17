@@ -2,7 +2,7 @@
 id: quality-requirement
 type: term
 title: Quality requirement
-status: draft
+status: review
 created: '2026-09-17'
 updated: '2026-09-17'
 sources:

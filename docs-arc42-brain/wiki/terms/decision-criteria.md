@@ -2,7 +2,7 @@
 id: decision-criteria
 type: term
 title: Decision criteria
-status: draft
+status: review
 created: '2026-09-17'
 updated: '2026-09-17'
 sources:

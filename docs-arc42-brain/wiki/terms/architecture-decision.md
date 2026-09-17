@@ -2,7 +2,7 @@
 id: architecture-decision
 type: term
 title: Architecture decision
-status: draft
+status: review
 created: '2026-09-17'
 updated: '2026-09-17'
 sources:
