@@ -875,7 +875,7 @@ def test_example_category_must_be_referenced_exactly_once(tmp_path):
     assert "example-category 'decisions' is referenced by 2 directives" in w
 ```
 
-- [x] **Step 2: Run to verify failure**
+- [ ] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_lint.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.lint'`
@@ -1251,7 +1251,7 @@ def test_raw_unknown_section(tmp_path):
         make_raw(site, tmp_path / "vault", 13, "page")
 ```
 
-- [x] **Step 2: Run to verify failure**
+- [ ] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_raw.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.raw'`
@@ -1570,7 +1570,7 @@ Add an empty `tests/__init__.py` so `from tests.test_raw import …` works:
 touch docs-arc42-brain/_system/generate/tests/__init__.py
 ```
 
-- [x] **Step 2: Run to verify failure**
+- [ ] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_importer.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.importer'`
