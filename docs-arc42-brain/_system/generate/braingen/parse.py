@@ -29,12 +29,29 @@ LIQUID_RE = re.compile(r"\{\{|\{%")
 CALLOUT_PREFIX_RE = re.compile(r"^(?:>[ \t]?)+")
 
 
+# Headings the generated page gains from the Jekyll includes, which the brain
+# never writes but which take part in the page's anchor numbering all the same:
+# `_includes/example.md` emits "### Examples" at every `%% examples: … %%`
+# position, and `_includes/further-info.md` emits the fixed foot (its own
+# "## Practical Tips" and "### Related Questions", then "### Complete Examples"
+# from `_includes/examples-link.html variant="block"`).
+INCLUDE_EXAMPLES_HEADING = (3, "Examples")
+INCLUDE_FOOT_HEADINGS = [(2, "Practical Tips"), (3, "Related Questions"), (3, "Complete Examples")]
+
+
 @dataclass
 class Heading:
     level: int
     text: str
     anchor: str
     line: int
+    # True for a heading that no line of the brain contains: the generator
+    # injects it via a Jekyll include (see INCLUDE_* above). It is a real
+    # heading on the rendered page, so it consumes an anchor and satisfies a
+    # `[[section-N#Practical Tips]]` link, but the emitter must never write it
+    # into the page body. `line` is then the body line the include sits on, or
+    # one past the body for the foot.
+    synthetic: bool = False
 
 
 @dataclass
@@ -105,16 +122,24 @@ def parse_page(path: Path) -> Page:
     post = frontmatter.load(path)
     body = post.content
     heads, dirs, liquid = _scan_body(body)
-    anchors = assign_anchors([t for _, t, _ in heads])
+    ptype = str(post.get("type", "") or "")
+    items: list[tuple[int, str, int, bool]] = [(l, t, n, False) for l, t, n in heads]
+    if ptype == "section":
+        lvl, txt = INCLUDE_EXAMPLES_HEADING
+        items += [(lvl, txt, d.line, True) for d in dirs if d.name == "examples"]
+        items.sort(key=lambda it: it[2])
+        foot = len(body.splitlines()) + 1
+        items += [(l, t, foot + i, True) for i, (l, t) in enumerate(INCLUDE_FOOT_HEADINGS)]
+    anchors = assign_anchors([t for _, t, _, _ in items])
     page = Page(
         slug=path.stem,
         id=str(post.get("id", "") or ""),
-        type=str(post.get("type", "") or ""),
+        type=ptype,
         path=path,
         meta=dict(post.metadata),
         body=body,
     )
-    page.headings = [Heading(l, t, a, n) for (l, t, n), a in zip(heads, anchors)]
+    page.headings = [Heading(l, t, a, n, s) for (l, t, n, s), a in zip(items, anchors)]
     page.directives = dirs
     page.images = IMAGE_RE.findall(body)
     page.body_links = parse_wikilinks(body)

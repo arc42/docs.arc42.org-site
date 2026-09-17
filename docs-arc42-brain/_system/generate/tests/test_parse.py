@@ -76,16 +76,72 @@ def test_parse_page_extracts_meta_headings_links_images(tmp_path):
 def test_headings_and_directives_inside_callouts_and_not_inside_fences(tmp_path):
     p = write(tmp_path, "wiki/sections/section-9.md", SECTION)
     page = parse_page(p)
-    assert [(h.level, h.text) for h in page.headings] == [
-        (1, "9. Architecture Decisions"),
-        (2, "Content"),
-        (2, "Background (on ADRs)"),
+    # The three headings the brain writes, plus the ones the Jekyll includes
+    # inject: "### Examples" at the `%% examples: … %%` position and the fixed
+    # foot. See _includes/example.md, further-info.md and examples-link.html.
+    assert [(h.level, h.text, h.synthetic) for h in page.headings] == [
+        (1, "9. Architecture Decisions", False),
+        (2, "Content", False),
+        (3, "Examples", True),
+        (2, "Background (on ADRs)", False),
+        (2, "Practical Tips", True),
+        (3, "Related Questions", True),
+        (3, "Complete Examples", True),
     ]
     assert [(d.name, d.arg) for d in page.directives] == [
         ("examples", "decisions"),
         ("examples-link", None),
     ]
     assert page.has_liquid is False
+
+
+SECTION_WITH_OWN_EXAMPLES_HEADING = """---
+id: section-10
+type: section
+title: 10 - Quality requirements
+status: draft
+---
+
+# 10. Quality Requirements
+
+%% examples: quality %%
+
+## Examples
+
+Excerpts from real documents.
+"""
+
+
+def test_body_examples_heading_comes_second_and_gets_the_suffix(tmp_path):
+    """_site/section-10 renders the include's heading as `examples` and the
+    body's own `## Examples` as `examples-1`; the brain only sees a directive."""
+    p = write(tmp_path, "wiki/sections/section-10.md", SECTION_WITH_OWN_EXAMPLES_HEADING)
+    page = parse_page(p)
+    assert [(h.text, h.anchor, h.synthetic) for h in page.headings] == [
+        ("10. Quality Requirements", "10-quality-requirements", False),
+        ("Examples", "examples", True),
+        ("Examples", "examples-1", False),
+        ("Practical Tips", "practical-tips", True),
+        ("Related Questions", "related-questions", True),
+        ("Complete Examples", "complete-examples", True),
+    ]
+
+
+def test_section_foot_headings_are_present_so_a_wikilink_heading_resolves(tmp_path):
+    p = write(tmp_path, "wiki/sections/section-10.md", SECTION_WITH_OWN_EXAMPLES_HEADING)
+    page = parse_page(p)
+    foot = [h for h in page.headings if h.text == "Practical Tips"]
+    assert len(foot) == 1 and foot[0].level == 2 and foot[0].synthetic is True
+    # and it sits past the body, so the emitter can tell it is not body content
+    assert foot[0].line > max(h.line for h in page.headings if not h.synthetic)
+
+
+def test_only_section_pages_gain_the_injected_headings(tmp_path):
+    body = "---\nid: 9-1\ntype: tip\n---\n\n## Examples\n\n%% examples: decisions %%\n"
+    page = parse_page(write(tmp_path, "wiki/tips/tip-9-1.md", body))
+    assert [(h.text, h.anchor, h.synthetic) for h in page.headings] == [
+        ("Examples", "examples", False),
+    ]
 
 
 def test_liquid_outside_fences_is_detected(tmp_path):

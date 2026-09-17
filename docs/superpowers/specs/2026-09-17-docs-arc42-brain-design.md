@@ -126,11 +126,14 @@ A section page in the brain is one markdown file. Its body is the ordered
 sequence of what the site renders today:
 
 - `## 5.1 Whitebox Overall System` — a real subsection heading. The generator
-  emits it unchanged. Its anchor is the kramdown auto-id of the heading text
-  (`whitebox-overall-system`), computed by the generator with kramdown's rules
-  (lowercase, drop everything before the first letter, non-alphanumerics to
-  hyphens). This is what `[[section-5#5.1 Whitebox Overall System]]` resolves to
-  on the site: `/section-5/#whitebox-overall-system`.
+  emits it unchanged. Its anchor is the heading id the site produces
+  (`51-whitebox-overall-system`), computed by the generator with the rules of
+  kramdown's **GFM** parser — the site runs kramdown with `input: GFM` — which
+  are GitHub's, not kramdown's own: take the rendered heading text, downcase,
+  delete every character that is not a word character, hyphen or space, then
+  turn each space into one hyphen, so the leading number survives. This is what
+  `[[section-5#5.1 Whitebox Overall System]]` resolves to on the site:
+  `/section-5/#51-whitebox-overall-system`.
 - Guidance is an Obsidian callout: `> [!arc42-help]` followed by the markdown
   that today sits inside `<div class="arc42-help" markdown="1">`. Obsidian
   renders it as a callout; the generator emits the div. Inner headings
@@ -170,6 +173,15 @@ valid link targets. Headings that repeat on a page (`Content`, `Motivation`,
 `Form`) get kramdown suffixes (`content-1`) and are not addressable; the lint
 rejects a `[[section-N#heading]]` whose heading is not unique on that page.
 Placeholder headings (`6.1 _<Runtime Scenario 1>_`) are not link targets.
+
+Headings the includes inject count as headings of the page even though no line
+of the brain contains them: `example.md` emits `### Examples` at every
+`%% examples: … %%` position, and the foot emits `## Practical Tips`,
+`### Related Questions` and `### Complete Examples`. The parser carries them as
+synthetic headings on section pages, so anchors are numbered as the site
+numbers them (section 10's own `## Examples` really is `examples-1`) and
+`[[section-N#Practical Tips]]` resolves. The generator must not write them into
+the body — the includes already do.
 
 ### 4.4 Liquid and images policy
 
