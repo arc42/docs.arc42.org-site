@@ -1883,7 +1883,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 No code in this task; the deliverable is reviewed for consistency with the lint (Task 4) and the spec. Templates live outside `wiki/`, so the lint never reads them.
 
-- [ ] **Step 1: Write `CLAUDE.md`**
+- [x] **Step 1: Write `CLAUDE.md`**
 
 ```markdown
 # docs-arc42-brain — agent schema
@@ -1972,7 +1972,7 @@ make brain-test                      unit tests of the tooling
 ```
 ```
 
-- [ ] **Step 2: Write `README.md`**
+- [x] **Step 2: Write `README.md`**
 
 ```markdown
 # docs-arc42-brain
@@ -1988,7 +1988,7 @@ Code at it and it reads `CLAUDE.md`. All make targets run from the repo root:
 Design: `../docs/superpowers/specs/2026-09-17-docs-arc42-brain-design.md`.
 ```
 
-- [ ] **Step 3: Write the nine templates**
+- [x] **Step 3: Write the nine templates**
 
 `_templates/section.md`:
 
@@ -2213,7 +2213,7 @@ ingested-pages: []                # ["[[section-9]]", …]
 <One line. Narrative belongs in _system/log.md.>
 ```
 
-- [ ] **Step 4: Write the ADRs**
+- [x] **Step 4: Write the ADRs**
 
 `_system/adr/0000-template.md`:
 
@@ -2318,7 +2318,7 @@ Section pages today mix markdown with Jekyll includes and `<div class="arc42-hel
 Pages render in Obsidian. The importer and the generator are inverses of each other, which is what the parity check relies on.
 ```
 
-- [ ] **Step 5: Write the workflows**
+- [x] **Step 5: Write the workflows**
 
 `_system/workflows/bootstrap.md`:
 
@@ -2435,7 +2435,7 @@ pages to `published`, `make generate`, delete the hand-written originals in
 open one PR per section. See the spec §5 and §6.
 ```
 
-- [ ] **Step 6: Write `index.md` and `log.md`**
+- [x] **Step 6: Write `index.md` and `log.md`**
 
 `_system/index.md`:
 
@@ -2484,7 +2484,7 @@ Append-only. One entry per operation, prefix exact so it stays greppable:
 -->
 ```
 
-- [ ] **Step 7: Verify and commit**
+- [x] **Step 7: Verify and commit**
 
 Run: `make brain-lint && make brain-test`
 Expected: lint `0 errors` (templates are outside `wiki/`), tests pass.
