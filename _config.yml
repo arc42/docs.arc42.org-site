@@ -138,6 +138,8 @@ exclude:
   - .claude
   - .cursor
   - .impeccable
+  - docs
+  - docs-arc42-brain
   - .github
   - .github/agents
   - agents
