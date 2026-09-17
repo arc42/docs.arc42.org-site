@@ -1,0 +1,14 @@
+section: 1
+what: page
+name: Introduction and Goals
+category: requirements
+permalink: /section-1/
+posts_dir: 01-requirements
+order: 5
+title: 1 - Introduction and Goals
+example_categories:
+- overview
+- qualitygoals
+files:
+- pages/section-1.md
+- assets/sections/01/iso-25010-2023-topics-en.svg

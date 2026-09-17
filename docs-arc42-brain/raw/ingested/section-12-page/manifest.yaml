@@ -1,0 +1,12 @@
+section: 12
+what: page
+name: Glossary
+category: glossary
+permalink: /section-12/
+posts_dir: 12-glossary
+order: 16
+title: 12 - Glossary
+example_categories:
+- glossary
+files:
+- pages/section-12.md

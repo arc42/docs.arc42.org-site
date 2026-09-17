@@ -1,0 +1,13 @@
+section: 5
+what: page
+name: Building Block View
+category: building-block
+permalink: /section-5/
+posts_dir: 05-buildingblocks
+order: 9
+title: 5 - Building block view
+example_categories:
+- building-block
+files:
+- pages/section-5.md
+- assets/sections/05/building-block-hierarchy.png

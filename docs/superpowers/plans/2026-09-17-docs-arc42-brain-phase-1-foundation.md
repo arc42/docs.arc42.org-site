@@ -2507,7 +2507,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 Follow `_system/workflows/bootstrap.md`. This task is the first real run of the tooling; anything it chokes on is a bug to fix in Tasks 5-6 (with a test) before continuing.
 
-- [ ] **Step 1: Raw and import all twelve section pages**
+- [x] **Step 1: Raw and import all twelve section pages**
 
 ```bash
 for n in 1 2 3 4 5 6 7 8 9 10 11 12; do
@@ -2519,18 +2519,18 @@ ls docs-arc42-brain/wiki/sections
 
 Expected: twelve files `section-1.md` … `section-12.md`; `wiki/assets/sections/` contains `01/iso-25010-2023-topics-en.svg`, `05/building-block-hierarchy.png`, `08/concepts-EN.drawio.png`, `10/arc42-system-qualities-overview.svg`.
 
-- [ ] **Step 2: Inspect the conversion of two irregular pages**
+- [x] **Step 2: Inspect the conversion of two irregular pages**
 
 Run: `sed -n 1,60p docs-arc42-brain/wiki/sections/section-5.md` and `grep -n '%%\|\[!arc42-help\]\|{%\|{{' docs-arc42-brain/wiki/sections/section-10.md docs-arc42-brain/wiki/sections/section-3.md`
 
 Expected: callouts open with `> [!arc42-help]` at every former div, including the two under 5.1; exactly one `%% examples: … %%` per former include (section 3: `business-context` and `technical-context`; section 1: `overview`, `qualitygoals`); one `%% examples-link %%` per page; no `{%` or `{{` anywhere; section 10's image reads `../assets/sections/10/arc42-system-qualities-overview.svg`. If anything differs, fix the importer with a failing test first, delete `wiki/sections/`, `wiki/assets/sections/`, `raw/sources/`, `raw/section-*`, and rerun Step 1.
 
-- [ ] **Step 3: Lint**
+- [x] **Step 3: Lint**
 
 Run: `make brain-lint`
 Expected: zero errors. Warnings are acceptable only if they are reciprocity warnings (there should be none yet).
 
-- [ ] **Step 4: Create keyword pages**
+- [x] **Step 4: Create keyword pages**
 
 From `_templates/keyword.md`, with `status: draft`, `created`/`updated` = today, `sources: []` (keywords have no batch source; their meaning comes from how the site uses them), `related: []`. Files and content:
 
@@ -2540,7 +2540,7 @@ From `_templates/keyword.md`, with `status: draft`, `created`/`updated` = today,
 `wiki/keywords/example.md`: `id: example`, `title: example`, `description: The page shows a worked example rather than guidance`, `featured: false`.
 `wiki/keywords/tooling.md`: `id: tooling`, `title: tooling`, `description: The page is about tools that support the practice`, `featured: false`.
 
-- [ ] **Step 5: Create system pages**
+- [x] **Step 5: Create system pages**
 
 From `_templates/system.md`, `status: draft`, `sources: []`:
 
@@ -2549,7 +2549,7 @@ From `_templates/system.md`, `status: draft`, `sources: []`:
 `wiki/systems/mama.md`: `id: mama`, `title: MaMa`, `name: <full name from _examples/*mama*>`, body from those files.
 `wiki/systems/status.md`: read `_examples/05-buildingblock-example-status.md` first. If it documents a real system, create the page. If `status` is not a system, do not create the page; raise `wiki/issues/ISS-001-status-example-system.md` instead (kind `question`, `related: []` because the example is not a wiki page yet, name the file in the body) and remove `"status"` from `SYSTEM_TOKENS` in `importer.py`, updating `test_convert_example_maps_category_system_and_images` accordingly.
 
-- [ ] **Step 6: Archive the batches and fix `origin`**
+- [x] **Step 6: Archive the batches and fix `origin`**
 
 ```bash
 cd docs-arc42-brain
@@ -2564,7 +2564,7 @@ grep -h '^origin:' docs-arc42-brain/raw/sources/*.md
 
 Expected: twelve `origin: raw/ingested/section-N-page/` lines; `docs-arc42-brain/raw/` top level holds only `ingested/`, `sources/`, `.gitkeep`.
 
-- [ ] **Step 7: Fill the index and log**
+- [x] **Step 7: Fill the index and log**
 
 In `_system/index.md` add under `## Sections` one line per page in the form
 `- [section-9](../wiki/sections/section-9.md) — 9 - Architecture decisions`, under `## Keywords` and `## Systems` the same pattern, and under `## Sources` one line per `SRC`. Append to `_system/log.md`:
@@ -2578,7 +2578,7 @@ In `_system/index.md` add under `## Sections` one line per page in the form
 
 Use the actual date of the run.
 
-- [ ] **Step 8: Lint and commit**
+- [x] **Step 8: Lint and commit**
 
 Run: `make brain-lint && make brain-test`
 Expected: zero errors.

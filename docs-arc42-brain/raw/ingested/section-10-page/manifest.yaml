@@ -1,0 +1,13 @@
+section: 10
+what: page
+name: Quality Requirements
+category: quality
+permalink: /section-10/
+posts_dir: 10-quality
+order: 14
+title: 10 - Quality
+example_categories:
+- quality
+files:
+- pages/section-10.md
+- assets/sections/10/arc42-system-qualities-overview.svg

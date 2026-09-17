@@ -1,0 +1,12 @@
+section: 9
+what: page
+name: Architecture Decisions
+category: decisions
+permalink: /section-9/
+posts_dir: 09-decisions
+order: 13
+title: 9 - Architecture decisions
+example_categories:
+- decisions
+files:
+- pages/section-9.md

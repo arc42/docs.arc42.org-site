@@ -1,0 +1,12 @@
+section: 4
+what: page
+name: Solution Strategy
+category: solution-strategy
+permalink: /section-4/
+posts_dir: 04-strategy
+order: 8
+title: 4 - Solution strategy
+example_categories:
+- solutionstrategy
+files:
+- pages/section-4.md

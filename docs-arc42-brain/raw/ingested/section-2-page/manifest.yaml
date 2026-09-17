@@ -1,0 +1,12 @@
+section: 2
+what: page
+name: Constraints
+category: constraints
+permalink: /section-2/
+posts_dir: 02-constraints
+order: 6
+title: 2 - Constraints
+example_categories:
+- constraints
+files:
+- pages/section-2.md

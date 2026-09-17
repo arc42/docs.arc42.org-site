@@ -1,0 +1,12 @@
+section: 7
+what: page
+name: Deployment View
+category: deployment
+permalink: /section-7/
+posts_dir: 07-deployment
+order: 11
+title: 7 - Deployment view
+example_categories:
+- deployment
+files:
+- pages/section-7.md

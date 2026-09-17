@@ -1,0 +1,13 @@
+section: 8
+what: page
+name: Crosscutting Concepts
+category: concepts
+permalink: /section-8/
+posts_dir: 08-concepts
+order: 12
+title: 8 - Concepts
+example_categories:
+- concepts
+files:
+- pages/section-8.md
+- assets/sections/08/concepts-EN.drawio.png

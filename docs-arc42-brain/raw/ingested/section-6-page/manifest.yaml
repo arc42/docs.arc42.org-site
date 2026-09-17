@@ -1,0 +1,12 @@
+section: 6
+what: page
+name: Runtime View
+category: runtime
+permalink: /section-6/
+posts_dir: 06-runtime
+order: 10
+title: 6 - Runtime view
+example_categories:
+- runtime
+files:
+- pages/section-6.md

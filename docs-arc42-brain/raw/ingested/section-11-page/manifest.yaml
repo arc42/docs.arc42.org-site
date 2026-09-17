@@ -1,0 +1,12 @@
+section: 11
+what: page
+name: Risks and Technical Debt
+category: risks
+permalink: /section-11/
+posts_dir: 11-risks
+order: 15
+title: 11 - Risks and technical debt
+example_categories:
+- risks
+files:
+- pages/section-11.md

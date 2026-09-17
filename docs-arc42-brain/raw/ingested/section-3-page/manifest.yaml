@@ -1,0 +1,13 @@
+section: 3
+what: page
+name: Context and Scope
+category: context
+permalink: /section-3/
+posts_dir: 03-context
+order: 7
+title: 3 - Context and scope
+example_categories:
+- business-context
+- technical-context
+files:
+- pages/section-3.md
