@@ -12,14 +12,14 @@ Append-only. One entry per operation, prefix exact so it stays greppable:
 
 ## [2026-09-17] bootstrap | twelve section pages, keywords, systems
 - created: section-1 … section-12 (draft, from raw/ingested/section-N-page), SRC-001 … SRC-012
-- created: keywords lean, essential, thorough, example, tooling; systems htmlsc, tpu, mama (+ status or ISS-001)
+- created: keywords lean, essential, thorough, example, tooling; systems htmlsc, tpu, mama, status
 - notes: section 10 image path normalised from a hard-coded /assets/images path; all other bodies verbatim
 
 ## [2026-09-17] ingest | section 9 content
 - created: tip-9-1 … tip-9-10 and the 3 decision examples (09-decision-example-adr, -htmlsc-1, -tpu-2), all `review`; terms architecture-decision, adr, decision-criteria, stakeholder, quality-requirement (all `draft`, see ISS-010); SRC-013-section-9-content
 - updated: section-9 (`related: [[section-4]]`, the guidance itself says "Refer to section 4"); _system/index.md
 - vocabulary: `decision` → term architecture-decision (all 13 pages); `adr` → term adr (9-5, 9-8, 9-9, 9-10, ADR example); `criteria` → term decision-criteria (9-2, 9-3, 9-5, 9-6, HtmlSC example); `stakeholder` → term stakeholder (9-1, 9-2, 9-4); `quality` → term quality-requirement (9-1, 9-4, doubt in ISS-001); `lean` (9-1, 9-7), `essential` (9-2, 9-3), `thorough` (9-6), `tooling` (9-10), `example` (3 examples) → existing keywords. All `legacy-tags` now empty on the thirteen imported pages; the term pages keep theirs as the permanent mapping (ISS-010). Tips 9-4, 9-5, 9-8 and 9-9 carry no keyword because the legacy post had no facet tag — nothing was invented.
-- links: 70 related links (tips 41, examples 9, terms 20), plus 5 subsection links; 13 `terms:` references and 13 `keywords:` references
+- links: 70 related links (tips 44, examples 9, terms 17), plus 5 subsection links; 28 `terms:` references and 9 `keywords:` references across the 13 imported pages
 - deviations from the brief's proposal, with reasons:
   - subsection links live in `section:`, not in `related:` — `_system/workflows/relations.md` forbids relating a page to its own section, and the tip template documents `section:` as the field that may carry a heading. Affected: 9-1 → `[[section-9#Our proposal concerning decisions]]`; 9-5, 9-8, 9-9, 9-10 → `[[section-9#Background (on ADRs)]]`.
   - examples did not get `related: [[section-9]]` for the same reason; they link the tips they demonstrate instead.
