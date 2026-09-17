@@ -16,3 +16,10 @@ originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
 .idea/modules.xml
 .idea/vcs.xml
 .idea
+
+# docs-arc42-brain
+docs-arc42-brain/build/
+docs-arc42-brain/.obsidian/
+docs-arc42-brain/_system/generate/.venv/
+__pycache__/
+.pytest_cache/

@@ -54,3 +54,6 @@ shell: build ## Open a shell inside the dev container for debugging
 
 logs: ## Tail logs from the running dev container
 	docker compose logs -f jekyll
+
+# docs-arc42-brain: parser, lint, importer, generator. See docs-arc42-brain/README.md
+include docs-arc42-brain/_system/brain.mk

@@ -70,7 +70,7 @@ Makefile           (root, modify: add include)            Task 1
 **Interfaces:**
 - Produces: `make brain-test` runs pytest via uv; `uv run --directory docs-arc42-brain/_system/generate braingen` is the CLI entry (added in Task 4).
 
-- [ ] **Step 1: Create the directory skeleton**
+- [x] **Step 1: Create the directory skeleton**
 
 ```bash
 cd docs-arc42-brain
@@ -79,7 +79,7 @@ for d in raw raw/ingested raw/sources wiki/sections wiki/tips wiki/examples wiki
 cd ..
 ```
 
-- [ ] **Step 2: Write `pyproject.toml`**
+- [x] **Step 2: Write `pyproject.toml`**
 
 Create `docs-arc42-brain/_system/generate/pyproject.toml`:
 
@@ -119,7 +119,7 @@ Create `docs-arc42-brain/_system/generate/braingen/__init__.py`:
 __version__ = "0.1.0"
 ```
 
-- [ ] **Step 3: Write the smoke test**
+- [x] **Step 3: Write the smoke test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_smoke.py`:
 
@@ -131,7 +131,7 @@ def test_package_imports():
     assert braingen.__version__ == "0.1.0"
 ```
 
-- [ ] **Step 4: Write `brain.mk` and include it from the root Makefile**
+- [x] **Step 4: Write `brain.mk` and include it from the root Makefile**
 
 Create `docs-arc42-brain/_system/brain.mk`:
 
@@ -170,12 +170,12 @@ __pycache__/
 .pytest_cache/
 ```
 
-- [ ] **Step 5: Resolve dependencies and run the smoke test**
+- [x] **Step 5: Resolve dependencies and run the smoke test**
 
 Run: `uv lock --project docs-arc42-brain/_system/generate && make brain-test`
 Expected: `1 passed`, and a `uv.lock` file exists next to `pyproject.toml`. `make help` now lists `brain-test`.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add Makefile .gitignore docs-arc42-brain
