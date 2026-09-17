@@ -106,6 +106,20 @@ def test_published_requires_sources_and_no_legacy_tags(tmp_path):
     assert "legacy-tags still present" in e
 
 
+def test_term_may_keep_legacy_tags_in_review(tmp_path):
+    """L13 is about tags the importer parks on a page; on a term the list is the permanent
+    mapping of old tag spellings (spec 4.2), so it must survive the step out of draft."""
+    section(tmp_path, body="> %% examples: decisions %%")
+    page(tmp_path, "wiki/terms/architecture-decision.md",
+         {"id": "architecture-decision", "type": "term", "title": "Architecture decision", **BASE,
+          "status": "review", "term": "Architecture decision", "home": "[[section-9]]",
+          "legacy-tags": ["decision"]})
+    tip(tmp_path, status="review", **{"legacy-tags": ["decision"]})
+    e = "\n".join(errors(tmp_path))
+    assert "architecture-decision" not in e
+    assert "tip-9-1: legacy-tags still present: ['decision']" in e
+
+
 def test_images_must_exist_and_liquid_is_forbidden(tmp_path):
     section(tmp_path, body="> %% examples: decisions %%")
     (tmp_path / "wiki/assets/sections/09").mkdir(parents=True)

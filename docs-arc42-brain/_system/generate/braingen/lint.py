@@ -69,7 +69,10 @@ def _schema(vault: Vault, p: Page) -> list[Finding]:
         f.append(Finding("error", p.slug, f"invalid status '{p.status}' (allowed: {', '.join(sorted(allowed))})"))
     if p.status == "published" and not p.meta.get("sources"):
         f.append(Finding("error", p.slug, "published without sources"))
-    if p.status in {"review", "published"} and p.meta.get("legacy-tags"):
+    # L13: legacy-tags are transient work items on imported pages and must be mapped away
+    # before the page leaves draft. On a term page the same field is the permanent mapping of
+    # old tag spellings to this term, so type `term` is exempt (see ISS-010).
+    if p.status in {"review", "published"} and p.type != "term" and p.meta.get("legacy-tags"):
         f.append(Finding("error", p.slug, f"legacy-tags still present: {p.meta['legacy-tags']}"))
     return f
 
