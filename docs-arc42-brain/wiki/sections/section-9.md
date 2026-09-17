@@ -7,7 +7,8 @@ created: '2026-09-17'
 updated: '2026-09-17'
 sources:
 - '[[SRC-009-section-9-page]]'
-related: []
+related:
+- '[[section-4]]'
 number: 9
 name: Architecture Decisions
 category: decisions

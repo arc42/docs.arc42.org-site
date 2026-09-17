@@ -19,9 +19,30 @@ One line per page, grouped by type. Updated on every ingest.
 
 ## Tips
 
+- [tip-9-1](../wiki/tips/tip-9-1.md) — Document only architecturally relevant decisions!
+- [tip-9-2](../wiki/tips/tip-9-2.md) — Document decision criteria!
+- [tip-9-3](../wiki/tips/tip-9-3.md) — Provide reasons for important decisions!
+- [tip-9-4](../wiki/tips/tip-9-4.md) — Document decisions as mind-map or as table!
+- [tip-9-5](../wiki/tips/tip-9-5.md) — Document decisions as `Architecture Decision Record` (ADR)!
+- [tip-9-6](../wiki/tips/tip-9-6.md) — Document rejected alternatives!
+- [tip-9-7](../wiki/tips/tip-9-7.md) — Document decisions informally as a blog (RSS-feed)!
+- [tip-9-8](../wiki/tips/tip-9-8.md) — Decisions should have a timestamp!
+- [tip-9-9](../wiki/tips/tip-9-9.md) — Follow the _suggestions for good ADRs_
+- [tip-9-10](../wiki/tips/tip-9-10.md) — Use lightweight tooling to support creation of ADRs
+
 ## Examples
 
+- [09-decision-example-adr](../wiki/examples/09-decision-example-adr.md) — Use ADRs in Nygard format
+- [09-decision-example-htmlsc-1](../wiki/examples/09-decision-example-htmlsc-1.md) — HTML Sanity Checker
+- [09-decision-example-tpu-2](../wiki/examples/09-decision-example-tpu-2.md) — TrafficPursuitUnit
+
 ## Terms
+
+- [architecture-decision](../wiki/terms/architecture-decision.md) — Architecture decision
+- [adr](../wiki/terms/adr.md) — Architecture Decision Record (ADR)
+- [decision-criteria](../wiki/terms/decision-criteria.md) — Decision criteria
+- [stakeholder](../wiki/terms/stakeholder.md) — Stakeholder
+- [quality-requirement](../wiki/terms/quality-requirement.md) — Quality requirement
 
 ## Keywords
 
@@ -40,6 +61,17 @@ One line per page, grouped by type. Updated on every ingest.
 
 ## Issues
 
+- [ISS-001](../wiki/issues/ISS-001-quality-tag-on-tips-9-1-and-9-4.md) — open, ambiguity: does the legacy tag `quality` on tips 9-1 and 9-4 mean the arc42 quality requirement?
+- [ISS-002](../wiki/issues/ISS-002-adr-structure-omits-timestamp-and-criteria.md) — open, contradiction: the ADR structure proposed in section 9 omits timestamp and decision criteria
+- [ISS-003](../wiki/issues/ISS-003-pugh-matrix-link-leads-to-unrelated-site.md) — open, risk: the Pugh matrix link in tip 9-2 now leads to an unrelated site
+- [ISS-004](../wiki/issues/ISS-004-external-links-redirect.md) — open, risk: three external links in the section 9 content redirect
+- [ISS-005](../wiki/issues/ISS-005-tip-9-2-table-markup-broken.md) — open, gap: the second criteria table in tip 9-2 has an invalid separator row
+- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: tips 9-3 and 9-5 reference tip 9-2 by hard-coded site URL
+- [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies of section 9 carry legacy raw HTML
+- [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
+- [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
+- [ISS-010](../wiki/issues/ISS-010-terms-cannot-leave-draft-with-legacy-tags.md) — open, contradiction: term pages cannot leave draft because the lint forbids legacy-tags
+
 ## Sources
 
 - [SRC-001](../raw/sources/SRC-001-section-1-page.md) — section-1-page
@@ -54,6 +86,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-010](../raw/sources/SRC-010-section-10-page.md) — section-10-page
 - [SRC-011](../raw/sources/SRC-011-section-11-page.md) — section-11-page
 - [SRC-012](../raw/sources/SRC-012-section-12-page.md) — section-12-page
+- [SRC-013](../raw/sources/SRC-013-section-9-content.md) — section-9-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

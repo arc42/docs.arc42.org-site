@@ -2601,7 +2601,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 Follow `_system/workflows/ingest.md` exactly. The legacy tags in this section are: `decision` (all ten tips), `adr` (9-8, 9-9, 9-10), `criteria` (9-2), `stakeholder` (9-1, 9-2, 9-4), `quality` (9-1, 9-4), `tooling` (9-10), `lean` (9-1, 9-7), `essential` (9-2, 9-3), `thorough` (9-6), and `example` on all three examples.
 
-- [ ] **Step 1: Batch and import**
+- [x] **Step 1: Batch and import**
 
 ```bash
 make brain-raw SECTION=9 WHAT=content
@@ -2611,9 +2611,9 @@ make brain-lint
 
 Expected: ten tips and three examples written; lint zero errors (drafts may carry `legacy-tags`).
 
-- [ ] **Step 2: Read every imported page** (`wiki/tips/tip-9-*.md`, the three examples, `wiki/sections/section-9.md`) and write down, for the log, near-duplicates, outdated statements, and external links to check with `curl -sI <url> | head -1`.
+- [x] **Step 2: Read every imported page** (`wiki/tips/tip-9-*.md`, the three examples, `wiki/sections/section-9.md`) and write down, for the log, near-duplicates, outdated statements, and external links to check with `curl -sI <url> | head -1`.
 
-- [ ] **Step 3: Vocabulary — proposed mapping, adjust with reasons if the text says otherwise**
+- [x] **Step 3: Vocabulary — proposed mapping, adjust with reasons if the text says otherwise**
 
 Keywords (exist): `lean`, `essential`, `thorough`, `tooling`, `example`.
 
@@ -2626,7 +2626,7 @@ Terms to create from `_templates/term.md`, `status: draft`, `sources: ["[[SRC-01
 
 Then on every tip: `keywords: ["[[lean]]"]` etc., `terms: ["[[architecture-decision]]", …]`, and `legacy-tags: []`. On the examples: `keywords: ["[[example]]"]`, `terms: ["[[architecture-decision]]"]` (plus `[[adr]]` on the ADR example), `legacy-tags: []`.
 
-- [ ] **Step 4: Links — starting proposal**
+- [x] **Step 4: Links — starting proposal**
 
 - `tip-9-5` (document as ADR) ↔ `tip-9-8`, `tip-9-9`, `tip-9-10`, `09-decision-example-adr`, `[[section-9#Background (on ADRs)]]`, term `adr`.
 - `tip-9-1` (only relevant decisions) → `[[section-9#Our proposal concerning decisions]]`, ↔ `tip-9-2`, `tip-9-3`.
@@ -2637,9 +2637,9 @@ Then on every tip: `keywords: ["[[lean]]"]` etc., `terms: ["[[architecture-decis
 
 Check `[[section-9#Our proposal concerning decisions]]` is unique on the page (it is an H3 inside the callout; the parser strips the callout prefix). If the lint reports it as not found, the heading text differs; copy it exactly from `wiki/sections/section-9.md`.
 
-- [ ] **Step 5: Issues** — one page per finding from Step 2, plus the `quality` doubt from Step 3, named `wiki/issues/ISS-NNN-<kebab>.md` from `_templates/issue.md`, `related:` listing every affected page.
+- [x] **Step 5: Issues** — one page per finding from Step 2, plus the `quality` doubt from Step 3, named `wiki/issues/ISS-NNN-<kebab>.md` from `_templates/issue.md`, `related:` listing every affected page.
 
-- [ ] **Step 6: Status, bookkeeping, archive**
+- [x] **Step 6: Status, bookkeeping, archive**
 
 Set `status: review` on all thirteen pages and the new terms. Update `_system/index.md` (Tips, Examples, Terms, Issues, Sources). Append to `_system/log.md`:
 
@@ -2656,7 +2656,7 @@ mv docs-arc42-brain/raw/section-9-content docs-arc42-brain/raw/ingested/section-
 sed -i '' 's#^origin: raw/section-9-content/#origin: raw/ingested/section-9-content/#' docs-arc42-brain/raw/sources/SRC-013-section-9-content.md
 ```
 
-- [ ] **Step 7: Gate and commit**
+- [x] **Step 7: Gate and commit**
 
 Run: `make brain-lint`
 Expected: zero errors; any warnings are listed and each is deliberate (write why in the log entry).

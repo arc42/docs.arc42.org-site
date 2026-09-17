@@ -1,0 +1,24 @@
+section: 9
+what: content
+name: Architecture Decisions
+category: decisions
+permalink: /section-9/
+posts_dir: 09-decisions
+order: 13
+title: 9 - Architecture decisions
+example_categories:
+- decisions
+files:
+- posts/2016-03-01-t-9-1.md
+- posts/2016-03-01-t-9-2.md
+- posts/2016-03-01-t-9-3.md
+- posts/2016-03-01-t-9-4.md
+- posts/2016-03-01-t-9-5.md
+- posts/2016-03-01-t-9-6.md
+- posts/2016-03-01-t-9-7.md
+- posts/2022-01-14-t-9-8.md
+- posts/2022-01-28-t-9-9.md
+- posts/2022-01-29-t-9-10.md
+- examples/09-decision-example-adr.md
+- examples/09-decision-example-htmlsc-1.md
+- examples/09-decision-example-tpu-2.md
