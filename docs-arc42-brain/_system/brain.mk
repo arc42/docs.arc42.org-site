@@ -7,10 +7,17 @@ BRAIN_GEN := $(BRAIN_DIR)/_system/generate
 # to braingen are absolute, so the cwd change does not matter to them.
 BRAINGEN  := uv run --directory $(BRAIN_GEN) braingen
 
-.PHONY: brain-test brain-lint
+.PHONY: brain-test brain-lint brain-raw
 
 brain-test: ## Run the braingen unit tests
 	uv run --directory $(BRAIN_GEN) pytest -q
 
 brain-lint: ## Validate the brain: schema, links, anchors, images, no Liquid
 	$(BRAINGEN) lint $(BRAIN_DIR)
+
+SECTION ?=
+WHAT ?= all
+
+brain-raw: ## Copy one section's site files into raw/ (SECTION=9 WHAT=all|page|content)
+	@test -n "$(SECTION)" || { echo "usage: make brain-raw SECTION=9 [WHAT=all|page|content]"; exit 2; }
+	$(BRAINGEN) raw --site $(CURDIR) --vault $(BRAIN_DIR) --section $(SECTION) --what $(WHAT)

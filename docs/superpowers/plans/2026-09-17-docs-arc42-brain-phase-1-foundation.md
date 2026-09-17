@@ -1110,7 +1110,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 The batch layout is the contract the importer (Task 6) reads. Section metadata comes from `_data/sections.yml` (number, name, category, permalink), the `_posts/NN-*` directory name, and the page's own frontmatter (`title`, `order`).
 
-- [ ] **Step 1: Write the failing test with a miniature site fixture**
+- [x] **Step 1: Write the failing test with a miniature site fixture**
 
 Create `tests/test_raw.py`:
 
@@ -1251,12 +1251,12 @@ def test_raw_unknown_section(tmp_path):
         make_raw(site, tmp_path / "vault", 13, "page")
 ```
 
-- [ ] **Step 2: Run to verify failure**
+- [x] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_raw.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.raw'`
 
-- [ ] **Step 3: Implement `raw.py`**
+- [x] **Step 3: Implement `raw.py`**
 
 ```python
 """Copy one arc42 section's current site files into a raw/ batch for ingest.
@@ -1356,7 +1356,7 @@ def make_raw(site: Path, vault: Path, section: int, what: str = "all") -> Path:
     return batch
 ```
 
-- [ ] **Step 4: Add the `raw` subcommand to `cli.py`**
+- [x] **Step 4: Add the `raw` subcommand to `cli.py`**
 
 Add to `cli.py` after `cmd_lint`:
 
@@ -1380,12 +1380,12 @@ And inside `build_parser()` before `return ap`:
     r.set_defaults(func=cmd_raw)
 ```
 
-- [ ] **Step 5: Run the tests**
+- [x] **Step 5: Run the tests**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_raw.py -q`
 Expected: `4 passed`
 
-- [ ] **Step 6: Add the `brain-raw` target**
+- [x] **Step 6: Add the `brain-raw` target**
 
 Append to `brain.mk` (add `brain-raw` to `.PHONY`):
 
@@ -1401,7 +1401,7 @@ brain-raw: ## Copy one section's site files into raw/ (SECTION=9 WHAT=all|page|c
 Run: `make brain-raw SECTION=9 WHAT=page && ls docs-arc42-brain/raw/section-9-page && rm -r docs-arc42-brain/raw/section-9-page`
 Expected: `manifest.yaml pages` listed; the batch is removed again (Task 8 does the real run).
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add docs-arc42-brain/_system
