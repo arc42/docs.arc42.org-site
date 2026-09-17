@@ -196,7 +196,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Produces: `WikiLink(target: str, heading: str | None, label: str | None)` frozen dataclass; `parse_wikilinks(text: str) -> list[WikiLink]`; `kramdown_id(text: str) -> str`; `assign_anchors(texts: list[str]) -> list[str]` (duplicates get `-1`, `-2`, … like kramdown).
 
-- [ ] **Step 1: Write the failing wikilink tests**
+- [x] **Step 1: Write the failing wikilink tests**
 
 Create `tests/test_wikilinks.py`:
 
@@ -235,12 +235,12 @@ def test_no_links():
     assert parse_wikilinks("nothing [here] or [[unclosed") == []
 ```
 
-- [ ] **Step 2: Run to verify failure**
+- [x] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_wikilinks.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.wikilinks'`
 
-- [ ] **Step 3: Implement `wikilinks.py`**
+- [x] **Step 3: Implement `wikilinks.py`**
 
 ```python
 """Obsidian wikilink parsing: [[target]], [[target#heading]], [[target|label]]."""
@@ -282,12 +282,12 @@ def parse_wikilinks(text: str) -> list[WikiLink]:
     ]
 ```
 
-- [ ] **Step 4: Run wikilink tests**
+- [x] **Step 4: Run wikilink tests**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_wikilinks.py -q`
 Expected: `6 passed`
 
-- [ ] **Step 5: Write the failing anchor tests**
+- [x] **Step 5: Write the failing anchor tests**
 
 Create `tests/test_anchors.py`:
 
@@ -324,12 +324,12 @@ def test_duplicates_get_numeric_suffix():
     ]
 ```
 
-- [ ] **Step 6: Run to verify failure**
+- [x] **Step 6: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_anchors.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.anchors'`
 
-- [ ] **Step 7: Implement `anchors.py`**
+- [x] **Step 7: Implement `anchors.py`**
 
 ```python
 """Heading ids exactly as kramdown (Jekyll's default markdown engine) generates them.
@@ -365,12 +365,12 @@ def assign_anchors(texts: list[str]) -> list[str]:
     return out
 ```
 
-- [ ] **Step 8: Run all tests**
+- [x] **Step 8: Run all tests**
 
 Run: `make brain-test`
 Expected: `13 passed`
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate
