@@ -737,7 +737,7 @@ Rules (spec §8, adapted to phase 1):
 | L14 | error / warning | an example's `example-category` is referenced by zero (error) or more than one (warning) `%% examples: … %%` directive across section pages |
 | L15 | error | unknown directive name (only `examples` and `examples-link` exist) |
 
-- [ ] **Step 1: Write the failing lint tests**
+- [x] **Step 1: Write the failing lint tests**
 
 Create `tests/test_lint.py`:
 
@@ -875,12 +875,12 @@ def test_example_category_must_be_referenced_exactly_once(tmp_path):
     assert "example-category 'decisions' is referenced by 2 directives" in w
 ```
 
-- [ ] **Step 2: Run to verify failure**
+- [x] **Step 2: Run to verify failure**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_lint.py -q`
 Expected: FAIL, `ModuleNotFoundError: No module named 'braingen.lint'`
 
-- [ ] **Step 3: Implement `lint.py`**
+- [x] **Step 3: Implement `lint.py`**
 
 ```python
 """Lint rules for the vault. Each rule appends Findings; the CLI decides the exit code."""
@@ -1026,7 +1026,7 @@ def _example_directives(vault: Vault) -> list[Finding]:
     return f
 ```
 
-- [ ] **Step 4: Implement `cli.py` with the `lint` command**
+- [x] **Step 4: Implement `cli.py` with the `lint` command**
 
 ```python
 """braingen command line: lint | raw | import."""
@@ -1068,12 +1068,12 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-- [ ] **Step 5: Run the lint tests**
+- [x] **Step 5: Run the lint tests**
 
 Run: `uv run --directory docs-arc42-brain/_system/generate pytest tests/test_lint.py -q`
 Expected: `10 passed`
 
-- [ ] **Step 6: Add the `brain-lint` target**
+- [x] **Step 6: Add the `brain-lint` target**
 
 Append to `docs-arc42-brain/_system/brain.mk` (and add `brain-lint` to the `.PHONY` line):
 
@@ -1085,7 +1085,7 @@ brain-lint: ## Validate the brain: schema, links, anchors, images, no Liquid
 Run: `make brain-lint`
 Expected: `0 findings, 0 errors, 0 warnings` and exit code 0 (the vault is still empty).
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add docs-arc42-brain/_system

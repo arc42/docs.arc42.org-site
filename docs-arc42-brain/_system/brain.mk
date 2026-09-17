@@ -7,7 +7,10 @@ BRAIN_GEN := $(BRAIN_DIR)/_system/generate
 # to braingen are absolute, so the cwd change does not matter to them.
 BRAINGEN  := uv run --directory $(BRAIN_GEN) braingen
 
-.PHONY: brain-test
+.PHONY: brain-test brain-lint
 
 brain-test: ## Run the braingen unit tests
 	uv run --directory $(BRAIN_GEN) pytest -q
+
+brain-lint: ## Validate the brain: schema, links, anchors, images, no Liquid
+	$(BRAINGEN) lint $(BRAIN_DIR)
