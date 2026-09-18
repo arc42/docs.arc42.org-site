@@ -33,13 +33,14 @@ class Finding:
     level: str  # "error" | "warning"
     page: str
     message: str
+    rule: str = "other"
 
     def __str__(self) -> str:
         return f"{self.level.upper():7} {self.page}: {self.message}"
 
 
 def lint(vault: Vault) -> list[Finding]:
-    out: list[Finding] = [Finding("error", "vault", e) for e in vault.errors]
+    out: list[Finding] = [Finding("error", "vault", e, "parse") for e in vault.errors]
     ids_by_type: dict[str, Counter] = defaultdict(Counter)
     for p in vault.pages.values():
         ids_by_type[p.type][p.id] += 1
@@ -48,7 +49,7 @@ def lint(vault: Vault) -> list[Finding]:
         out += _links(vault, p)
         out += _body(vault, p)
         if ids_by_type[p.type][p.id] > 1:
-            out.append(Finding("error", p.slug, f"duplicate id {p.id} within type {p.type}"))
+            out.append(Finding("error", p.slug, f"duplicate id {p.id} within type {p.type}", "duplicate-id"))
     out += _example_directives(vault)
     return out
 
@@ -56,37 +57,37 @@ def lint(vault: Vault) -> list[Finding]:
 def _schema(vault: Vault, p: Page) -> list[Finding]:
     f: list[Finding] = []
     if p.type not in TYPE_FOLDERS:
-        f.append(Finding("error", p.slug, f"unknown type '{p.type}'"))
+        f.append(Finding("error", p.slug, f"unknown type '{p.type}'", "type"))
         return f
     expected = vault.root / TYPE_FOLDERS[p.type]
     if p.path.parent != expected:
-        f.append(Finding("error", p.slug, f"type {p.type} belongs in {TYPE_FOLDERS[p.type]}"))
+        f.append(Finding("error", p.slug, f"type {p.type} belongs in {TYPE_FOLDERS[p.type]}", "folder"))
     for field in COMMON_FIELDS + REQUIRED_FIELDS[p.type]:
         if field not in p.meta or p.meta[field] is None:
-            f.append(Finding("error", p.slug, f"missing field '{field}'"))
+            f.append(Finding("error", p.slug, f"missing field '{field}'", "required-field"))
     allowed = STATUS_BY_TYPE.get(p.type, DEFAULT_STATUS)
     if p.status is not None and p.status not in allowed:
-        f.append(Finding("error", p.slug, f"invalid status '{p.status}' (allowed: {', '.join(sorted(allowed))})"))
+        f.append(Finding("error", p.slug, f"invalid status '{p.status}' (allowed: {', '.join(sorted(allowed))})", "status"))
     if p.status == "published" and not p.meta.get("sources"):
-        f.append(Finding("error", p.slug, "published without sources"))
+        f.append(Finding("error", p.slug, "published without sources", "sources"))
     # L13: legacy-tags are transient work items on imported pages and must be mapped away
     # before the page leaves draft. On a term page the same field is the permanent mapping of
     # old tag spellings to this term, so type `term` is exempt (see ISS-010).
     if p.status in {"review", "published"} and p.type != "term" and p.meta.get("legacy-tags"):
-        f.append(Finding("error", p.slug, f"legacy-tags still present: {p.meta['legacy-tags']}"))
+        f.append(Finding("error", p.slug, f"legacy-tags still present: {p.meta['legacy-tags']}", "legacy-tags"))
     return f
 
 
 def _check_link(vault: Vault, p: Page, link: WikiLink) -> Finding | None:
     target = vault.pages.get(link.target)
     if target is None:
-        return Finding("error", p.slug, f"unresolved link {link}")
+        return Finding("error", p.slug, f"unresolved link {link}", "link")
     if link.heading:
         matches = [h for h in target.headings if h.text == link.heading]
         if not matches:
-            return Finding("error", p.slug, f"heading '{link.heading}' not found on {target.slug} ({link})")
+            return Finding("error", p.slug, f"heading '{link.heading}' not found on {target.slug} ({link})", "heading")
         if len(matches) > 1:
-            return Finding("error", p.slug, f"heading '{link.heading}' is not unique on {target.slug} ({link})")
+            return Finding("error", p.slug, f"heading '{link.heading}' is not unique on {target.slug} ({link})", "heading")
     return None
 
 
@@ -104,22 +105,22 @@ def _links(vault: Vault, p: Page) -> list[Finding]:
         if target is None or target.type == "section":
             continue
         if not any(back.target == p.slug for back in target.links_in("related")):
-            f.append(Finding("warning", p.slug, f"related {link} is not reciprocated"))
+            f.append(Finding("warning", p.slug, f"related {link} is not reciprocated", "reciprocity"))
     return f
 
 
 def _body(vault: Vault, p: Page) -> list[Finding]:
     f: list[Finding] = []
     if p.has_liquid:
-        f.append(Finding("error", p.slug, "Liquid syntax in body ({{ or {%)"))
+        f.append(Finding("error", p.slug, "Liquid syntax in body ({{ or {%)", "liquid"))
     for img in p.images:
         if img.startswith(("http://", "https://")):
             continue
         if not (p.path.parent / img).resolve().exists():
-            f.append(Finding("error", p.slug, f"missing image {img}"))
+            f.append(Finding("error", p.slug, f"missing image {img}", "image"))
     for d in p.directives:
         if d.name not in DIRECTIVES:
-            f.append(Finding("error", p.slug, f"unknown directive '{d.name}' (line {d.line})"))
+            f.append(Finding("error", p.slug, f"unknown directive '{d.name}' (line {d.line})", "directive"))
     return f
 
 
@@ -138,7 +139,7 @@ def _example_directives(vault: Vault) -> list[Finding]:
         seen.add(cat)
         n = refs.get(cat, 0)
         if n == 0:
-            f.append(Finding("error", e.slug, f"example-category '{cat}' is not referenced by any section directive"))
+            f.append(Finding("error", e.slug, f"example-category '{cat}' is not referenced by any section directive", "example-category"))
         elif n > 1:
-            f.append(Finding("warning", e.slug, f"example-category '{cat}' is referenced by {n} directives"))
+            f.append(Finding("warning", e.slug, f"example-category '{cat}' is referenced by {n} directives", "example-category"))
     return f

@@ -143,3 +143,20 @@ def test_example_category_must_be_referenced_exactly_once(tmp_path):
     assert "example-category 'orphaned' is not referenced by any section directive" in e
     assert "unknown directive 'bogus'" in e
     assert "example-category 'decisions' is referenced by 2 directives" in w
+
+
+def test_findings_carry_rule_ids(tmp_path):
+    from braingen.lint import Finding, lint
+    from braingen.parse import load_vault
+    from tests import vaultkit as vk
+
+    vk.source(tmp_path)
+    vk.section(tmp_path)
+    vk.tip(tmp_path, "9-1", related=["[[tip-9-2]]", "[[nowhere]]"], status="draft")
+    vk.tip(tmp_path, "9-2", status="draft")
+    vk.example(tmp_path, "09-decision-example-y", status="draft", **{"example-category": "orphans"})
+    rules = {(f.page, f.rule) for f in lint(load_vault(tmp_path))}
+    assert ("tip-9-1", "link") in rules
+    assert ("tip-9-1", "reciprocity") in rules
+    assert ("09-decision-example-y", "example-category") in rules
+    assert str(Finding("error", "p", "m", "link")) == "ERROR   p: m"
