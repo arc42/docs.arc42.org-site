@@ -9,7 +9,9 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+
+from presence import Presence, client_id
 
 
 def create_app(repo: Path | None = None, **services) -> Flask:
@@ -19,11 +21,26 @@ def create_app(repo: Path | None = None, **services) -> Flask:
 
     app = Flask(__name__)
     app.config["REPO"] = repo
+    services.setdefault("presence", Presence())
     app.extensions["brain"] = dict(services)
+    presence: Presence = app.extensions["brain"]["presence"]
 
     @app.route("/")
     def home():
         return render_template("home.html")
+
+    @app.route("/ping", methods=["POST"])
+    def ping():
+        return presence.ping(client_id(request))
+
+    @app.route("/leaving", methods=["POST"])
+    def leaving():
+        presence.leaving(client_id(request))
+        return "", 204
+
+    @app.route("/who")
+    def who():
+        return render_template("who.html", entries=presence.who())
 
     return app
 

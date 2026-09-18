@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Who's here — docs-arc42-brain{% endblock %}
+
+{% block main %}
+  <h1>Who's here</h1>
+  <table class="who-table">
+    <thead>
+      <tr>
+        <th>Nickname</th>
+        <th>Role</th>
+        <th>Connected</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in entries %}
+      <tr>
+        <td>{{ entry.nickname }}</td>
+        <td>{{ "Facilitator" if entry.is_facilitator else "" }}</td>
+        <td>{{ entry.connected_seconds }}s connected</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="3">Nobody connected yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
