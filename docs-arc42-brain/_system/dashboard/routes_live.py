@@ -1,5 +1,7 @@
-"""Blueprint for presence heartbeat and action routes: ping/leaving/who,
+"""routes_live: presence heartbeat and action routes — ping/leaving/who,
 facilitator-gated generate/preview, job polling, link health and reload.
+(Renamed from routes_actions.py: it carries presence + actions + links +
+reload, not just actions.)
 
 Split out of `app.py` to keep that file under 300 lines (D: `app.py` holds
 only routes). Routes only here too; view-shaping lives in `actions.py` /

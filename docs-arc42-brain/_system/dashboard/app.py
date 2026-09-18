@@ -25,7 +25,7 @@ from relations import (
     suggestions, term_graph,
 )
 from render import render
-from routes_actions import bp as actions_bp
+from routes_live import bp as actions_bp
 
 
 def _fmt_meta(value):
