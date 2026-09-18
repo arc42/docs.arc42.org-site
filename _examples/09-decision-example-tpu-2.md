@@ -1,10 +1,21 @@
 ---
 layout: post
 title: "Example Decision: TrafficPursuitUnit"
-tags: decision example 
+tags: example architecture-decision
 category: decisions
 permalink: /examples/decision-tpu-1/
+related:
+- kind: section
+  title: "9 - Architecture decisions"
+  url: /section-9/
+- kind: tip
+  title: "Tip 9-3: Provide reasons for important decisions!"
+  url: /tips/9-3/
+- kind: tip
+  title: "Tip 9-4: Document decisions as mind-map or as table!"
+  url: /tips/9-4/
 ---
+<!-- generated from docs-arc42-brain/wiki/examples/09-decision-example-tpu-2.md — do not edit -->
 
 <p></p>
 

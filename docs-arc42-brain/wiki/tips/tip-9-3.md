@@ -2,9 +2,9 @@
 id: 9-3
 type: tip
 title: 'Tip 9-3: Provide reasons for important decisions!'
-status: review
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-18'
 sources:
 - '[[SRC-013-section-9-content]]'
 related:

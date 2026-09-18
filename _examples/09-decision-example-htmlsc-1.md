@@ -1,10 +1,24 @@
 ---
 layout: post
 title: "Example Decision: HTML Sanity Checker"
-tags: decision example 
+tags: example architecture-decision decision-criteria
 category: decisions
 permalink: /examples/decision-htmlsc/
+related:
+- kind: section
+  title: "9 - Architecture decisions"
+  url: /section-9/
+- kind: tip
+  title: "Tip 9-2: Document decision criteria!"
+  url: /tips/9-2/
+- kind: tip
+  title: "Tip 9-4: Document decisions as mind-map or as table!"
+  url: /tips/9-4/
+- kind: tip
+  title: "Tip 9-6: Document rejected alternatives!"
+  url: /tips/9-6/
 ---
+<!-- generated from docs-arc42-brain/wiki/examples/09-decision-example-htmlsc-1.md — do not edit -->
 
 <p></p>
 

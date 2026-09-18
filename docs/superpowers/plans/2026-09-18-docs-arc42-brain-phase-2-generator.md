@@ -2472,7 +2472,7 @@ Model: Opus. Follows `docs-arc42-brain/_system/workflows/cutover.md` (Task 7). S
 - Consumes: `make generate-check`, `make generate`, `make brain-check-generated`, `make check`, `make check-links`, `_includes/related.html`.
 - Produces: the section-9 PR content on the branch, and a report for the human reviewer.
 
-- [ ] **Step 1: Pre-flight**
+- [x] **Step 1: Pre-flight**
 
 ```bash
 make brain-lint | tail -1
@@ -2481,7 +2481,7 @@ make generate-check SECTION=9 | tee /private/tmp/claude-501/-Users-gernotstarke-
 
 Expected: `33 findings, 0 errors, 33 warnings` (any error stops the task); `section 9: PASS (14 files compared)`; no `not ingested` line; notes: tag changes on all 13 pages and `keyword page gains tags: ['architecture-decision', 'decision-criteria', 'quality-requirement']`, no `loses` line (the old tags `decision`, `criteria`, `quality` survive on other sections' posts). Keep this file; its notes go into the report.
 
-- [ ] **Step 2: Publish the section-9 pages**
+- [x] **Step 2: Publish the section-9 pages**
 
 ```bash
 cd docs-arc42-brain/wiki
@@ -2495,7 +2495,7 @@ make brain-lint | tail -1
 
 Expected: 14 lines each ending `:1`; lint still `0 errors`. Check `git diff --stat docs-arc42-brain/wiki` shows 14 files with 2 changed lines each (`section-9.md`: `status: draft` → `published`; the others `review` → `published`). Only the front matter may change — the sed range stops at the closing `---`; if any body line changed, `git checkout` the file and edit it by hand.
 
-- [ ] **Step 3: Delete the hand-written originals, then generate**
+- [x] **Step 3: Delete the hand-written originals, then generate**
 
 ```bash
 rm _pages/section-9.md _posts/09-decisions/*.md _examples/09-decision-example-adr.md _examples/09-decision-example-htmlsc-1.md _examples/09-decision-example-tpu-2.md
@@ -2505,7 +2505,7 @@ make generate
 
 Expected: first run `14 written, 0 deleted, 0 unchanged` preceded by 14 `wrote` lines; second run `0 written, 0 deleted, 14 unchanged`.
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 ```bash
 make brain-test | tail -1
@@ -2517,7 +2517,7 @@ git status --short
 
 Expected: `113 passed`; `generated files: 0 problems`; `section 9: PASS (14 files compared)`; `12 sections checked, 0 failed`; `git status` lists exactly 14 ` M` site files (`_pages/section-9.md`, ten `_posts/09-decisions/…`, three `_examples/09-decision-example-…`), the 14 wiki pages and this plan file — nothing else. No `D` or `??` lines.
 
-- [ ] **Step 5: Site checks (Docker)**
+- [x] **Step 5: Site checks (Docker)**
 
 ```bash
 make check
@@ -2526,7 +2526,7 @@ make check-links
 
 Expected: both exit 0. html-proofer validates every `related:` URL, including the subsection anchors (`/section-9/#background-on-adrs`, `/section-9/#our-proposal-concerning-decisions`) and the `/keywords/#…` anchors. If check-links fails on a related URL, stop and report the failing URL; do not edit generated files.
 
-- [ ] **Step 6: Inspect the rendered result**
+- [x] **Step 6: Inspect the rendered result**
 
 ```bash
 grep -c 'class="related-links"' _site/tips/9-1/index.html _site/tips/9-5/index.html _site/examples/decision-use-adrs/index.html
@@ -2538,7 +2538,7 @@ make generate-check SECTION=9 | grep "anchors\|expected"
 
 Expected: 1 for each of the three section-9 pages; `/section-9/#our-proposal-concerning-decisions` in 9-1, `/section-9/#background-on-adrs` in 9-5; `0` for tip 8-1 (a hand-written page); the keyword anchor exists; no `anchor … not on the built page` problem. Open `_site/tips/9-1/index.html` in a text editor and describe the rendered block (headings, entries) in your report.
 
-- [ ] **Step 7: Describe the diff**
+- [x] **Step 7: Describe the diff**
 
 ```bash
 git diff --stat
@@ -2548,7 +2548,7 @@ git diff _pages/section-9.md
 
 For every one of the 14 site files, confirm the body is unchanged apart from the marker line and blank lines directly after the front matter (`make generate-check SECTION=9` already proves this against the originals now in git history; `test_section_9_parity_against_the_ingested_originals` proves it against `raw/ingested/`). Record in the report: lines added/removed per file, which front-matter keys changed (expected: `tags` on all 13 tips/examples, `related` added on the 13, quoting style of `title` unchanged, `section-9.md` front matter identical), and the full tag changes from Step 1.
 
-- [ ] **Step 8: Log entry**
+- [x] **Step 8: Log entry**
 
 Append to `docs-arc42-brain/_system/log.md`:
 
@@ -2564,7 +2564,7 @@ Append to `docs-arc42-brain/_system/log.md`:
 
 Adjust the tag line to exactly what Step 1 printed.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add docs-arc42-brain/wiki/sections/section-9.md docs-arc42-brain/wiki/tips/tip-9-*.md docs-arc42-brain/wiki/examples/09-decision-example-*.md _pages/section-9.md _posts/09-decisions/*.md _examples/09-decision-example-adr.md _examples/09-decision-example-htmlsc-1.md _examples/09-decision-example-tpu-2.md docs-arc42-brain/_system/log.md docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md
@@ -2575,6 +2575,6 @@ git log -1 --format=%B | tail -1
 git show --stat HEAD | tail -5
 ```
 
-- [ ] **Step 10: Report**
+- [x] **Step 10: Report**
 
 Write the report with: the Step 1 pre-check output; generate outputs; the test, check and link-check results; the rendered related block of tip 9-1; the per-file diff summary of Step 7; tag changes; anything that deviated from an expected output and what you did about it.

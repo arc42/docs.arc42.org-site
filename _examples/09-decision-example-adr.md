@@ -1,10 +1,27 @@
 ---
 layout: post
 title: "Example Decision: Use ADRs in Nygard format"
-tags: decision example 
+tags: example architecture-decision adr
 category: decisions
 permalink: /examples/decision-use-adrs/
+related:
+- kind: section
+  title: "9 - Architecture decisions"
+  url: /section-9/
+- kind: tip
+  title: "Tip 9-5: Document decisions as `Architecture Decision Record` (ADR)!"
+  url: /tips/9-5/
+- kind: tip
+  title: "Tip 9-8: Decisions should have a timestamp!"
+  url: /tips/9-8/
+- kind: tip
+  title: "Tip 9-10: Use lightweight tooling to support creation of ADRs"
+  url: /tips/9-10/
+- kind: term
+  title: "Architecture Decision Record (ADR)"
+  url: /keywords/#adr
 ---
+<!-- generated from docs-arc42-brain/wiki/examples/09-decision-example-adr.md — do not edit -->
 
 <p></p>
 

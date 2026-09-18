@@ -2,9 +2,9 @@
 id: 9-7
 type: tip
 title: 'Tip 9-7: Document decisions informally as a blog (RSS-feed)!'
-status: review
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-18'
 sources:
 - '[[SRC-013-section-9-content]]'
 related:

@@ -2,9 +2,9 @@
 id: 09-decision-example-adr
 type: example
 title: 'Example Decision: Use ADRs in Nygard format'
-status: review
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-18'
 sources:
 - '[[SRC-013-section-9-content]]'
 related:

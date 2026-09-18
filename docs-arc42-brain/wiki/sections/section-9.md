@@ -2,9 +2,9 @@
 id: section-9
 type: section
 title: 9 - Architecture decisions
-status: draft
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-18'
 sources:
 - '[[SRC-009-section-9-page]]'
 related:

@@ -2,9 +2,9 @@
 id: 9-5
 type: tip
 title: 'Tip 9-5: Document decisions as `Architecture Decision Record` (ADR)!'
-status: review
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-18'
 sources:
 - '[[SRC-013-section-9-content]]'
 related:

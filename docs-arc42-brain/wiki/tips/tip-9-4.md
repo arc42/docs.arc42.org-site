@@ -2,9 +2,9 @@
 id: 9-4
 type: tip
 title: 'Tip 9-4: Document decisions as mind-map or as table!'
-status: review
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-18'
 sources:
 - '[[SRC-013-section-9-content]]'
 related:
