@@ -6,6 +6,8 @@ them (D21).
 from __future__ import annotations
 
 import re
+from html import escape
+from urllib.parse import quote
 
 import markdown as _markdown
 
@@ -56,7 +58,7 @@ def _process_directives(lines: list[str]) -> list[str]:
         if m:
             name, arg = m.group(1), (m.group(2) or "").strip()
             text = f"{name}: {arg}" if arg else name
-            out.append(f'<p class="directive">{text}</p>')
+            out.append(f'<p class="directive">{escape(text)}</p>')
         else:
             out.append(line)
     return out
@@ -67,9 +69,9 @@ def _replace_wikilinks(text: str, known: set[str]) -> str:
         target = m.group(1).strip()
         heading = (m.group(2) or "").strip() or None
         label = (m.group(3) or "").strip() or None
-        display = label or (f"{target}#{heading}" if heading else target)
+        display = escape(label or (f"{target}#{heading}" if heading else target))
         if target in known:
-            return f'<a class="wikilink" href="/page/{target}">{display}</a>'
+            return f'<a class="wikilink" href="/page/{quote(target)}">{display}</a>'
         return f'<span class="wikilink broken">{display}</span>'
 
     return WIKILINK_RE.sub(repl, text)

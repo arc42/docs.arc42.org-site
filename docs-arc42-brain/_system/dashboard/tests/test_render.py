@@ -15,3 +15,9 @@ def test_callout_directive_wikilinks():
 
 def test_table():
     assert "<table>" in render("| a | b |\n|---|---|\n| 1 | 2 |\n", set())
+
+
+def test_wikilink_and_directive_text_is_escaped():
+    html = render('[[tip-9-1|<script>x</script>]] [[a"b]]\n\n%% examples: <b> %%\n', {"tip-9-1"})
+    assert "<script>" not in html and "&lt;script&gt;" in html
+    assert 'a&quot;b' in html and "&lt;b&gt;" in html
