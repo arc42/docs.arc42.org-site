@@ -1,6 +1,6 @@
 # docs-arc42-brain dashboard — design
 
-Status: draft for review · 2026-09-18 · branch `docs-arc42-brain`
+Status: implemented (phase 3a) · 2026-09-18 · branch `docs-arc42-brain`
 
 Supersedes §7 and revises D9 of
 `2026-09-17-docs-arc42-brain-design.md` (the brain spec). Everything else in
@@ -181,3 +181,49 @@ after phase 2 lands, because §4.1 and §4.2 call phase 2's targets.
 - Whether the Suggestions page gets a "promote" button that edits `related:`
   on both pages (would break "editing stays in the vault"; decide with the
   first real promotion session).
+
+## 10. Deviations
+
+Recorded during phase 3a implementation and its end-to-end verification.
+
+- **Module split beyond §6.** `app.py` stayed under 300 lines by moving more
+  out of it than §6 planned: presence/actions/link-check/reload routes live
+  in `routes_live.py` (a Flask blueprint), not in `app.py`; view-shaping for
+  links in/out, the graph and search moved to `relations.py`; wiki-markdown
+  and wikilink rendering moved to `render.py`; the external link checker
+  moved to `linkcheck.py`. §6's tree diagram undercounted the split; the
+  boundary it states (routes only in `app.py`, view logic in `model.py`)
+  held, it just needed two more files to hold it.
+- **`BRAINGEN` override instead of `uv` inside the container.** `brain.mk`'s
+  default `BRAINGEN := uv run --directory $(BRAIN_GEN) braingen` assumes a uv
+  project; the dashboard image instead `uv pip install --system`s braingen's
+  third-party deps and imports braingen and the dashboard straight from the
+  repo mount (`PYTHONPATH`). `actions.py`'s `Runner` therefore calls
+  `make ... BRAINGEN="$(sys.executable) -m braingen.cli"`, so `make
+  brain-lint`/`generate`/`generate-check` run the same braingen without uv
+  ever running inside the container.
+- **The log line is appended only after a successful `generate` step.**
+  `Runner._append_log` is called from `_generate()` only once `make
+  generate`'s exit code is 0; a lint failure (`stage="lint"`) or a generate
+  failure never reaches it, so `_system/log.md` gains a line only for a
+  generate that actually ran to completion — matching D18's "what it writes
+  to the tree, git shows."
+- **`braingen.lint.Finding` gained a `rule` field.** `lint.py`'s `Finding`
+  dataclass (`level`, `page`, `message`, `rule: str = "other"`) now tags each
+  finding with the rule that raised it, so the dashboard's Lint page and
+  tile can group by rule; the spec's braingen-boundary decision (D21: the
+  dashboard reads the model only through braingen) held, braingen just
+  needed one more field to serve it.
+- **Subprocess timeouts.** `actions.py` bounds every `make` call at 900s and
+  every `git` call at 30s; a timeout is reported as exit code 124 (the shell
+  convention for "command timed out"), with the job's tail showing where it
+  was cut off. Not in §4's original action descriptions.
+- **The detail page merges `Sources`/`Issues` into grouped `Links in`/`Links
+  out`.** §3.2 listed "links in and out, sources, issues that name the page"
+  as separate items; `relations.py`'s `group_links` instead buckets every
+  link (related, sources, issues, section/subsection) by direction and kind,
+  so the page shows two grouped lists rather than four separate ones.
+- **Navigation gained a "More" menu.** Not in §3; with thirteen list/detail
+  page types plus Graph, Search, Links and Log, the top nav groups the
+  less-frequented pages under one "More" menu rather than listing all of
+  them flat.

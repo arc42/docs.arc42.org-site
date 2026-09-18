@@ -84,6 +84,8 @@ make brain-test                      unit tests of the tooling
 make generate-check SECTION=9        parity: generate into build/parity/ and compare with the site
 make generate                        write the Jekyll files of every published page
 make brain-check-generated           fail if a generated file was hand-edited (runs in make check)
+make dashboard                       start the curator dashboard in Docker (http://localhost:4211)
+make dashboard-down                  stop the dashboard
 ```
 
 Generated files (`_pages/section-N.md`, `_posts/…`, `_examples/…` whose front
