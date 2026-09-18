@@ -71,6 +71,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
 - [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
 - [ISS-010](../wiki/issues/ISS-010-terms-cannot-leave-draft-with-legacy-tags.md) — resolved 2026-09-17, contradiction: term pages cannot leave draft because the lint forbids legacy-tags — L13 now exempts type `term`
+- [ISS-011](../wiki/issues/ISS-011-external-link-rewrite-deferred.md) — open, contradiction: the generator does not rewrite external markdown links (spec §4.4) because section 9's parity depends on them staying plain
 
 ## Sources
 

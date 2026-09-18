@@ -245,7 +245,7 @@ Model: Haiku.
 - Produces: `emit_body.MARKER_PREFIX: str`; `marker(source: str) -> str`; `is_generated(text: str) -> bool`; `rewrite_images(text) -> str`; `section_body(body) -> str`; `further_info(number: int, category: str, topic: str) -> str`; `section_document_body(body, number, category, topic) -> str`; `content_body(body) -> str`.
 - Produces: `compare.FileReport(rel, ok=True, problems=[], notes=[])`; `normalise_lines(text) -> list[str]`; `strip_marker(body) -> str`; `split_foot(body) -> (body, dict | None)`; `split_tags(value) -> list[str]`; `leading_blank_lines(text) -> int`; `compare_file(rel, original, generated, section: int, aliases: dict[str, str]) -> FileReport`; `EXPECTED_BODY`.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Create `docs-arc42-brain/_system/generate/tests/test_emit_body.py`:
 
@@ -457,12 +457,12 @@ def test_a_generated_original_compares_equal_to_itself():
     assert rep.notes == []
 ```
 
-- [ ] **Step 2: Run them to see them fail**
+- [x] **Step 2: Run them to see them fail**
 
 Run: `make brain-test`
 Expected: collection errors for `test_emit_body.py` and `test_compare.py` (`ModuleNotFoundError: No module named 'braingen.emit_body'` / `'braingen.compare'`).
 
-- [ ] **Step 3: Write `emit_body.py`**
+- [x] **Step 3: Write `emit_body.py`**
 
 Create `docs-arc42-brain/_system/generate/braingen/emit_body.py`:
 
@@ -572,7 +572,7 @@ def content_body(body: str) -> str:
     return rewrite_images(body).rstrip("\n") + "\n"
 ```
 
-- [ ] **Step 4: Write `compare.py`**
+- [x] **Step 4: Write `compare.py`**
 
 Create `docs-arc42-brain/_system/generate/braingen/compare.py`:
 
@@ -695,12 +695,12 @@ def compare_file(rel: str, original: str, generated: str, section: int, aliases:
     return rep
 ```
 
-- [ ] **Step 5: Run the suite**
+- [x] **Step 5: Run the suite**
 
 Run: `make brain-test`
 Expected: `79 passed, 5 xfailed`.
 
-- [ ] **Step 6: Raise ISS-011 for the deferred link rewrite**
+- [x] **Step 6: Raise ISS-011 for the deferred link rewrite**
 
 Create `docs-arc42-brain/wiki/issues/ISS-011-external-link-rewrite-deferred.md`:
 
@@ -743,7 +743,7 @@ through unchanged.
 **Resolution.**
 ```
 
-- [ ] **Step 7: Index line and lint**
+- [x] **Step 7: Index line and lint**
 
 In `docs-arc42-brain/_system/index.md`, under `## Issues`, directly after the `ISS-010` line, add:
 
@@ -754,7 +754,7 @@ In `docs-arc42-brain/_system/index.md`, under `## Issues`, directly after the `I
 Run: `make brain-lint`
 Expected: last line `33 findings, 0 errors, 33 warnings` (ISS-011 links only a section, which is exempt from the reciprocity warning).
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/emit_body.py docs-arc42-brain/_system/generate/braingen/compare.py docs-arc42-brain/_system/generate/tests/test_emit_body.py docs-arc42-brain/_system/generate/tests/test_compare.py docs-arc42-brain/wiki/issues/ISS-011-external-link-rewrite-deferred.md docs-arc42-brain/_system/index.md docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md
