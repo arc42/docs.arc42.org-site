@@ -31,7 +31,7 @@ and FAQ answers are derived from an explicit vocabulary instead of from memory.
 | D6 | Link targets include sections **and subsections**. | Subsections need stable anchors; see §4.3. |
 | D7 | Two vocabularies: **terms** (arc42 concepts with definition, aliases, home section) and **keywords** (a small controlled set of navigation facets). | Legacy tags map to one or the other during ingest; the keyword page keeps working from the union. |
 | D8 | Issues are pages (`wiki/issues/`), not an external tracker. | Same pattern as etsu and meta.arc42.org. |
-| D9 | Dashboard is a generated static site for personal use; a product is a later decision. | No server, no Docker; `make dashboard` opens a file. |
+| D9 | ~~Dashboard is a generated static site for personal use~~ **Revised 2026-09-18 by D16** in `2026-09-18-docs-arc42-brain-dashboard-design.md`: a Flask server in Docker with presence and a lint-and-generate action. | See the dashboard spec. |
 | D10 | Cut-over is per section; hand-written originals are deleted in the same commit that lands the generated files for that section. | Twelve reviewable PRs; the parity check gates each one. |
 | D11 | Generator and lint are Python (uv-managed) in `docs-arc42-brain/_system/`, driven from the root Makefile. | Frontmatter/wikilink/graph code can be lifted from etsu and meta tooling. |
 | D12 | Bootstrap ingest is audit-style (type, link, flag). Grilling is reserved for new content and the FAQ merge. | 200 existing pages do not get stress-tested one by one. |
@@ -302,6 +302,10 @@ sections that are ingested but not yet published, which is the only time both
 versions exist.
 
 ## 7. Dashboard (`_system/dashboard/`)
+
+> Superseded on 2026-09-18 by `2026-09-18-docs-arc42-brain-dashboard-design.md`
+> (D16–D23). The page list below is kept for history; the dashboard is a
+> Flask server in Docker, not a static export.
 
 Static HTML, emitted by the generator into `build/dashboard/`, opened with
 `make dashboard`. Reads the parsed model, so drafts and issues appear. Pages:
