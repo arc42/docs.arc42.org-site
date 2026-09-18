@@ -96,7 +96,8 @@ class Presence:
         with self._lock:
             now = self._clock()
             self._evict(now)
-            self._leaving[cid] = now
+            if cid in self._last:   # a goodbye from a tab that never pinged has nothing to end
+                self._leaving[cid] = now
 
     def live(self) -> list[str]:
         with self._lock:

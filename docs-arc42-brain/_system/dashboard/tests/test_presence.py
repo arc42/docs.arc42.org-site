@@ -50,3 +50,9 @@ def test_routes(client):
     assert r.get_json()["is_facilitator"] is True
     assert client.post("/leaving", json={"client_id": "tab-1"}).status_code == 204
     assert "connected" in client.get("/who").get_data(as_text=True)
+
+
+def test_leaving_from_unknown_client_leaves_no_trace():
+    c = Clock(); p = Presence(clock=c)
+    p.leaving("ghost")
+    assert p._leaving == {} and p.live() == []
