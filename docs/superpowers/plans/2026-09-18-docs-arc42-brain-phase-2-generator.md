@@ -2060,7 +2060,7 @@ Model: Sonnet.
 - Consumes: `generate.plan`, `apply`, `check`; `parity.check_section`, `format_report`; `lint.lint`.
 - Produces: `braingen generate --vault V --site S` (exit 1 on lint errors or conflicts); `braingen generate-check --vault V --site S --out DIR [--section N]` (exit 1 if any section fails; default: every section page in the brain); `braingen check-generated --vault V --site S` (exit 1 on any drift). Make: `generate`, `generate-check [SECTION=N]`, `brain-check-generated`; `make check` runs `brain-lint` and `brain-check-generated` before the site build. These are the targets the phase-3 dashboard calls (`make brain-lint && make generate`; preview = the parity generator into `build/parity/`).
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_cli_generate.py`:
 
@@ -2117,7 +2117,7 @@ def test_generate_refuses_to_overwrite_a_hand_written_original(tmp_path, capsys)
 Run: `make brain-test`
 Expected: 3 failures in `test_cli_generate.py` (argparse `invalid choice: 'check-generated'`, raised as `SystemExit: 2`).
 
-- [ ] **Step 2: Extend `cli.py`**
+- [x] **Step 2: Extend `cli.py`**
 
 Change the module docstring to:
 
@@ -2210,7 +2210,7 @@ with
 Run: `make brain-test`
 Expected: `113 passed`.
 
-- [ ] **Step 3: Make targets**
+- [x] **Step 3: Make targets**
 
 In `docs-arc42-brain/_system/brain.mk`, replace the line
 
@@ -2256,7 +2256,7 @@ check: brain-lint brain-check-generated ## Lint the brain, check generated files
 	sh scripts/check-site.sh
 ```
 
-- [ ] **Step 4: Run the targets on the real repo**
+- [x] **Step 4: Run the targets on the real repo**
 
 ```bash
 make generate
@@ -2268,12 +2268,12 @@ make help | grep -E "generate|check"
 
 Expected: `make generate` prints `0 written, 0 deleted, 0 unchanged` (nothing is published yet) and changes no file (`git status --short` shows only your task's files); `make brain-check-generated` prints `generated files: 0 problems`; `make generate-check SECTION=9` prints `section 9: PASS (14 files compared)` and `1 sections checked, 0 failed`; `make generate-check` ends with `12 sections checked, 0 failed`; `make help` lists `generate`, `generate-check`, `brain-check-generated` and the new `check` description.
 
-- [ ] **Step 5: `make check` (Docker)**
+- [x] **Step 5: `make check` (Docker)**
 
 Run: `make check`
 Expected: brain-lint prints `33 findings, 0 errors, 33 warnings`, check-generated prints `generated files: 0 problems`, then the site build and every sanity check `PASS`; exit 0.
 
-- [ ] **Step 6: Docs**
+- [x] **Step 6: Docs**
 
 In `docs-arc42-brain/CLAUDE.md`, replace the `## Commands` code block with:
 
@@ -2338,7 +2338,7 @@ to
 ## [YYYY-MM-DD] <bootstrap|ingest|audit|report|cutover|generate> | <subject>
 ```
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/cli.py docs-arc42-brain/_system/generate/tests/test_cli_generate.py docs-arc42-brain/_system/brain.mk Makefile docs-arc42-brain/CLAUDE.md docs-arc42-brain/_system/workflows/cutover.md docs-arc42-brain/_system/log.md docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md

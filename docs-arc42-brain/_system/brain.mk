@@ -7,7 +7,7 @@ BRAIN_GEN := $(BRAIN_DIR)/_system/generate
 # to braingen are absolute, so the cwd change does not matter to them.
 BRAINGEN  := uv run --directory $(BRAIN_GEN) braingen
 
-.PHONY: brain-test brain-lint brain-raw brain-import
+.PHONY: brain-test brain-lint brain-raw brain-import generate generate-check brain-check-generated
 
 brain-test: ## Run the braingen unit tests
 	uv run --directory $(BRAIN_GEN) pytest -q
@@ -27,3 +27,14 @@ BATCH ?=
 brain-import: ## Convert a raw batch into draft wiki pages (BATCH=section-9-all)
 	@test -n "$(BATCH)" || { echo "usage: make brain-import BATCH=section-9-all"; exit 2; }
 	$(BRAINGEN) import --vault $(BRAIN_DIR) --batch $(BATCH)
+
+PARITY_DIR := $(BRAIN_DIR)/build/parity
+
+generate: ## Write the Jekyll files of every published brain page (lint first; idempotent; deletes stale generated files)
+	$(BRAINGEN) generate --vault $(BRAIN_DIR) --site $(CURDIR)
+
+generate-check: ## Parity check into build/parity/: brain vs. current site (SECTION=9; default: every section)
+	$(BRAINGEN) generate-check --vault $(BRAIN_DIR) --site $(CURDIR) --out $(PARITY_DIR) $(if $(SECTION),--section $(SECTION))
+
+brain-check-generated: ## Fail if a generated file was hand-edited or is stale (part of make check)
+	$(BRAINGEN) check-generated --vault $(BRAIN_DIR) --site $(CURDIR)

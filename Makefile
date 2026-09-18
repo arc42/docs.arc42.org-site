@@ -31,7 +31,7 @@ stop: ## Stop and remove the running dev container
 site: build ## Generate the static site into _site/
 	docker compose run --rm jekyll bundle exec jekyll build
 
-check: ## Build the site (via the running dev server) and run project sanity checks
+check: brain-lint brain-check-generated ## Lint the brain, check generated files, build the site and run sanity checks
 	sh scripts/check-site.sh
 
 check-links: site ## Validate internal links, images, and HTML in the built _site (html-proofer)
