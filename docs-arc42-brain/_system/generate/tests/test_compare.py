@@ -10,7 +10,7 @@ from braingen.emit_body import marker
 MARK = marker("wiki/tips/tip-9-1.md")
 ORIG = (
     '---\nlayout: post\ntitle: "Tip 9-1: X"\ntags: decision lean\ncategory: decisions\n'
-    "permalink: /tips/9-1/\n---\nBody line  \n\nsecond\n"
+    "permalink: /tips/9-1/\n---\nBody line\n\nsecond\n"
 )
 GEN = (
     '---\nlayout: post\ntitle: "Tip 9-1: X"\ntags: lean architecture-decision\ncategory: decisions\n'
@@ -20,7 +20,11 @@ GEN = (
 
 
 def test_normalise_lines():
-    assert normalise_lines("\n\na  \n\nb\t\n\n") == ["a", "", "b"]
+    assert normalise_lines("\n\na  \n\nb\t\n\n") == ["a  ", "", "b"]
+
+
+def test_normalise_lines_flattens_longer_runs_and_strips_a_single_space():
+    assert normalise_lines("a   \nb \nc\n") == ["a  ", "b", "c"]
 
 
 def test_split_foot_compares_arguments_not_layout():
@@ -75,6 +79,21 @@ def test_body_difference_fails_with_a_diff():
     assert not rep.ok
     assert rep.problems[0].startswith("body differs:")
     assert "-second" in rep.problems[0] and "+2nd" in rep.problems[0]
+
+
+def test_lost_hard_line_break_fails():
+    orig = "---\ntitle: t\n---\n\nBody line  \nsecond\n"
+    gen = f"---\ntitle: t\n{marker('wiki/tips/tip-9-1.md')}\n---\n\nBody line\nsecond\n"
+    rep = compare_file("x.md", orig, gen, 9, {})
+    assert not rep.ok
+    assert rep.problems[0].startswith("body differs:")
+
+
+def test_one_trailing_space_vs_none_still_passes():
+    orig = "---\ntitle: t\n---\n\nBody line \nsecond\n"
+    gen = f"---\ntitle: t\n{marker('wiki/tips/tip-9-1.md')}\n---\n\nBody line\nsecond\n"
+    rep = compare_file("x.md", orig, gen, 9, {})
+    assert rep.ok
 
 
 def test_expected_difference_applies_to_its_section_only():

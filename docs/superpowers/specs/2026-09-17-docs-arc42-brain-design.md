@@ -288,6 +288,8 @@ Every generated file starts with a comment line
 `<!-- generated from docs-arc42-brain/wiki/tips/tip-9-1.md — do not edit -->`
 placed after the frontmatter, so Jekyll ignores it and a reader sees it.
 
+> Revised in phase 2 (plan deviation 10): the marker is a YAML comment on the last front-matter line, `# generated from docs-arc42-brain/<path> — do not edit`; a body line became the Jekyll excerpt and blanked the page's meta description.
+
 `make generate` is idempotent and complete: it deletes generated files whose
 brain page no longer exists or is no longer published, and it never touches
 files it did not generate (it knows its own by the marker comment).

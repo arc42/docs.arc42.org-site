@@ -1,7 +1,9 @@
 """Compare one generated file with its hand-written original (brain spec §6).
 
 Pass condition:
-- body identical after normalisation: trailing whitespace per line, leading and
+- body identical after normalisation: trailing whitespace per line (a trailing
+  run of 2+ spaces is markdown's hard line break and is kept, normalised to
+  exactly two; any other trailing whitespace is stripped), leading and
   trailing blank lines, and the further-info foot, which is
   compared by its arguments because its line layout varies between the
   hand-written pages;
@@ -41,8 +43,18 @@ class FileReport:
     notes: list[str] = field(default_factory=list)
 
 
+HARD_BREAK_RE = re.compile(r" {2,}$")
+
+
+def normalise_line(line: str) -> str:
+    """Strip trailing whitespace, but keep a markdown hard line break (2+ trailing
+    spaces) as exactly two spaces rather than stripping it away."""
+    m = HARD_BREAK_RE.search(line)
+    return line[: m.start()] + "  " if m else line.rstrip()
+
+
 def normalise_lines(text: str) -> list[str]:
-    lines = [l.rstrip() for l in text.splitlines()]
+    lines = [normalise_line(l) for l in text.splitlines()]
     while lines and not lines[0]:
         lines.pop(0)
     while lines and not lines[-1]:

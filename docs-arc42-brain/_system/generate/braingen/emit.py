@@ -105,7 +105,7 @@ def tags_for(vault: Vault, page: Page) -> list[str]:
     return out
 
 
-def _entry(vault: Vault, link: WikiLink, emitted: set[str], site_tags: set[str]) -> dict | None:
+def _entry(vault: Vault, link: WikiLink, emitted: set[str], site_tags: set[str], page_slug: str) -> dict | None:
     t = _target(vault, link)
     if t is None or t.status == "retired" or t.type not in KIND_BY_TYPE:
         return None
@@ -114,7 +114,9 @@ def _entry(vault: Vault, link: WikiLink, emitted: set[str], site_tags: set[str])
     if t.type == "section":
         url = str(t.meta["permalink"])
         if link.heading:
-            head = next(h for h in t.headings if h.text == link.heading)
+            head = next((h for h in t.headings if h.text == link.heading), None)
+            if head is None:
+                raise ValueError(f"{page_slug}: heading '{link.heading}' not found on {t.slug}")
             return {"kind": "subsection", "title": link.label or link.heading, "url": f"{url}#{head.anchor}"}
         return {"kind": "section", "title": link.label or str(t.meta["title"]), "url": url}
     if t.type in ("term", "keyword"):
@@ -134,7 +136,7 @@ def related_for(vault: Vault, page: Page, emitted: set[str], site_tags: set[str]
     """
     out: list[dict] = []
     for link in page.links_in("section")[:1] + page.links_in("related"):
-        e = _entry(vault, link, emitted, site_tags)
+        e = _entry(vault, link, emitted, site_tags, page.slug)
         if e is not None and e not in out:
             out.append(e)
     return out

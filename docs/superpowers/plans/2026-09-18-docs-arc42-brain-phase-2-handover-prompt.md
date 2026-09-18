@@ -19,7 +19,7 @@ Plan and execute phase 2 of the docs-arc42-brain project, subagent-driven. First
 
 - Nothing outside `docs-arc42-brain/` and `docs/` changes except: `_includes/related.html` (new), one include line in the article layout, `brain-lint` in `make check`, and in the final task the generated files plus the deleted originals of section 9. Nothing else in `_layouts/`, `_includes/`, `_sass/`, `_data/`.
 - No Liquid under `docs-arc42-brain/wiki/`; the generator introduces every `{% %}` and `{{ }}`.
-- Generated files carry the marker comment after the front matter; `make generate` never touches files without it.
+- Generated files carry the marker as the last front-matter line (a YAML comment, plan deviation 10); `make generate` never touches files without it.
 - Permalinks byte-identical (D3). Tags compared as sets after alias normalisation, differences printed, not failed.
 - Every commit message ends with `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>` literally, whatever model the subagent runs as; implementers verify with `git log -1 --format=%B`. Explicit `git add <paths>`, never `git add -A`.
 - Tooling: `uv` at `~/.local/bin/uv`; system python3 is 3.14, the package requires >=3.12. Docker is available for `make check`.

@@ -55,6 +55,7 @@ def test_matching_site_passes_whatever_the_status(tmp_path):
     assert "anchors not compared: _site/section-9/index.html not built (make site)" in rep.notes
     tip = rep.files[2]
     assert tip.notes[0] == "tags on the site: -['decision'] +['architecture-decision']"
+    assert "keyword page tag counts: architecture-decision 0→1, decision 1→0" in rep.notes
     assert "keyword page loses tags: ['decision']" in rep.notes
     assert "keyword page gains tags: ['architecture-decision']" in rep.notes
 
@@ -102,9 +103,8 @@ def test_keyword_page_changes_ignore_tags_still_used_elsewhere(tmp_path):
     other = site / "_posts/04-strategy/2016-01-01-t-4-1.md"
     other.parent.mkdir(parents=True)
     other.write_text("---\ntags: decision\n---\nx\n", encoding="utf-8")
-    lost, gained = keyword_page_changes(site, plan(load_vault(vault_root), statuses=PARITY_STATUSES))
-    assert lost == set()
-    assert gained == {"architecture-decision"}
+    changes = keyword_page_changes(site, plan(load_vault(vault_root), statuses=PARITY_STATUSES))
+    assert changes == {"decision": (2, 1), "architecture-decision": (0, 1)}
 
 
 def test_anchors_against_the_built_page(tmp_path, monkeypatch):

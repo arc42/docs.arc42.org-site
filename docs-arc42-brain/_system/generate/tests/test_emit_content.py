@@ -56,6 +56,14 @@ def test_plain_section_link_is_a_section_entry(tmp_path):
     ]
 
 
+def test_related_heading_link_to_a_missing_heading_raises(tmp_path):
+    vk.section(tmp_path)
+    vk.tip(tmp_path, "9-1", related=["[[section-9#No Such Heading]]"])
+    vault = load_vault(tmp_path)
+    with pytest.raises(ValueError, match="tip-9-1: heading 'No Such Heading' not found on section-9"):
+        related_for(vault, vault.pages["tip-9-1"], EMITTED, SITE_TAGS)
+
+
 def test_section_of_rejects_a_link_that_is_not_a_section(tmp_path):
     vk.tip(tmp_path, "9-1", section="[[nowhere]]")
     vault = load_vault(tmp_path)

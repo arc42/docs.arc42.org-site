@@ -8,13 +8,15 @@ carries, as notes that never fail:
 - heading anchors vs. the built page in _site/ (if built; EXPECTED_ANCHORS
   lists the known divergences, anything else fails);
 - site files of the section that have no brain page yet ("not ingested");
-- tags that appear on or disappear from the /keywords/ page, which lists the
-  tags of posts only (site.tags).
+- per-tag post counts on the /keywords/ page (site.tags, posts only) that
+  change, so a tag going quiet (e.g. 11 posts down to 1) is visible, not just
+  a tag that fully appears or disappears.
 """
 from __future__ import annotations
 
 import re
 import shutil
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -96,19 +98,20 @@ def not_ingested(vault: Vault, site: Path, section: int, generated: set[str]) ->
     return missing
 
 
-def keyword_page_changes(site: Path, p: Plan) -> tuple[set[str], set[str]]:
-    """(lost, gained) tags of the /keywords/ page if `p`'s posts replaced the site's."""
+def keyword_page_changes(site: Path, p: Plan) -> dict[str, tuple[int, int]]:
+    """Per-tag post counts on the /keywords/ page before and after `p`'s posts replace
+    the site's, for every tag whose count changes."""
     generated = {o.rel: o.text for o in p.outputs if o.rel.startswith("_posts/")}
-    before: set[str] = set()
-    after: set[str] = set()
+    before: Counter[str] = Counter()
+    after: Counter[str] = Counter()
     for f in sorted((site / "_posts").glob("*/*.md")):
         tags = set(split_tags(frontmatter.load(f).get("tags")))
-        before |= tags
+        before.update(tags)
         if f.relative_to(site).as_posix() not in generated:
-            after |= tags
+            after.update(tags)
     for text in generated.values():
-        after |= set(split_tags(frontmatter.loads(text).get("tags")))
-    return before - after, after - before
+        after.update(set(split_tags(frontmatter.loads(text).get("tags"))))
+    return {t: (before[t], after[t]) for t in before.keys() | after.keys() if before[t] != after[t]}
 
 
 def check_section(vault: Vault, site: Path, section: int, out_dir: Path) -> SectionReport:
@@ -138,11 +141,16 @@ def check_section(vault: Vault, site: Path, section: int, out_dir: Path) -> Sect
     missing = not_ingested(vault, site, section, {o.rel for o in p.outputs})
     if missing:
         rep.notes.append(f"not ingested: {len(missing)} site files of this section have no brain page")
-    lost, gained = keyword_page_changes(site, p)
+    changes = keyword_page_changes(site, p)
+    if changes:
+        counts = ", ".join(f"{tag} {before}→{after}" for tag, (before, after) in sorted(changes.items()))
+        rep.notes.append(f"keyword page tag counts: {counts}")
+    lost = sorted(tag for tag, (before, after) in changes.items() if after == 0)
+    gained = sorted(tag for tag, (before, after) in changes.items() if before == 0)
     if lost:
-        rep.notes.append(f"keyword page loses tags: {sorted(lost)}")
+        rep.notes.append(f"keyword page loses tags: {lost}")
     if gained:
-        rep.notes.append(f"keyword page gains tags: {sorted(gained)}")
+        rep.notes.append(f"keyword page gains tags: {gained}")
     return rep
 
 
