@@ -781,7 +781,7 @@ Model: Haiku.
 - Produces: `emit.Output(rel: str, text: str, source: str)` (frozen dataclass; `rel` site-relative, `source` vault-relative); `yaml_scalar(value, quote=False) -> str`; `render_frontmatter(items: list[tuple[str, object]], quoted: frozenset[str] = frozenset()) -> str` (a `related` item renders as a list of `{kind, title, url}`, omitted when empty, `url` omitted when empty); `document(front, source, body) -> str`; `emit_section(vault, page) -> Output`.
 - Produces (tests): `tests/vaultkit.py` with `source`, `section`, `tip`, `example`, `term`, `keyword`, `system`, `asset` builders.
 
-- [ ] **Step 1: Write the test kit**
+- [x] **Step 1: Write the test kit**
 
 Create `docs-arc42-brain/_system/generate/tests/vaultkit.py`:
 
@@ -875,7 +875,7 @@ def asset(root: Path, rel: str, data: bytes = b"\x89PNG test") -> None:
     p.write_bytes(data)
 ```
 
-- [ ] **Step 2: Write the failing test**
+- [x] **Step 2: Write the failing test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_emit_section.py`:
 
@@ -950,7 +950,7 @@ def test_emit_section(tmp_path):
 Run: `make brain-test`
 Expected: collection error in `test_emit_section.py` (`No module named 'braingen.emit'`).
 
-- [ ] **Step 3: Write `emit.py` (section part)**
+- [x] **Step 3: Write `emit.py` (section part)**
 
 Create `docs-arc42-brain/_system/generate/braingen/emit.py`:
 
@@ -1029,12 +1029,12 @@ def emit_section(vault: Vault, page: Page) -> Output:
     return Output(f"_pages/section-{int(m['number'])}.md", document(front, vault.rel(page.path), body), vault.rel(page.path))
 ```
 
-- [ ] **Step 4: Run the suite — the section round trip now XPASSes**
+- [x] **Step 4: Run the suite — the section round trip now XPASSes**
 
 Run: `make brain-test`
 Expected: `3 failed, 82 passed, 2 xfailed`; the three failures are `test_section_round_trip[5|10|11]` with `[XPASS(strict)] section emitter arrives in Task 3`. That is the round trip passing.
 
-- [ ] **Step 5: Remove the section xfail marker**
+- [x] **Step 5: Remove the section xfail marker**
 
 In `tests/test_roundtrip.py` delete the line
 `SECTIONS_PENDING = pytest.mark.xfail(strict=True, raises=ImportError, reason="section emitter arrives in Task 3")`
@@ -1043,7 +1043,7 @@ and the decorator line `@SECTIONS_PENDING` above `@pytest.mark.parametrize("n", 
 Run: `make brain-test`
 Expected: `85 passed, 2 xfailed`.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/emit.py docs-arc42-brain/_system/generate/tests/vaultkit.py docs-arc42-brain/_system/generate/tests/test_emit_section.py docs-arc42-brain/_system/generate/tests/test_roundtrip.py docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md

@@ -32,11 +32,9 @@ EXPECTED_NOTES = {
     11: ["normalised: 0 blank lines after the front matter in the original, 1 generated"],
 }
 
-SECTIONS_PENDING = pytest.mark.xfail(strict=True, raises=ImportError, reason="section emitter arrives in Task 3")
 CONTENT_PENDING = pytest.mark.xfail(strict=True, raises=ImportError, reason="tip/example emitters arrive in Task 4")
 
 
-@SECTIONS_PENDING
 @pytest.mark.parametrize("n", [5, 10, 11])
 def test_section_round_trip(tmp_path, n):
     from braingen.compare import compare_file
