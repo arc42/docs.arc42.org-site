@@ -1068,7 +1068,7 @@ Model: Haiku.
 - Consumes: Task 3's `Output`, `render_frontmatter`, `document`; `emit_body.content_body`; `Page.links_in(key) -> list[WikiLink]`, `Page.headings` (`.text`, `.anchor`), `Page.status`; `wikilinks.WikiLink` (`.target`, `.heading`, `.label`).
 - Produces: `section_of(vault, page) -> Page` (raises `ValueError` naming the page slug); `tags_for(vault, page) -> list[str]`; `related_for(vault, page, emitted: set[str], site_tags: set[str]) -> list[dict]`; `emit_tip(vault, page, emitted, site_tags) -> Output`; `emit_example(vault, page, emitted, site_tags) -> Output`. `emitted` = slugs of the tips/examples written in the same run; `site_tags` = tags carried by those tips.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_emit_content.py`:
 
@@ -1181,7 +1181,7 @@ def test_emit_example(tmp_path):
 Run: `make brain-test`
 Expected: collection error in `test_emit_content.py` (`cannot import name 'emit_example' from 'braingen.emit'`).
 
-- [ ] **Step 2: Extend `emit.py`**
+- [x] **Step 2: Extend `emit.py`**
 
 Replace the import line `from .emit_body import marker, section_document_body` with:
 
@@ -1291,19 +1291,19 @@ def emit_example(vault: Vault, page: Page, emitted: set[str], site_tags: set[str
     return Output(f"_examples/{page.id}.md", document(front, vault.rel(page.path), content_body(page.body)), vault.rel(page.path))
 ```
 
-- [ ] **Step 3: Run the suite — the content round trips now XPASS**
+- [x] **Step 3: Run the suite — the content round trips now XPASS**
 
 Run: `make brain-test`
 Expected: `2 failed, 92 passed`; the failures are `test_tip_round_trip` and `test_example_round_trip` with `[XPASS(strict)]`.
 
-- [ ] **Step 4: Remove the content xfail marker**
+- [x] **Step 4: Remove the content xfail marker**
 
 In `tests/test_roundtrip.py` delete the `CONTENT_PENDING = …` line and both `@CONTENT_PENDING` decorator lines. `import pytest` stays (the parametrize decorator uses it).
 
 Run: `make brain-test`
 Expected: `94 passed`.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/emit.py docs-arc42-brain/_system/generate/tests/test_emit_content.py docs-arc42-brain/_system/generate/tests/test_roundtrip.py docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md

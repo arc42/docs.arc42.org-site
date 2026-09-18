@@ -32,9 +32,6 @@ EXPECTED_NOTES = {
     11: ["normalised: 0 blank lines after the front matter in the original, 1 generated"],
 }
 
-CONTENT_PENDING = pytest.mark.xfail(strict=True, raises=ImportError, reason="tip/example emitters arrive in Task 4")
-
-
 @pytest.mark.parametrize("n", [5, 10, 11])
 def test_section_round_trip(tmp_path, n):
     from braingen.compare import compare_file
@@ -58,7 +55,6 @@ def _section_9(root: Path) -> None:
     write_page(root / "wiki/sections/section-9.md", SECTION_9_META, "# 9. Architecture Decisions\n")
 
 
-@CONTENT_PENDING
 def test_tip_round_trip(tmp_path):
     from braingen.compare import compare_file
     from braingen.emit import emit_tip
@@ -77,7 +73,6 @@ def test_tip_round_trip(tmp_path):
     assert rep.problems == []   # tags differ (legacy tags are not mapped here): notes only
 
 
-@CONTENT_PENDING
 def test_example_round_trip(tmp_path):
     from braingen.compare import compare_file
     from braingen.emit import emit_example
