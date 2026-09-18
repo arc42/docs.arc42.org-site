@@ -75,4 +75,7 @@ then the two specs, then decide which plan to write.
    seven points above.
 3. Execute it subagent-driven.
 4. Then write the dashboard plan from the dashboard spec (D19) and execute
-   it; register port 4211 in `meta.arc42.org/raw/port-assignment.md`.
+   it. That plan must contain an explicit task: add the line
+   `| **4211** | docs.arc42.org-site brain dashboard | |` to
+   `../meta.arc42.org/raw/port-assignment.md` (its own commit in that repo,
+   same trailer). The port is claimed by the spec (D23) but not yet registered.
