@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-14T18:14:32+00:00",
+  "generated": "2026-09-18T07:14:10+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -216,6 +216,8 @@
             "currency": "EUR",
             "alumni": 2050
           },
+          "few_seats": "only few seats available",
+          "seats_limited": true,
           "id": "improve-nov-2026",
           "code": "26-11 IMPROVE",
           "start": "2026-11-24",
