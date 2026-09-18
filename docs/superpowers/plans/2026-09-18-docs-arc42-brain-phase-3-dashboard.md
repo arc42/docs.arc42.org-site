@@ -88,7 +88,7 @@ Site files are placeholders: `_posts/09-decisions/2016-03-01-t-9-{1,2,3}.md`, `_
 **Interfaces:**
 - Produces: `Finding(level, page, message, rule="other")`. `rule` is a short kebab-case id, and `str(Finding)` stays unchanged, so CLI output is the same.
 
-- [ ] **Step 1: Append the failing test** to `tests/test_lint.py`:
+- [x] **Step 1: Append the failing test** to `tests/test_lint.py`:
 
 ```python
 def test_findings_carry_rule_ids(tmp_path):
@@ -108,9 +108,9 @@ def test_findings_carry_rule_ids(tmp_path):
     assert str(Finding("error", "p", "m", "link")) == "ERROR   p: m"
 ```
 
-- [ ] **Step 2: Check that it fails.** Run `~/.local/bin/uv run --directory docs-arc42-brain/_system/generate pytest -q tests/test_lint.py`. Expected: FAIL (`Finding` has no `rule`).
+- [x] **Step 2: Check that it fails.** Run `~/.local/bin/uv run --directory docs-arc42-brain/_system/generate pytest -q tests/test_lint.py`. Expected: FAIL (`Finding` has no `rule`).
 
-- [ ] **Step 3: Implement.**
+- [x] **Step 3: Implement.**
   1. Add a fourth dataclass field to `Finding`: `rule: str = "other"`. `__str__` stays unchanged.
   2. Pass `rule=` to every `Finding(...)` in `lint.py`:
 
@@ -132,11 +132,11 @@ def test_findings_carry_rule_ids(tmp_path):
   | `_body` | `unknown directive` | `directive` |
   | `_example_directives` | both messages | `example-category` |
 
-- [ ] **Step 4: Run it.** Run `make brain-test` (from the repo root). Expected: every test passes, including the new one.
+- [x] **Step 4: Run it.** Run `make brain-test` (from the repo root). Expected: every test passes, including the new one.
 
-- [ ] **Step 5: Check that lint output is unchanged.** Run `make brain-lint`. Expected: `33 findings, 0 errors, 33 warnings`, the same as before.
+- [x] **Step 5: Check that lint output is unchanged.** Run `make brain-lint`. Expected: `33 findings, 0 errors, 33 warnings`, the same as before.
 
-- [ ] **Step 6: Commit.**
+- [x] **Step 6: Commit.**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/lint.py docs-arc42-brain/_system/generate/tests/test_lint.py
@@ -163,7 +163,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - `tests/kit.py`: `build_repo(root: Path) -> Path` builds the fixture repo from the table above; `DAY = "2026-09-18"`.
   - `tests/conftest.py`: fixtures `repo` (`build_repo(tmp_path)`), `vault_root` (`repo / "docs-arc42-brain"`) and `client` (`create_app(repo).test_client()`).
 
-- [ ] **Step 1: Write `pyproject.toml`.**
+- [x] **Step 1: Write `pyproject.toml`.**
 
 ```toml
 [project]
@@ -194,7 +194,7 @@ pythonpath = ["."]
 
 Run `~/.local/bin/uv lock --directory docs-arc42-brain/_system/dashboard`. Add `docs-arc42-brain/_system/dashboard/.venv/` to the root `.gitignore`, under the `# docs-arc42-brain` block.
 
-- [ ] **Step 2: Write `tests/kit.py`.** Build every page with `braingen.importer.write_page(path, meta, body)`. Common fields: id, type, title, status, created (`DAY` unless stated), updated (`DAY` unless stated), `sources: ["[[SRC-001-test]]"]`, related.
+- [x] **Step 2: Write `tests/kit.py`.** Build every page with `braingen.importer.write_page(path, meta, body)`. Common fields: id, type, title, status, created (`DAY` unless stated), updated (`DAY` unless stated), `sources: ["[[SRC-001-test]]"]`, related.
   - Pages: exactly the fixture table above.
   - Section 9's body is braingen's `tests/vaultkit.SECTION_BODY`, copied verbatim; do not import across projects.
   - Section front matter: `number, name, category, posts-dir, permalink, order, faq-topic`, as in vaultkit's `section()`. Section 3 uses name "Context and Scope", category `context`, posts-dir `03-context`, permalink `/section-3/`, order 7.
@@ -224,7 +224,7 @@ Run `~/.local/bin/uv lock --directory docs-arc42-brain/_system/dashboard`. Add `
 
     Create `_pages/` and `_examples/` as empty directories.
 
-- [ ] **Step 3: Write `tests/test_kit.py`.** It pins the fixture to its documented lint result:
+- [x] **Step 3: Write `tests/test_kit.py`.** It pins the fixture to its documented lint result:
 
 ```python
 from braingen.lint import lint
@@ -239,7 +239,7 @@ def test_fixture_lint_matches_the_plan(vault_root):
     assert warnings == [("reciprocity", "ISS-001"), ("reciprocity", "ISS-002")]
 ```
 
-- [ ] **Step 4: Write `tests/test_app_smoke.py`.**
+- [x] **Step 4: Write `tests/test_app_smoke.py`.**
 
 ```python
 def test_home_renders_with_title_and_nav(client):
@@ -251,7 +251,7 @@ def test_home_renders_with_title_and_nav(client):
     assert "cdn" not in html.lower()
 ```
 
-- [ ] **Step 5: Implement `app.py`, `base.html`, `home.html` and `style.css`.**
+- [x] **Step 5: Implement `app.py`, `base.html`, `home.html` and `style.css`.**
   - `base.html`:
     - head `<title>{% block title %}docs-arc42-brain{% endblock %}</title>`, loading `/static/style.css` and `/static/app.js` (defer);
     - a masthead with the brand "docs-arc42-brain" and a nav placeholder block;
@@ -271,9 +271,9 @@ def test_home_renders_with_title_and_nav(client):
     - `create_app` registers `/`, which renders `home.html`;
     - module-level `app = None`; the Docker command calls `create_app()` through gunicorn's `app:create_app()` factory syntax.
 
-- [ ] **Step 6: Run the tests.** Run `~/.local/bin/uv run --directory docs-arc42-brain/_system/dashboard pytest -q`. Expected: 2 passed.
+- [x] **Step 6: Run the tests.** Run `~/.local/bin/uv run --directory docs-arc42-brain/_system/dashboard pytest -q`. Expected: 2 passed.
 
-- [ ] **Step 7: Write the Dockerfile.** The build context is `docs-arc42-brain/_system`, so the build can see `generate/` and `dashboard/`. At runtime all code comes from the mounted repo, so an edit needs only a container restart, not a rebuild.
+- [x] **Step 7: Write the Dockerfile.** The build context is `docs-arc42-brain/_system`, so the build can see `generate/` and `dashboard/`. At runtime all code comes from the mounted repo, so an edit needs only a container restart, not a rebuild.
 
 ```dockerfile
 FROM python:3.12-slim
@@ -300,7 +300,7 @@ The export must include pytest as well (the dev group is on by default in `uv ex
 
 `.dockerignore` sits in `docs-arc42-brain/_system/`, because that is the context. Its lines are `**/.venv`, `**/__pycache__` and `**/.pytest_cache`.
 
-- [ ] **Step 8: Write `compose.yaml`.**
+- [x] **Step 8: Write `compose.yaml`.**
 
 ```yaml
 # The project name keeps this container apart from the docs site's (docs-arc42-site).
@@ -326,7 +326,7 @@ services:
     restart: "no"
 ```
 
-- [ ] **Step 9: Add the make targets** to `brain.mk`. Add the new targets to `.PHONY` as well.
+- [x] **Step 9: Add the make targets** to `brain.mk`. Add the new targets to `.PHONY` as well.
 
 ```make
 DASH_DIR     := $(BRAIN_DIR)/_system/dashboard
@@ -347,14 +347,14 @@ dashboard-test: ## Run the dashboard tests inside its Docker image
 	$(DASH_COMPOSE) run --rm --build --no-deps brain-dashboard python -m pytest -q -p no:cacheprovider
 ```
 
-- [ ] **Step 10: Verify Docker.**
+- [x] **Step 10: Verify Docker.**
   1. Run `make dashboard-test`. Expected: 2 passed, inside the container.
   2. Run `make dashboard`, then `curl -s localhost:4211/ | grep -c docs-arc42-brain`. Expected: ≥ 1.
   3. Run `make dashboard-down`.
   4. Run `make help`. Expected: the four dashboard targets appear in the Brain group.
   5. Run `git status --short`. Expected: no stray files (no `.venv`, no `__pycache__`, nothing root-owned).
 
-- [ ] **Step 11: Commit** with explicit paths:
+- [x] **Step 11: Commit** with explicit paths:
   - the `dashboard/` files listed above, including `uv.lock` and `tests/`;
   - `docs-arc42-brain/_system/.dockerignore`, `brain.mk` and `.gitignore`.
 
@@ -382,7 +382,7 @@ dashboard-test: ## Run the dashboard tests inside its Docker image
   - Routes: `POST /ping` (JSON), `POST /leaving` (204), `GET /who`.
   - `app.extensions["brain"]["presence"]`.
 
-- [ ] **Step 1: Write the failing tests.**
+- [x] **Step 1: Write the failing tests.**
 
 ```python
 from presence import Presence, nickname
@@ -439,9 +439,9 @@ def test_routes(client):
     assert "connected" in client.get("/who").get_data(as_text=True)
 ```
 
-- [ ] **Step 2: Check that they fail.** Run the dashboard tests. Expected: ImportError on `presence`.
+- [x] **Step 2: Check that they fail.** Run the dashboard tests. Expected: ImportError on `presence`.
 
-- [ ] **Step 3: Implement `presence.py`.**
+- [x] **Step 3: Implement `presence.py`.**
   - State is three dicts: `_last`, `_first` and `_leaving` (cid → time), guarded by one `threading.Lock`.
   - Eviction runs at the start of every public call. A cid is dropped when either holds:
     - `now - _last[cid] > live_after`;
@@ -454,7 +454,7 @@ def test_routes(client):
   - Nicknames: `zlib.crc32`. The adjective and animal lists are copied from eTSU's `app.py` (`_NICKNAME_ADJECTIVES`, `_NICKNAME_ANIMALS`, 12 each). Index them as eTSU does.
   - Nothing is persisted.
 
-- [ ] **Step 4: Routes and front end.**
+- [x] **Step 4: Routes and front end.**
   - Routes in `app.py`: `/ping` returns `presence.ping(client_id(request))`; `/leaving`; `/who` renders `who.html`, a table of nickname, role and connected time.
   - `static/app.js`:
     - The client id lives in `sessionStorage["brain-client-id"]` (`crypto.randomUUID()` on first use). It is exposed as `window.brainClientId`.
@@ -463,9 +463,9 @@ def test_routes(client):
     - On `pagehide` it calls `navigator.sendBeacon("/leaving", new Blob([JSON.stringify({client_id})], {type: "application/json"}))`.
   - The base footer links to `/who`.
 
-- [ ] **Step 5: Run the tests.** Expected: all pass.
+- [x] **Step 5: Run the tests.** Expected: all pass.
 
-- [ ] **Step 6: Commit.** Message: `dashboard: presence — ping, leaving, who, facilitator (lifted from eTSU)`, with the trailer.
+- [x] **Step 6: Commit.** Message: `dashboard: presence — ping, leaving, who, facilitator (lifted from eTSU)`, with the trailer.
 
 ---
 
@@ -541,7 +541,7 @@ Rules the views follow:
 
   Sorting: slugs alphabetical, sections by number.
 
-- [ ] **Step 1: Write the failing tests** in `tests/test_model.py`:
+- [x] **Step 1: Write the failing tests** in `tests/test_model.py`:
 
 ```python
 import os
@@ -639,15 +639,15 @@ def test_gaps(repo):
     assert g["sections_without_related"] == ["section-3", "section-9"]
 ```
 
-- [ ] **Step 2: Check that they fail.** Expected: ImportError.
+- [x] **Step 2: Check that they fail.** Expected: ImportError.
 
-- [ ] **Step 3: Implement `model.py`.**
+- [x] **Step 3: Implement `model.py`.**
   - `git_log` runs `git -C <repo> log -<n> --date=short --format=%h%x1f%ad%x1f%s -- docs-arc42-brain/` with `subprocess.run(..., capture_output=True, text=True, timeout=10)`. It returns [] on any failure.
   - `log_entries` parses `^## \[(\d{4}-\d{2}-\d{2})\] ([\w-]+) \| (.*)$`.
 
-- [ ] **Step 4: Run the tests.** Expected: all pass.
+- [x] **Step 4: Run the tests.** Expected: all pass.
 
-- [ ] **Step 5: Commit.** Message: `dashboard: model — mtime cache and tile views (sections, tips, tags, issues, lint, review, readiness, gaps)`, with the trailer.
+- [x] **Step 5: Commit.** Message: `dashboard: model — mtime cache and tile views (sections, tips, tags, issues, lint, review, readiness, gaps)`, with the trailer.
 
 ---
 
@@ -698,7 +698,7 @@ Suggestion rules:
    - an unknown one becomes `<span class="wikilink broken">…</span>`.
 4. `markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists", "md_in_html"])`.
 
-- [ ] **Step 1: Write the failing tests.**
+- [x] **Step 1: Write the failing tests.**
 
 ```python
 # tests/test_relations.py
@@ -771,13 +771,13 @@ def test_table():
     assert "<table>" in render("| a | b |\n|---|---|\n| 1 | 2 |\n", set())
 ```
 
-- [ ] **Step 2: Check that they fail.** Expected: ImportError.
+- [x] **Step 2: Check that they fail.** Expected: ImportError.
 
-- [ ] **Step 3: Implement.** Snippets: at most 160 characters around the first match, with newlines collapsed.
+- [x] **Step 3: Implement.** Snippets: at most 160 characters around the first match, with newlines collapsed.
 
-- [ ] **Step 4: Run the tests.** Expected: all pass.
+- [x] **Step 4: Run the tests.** Expected: all pass.
 
-- [ ] **Step 5: Commit.** Message: `dashboard: relations (links in/out, suggestions, graphs, search) and markdown rendering`, with the trailer.
+- [x] **Step 5: Commit.** Message: `dashboard: relations (links in/out, suggestions, graphs, search) and markdown rendering`, with the trailer.
 
 ---
 
@@ -845,7 +845,7 @@ Behaviour:
 - `generate` prints `FAKE_GEN_LINES` (default 1) lines `wrote   f<i>.md`, then `2 written, 1 deleted, 5 unchanged`, and exits with `FAKE_GEN_EXIT`.
 - `generate-check` prints `section 3: PASS (0 files compared)` and `section 9: FAIL (6 files compared)`, then exits 1.
 
-- [ ] **Step 1: Write the failing tests.**
+- [x] **Step 1: Write the failing tests.**
 
 ```python
 import json
@@ -935,13 +935,13 @@ def test_start_runs_in_background_and_releases(runner):
     assert runner.current is None and runner.last.kind == "preview" and not runner.lock.locked()
 ```
 
-- [ ] **Step 2: Check that they fail.** Expected: ImportError.
+- [x] **Step 2: Check that they fail.** Expected: ImportError.
 
-- [ ] **Step 3: Implement** `actions.py` and `tests/fake_make.py`.
+- [x] **Step 3: Implement** `actions.py` and `tests/fake_make.py`.
 
-- [ ] **Step 4: Run the tests.** Expected: all pass.
+- [x] **Step 4: Run the tests.** Expected: all pass.
 
-- [ ] **Step 5: Commit.** Message: `dashboard: actions — lint-gated generate, preview with parity cache, run files, log line`, with the trailer.
+- [x] **Step 5: Commit.** Message: `dashboard: actions — lint-gated generate, preview with parity cache, run files, log line`, with the trailer.
 
 ---
 
@@ -975,7 +975,7 @@ class LinkChecker:
 - **Cache file:** JSON `{url: {"status", "location", "error", "checked"}}`.
 - **`head_status`:** `urllib.request` with a redirect handler that does not follow redirects. A 3xx comes back as its status and the `Location` header. Some servers reject HEAD with 405 or 403; on those, retry once with GET. Set `User-Agent: docs-arc42-brain-linkcheck`.
 
-- [ ] **Step 1: Write the failing tests.**
+- [x] **Step 1: Write the failing tests.**
 
 ```python
 from linkcheck import LinkChecker, external_urls
@@ -1005,9 +1005,9 @@ def test_check_uses_cache_and_sorts(tmp_path):
     assert sorted(seen) == ["https://dead", "https://moved", "https://ok"]
 ```
 
-- [ ] **Step 2: Check that they fail.** Then implement.
-- [ ] **Step 3: Run the tests.** Expected: all pass.
-- [ ] **Step 4: Commit.** Message: `dashboard: on-demand external link check with a one-day cache`, with the trailer.
+- [x] **Step 2: Check that they fail.** Then implement.
+- [x] **Step 3: Run the tests.** Expected: all pass.
+- [x] **Step 4: Commit.** Message: `dashboard: on-demand external link check with a one-day cache`, with the trailer.
 
 ---
 
@@ -1052,7 +1052,7 @@ The detail page `/page/<slug>` shows:
 
 An unknown slug returns 404.
 
-- [ ] **Step 1: Write the failing tests.**
+- [x] **Step 1: Write the failing tests.**
 
 ```python
 import pytest
@@ -1091,11 +1091,11 @@ def test_section_detail_renders_callout(client):
     assert 'class="callout arc42-help"' in html and 'class="directive"' in html
 ```
 
-- [ ] **Step 2: Check that they fail.** Then implement. Keep `app.py` to routes only (under 300 lines); the view data comes from `model` / `relations`.
+- [x] **Step 2: Check that they fail.** Then implement. Keep `app.py` to routes only (under 300 lines); the view data comes from `model` / `relations`.
 
-- [ ] **Step 3: Run the tests.** Expected: all pass. Also run `wc -l app.py`. Expected: < 300.
+- [x] **Step 3: Run the tests.** Expected: all pass. Also run `wc -l app.py`. Expected: < 300.
 
-- [ ] **Step 4: Commit.** Message: `dashboard: home tiles, list and detail pages, review/cut-over/gaps/lint/log/tags/issues pages`, with the trailer.
+- [x] **Step 4: Commit.** Message: `dashboard: home tiles, list and detail pages, review/cut-over/gaps/lint/log/tags/issues pages`, with the trailer.
 
 ---
 
@@ -1133,7 +1133,7 @@ def test_section_detail_renders_callout(client):
   - a search form (`GET /search`, input `q`);
   - a reload button (`POST /reload`).
 
-- [ ] **Step 1: Write the failing tests** (`tests/test_actions_routes.py`). They use a stub runner.
+- [x] **Step 1: Write the failing tests** (`tests/test_actions_routes.py`). They use a stub runner.
 
 ```python
 import pytest
@@ -1199,11 +1199,11 @@ def test_no_cdn_anywhere(app_):
         assert "https://" not in "".join(l for l in html.splitlines() if "<script" in l or "<link" in l)
 ```
 
-- [ ] **Step 2: Check that they fail.** Then implement. `app.py` stays under 300 lines; move helpers into `model.py`/`relations.py` if needed.
+- [x] **Step 2: Check that they fail.** Then implement. `app.py` stays under 300 lines; move helpers into `model.py`/`relations.py` if needed.
 
-- [ ] **Step 3: Run the full dashboard suite and `make brain-test`.** Expected: all pass.
+- [x] **Step 3: Run the full dashboard suite and `make brain-test`.** Expected: all pass.
 
-- [ ] **Step 4: Commit.** Message: `dashboard: actions page (facilitator-gated generate/preview), link health, suggestions, graph, search, reload`, with the trailer.
+- [x] **Step 4: Commit.** Message: `dashboard: actions page (facilitator-gated generate/preview), link health, suggestions, graph, search, reload`, with the trailer.
 
 ---
 
@@ -1217,7 +1217,7 @@ def test_no_cdn_anywhere(app_):
   - `docs/superpowers/specs/2026-09-18-docs-arc42-brain-dashboard-design.md`: status line → "implemented (phase 3a)", plus a short "Deviations" list: the module split from §6; the `BRAINGEN` override instead of uv inside the container; log line only on successful generate; `Finding.rule` in braingen.
 - Create: `docs-arc42-brain/_system/dashboard/README.md` (run, test, architecture in ten lines).
 
-- [ ] **Step 1: Run end to end against the real repo, in Docker.**
+- [x] **Step 1: Run end to end against the real repo, in Docker.**
   1. `make dashboard-test` → all pass in the image.
   2. `make dashboard`, then:
      - `curl -sf localhost:4211/` and `/sections`, `/cutover`, `/lint`, `/graph.json` all return 200;
@@ -1231,7 +1231,7 @@ def test_no_cdn_anywhere(app_):
   4. Revert that log line with `git checkout -- docs-arc42-brain/_system/log.md`. It came from the test run, not from real work.
   5. `make dashboard-down`.
   6. `make brain-test`, `make brain-lint`, `make brain-check-generated` → green.
-- [ ] **Step 2: Write the docs** listed above.
-- [ ] **Step 3: Commit.** Message: `dashboard: docs, spec status and deviations, log entry`, with the trailer.
+- [x] **Step 2: Write the docs** listed above.
+- [x] **Step 3: Commit.** Message: `dashboard: docs, spec status and deviations, log entry`, with the trailer.
 
 Port 4211 must also be registered in `../meta.arc42.org/raw/port-assignment.md`. That is a different repository, so this plan does not do it; the final report lists it as an open item for the user.
