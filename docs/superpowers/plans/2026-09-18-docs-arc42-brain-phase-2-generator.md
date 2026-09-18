@@ -1686,7 +1686,7 @@ Model: Sonnet (the integration test runs against the real vault and `raw/ingeste
 - Consumes: `generate.plan`, `generate.Plan`; `compare.FileReport`, `compare_file`, `split_tags`; `Page.headings` (`.anchor`, `.text`), `Page.directives` (`.name`, `.arg`).
 - Produces: `parity.PARITY_STATUSES = frozenset({"draft", "review", "published"})`; `EXPECTED_ANCHORS`; `SectionReport(section, files: list[FileReport], notes: list[str])` with `.ok`; `check_section(vault, site, section: int, out_dir: Path) -> SectionReport` (writes into `out_dir/section-N/`); `format_report(rep) -> str` whose first line is `section N: PASS|FAIL (K files compared)`; `alias_table(vault)`, `anchor_check`, `not_ingested`, `keyword_page_changes(site, plan) -> (lost, gained)`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_parity.py`:
 
@@ -1844,7 +1844,7 @@ def test_section_9_parity_against_the_ingested_originals(tmp_path):
 Run: `make brain-test`
 Expected: collection error (`No module named 'braingen.parity'`).
 
-- [ ] **Step 2: Write `parity.py`**
+- [x] **Step 2: Write `parity.py`**
 
 Create `docs-arc42-brain/_system/generate/braingen/parity.py`:
 
@@ -2008,12 +2008,12 @@ def format_report(rep: SectionReport) -> str:
     return "\n".join(lines)
 ```
 
-- [ ] **Step 3: Run the suite**
+- [x] **Step 3: Run the suite**
 
 Run: `make brain-test`
 Expected: `110 passed`.
 
-- [ ] **Step 4: Run the parity check on the real repo, all twelve sections (no CLI yet)**
+- [x] **Step 4: Run the parity check on the real repo, all twelve sections (no CLI yet)**
 
 Run from the repo root:
 
@@ -2031,7 +2031,7 @@ for n in range(1, 13):
 
 Expected: twelve lines starting `section N: PASS`; section 7 has the note `expected difference: anchor motivation-1 is motivation on the site …` (only if `_site/` is built, otherwise `anchors not compared …`); section 10's `_pages/section-10.md` has `expected difference: hard-coded image path …`; section 11's has `normalised: 0 blank lines after the front matter …`; section 9 compares 14 files and has no `not ingested` note. Paste the full output into your report. `docs-arc42-brain/build/` is gitignored; do not commit it.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/parity.py docs-arc42-brain/_system/generate/tests/test_parity.py docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md
