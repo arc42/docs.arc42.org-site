@@ -20,8 +20,8 @@ related:
 - kind: term
   title: "Architecture Decision Record (ADR)"
   url: /keywords/#adr
+# generated from docs-arc42-brain/wiki/examples/09-decision-example-adr.md — do not edit
 ---
-<!-- generated from docs-arc42-brain/wiki/examples/09-decision-example-adr.md — do not edit -->
 
 <p></p>
 

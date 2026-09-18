@@ -4,8 +4,8 @@ title: 9 - Architecture decisions
 permalink: /section-9/
 number: 9
 order: 13
+# generated from docs-arc42-brain/wiki/sections/section-9.md — do not edit
 ---
-<!-- generated from docs-arc42-brain/wiki/sections/section-9.md — do not edit -->
 
 # 9. Architecture Decisions
 

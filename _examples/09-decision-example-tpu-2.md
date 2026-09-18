@@ -14,8 +14,8 @@ related:
 - kind: tip
   title: "Tip 9-4: Document decisions as mind-map or as table!"
   url: /tips/9-4/
+# generated from docs-arc42-brain/wiki/examples/09-decision-example-tpu-2.md — do not edit
 ---
-<!-- generated from docs-arc42-brain/wiki/examples/09-decision-example-tpu-2.md — do not edit -->
 
 <p></p>
 

@@ -35,6 +35,7 @@ Append-only. One entry per operation, prefix exact so it stays greppable:
 ## [2026-09-18] cutover | section 9
 - published: section-9, tip-9-1 … tip-9-10, 09-decision-example-adr, -htmlsc-1, -tpu-2 (14 pages)
 - generated: _pages/section-9.md, _posts/09-decisions/ (10), _examples/09-decision-example-* (3); hand-written originals deleted first, generated files now at the same paths
-- parity: make generate-check SECTION=9 PASS before and after; 12 sections checked, 0 failed
+- parity: make generate-check PASS before (SECTION=9) and after (12 sections checked, 0 failed)
 - tags: decision → architecture-decision (13 pages), criteria → decision-criteria (9-2), quality → quality-requirement (9-1, 9-4); adr added where the brain maps terms the legacy tags lacked (09-decision-example-adr, 9-5), decision-criteria likewise (09-decision-example-htmlsc-1, 9-3, 9-5, 9-6); keyword page gains architecture-decision, decision-criteria, quality-requirement, loses nothing
 - site: related-links block on the 13 tips/examples; make check and make check-links green
+- fix: marker moved into the front matter (YAML comment) — the body marker had replaced every generated page's meta description; section 9 regenerated
