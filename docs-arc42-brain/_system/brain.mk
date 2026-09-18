@@ -18,7 +18,7 @@ brain-lint: ## Validate the brain: schema, links, anchors, images, no Liquid
 SECTION ?=
 WHAT ?= all
 
-brain-raw: ## Copy one section's site files into raw/ (SECTION=9 WHAT=all|page|content)
+brain-raw: ## Copy a section's site files into raw/ (SECTION=9 WHAT=all|page|content)
 	@test -n "$(SECTION)" || { echo "usage: make brain-raw SECTION=9 [WHAT=all|page|content]"; exit 2; }
 	$(BRAINGEN) raw --site $(CURDIR) --vault $(BRAIN_DIR) --section $(SECTION) --what $(WHAT)
 
@@ -30,11 +30,11 @@ brain-import: ## Convert a raw batch into draft wiki pages (BATCH=section-9-all)
 
 PARITY_DIR := $(BRAIN_DIR)/build/parity
 
-generate: ## Write the Jekyll files of every published brain page (lint first; idempotent; deletes stale generated files)
+generate: ## Write the Jekyll files of all published brain pages (lints first)
 	$(BRAINGEN) generate --vault $(BRAIN_DIR) --site $(CURDIR)
 
-generate-check: ## Parity check into build/parity/: brain vs. current site (SECTION=9; default: every section)
+generate-check: ## Parity: brain vs. site into build/parity/ (SECTION=9, default: all)
 	$(BRAINGEN) generate-check --vault $(BRAIN_DIR) --site $(CURDIR) --out $(PARITY_DIR) $(if $(SECTION),--section $(SECTION))
 
-brain-check-generated: ## Fail if a generated file was hand-edited or is stale (part of make check)
+brain-check-generated: ## Fail if a generated file was hand-edited or is stale
 	$(BRAINGEN) check-generated --vault $(BRAIN_DIR) --site $(CURDIR)

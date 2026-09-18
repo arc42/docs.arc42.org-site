@@ -8,8 +8,16 @@ SITE_PORT ?= 4210
 
 .PHONY: help dev build stop site check check-links clean install update shell logs
 
+# One group per makefile, targets in file order. awk reads each file itself,
+# so no file-name prefix leaks into the output (grep over several files adds one).
+HELP_AWK = awk 'BEGIN {FS = ":[^\#]*\#\# "} /^[a-zA-Z_-]+:.*\#\# / {printf "  \033[36m%-22s\033[0m %s\n", $$1, $$2}'
+
 help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
+	@printf '\nSite (Jekyll, runs in Docker):\n'
+	@$(HELP_AWK) Makefile
+	@printf '\nBrain (docs-arc42-brain, runs via uv):\n'
+	@$(HELP_AWK) docs-arc42-brain/_system/brain.mk
+	@echo
 
 dev: ## Start the local Jekyll dev server with live reload (http://localhost:4210)
 	@echo "==> Open http://localhost:$(SITE_PORT)  (NOT http://0.0.0.0:$(SITE_PORT) — Firefox refuses to connect to 0.0.0.0)"
