@@ -182,6 +182,17 @@ def sections_view(b: Brain, parity: dict[str, str]) -> dict:
     return {"counts": status_counts(sections), "rows": rows}
 
 
+def issues_touching_sections(b: Brain) -> int:
+    """Count of DISTINCT open issues that touch any section (directly, or
+    via a page that belongs to that section) — not a per-section sum, which
+    double-counts an issue touching more than one section."""
+    sections = [(s.slug, int(s.meta["number"])) for s in b.vault.by_type("section")]
+    return sum(
+        1 for i in open_issues(b)
+        if any(_issue_targets_section(b, i, slug, number) for slug, number in sections)
+    )
+
+
 def tips_view(b: Brain) -> dict:
     tips = b.vault.by_type("tip")
     without_related = sorted(p.slug for p in tips if not p.links_in("related"))
@@ -209,9 +220,11 @@ def examples_view(b: Brain) -> dict:
         target = b.vault.pages.get(links[0].target)
         name = str(target.meta.get("name")) if target is not None else links[0].target
         by_system[name] += 1
+    # (none) sorts last: it is the "nothing to report" bucket, not a system.
+    by_system_sorted = dict(sorted(by_system.items(), key=lambda kv: (kv[0] == "(none)", kv[0])))
     categories = {e.meta.get("example-category") for e in examples if e.meta.get("example-category")}
     orphan_categories = sorted(categories - _referenced_categories(b))
-    return {"counts": status_counts(examples), "by_system": dict(by_system), "orphan_categories": orphan_categories}
+    return {"counts": status_counts(examples), "by_system": by_system_sorted, "orphan_categories": orphan_categories}
 
 
 def faq_view(b: Brain) -> dict:

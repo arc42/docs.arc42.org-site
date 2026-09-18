@@ -19,6 +19,14 @@ LINK_KEYS = ("related", "section", "sources", "home", "system", "terms", "keywor
 # _system/workflows/relations.md
 WEIGHTS = {"term": 3, "subsection": 2, "keyword": 1, "system": 2}
 
+# Group order and labels for the detail page's "Links in"/"Links out"
+# (brief: grouped by type, Sections first through Sources last).
+GROUP_TYPES = ("section", "tip", "example", "term", "keyword", "system", "issue", "source")
+GROUP_LABELS = {
+    "section": "Sections", "tip": "Tips", "example": "Examples", "term": "Terms",
+    "keyword": "Keywords", "system": "Systems", "issue": "Issues", "source": "Sources",
+}
+
 
 def _targets(page, key: str) -> set[str]:
     return {l.target for l in page.links_in(key)}
@@ -52,6 +60,39 @@ def links_in(b: Brain, slug: str) -> list[tuple[str, str]]:
             if target == slug:
                 result.append((p.slug, via))
     return sorted(result)
+
+
+def group_links(b: Brain, pairs: list[tuple[str, str]]) -> list[dict]:
+    """`links_out`/`links_in` pairs -> one row per target, with every `via`
+    merged ("via body, related"), grouped by the target page's type in
+    GROUP_TYPES order (a group appears only if it has rows). A target whose
+    type isn't in GROUP_TYPES (or that names no known page — a broken link)
+    falls into a trailing "Other" group; `known` marks it for the template."""
+    vias: dict[str, list[str]] = {}
+    order: list[str] = []
+    for target, via in pairs:
+        if target not in vias:
+            vias[target] = []
+            order.append(target)
+        if via not in vias[target]:
+            vias[target].append(via)
+
+    buckets: dict[str, list[dict]] = defaultdict(list)
+    for target in order:
+        page = b.vault.pages.get(target)
+        ptype = page.type if page is not None and page.type in GROUP_TYPES else "other"
+        title = str(page.meta.get("title") or target) if page is not None else target
+        buckets[ptype].append({
+            "slug": target, "title": title, "vias": ", ".join(vias[target]), "known": page is not None,
+        })
+
+    groups = []
+    for ptype in GROUP_TYPES:
+        if buckets.get(ptype):
+            groups.append({"label": GROUP_LABELS[ptype], "rows": sorted(buckets[ptype], key=lambda r: r["slug"])})
+    if buckets.get("other"):
+        groups.append({"label": "Other", "rows": sorted(buckets["other"], key=lambda r: r["slug"])})
+    return groups
 
 
 def issues_naming(b: Brain, slug: str) -> list[str]:
@@ -132,7 +173,7 @@ def link_graph(b: Brain) -> dict:
     )
     node_ids = {p.slug for p in nodes}
     out_nodes = [
-        {"id": p.slug, "label": p.meta.get("title") or p.slug, "type": p.type, "status": p.status}
+        {"id": p.slug, "title": str(p.meta.get("title") or p.slug), "type": p.type, "status": p.status}
         for p in nodes
     ]
     edges = []
@@ -155,7 +196,7 @@ def term_graph(b: Brain) -> dict:
     pages whose `terms:` carries both."""
     terms = sorted(b.vault.by_type("term"), key=lambda p: p.slug)
     nodes = [
-        {"id": t.slug, "label": t.meta.get("title") or t.slug, "type": t.type, "status": t.status}
+        {"id": t.slug, "title": str(t.meta.get("title") or t.slug), "type": t.type, "status": t.status}
         for t in terms
     ]
     weights: Counter[frozenset] = Counter()

@@ -21,6 +21,7 @@
   --hairline: rgba(20, 44, 82, 0.12);
   --amber: #ffc95c;
   --maroon: #8a2e2e;
+  --coral-deep: #c22b47;
 
   /* Spacing */
   --s1: 4px;
@@ -63,6 +64,7 @@
     --hairline: rgba(234, 244, 252, 0.16);
     --amber: #ffc95c;
     --maroon: #8a2e2e;
+    --coral-deep: #e0435f;
   }
 }
 
@@ -71,6 +73,9 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Type */
@@ -107,6 +112,9 @@ main {
   max-width: 72rem;
   margin: 0 auto;
   padding: 0 var(--s5) var(--s8);
+  flex: 1 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Masthead */
@@ -146,6 +154,57 @@ main {
   opacity: 1;
   text-decoration: underline;
   text-decoration-color: var(--coral);
+}
+
+/* "More" overflow menu (keeps the primary nav short and wrapping cleanly) */
+.nav-more {
+  position: relative;
+}
+
+.nav-more summary {
+  list-style: none;
+  cursor: pointer;
+  color: var(--header-tint);
+  opacity: 0.88;
+}
+
+.nav-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-more summary:hover, .nav-more[open] summary {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-color: var(--coral);
+}
+
+.nav-more-menu {
+  position: absolute;
+  top: calc(100% + var(--s2));
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 10rem;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--s2);
+  box-shadow: 0 6px 16px rgba(14, 79, 128, 0.18);
+  z-index: 20;
+}
+
+.nav-more-menu a {
+  color: var(--signal-blue);
+  opacity: 1;
+  text-decoration: none;
+  padding: var(--s1) var(--s2);
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+.nav-more-menu a:hover {
+  background: var(--surface-hover);
+  text-decoration: none;
 }
 
 .footer {
@@ -212,7 +271,12 @@ main {
 .tile-flag {
   margin: var(--s2) 0 0;
   font-size: 0.85rem;
-  color: var(--example-ink);
+  color: var(--muted);
+}
+
+.tile-flag.warn {
+  color: var(--coral-deep);
+  font-weight: 600;
 }
 
 .tile-note {
@@ -220,6 +284,48 @@ main {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* A count that is only an alarm when it's non-zero (brief: "zero is not an
+   alarm"). Paired with a word/label, never color alone (colour-is-never-
+   alone rule): the warn state is also bold. */
+.flag-count.zero {
+  color: var(--muted);
+}
+
+.flag-count.warn {
+  color: var(--coral-deep);
+  font-weight: 600;
+}
+
+/* Status legend (draft / review / published / retired), shown once above
+   the home tile grid so every status bar's colors are explained. */
+.status-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  margin: 0 0 var(--s3);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.status-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+}
+
+.status-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+
+.status-legend-swatch.draft { background: var(--muted); }
+.status-legend-swatch.review { background: var(--amber); }
+.status-legend-swatch.published { background: var(--emerald); }
+.status-legend-swatch.retired { background: var(--maroon); }
 
 /* Status bar (draft / review / published / retired) */
 .bar {
@@ -416,6 +522,13 @@ tr.ready td {
 .via {
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+.meta-slug {
+  color: var(--muted);
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  margin: 0 var(--s2);
 }
 
 .wikilink.broken {
@@ -674,10 +787,34 @@ tr.ready td {
   flex: none;
 }
 
+.graph-detail {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  font-size: 0.85rem;
+}
+
+.graph-detail-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--s1);
+}
+
+.graph-detail-meta {
+  color: var(--muted);
+  margin-bottom: var(--s2);
+}
+
+.graph-detail-link {
+  display: inline-block;
+}
+
 .graph-canvas {
   flex: 1 1 30rem;
   min-width: 20rem;
-  height: 32rem;
+  height: calc(100vh - 220px);
+  min-height: 520px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
   background: var(--surface-2);
@@ -710,6 +847,13 @@ tr.ready td {
   .masthead-search input {
     flex: 1;
     width: auto;
+  }
+
+  .nav-more-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding: var(--s1) 0 0 var(--s3);
   }
 
   .graph-layout {

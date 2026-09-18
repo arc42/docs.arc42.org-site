@@ -8,14 +8,14 @@
 
 {% if incomplete_terms %}
 <div class="callout arc42-help">
-  <p><strong>{{ incomplete_terms|length }} term(s)</strong> without a definition sentence or a home:
+  <p><strong>{{ m.plural(incomplete_terms|length, "term") }}</strong> without a definition sentence or a home:
     {% for s in incomplete_terms %}<a href="/page/{{ s }}">{{ s }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
 </div>
 {% endif %}
 
 {% if legacy %}
 <div class="callout arc42-help">
-  <p><strong>{{ legacy|length }} legacy tag(s)</strong> to retire on cut-over:
+  <p><strong>{{ m.plural(legacy|length, "legacy tag") }}</strong> to retire on cut-over:
     {% for tag, slug in legacy %}{{ tag }} &rarr; <a href="/page/{{ slug }}">{{ slug }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
 </div>
 {% endif %}

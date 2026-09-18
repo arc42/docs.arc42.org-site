@@ -3,8 +3,9 @@ import threading
 import time
 
 import model as model_module
-from model import (Model, examples_view, faq_view, gaps, issues_view, lint_view, list_rows,
-                   log_entries, readiness, review_queue, sections_view, tags_view, tips_view)
+from model import (Model, examples_view, faq_view, gaps, issues_touching_sections, issues_view,
+                   lint_view, list_rows, log_entries, readiness, review_queue, sections_view,
+                   tags_view, tips_view)
 
 
 def brain(repo):
@@ -29,6 +30,24 @@ def test_sections_view(repo):
     assert (rows[9]["tips"], rows[9]["examples"], rows[9]["terms"], rows[9]["open_issues"]) == (3, 2, 1, 1)
     assert rows[9]["parity"] == "PASS" and rows[3]["parity"] is None
     assert rows[3]["open_issues"] == 1
+
+
+def test_issues_touching_sections_counts_distinct_issues_not_a_per_section_sum(repo):
+    b = brain(repo)
+    # Fixture: ISS-001 touches section 9 (via tip-9-1), ISS-003 touches
+    # section 3 directly -- no overlap yet, so the distinct count and the
+    # sum-over-sections agree; this alone wouldn't catch a double-count bug.
+    assert issues_touching_sections(b) == 2
+
+    # Make ISS-003 touch section 9 too (in addition to section 3): the
+    # per-section sum would now be 3 (section 3: ISS-003, section 9:
+    # ISS-001 + ISS-003), but the distinct count of open issues stays 2.
+    p = repo / "docs-arc42-brain/wiki/issues/ISS-003.md"
+    p.write_text(p.read_text().replace("- '[[section-3]]'", "- '[[section-3]]'\n- '[[tip-9-1]]'"),
+                 encoding="utf-8")
+    b2 = Model(repo).get()
+    assert sum(r["open_issues"] for r in sections_view(b2, {})["rows"]) == 3
+    assert issues_touching_sections(b2) == 2
 
 
 def test_tips_examples_faq(repo):

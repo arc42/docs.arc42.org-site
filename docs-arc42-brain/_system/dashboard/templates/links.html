@@ -13,8 +13,8 @@
 </div>
 
 {% if summary %}
-<p class="summary">{{ rows|length }} url(s) checked &middot;
-  {{ summary.failures }} failing &middot; {{ summary.redirects }} redirected &middot; {{ summary.ok }} ok</p>
+<p class="summary">{{ m.plural(rows|length, "url") }} checked &middot;
+  {{ m.num(summary.failures) }} failing &middot; {{ summary.redirects }} redirected &middot; {{ summary.ok }} ok</p>
 {% else %}
 <p class="empty">Not checked yet.</p>
 {% endif %}

@@ -1,6 +1,8 @@
+from dataclasses import dataclass, field
+
 from model import Model
-from relations import (issues_naming, link_graph, links_in, links_out, obsidian_url, search,
-                       suggestions, term_graph)
+from relations import (group_links, issues_naming, link_graph, links_in, links_out, obsidian_url,
+                       search, suggestions, term_graph)
 
 
 def b(repo):
@@ -37,6 +39,51 @@ def test_graphs(repo):
     t = term_graph(br)
     assert {n["id"] for n in t["nodes"]} == {"adr", "stakeholder"}
     assert t["edges"] == [{"source": "adr", "target": "stakeholder", "weight": 1}]
+
+
+@dataclass
+class _FPage:
+    slug: str
+    type: str
+    meta: dict = field(default_factory=dict)
+
+
+@dataclass
+class _FVault:
+    pages: dict
+
+
+@dataclass
+class _FBrain:
+    vault: _FVault
+
+
+def test_group_links_merges_vias_and_groups_by_type():
+    pages = {
+        "section-9": _FPage("section-9", "section", {"title": "Architecture Decisions"}),
+        "tip-9-2": _FPage("tip-9-2", "tip", {}),
+        "adr": _FPage("adr", "term", {"title": "ADR"}),
+    }
+    b = _FBrain(_FVault(pages))
+    pairs = [("section-9", "related"), ("section-9", "section"), ("tip-9-2", "body"),
+             ("adr", "terms"), ("missing-page", "related")]
+    groups = group_links(b, pairs)
+    assert [g["label"] for g in groups] == ["Sections", "Tips", "Terms", "Other"]
+    assert groups[0]["rows"] == [
+        {"slug": "section-9", "title": "Architecture Decisions", "vias": "related, section", "known": True}
+    ]
+    assert groups[1]["rows"] == [{"slug": "tip-9-2", "title": "tip-9-2", "vias": "body", "known": True}]
+    assert groups[-1]["rows"] == [
+        {"slug": "missing-page", "title": "missing-page", "vias": "related", "known": False}
+    ]
+
+
+def test_group_links_on_real_vault(repo):
+    groups = {g["label"]: {r["slug"]: r for r in g["rows"]} for g in group_links(b(repo), links_out(b(repo), "tip-9-1"))}
+    assert set(groups["Sections"]) == {"section-9"}
+    assert set(groups["Examples"]) == {"09-decision-example-x"}
+    assert set(groups["Sources"]) == {"SRC-001-test"}
+    assert groups["Sections"]["section-9"]["title"] == "9 - Architecture Decisions"
 
 
 def test_search_and_obsidian(repo):

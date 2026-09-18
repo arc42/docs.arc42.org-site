@@ -3,26 +3,26 @@
 
 {% block main %}
 <h1>docs-arc42-brain dashboard</h1>
+{{ m.status_legend(statuses) }}
 <div class="tiles">
 
 {% call m.tile("Sections", "/sections") %}
   {{ m.count_block(sections.rows|length, "sections") }}
   {{ m.status_bar(sections.counts) }}
-  {% if sections_open_issues %}<p class="tile-flag">{{ sections_open_issues }} open issue(s) touch sections</p>{% endif %}
+  {% if sections_open_issues %}<p class="tile-flag warn">{{ m.plural(sections_open_issues, "open issue") }} touch sections</p>{% endif %}
 {% endcall %}
 
 {% call m.tile("Tips", "/tips") %}
   {{ m.count_block(tips.counts.values()|sum, "tips") }}
   {{ m.status_bar(tips.counts) }}
-  {% if tips.without_related or tips.legacy %}
-  <p class="tile-flag">{{ tips.without_related|length }} without related &middot; {{ tips.legacy|length }} with legacy tags</p>
-  {% endif %}
+  <p class="tile-flag">{{ m.num(tips.without_related|length) }} without related &middot; {{ m.num(tips.legacy|length) }} with legacy tags</p>
 {% endcall %}
 
 {% call m.tile("Examples", "/examples") %}
   {{ m.count_block(examples.counts.values()|sum, "examples") }}
   {{ m.status_bar(examples.counts) }}
-  {% if examples.orphan_categories %}<p class="tile-flag">{{ examples.orphan_categories|length }} orphan categor{{ "y" if examples.orphan_categories|length == 1 else "ies" }}</p>{% endif %}
+  <p class="tile-note">{% for k, v in examples.by_system.items() %}{{ k }} {{ v }}{% if not loop.last %} &middot; {% endif %}{% else %}no examples yet{% endfor %}</p>
+  {% if examples.orphan_categories %}<p class="tile-flag warn">{{ m.plural(examples.orphan_categories|length, "orphan category", "orphan categories") }}</p>{% endif %}
 {% endcall %}
 
 {% call m.tile("FAQ", "/faq" if faq.count else none) %}
@@ -33,9 +33,8 @@
 {% call m.tile("Tags", "/tags") %}
   {{ m.count_block((tags.terms|length) + (tags.keywords|length), "terms & keywords") }}
   {{ m.status_bar(tags_status_counts) }}
-  {% if tags.incomplete_terms or tags.legacy %}
-  <p class="tile-flag">{{ tags.incomplete_terms|length }} incomplete terms &middot; {{ tags.legacy|length }} legacy tags</p>
-  {% endif %}
+  <p class="tile-note">{{ m.plural(tags.terms|length, "term") }} &middot; {{ m.plural(tags.keywords|length, "keyword") }}</p>
+  <p class="tile-flag">{{ m.flag(tags.incomplete_terms|length, "incomplete term") }} &middot; {{ m.flag(tags.legacy|length, "legacy tag") }}</p>
 {% endcall %}
 
 {% call m.tile("Issues", "/issues") %}
@@ -45,7 +44,7 @@
 
 {% call m.tile("Lint", "/lint") %}
   {{ m.count_block(lint_error_n + lint_warning_n, "findings") }}
-  <p class="tile-flag">{{ lint_error_n }} error(s) &middot; {{ lint_warning_n }} warning(s)</p>
+  <p class="tile-flag">{{ m.flag(lint_error_n, "error") }} &middot; {{ m.flag(lint_warning_n, "warning") }}</p>
 {% endcall %}
 
 {% call m.tile("Latest changes", "/log") %}
@@ -73,13 +72,13 @@
 
 {% call m.tile("Gaps", "/gaps") %}
   {{ m.count_block((gaps.tips_without_example|length) + (gaps.examples_without_tip|length) + (gaps.unlinked_subsections|length) + (gaps.sections_without_related|length), "gaps") }}
-  <p class="tile-flag">{{ gaps.tips_without_example|length }} tips &middot; {{ gaps.examples_without_tip|length }} examples &middot; {{ gaps.unlinked_subsections|length }} subsections &middot; {{ gaps.sections_without_related|length }} sections</p>
+  <p class="tile-flag">{{ m.num(gaps.tips_without_example|length) }} tips &middot; {{ m.num(gaps.examples_without_tip|length) }} examples &middot; {{ m.num(gaps.unlinked_subsections|length) }} subsections &middot; {{ m.num(gaps.sections_without_related|length) }} sections</p>
 {% endcall %}
 
 {% call m.tile("Link health", "/links") %}
   {% if link_summary %}
   {{ m.count_block(link_rows|length, "urls checked") }}
-  <p class="tile-flag">{{ link_summary.failures }} failing &middot; {{ link_summary.redirects }} redirected &middot; {{ link_summary.ok }} ok</p>
+  <p class="tile-flag">{{ m.num(link_summary.failures) }} failing &middot; {{ link_summary.redirects }} redirected &middot; {{ link_summary.ok }} ok</p>
   {% else %}
   <p class="tile-note">Not run yet.</p>
   {% endif %}

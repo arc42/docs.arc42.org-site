@@ -64,17 +64,56 @@ def _process_directives(lines: list[str]) -> list[str]:
     return out
 
 
+def _wikilink_html(target: str, heading: str | None, label: str | None, known: set[str]) -> str:
+    display = escape(label or (f"{target}#{heading}" if heading else target))
+    if target in known:
+        return f'<a class="wikilink" href="/page/{quote(target)}">{display}</a>'
+    return f'<span class="wikilink broken">{display}</span>'
+
+
 def _replace_wikilinks(text: str, known: set[str]) -> str:
     def repl(m: re.Match) -> str:
         target = m.group(1).strip()
         heading = (m.group(2) or "").strip() or None
         label = (m.group(3) or "").strip() or None
-        display = escape(label or (f"{target}#{heading}" if heading else target))
-        if target in known:
-            return f'<a class="wikilink" href="/page/{quote(target)}">{display}</a>'
-        return f'<span class="wikilink broken">{display}</span>'
+        return _wikilink_html(target, heading, label, known)
 
     return WIKILINK_RE.sub(repl, text)
+
+
+def render_inline(text: str, known: set[str]) -> str:
+    """A single string (e.g. a front-matter value) as safe inline HTML:
+    `[[wikilinks]]` become links/broken-spans (as in `render`), everything
+    else is HTML-escaped. Unlike `render`, this never runs markdown."""
+    out: list[str] = []
+    pos = 0
+    for m in WIKILINK_RE.finditer(text):
+        out.append(escape(text[pos:m.start()]))
+        target = m.group(1).strip()
+        heading = (m.group(2) or "").strip() or None
+        label = (m.group(3) or "").strip() or None
+        out.append(_wikilink_html(target, heading, label, known))
+        pos = m.end()
+    out.append(escape(text[pos:]))
+    return "".join(out)
+
+
+def render_meta(value, known: set[str]) -> str:
+    """A front-matter value as safe HTML: strings and list items get their
+    wikilinks resolved via `render_inline`; lists render comma-separated,
+    dicts as "key: value" pairs. Mirrors the plain-text shape the old
+    `fmt_meta` filter used, but with real links instead of raw `[[...]]`."""
+    if value is None:
+        return "—"
+    if isinstance(value, bool):
+        return "yes" if value else "no"
+    if isinstance(value, (list, tuple)):
+        return ", ".join(render_meta(v, known) for v in value) if value else "—"
+    if isinstance(value, dict):
+        return ", ".join(f"{escape(str(k))}: {render_meta(v, known)}" for k, v in value.items()) if value else "—"
+    if isinstance(value, str):
+        return render_inline(value, known)
+    return escape(str(value))
 
 
 def render(body: str, known: set[str]) -> str:

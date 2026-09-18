@@ -22,3 +22,18 @@
 {% macro status_badge(status) %}<span class="status-badge {{ status }}">{{ status or "—" }}</span>{% endmacro %}
 
 {% macro yesno(v) %}{{ "✓" if v else "—" }}{% endmacro %}
+
+{# "1 error" / "2 errors" — no site ever writes "error(s)". #}
+{% macro plural(count, word, plural_word=none) %}{{ count }} {{ word if count == 1 else (plural_word or word ~ "s") }}{% endmacro %}
+
+{# A count that only reads as an alarm when it's non-zero (brief: "zero is
+   not an alarm" — the warning color is earned, never a default). #}
+{% macro num(count) %}<span class="flag-count {{ 'warn' if count else 'zero' }}">{{ count }}</span>{% endmacro %}
+
+{% macro flag(count, word, plural_word=none) %}<span class="flag-count {{ 'warn' if count else 'zero' }}">{{ plural(count, word, plural_word) }}</span>{% endmacro %}
+
+{% macro status_legend(statuses) %}
+<div class="status-legend">
+  {% for s in statuses %}<span class="status-legend-item"><span class="status-legend-swatch {{ s }}"></span>{{ s }}</span>{% endfor %}
+</div>
+{% endmacro %}

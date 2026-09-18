@@ -32,9 +32,13 @@
   function buildStyle() {
     var style = [
       { selector: "node", style: {
-          "label": "data(label)", "font-size": 10, "font-family": "var(--font-body)",
+          // Short id (slug), not the full title — long titles were the
+          // overlapping knot this graph used to render as. The full title
+          // shows in the side panel on tap instead.
+          "label": "data(id)", "font-size": 11, "font-family": "var(--font-code)",
           "color": token("--ink"), "text-valign": "bottom", "text-margin-y": 4,
           "text-wrap": "wrap", "text-max-width": 90,
+          "text-outline-width": 2, "text-outline-color": token("--paper"),
           "width": 20, "height": 20, "border-width": 2, "border-color": token("--paper"),
       } },
       { selector: "edge", style: {
@@ -95,6 +99,28 @@
     });
   }
 
+  var STATUS_LABELS = { draft: "draft", review: "review", published: "published", retired: "retired" };
+
+  function renderDetail(d) {
+    var el = document.getElementById("graph-detail");
+    if (!el) { return; }
+    el.innerHTML = "";
+    var title = document.createElement("div");
+    title.className = "graph-detail-title";
+    title.textContent = d.title || d.id;
+    el.appendChild(title);
+    var meta = document.createElement("div");
+    meta.className = "graph-detail-meta";
+    meta.textContent = (TYPE_LABELS[d.type] || d.type) +
+      (d.status ? " · " + (STATUS_LABELS[d.status] || d.status) : "");
+    el.appendChild(meta);
+    var link = document.createElement("a");
+    link.className = "graph-detail-link";
+    link.href = "/page/" + d.id;
+    link.textContent = "Open page →";
+    el.appendChild(link);
+  }
+
   var canvas = document.getElementById("graph-canvas");
   if (!canvas || !window.cytoscape) { return; }
   var kind = canvas.dataset.kind || "links";
@@ -114,11 +140,19 @@
           }),
         },
         style: buildStyle(),
-        layout: { name: "cose", animate: false, nodeRepulsion: 6000, idealEdgeLength: 80, padding: 24 },
+        layout: {
+          name: "cose", animate: false, fit: true, padding: 30,
+          nodeRepulsion: 24000, idealEdgeLength: 120, componentSpacing: 100,
+          // Without this, cose only keeps the 20px node circles from
+          // overlapping and ignores the label text below them — which is
+          // exactly the "labels overlap into a knot" defect this tunes away.
+          nodeDimensionsIncludeLabels: true,
+          nodeOverlap: 24,
+        },
         wheelSensitivity: 0.2,
       });
       cy.on("tap", "node", function (evt) {
-        window.location = "/page/" + evt.target.id();
+        renderDetail(evt.target.data());
       });
       var types = Array.from(new Set(data.nodes.map(function (n) { return n.type; }))).sort();
       renderLegend(types);

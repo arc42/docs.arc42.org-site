@@ -28,7 +28,7 @@
   <dt>Finished</dt><dd>{{ job.finished or ("running…" if is_current else "—") }}</dd>
   <dt>Stage</dt><dd>{{ job.stage or "—" }}</dd>
   <dt>Exit code</dt><dd>{{ job.exit_code if job.exit_code is not none else "—" }}</dd>
-  {% if job.summary.changed is defined %}<dt>Changed</dt><dd>{{ job.summary.changed }} file(s)</dd>{% endif %}
+  {% if job.summary.changed is defined %}<dt>Changed</dt><dd>{{ m.plural(job.summary.changed, "file") }}</dd>{% endif %}
   {% if job.summary.run_file is defined %}<dt>Run log</dt><dd class="mono">{{ job.summary.run_file }}</dd>{% endif %}
 </dl>
 

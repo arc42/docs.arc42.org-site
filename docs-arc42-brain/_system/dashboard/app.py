@@ -11,34 +11,30 @@ import os
 from pathlib import Path
 
 from flask import Flask, abort, jsonify, render_template, request
+from markupsafe import Markup
 
 from actions import Runner
 from linkcheck import LinkChecker, link_summary
 from model import (
-    STATUSES, Model, examples_view, faq_view, gaps, issues_view, lint_view,
-    list_rows, log_entries, git_log, readiness, review_queue,
-    sections_view, status_counts, tags_view, tips_view,
+    STATUSES, Model, examples_view, faq_view, gaps, issues_touching_sections,
+    issues_view, lint_view, list_rows, log_entries, git_log, readiness,
+    review_queue, sections_view, status_counts, tags_view, tips_view,
 )
 from presence import Presence
 from relations import (
-    issues_naming, link_graph, links_in, links_out, obsidian_url, search,
+    group_links, link_graph, links_in, links_out, obsidian_url, search,
     suggestions, term_graph,
 )
-from render import render
+from render import render, render_meta
 from routes_live import bp as actions_bp
 
 
-def _fmt_meta(value):
-    """A front-matter value as plain text: no python reprs, ever."""
-    if value is None:
-        return "—"
-    if isinstance(value, bool):
-        return "yes" if value else "no"
-    if isinstance(value, (list, tuple)):
-        return ", ".join(_fmt_meta(v) for v in value) if value else "—"
-    if isinstance(value, dict):
-        return ", ".join(f"{k}: {_fmt_meta(v)}" for k, v in value.items()) if value else "—"
-    return str(value)
+def _fmt_meta(value, known=None):
+    """A front-matter value as safe HTML: wikilinks resolved via
+    `render.render_meta`, everything else escaped — never a raw
+    `[[wikilink]]` or a python repr. Marked safe since `render_meta` already
+    escapes anything it doesn't turn into a link."""
+    return Markup(render_meta(value, known or set()))
 
 
 def create_app(repo: Path | None = None, **services) -> Flask:
@@ -125,7 +121,8 @@ def create_app(repo: Path | None = None, **services) -> Flask:
             log_recent=log_entries(b, 5), commits=git_log(repo, 5),
             runner_last=runner.last, review=review, cutover=cutover, gaps=gap,
             link_rows=link_rows, link_summary=link_summary(link_rows),
-            sections_open_issues=sum(r["open_issues"] for r in sections["rows"]),
+            sections_open_issues=issues_touching_sections(b),
+            statuses=STATUSES,
         )
 
     @app.route("/sections")
@@ -265,9 +262,9 @@ def create_app(repo: Path | None = None, **services) -> Flask:
         known = set(b.vault.pages)
         return render_template(
             "page.html", page=page, body_html=render(page.body, known), known=known,
-            out_links=links_out(b, slug), in_links=links_in(b, slug),
-            source_links=sorted(l.target for l in page.links_in("sources")),
-            issues=issues_naming(b, slug), obsidian=obsidian_url(b, page),
+            out_groups=group_links(b, links_out(b, slug)),
+            in_groups=group_links(b, links_in(b, slug)),
+            obsidian=obsidian_url(b, page),
         )
 
     return app
