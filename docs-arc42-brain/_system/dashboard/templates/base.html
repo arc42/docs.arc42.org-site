@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}docs-arc42-brain{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <span class="masthead-brand">docs-arc42-brain</span>
+    <nav class="masthead-nav">{% block nav %}{% endblock %}</nav>
+  </header>
+  <main>{% block main %}{% endblock %}</main>
+  <footer class="footer">
+    <span id="presence-count"></span>
+  </footer>
+</body>
+</html>

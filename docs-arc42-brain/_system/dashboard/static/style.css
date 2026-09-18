@@ -1,0 +1,71 @@
+/* Design tokens only (from DESIGN.md). Components are added by later tasks. */
+
+:root {
+  /* Colors */
+  --signal-blue: #1675b9;
+  --deep-blue: #0e4f80;
+  --header-tint: #eaf4fc;
+  --help-bg: #e3f2fe;
+  --help-ink: #0c3d66;
+  --example-bg: #fdebe7;
+  --example-ink: #9a3b2e;
+  --tag-bg: #aee3f8;
+  --emerald: #2e9e67;
+  --coral: #ff5c7c;
+  --ink: #2a2e34;
+  --paper: #fcfdff;
+  --muted: #5e6975;
+  --surface-1: #f2f5f8;
+  --surface-2: #f7fafd;
+  --hairline: rgba(20, 44, 82, 0.12);
+  --amber: #ffc95c;
+  --maroon: #8a2e2e;
+
+  /* Spacing */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+
+  /* Radius */
+  --radius: 4px;
+  --radius-pill: 999px;
+
+  /* Fonts */
+  --font-display: 'Libre Caslon Text', Georgia, serif;
+  --font-body: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-code: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --signal-blue: #1675b9;
+    --deep-blue: #0e4f80;
+    --header-tint: #eaf4fc;
+    --help-bg: #16324d;
+    --help-ink: #cfe6fa;
+    --example-bg: #3a231e;
+    --example-ink: #f3c9bf;
+    --tag-bg: #12405c;
+    --emerald: #2e9e67;
+    --coral: #ff5c7c;
+    --ink: #fcfdff;
+    --paper: #2a2e34;
+    --muted: #a7b0ba;
+    --surface-1: #33383f;
+    --surface-2: #2f343b;
+    --hairline: rgba(234, 244, 252, 0.16);
+    --amber: #ffc95c;
+    --maroon: #8a2e2e;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}

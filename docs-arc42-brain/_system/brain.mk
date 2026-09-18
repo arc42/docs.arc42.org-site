@@ -7,7 +7,8 @@ BRAIN_GEN := $(BRAIN_DIR)/_system/generate
 # to braingen are absolute, so the cwd change does not matter to them.
 BRAINGEN  := uv run --directory $(BRAIN_GEN) braingen
 
-.PHONY: brain-test brain-lint brain-raw brain-import generate generate-check brain-check-generated
+.PHONY: brain-test brain-lint brain-raw brain-import generate generate-check brain-check-generated \
+        dashboard dashboard-down dashboard-logs dashboard-test
 
 brain-test: ## Run the braingen unit tests
 	uv run --directory $(BRAIN_GEN) pytest -q
@@ -38,3 +39,20 @@ generate-check: ## Parity: brain vs. site into build/parity/ (SECTION=9, default
 
 brain-check-generated: ## Fail if a generated file was hand-edited or is stale
 	$(BRAINGEN) check-generated --vault $(BRAIN_DIR) --site $(CURDIR)
+
+DASH_DIR     := $(BRAIN_DIR)/_system/dashboard
+DASH_COMPOSE := REPO_DIR=$(CURDIR) DASH_UID=$$(id -u) DASH_GID=$$(id -g) docker compose -f $(DASH_DIR)/compose.yaml
+
+dashboard: ## Start the brain dashboard in Docker (http://localhost:4211)
+	$(DASH_COMPOSE) up --build -d
+	@lan=$$(ipconfig getifaddr en0 2>/dev/null || hostname -I 2>/dev/null | awk '{print $$1}'); \
+	echo "==> http://localhost:4211"; test -z "$$lan" || echo "==> LAN: http://$$lan:4211"
+
+dashboard-down: ## Stop the brain dashboard
+	$(DASH_COMPOSE) down
+
+dashboard-logs: ## Follow the brain dashboard's logs
+	$(DASH_COMPOSE) logs -f brain-dashboard
+
+dashboard-test: ## Run the dashboard tests inside its Docker image
+	$(DASH_COMPOSE) run --rm --build --no-deps brain-dashboard python -m pytest -q -p no:cacheprovider

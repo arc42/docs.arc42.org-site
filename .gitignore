@@ -21,5 +21,6 @@ originals/plantuml-diagrams/docs.arc42.org.plantUML.iml
 docs-arc42-brain/build/
 docs-arc42-brain/.obsidian/
 docs-arc42-brain/_system/generate/.venv/
+docs-arc42-brain/_system/dashboard/.venv/
 __pycache__/
 .pytest_cache/

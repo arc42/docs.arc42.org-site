@@ -1,0 +1,24 @@
+[project]
+name = "brain-dashboard"
+version = "0.1.0"
+description = "Dashboard for docs-arc42-brain (phase 3)"
+requires-python = ">=3.12"
+dependencies = [
+  "flask>=3.0",
+  "markdown>=3.6",
+  "gunicorn>=22",
+  "braingen",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+braingen = { path = "../generate", editable = true }
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

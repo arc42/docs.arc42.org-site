@@ -1,0 +1,21 @@
+# The project name keeps this container apart from the docs site's (docs-arc42-site).
+name: docs-arc42-brain
+
+services:
+  brain-dashboard:
+    build:
+      context: ..
+      dockerfile: dashboard/Dockerfile
+    image: docs-arc42-brain-dashboard:latest
+    init: true
+    # Host uid/gid, so generated files belong to the user on Linux hosts too.
+    user: "${DASH_UID:-1000}:${DASH_GID:-1000}"
+    environment:
+      HOME: /tmp
+      TZ: "${TZ:-UTC}"
+    volumes:
+      - "${REPO_DIR:-../../..}:/repo"
+    ports:
+      - "4211:4211"
+    # On-demand tool: `make dashboard-down` stops it and it stays down.
+    restart: "no"
