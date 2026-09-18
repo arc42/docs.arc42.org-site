@@ -17,6 +17,12 @@ def test_external_urls(repo):
     assert external_urls(Model(repo).get()) == {"https://adr.github.io/": ["tip-9-1"]}
 
 
+def test_external_urls_ellipsis_is_a_terminator_not_part_of_the_url():
+    pages = {"a": FakePage("a", body="See https://example.com/a… and https://example.com/b…more")}
+    b = FakeBrain(FakeVault(pages))
+    assert external_urls(b) == {"https://example.com/a": ["a"], "https://example.com/b": ["a"]}
+
+
 @dataclass
 class FakePage:
     slug: str

@@ -72,16 +72,30 @@
     document.addEventListener("brain:presence", applyFacilitatorState);
 
     var pollTimer = null;
+    var pollErrors = 0;
+    var POLL_ERROR_LIMIT = 10;
     var pollJob = function () {
       fetch("/actions/job")
-        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          if (!r.ok) { throw new Error("bad status " + r.status); }
+          return r.json();
+        })
         .then(function (data) {
+          pollErrors = 0;
           if (data && data.current === null) {
             clearInterval(pollTimer);
             window.location.reload();
           }
         })
-        .catch(function () {});
+        .catch(function () {
+          pollErrors += 1;
+          if (pollErrors >= POLL_ERROR_LIMIT) {
+            clearInterval(pollTimer);
+            applyFacilitatorState();
+            var note = document.getElementById("facilitator-note");
+            if (note) { note.textContent = "Lost contact with the server."; }
+          }
+        });
     };
     genButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {

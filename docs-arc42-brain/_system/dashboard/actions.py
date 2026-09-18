@@ -26,6 +26,10 @@ _LOG_PATH = "docs-arc42-brain/_system/log.md"
 _PARITY_PATH = "docs-arc42-brain/build/dashboard/parity.json"
 _RUNS_DIR = "docs-arc42-brain/build/dashboard/runs"
 
+_MAKE_TIMEOUT = 900   # seconds; brain-lint/generate/generate-check can be slow (Docker, braingen).
+_GIT_TIMEOUT = 30
+_TIMEOUT_EXIT_CODE = 124  # shell convention for "command timed out".
+
 
 @dataclass
 class Job:
@@ -76,21 +80,28 @@ class Runner:
         if not self.lock.acquire(blocking=False):
             return self.current, False
 
-        dt = self.now()
-        job = Job(kind=kind, started=dt.isoformat(timespec="seconds"))
-        self.current = job
+        try:
+            dt = self.now()
+            job = Job(kind=kind, started=dt.isoformat(timespec="seconds"))
+            self.current = job
 
-        def body() -> None:
-            try:
-                self._execute(job, dt)
-            finally:
-                self.last = job
-                self.current = None
-                self.lock.release()
-                if self.on_finish is not None:
-                    self.on_finish()
+            def body() -> None:
+                try:
+                    self._execute(job, dt)
+                finally:
+                    self.last = job
+                    self.current = None
+                    self.lock.release()
+                    if self.on_finish is not None:
+                        self.on_finish()
 
-        threading.Thread(target=body, daemon=True).start()
+            threading.Thread(target=body, daemon=True).start()
+        except Exception:
+            # Creating the Job or starting the thread failed before `body`
+            # (and its `finally`) ever got a chance to release the lock.
+            self.current = None
+            self.lock.release()
+            raise
         return job, True
 
     def run(self, kind: str) -> Job:
@@ -153,13 +164,25 @@ class Runner:
             encoding="utf-8",
         )
 
+    @staticmethod
+    def _unique_run_path(run_dir: Path, ts: str, kind: str) -> Path:
+        """`{ts}-{kind}.log`, or `-2`, `-3`, … appended when two jobs finish
+        in the same second (kind differs by job, so a collision only
+        happens between two jobs of the same kind)."""
+        path = run_dir / f"{ts}-{kind}.log"
+        i = 2
+        while path.exists():
+            path = run_dir / f"{ts}-{kind}-{i}.log"
+            i += 1
+        return path
+
     def _finalize(self, job: Job, dt: datetime) -> Job:
         job.finished = self.now().isoformat(timespec="seconds")
 
         run_dir = self.repo / _RUNS_DIR
         run_dir.mkdir(parents=True, exist_ok=True)
         ts = dt.strftime("%Y%m%d-%H%M%S")
-        run_path = run_dir / f"{ts}-{job.kind}.log"
+        run_path = self._unique_run_path(run_dir, ts, job.kind)
         content = "\n".join(job.lines)
         run_path.write_text(content + "\n" if content else "", encoding="utf-8")
         job.summary["run_file"] = str(run_path.relative_to(self.repo))
@@ -172,16 +195,24 @@ class Runner:
         return [self.make, "-C", str(self.repo), target, f"BRAINGEN={self.braingen}"]
 
     def _make(self, job: Job, target: str) -> subprocess.CompletedProcess:
-        return self._run(job, self._make_argv(target))
+        return self._run(job, self._make_argv(target), timeout=_MAKE_TIMEOUT)
 
     def _git(self, job: Job, args: list[str]) -> str:
         argv = ["git", "-C", str(self.repo), *args, "--", *GENERATED_PATHS]
-        proc = self._run(job, argv)
+        proc = self._run(job, argv, timeout=_GIT_TIMEOUT)
         return proc.stdout if proc.returncode == 0 else proc.stderr
 
-    def _run(self, job: Job, argv: list[str]) -> subprocess.CompletedProcess:
+    def _run(self, job: Job, argv: list[str], timeout: float) -> subprocess.CompletedProcess:
         job.lines.append("$ " + " ".join(argv))
-        proc = subprocess.run(argv, cwd=self.repo, capture_output=True, text=True)
+        try:
+            proc = subprocess.run(argv, cwd=self.repo, capture_output=True, text=True, timeout=timeout)
+        except subprocess.TimeoutExpired as e:
+            if e.stdout:
+                job.lines.extend(e.stdout.splitlines())
+            if e.stderr:
+                job.lines.extend(e.stderr.splitlines())
+            job.lines.append(f"TIMEOUT after {timeout}s: " + " ".join(argv))
+            return subprocess.CompletedProcess(argv, _TIMEOUT_EXIT_CODE, e.stdout or "", e.stderr or "")
         if proc.stdout:
             job.lines.extend(proc.stdout.splitlines())
         if proc.stderr:

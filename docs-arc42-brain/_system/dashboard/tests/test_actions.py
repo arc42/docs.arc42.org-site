@@ -1,4 +1,5 @@
 import json
+import subprocess
 from datetime import datetime
 
 import pytest
@@ -84,6 +85,36 @@ def test_start_runs_in_background_and_releases(runner):
             break
         import time; time.sleep(0.05)
     assert runner.current is None and runner.last.kind == "preview" and not runner.lock.locked()
+
+
+# -- robustness: timeouts, run-file collisions, lock release ----------------
+
+
+def test_make_timeout_sets_exit_124_and_logs_a_clear_line(runner, repo, monkeypatch):
+    def fake_run(argv, **kwargs):
+        raise subprocess.TimeoutExpired(argv, kwargs.get("timeout"), output="partial output\n", stderr="")
+
+    monkeypatch.setattr("actions.subprocess.run", fake_run)
+    job = runner.run("generate")
+    assert job.exit_code == 124 and job.stage == "lint"
+    assert any(line.startswith("TIMEOUT after") for line in job.lines)
+    assert "partial output" in job.lines
+    assert not runner.lock.locked()
+
+
+def test_run_file_collision_appends_suffix(runner):
+    first = runner.run("preview")
+    second = runner.run("preview")
+    assert first.summary["run_file"] != second.summary["run_file"]
+    assert first.summary["run_file"].endswith("-preview.log")
+    assert second.summary["run_file"].endswith("-preview-2.log")
+
+
+def test_start_releases_lock_when_job_creation_raises(runner, monkeypatch):
+    monkeypatch.setattr("actions.Job", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom")))
+    with pytest.raises(RuntimeError):
+        runner.start("generate")
+    assert runner.current is None and not runner.lock.locked()
 
 
 # -- actions_view (render-ready data for /actions) ---------------------------

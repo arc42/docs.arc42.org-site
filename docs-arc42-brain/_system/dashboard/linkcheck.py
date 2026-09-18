@@ -20,7 +20,7 @@ import re
 
 from model import Brain
 
-URL_RE = re.compile(r"https?://[^\s)<>\]\"'`|]+")
+URL_RE = re.compile(r"https?://[^\s)<>\]\"'`|…]+")  # "…" (ellipsis) is a terminator, never part of a URL
 
 _USER_AGENT = "docs-arc42-brain-linkcheck"
 _RETRY_CODES = (403, 405)
@@ -158,6 +158,19 @@ class LinkChecker:
     def _sort(rows: list[dict]) -> list[dict]:
         return sorted(rows, key=lambda r: (_group(r["status"]), r["url"]))
 
+    @staticmethod
+    def _row(url: str, entry: dict, pages: list[str]) -> dict:
+        """One result row from a cache entry (possibly {}) and its pages;
+        shared by `check()` and `results()` so the shape is defined once."""
+        return {
+            "url": url,
+            "status": entry.get("status"),
+            "location": entry.get("location"),
+            "error": entry.get("error"),
+            "checked": entry.get("checked"),
+            "pages": pages,
+        }
+
     def check(self, urls: dict[str, list[str]]) -> list[dict]:
         """Synchronous: fetch what the cache doesn't have fresh, write the
         cache, and return the (sorted) rows for exactly `urls`."""
@@ -182,17 +195,7 @@ class LinkChecker:
             self._write_cache(cache)
 
         self._pages = {url: sorted(pages) for url, pages in urls.items()}
-        rows = [
-            {
-                "url": url,
-                "status": cache.get(url, {}).get("status"),
-                "location": cache.get(url, {}).get("location"),
-                "error": cache.get(url, {}).get("error"),
-                "checked": cache.get(url, {}).get("checked"),
-                "pages": self._pages[url],
-            }
-            for url in urls
-        ]
+        rows = [self._row(url, cache.get(url, {}), self._pages[url]) for url in urls]
         return self._sort(rows)
 
     def start(self, urls: dict[str, list[str]]) -> bool:
@@ -216,15 +219,5 @@ class LinkChecker:
         """The cache file's rows, sorted; `pages` from the most recent
         `check()` in this process, or [] for a url only known from disk."""
         cache = self._load_cache()
-        rows = [
-            {
-                "url": url,
-                "status": entry.get("status"),
-                "location": entry.get("location"),
-                "error": entry.get("error"),
-                "checked": entry.get("checked"),
-                "pages": self._pages.get(url, []),
-            }
-            for url, entry in cache.items()
-        ]
+        rows = [self._row(url, entry, self._pages.get(url, [])) for url, entry in cache.items()]
         return self._sort(rows)
