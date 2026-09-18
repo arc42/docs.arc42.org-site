@@ -1,5 +1,89 @@
 {% extends "base.html" %}
+{% import "_macros.html" as m %}
 
 {% block main %}
-  <h1>docs-arc42-brain dashboard</h1>
+<h1>docs-arc42-brain dashboard</h1>
+<div class="tiles">
+
+{% call m.tile("Sections", "/sections") %}
+  {{ m.count_block(sections.rows|length, "sections") }}
+  {{ m.status_bar(sections.counts) }}
+  {% if sections_open_issues %}<p class="tile-flag">{{ sections_open_issues }} open issue(s) touch sections</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("Tips", "/tips") %}
+  {{ m.count_block(tips.counts.values()|sum, "tips") }}
+  {{ m.status_bar(tips.counts) }}
+  {% if tips.without_related or tips.legacy %}
+  <p class="tile-flag">{{ tips.without_related|length }} without related &middot; {{ tips.legacy|length }} with legacy tags</p>
+  {% endif %}
+{% endcall %}
+
+{% call m.tile("Examples", "/examples") %}
+  {{ m.count_block(examples.counts.values()|sum, "examples") }}
+  {{ m.status_bar(examples.counts) }}
+  {% if examples.orphan_categories %}<p class="tile-flag">{{ examples.orphan_categories|length }} orphan categor{{ "y" if examples.orphan_categories|length == 1 else "ies" }}</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("FAQ", "/faq" if faq.count else none) %}
+  {{ m.count_block(faq.count, "answers") }}
+  {% if faq.note %}<p class="tile-note">{{ faq.note }}</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("Tags", "/tags") %}
+  {{ m.count_block((tags.terms|length) + (tags.keywords|length), "terms & keywords") }}
+  {{ m.status_bar(tags_status_counts) }}
+  {% if tags.incomplete_terms or tags.legacy %}
+  <p class="tile-flag">{{ tags.incomplete_terms|length }} incomplete terms &middot; {{ tags.legacy|length }} legacy tags</p>
+  {% endif %}
+{% endcall %}
+
+{% call m.tile("Issues", "/issues") %}
+  {{ m.count_block(issues.open|length, "open issues") }}
+  {% if issues.by_severity %}<p class="tile-flag">{% for k, v in issues.by_severity.items() %}{{ k }} {{ v }}{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("Lint", "/lint") %}
+  {{ m.count_block(lint_error_n + lint_warning_n, "findings") }}
+  <p class="tile-flag">{{ lint_error_n }} error(s) &middot; {{ lint_warning_n }} warning(s)</p>
+{% endcall %}
+
+{% call m.tile("Latest changes", "/log") %}
+  {{ m.count_block(log_recent|length, "log entries") }}
+  {% if log_recent %}<p class="tile-note">{{ log_recent[0].date }} &mdash; {{ log_recent[0].kind }}: {{ log_recent[0].subject }}</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("Generate", "/actions") %}
+  {% if runner_last %}
+  <p class="tile-note">last {{ runner_last.kind }}: stage {{ runner_last.stage or "—" }} &middot; exit {{ runner_last.exit_code if runner_last.exit_code is not none else "—" }}</p>
+  {% else %}
+  <p class="tile-note">No runs yet.</p>
+  {% endif %}
+{% endcall %}
+
+{% call m.tile("Review queue", "/review") %}
+  {{ m.count_block(review.pages|length, "pages in review") }}
+  {% if review.pages %}<p class="tile-flag">oldest: {{ review.pages[0].slug }} ({{ review.pages[0].meta.get("updated") or "—" }})</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("Cut-over readiness", "/cutover") %}
+  {{ m.count_block(cutover.rows|length, "sections") }}
+  {% if cutover.next %}<p class="tile-flag">next: section {{ cutover.next }}</p>{% else %}<p class="tile-note">None ready yet.</p>{% endif %}
+{% endcall %}
+
+{% call m.tile("Gaps", "/gaps") %}
+  {{ m.count_block((gaps.tips_without_example|length) + (gaps.examples_without_tip|length) + (gaps.unlinked_subsections|length) + (gaps.sections_without_related|length), "gaps") }}
+  <p class="tile-flag">{{ gaps.tips_without_example|length }} tips &middot; {{ gaps.examples_without_tip|length }} examples &middot; {{ gaps.unlinked_subsections|length }} subsections &middot; {{ gaps.sections_without_related|length }} sections</p>
+{% endcall %}
+
+{% call m.tile("Link health", "/links") %}
+  {% if link_summary %}
+  {{ m.count_block(link_rows|length, "urls checked") }}
+  <p class="tile-flag">{{ link_summary.failures }} failing &middot; {{ link_summary.redirects }} redirected &middot; {{ link_summary.ok }} ok</p>
+  {% else %}
+  <p class="tile-note">Not run yet.</p>
+  {% endif %}
+{% endcall %}
+
+</div>
 {% endblock %}

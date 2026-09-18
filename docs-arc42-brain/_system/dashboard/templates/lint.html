@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Lint — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Lint</h1>
+
+<h2>Errors</h2>
+{% if errors %}
+  {% for rule, findings in errors.items() %}
+  <h3>{{ rule }} <span class="badge count">{{ findings|length }}</span></h3>
+  <ul class="finding-list">
+    {% for f in findings %}
+    <li>{% if f.page in known %}<a href="/page/{{ f.page }}">{{ f.page }}</a>{% else %}{{ f.page }}{% endif %} &mdash; {{ f.message }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+{% else %}
+<p class="empty">No errors.</p>
+{% endif %}
+
+<h2>Warnings</h2>
+{% if warnings %}
+  {% for rule, findings in warnings.items() %}
+  <h3>{{ rule }} <span class="badge count">{{ findings|length }}</span></h3>
+  <ul class="finding-list">
+    {% for f in findings %}
+    <li>{% if f.page in known %}<a href="/page/{{ f.page }}">{{ f.page }}</a>{% else %}{{ f.page }}{% endif %} &mdash; {{ f.message }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+{% else %}
+<p class="empty">No warnings.</p>
+{% endif %}
+{% endblock %}

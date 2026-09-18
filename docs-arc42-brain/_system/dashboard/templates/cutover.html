@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Cut-over readiness — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Cut-over readiness</h1>
+
+{% if next %}
+<div class="callout arc42-help"><p>Next section ready to cut over: <a href="/page/section-{{ next }}">section {{ next }}</a></p></div>
+{% else %}
+<p class="empty">No section is ready to cut over yet.</p>
+{% endif %}
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>#</th><th>Section</th><th>Cut over</th><th>Ingested</th>
+      <th>Lint clean</th><th>Parity</th><th>Related</th><th>Ready</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr class="{{ 'ready' if r.ready else '' }}">
+      <td>{{ r.number }}</td>
+      <td><a href="/page/{{ r.slug }}">{{ r.slug }}</a></td>
+      <td>{{ m.yesno(r.cut_over) }}</td>
+      <td>{{ m.yesno(r.ingested) }}</td>
+      <td>{{ m.yesno(r.lint_clean) }}</td>
+      <td>{{ r.parity or "—" }}</td>
+      <td>{{ m.yesno(r.related) }}</td>
+      <td>{{ m.yesno(r.ready) }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8" class="empty">No sections yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import threading
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -43,6 +44,7 @@ class Model:
         self.vault_root = self.repo / "docs-arc42-brain"
         self._brain: Brain | None = None
         self._stamp: float | None = None
+        self._lock = threading.Lock()
 
     def stamp(self) -> float:
         """Newest mtime under wiki/, raw/sources/, and of _system/log.md."""
@@ -58,17 +60,19 @@ class Model:
         return newest
 
     def get(self) -> Brain:
-        s = self.stamp()
-        if self._brain is None or s != self._stamp:
-            vault = load_vault(self.vault_root)
-            findings = lint(vault)
-            self._brain = Brain(self.repo, vault, findings)
-            self._stamp = s
-        return self._brain
+        with self._lock:
+            s = self.stamp()
+            if self._brain is None or s != self._stamp:
+                vault = load_vault(self.vault_root)
+                findings = lint(vault)
+                self._brain = Brain(self.repo, vault, findings)
+                self._stamp = s
+            return self._brain
 
     def clear(self) -> None:
-        self._brain = None
-        self._stamp = None
+        with self._lock:
+            self._brain = None
+            self._stamp = None
 
 
 def status_counts(pages) -> dict[str, int]:

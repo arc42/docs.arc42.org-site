@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}{{ title }} — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>{{ title }}</h1>
+{{ m.status_bar(counts) }}
+
+{% for note in notes %}
+<div class="callout arc42-help"><p>{{ note }}</p></div>
+{% endfor %}
+
+<form class="filter-form" method="get">
+  <label>Status
+    <select name="status">
+      <option value="">All</option>
+      {% for s in statuses %}<option value="{{ s }}" {{ "selected" if filters.status == s else "" }}>{{ s }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Section <input type="number" name="section" value="{{ filters.section }}"></label>
+  <label>System <input type="text" name="system" value="{{ filters.system }}"></label>
+  <button type="submit">Filter</button>
+</form>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Title</th><th>Status</th>
+      {% if ptype in ("tip", "example", "term") %}<th>Section</th>{% endif %}
+      {% if ptype == "example" %}<th>System</th>{% endif %}
+      {% if ptype in ("term", "keyword") %}<th>Usage</th>{% endif %}
+      <th>Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in pages %}
+    <tr>
+      <td><a href="/page/{{ row.slug }}">{{ row.title }}</a></td>
+      <td>{{ m.status_badge(row.status) }}</td>
+      {% if ptype in ("tip", "example", "term") %}<td>{{ row.section if row.section is not none else "—" }}</td>{% endif %}
+      {% if ptype == "example" %}<td>{{ row.system or "—" }}</td>{% endif %}
+      {% if ptype in ("term", "keyword") %}<td>{{ row.usage }}&times;</td>{% endif %}
+      <td>{{ row.updated or "—" }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6" class="empty">No pages match this filter.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,6 +1,8 @@
 import os
+import threading
 import time
 
+import model as model_module
 from model import (Model, examples_view, faq_view, gaps, issues_view, lint_view, log_entries,
                    readiness, review_queue, sections_view, tags_view, tips_view)
 
@@ -83,6 +85,35 @@ def test_readiness_next_when_ready(repo):
     (repo / "_posts/03-context/2016-01-01-t-3-1.md").unlink()
     r = readiness(brain(repo), {"3": "PASS"})
     assert r["next"] == 3
+
+
+def test_get_is_thread_safe(repo, monkeypatch):
+    """Concurrent get() calls with an unchanged stamp must load the vault
+    exactly once (gthread runs several requests in parallel)."""
+    calls = []
+    orig_load_vault = model_module.load_vault
+
+    def counting_load_vault(root):
+        calls.append(1)
+        time.sleep(0.05)
+        return orig_load_vault(root)
+
+    monkeypatch.setattr(model_module, "load_vault", counting_load_vault)
+
+    m = Model(repo)
+    results = []
+
+    def worker():
+        results.append(m.get())
+
+    threads = [threading.Thread(target=worker) for _ in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert len(calls) == 1
+    assert all(r is results[0] for r in results)
 
 
 def test_gaps(repo):

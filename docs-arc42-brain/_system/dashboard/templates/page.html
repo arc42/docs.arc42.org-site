@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}{{ page.meta.get("title") or page.slug }} — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<article class="detail">
+  <p class="detail-kicker">{{ page.type }} &middot; {{ m.status_badge(page.status) }}</p>
+  <h1>{{ page.meta.get("title") or page.slug }}</h1>
+  <p><a class="obsidian-link" href="{{ obsidian }}">Open in Obsidian</a></p>
+
+  <h2>Front matter</h2>
+  <dl class="meta-list">
+    {% for key, value in page.meta.items()|sort %}
+    <dt>{{ key }}</dt>
+    <dd>{{ value|fmt_meta }}</dd>
+    {% endfor %}
+  </dl>
+
+  <h2>Content</h2>
+  <div class="page-body">{{ body_html|safe }}</div>
+
+  <h2>Links out</h2>
+  <ul class="link-list">
+    {% for target, via in out_links %}
+    <li>
+      {% if target in known %}<a href="/page/{{ target }}">{{ target }}</a>{% else %}<span class="wikilink broken">{{ target }}</span>{% endif %}
+      <span class="via">via {{ via }}</span>
+    </li>
+    {% else %}
+    <li class="empty">None.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Links in</h2>
+  <ul class="link-list">
+    {% for source, via in in_links %}
+    <li><a href="/page/{{ source }}">{{ source }}</a> <span class="via">via {{ via }}</span></li>
+    {% else %}
+    <li class="empty">None.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Sources</h2>
+  <ul class="link-list">
+    {% for s in source_links %}
+    <li><a href="/page/{{ s }}">{{ s }}</a></li>
+    {% else %}
+    <li class="empty">None.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Issues naming this page</h2>
+  <ul class="link-list">
+    {% for i in issues %}
+    <li><a href="/page/{{ i }}">{{ i }}</a></li>
+    {% else %}
+    <li class="empty">None.</li>
+    {% endfor %}
+  </ul>
+</article>
+{% endblock %}

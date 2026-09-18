@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Tags — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Tags</h1>
+
+{% if incomplete_terms %}
+<div class="callout arc42-help">
+  <p><strong>{{ incomplete_terms|length }} term(s)</strong> without a definition sentence or a home:
+    {% for s in incomplete_terms %}<a href="/page/{{ s }}">{{ s }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+</div>
+{% endif %}
+
+{% if legacy %}
+<div class="callout arc42-help">
+  <p><strong>{{ legacy|length }} legacy tag(s)</strong> to retire on cut-over:
+    {% for tag, slug in legacy %}{{ tag }} &rarr; <a href="/page/{{ slug }}">{{ slug }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+</div>
+{% endif %}
+
+<h2>Terms</h2>
+<table class="data-table">
+  <thead><tr><th>Term</th><th>Used</th></tr></thead>
+  <tbody>
+    {% for slug, n in terms %}
+    <tr><td><a href="/page/{{ slug }}">{{ slug }}</a></td><td>{{ n }}&times;</td></tr>
+    {% else %}
+    <tr><td colspan="2" class="empty">None.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Keywords</h2>
+<table class="data-table">
+  <thead><tr><th>Keyword</th><th>Used</th></tr></thead>
+  <tbody>
+    {% for slug, n in keywords %}
+    <tr><td><a href="/page/{{ slug }}">{{ slug }}</a></td><td>{{ n }}&times;</td></tr>
+    {% else %}
+    <tr><td colspan="2" class="empty">None.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

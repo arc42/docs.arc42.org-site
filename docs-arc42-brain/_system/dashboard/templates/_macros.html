@@ -1,0 +1,24 @@
+{# Shared partials: a tile wrapper (title + optional link + caller() body),
+   a stacked status bar, a big count, a status badge and a yes/no glyph.
+   Kept to primitives that every page reuses, so pages stay declarative. #}
+
+{% macro tile(title, href=none) %}
+<article class="tile">
+<h2 class="tile-title">{% if href %}<a href="{{ href }}">{{ title }}</a>{% else %}{{ title }}{% endif %}</h2>
+{{ caller() }}
+</article>
+{% endmacro %}
+
+{% macro status_bar(counts) %}
+{% if counts %}
+<div class="bar">{% for status, n in counts.items() %}<span class="seg {{ status }}" style="flex: {{ n }}" title="{{ status }}: {{ n }}"></span>{% endfor %}</div>
+{% endif %}
+{% endmacro %}
+
+{% macro count_block(n, label) %}
+<p class="tile-count"><span class="tile-count-number">{{ n }}</span> <span class="tile-count-label">{{ label }}</span></p>
+{% endmacro %}
+
+{% macro status_badge(status) %}<span class="status-badge {{ status }}">{{ status or "—" }}</span>{% endmacro %}
+
+{% macro yesno(v) %}{{ "✓" if v else "—" }}{% endmacro %}

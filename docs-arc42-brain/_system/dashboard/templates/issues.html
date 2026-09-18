@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Issues — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Open issues</h1>
+<p class="summary">
+  By severity:
+  {% for k, v in by_severity.items() %}{{ k }} {{ v }}{% if not loop.last %} &middot; {% endif %}{% else %}none{% endfor %}
+  &mdash; By kind:
+  {% for k, v in by_kind.items() %}{{ k }} {{ v }}{% if not loop.last %} &middot; {% endif %}{% else %}none{% endfor %}
+</p>
+<table class="data-table">
+  <thead><tr><th>Issue</th><th>Severity</th><th>Kind</th><th>Created</th><th>Related</th></tr></thead>
+  <tbody>
+    {% for i in open %}
+    <tr>
+      <td><a href="/page/{{ i.slug }}">{{ i.slug }}</a> &mdash; {{ i.meta.get("title") }}</td>
+      <td>{{ i.meta.get("severity") }}</td>
+      <td>{{ i.meta.get("kind") }}</td>
+      <td>{{ i.meta.get("created") }}</td>
+      <td>{% for r in i.links_in("related") %}<a href="/page/{{ r.target }}">{{ r.target }}</a>{% if not loop.last %}, {% endif %}{% else %}&mdash;{% endfor %}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5" class="empty">No open issues.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

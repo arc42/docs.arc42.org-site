@@ -9,8 +9,26 @@
 </head>
 <body>
   <header class="masthead">
-    <span class="masthead-brand">docs-arc42-brain</span>
-    <nav class="masthead-nav">{% block nav %}{% endblock %}</nav>
+    <a class="masthead-brand" href="/">docs-arc42-brain</a>
+    <nav class="masthead-nav">
+      {% block nav %}
+      <a href="/">Home</a>
+      <a href="/sections">Sections</a>
+      <a href="/tips">Tips</a>
+      <a href="/examples">Examples</a>
+      <a href="/faq">FAQ</a>
+      <a href="/terms">Terms</a>
+      <a href="/keywords">Keywords</a>
+      <a href="/systems">Systems</a>
+      <a href="/tags">Tags</a>
+      <a href="/issues">Issues</a>
+      <a href="/lint">Lint</a>
+      <a href="/log">Log</a>
+      <a href="/review">Review</a>
+      <a href="/cutover">Cut-over</a>
+      <a href="/gaps">Gaps</a>
+      {% endblock %}
+    </nav>
   </header>
   <main>{% block main %}{% endblock %}</main>
   <footer class="footer">

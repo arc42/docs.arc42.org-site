@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Review queue — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Review queue</h1>
+<table class="data-table">
+  <thead><tr><th>Page</th><th>Type</th><th>Updated</th></tr></thead>
+  <tbody>
+    {% for p in pages %}
+    <tr>
+      <td><a href="/page/{{ p.slug }}">{{ p.meta.get("title") or p.slug }}</a></td>
+      <td>{{ p.type }}</td>
+      <td>{{ p.meta.get("updated") or "—" }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3" class="empty">Nothing in review.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Ingest checklist</h2>
+<div class="callout arc42-help">
+  <dl class="checklist">
+    {% for label, text in checklist %}
+    <dt>{{ label }}</dt>
+    <dd>{{ text }}</dd>
+    {% endfor %}
+  </dl>
+</div>
+{% endblock %}

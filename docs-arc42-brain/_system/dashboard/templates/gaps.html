@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Gaps — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Gaps</h1>
+
+<h2>Tips without an example ({{ tips_without_example|length }})</h2>
+<ul class="link-list">
+  {% for s in tips_without_example %}<li><a href="/page/{{ s }}">{{ s }}</a></li>{% else %}<li class="empty">None.</li>{% endfor %}
+</ul>
+
+<h2>Examples without a tip ({{ examples_without_tip|length }})</h2>
+<ul class="link-list">
+  {% for s in examples_without_tip %}<li><a href="/page/{{ s }}">{{ s }}</a></li>{% else %}<li class="empty">None.</li>{% endfor %}
+</ul>
+
+<h2>Unlinked subsections ({{ unlinked_subsections|length }})</h2>
+<ul class="link-list">
+  {% for slug, heading in unlinked_subsections %}<li><a href="/page/{{ slug }}">{{ slug }}</a> &mdash; {{ heading }}</li>{% else %}<li class="empty">None.</li>{% endfor %}
+</ul>
+
+<h2>Sections without related links ({{ sections_without_related|length }})</h2>
+<ul class="link-list">
+  {% for s in sections_without_related %}<li><a href="/page/{{ s }}">{{ s }}</a></li>{% else %}<li class="empty">None.</li>{% endfor %}
+</ul>
+{% endblock %}

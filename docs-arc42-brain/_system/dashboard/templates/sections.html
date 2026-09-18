@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Sections — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Sections</h1>
+{{ m.status_bar(counts) }}
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>#</th><th>Section</th><th>Status</th><th>Tips</th><th>Examples</th>
+      <th>Terms</th><th>Open issues</th><th>Parity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.number }}</td>
+      <td><a href="/page/{{ r.slug }}">{{ r.title or r.slug }}</a></td>
+      <td>{{ m.status_badge(r.status) }}</td>
+      <td>{{ r.tips }}</td>
+      <td>{{ r.examples }}</td>
+      <td>{{ r.terms }}</td>
+      <td>{{ r.open_issues }}</td>
+      <td>{{ r.parity or "—" }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8" class="empty">No sections yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

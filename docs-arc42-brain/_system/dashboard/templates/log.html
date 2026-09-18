@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Latest changes — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Latest changes</h1>
+
+<h2>Log entries</h2>
+<table class="data-table">
+  <thead><tr><th>Date</th><th>Kind</th><th>Subject</th></tr></thead>
+  <tbody>
+    {% for e in entries %}
+    <tr><td>{{ e.date }}</td><td>{{ e.kind }}</td><td>{{ e.subject }}</td></tr>
+    {% else %}
+    <tr><td colspan="3" class="empty">No entries yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Recent commits</h2>
+<table class="data-table">
+  <thead><tr><th>Commit</th><th>Date</th><th>Subject</th></tr></thead>
+  <tbody>
+    {% for c in commits %}
+    <tr><td class="mono">{{ c.hash }}</td><td>{{ c.date }}</td><td>{{ c.subject }}</td></tr>
+    {% else %}
+    <tr><td colspan="3" class="empty">No commits found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
