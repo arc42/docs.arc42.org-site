@@ -17,6 +17,38 @@ from presence import client_id
 
 bp = Blueprint("actions", __name__)
 
+# Every state-changing route on this blueprint (ping, leaving, the
+# facilitator-gated actions, and /reload) is a plain unauthenticated POST,
+# reachable from the LAN (compose.yaml binds 0.0.0.0). Without an origin
+# check, any page the user's browser visits could trigger them with a
+# no-cors fetch/form POST. Checked once, here, for every POST on the
+# blueprint — not copy-pasted per route.
+_SAFE_SEC_FETCH_SITE = {"same-origin", "none"}
+
+
+def _same_origin(req) -> bool:
+    """True unless the request is provably cross-site.
+    - An `Origin` header, when present, must match this request's own
+      host (scheme+host+port, as seen via `request.host_url`).
+    - Without `Origin`, fall back to `Sec-Fetch-Site`: same-origin/none
+      pass, cross-site/same-site are rejected.
+    - With neither header (curl, server-to-server calls, most test
+      clients), the request is allowed through — there's nothing to
+      distinguish it from a legitimate script."""
+    origin = req.headers.get("Origin")
+    if origin is not None:
+        return origin.rstrip("/") == req.host_url.rstrip("/")
+    site = req.headers.get("Sec-Fetch-Site")
+    if site is not None:
+        return site in _SAFE_SEC_FETCH_SITE
+    return True
+
+
+@bp.before_request
+def _reject_cross_origin():
+    if request.method == "POST" and not _same_origin(request):
+        return jsonify(error="cross-origin request refused"), 403
+
 
 def _services():
     return current_app.extensions["brain"]
@@ -39,10 +71,19 @@ def who():
 
 
 def _start(kind):
+    # Beyond the origin check above: require an actual JSON body, which
+    # forces a CORS preflight that Flask never answers, closing off the
+    # no-cors `text/plain` request the review flagged.
+    if not request.is_json:
+        return jsonify(error="expected application/json"), 415
     services = _services()
     if not services["presence"].is_facilitator(client_id(request)):
         return jsonify(error="only the facilitator can generate"), 403
     job, started = services["runner"].start(kind)
+    # `job` can be None in a narrow race (see Runner.start): guard rather
+    # than crash with a 500 on `None.to_dict()`.
+    if job is None:
+        return jsonify(started=False, job=None), 202
     return jsonify(started=started, job=job.to_dict()), 202
 
 

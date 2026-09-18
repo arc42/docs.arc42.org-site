@@ -22,6 +22,19 @@ def test_cache_reloads_on_change(repo):
     m.clear(); assert m.get() is not None
 
 
+def test_cache_reloads_on_generated_site_file_change(repo):
+    """readiness()'s not_ingested check reads _pages/_posts/_examples (a
+    `make generate` run from the host CLI touches those, not the vault),
+    so stamp() must notice a change there too, not just under wiki/."""
+    m = Model(repo)
+    b1 = m.get(); assert m.get() is b1
+    f = repo / "_pages" / "section-9.md"
+    f.write_text("placeholder", encoding="utf-8")
+    later = time.time() + 5
+    os.utime(f, (later, later))
+    assert m.get() is not b1
+
+
 def test_sections_view(repo):
     v = sections_view(brain(repo), {"9": "PASS"})
     assert v["counts"] == {"draft": 1, "published": 1}

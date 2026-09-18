@@ -47,9 +47,17 @@ class Model:
         self._lock = threading.Lock()
 
     def stamp(self) -> float:
-        """Newest mtime under wiki/, raw/sources/, and of _system/log.md."""
+        """Newest mtime under wiki/, raw/sources/, the generated site
+        dirs (_pages/, _posts/, _examples/ — read by `readiness` via
+        `not_ingested`), and of _system/log.md."""
         newest = 0.0
-        for base in (self.vault_root / "wiki", self.vault_root / "raw" / "sources"):
+        for base in (
+            self.vault_root / "wiki",
+            self.vault_root / "raw" / "sources",
+            self.repo / "_pages",
+            self.repo / "_posts",
+            self.repo / "_examples",
+        ):
             if base.is_dir():
                 for f in base.rglob("*"):
                     if f.is_file():

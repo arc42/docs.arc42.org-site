@@ -76,9 +76,16 @@ class Presence:
                 self._forget(cid)
 
     def _facilitator_locked(self) -> str | None:
-        if not self._first:
+        """The earliest-seen live client_id, excluding "anon" — the
+        fallback id `presence.client_id()` hands out for a missing or
+        malformed body. A cross-origin caller that can't set a real
+        client_id (e.g. a `text/plain` no-cors POST with no readable
+        response) must never be able to win the facilitator role by
+        showing up as "anon"."""
+        candidates = {cid: t for cid, t in self._first.items() if cid != "anon"}
+        if not candidates:
             return None
-        return min(self._first, key=self._first.get)
+        return min(candidates, key=candidates.get)
 
     def ping(self, cid: str) -> dict:
         with self._lock:

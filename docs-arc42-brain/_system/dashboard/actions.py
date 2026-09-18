@@ -6,10 +6,13 @@ log for every job, and appends one log.md line per successful generate.
 from __future__ import annotations
 
 import json
+import os
 import re
+import signal
 import subprocess
 import sys
 import threading
+import traceback
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -48,7 +51,7 @@ class Job:
             "finished": self.finished,
             "exit_code": self.exit_code,
             "stage": self.stage,
-            "summary": self.summary,
+            "summary": dict(self.summary),
             "tail": self.lines[-200:],
         }
 
@@ -70,15 +73,28 @@ class Runner:
         self._parity: dict[str, str] = {}
 
     def parity(self) -> dict[str, str]:
-        """The sections dict of the most recent preview, or {} if none."""
-        return self._parity
+        """The sections dict of the most recent preview. Falls back to the
+        on-disk `parity.json` (written by the last preview before this
+        process started, e.g. before a restart) when there is no
+        in-memory result yet."""
+        if self._parity:
+            return self._parity
+        parity_path = self.repo / _PARITY_PATH
+        try:
+            data = json.loads(parity_path.read_text(encoding="utf-8"))
+        except (FileNotFoundError, OSError, json.JSONDecodeError):
+            return {}
+        return data.get("sections", {})
 
     def start(self, kind: str) -> tuple[Job, bool]:
         """Start a job in a background thread. Returns (job, started);
         when another job is already running, returns (self.current, False)
-        without starting anything."""
+        without starting anything. `self.current` can briefly be None while
+        the lock is still held (just before a job is installed, or just
+        after `body` clears it), so that case falls back to `self.last`
+        rather than handing the caller a None job."""
         if not self.lock.acquire(blocking=False):
-            return self.current, False
+            return (self.current or self.last), False
 
         try:
             dt = self.now()
@@ -115,12 +131,23 @@ class Runner:
     # -- shared implementation -------------------------------------------------
 
     def _execute(self, job: Job, dt: datetime) -> Job:
-        if job.kind == "generate":
-            self._generate(job, dt)
-        elif job.kind == "preview":
-            self._preview(job, dt)
-        else:
-            raise ValueError(f"unknown job kind: {job.kind!r}")
+        """Run the job body and always finalize it, even when the body
+        raises (e.g. log.md missing or unreadable in `_append_log`). A job
+        that raised still ends up finished, with exit_code 1 and the last
+        line of the traceback recorded, instead of being left in limbo
+        with `finished`/`exit_code` stuck at None and no run file."""
+        try:
+            if job.kind == "generate":
+                self._generate(job, dt)
+            elif job.kind == "preview":
+                self._preview(job, dt)
+            else:
+                raise ValueError(f"unknown job kind: {job.kind!r}")
+        except Exception:
+            job.exit_code = 1
+            tb_lines = traceback.format_exc().rstrip("\n").splitlines()
+            if tb_lines:
+                job.lines.append(tb_lines[-1])
         return self._finalize(job, dt)
 
     def _generate(self, job: Job, dt: datetime) -> None:
@@ -203,28 +230,55 @@ class Runner:
         return proc.stdout if proc.returncode == 0 else proc.stderr
 
     def _run(self, job: Job, argv: list[str], timeout: float) -> subprocess.CompletedProcess:
+        """Run `argv` in its own process group (`start_new_session=True`),
+        so that on a timeout we can kill the whole group with `os.killpg`
+        instead of only the direct child. `make` forks braingen as a
+        grandchild; killing just `make` (what `subprocess.run(timeout=)`
+        does) leaves that grandchild running past the timeout."""
         job.lines.append("$ " + " ".join(argv))
+        proc = subprocess.Popen(
+            argv, cwd=self.repo, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            text=True, start_new_session=True,
+        )
         try:
-            proc = subprocess.run(argv, cwd=self.repo, capture_output=True, text=True, timeout=timeout)
-        except subprocess.TimeoutExpired as e:
-            if e.stdout:
-                job.lines.extend(e.stdout.splitlines())
-            if e.stderr:
-                job.lines.extend(e.stderr.splitlines())
+            stdout, stderr = proc.communicate(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            stdout, stderr = proc.communicate()
+            if stdout:
+                job.lines.extend(stdout.splitlines())
+            if stderr:
+                job.lines.extend(stderr.splitlines())
             job.lines.append(f"TIMEOUT after {timeout}s: " + " ".join(argv))
-            return subprocess.CompletedProcess(argv, _TIMEOUT_EXIT_CODE, e.stdout or "", e.stderr or "")
-        if proc.stdout:
-            job.lines.extend(proc.stdout.splitlines())
-        if proc.stderr:
-            job.lines.extend(proc.stderr.splitlines())
-        return proc
+            return subprocess.CompletedProcess(argv, _TIMEOUT_EXIT_CODE, stdout or "", stderr or "")
+        if stdout:
+            job.lines.extend(stdout.splitlines())
+        if stderr:
+            job.lines.extend(stderr.splitlines())
+        return subprocess.CompletedProcess(argv, proc.returncode, stdout, stderr)
 
     def _append_log(self, dt: datetime, changed: int) -> None:
+        """Append one entry to log.md — never a read-modify-write of the
+        whole file, which could lose a concurrent edit (Obsidian, Claude
+        Code) or briefly expose a truncated file to another thread's
+        `log_entries`/`Model.stamp`. Only the last couple of bytes are
+        inspected, to add exactly the newline(s) needed so one blank line
+        precedes the new entry."""
         log_path = self.repo / _LOG_PATH
-        text = log_path.read_text(encoding="utf-8")
-        text = text.rstrip("\n") + "\n\n"
-        text += f"## [{dt.strftime('%Y-%m-%d')}] generate | dashboard, {changed} files changed\n"
-        log_path.write_text(text, encoding="utf-8")
+        entry = f"## [{dt.strftime('%Y-%m-%d')}] generate | dashboard, {changed} files changed\n"
+        with open(log_path, "rb") as f:
+            f.seek(0, os.SEEK_END)
+            size = f.tell()
+            tail_len = min(size, 2)
+            f.seek(size - tail_len, os.SEEK_SET)
+            tail = f.read()
+        trailing_newlines = len(tail) - len(tail.rstrip(b"\n"))
+        prefix = "\n" * max(0, 2 - trailing_newlines) if size else ""
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(prefix + entry)
 
 
 def actions_view(b: Brain, runner: Runner) -> dict:

@@ -1,11 +1,13 @@
+import builtins
 import json
+import signal
 import subprocess
 from datetime import datetime
 
 import pytest
 
 from . import fake_make
-from actions import Runner, actions_view
+from actions import Job, Runner, actions_view
 from model import Model
 
 NOW = lambda: datetime(2026, 9, 18, 10, 30, 0)
@@ -90,16 +92,43 @@ def test_start_runs_in_background_and_releases(runner):
 # -- robustness: timeouts, run-file collisions, lock release ----------------
 
 
-def test_make_timeout_sets_exit_124_and_logs_a_clear_line(runner, repo, monkeypatch):
-    def fake_run(argv, **kwargs):
-        raise subprocess.TimeoutExpired(argv, kwargs.get("timeout"), output="partial output\n", stderr="")
+class _FakeTimeoutPopen:
+    """Stands in for `subprocess.Popen`: the first `communicate(timeout=)`
+    times out (like a real hung process), the second (after the caller
+    kills the process group) returns the partial output."""
 
-    monkeypatch.setattr("actions.subprocess.run", fake_run)
+    def __init__(self, argv, **kwargs):
+        self.argv = argv
+        self.pid = 4242
+        self.returncode = None
+        self._calls = 0
+
+    def communicate(self, timeout=None):
+        self._calls += 1
+        if self._calls == 1:
+            raise subprocess.TimeoutExpired(self.argv, timeout, output="partial output\n", stderr="")
+        self.returncode = -signal.SIGKILL
+        return "partial output\n", ""
+
+
+def test_make_timeout_sets_exit_124_and_logs_a_clear_line(runner, repo, monkeypatch):
+    monkeypatch.setattr("actions.subprocess.Popen", _FakeTimeoutPopen)
     job = runner.run("generate")
     assert job.exit_code == 124 and job.stage == "lint"
     assert any(line.startswith("TIMEOUT after") for line in job.lines)
     assert "partial output" in job.lines
     assert not runner.lock.locked()
+
+
+def test_timeout_kills_the_whole_process_group(runner, monkeypatch):
+    """A timeout must kill make's process group (so a braingen grandchild
+    doesn't outlive it), not just the direct child."""
+    monkeypatch.setattr("actions.subprocess.Popen", _FakeTimeoutPopen)
+    monkeypatch.setattr("actions.os.getpgid", lambda pid: pid)
+    killed = []
+    monkeypatch.setattr("actions.os.killpg", lambda pgid, sig: killed.append((pgid, sig)))
+    runner.run("generate")
+    assert killed == [(4242, signal.SIGKILL)]
 
 
 def test_run_file_collision_appends_suffix(runner):
@@ -115,6 +144,110 @@ def test_start_releases_lock_when_job_creation_raises(runner, monkeypatch):
     with pytest.raises(RuntimeError):
         runner.start("generate")
     assert runner.current is None and not runner.lock.locked()
+
+
+def test_second_start_returns_last_job_not_none_when_current_is_momentarily_clear(runner):
+    """`Runner.current` can briefly be None while the lock is still held
+    (the window between acquiring the lock and installing the new job, or
+    between `body` clearing `current` and releasing the lock). A start()
+    that loses the lock race during that window must still hand back a
+    Job, not None -- routes_live.py calls .to_dict() on the result."""
+    previous = runner.run("preview")
+    runner.last = previous
+    runner.current = None
+    runner.lock.acquire()
+    try:
+        job, started = runner.start("generate")
+        assert started is False and job is previous
+    finally:
+        runner.lock.release()
+
+
+def test_exception_inside_job_still_finishes_it(runner, repo, monkeypatch):
+    """A raise inside the job body (e.g. log.md missing/unreadable) must
+    still leave the job finished, with exit_code set, the traceback's
+    last line recorded, and a run file written -- not stuck with
+    finished/exit_code at None forever."""
+    def boom(self, dt, changed):
+        raise RuntimeError("log.md vanished")
+
+    monkeypatch.setattr(Runner, "_append_log", boom)
+    job = runner.run("generate")
+    assert job.finished is not None
+    assert job.exit_code == 1
+    assert job.lines[-1] == "RuntimeError: log.md vanished"
+    run_file = repo / job.summary["run_file"]
+    assert run_file.exists()
+
+
+def test_exception_inside_job_still_updates_last_and_releases_lock(runner, monkeypatch):
+    def boom(self, dt, changed):
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(Runner, "_append_log", boom)
+    job, started = runner.start("generate")
+    assert started is True
+    for _ in range(100):
+        if runner.current is None:
+            break
+        import time; time.sleep(0.05)
+    assert runner.current is None
+    assert runner.last is job and runner.last.exit_code == 1
+    assert not runner.lock.locked()
+
+
+def test_append_log_adds_missing_newline_before_blank_line(runner, repo):
+    log_path = repo / "docs-arc42-brain/_system/log.md"
+    log_path.write_bytes(b"existing content, no trailing newline")
+    runner._append_log(NOW(), 1)
+    assert log_path.read_text() == (
+        "existing content, no trailing newline\n\n"
+        "## [2026-09-18] generate | dashboard, 1 files changed\n"
+    )
+
+
+def test_append_log_does_not_duplicate_the_blank_line(runner, repo):
+    log_path = repo / "docs-arc42-brain/_system/log.md"
+    log_path.write_text("existing\n\n", encoding="utf-8")  # already one blank line
+    runner._append_log(NOW(), 2)
+    assert log_path.read_text() == (
+        "existing\n\n## [2026-09-18] generate | dashboard, 2 files changed\n"
+    )
+
+
+def test_append_log_never_truncates_the_file(runner, repo, monkeypatch):
+    """Guard against a regression back to read-modify-write: no `open()`
+    call against log.md may use a truncating write mode ("w")."""
+    log_path = repo / "docs-arc42-brain/_system/log.md"
+    real_open = builtins.open
+    modes = []
+
+    def spy_open(file, mode="r", *a, **kw):
+        if str(file) == str(log_path):
+            modes.append(mode)
+        return real_open(file, mode, *a, **kw)
+
+    monkeypatch.setattr("builtins.open", spy_open)
+    runner._append_log(NOW(), 0)
+    assert modes and all("w" not in m for m in modes)
+
+
+def test_parity_falls_back_to_parity_json_after_restart(runner, repo):
+    runner.run("preview")
+    fresh = Runner(repo, braingen="BG", now=NOW)
+    assert fresh.parity() == {"3": "PASS", "9": "FAIL"}
+
+
+def test_parity_empty_when_no_memory_and_no_file(repo):
+    fresh = Runner(repo, braingen="BG", now=NOW)
+    assert fresh.parity() == {}
+
+
+def test_to_dict_summary_is_an_independent_copy(runner):
+    job = runner.run("preview")
+    d = job.to_dict()
+    d["summary"]["poked"] = True
+    assert "poked" not in job.summary
 
 
 # -- actions_view (render-ready data for /actions) ---------------------------

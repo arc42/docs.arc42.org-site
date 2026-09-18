@@ -56,3 +56,21 @@ def test_leaving_from_unknown_client_leaves_no_trace():
     c = Clock(); p = Presence(clock=c)
     p.leaving("ghost")
     assert p._leaving == {} and p.live() == []
+
+
+def test_anon_is_never_facilitator_even_as_the_only_live_client():
+    c = Clock(); p = Presence(clock=c)
+    assert p.ping("anon")["is_facilitator"] is False
+    assert p.is_facilitator("anon") is False
+    assert p.facilitator() is None
+
+
+def test_anon_does_not_take_over_facilitator_from_a_real_client():
+    c = Clock(); p = Presence(clock=c)
+    p.ping("a")
+    c.t += 1
+    r = p.ping("anon")
+    assert r["is_facilitator"] is False
+    assert p.facilitator() == "a"
+    # anon still counts as a live/connected client, just not facilitator.
+    assert p.live() == ["a", "anon"] and r["count"] == 2
