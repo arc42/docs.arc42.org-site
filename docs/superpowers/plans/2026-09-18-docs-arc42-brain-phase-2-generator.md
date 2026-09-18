@@ -1327,7 +1327,7 @@ Model: Haiku.
 - Consumes: `emit.Output`, `emit_section`, `emit_tip`, `emit_example`, `section_of`, `tags_for`; `emit_body.is_generated`; `Page.images` (image paths as written in the body).
 - Produces: `generate.plan(vault, statuses=frozenset({"published"}), section: int | None = None) -> Plan` (`Plan.outputs: list[Output]` sorted by `rel`, `Plan.assets: list[AssetOutput(rel, src)]`); `conflicts(vault, site, plan) -> list[str]`; `apply(vault, site, plan) -> Result(written, unchanged, deleted)` (raises `FileExistsError` starting with `refusing to overwrite:` and writes nothing when `conflicts` is non-empty); `check(vault, site, plan) -> list[str]`; `owned_files(site) -> list[str]`; `ASSET_MANIFEST = "_system/generated-assets.txt"`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_generate.py`:
 
@@ -1462,7 +1462,7 @@ def test_check_is_clean_after_generate_and_reports_every_drift(tmp_path):
 Run: `make brain-test`
 Expected: collection error (`No module named 'braingen.generate'`).
 
-- [ ] **Step 2: Write `generate.py`**
+- [x] **Step 2: Write `generate.py`**
 
 Create `docs-arc42-brain/_system/generate/braingen/generate.py`:
 
@@ -1657,12 +1657,12 @@ def check(vault: Vault, site: Path, p: Plan) -> list[str]:
     return problems
 ```
 
-- [ ] **Step 3: Run the suite**
+- [x] **Step 3: Run the suite**
 
 Run: `make brain-test`
 Expected: `103 passed`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/braingen/generate.py docs-arc42-brain/_system/generate/tests/test_generate.py docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md
