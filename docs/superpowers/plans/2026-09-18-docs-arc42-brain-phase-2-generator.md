@@ -89,7 +89,7 @@ Model: Haiku. The round-trip test is written before any emitter exists. It is ma
 - Consumes: `braingen.importer.convert_section(text, manifest, today, source_slug) -> (meta, body)`, `convert_tip(filename, text, manifest, today, source_slug)`, `convert_example(...)`, `write_page(path, meta, body)`; `braingen.parse.load_vault(root) -> Vault`.
 - Produces (for Tasks 3 and 4 to satisfy): `braingen.compare.compare_file(rel, original, generated, section, aliases) -> FileReport` with `.problems: list[str]`, `.notes: list[str]`; `braingen.emit.emit_section(vault, page) -> Output`; `emit_tip(vault, page, emitted: set[str], site_tags: set[str]) -> Output`; `emit_example(vault, page, emitted, site_tags) -> Output`; `Output.rel`, `Output.text`.
 
-- [ ] **Step 1: Copy the fixtures verbatim (from the repo root)**
+- [x] **Step 1: Copy the fixtures verbatim (from the repo root)**
 
 ```bash
 F=docs-arc42-brain/_system/generate/tests/fixtures/roundtrip
@@ -107,7 +107,7 @@ ls $F
 
 Expected: no `cmp` output; `ls` lists 8 files: `09-decision-example-adr.md 2016-03-01-t-9-2.md section-10.manifest.yaml section-10.md section-11.manifest.yaml section-11.md section-5.manifest.yaml section-5.md`.
 
-- [ ] **Step 2: Write the round-trip test**
+- [x] **Step 2: Write the round-trip test**
 
 Create `docs-arc42-brain/_system/generate/tests/test_roundtrip.py`:
 
@@ -212,12 +212,12 @@ def test_example_round_trip(tmp_path):
     assert rep.problems == []
 ```
 
-- [ ] **Step 3: Run the suite**
+- [x] **Step 3: Run the suite**
 
 Run: `make brain-test`
 Expected: `53 passed, 5 xfailed`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add docs-arc42-brain/_system/generate/tests/fixtures/roundtrip docs-arc42-brain/_system/generate/tests/test_roundtrip.py docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md
