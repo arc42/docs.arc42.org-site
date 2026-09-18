@@ -55,4 +55,81 @@
         [JSON.stringify({ client_id: CLIENT_ID })], { type: "application/json" }));
     }
   });
+
+  // -- /actions: facilitator-gated generate/preview buttons -----------------
+  //
+  // Buttons start disabled in the markup; enabled/disabled state is driven
+  // by body[data-facilitator], read once here and kept live via the
+  // "brain:presence" event every ping() dispatches.
+  var GEN_SELECTOR = '[data-action="generate"], [data-action="preview"]';
+  var genButtons = document.querySelectorAll(GEN_SELECTOR);
+  if (genButtons.length) {
+    var applyFacilitatorState = function () {
+      var isFacilitator = document.body.dataset.facilitator === "yes";
+      genButtons.forEach(function (btn) { btn.disabled = !isFacilitator; });
+    };
+    applyFacilitatorState();
+    document.addEventListener("brain:presence", applyFacilitatorState);
+
+    var pollTimer = null;
+    var pollJob = function () {
+      fetch("/actions/job")
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.current === null) {
+            clearInterval(pollTimer);
+            window.location.reload();
+          }
+        })
+        .catch(function () {});
+    };
+    genButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var kind = btn.dataset.action;
+        genButtons.forEach(function (b) { b.disabled = true; });
+        fetch("/actions/" + kind, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ client_id: CLIENT_ID }),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data && data.error) {
+              alert(data.error);
+              applyFacilitatorState();
+              return;
+            }
+            pollTimer = setInterval(pollJob, 1000);
+          })
+          .catch(function () { applyFacilitatorState(); });
+      });
+    });
+  }
+
+  // -- /links: "check now" button, run any time, no facilitator gate --------
+  var linkBtn = document.getElementById("linkcheck-btn");
+  if (linkBtn) {
+    linkBtn.addEventListener("click", function () {
+      linkBtn.disabled = true;
+      var status = document.getElementById("linkcheck-status");
+      fetch("/actions/linkcheck", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ client_id: CLIENT_ID }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (status) {
+            status.textContent = data && data.started
+              ? "Checking now — this page will reload in a few seconds."
+              : "A check is already running — this page will reload in a few seconds.";
+          }
+          setTimeout(function () { window.location.reload(); }, 5000);
+        })
+        .catch(function () {
+          linkBtn.disabled = false;
+          if (status) { status.textContent = "Could not start the check."; }
+        });
+    });
+  }
 })();

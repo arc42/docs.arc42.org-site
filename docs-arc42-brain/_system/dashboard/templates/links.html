@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Link health — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Link health</h1>
+<p class="summary">External URLs found in the vault, HEAD-checked and cached for a day.</p>
+
+<div class="actions-bar">
+  <button type="button" class="btn-secondary" id="linkcheck-btn">Check links now</button>
+  <span class="actions-note" id="linkcheck-status"></span>
+</div>
+
+{% if summary %}
+<p class="summary">{{ rows|length }} url(s) checked &middot;
+  {{ summary.failures }} failing &middot; {{ summary.redirects }} redirected &middot; {{ summary.ok }} ok</p>
+{% else %}
+<p class="empty">Not checked yet.</p>
+{% endif %}
+
+<table class="data-table">
+  <thead><tr><th>URL</th><th>Status</th><th>Redirects to</th><th>Named on</th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td class="mono"><a href="{{ r.url }}">{{ r.url }}</a></td>
+      <td>{{ r.status if r.status is not none else (r.error or "failed") }}</td>
+      <td class="mono">{{ r.location or "—" }}</td>
+      <td>{% for p in r.pages %}<a href="/page/{{ p }}">{{ p }}</a>{% if not loop.last %}, {% endif %}{% else %}&mdash;{% endfor %}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4" class="empty">No links checked yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

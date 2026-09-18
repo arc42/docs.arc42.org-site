@@ -106,6 +106,37 @@ def section_number(b: Brain, page: Page | None) -> int | None:
     return None
 
 
+def list_rows(b: Brain, ptype: str, status: str | None = None, section: int | None = None,
+              system: str | None = None) -> list[dict]:
+    """Filtered, sorted row dicts for a type-list page (`/tips`, `/examples`,
+    …): slug, title, status, section, system, updated. A filter is applied
+    only when given; the caller (request parsing) is responsible for turning
+    a query-string `section` into an int or None."""
+    pages = b.vault.by_type(ptype)
+    if status:
+        pages = [p for p in pages if p.status == status]
+    if section is not None:
+        pages = [p for p in pages if section_number(b, p) == section]
+    if system:
+        pages = [p for p in pages if any(l.target == system for l in p.links_in("system"))]
+    rows = []
+    for p in sorted(pages, key=lambda p: p.slug):
+        sys_links = p.links_in("system")
+        sys_name = None
+        if sys_links:
+            target = b.vault.pages.get(sys_links[0].target)
+            sys_name = (target.meta.get("name") if target else None) or sys_links[0].target
+        rows.append({
+            "slug": p.slug,
+            "title": p.meta.get("title") or p.slug,
+            "status": p.status,
+            "section": section_number(b, p),
+            "system": sys_name,
+            "updated": p.meta.get("updated"),
+        })
+    return rows
+
+
 def open_issues(b: Brain) -> list[Page]:
     """Open issues (status open|in-progress), oldest created first."""
     issues = [p for p in b.vault.by_type("issue") if p.status in ("open", "in-progress")]

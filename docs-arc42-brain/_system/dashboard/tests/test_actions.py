@@ -4,7 +4,8 @@ from datetime import datetime
 import pytest
 
 from . import fake_make
-from actions import Runner
+from actions import Runner, actions_view
+from model import Model
 
 NOW = lambda: datetime(2026, 9, 18, 10, 30, 0)
 
@@ -83,3 +84,33 @@ def test_start_runs_in_background_and_releases(runner):
             break
         import time; time.sleep(0.05)
     assert runner.current is None and runner.last.kind == "preview" and not runner.lock.locked()
+
+
+# -- actions_view (render-ready data for /actions) ---------------------------
+
+
+def test_actions_view_no_runs_yet(runner, repo):
+    b = Model(repo).get()
+    view = actions_view(b, runner)
+    assert view["job"] is None and view["is_current"] is False and view["lint"] is None
+    assert {r["number"] for r in view["parity_rows"]} == {3, 9}
+    assert all(r["parity"] is None for r in view["parity_rows"])
+
+
+def test_actions_view_shows_last_job_and_parity(runner, repo):
+    b = Model(repo).get()
+    runner.last = runner.run("preview")  # run() itself doesn't set .last; start() does
+    view = actions_view(b, runner)
+    assert view["job"]["kind"] == "preview" and view["is_current"] is False
+    assert view["lint"] is None
+    rows = {r["number"]: r for r in view["parity_rows"]}
+    assert rows[3]["parity"] == "PASS" and rows[9]["parity"] == "FAIL"
+
+
+def test_actions_view_shows_lint_groups_when_lint_gated(runner, repo, monkeypatch):
+    monkeypatch.setenv("FAKE_LINT_EXIT", "1")
+    b = Model(repo).get()
+    runner.last = runner.run("generate")  # run() itself doesn't set .last; start() does
+    view = actions_view(b, runner)
+    assert view["job"]["stage"] == "lint"
+    assert view["lint"] is not None and "example-category" in view["lint"]["errors"]

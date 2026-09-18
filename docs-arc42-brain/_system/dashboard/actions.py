@@ -14,6 +14,8 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
+from model import Brain, lint_view, sections_view
+
 GENERATED_PATHS = ["_pages", "_posts", "_examples", "assets/images",
                     "docs-arc42-brain/_system/generated-assets.txt"]
 
@@ -192,3 +194,17 @@ class Runner:
         text = text.rstrip("\n") + "\n\n"
         text += f"## [{dt.strftime('%Y-%m-%d')}] generate | dashboard, {changed} files changed\n"
         log_path.write_text(text, encoding="utf-8")
+
+
+def actions_view(b: Brain, runner: Runner) -> dict:
+    """Render-ready data for `/actions`: the current or last job (as a
+    dict, or None), whether it is still running, lint groups when that
+    job's stage is "lint" (the brain-lint gate that blocked generate), and
+    one parity row per section."""
+    job = runner.current or runner.last
+    return {
+        "job": job.to_dict() if job is not None else None,
+        "is_current": runner.current is not None,
+        "lint": lint_view(b) if job is not None and job.stage == "lint" else None,
+        "parity_rows": sections_view(b, runner.parity())["rows"],
+    }

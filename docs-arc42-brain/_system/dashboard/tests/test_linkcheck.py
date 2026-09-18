@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 import pytest
 
 import linkcheck
-from linkcheck import LinkChecker, external_urls, head_status
+from linkcheck import LinkChecker, external_urls, head_status, link_summary
 from model import Model
 
 
@@ -218,3 +218,21 @@ def test_start_returns_false_when_already_running(tmp_path):
     lc = LinkChecker(tmp_path / "links.json", fetch=lambda url: None, clock=lambda: 1000.0)
     lc.running = True
     assert lc.start({"https://ok": ["a"]}) is False
+
+
+# -- link_summary --------------------------------------------------------
+
+
+def test_link_summary_none_when_no_rows():
+    assert link_summary([]) is None
+
+
+def test_link_summary_counts_failures_redirects_and_ok():
+    rows = [
+        {"url": "https://dead", "status": None},
+        {"url": "https://gone", "status": 404},
+        {"url": "https://moved", "status": 301},
+        {"url": "https://ok", "status": 200},
+        {"url": "https://also-ok", "status": 204},
+    ]
+    assert link_summary(rows) == {"failures": 2, "redirects": 1, "ok": 2}

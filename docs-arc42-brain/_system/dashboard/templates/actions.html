@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Actions — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Actions</h1>
+
+<div class="callout arc42-help">
+  <p><strong>Lint + generate</strong> runs <code>make brain-lint</code>, then, only if that passes,
+    <code>make generate</code> and appends one line to <code>_system/log.md</code>.
+    <strong>Preview (parity)</strong> runs <code>make generate-check</code> to compare generated output
+    against the live site, section by section, without writing anything. Only the facilitator may start
+    either job; everyone connected can watch it run.</p>
+</div>
+
+<div class="actions-bar">
+  <button type="button" class="btn-primary" data-action="generate" disabled>Lint + generate</button>
+  <button type="button" class="btn-secondary" data-action="preview" disabled>Preview (parity)</button>
+  <span class="actions-note" id="facilitator-note">Only the facilitator can run these.</span>
+</div>
+
+<h2>{{ "Running now" if is_current else "Last run" }}</h2>
+{% if job %}
+<dl class="meta-list">
+  <dt>Kind</dt><dd>{{ job.kind }}</dd>
+  <dt>Started</dt><dd>{{ job.started }}</dd>
+  <dt>Finished</dt><dd>{{ job.finished or ("running…" if is_current else "—") }}</dd>
+  <dt>Stage</dt><dd>{{ job.stage or "—" }}</dd>
+  <dt>Exit code</dt><dd>{{ job.exit_code if job.exit_code is not none else "—" }}</dd>
+  {% if job.summary.changed is defined %}<dt>Changed</dt><dd>{{ job.summary.changed }} file(s)</dd>{% endif %}
+  {% if job.summary.run_file is defined %}<dt>Run log</dt><dd class="mono">{{ job.summary.run_file }}</dd>{% endif %}
+</dl>
+
+{% if lint %}
+<div class="callout arc42-example">
+  <p>The lint gate blocked generate — fix these before running it again.</p>
+</div>
+<h3>Errors</h3>
+{% if lint.errors %}
+  {% for rule, findings in lint.errors.items() %}
+  <h4>{{ rule }} <span class="badge count">{{ findings|length }}</span></h4>
+  <ul class="finding-list">
+    {% for f in findings %}
+    <li>{% if f.page in known %}<a href="/page/{{ f.page }}">{{ f.page }}</a>{% else %}{{ f.page }}{% endif %} &mdash; {{ f.message }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+{% else %}
+<p class="empty">No errors.</p>
+{% endif %}
+<h3>Warnings</h3>
+{% if lint.warnings %}
+  {% for rule, findings in lint.warnings.items() %}
+  <h4>{{ rule }} <span class="badge count">{{ findings|length }}</span></h4>
+  <ul class="finding-list">
+    {% for f in findings %}
+    <li>{% if f.page in known %}<a href="/page/{{ f.page }}">{{ f.page }}</a>{% else %}{{ f.page }}{% endif %} &mdash; {{ f.message }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+{% else %}
+<p class="empty">No warnings.</p>
+{% endif %}
+{% endif %}
+
+{% if job.summary.git_status is defined %}
+<h3>git status --short</h3>
+<pre class="mono-block">{{ job.summary.git_status or "(clean)" }}</pre>
+{% endif %}
+{% if job.summary.git_diff_stat is defined %}
+<h3>git diff --stat</h3>
+<pre class="mono-block">{{ job.summary.git_diff_stat or "(no changes)" }}</pre>
+{% endif %}
+
+<h3>Log tail</h3>
+<pre class="log-tail">{{ job.tail|join('\n') }}</pre>
+{% else %}
+<p class="empty">No runs yet.</p>
+{% endif %}
+
+<h2>Parity by section</h2>
+<table class="data-table">
+  <thead><tr><th>#</th><th>Section</th><th>Status</th><th>Parity</th></tr></thead>
+  <tbody>
+    {% for r in parity_rows %}
+    <tr>
+      <td>{{ r.number }}</td>
+      <td><a href="/page/{{ r.slug }}">{{ r.title or r.slug }}</a></td>
+      <td>{{ m.status_badge(r.status) }}</td>
+      <td>{{ r.parity or "—" }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4" class="empty">No sections yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

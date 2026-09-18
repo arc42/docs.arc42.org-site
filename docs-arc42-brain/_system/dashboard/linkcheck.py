@@ -97,6 +97,16 @@ def head_status(url: str, timeout: float = 10.0) -> dict:
         return {"status": None, "location": None, "error": str(e)}
 
 
+def link_summary(rows: list[dict]) -> dict | None:
+    """{"failures", "redirects", "ok"} counts over `results()`/`check()`
+    rows, or None when there are no rows (the checker hasn't run yet)."""
+    if not rows:
+        return None
+    failures = sum(1 for r in rows if r["status"] is None or r["status"] >= 400)
+    redirects = sum(1 for r in rows if r["status"] is not None and 300 <= r["status"] < 400)
+    return {"failures": failures, "redirects": redirects, "ok": len(rows) - failures - redirects}
+
+
 def _group(status: int | None) -> int:
     """Sort group: 0 failures (None or >=400), 1 redirects (3xx), 2 the rest."""
     if status is None or status >= 400:

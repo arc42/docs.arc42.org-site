@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ "Term graph" if kind == "terms" else "Link graph" }} — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>{{ "Term graph" if kind == "terms" else "Link graph" }}</h1>
+<p class="summary">
+  {% if kind == "terms" %}
+  Terms connected by how many pages tag both of them; edge width is that count.
+  {% else %}
+  Pages connected by <code>related:</code> and <code>section:</code> links. Click a node to open its page.
+  {% endif %}
+</p>
+
+<nav class="graph-tabs">
+  <a href="/graph?kind=links" class="{{ 'is-active' if kind == 'links' else '' }}">Links</a>
+  <a href="/graph?kind=terms" class="{{ 'is-active' if kind == 'terms' else '' }}">Terms</a>
+</nav>
+
+<div class="graph-layout">
+  <aside class="graph-controls">
+    <fieldset>
+      <legend>Show types</legend>
+      <div id="graph-type-filters"><p class="empty">Loading…</p></div>
+    </fieldset>
+    <div class="graph-legend-title">Legend</div>
+    <div class="graph-legend" id="graph-legend"></div>
+  </aside>
+  <div id="graph-canvas" class="graph-canvas" data-kind="{{ kind }}"></div>
+</div>
+
+<script src="{{ url_for('static', filename='vendor/cytoscape.min.js') }}"></script>
+<script src="{{ url_for('static', filename='graph.js') }}"></script>
+{% endblock %}

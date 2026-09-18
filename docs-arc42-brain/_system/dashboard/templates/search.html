@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% if q %} — {{ q }}{% endif %} — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Search</h1>
+<form class="filter-form" method="get" action="/search">
+  <label>Query <input type="text" name="q" value="{{ q }}"></label>
+  <button type="submit">Search</button>
+</form>
+
+{% if q %}
+<p class="summary">{{ results|length }} result{{ "s" if results|length != 1 else "" }} for &ldquo;{{ q }}&rdquo;</p>
+<ul class="search-results">
+  {% for r in results %}
+  <li>
+    <a href="/page/{{ r.slug }}">{{ r.title }}</a> <span class="badge count">{{ r.type }}</span>
+    <p class="snippet">&hellip;{{ r.snippet }}&hellip;</p>
+  </li>
+  {% else %}
+  <li class="empty">No matches.</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

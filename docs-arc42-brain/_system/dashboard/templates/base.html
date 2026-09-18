@@ -16,19 +16,24 @@
       <a href="/sections">Sections</a>
       <a href="/tips">Tips</a>
       <a href="/examples">Examples</a>
-      <a href="/faq">FAQ</a>
-      <a href="/terms">Terms</a>
-      <a href="/keywords">Keywords</a>
-      <a href="/systems">Systems</a>
       <a href="/tags">Tags</a>
       <a href="/issues">Issues</a>
-      <a href="/lint">Lint</a>
-      <a href="/log">Log</a>
       <a href="/review">Review</a>
       <a href="/cutover">Cut-over</a>
       <a href="/gaps">Gaps</a>
+      <a href="/suggestions">Suggestions</a>
+      <a href="/graph">Graph</a>
+      <a href="/actions">Actions</a>
+      <a href="/links">Links</a>
       {% endblock %}
     </nav>
+    <form class="masthead-search" method="get" action="/search">
+      <input type="search" name="q" placeholder="Search…" aria-label="Search">
+      <button type="submit">Search</button>
+    </form>
+    <form class="masthead-reload" method="post" action="/reload">
+      <button type="submit" title="Clear the cached vault and reload">Reload</button>
+    </form>
   </header>
   <main>{% block main %}{% endblock %}</main>
   <footer class="footer">

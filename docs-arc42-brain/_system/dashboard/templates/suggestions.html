@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Suggestions — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Suggestions</h1>
+<p class="summary">Pairs of tips and examples that share a term, subsection, keyword or system but are
+  not yet connected by <code>related:</code>, scored by <code>_system/workflows/relations.md</code>.</p>
+
+{% for slug, items in suggestions.items()|sort %}
+<h2><a href="/page/{{ slug }}">{{ slug }}</a></h2>
+<ul class="link-list">
+  {% for it in items %}
+  <li><a href="/page/{{ it.target }}">{{ it.target }}</a>
+    <span class="badge count">{{ it.score }}</span>
+    <span class="via">{{ it.reasons|join(", ") }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty">No suggestions — every scored pair is already related.</p>
+{% endfor %}
+{% endblock %}

@@ -17,6 +17,7 @@
   --muted: #5e6975;
   --surface-1: #f2f5f8;
   --surface-2: #f7fafd;
+  --surface-hover: #e7eef5;
   --hairline: rgba(20, 44, 82, 0.12);
   --amber: #ffc95c;
   --maroon: #8a2e2e;
@@ -58,6 +59,7 @@
     --muted: #a7b0ba;
     --surface-1: #33383f;
     --surface-2: #2f343b;
+    --surface-hover: #3d444d;
     --hairline: rgba(234, 244, 252, 0.16);
     --amber: #ffc95c;
     --maroon: #8a2e2e;
@@ -278,7 +280,7 @@ main {
 }
 
 .data-table tr:hover td {
-  background: var(--surface-hover, var(--surface-1));
+  background: var(--surface-hover);
 }
 
 tr.ready td {
@@ -450,6 +452,237 @@ tr.ready td {
   color: var(--muted);
 }
 
+/* Masthead search + reload */
+.masthead-search {
+  display: flex;
+  gap: var(--s1);
+  margin-left: auto;
+}
+
+.masthead-search input {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--s1) var(--s2);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  background: var(--header-tint);
+  color: var(--ink);
+  width: 9rem;
+}
+
+.masthead-search button, .masthead-reload button {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: var(--s1) var(--s3);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--header-tint);
+}
+
+.masthead-search button:hover, .masthead-reload button:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Buttons (actions page, link health) */
+.actions-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  flex-wrap: wrap;
+  margin: var(--s4) 0 var(--s6);
+}
+
+.btn-primary, .btn-secondary {
+  border-radius: var(--radius);
+  padding: var(--s2) var(--s5);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid var(--signal-blue);
+}
+
+.btn-primary {
+  background: var(--signal-blue);
+  color: var(--paper);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--deep-blue);
+  border-color: var(--deep-blue);
+}
+
+.btn-secondary {
+  background: var(--paper);
+  color: var(--signal-blue);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+.btn-primary:disabled, .btn-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  border-color: var(--hairline);
+  color: var(--muted);
+  background: var(--surface-1);
+}
+
+.actions-note {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Pre blocks: git status/diff (readable inline) and the run log (terminal) */
+.mono-block {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--s3) var(--s4);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: var(--s2) 0 var(--s4);
+}
+
+.log-tail {
+  /* Always a dark terminal, independent of light/dark theme, like the rest
+     of the site's code blocks are theme-tinted but a run log reads as a
+     console. */
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  background: #1b1f24;
+  color: #e8edf2;
+  border-radius: var(--radius);
+  padding: var(--s3) var(--s4);
+  max-height: 20rem;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: var(--s2) 0 var(--s4);
+}
+
+/* Search */
+.search-results {
+  list-style: none;
+  margin: var(--s3) 0 var(--s6);
+  padding: 0;
+}
+
+.search-results li {
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.search-results .snippet {
+  margin: var(--s1) 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Graph */
+.graph-tabs {
+  display: flex;
+  gap: var(--s3);
+  margin: var(--s3) 0 var(--s4);
+}
+
+.graph-tabs a {
+  padding: var(--s1) var(--s3);
+  border-radius: var(--radius-pill);
+  background: var(--surface-1);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.graph-tabs a:hover {
+  text-decoration: none;
+  background: var(--surface-hover);
+}
+
+.graph-tabs a.is-active {
+  background: var(--signal-blue);
+  color: var(--paper);
+}
+
+.graph-layout {
+  display: flex;
+  gap: var(--s5);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: var(--s7);
+}
+
+.graph-controls {
+  flex: 0 0 14rem;
+}
+
+.graph-controls fieldset {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  margin: 0 0 var(--s4);
+}
+
+.graph-controls legend {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0 var(--s1);
+}
+
+.graph-filter {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 0.9rem;
+  padding: var(--s1) 0;
+}
+
+.graph-legend-title {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--s2);
+}
+
+.graph-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  font-size: 0.85rem;
+}
+
+.graph-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.graph-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+
+.graph-canvas {
+  flex: 1 1 30rem;
+  min-width: 20rem;
+  height: 32rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
 /* Phone width */
 @media (max-width: 480px) {
   main {
@@ -467,5 +700,29 @@ tr.ready td {
 
   .footer {
     justify-content: flex-start;
+  }
+
+  .masthead-search {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .masthead-search input {
+    flex: 1;
+    width: auto;
+  }
+
+  .graph-layout {
+    flex-direction: column;
+  }
+
+  .graph-controls {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .graph-canvas {
+    height: 20rem;
+    width: 100%;
   }
 }

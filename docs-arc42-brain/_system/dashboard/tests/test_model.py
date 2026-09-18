@@ -3,8 +3,8 @@ import threading
 import time
 
 import model as model_module
-from model import (Model, examples_view, faq_view, gaps, issues_view, lint_view, log_entries,
-                   readiness, review_queue, sections_view, tags_view, tips_view)
+from model import (Model, examples_view, faq_view, gaps, issues_view, lint_view, list_rows,
+                   log_entries, readiness, review_queue, sections_view, tags_view, tips_view)
 
 
 def brain(repo):
@@ -114,6 +114,33 @@ def test_get_is_thread_safe(repo, monkeypatch):
 
     assert len(calls) == 1
     assert all(r is results[0] for r in results)
+
+
+def test_list_rows_unfiltered(repo):
+    b = brain(repo)
+    rows = list_rows(b, "tip")
+    assert [r["slug"] for r in rows] == ["tip-9-1", "tip-9-2", "tip-9-3"]
+    assert rows[0] == {
+        "slug": "tip-9-1", "title": "Tip 9-1: Do it!", "status": "published",
+        "section": 9, "system": None, "updated": "2026-09-18",
+    }
+    assert rows[2]["updated"] == "2026-09-05"
+
+
+def test_list_rows_filters_by_status_and_section(repo):
+    b = brain(repo)
+    assert [r["slug"] for r in list_rows(b, "tip", status="draft")] == ["tip-9-2"]
+    assert [r["slug"] for r in list_rows(b, "tip", section=9)] == ["tip-9-1", "tip-9-2", "tip-9-3"]
+    assert list_rows(b, "tip", section=3) == []
+
+
+def test_list_rows_system_name_and_filter(repo):
+    b = brain(repo)
+    rows = {r["slug"]: r for r in list_rows(b, "example")}
+    assert rows["09-decision-example-x"]["system"] == "HTML Sanity Checker"
+    assert rows["09-decision-example-y"]["system"] is None
+    filtered = list_rows(b, "example", system="htmlsc")
+    assert [r["slug"] for r in filtered] == ["09-decision-example-x"]
 
 
 def test_gaps(repo):

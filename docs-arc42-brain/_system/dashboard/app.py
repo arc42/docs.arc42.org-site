@@ -10,18 +10,22 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from flask import Flask, abort, render_template, request
+from flask import Flask, abort, jsonify, render_template, request
 
 from actions import Runner
-from linkcheck import LinkChecker
+from linkcheck import LinkChecker, link_summary
 from model import (
     STATUSES, Model, examples_view, faq_view, gaps, issues_view, lint_view,
-    log_entries, git_log, readiness, review_queue, section_number,
+    list_rows, log_entries, git_log, readiness, review_queue,
     sections_view, status_counts, tags_view, tips_view,
 )
-from presence import Presence, client_id
-from relations import issues_naming, links_in, links_out, obsidian_url
+from presence import Presence
+from relations import (
+    issues_naming, link_graph, links_in, links_out, obsidian_url, search,
+    suggestions, term_graph,
+)
 from render import render
+from routes_actions import bp as actions_bp
 
 
 def _fmt_meta(value):
@@ -60,43 +64,20 @@ def create_app(repo: Path | None = None, **services) -> Flask:
     )
 
     app.extensions["brain"] = dict(services)
-    presence: Presence = app.extensions["brain"]["presence"]
     linkchecker: LinkChecker = app.extensions["brain"]["linkchecker"]
 
-    def _apply_filters(b, pages):
-        status = request.args.get("status") or None
-        section = request.args.get("section") or None
-        system = request.args.get("system") or None
-        if status:
-            pages = [p for p in pages if p.status == status]
-        if section:
-            try:
-                n = int(section)
-            except ValueError:
-                n = None
-            if n is not None:
-                pages = [p for p in pages if section_number(b, p) == n]
-        if system:
-            pages = [p for p in pages if any(l.target == system for l in p.links_in("system"))]
-        return sorted(pages, key=lambda p: p.slug)
+    app.register_blueprint(actions_bp)
 
-    def _rows(b, pages):
-        rows = []
-        for p in pages:
-            sys_links = p.links_in("system")
-            sys_name = None
-            if sys_links:
-                target = b.vault.pages.get(sys_links[0].target)
-                sys_name = (target.meta.get("name") if target else None) or sys_links[0].target
-            rows.append({
-                "slug": p.slug,
-                "title": p.meta.get("title") or p.slug,
-                "status": p.status,
-                "section": section_number(b, p),
-                "system": sys_name,
-                "updated": p.meta.get("updated"),
-            })
-        return rows
+    def _section_arg():
+        """The `section` query arg as an int, or None (missing/not a number
+        is "no filter", matching the list-page filter form)."""
+        raw = request.args.get("section")
+        if not raw:
+            return None
+        try:
+            return int(raw)
+        except ValueError:
+            return None
 
     def _filter_args():
         return {
@@ -111,12 +92,13 @@ def create_app(repo: Path | None = None, **services) -> Flask:
             notes=notes, filters=_filter_args(), statuses=STATUSES,
         )
 
-    def _link_summary(rows):
-        if not rows:
-            return None
-        failures = sum(1 for r in rows if r["status"] is None or r["status"] >= 400)
-        redirects = sum(1 for r in rows if r["status"] is not None and 300 <= r["status"] < 400)
-        return {"failures": failures, "redirects": redirects, "ok": len(rows) - failures - redirects}
+    def _filtered_rows(b, ptype):
+        return list_rows(
+            b, ptype,
+            status=request.args.get("status") or None,
+            section=_section_arg(),
+            system=request.args.get("system") or None,
+        )
 
     @app.route("/")
     def home():
@@ -142,7 +124,7 @@ def create_app(repo: Path | None = None, **services) -> Flask:
             lint_warning_n=sum(len(v) for v in lint["warnings"].values()),
             log_recent=log_entries(b, 5), commits=git_log(repo, 5),
             runner_last=runner.last, review=review, cutover=cutover, gaps=gap,
-            link_rows=link_rows, link_summary=_link_summary(link_rows),
+            link_rows=link_rows, link_summary=link_summary(link_rows),
             sections_open_issues=sum(r["open_issues"] for r in sections["rows"]),
         )
 
@@ -161,8 +143,7 @@ def create_app(repo: Path | None = None, **services) -> Flask:
             notes.append(f"{len(view['without_related'])} without related: " + ", ".join(view["without_related"]))
         if view["legacy"]:
             notes.append(f"{len(view['legacy'])} still carrying legacy-tags: " + ", ".join(view["legacy"]))
-        pages = _apply_filters(b, b.vault.by_type("tip"))
-        return _list_page("Tips", "tip", _rows(b, pages), view["counts"], notes)
+        return _list_page("Tips", "tip", _filtered_rows(b, "tip"), view["counts"], notes)
 
     @app.route("/examples")
     def examples_page():
@@ -174,24 +155,21 @@ def create_app(repo: Path | None = None, **services) -> Flask:
                 f"{len(view['orphan_categories'])} example categories no section references: "
                 + ", ".join(view["orphan_categories"])
             )
-        pages = _apply_filters(b, b.vault.by_type("example"))
-        return _list_page("Examples", "example", _rows(b, pages), view["counts"], notes)
+        return _list_page("Examples", "example", _filtered_rows(b, "example"), view["counts"], notes)
 
     @app.route("/faq")
     def faq_page():
         b = model.get()
         view = faq_view(b)
         notes = [view["note"]] if view["note"] else []
-        pages = _apply_filters(b, b.vault.by_type("faq"))
-        return _list_page("FAQ", "faq", _rows(b, pages), status_counts(b.vault.by_type("faq")), notes)
+        return _list_page("FAQ", "faq", _filtered_rows(b, "faq"), status_counts(b.vault.by_type("faq")), notes)
 
     @app.route("/terms")
     def terms_page():
         b = model.get()
         view = tags_view(b)
         usage = dict(view["terms"])
-        pages = _apply_filters(b, b.vault.by_type("term"))
-        rows = _rows(b, pages)
+        rows = _filtered_rows(b, "term")
         for r in rows:
             r["usage"] = usage.get(r["slug"], 0)
         notes = []
@@ -207,8 +185,7 @@ def create_app(repo: Path | None = None, **services) -> Flask:
         b = model.get()
         view = tags_view(b)
         usage = dict(view["keywords"])
-        pages = _apply_filters(b, b.vault.by_type("keyword"))
-        rows = _rows(b, pages)
+        rows = _filtered_rows(b, "keyword")
         for r in rows:
             r["usage"] = usage.get(r["slug"], 0)
         return _list_page("Keywords", "keyword", rows, status_counts(b.vault.by_type("keyword")), [])
@@ -216,8 +193,8 @@ def create_app(repo: Path | None = None, **services) -> Flask:
     @app.route("/systems")
     def systems_page():
         b = model.get()
-        pages = _apply_filters(b, b.vault.by_type("system"))
-        return _list_page("Systems", "system", _rows(b, pages), status_counts(b.vault.by_type("system")), [])
+        return _list_page("Systems", "system", _filtered_rows(b, "system"),
+                           status_counts(b.vault.by_type("system")), [])
 
     @app.route("/tags")
     def tags_page():
@@ -256,6 +233,29 @@ def create_app(repo: Path | None = None, **services) -> Flask:
     def gaps_page():
         return render_template("gaps.html", **gaps(model.get()))
 
+    @app.route("/suggestions")
+    def suggestions_page():
+        return render_template("suggestions.html", suggestions=suggestions(model.get()))
+
+    @app.route("/graph")
+    def graph_page():
+        kind = request.args.get("kind", "links")
+        if kind not in ("links", "terms"):
+            kind = "links"
+        return render_template("graph.html", kind=kind)
+
+    @app.route("/graph.json")
+    def graph_json():
+        kind = request.args.get("kind", "links")
+        b = model.get()
+        return jsonify(term_graph(b) if kind == "terms" else link_graph(b))
+
+    @app.route("/search")
+    def search_page():
+        q = request.args.get("q", "").strip()
+        results = search(model.get(), q) if q else []
+        return render_template("search.html", q=q, results=results)
+
     @app.route("/page/<slug>")
     def page_detail(slug):
         b = model.get()
@@ -269,19 +269,6 @@ def create_app(repo: Path | None = None, **services) -> Flask:
             source_links=sorted(l.target for l in page.links_in("sources")),
             issues=issues_naming(b, slug), obsidian=obsidian_url(b, page),
         )
-
-    @app.route("/ping", methods=["POST"])
-    def ping():
-        return presence.ping(client_id(request))
-
-    @app.route("/leaving", methods=["POST"])
-    def leaving():
-        presence.leaving(client_id(request))
-        return "", 204
-
-    @app.route("/who")
-    def who():
-        return render_template("who.html", entries=presence.who())
 
     return app
 
