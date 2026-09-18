@@ -27,7 +27,7 @@ def setup(tmp_path):
 def write_originals(vault_root, site, tags="decision"):
     """The site as it was before the brain: generated text minus marker, legacy tags."""
     for o in plan(load_vault(vault_root), statuses=PARITY_STATUSES).outputs:
-        lines = [l for l in o.text.splitlines() if not l.startswith("<!-- generated")]
+        lines = [l for l in o.text.splitlines() if not l.startswith("# generated from docs-arc42-brain/")]
         text = "\n".join(lines) + "\n"
         if o.rel.startswith("_posts/"):
             text = text.replace("tags: architecture-decision", f"tags: {tags}")

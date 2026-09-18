@@ -1,4 +1,4 @@
-"""Page emitters: one wiki page → one Jekyll file (front matter, marker, body).
+"""Page emitters: one wiki page → one Jekyll file (front matter ending in the marker, body).
 
 The front matter follows the key order and quoting of the hand-written files
 so a cut-over diff stays small; the parity check compares values, not bytes.
@@ -63,7 +63,9 @@ def render_frontmatter(items: list[tuple[str, object]], quoted: frozenset[str] =
 
 
 def document(front: str, source: str, body: str) -> str:
-    return f"{front}{marker(source)}\n\n{body}"
+    """Front matter with the marker as its last line, one blank line, the body."""
+    head = front.removesuffix("---\n")
+    return f"{head}{marker(source)}\n---\n\n{body}"
 
 
 def emit_section(vault: Vault, page: Page) -> Output:

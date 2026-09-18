@@ -86,6 +86,8 @@ make generate                        write the Jekyll files of every published p
 make brain-check-generated           fail if a generated file was hand-edited (runs in make check)
 ```
 
-Generated files (`_pages/section-N.md`, `_posts/…`, `_examples/…` with the line
-`<!-- generated from docs-arc42-brain/… — do not edit -->` after the front matter)
-are never edited by hand: edit the brain page and run `make generate`.
+Generated files (`_pages/section-N.md`, `_posts/…`, `_examples/…` whose front
+matter ends with the YAML comment `# generated from docs-arc42-brain/… — do not edit`)
+are never edited by hand: edit the brain page and run `make generate`. The marker
+sits inside the front matter on purpose: as a body line it would become the Jekyll
+excerpt and blank the page's meta description.

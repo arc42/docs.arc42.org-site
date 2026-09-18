@@ -14,16 +14,26 @@ HELP_OPEN = '<div class="arc42-help" markdown="1">'
 
 
 def test_marker_line():
-    assert marker("wiki/tips/tip-9-1.md") == "<!-- generated from docs-arc42-brain/wiki/tips/tip-9-1.md — do not edit -->"
+    assert marker("wiki/tips/tip-9-1.md") == "# generated from docs-arc42-brain/wiki/tips/tip-9-1.md — do not edit"
 
 
-def test_is_generated_only_when_marker_is_first_line_after_front_matter():
+def test_is_generated_only_when_marker_is_last_front_matter_line():
     m = marker("wiki/tips/tip-9-1.md")
-    assert is_generated(f"---\na: 1\n---\n{m}\n\nbody\n")
+    assert is_generated(f"---\na: 1\n{m}\n---\n\nbody\n")
     assert not is_generated("---\na: 1\n---\n\nbody\n")
     assert not is_generated(f"---\na: 1\n---\n\n{m}\n")
     assert not is_generated(f"{m}\n")
     assert not is_generated("---\na: 1\n")
+
+
+def test_is_generated_false_when_marker_is_not_the_last_front_matter_line():
+    m = marker("wiki/tips/tip-9-1.md")
+    assert not is_generated(f"---\n{m}\na: 1\n---\n\nbody\n")
+
+
+def test_is_generated_false_for_the_old_body_marker():
+    old = "<!-- generated from docs-arc42-brain/wiki/tips/tip-9-1.md — do not edit -->"
+    assert not is_generated(f"---\na: 1\n---\n{old}\n\nbody\n")
 
 
 def test_rewrite_images_back_to_liquid():

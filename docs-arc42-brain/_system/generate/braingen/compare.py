@@ -2,7 +2,7 @@
 
 Pass condition:
 - body identical after normalisation: trailing whitespace per line, leading and
-  trailing blank lines, the marker line, and the further-info foot, which is
+  trailing blank lines, and the further-info foot, which is
   compared by its arguments because its line layout varies between the
   hand-written pages;
 - every front-matter key of the original has an identical value in the
@@ -21,7 +21,7 @@ from dataclasses import dataclass, field
 
 import frontmatter
 
-from .emit_body import MARKER_PREFIX, is_generated
+from .emit_body import is_generated
 
 FOOT_RE = re.compile(r"\{%\s*include further-info\.md(.*?)%\}", re.S)
 ARG_RE = re.compile(r'([a-z]+)="([^"]*)"')
@@ -48,15 +48,6 @@ def normalise_lines(text: str) -> list[str]:
     while lines and not lines[-1]:
         lines.pop()
     return lines
-
-
-def strip_marker(body: str) -> str:
-    lines = body.splitlines()
-    while lines and not lines[0].strip():
-        lines.pop(0)
-    if lines and lines[0].startswith(MARKER_PREFIX):
-        lines.pop(0)
-    return "\n".join(lines)
 
 
 def split_foot(body: str) -> tuple[str, dict[str, str] | None]:
@@ -99,13 +90,13 @@ def compare_file(rel: str, original: str, generated: str, section: int, aliases:
     lead = leading_blank_lines(original)
     if lead != 1 and not is_generated(original):
         rep.notes.append(f"normalised: {lead} blank lines after the front matter in the original, 1 generated")
-    obody = strip_marker(o.content)   # after cut-over the "original" is a generated file
+    obody = o.content
     for n, old_text, new_text, why in EXPECTED_BODY:
         if n == section and old_text in obody:
             obody = obody.replace(old_text, new_text)
             rep.notes.append(f"expected difference: {why}")
     obody, ofoot = split_foot(obody)
-    gbody, gfoot = split_foot(strip_marker(g.content))
+    gbody, gfoot = split_foot(g.content)
     if ofoot != gfoot:
         rep.problems.append(f"further-info foot: {ofoot} -> {gfoot}")
     ol, gl = normalise_lines(obody), normalise_lines(gbody)

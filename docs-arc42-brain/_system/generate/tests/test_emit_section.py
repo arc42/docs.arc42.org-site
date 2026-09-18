@@ -49,8 +49,8 @@ def test_emit_section(tmp_path):
     assert out.source == "wiki/sections/section-9.md"
     assert out.text == (
         "---\nlayout: arc42-doc-section\ntitle: 9 - Architecture decisions\npermalink: /section-9/\n"
-        "number: 9\norder: 13\n---\n"
-        "<!-- generated from docs-arc42-brain/wiki/sections/section-9.md — do not edit -->\n\n"
+        "number: 9\norder: 13\n"
+        "# generated from docs-arc42-brain/wiki/sections/section-9.md — do not edit\n---\n\n"
         "# 9. Architecture Decisions\n\n"
         '<div class="arc42-help" markdown="1">\n'
         "## Background (on ADRs)\nText.\n\n"

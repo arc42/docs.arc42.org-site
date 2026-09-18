@@ -15,7 +15,7 @@
 - Repo `/Users/gernotstarke/projects/arc42/docs.arc42.org-site`, branch `docs-arc42-brain`. Stay on it. Never push, never switch branches.
 - Nothing outside `docs-arc42-brain/` and `docs/` changes, except: `_includes/related.html` (new, Task 8), one include line in `_layouts/post.html` (Task 8), the `check` target in the root `Makefile` (Task 7), and in Task 9 the section-9 files under `_pages/`, `_posts/09-decisions/`, `_examples/`. Nothing else in `_layouts/`, `_includes/`, `_sass/`, `_data/`, `scripts/`.
 - No Liquid (`{{` or `{%`) anywhere under `docs-arc42-brain/wiki/`. The generator introduces every `{% %}` and `{{ }}`.
-- Every generated file carries the marker line `<!-- generated from docs-arc42-brain/<vault-relative path> — do not edit -->` as the first line after its front matter. `make generate` never writes over or deletes a file without it.
+- Every generated file carries the marker `# generated from docs-arc42-brain/<vault-relative path> — do not edit` as a YAML comment on the last line of its front matter (directly before the closing `---`). `make generate` never writes over or deletes a file without it.
 - Permalinks are emitted byte-identical (D3). Tags are compared as sets after alias normalisation; differences are printed, never failed.
 - Every commit message ends with exactly this line, whatever model you are: `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. After committing, verify with `git log -1 --format=%B | tail -1`; amend if it differs.
 - Stage with explicit paths: `git add <path> …`. Never `git add -A`, `git add .` or `git commit -a`.
@@ -37,6 +37,7 @@
 7. **The `related:` block** lists the page's own section link first (a `subsection` entry when `section:` carries a heading, else a `section` entry), then `related:` in declared order. A term or keyword links to `/keywords/#<slug>` only when a generated tip carries that tag (otherwise that anchor does not exist and html-proofer would fail); without a URL it renders as text. Links to unpublished tips/examples are left out.
 8. **Assets are owned through a manifest**, `docs-arc42-brain/_system/generated-assets.txt`, because a binary file cannot carry the marker. Only images referenced by emitted pages are copied. An existing identical file is adopted; an existing different one blocks the run. Section 9 references no images, so the manifest is not created in this phase.
 9. **`braingen generate` runs the lint first** and stops on errors. The dashboard's `make brain-lint && make generate` works unchanged.
+10. **The marker is a YAML comment on the last front-matter line**, not a body line after the front matter (spec §6). A body line became the Jekyll excerpt and blanked every generated page's meta description (found in the section-9 cut-over review); inside the front matter it changes nothing Jekyll renders.
 
 ## File structure
 

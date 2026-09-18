@@ -4,7 +4,6 @@ from braingen.compare import (
     normalise_lines,
     split_foot,
     split_tags,
-    strip_marker,
 )
 from braingen.emit_body import marker
 
@@ -15,18 +14,13 @@ ORIG = (
 )
 GEN = (
     '---\nlayout: post\ntitle: "Tip 9-1: X"\ntags: lean architecture-decision\ncategory: decisions\n'
-    'permalink: /tips/9-1/\nrelated:\n- kind: tip\n  title: "Tip 9-2"\n  url: /tips/9-2/\n---\n'
-    f"{MARK}\n\nBody line\n\nsecond\n"
+    'permalink: /tips/9-1/\nrelated:\n- kind: tip\n  title: "Tip 9-2"\n  url: /tips/9-2/\n'
+    f"{MARK}\n---\n\nBody line\n\nsecond\n"
 )
 
 
 def test_normalise_lines():
     assert normalise_lines("\n\na  \n\nb\t\n\n") == ["a", "", "b"]
-
-
-def test_strip_marker():
-    assert strip_marker(f"\n{MARK}\n\nbody") == "\nbody"
-    assert strip_marker("body") == "body"
 
 
 def test_split_foot_compares_arguments_not_layout():
@@ -85,7 +79,7 @@ def test_body_difference_fails_with_a_diff():
 
 def test_expected_difference_applies_to_its_section_only():
     orig = "---\ntitle: t\n---\n\n![q](/assets/images/sections/10/q.svg)\n"
-    gen = f"---\ntitle: t\n---\n{marker('wiki/sections/section-10.md')}\n\n![q]({{{{ site.imageurl }}}}/10/q.svg)\n"
+    gen = f"---\ntitle: t\n{marker('wiki/sections/section-10.md')}\n---\n\n![q]({{{{ site.imageurl }}}}/10/q.svg)\n"
     ten = compare_file("_pages/section-10.md", orig, gen, 10, {})
     assert ten.ok
     assert ten.notes == ["expected difference: hard-coded image path normalised to {{ site.imageurl }} at ingest (spec Appendix A)"]
@@ -95,7 +89,7 @@ def test_expected_difference_applies_to_its_section_only():
 def test_foot_layout_is_ignored_but_its_arguments_are_compared():
     orig = '---\ntitle: t\n---\n\nx\n\n{% include further-info.md category="a"\n  topic="t"\n  faqlink="u" %}\n'
     gen = (
-        f"---\ntitle: t\n---\n{marker('wiki/sections/section-1.md')}\n\nx\n\n\n"
+        f"---\ntitle: t\n{marker('wiki/sections/section-1.md')}\n---\n\nx\n\n\n"
         '{% include further-info.md\n   category="a"\n   topic="t"\n   faqlink="u" %}\n'
     )
     assert compare_file("s.md", orig, gen, 1, {}).ok

@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import re
 
-MARKER_PREFIX = "<!-- generated from docs-arc42-brain/"
+MARKER_PREFIX = "# generated from docs-arc42-brain/"
 HELP_CALLOUT = "> [!arc42-help]"
 HELP_OPEN = '<div class="arc42-help" markdown="1">'
 HELP_CLOSE = "</div>"
@@ -21,18 +21,23 @@ IMAGE_REWRITES = [
 
 
 def marker(source: str) -> str:
-    """The line placed right after the front matter of every generated file."""
-    return f"{MARKER_PREFIX}{source} — do not edit -->"
+    """The YAML comment placed as the last front-matter line of every generated file.
+
+    Inside the front matter it changes nothing Jekyll renders; a body line would
+    become the page excerpt and blank the meta description.
+    """
+    return f"{MARKER_PREFIX}{source} — do not edit"
 
 
 def is_generated(text: str) -> bool:
-    """True when the first line after the front matter is a braingen marker."""
+    """True when the last line of the front matter is a braingen marker."""
     if not text.startswith("---\n"):
         return False
     end = text.find("\n---\n", 3)
     if end < 0:
         return False
-    return text[end + 5:].startswith(MARKER_PREFIX)
+    last = text[4:end].rsplit("\n", 1)[-1]
+    return last.startswith(MARKER_PREFIX)
 
 
 def rewrite_images(text: str) -> str:

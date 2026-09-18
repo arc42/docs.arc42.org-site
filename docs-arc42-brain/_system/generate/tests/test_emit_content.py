@@ -76,7 +76,7 @@ def test_emit_tip(tmp_path):
         '  title: "Background (on ADRs)"\n  url: /section-9/#background-on-adrs\n'
     )
     assert out.text.endswith(
-        "---\n<!-- generated from docs-arc42-brain/wiki/tips/tip-9-1.md — do not edit -->\n\nSome tip.\n"
+        "# generated from docs-arc42-brain/wiki/tips/tip-9-1.md — do not edit\n---\n\nSome tip.\n"
     )
     post = frontmatter.loads(out.text)
     assert len(post["related"]) == 5
@@ -100,4 +100,14 @@ def test_emit_example(tmp_path):
             {"kind": "tip", "title": "Tip 9-1: Do it!", "url": "/tips/9-1/"},
         ],
     }
-    assert out.text.endswith("do not edit -->\n\nAn example.\n")
+    assert out.text.endswith("do not edit\n---\n\nAn example.\n")
+
+
+def test_generated_tip_body_is_exactly_the_brain_body(tmp_path):
+    vault = build(tmp_path)
+
+    out = emit_tip(vault, vault.pages["tip-9-1"], EMITTED, SITE_TAGS)
+
+    # Nothing may precede the first paragraph: Jekyll's excerpt (and with it the
+    # meta description) is the body up to the first blank line.
+    assert frontmatter.loads(out.text).content == vault.pages["tip-9-1"].body
