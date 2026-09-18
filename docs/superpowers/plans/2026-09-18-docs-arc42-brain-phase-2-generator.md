@@ -2362,7 +2362,7 @@ Model: Sonnet. The only hand-made site change phase 2 allows (D2, spec §4.5). N
 - Consumes: `page.related`, a list of `{kind, title, url?}` written by `emit.related_for` (kinds `section`, `subsection`, `tip`, `example`, `faq`, `term`, `keyword`, `system`).
 - Produces: `<aside class="related-links">` at the foot of every tip and example that has `related:`; nothing otherwise.
 
-- [ ] **Step 1: Snapshot two built pages before the change**
+- [x] **Step 1: Snapshot two built pages before the change**
 
 ```bash
 make site
@@ -2372,7 +2372,7 @@ cp _site/tips/9-1/index.html $S/tip-9-1.before.html
 cp _site/examples/decision-use-adrs/index.html $S/example-adr.before.html
 ```
 
-- [ ] **Step 2: Write the include**
+- [x] **Step 2: Write the include**
 
 Create `_includes/related.html`:
 
@@ -2419,7 +2419,7 @@ Create `_includes/related.html`:
 {%- endif -%}
 ```
 
-- [ ] **Step 3: Call it from the article layout**
+- [x] **Step 3: Call it from the article layout**
 
 In `_layouts/post.html`, directly after the line `        </section>` (the one closing `<section class="post-content">`), insert:
 
@@ -2429,7 +2429,7 @@ In `_layouts/post.html`, directly after the line `        </section>` (the one c
 
 `git diff _layouts/post.html` must show exactly one added line.
 
-- [ ] **Step 4: The built pages are unchanged**
+- [x] **Step 4: The built pages are unchanged**
 
 ```bash
 make site
@@ -2442,12 +2442,12 @@ grep -rl "related-links" _site | head -1 || echo "no related block anywhere"
 
 Expected: `tip-unchanged`, `example-unchanged`, `no related block anywhere`. Only a whitespace-only line may differ; any other difference means the include renders something for pages without `related:` — fix the include, not the layout line.
 
-- [ ] **Step 5: `make check`**
+- [x] **Step 5: `make check`**
 
 Run: `make check`
 Expected: exit 0, as in Task 7.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add _includes/related.html _layouts/post.html docs/superpowers/plans/2026-09-18-docs-arc42-brain-phase-2-generator.md

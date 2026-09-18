@@ -1,0 +1,40 @@
+{%- comment -%}
+  "Related" block at the foot of a generated tip or example.
+
+  page.related is written by the docs-arc42-brain generator (brain spec §4.5):
+  a list of {kind, title, url}, the page's own section link first, then the
+  brain page's `related:` in declared order. This include groups the entries
+  by kind in a fixed order. Hand-written pages carry no page.related and
+  render nothing.
+
+  An entry without url (a term that no tip carries as a tag yet, a system
+  without a page) is listed as plain text.
+
+  Parameters
+    page  required — the page or post being rendered.
+{%- endcomment -%}
+{%- assign related = include.page.related -%}
+{%- if related and related.size > 0 %}
+<aside class="related-links" aria-labelledby="related-links-heading">
+    <h2 id="related-links-heading">Related</h2>
+    {%- assign groups = "section subsection|tip|example|faq|term keyword|system" | split: "|" -%}
+    {%- assign labels = "Sections|Tips|Examples|Questions|Terms|Example systems" | split: "|" -%}
+    {%- for group in groups -%}
+    {%- assign kinds = group | split: " " -%}
+    {%- capture items -%}
+        {%- for r in related -%}
+        {%- if kinds contains r.kind %}
+        <li>{% if r.url %}<a href="{{ r.url | relative_url }}">{{ r.title | escape }}</a>{% else %}{{ r.title | escape }}{% endif %}</li>
+        {%- endif -%}
+        {%- endfor -%}
+    {%- endcapture -%}
+    {%- assign items = items | strip -%}
+    {%- if items != "" %}
+    <h3>{{ labels[forloop.index0] }}</h3>
+    <ul>
+        {{ items }}
+    </ul>
+    {%- endif -%}
+    {%- endfor %}
+</aside>
+{%- endif -%}
