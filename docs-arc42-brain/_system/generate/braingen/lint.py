@@ -51,6 +51,7 @@ def lint(vault: Vault) -> list[Finding]:
         if ids_by_type[p.type][p.id] > 1:
             out.append(Finding("error", p.slug, f"duplicate id {p.id} within type {p.type}", "duplicate-id"))
     out += _example_directives(vault)
+    out += _permalinks(vault)
     return out
 
 
@@ -142,4 +143,22 @@ def _example_directives(vault: Vault) -> list[Finding]:
             f.append(Finding("error", e.slug, f"example-category '{cat}' is not referenced by any section directive", "example-category"))
         elif n > 1:
             f.append(Finding("warning", e.slug, f"example-category '{cat}' is referenced by {n} directives", "example-category"))
+    return f
+
+
+PERMALINK_TYPES = {"section", "tip", "example"}
+
+
+def _permalinks(vault: Vault) -> list[Finding]:
+    """Two pages generating the same URL would overwrite each other on the site."""
+    f: list[Finding] = []
+    by_url: dict[str, list[str]] = defaultdict(list)
+    for p in vault.pages.values():
+        if p.type in PERMALINK_TYPES and p.status != "retired" and p.meta.get("permalink"):
+            by_url[str(p.meta["permalink"])].append(p.slug)
+    for url, slugs in sorted(by_url.items()):
+        if len(slugs) > 1:
+            for slug in sorted(slugs):
+                others = ", ".join(s for s in sorted(slugs) if s != slug)
+                f.append(Finding("error", slug, f"permalink {url} is also used by {others}", "permalink"))
     return f

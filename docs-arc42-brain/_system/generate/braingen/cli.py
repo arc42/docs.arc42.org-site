@@ -48,11 +48,23 @@ def cmd_generate(args: argparse.Namespace) -> int:
             print(x)
         print(f"generate stopped: {len(errors)} lint errors")
         return 1
+    from .permalinks import check as check_permalinks, record
+
+    p = plan(vault)
+    lost = check_permalinks(vault, p)
+    if lost:
+        for x in lost:
+            print(x)
+        print(f"generate stopped: {len(lost)} published URLs would disappear")
+        return 1
     try:
-        res = apply(vault, args.site, plan(vault))
+        res = apply(vault, args.site, p)
     except FileExistsError as e:
         print(e)
         return 1
+    new = record(vault, p)
+    if new:
+        print(f"recorded {new} new permalinks in _system/published-permalinks.txt")
     for rel in res.written:
         print(f"wrote   {rel}")
     for rel in res.deleted:
@@ -80,9 +92,11 @@ def cmd_generate_check(args: argparse.Namespace) -> int:
 
 def cmd_check_generated(args: argparse.Namespace) -> int:
     from .generate import check, plan
+    from .permalinks import check as check_permalinks
 
     vault = load_vault(args.vault)
-    problems = check(vault, args.site, plan(vault))
+    p = plan(vault)
+    problems = check(vault, args.site, p) + check_permalinks(vault, p)
     for x in problems:
         print(x)
     print(f"generated files: {len(problems)} problems")

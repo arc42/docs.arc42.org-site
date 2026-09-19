@@ -26,6 +26,8 @@ class Output:
     rel: str      # path relative to the site root, e.g. "_posts/09-decisions/2016-03-01-t-9-1.md"
     text: str     # the complete file content
     source: str   # vault-relative brain page, e.g. "wiki/tips/tip-9-1.md"
+    permalink: str = ""   # the URL the file is served at, e.g. "/tips/9-1/"
+    page_id: str = ""     # id of the brain page, e.g. "9-1"
 
 
 def yaml_scalar(value, quote: bool = False) -> str:
@@ -78,7 +80,8 @@ def emit_section(vault: Vault, page: Page) -> Output:
         ("order", int(m["order"])),
     ])
     body = section_document_body(page.body, int(m["number"]), str(m["category"]), str(m["faq-topic"]))
-    return Output(f"_pages/section-{int(m['number'])}.md", document(front, vault.rel(page.path), body), vault.rel(page.path))
+    return Output(f"_pages/section-{int(m['number'])}.md", document(front, vault.rel(page.path), body),
+                  vault.rel(page.path), str(m["permalink"]), page.id)
 
 
 def _target(vault: Vault, link: WikiLink) -> Page | None:
@@ -154,7 +157,8 @@ def emit_tip(vault: Vault, page: Page, emitted: set[str], site_tags: set[str]) -
         ("related", related_for(vault, page, emitted, site_tags)),
     ], quoted=frozenset({"title"}))
     rel = f"_posts/{sec.meta['posts-dir']}/{m['date']}-t-{page.id}.md"
-    return Output(rel, document(front, vault.rel(page.path), content_body(page.body)), vault.rel(page.path))
+    return Output(rel, document(front, vault.rel(page.path), content_body(page.body)),
+                  vault.rel(page.path), str(m["permalink"]), page.id)
 
 
 def emit_example(vault: Vault, page: Page, emitted: set[str], site_tags: set[str]) -> Output:
@@ -167,4 +171,5 @@ def emit_example(vault: Vault, page: Page, emitted: set[str], site_tags: set[str
         ("permalink", m["permalink"]),
         ("related", related_for(vault, page, emitted, site_tags)),
     ], quoted=frozenset({"title"}))
-    return Output(f"_examples/{page.id}.md", document(front, vault.rel(page.path), content_body(page.body)), vault.rel(page.path))
+    return Output(f"_examples/{page.id}.md", document(front, vault.rel(page.path), content_body(page.body)),
+                  vault.rel(page.path), str(m["permalink"]), page.id)

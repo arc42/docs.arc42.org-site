@@ -83,7 +83,7 @@ make brain-import BATCH=section-9-all  convert the batch into draft pages
 make brain-test                      unit tests of the tooling
 make generate-check SECTION=9        parity: generate into build/parity/ and compare with the site
 make generate                        write the Jekyll files of every published page
-make brain-check-generated           fail if a generated file was hand-edited (runs in make check)
+make brain-check-generated           fail if a generated file was hand-edited or a published URL would vanish (runs in make check)
 make dashboard                       start the curator dashboard in Docker (http://localhost:4211)
 make dashboard-down                  stop the dashboard
 ```
@@ -93,3 +93,9 @@ matter ends with the YAML comment `# generated from docs-arc42-brain/… — do 
 are never edited by hand: edit the brain page and run `make generate`. The marker
 sits inside the front matter on purpose: as a body line it would become the Jekyll
 excerpt and blank the page's meta description.
+
+Published URLs are permanent: `_system/published-permalinks.txt` (written by
+`make generate`, append-only) records every URL generate has published, and
+generate refuses to run when one of them would disappear. Retiring a URL on
+purpose means an entry with a reason in `_system/retired-permalinks.txt`.
+Never edit the registry by hand.

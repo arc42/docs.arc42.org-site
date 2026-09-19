@@ -18,7 +18,9 @@ brain-lint` reports 0 errors.
 4. `make generate`. The files come back at the same paths, each with the
    marker (`# generated from docs-arc42-brain/… — do not edit`) as the last
    front-matter line, tips and examples with `related:`.
-   Run it twice; the second run must print `0 written, 0 deleted`.
+   Run it twice; the second run must print `0 written, 0 deleted`. The first
+   run records the section's URLs in `_system/published-permalinks.txt`
+   (`recorded N new permalinks`); commit that file with the cut-over.
 5. `make generate-check SECTION=N`, `make brain-test`, `make check`, `make
    check-links`. After cut-over, `make generate-check SECTION=N` only compares
    the generated files with themselves (brain and site now match by
@@ -31,3 +33,13 @@ brain-lint` reports 0 errors.
    front-matter changes (tags, `related:`, the marker comment as the last
    front-matter line), blank lines after the front matter — no marker in the
    body, never a body change.
+
+## After cut-over: URLs are permanent
+
+`_system/published-permalinks.txt` lists every URL `make generate` has
+published; it is append-only. `make generate` stops, and `make check` fails,
+when a recorded URL would no longer be served — a page set back to `draft`,
+retired, or given a different `permalink`. The site has no redirect plugin, so
+a dropped URL is a 404 for everyone who cited it. If a URL really has to go,
+add `<permalink><TAB><reason>` to `_system/retired-permalinks.txt` (the reason
+names the issue that decided it) in the same commit.
