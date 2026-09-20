@@ -1,0 +1,17 @@
+section: 2
+what: content
+name: Constraints
+category: constraints
+permalink: /section-2/
+posts_dir: 02-constraints
+order: 6
+title: 2 - Constraints
+example_categories:
+- constraints
+files:
+- posts/2016-03-01-t-2-1.md
+- posts/2016-03-01-t-2-2.md
+- posts/2016-03-01-t-2-3.md
+- posts/2016-03-01-t-2-4.md
+- posts/2016-03-01-t-2-5.md
+- examples/02-constraint-example-1.md

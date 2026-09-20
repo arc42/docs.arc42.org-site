@@ -4,11 +4,12 @@ type: term
 title: Quality requirement
 status: review
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-20'
 sources:
 - '[[SRC-010-section-10-page]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[constraint]]'
 - '[[decision-criteria]]'
 - '[[stakeholder]]'
 - '[[tip-9-1]]'

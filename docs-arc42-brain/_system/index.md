@@ -19,6 +19,11 @@ One line per page, grouped by type. Updated on every ingest.
 
 ## Tips
 
+- [tip-2-1](../wiki/tips/tip-2-1.md) — Consider the constraints of other systems within the organization!
+- [tip-2-2](../wiki/tips/tip-2-2.md) — Clarify the consequences of constraints!
+- [tip-2-3](../wiki/tips/tip-2-3.md) — Document organizational constraints!
+- [tip-2-4](../wiki/tips/tip-2-4.md) — Document design and development constraints!
+- [tip-2-5](../wiki/tips/tip-2-5.md) — Differentiate different categories of constraints!
 - [tip-9-1](../wiki/tips/tip-9-1.md) — Document only architecturally relevant decisions!
 - [tip-9-2](../wiki/tips/tip-9-2.md) — Document decision criteria!
 - [tip-9-3](../wiki/tips/tip-9-3.md) — Provide reasons for important decisions!
@@ -32,12 +37,14 @@ One line per page, grouped by type. Updated on every ingest.
 
 ## Examples
 
+- [02-constraint-example-1](../wiki/examples/02-constraint-example-1.md) — HTML Sanity Checker
 - [09-decision-example-adr](../wiki/examples/09-decision-example-adr.md) — Use ADRs in Nygard format
 - [09-decision-example-htmlsc-1](../wiki/examples/09-decision-example-htmlsc-1.md) — HTML Sanity Checker
 - [09-decision-example-tpu-2](../wiki/examples/09-decision-example-tpu-2.md) — TrafficPursuitUnit
 
 ## Terms
 
+- [constraint](../wiki/terms/constraint.md) — Constraint
 - [architecture-decision](../wiki/terms/architecture-decision.md) — Architecture decision
 - [adr](../wiki/terms/adr.md) — Architecture Decision Record (ADR)
 - [decision-criteria](../wiki/terms/decision-criteria.md) — Decision criteria
@@ -66,12 +73,15 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-003](../wiki/issues/ISS-003-pugh-matrix-link-leads-to-unrelated-site.md) — open, risk: the Pugh matrix link in tip 9-2 now leads to an unrelated site
 - [ISS-004](../wiki/issues/ISS-004-external-links-redirect.md) — open, risk: three external links in the section 9 content redirect
 - [ISS-005](../wiki/issues/ISS-005-tip-9-2-table-markup-broken.md) — open, gap: the second criteria table in tip 9-2 has an invalid separator row
-- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: tips 9-3 and 9-5 reference tip 9-2 by hard-coded site URL
-- [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies of section 9 carry legacy raw HTML
+- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: tips reference other tips by hard-coded site URL (sections 9 and 2)
+- [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies carry legacy raw HTML (sections 9 and 2)
 - [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
 - [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
 - [ISS-010](../wiki/issues/ISS-010-terms-cannot-leave-draft-with-legacy-tags.md) — resolved 2026-09-17, contradiction: term pages cannot leave draft because the lint forbids legacy-tags — L13 now exempts type `term`
 - [ISS-011](../wiki/issues/ISS-011-external-link-rewrite-deferred.md) — open, contradiction: the generator does not rewrite external markdown links (spec §4.4) because section 9's parity depends on them staying plain
+- [ISS-012](../wiki/issues/ISS-012-section-2-asks-for-tables-but-the-example-is-a-list.md) — open, contradiction: section 2 asks for tables of constraints while its only example is a plain bullet list
+- [ISS-013](../wiki/issues/ISS-013-section-2-tip-bodies-carry-editorial-defects.md) — open, gap: the section 2 tip bodies carry a typo and mix British and American spelling
+- [ISS-014](../wiki/issues/ISS-014-no-example-for-organizational-constraints.md) — open, gap: section 2 has no example of organizational or political constraints
 
 ## Sources
 
@@ -88,6 +98,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-011](../raw/sources/SRC-011-section-11-page.md) — section-11-page
 - [SRC-012](../raw/sources/SRC-012-section-12-page.md) — section-12-page
 - [SRC-013](../raw/sources/SRC-013-section-9-content.md) — section-9-content
+- [SRC-014](../raw/sources/SRC-014-section-2-content.md) — section-2-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs
