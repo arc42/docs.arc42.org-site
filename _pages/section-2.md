@@ -4,6 +4,7 @@ title: 2 - Constraints
 permalink: /section-2/
 number: 2
 order: 6
+# generated from docs-arc42-brain/wiki/sections/section-2.md — do not edit
 ---
 
 # 2. Architecture Constraints

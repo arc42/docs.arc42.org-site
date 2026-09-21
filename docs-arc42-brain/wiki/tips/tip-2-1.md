@@ -2,9 +2,9 @@
 id: 2-1
 type: tip
 title: 'Tip 2-1: Consider the constraints of other systems within the organization!'
-status: review
+status: published
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-014-section-2-content]]'
 related:

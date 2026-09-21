@@ -2,9 +2,9 @@
 id: section-2
 type: section
 title: 2 - Constraints
-status: draft
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-21'
 sources:
 - '[[SRC-002-section-2-page]]'
 related: []

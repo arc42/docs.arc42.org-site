@@ -2,9 +2,9 @@
 id: 02-constraint-example-1
 type: example
 title: 'Example Constraints: HTML Sanity Checker'
-status: review
+status: published
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-014-section-2-content]]'
 related:

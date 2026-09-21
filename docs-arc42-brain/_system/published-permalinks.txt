@@ -1,12 +1,19 @@
 # Every URL `make generate` has published: permalink<TAB>page id. Append-only, written by generate.
 # To take a URL off the site on purpose, list it in retired-permalinks.txt with a reason.
+/examples/constraints-1/	02-constraint-example-1
 /examples/decision-htmlsc/	09-decision-example-htmlsc-1
 /examples/decision-tpu-1/	09-decision-example-tpu-2
 /examples/decision-use-adrs/	09-decision-example-adr
 /examples/solution-strategy-htmlsc-1/	04-solutionStrategy-example-htmlsc-1
 /examples/solution-strategy-mama-2/	04-solutionStrategy-example-mama-2
+/section-2/	section-2
 /section-4/	section-4
 /section-9/	section-9
+/tips/2-1/	2-1
+/tips/2-2/	2-2
+/tips/2-3/	2-3
+/tips/2-4/	2-4
+/tips/2-5/	2-5
 /tips/4-1/	4-1
 /tips/4-2/	4-2
 /tips/4-3/	4-3

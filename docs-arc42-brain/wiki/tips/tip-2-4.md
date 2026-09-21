@@ -2,9 +2,9 @@
 id: 2-4
 type: tip
 title: 'Tip 2-4: Document design and development constraints!'
-status: review
+status: published
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-014-section-2-content]]'
 related:

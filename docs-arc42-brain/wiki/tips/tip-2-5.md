@@ -2,9 +2,9 @@
 id: 2-5
 type: tip
 title: 'Tip 2-5: Differentiate different categories of constraints!'
-status: review
+status: published
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-014-section-2-content]]'
 related:

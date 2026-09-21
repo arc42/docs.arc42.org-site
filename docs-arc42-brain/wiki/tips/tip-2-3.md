@@ -2,9 +2,9 @@
 id: 2-3
 type: tip
 title: 'Tip 2-3: Document organizational constraints!'
-status: review
+status: published
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-014-section-2-content]]'
 related:
