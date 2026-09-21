@@ -2,7 +2,7 @@
 id: 4-4
 type: tip
 title: 'Tip 4-4: In the solution strategy, refer to concepts, views or code!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

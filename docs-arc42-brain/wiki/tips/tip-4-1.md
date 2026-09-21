@@ -3,7 +3,7 @@ id: 4-1
 type: tip
 title: 'Tip 4-1: Explain the solution strategy as compact as possible (e.g. as list
   of keywords)!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

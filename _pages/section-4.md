@@ -4,6 +4,7 @@ title: 4 - Solution strategy
 permalink: /section-4/
 number: 4
 order: 8
+# generated from docs-arc42-brain/wiki/sections/section-4.md — do not edit
 ---
 
 # 4. Solution Strategy
@@ -47,8 +48,6 @@ You might use a list of solution-approaches or a table similar to the following:
 ### _&lt;insert solution strategy>_
 
 _list or table_
-
-
 
 
 {% include further-info.md

@@ -2,7 +2,7 @@
 id: 04-solutionStrategy-example-mama-2
 type: example
 title: 'Example Solution Strategy: MaMa'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

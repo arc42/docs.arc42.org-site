@@ -2,9 +2,9 @@
 id: section-4
 type: section
 title: 4 - Solution strategy
-status: draft
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-21'
 sources:
 - '[[SRC-004-section-4-page]]'
 related: []

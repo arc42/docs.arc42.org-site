@@ -3,7 +3,16 @@
 /examples/decision-htmlsc/	09-decision-example-htmlsc-1
 /examples/decision-tpu-1/	09-decision-example-tpu-2
 /examples/decision-use-adrs/	09-decision-example-adr
+/examples/solution-strategy-htmlsc-1/	04-solutionStrategy-example-htmlsc-1
+/examples/solution-strategy-mama-2/	04-solutionStrategy-example-mama-2
+/section-4/	section-4
 /section-9/	section-9
+/tips/4-1/	4-1
+/tips/4-2/	4-2
+/tips/4-3/	4-3
+/tips/4-4/	4-4
+/tips/4-5/	4-5
+/tips/4-6/	4-6
 /tips/9-1/	9-1
 /tips/9-10/	9-10
 /tips/9-2/	9-2

@@ -1,9 +1,20 @@
 ---
 layout: post
 title: "Example Solution Strategy: HTML Sanity Checker"
-tags: solution-strategy example 
+tags: example solution-strategy
 category: solutionstrategy
 permalink: /examples/solution-strategy-htmlsc-1/
+related:
+- kind: section
+  title: "4 - Solution strategy"
+  url: /section-4/
+- kind: tip
+  title: "Tip 4-1: Explain the solution strategy as compact as possible (e.g. as list of keywords)!"
+  url: /tips/4-1/
+- kind: example
+  title: "Example Solution Strategy: MaMa"
+  url: /examples/solution-strategy-mama-2/
+# generated from docs-arc42-brain/wiki/examples/04-solutionStrategy-example-htmlsc-1.md — do not edit
 ---
 
 <p></p>
@@ -31,4 +42,3 @@ to enable:
   * both HTML (file) and text (console) output
 4. Rely on standard Gradle and Groovy conventions for configuration, having a single configuration file.
   * For the Maven plugin, this might lead to problems.
-

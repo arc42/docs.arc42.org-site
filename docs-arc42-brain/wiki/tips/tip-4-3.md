@@ -2,7 +2,7 @@
 id: 4-3
 type: tip
 title: 'Tip 4-3: Describe solution approaches in context of quality requirements!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

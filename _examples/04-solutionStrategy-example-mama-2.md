@@ -1,9 +1,23 @@
 ---
 layout: post
 title: "Example Solution Strategy: MaMa"
-tags: solution-strategy example 
+tags: example solution-strategy
 category: solutionstrategy
 permalink: /examples/solution-strategy-mama-2/
+related:
+- kind: section
+  title: "4 - Solution strategy"
+  url: /section-4/
+- kind: tip
+  title: "Tip 4-2: Describe the solution approaches as a table!"
+  url: /tips/4-2/
+- kind: tip
+  title: "Tip 4-4: In the solution strategy, refer to concepts, views or code!"
+  url: /tips/4-4/
+- kind: example
+  title: "Example Solution Strategy: HTML Sanity Checker"
+  url: /examples/solution-strategy-htmlsc-1/
+# generated from docs-arc42-brain/wiki/examples/04-solutionStrategy-example-mama-2.md — do not edit
 ---
 
 <div class="arc42-example">

@@ -2,7 +2,7 @@
 id: 4-5
 type: tip
 title: 'Tip 4-5: Let the solution strategy grow iteratively / incrementally!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

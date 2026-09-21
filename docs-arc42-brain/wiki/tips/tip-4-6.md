@@ -2,7 +2,7 @@
 id: 4-6
 type: tip
 title: 'Tip 4-6: Justify the solution strategy!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
