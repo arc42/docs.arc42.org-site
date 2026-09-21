@@ -4,10 +4,13 @@ type: issue
 title: The three decision examples start at different heading levels
 status: open
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-21'
 sources:
+- '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[01-overview-example-3]]'
+- '[[01-overview-example-htmlsc-1]]'
 - '[[09-decision-example-adr]]'
 - '[[09-decision-example-htmlsc-1]]'
 - '[[09-decision-example-tpu-2]]'
@@ -29,6 +32,14 @@ inconsistent, and the generator of phase 2 will reproduce that inconsistency.
 Decisions`; `09-decision-example-htmlsc-1` and `09-decision-example-tpu-2`: `## 9. Architecture
 Decisions`. The `title` frontmatter of all three already carries the name, so the in-body heading
 may be redundant anyway.
+
+**Section 1 evidence (2026-09-21).** All four section 1 examples open at H2, so the *entry* level
+is consistent here — but the two overview examples disagree one level down, which is the same
+inconsistency displaced: [[01-overview-example-3]] uses `## 1. Introduction` followed by
+`## 1.1 Requirements` (both H2, so the subsection is a sibling of its parent), while
+[[01-overview-example-htmlsc-1]] uses `## 1. Introduction` then `### 1.1 Overview for HTML Sanity
+Checker`. Option 2 — emit the heading from `title` and let the generator own the levels — would
+fix the entry level but not this, since the inner headings are part of the example's content.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.

@@ -6,9 +6,13 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-20'
 sources:
+- '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-1-15]]'
+- '[[01-overview-example-3]]'
+- '[[01-overview-example-htmlsc-1]]'
 - '[[tip-9-1]]'
 - '[[tip-9-2]]'
 - '[[tip-9-5]]'
@@ -47,6 +51,16 @@ Section 2, ingested 2026-09-20, adds a variant that option 1 must not strip:
 on the site, and the sentence inside it is authored text, not an artifact. A mechanical
 normaliser therefore needs a rule per HTML construct, not one blanket "strip HTML" pass. The five
 section 2 tips contain no HTML at all.
+
+**Section 1 evidence (2026-09-21).** [[tip-1-15]] raises the stakes for option 1: its example box
+is `<div class="arc42-example" markdown="1">` and the Markdown inside it — bold labels, a bullet
+list, a `<small>` credit with an external anchor — renders *only* because of that kramdown
+attribute. Strip or rewrite the div and the block turns into literal asterisks on the site. The
+two overview examples add the pattern section 2 already showed
+([[01-overview-example-3]], [[01-overview-example-htmlsc-1]]: a caption div carrying authored
+text, one of them with `<i>` inside), and [[01-overview-example-htmlsc-1]] carries the familiar
+`<a target="_blank" rel="noopener noreferrer nofollow">` anchors. Three sections in, the tally is:
+anchors are mechanical and safe to convert, caption divs and `markdown="1"` are not.
 
 **Options.**
 1. Normalise mechanically in the importer (anchor → Markdown link, drop `<p></p>`), covered by a

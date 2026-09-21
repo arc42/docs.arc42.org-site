@@ -4,7 +4,7 @@ type: term
 title: Stakeholder
 status: review
 created: '2026-09-17'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-001-section-1-page]]'
 - '[[SRC-013-section-9-content]]'

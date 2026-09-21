@@ -6,9 +6,17 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-20'
 sources:
+- '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-1-8]]'
+- '[[tip-1-11]]'
+- '[[tip-1-14]]'
+- '[[tip-1-15]]'
+- '[[tip-1-16]]'
+- '[[tip-1-17]]'
+- '[[tip-1-18]]'
 - '[[tip-9-3]]'
 - '[[tip-9-5]]'
 - '[[tip-2-3]]'
@@ -32,6 +40,16 @@ others in section 9. Section 2, ingested 2026-09-20, shows the same pattern and 
 `tip-2-3` ends with "See also [tip 2-4 (technical constraints)](/tips/2-4)." and `tip-2-4` both
 opens with "(see [tip 2-3](/tips/2-3))" and ends with "See also [tip 2-3 (organizational
 constraints)](/tips/2-3)" — the second reference without a closing period.
+
+**Section 1 evidence (2026-09-21).** Seven more tips, and a new case the first two sections did
+not show: references that leave the section. [[tip-1-17]] links `/section-4` and `/tips/4-2`, and
+[[tip-1-18]] links `/section-10` — targets in sections that are not in the brain yet. A wikilink
+to `[[section-4]]` resolves today (all twelve section pages exist), but a wikilink to tip 4-2 cannot exist
+until section 4 is ingested. So option 1 is not a single rewrite: section-internal references can
+be converted at any time, cross-section tip references only in ingest order, and a rewrite done
+too early would fail the lint. Also affected: [[tip-1-8]] → 1-6 twice, [[tip-1-11]] → 1-12,
+[[tip-1-14]] → 1-15, [[tip-1-15]] → 1-12 and 1-24, [[tip-1-16]] → 1-12 (with the stale label
+"tip IV-12", see [[ISS-015-section-1-tip-bodies-carry-editorial-defects|ISS-015]]).
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

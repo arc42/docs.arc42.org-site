@@ -1,0 +1,50 @@
+section: 1
+what: content
+name: Introduction and Goals
+category: requirements
+permalink: /section-1/
+posts_dir: 01-requirements
+order: 5
+title: 1 - Introduction and Goals
+example_categories:
+- overview
+- qualitygoals
+files:
+- posts/2016-03-01-t-1-1.md
+- posts/2016-03-01-t-1-2.md
+- posts/2016-03-01-t-1-3.md
+- posts/2016-03-01-t-1-4.md
+- posts/2016-03-01-t-1-5.md
+- posts/2016-03-01-t-1-6.md
+- posts/2016-03-01-t-1-7.md
+- posts/2016-03-01-t-1-8.md
+- posts/2016-03-01-t-1-9.md
+- posts/2016-03-02-t-1-10.md
+- posts/2016-03-02-t-1-11.md
+- posts/2016-03-02-t-1-12.md
+- posts/2016-03-02-t-1-13.md
+- posts/2016-03-02-t-1-14.md
+- posts/2016-03-02-t-1-15.md
+- posts/2016-03-02-t-1-16.md
+- posts/2016-03-02-t-1-17.md
+- posts/2016-03-02-t-1-18.md
+- posts/2016-03-02-t-1-19.md
+- posts/2016-03-02-t-1-20.md
+- posts/2016-03-02-t-1-21.md
+- posts/2016-03-02-t-1-22.md
+- posts/2016-03-02-t-1-23.md
+- posts/2021-12-12-t-1-24.md
+- examples/01-overview-example-3.md
+- examples/01-overview-example-htmlsc-1.md
+- examples/01-quality-reqs-example-1.md
+- examples/01-quality-reqs-example-3.md
+- assets/sections/01/eGPM.webp
+- assets/sections/01/iso-25010-2023-tree-en.svg
+- assets/sections/01/quality-example-loop.svg
+- assets/sections/01/quality-scenarios-schematic.png
+- assets/sections/01/requirements-cluster.webp
+- assets/sections/01/simple-activity.png
+- assets/sections/01/stakeholder-prio-EN.png
+- assets/examples/htmlsc/1-1-overview.png
+- assets/examples/htmlsc/1-1-sample-report.jpg
+- assets/examples/tpu/1-UseCases.jpg

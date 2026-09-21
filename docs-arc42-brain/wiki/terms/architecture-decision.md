@@ -4,7 +4,7 @@ type: term
 title: Architecture decision
 status: review
 created: '2026-09-17'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-009-section-9-page]]'
 - '[[SRC-013-section-9-content]]'
@@ -13,6 +13,7 @@ related:
 - '[[adr]]'
 - '[[decision-criteria]]'
 - '[[tip-9-1]]'
+- '[[solution-strategy]]'
 term: Architecture decision
 aliases: []
 legacy-tags:

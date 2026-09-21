@@ -4,7 +4,7 @@ type: term
 title: Constraint
 status: review
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
 - '[[SRC-002-section-2-page]]'
 - '[[SRC-014-section-2-content]]'
@@ -12,6 +12,7 @@ related:
 - '[[quality-requirement]]'
 - '[[architecture-decision]]'
 - '[[stakeholder]]'
+- '[[requirement]]'
 term: Constraint
 aliases:
 - Architecture constraint
