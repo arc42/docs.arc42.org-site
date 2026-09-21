@@ -36,8 +36,9 @@ arc42 keeps in different places, the first in section 1.1, the second in section
 [[constraint]] — a constraint also binds the architect, but it is not something the system does or
 achieves; it removes options.
 
-**Note on the legacy tag.** On the site, `requirement` tags every post of section 1, including the
-ones about quality goals and stakeholders, where it means "section 1" rather than the concept. The
-brain references this term only on the tips that really are about requirements in general; the
-rest carry `section:` plus their specific term. See
-[[ISS-017-blanket-requirement-tag-on-every-section-1-post|ISS-017]].
+**Scope of this term.** It is referenced on 22 of the 24 section 1 tips, which is deliberate:
+quality goals and stakeholder expectations are requirements too, so the term is true of the
+quality and stakeholder tips as well as of the ten tips of section 1.1. That was settled in
+[[ISS-017-blanket-requirement-tag-on-every-section-1-post|ISS-017]] — a frequent tag is not
+automatically a section marker. [[tip-1-21]] and [[tip-1-23]] are the two exceptions, because the
+site does not tag them and the brain follows the site.

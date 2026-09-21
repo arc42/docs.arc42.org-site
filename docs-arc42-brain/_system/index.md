@@ -122,7 +122,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-014](../wiki/issues/ISS-014-no-example-for-organizational-constraints.md) — open, gap: section 2 has no example of organizational or political constraints
 - [ISS-015](../wiki/issues/ISS-015-section-1-tip-bodies-carry-editorial-defects.md) — open, gap: the section 1 bodies carry typos, a stale tip label ("tip IV-12") and an empty image alt text
 - [ISS-016](../wiki/issues/ISS-016-repeated-separator-rows-in-tables.md) — open, gap: tables use separator rows as row dividers, which kramdown renders as data rows
-- [ISS-017](../wiki/issues/ISS-017-blanket-requirement-tag-on-every-section-1-post.md) — open, ambiguity: the legacy tag `requirement` marks the section, not a topic, on 22 of 24 section 1 tips
+- [ISS-017](../wiki/issues/ISS-017-blanket-requirement-tag-on-every-section-1-post.md) — resolved 2026-09-21, ambiguity: is the `requirement` tag on 22 of 24 section 1 tips a section marker? No — the tag is correctly given, the term was restored on all 22
 - [ISS-018](../wiki/issues/ISS-018-three-tips-overlap-on-the-quality-model.md) — open, question: tips 1-14, 1-15 and 1-24 all send the reader to the arc42 quality model
 
 ## Sources

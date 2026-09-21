@@ -2,19 +2,21 @@
 id: ISS-017
 type: issue
 title: The legacy tag `requirement` marks the section, not a topic, on 22 of 24 section 1 tips
-status: open
+status: resolved
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
 - '[[SRC-015-section-1-content]]'
 related:
 - '[[requirement]]'
+- '[[tip-1-11]]'
+- '[[tip-1-24]]'
 - '[[tip-1-19]]'
 - '[[tip-1-21]]'
 severity: major
 kind: ambiguity
 raised-by: agent
-resolved: null
+resolved: '2026-09-21'
 ---
 
 **What's unresolved.** On the site, `requirement` tags 22 of the 24 section 1 posts — including
@@ -54,6 +56,19 @@ page URLs never change".
 3. Introduce a per-section facet keyword and map blanket section tags to it, which would give
    `requirement`, and the same pattern in later sections, somewhere harmless to live.
 
-**Resolution.** Open — this is the tag-consolidation decision the project has been carrying since
-section 9, now with a concrete, countable case. It must be settled before section 1 is cut over,
-because that is when the site's tag page changes.
+**Resolution.** Resolved 2026-09-21 with option 2, by the arc42 author's ruling: the tag is
+correctly given. Section 1 *is* the requirements section — a quality requirement is a
+requirement, and stakeholders are where requirements come from — so `requirement` is a statement
+about the content of those tips, not a marker for their location. The premise of this issue, that
+a tag on 22 of 24 pages must be meaningless, was wrong: a tag can be near-universal within a
+section and still be true of every page it sits on.
+
+The term [[requirement]] was therefore restored on the twelve tips the ingest had dropped it from
+([[tip-1-11]] … [[tip-1-20]], [[tip-1-22]], [[tip-1-24]]). [[tip-1-21]] and [[tip-1-23]] stay
+without it, because the site does not tag them either — the brain follows the site rather than
+tidying it. `make generate-check SECTION=1` now reports no change at all for this tag: 22 pages
+before, 22 after, and the section 1 cut-over is no longer blocked.
+
+**Consequence for later ingests.** Do not treat a tag as a section marker just because it is
+frequent. Read what it asserts; a broad tag is a claim about the section's subject, and the
+section pages are the place to check whether the claim holds.
