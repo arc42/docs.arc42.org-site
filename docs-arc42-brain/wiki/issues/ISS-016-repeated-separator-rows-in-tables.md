@@ -6,8 +6,10 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
+- '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[10-quality-scenario-example-htmlsc-2]]'
 - '[[tip-1-4]]'
 - '[[01-quality-reqs-example-1]]'
 severity: minor
@@ -29,6 +31,13 @@ last data row. [[01-quality-reqs-example-1]] puts `|---|---|---|` between all si
 requirements, so the rendered table has twelve rows instead of six. Same defect class as
 [[ISS-005-tip-9-2-table-markup-broken|ISS-005]], where tip 9-2 uses `=` as its separator row —
 which suggests the tables were written for a different Markdown flavour.
+
+**Section 10 evidence (2026-09-21).** A fourth instance, and the worst of them:
+[[10-quality-scenario-example-htmlsc-2]] puts a `|-------|---...---|` separator between *every*
+pair of data rows — four of them in a three-scenario table — so kramdown renders four extra rows
+of dashes inside the quality-scenario table the example exists to show. Two instances were a
+pattern; four across three sections is a habit, which strengthens option 2 (a lint rule) over
+fixing them one at a time.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into

@@ -8,9 +8,11 @@ updated: '2026-09-21'
 sources:
 - '[[SRC-001-section-1-page]]'
 - '[[SRC-015-section-1-content]]'
+- '[[SRC-017-section-10-content]]'
 related:
 - '[[quality-requirement]]'
 - '[[quality-goal]]'
+- '[[atam]]'
 term: Quality scenario
 aliases:
 - Scenario

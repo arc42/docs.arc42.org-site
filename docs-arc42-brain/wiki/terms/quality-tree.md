@@ -8,9 +8,11 @@ updated: '2026-09-21'
 sources:
 - '[[SRC-010-section-10-page]]'
 - '[[SRC-015-section-1-content]]'
+- '[[SRC-017-section-10-content]]'
 related:
 - '[[quality-requirement]]'
 - '[[quality-model]]'
+- '[[atam]]'
 term: Quality tree
 aliases: []
 legacy-tags:

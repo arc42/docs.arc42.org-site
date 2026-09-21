@@ -6,11 +6,15 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-10-4]]'
+- '[[tip-10-6]]'
+- '[[tip-10-8]]'
 - '[[tip-1-8]]'
 - '[[tip-1-11]]'
 - '[[tip-1-14]]'
@@ -65,6 +69,16 @@ resolvable for the first time: with section 4 ingested, [[tip-1-17]]'s `/tips/4-
 `[[tip-4-2]]` today. It was deliberately left as it is, so that the rewrite stays one reviewable
 sweep instead of a trickle that follows the ingest order; this issue is the record that it is now
 possible.
+
+**Section 10 evidence (2026-09-21).** Three more, and one of them is the case this issue has been
+waiting for: [[tip-10-4]] links `/tips/1-14/` — a tip in a section that is now **cut over**, so
+`[[tip-1-14]]` would resolve today and generate the identical URL. Same for [[tip-10-8]]'s
+`/tips/4-2`. Only [[tip-10-6]]'s `/tips/10-5` is section-internal (and it is the broken link of
+[[ISS-022-section-10-bodies-carry-editorial-defects|ISS-022]]). With sections 1, 2, 4 and 9 cut
+over, most cross-section references in the remaining sections will be resolvable as they are
+ingested, which turns option 1 from "one sweep, later" into "the sweep can start whenever we
+choose". Note also the spelling: `/tips/1-14/` has a trailing slash where every earlier reference
+had none, so a mechanical rewrite has to accept both.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

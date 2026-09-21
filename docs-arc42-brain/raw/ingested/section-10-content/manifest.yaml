@@ -1,0 +1,24 @@
+section: 10
+what: content
+name: Quality Requirements
+category: quality
+permalink: /section-10/
+posts_dir: 10-quality
+order: 14
+title: 10 - Quality
+example_categories:
+- quality
+files:
+- posts/2016-03-01-t-10-1.md
+- posts/2016-03-01-t-10-2.md
+- posts/2016-03-01-t-10-3.md
+- posts/2016-03-01-t-10-4.md
+- posts/2016-03-01-t-10-5.md
+- posts/2016-03-01-t-10-6.md
+- posts/2016-03-01-t-10-7.md
+- posts/2016-03-01-t-10-8.md
+- examples/10-quality-scenario-example-htmlsc-2.md
+- examples/10-quality-scenario-example-tpu-1.md
+- assets/sections/01/iso-25010-2023-tree-en.svg
+- assets/sections/10/quality-tree-example.png
+- assets/sections/10/quality-tree-mindmap-example.png

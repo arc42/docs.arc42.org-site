@@ -6,9 +6,11 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
+- '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-004-section-4-page]]'
 related:
+- '[[tip-10-8]]'
 - '[[section-4]]'
 - '[[tip-4-2]]'
 - '[[tip-4-3]]'
@@ -33,6 +35,14 @@ repeats it in full — the tip acknowledges the duplication in prose and duplica
 4's *Form* has the third copy, introduced with "You might use a list of solution-approaches or a
 table similar to the following". The advice in the three places genuinely differs (a form, a
 tabular form, and quality requirements as the driving force); only the illustration is shared.
+
+**Section 10 evidence (2026-09-21).** A fourth copy of the table, and this one is not identical:
+[[tip-10-8]] uses *Quality goal · Scenario · Solution approach · **Risk*** — tip 4-2's four
+columns with the last one swapped — and says so itself ("similar to the structure proposed in
+[tip 4-2](/tips/4-2)"). That changes the shape of the problem: it is not one block duplicated
+three times but a family of variants, so option 3 (a shared snippet) would need parameters, and
+option 4 (a lint rule for identical blocks) would not catch this one at all. A single canonical
+table with a documented variation is the only option that fits both.
 
 **Options.**
 1. Leave all three — a reader of one page sees the table without following a link, which is why

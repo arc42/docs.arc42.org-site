@@ -6,11 +6,15 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-10-2]]'
+- '[[tip-10-7]]'
+- '[[tip-10-8]]'
 - '[[tip-1-15]]'
 - '[[01-overview-example-3]]'
 - '[[01-overview-example-htmlsc-1]]'
@@ -74,6 +78,14 @@ at once: what to do with the div, and whether the text inside it should exist tw
 `<a target="_blank" rel="noopener noreferrer nofollow">` anchors, while
 [[04-solutionStrategy-example-mama-2]] has neither — the same split as before: anchors and
 `<p></p>` are mechanical, caption divs are content. Section 4's six tips contain no HTML at all.
+
+**Section 10 evidence (2026-09-21).** The anchor pattern reaches the tips again, not just the
+examples: `<a target="_blank" rel="noopener noreferrer nofollow">` appears in [[tip-10-2]] (twice),
+[[tip-10-7]] and [[tip-10-8]], in all three cases wrapping a citation to an external authority —
+the SEI's ATAM page, Wikipedia on Murphy's law, a blog post on utility trees. Both section 10
+examples open with the empty `<p></p>`. Nothing new in kind, which is itself the finding: five
+sections in, the tally from section 1 still holds — anchors are mechanical, caption divs and
+`markdown="1"` are not.
 
 **Options.**
 1. Normalise mechanically in the importer (anchor → Markdown link, drop `<p></p>`), covered by a
