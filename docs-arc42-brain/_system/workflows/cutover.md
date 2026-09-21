@@ -26,8 +26,12 @@ brain-lint` reports 0 errors.
    the generated files with themselves (brain and site now match by
    construction); the regression guard for the emitters is the pytest
    integration test against `raw/ingested/` (`tests/test_parity.py`
-   `test_section_9_parity_against_the_ingested_originals`), which every later
-   section should get as well.
+   `test_parity_against_the_ingested_originals`). It needs nothing from you:
+   the parametrisation is discovered from the `section-N-content` batches, so
+   an ingested section is covered from the moment its batch lands in
+   `raw/ingested/`, and the expected file count is read from the batch
+   manifests. If it fails for a section you did not touch, an emitter changed
+   and the diff it prints is the regression.
 6. Append a `cutover` entry to `_system/log.md`.
 7. One commit: status flips, generated files, log. The diff shows per file:
    front-matter changes (tags, `related:`, the marker comment as the last
