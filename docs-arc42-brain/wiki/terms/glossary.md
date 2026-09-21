@@ -7,9 +7,11 @@ created: '2026-09-21'
 updated: '2026-09-21'
 sources:
 - '[[SRC-019-section-12-content]]'
+- '[[SRC-020-section-8-content]]'
 related:
 - '[[concept]]'
 - '[[i18n]]'
+- '[[domain]]'
 term: Glossary
 aliases: []
 legacy-tags:

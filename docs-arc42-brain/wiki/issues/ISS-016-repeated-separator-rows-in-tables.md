@@ -6,11 +6,13 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
+- '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[08-concept-example-htmlsc-1]]'
 - '[[12-glossary-example-htmlsc-1]]'
 - '[[11-risk-example-htmlsc]]'
 - '[[10-quality-scenario-example-htmlsc-2]]'
@@ -55,6 +57,11 @@ between every pair of its four terms, and opens with an exotic `|=====|:========
 Kept as [[ISS-025-section-12-example-table-uses-an-exotic-separator|ISS-025]] for the parts this
 issue does not cover. Six instances across four sections settles the question of whether this is
 incidental.
+
+**Section 8 evidence (2026-09-21).** A seventh instance:
+[[08-concept-example-htmlsc-1]]'s domain-terminology table separates every pair of entries, the
+same shape as the section 12 glossary example. Both are glossary-style tables, which suggests the
+habit travels with the table's *purpose* rather than with the author.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into

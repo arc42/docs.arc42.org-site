@@ -8,11 +8,14 @@ updated: '2026-09-21'
 sources:
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-019-section-12-content]]'
+- '[[SRC-020-section-8-content]]'
 related:
 - '[[view]]'
 - '[[solution-strategy]]'
 - '[[glossary]]'
 - '[[i18n]]'
+- '[[domain]]'
+- '[[building-block]]'
 term: Concept
 aliases:
 - Crosscutting concept

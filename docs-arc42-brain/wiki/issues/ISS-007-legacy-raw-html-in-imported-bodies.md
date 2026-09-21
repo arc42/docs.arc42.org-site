@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
@@ -14,6 +15,7 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[08-concept-example-htmlsc-2]]'
 - '[[12-glossary-example-htmlsc-1]]'
 - '[[11-risk-example-htmlsc]]'
 - '[[11-risk-example-tpu]]'
@@ -101,6 +103,15 @@ with nothing to weigh against it.
 with authored text ("Here you find an example of a glossary.") and, unlike every earlier example,
 **no** empty `<p></p>` — so that artifact is not universal, and option 1's "drop `<p></p>`" rule
 must tolerate its absence. The six section 12 tips contain no HTML.
+
+**Section 8 evidence (2026-09-21).** The largest HTML surface so far, and two new constructs.
+Anchors appear in [[tip-8-2]], [[tip-8-5]], [[tip-8-7]], [[tip-8-8]] and [[tip-8-11]] (twice);
+three of the four examples open with `<p></p>` but [[08-concept-example-htmlsc-1]] does not,
+confirming section 12's finding that the artifact is not universal. New: [[tip-8-7]] and
+[[tip-8-11]] attach kramdown inline attribute lists to their images (`{:width="70%"}`,
+`{:width="85%"}`), and [[08-concept-example-htmlsc-2]] fences its Java with `~~~~` tildes rather
+than backticks. Neither is HTML, but both are kramdown-specific syntax that a "Markdown only"
+normaliser has to preserve deliberately — parity confirms braingen already round-trips them.
 
 **Options.**
 1. Normalise mechanically in the importer (anchor → Markdown link, drop `<p></p>`), covered by a

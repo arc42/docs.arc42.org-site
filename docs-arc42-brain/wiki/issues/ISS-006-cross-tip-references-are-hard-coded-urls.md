@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
@@ -14,6 +15,10 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-8-4]]'
+- '[[tip-8-5]]'
+- '[[tip-8-9]]'
+- '[[tip-8-11]]'
 - '[[tip-12-2]]'
 - '[[12-glossary-example-htmlsc-1]]'
 - '[[tip-11-2]]'
@@ -100,6 +105,15 @@ never the blocked case. The new variant is in
 cross-reference with **no link at all**, which no rewrite can fix mechanically. A sweep therefore
 has three classes to handle, not one: URLs that can become wikilinks, URLs whose target is not in
 the brain yet, and references in prose that were never links.
+
+**Section 8 evidence (2026-09-21).** Four more references, and the split is now even: [[tip-8-4]]
+→ `/tips/8-8` and [[tip-8-5]] → `/tips/8-7` are section-internal and convertible today;
+[[tip-8-9]] → `/section-9/` resolves as `[[section-9]]`; [[tip-8-11]] links `/tips/5-10` **twice**
+and section 5 is the last big section still un-ingested, so those two stay. The third class from
+section 12 also reappears inside a table:
+[[08-concept-example-htmlsc-1]] writes cross-references between glossary entries as `->Links` and
+`->Internal Link` — an arrow convention, never a link, which no sweep can convert without deciding
+what it should point at.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

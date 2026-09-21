@@ -7,8 +7,10 @@ created: '2026-09-21'
 updated: '2026-09-21'
 sources:
 - '[[SRC-018-section-11-content]]'
+- '[[SRC-020-section-8-content]]'
 related:
 - '[[external-interface]]'
+- '[[building-block]]'
 term: Interface
 aliases: []
 legacy-tags:

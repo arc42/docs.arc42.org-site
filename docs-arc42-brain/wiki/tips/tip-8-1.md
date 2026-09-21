@@ -1,0 +1,45 @@
+---
+id: 8-1
+type: tip
+title: 'Tip 8-1: Explain the Concepts!'
+status: review
+created: '2026-09-21'
+updated: '2026-09-21'
+sources:
+- '[[SRC-020-section-8-content]]'
+related:
+- '[[tip-8-2]]'
+- '[[tip-8-3]]'
+- '[[tip-8-11]]'
+- '[[08-concept-example-tpu-2]]'
+section: '[[section-8]]'
+keywords:
+- '[[lean]]'
+- '[[essential]]'
+terms:
+- '[[concept]]'
+legacy-tags: []
+date: '2016-03-01'
+permalink: /tips/8-1/
+---
+
+>Concepts often contain the most fundamental solution approaches. Understanding these concepts is prerequisite for understanding the architecture.
+
+Concepts form the basis for _conceptual integrity_ (consistency, homogeneity) of the architecture.
+
+They provide **stereotypical** solutions to recurring problems.
+
+You can often save a lot of documentation effort by explaining concepts, instead of concentrating on building block details.
+
+_Crosscutting_ means exactly what it says: a concept is not the property of any single
+building block, but a decision that several of them share. That is why it does not belong
+in any one building block description - it would have to be repeated in each of them.
+
+![Three components side by side, with logging and security drawn as arrows running straight through all of them](../assets/sections/08/crosscutting-concerns-EN.svg)
+
+A concept does not have to run through _every_ building block to be crosscutting -
+spanning several of them is enough.
+
+Find a few _potential_ topics for such crosscutting concepts in the following diagram:
+
+![Examples of Crosscutting Concepts](../assets/sections/08/concepts-EN.drawio.png)

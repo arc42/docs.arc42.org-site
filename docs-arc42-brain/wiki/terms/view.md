@@ -7,9 +7,11 @@ created: '2026-09-21'
 updated: '2026-09-21'
 sources:
 - '[[SRC-016-section-4-content]]'
+- '[[SRC-020-section-8-content]]'
 related:
 - '[[concept]]'
 - '[[solution-strategy]]'
+- '[[building-block]]'
 term: View
 aliases:
 - Architecture view

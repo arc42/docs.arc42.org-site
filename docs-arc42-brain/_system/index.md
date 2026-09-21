@@ -54,6 +54,17 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-4-4](../wiki/tips/tip-4-4.md) — In the solution strategy, refer to concepts, views or code!
 - [tip-4-5](../wiki/tips/tip-4-5.md) — Let the solution strategy grow iteratively / incrementally!
 - [tip-4-6](../wiki/tips/tip-4-6.md) — Justify the solution strategy!
+- [tip-8-1](../wiki/tips/tip-8-1.md) — Explain the Concepts!
+- [tip-8-2](../wiki/tips/tip-8-2.md) — Concepts are approaches, rules, principles, tactics, strategies etc...
+- [tip-8-3](../wiki/tips/tip-8-3.md) — Restrict documentation of concepts to the most important topics!
+- [tip-8-4](../wiki/tips/tip-8-4.md) — In concepts, explain HOW it works!
+- [tip-8-5](../wiki/tips/tip-8-5.md) — Document business or domain models!
+- [tip-8-6](../wiki/tips/tip-8-6.md) — Combine business or domain models with the glossary!
+- [tip-8-7](../wiki/tips/tip-8-7.md) — Document (at least) the (business or domain) data model!
+- [tip-8-8](../wiki/tips/tip-8-8.md) — Document concepts with source code!
+- [tip-8-9](../wiki/tips/tip-8-9.md) — Document decisions instead of concepts!
+- [tip-8-10](../wiki/tips/tip-8-10.md) — Use the collection from arc42 as checklist for concepts!
+- [tip-8-11](../wiki/tips/tip-8-11.md) — (Hyper)Link between Building Blocks and Concepts!
 - [tip-9-1](../wiki/tips/tip-9-1.md) — Document only architecturally relevant decisions!
 - [tip-9-2](../wiki/tips/tip-9-2.md) — Document decision criteria!
 - [tip-9-3](../wiki/tips/tip-9-3.md) — Provide reasons for important decisions!
@@ -94,6 +105,10 @@ One line per page, grouped by type. Updated on every ingest.
 - [02-constraint-example-1](../wiki/examples/02-constraint-example-1.md) — HTML Sanity Checker
 - [04-solutionStrategy-example-htmlsc-1](../wiki/examples/04-solutionStrategy-example-htmlsc-1.md) — HTML Sanity Checker
 - [04-solutionStrategy-example-mama-2](../wiki/examples/04-solutionStrategy-example-mama-2.md) — MaMa
+- [08-concept-example-htmlsc-1](../wiki/examples/08-concept-example-htmlsc-1.md) — HTML Sanity Checker
+- [08-concept-example-htmlsc-2](../wiki/examples/08-concept-example-htmlsc-2.md) — HTML Sanity Checker
+- [08-concept-example-tpu-1](../wiki/examples/08-concept-example-tpu-1.md) — TrafficPursuitUnit
+- [08-concept-example-tpu-2](../wiki/examples/08-concept-example-tpu-2.md) — TrafficPursuitUnit
 - [09-decision-example-adr](../wiki/examples/09-decision-example-adr.md) — Use ADRs in Nygard format
 - [09-decision-example-htmlsc-1](../wiki/examples/09-decision-example-htmlsc-1.md) — HTML Sanity Checker
 - [09-decision-example-tpu-2](../wiki/examples/09-decision-example-tpu-2.md) — TrafficPursuitUnit
@@ -133,6 +148,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [external-interface](../wiki/terms/external-interface.md) — External interface
 - [glossary](../wiki/terms/glossary.md) — Glossary
 - [i18n](../wiki/terms/i18n.md) — Internationalization
+- [domain](../wiki/terms/domain.md) — Domain
+- [building-block](../wiki/terms/building-block.md) — Building block
 
 ## Keywords
 
@@ -145,6 +162,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [source-code](../wiki/keywords/source-code.md) — The page is about the relationship between the documentation and the implementation
 - [table](../wiki/keywords/table.md) — The page's advice is a table — its columns are the actual recommendation
 - [translation](../wiki/keywords/translation.md) — The page is about documentation in more than one language
+- [test](../wiki/keywords/test.md) — The page uses tests as documentation, or documents how the system is tested
 
 ## Systems
 
@@ -180,6 +198,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-023](../wiki/issues/ISS-023-tpu-risk-example-uses-bold-text-as-headings.md) — open, gap: the TPU risk example has no headings below its title, only bold paragraphs, so nothing in it can be linked to
 - [ISS-024](../wiki/issues/ISS-024-section-11-bodies-carry-editorial-defects.md) — open, gap: nine typos, seven of them in the TPU example
 - [ISS-025](../wiki/issues/ISS-025-section-12-example-table-uses-an-exotic-separator.md) — open, gap: the glossary example's table mixes two separator styles and is not alphabetical, though tip 12-2 asks for that
+- [ISS-026](../wiki/issues/ISS-026-german-field-names-in-the-hospital-data-model.md) — open, gap: five German attribute names inside tip 8-7's otherwise English PlantUML source, which the reader is invited to reuse
+- [ISS-027](../wiki/issues/ISS-027-section-8-bodies-carry-editorial-defects.md) — open, gap: section 8 typos, including `ubiqitous` where tip 12-2 spells the same DDD term correctly
 
 ## Sources
 
@@ -202,6 +222,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-017](../raw/sources/SRC-017-section-10-content.md) — section-10-content
 - [SRC-018](../raw/sources/SRC-018-section-11-content.md) — section-11-content
 - [SRC-019](../raw/sources/SRC-019-section-12-content.md) — section-12-content
+- [SRC-020](../raw/sources/SRC-020-section-8-content.md) — section-8-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

@@ -6,11 +6,14 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-020-section-8-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[08-concept-example-tpu-1]]'
+- '[[08-concept-example-tpu-2]]'
 - '[[11-risk-example-tpu]]'
 - '[[04-solutionStrategy-example-htmlsc-1]]'
 - '[[04-solutionStrategy-example-mama-2]]'
@@ -60,6 +63,14 @@ did: [[11-risk-example-htmlsc]] uses `### 11.1 Technical risks` while
 ([[ISS-023-tpu-risk-example-uses-bold-text-as-headings|ISS-023]]). Option 2 (generate the entry
 heading from `title`) would still leave these two pages structured differently, which is now
 confirmed for the third section in a row.
+
+**Section 8 evidence (2026-09-21).** The sharpest case yet, and a new kind:
+[[08-concept-example-tpu-2]] has **no top-level heading at all** — it opens directly at
+`### 8.2 Event Handling`, while its sibling [[08-concept-example-tpu-1]] opens at
+`## 8. Crosscutting Concepts` and then `### 8.1 Domain Entity Model`. So the four section 8
+examples show three different entry levels between them (H2+H3, H2 only, H3 only). That is an
+argument *for* option 2: a generator that emits the entry heading from `title` would give tpu-2
+the H2 it is missing, which no per-page fix would generalise to.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.

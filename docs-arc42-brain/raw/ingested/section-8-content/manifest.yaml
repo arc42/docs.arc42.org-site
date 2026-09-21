@@ -1,0 +1,35 @@
+section: 8
+what: content
+name: Crosscutting Concepts
+category: concepts
+permalink: /section-8/
+posts_dir: 08-concepts
+order: 12
+title: 8 - Concepts
+example_categories:
+- concepts
+files:
+- posts/2016-03-01-t-8-1.md
+- posts/2016-03-01-t-8-2.md
+- posts/2016-03-01-t-8-3.md
+- posts/2016-03-01-t-8-4.md
+- posts/2016-03-01-t-8-5.md
+- posts/2016-03-01-t-8-6.md
+- posts/2016-03-01-t-8-7.md
+- posts/2016-03-01-t-8-8.md
+- posts/2016-03-01-t-8-9.md
+- posts/2016-03-02-t-8-10.md
+- posts/2022-07-01-t-8-11.md
+- examples/08-concept-example-htmlsc-1.md
+- examples/08-concept-example-htmlsc-2.md
+- examples/08-concept-example-tpu-1.md
+- examples/08-concept-example-tpu-2.md
+- assets/sections/05/concepts-instead.webp
+- assets/sections/08/concepts-EN.drawio.png
+- assets/sections/08/crosscutting-concerns-EN.svg
+- assets/sections/08/hospital-domain-EN.png
+- assets/examples/htmlsc/8-1-checking-domain.png
+- assets/examples/htmlsc/8-3-template-method.png
+- assets/examples/htmlsc/8-uri-generic-example.png
+- assets/examples/tpu/III81_DomainEntityModel.jpg
+- assets/examples/tpu/III82_EventDispatching.jpg
