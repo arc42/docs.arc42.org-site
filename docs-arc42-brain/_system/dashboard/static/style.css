@@ -361,6 +361,23 @@ main {
 .status-badge.published { background: var(--emerald); }
 .status-badge.retired { background: var(--maroon); }
 
+/* Ingest badge (a section's derived state) — outlined, never filled, so it
+   cannot be mistaken for the page's own status badge beside it. */
+.ingest-badge {
+  display: inline-block;
+  padding: 0 var(--s2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: var(--paper);
+  white-space: nowrap;
+}
+
+.ingest-badge.partial { border-color: var(--amber); color: #8a6a00; }
+.ingest-badge.ingested { border-color: var(--signal-blue); color: var(--deep-blue); }
+.ingest-badge.cut-over { border-color: var(--emerald); color: #1d6b45; }
+
 /* Tables */
 .data-table {
   width: 100%;

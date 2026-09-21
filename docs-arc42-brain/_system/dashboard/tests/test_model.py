@@ -3,9 +3,11 @@ import threading
 import time
 
 import model as model_module
-from model import (Model, examples_view, faq_view, gaps, issues_touching_sections, issues_view,
-                   lint_view, list_rows, log_entries, readiness, review_queue, sections_view,
-                   tags_view, tips_view)
+from model import (Model, examples_view, faq_view, gaps, ingest_state, issues_touching_sections,
+                   issues_view, lint_view, list_rows, log_entries, readiness, review_queue,
+                   sections_view, tags_view, tips_view)
+
+from .kit import add_site_post, add_tip
 
 
 def brain(repo):
@@ -43,6 +45,28 @@ def test_sections_view(repo):
     assert (rows[9]["tips"], rows[9]["examples"], rows[9]["terms"], rows[9]["open_issues"]) == (3, 2, 1, 1)
     assert rows[9]["parity"] == "PASS" and rows[3]["parity"] is None
     assert rows[3]["open_issues"] == 1
+
+
+def test_ingest_state_is_independent_of_the_section_pages_own_status(repo):
+    """The distinction the Sections table's two columns exist for. The
+    fixture starts with section 3 `draft` and empty, section 9 `published`
+    with all three of its site posts ingested."""
+    b = brain(repo)
+    states = {int(s.meta["number"]): ingest_state(b, s) for s in b.vault.by_type("section")}
+    assert states == {3: "not ingested", 9: "cut over"}
+
+    # tip-3-1 covers the site's only section 3 post -> ingested, while the
+    # section page itself stays `draft`.
+    add_tip(repo, "3-1", "[[section-3]]", date="2016-01-01")
+    b2 = Model(repo).get()
+    sec3 = b2.vault.pages["section-3"]
+    assert sec3.status == "draft" and ingest_state(b2, sec3) == "ingested"
+    assert {r["number"]: r["ingest"] for r in sections_view(b2, {})["rows"]}[3] == "ingested"
+
+    # One more site post with no brain page behind it -> partial.
+    add_site_post(repo, "03-context", "2016-01-02-t-3-2.md")
+    b3 = Model(repo).get()
+    assert ingest_state(b3, b3.vault.pages["section-3"]) == "partial"
 
 
 def test_issues_touching_sections_counts_distinct_issues_not_a_per_section_sum(repo):

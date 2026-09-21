@@ -21,6 +21,10 @@
 
 {% macro status_badge(status) %}<span class="status-badge {{ status }}">{{ status or "—" }}</span>{% endmacro %}
 
+{# A section's derived ingest state ("not ingested" … "cut over"), outlined
+   so it never reads as a page status badge. #}
+{% macro ingest_badge(state) %}<span class="ingest-badge {{ (state or 'unknown')|replace(' ', '-') }}">{{ state or "—" }}</span>{% endmacro %}
+
 {% macro yesno(v) %}{{ "✓" if v else "—" }}{% endmacro %}
 
 {# "1 error" / "2 errors" — no site ever writes "error(s)". #}

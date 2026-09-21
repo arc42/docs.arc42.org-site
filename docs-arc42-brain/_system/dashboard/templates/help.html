@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}Help — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Help</h1>
+
+<p>This dashboard is a window on the brain — the Obsidian vault under
+  <code>docs-arc42-brain/</code>. It reads the vault on every request and reloads by itself when a file
+  changed; it never edits a page. Curating happens in Obsidian (every detail page has an
+  <em>Open in Obsidian</em> link) or in an editor. The dashboard has exactly two write actions, both on
+  the <a href="/actions">Actions</a> page, and both described below.</p>
+
+<nav class="callout arc42-help">
+  <p><a href="#flow">How content flows</a> ·
+    <a href="#sections">Page vs. Ingest</a> ·
+    <a href="#lint">Lint</a> ·
+    <a href="#publish">Publish (lint + generate)</a> ·
+    <a href="#parity">Preview (parity)</a> ·
+    <a href="#cutover">Cut-over</a> ·
+    <a href="#pages">The other pages</a> ·
+    <a href="#who">Who can do what</a> ·
+    <a href="#rules">Where the rules live</a></p>
+</nav>
+
+<h2 id="flow">How content flows</h2>
+
+<p>Three layers, each owned by someone different:</p>
+
+<ol>
+  <li><strong><code>raw/</code></strong> — verbatim copies of the site's files, immutable, human-owned.
+    <code>make brain-raw SECTION=N</code> puts them there; an <code>SRC-NNN</code> page records what was
+    copied, with a checksum per file.</li>
+  <li><strong><code>wiki/</code></strong> — the typed pages: sections, tips, examples, terms, keywords,
+    systems, issues. <code>make brain-import</code> turns a raw batch into drafts; the ingest workflow
+    then reads them, maps every legacy site tag to a term or a keyword, fills <code>related:</code>,
+    raises an issue for every contradiction, and lifts each page to <code>review</code>.</li>
+  <li><strong>The site</strong> — <code>_pages/section-*.md</code>, <code>_posts/*/*.md</code>,
+    <code>_examples/*.md</code> and the images beside them. Nobody writes these by hand once a section
+    is cut over: <code>generate</code> does, from the <code>published</code> pages only.</li>
+</ol>
+
+<h2 id="sections">Page vs. Ingest</h2>
+
+<p>The <a href="/sections">Sections</a> table carries two states side by side, and they answer different
+  questions. This is the distinction that column pair exists for: a section page can sit at
+  <code>draft</code> for months while all 24 of its tips are already ingested.</p>
+
+<h3 id="status">Page — the status of one page</h3>
+
+<p>Every page of every type carries a <code>status:</code> in its front matter, on one ladder. The
+  <em>Page</em> column shows it for the section page itself, and nothing else.</p>
+
+<table class="data-table">
+  <thead><tr><th>Status</th><th>Means</th></tr></thead>
+  <tbody>
+    <tr><td><code>draft</code></td><td>Being worked on. Still carries <code>legacy-tags</code>, or has
+      no <code>related:</code> yet. Not emitted.</td></tr>
+    <tr><td><code>review</code></td><td>Content complete: vocabulary mapped, links filled, lint clean.
+      Waiting for a human to look at it. Not emitted.</td></tr>
+    <tr><td><code>published</code></td><td>Cut over. <code>generate</code> writes this page's site file,
+      and the site serves the generated version.</td></tr>
+    <tr><td><code>retired</code></td><td>Withdrawn. Not emitted; its URL must be listed in
+      <code>_system/retired-permalinks.txt</code> with a reason.</td></tr>
+  </tbody>
+</table>
+
+<h3 id="ingest">Ingest — how far a section's content has come</h3>
+
+<p>Derived, not stored: computed from the section's brain pages and the site's own files. A section is
+  <em>ingested</em> when no tip or example of it lives only on the site any more.</p>
+
+<table class="data-table">
+  <thead><tr><th>State</th><th>Means</th></tr></thead>
+  <tbody>
+    <tr><td><span class="ingest-badge not-ingested">not ingested</span></td>
+      <td>The brain has no tip and no example for this section. The site's originals are all there is.</td></tr>
+    <tr><td><span class="ingest-badge partial">partial</span></td>
+      <td>Some of the section's site files have a brain page, some do not — a half-finished ingest.</td></tr>
+    <tr><td><span class="ingest-badge ingested">ingested</span></td>
+      <td>Every tip and example the site carries under this section exists as a brain page. The site is
+        still serving its own originals until cut-over.</td></tr>
+    <tr><td><span class="ingest-badge cut-over">cut over</span></td>
+      <td>The section page is <code>published</code>: braingen owns this section's files on the site.</td></tr>
+  </tbody>
+</table>
+
+<div class="callout arc42-help">
+  <p><em>Ingested</em> says nothing about the status those pages carry — they may all still be
+    <code>draft</code>. For the full picture of what a section still needs, use
+    <a href="/cutover">Cut-over readiness</a>.</p>
+</div>
+
+<h2 id="lint">Lint</h2>
+
+<p><a href="/lint">Lint</a> validates the vault against the schema in <code>CLAUDE.md</code>:
+  front-matter fields per type, allowed status values, every <code>[[wikilink]]</code> resolving,
+  <code>#heading</code> targets existing and being unique, images existing, no Liquid in a wiki body, no
+  duplicate permalink, no unknown directive, no <code>legacy-tags</code> left on a page past
+  <code>draft</code>, and <code>related:</code> links being reciprocated.</p>
+
+<ul>
+  <li><strong>Errors block publishing.</strong> <code>generate</code> lints first and refuses to write
+    anything while one error stands.</li>
+  <li><strong>Warnings never block.</strong> They are judgement calls, and some are deliberate: an
+    <code>ISS-NNN</code> page lists every page it affects in <code>related:</code>, and content pages
+    must not link back to an issue, so every issue produces reciprocity warnings by design. A reciprocity
+    warning between two <em>content</em> pages, though, is a missing backlink — fix it.</li>
+</ul>
+
+<p>Findings are grouped by rule on the Lint page, and each names the page it came from.</p>
+
+<h2 id="publish">Publish — the “Lint + generate” button</h2>
+
+<p>On <a href="/actions">Actions</a>. It runs <code>make brain-lint</code> and then, only if that is
+  clean, <code>make generate</code>, and appends one line to <code>_system/log.md</code>. What
+  <code>generate</code> does:</p>
+
+<ul>
+  <li>Emits every <strong><code>published</code></strong> brain page — and only those — into
+    <code>_pages/section-*.md</code>, <code>_posts/*/*.md</code>, <code>_examples/*.md</code>, copying
+    referenced images to <code>assets/images/</code>. Wikilinks become site links, terms and keywords
+    become the page's <code>tags:</code>.</li>
+  <li>Marks each file it writes with a <code>braingen</code> line as the last front-matter entry
+    (“do not edit”). <code>make brain-check-generated</code> fails if such a file was hand-edited or has
+    gone stale, and <code>generate</code> refuses to overwrite a hand-written file that is not marked.</li>
+  <li>Records every new URL in <code>_system/published-permalinks.txt</code>, which is append-only, and
+    <strong>refuses to run</strong> if a URL already recorded there would disappear. Jekyll has no
+    redirect plugin here, so a dropped URL is a hard 404. Retiring a URL on purpose means listing it in
+    <code>_system/retired-permalinks.txt</code> with a reason.</li>
+  <li>Reports <code>N written, N deleted, N unchanged</code>, and the page then shows
+    <code>git status --short</code> and <code>git diff --stat</code> so you can see exactly what moved.</li>
+</ul>
+
+<div class="callout arc42-example">
+  <p><strong>Publishing is not deploying.</strong> <code>generate</code> only writes files into the
+    working tree. Nothing reaches docs.arc42.org until those changes are committed and the commit lands
+    on <code>main</code>, where GitHub Pages builds the site. Review the diff, then commit.</p>
+</div>
+
+<h2 id="parity">Preview (parity)</h2>
+
+<p><code>make generate-check</code>: renders the brain into <code>build/parity/</code> and diffs it,
+  section by section, against the file the site currently has. It writes nothing into the site, so it is
+  always safe to run — including for sections that are still <code>draft</code>, because parity plans
+  <code>draft</code>, <code>review</code> and <code>published</code> pages alike.</p>
+
+<ul>
+  <li><strong>PASS</strong> — the generated file matches the site's original, so cutting over would change
+    nothing a reader sees.</li>
+  <li><strong>FAIL</strong> — there is a difference. The report says which: body text, front matter, or
+    tags. Tag differences are reported after alias normalisation, so a legacy tag that a term claims via
+    <code>aliases</code> or <code>legacy-tags</code> counts as matched.</li>
+</ul>
+
+<p>The last result is cached and shown in the <em>Parity</em> column on
+  <a href="/sections">Sections</a>, <a href="/actions">Actions</a> and <a href="/cutover">Cut-over</a>. A
+  dash means no preview has run since the dashboard started.</p>
+
+<h2 id="cutover">Cut-over</h2>
+
+<p>Cutting a section over means setting its pages to <code>published</code> and running generate: from
+  then on the brain owns those site files and hand-edits there are lost.
+  <a href="/cutover">Cut-over readiness</a> checks the preconditions per section:</p>
+
+<table class="data-table">
+  <thead><tr><th>Column</th><th>Means</th></tr></thead>
+  <tbody>
+    <tr><td>Cut over</td><td>The section page is already <code>published</code>.</td></tr>
+    <tr><td>Ingested</td><td>No site file of this section is without a brain page.</td></tr>
+    <tr><td>Lint clean</td><td>No lint <em>error</em> on this section's pages.</td></tr>
+    <tr><td>Parity</td><td>The last preview's verdict for this section.</td></tr>
+    <tr><td>Related</td><td>Every tip and example of the section has at least one <code>related:</code>
+      link — the ingest step that is easiest to forget.</td></tr>
+    <tr><td>Ready</td><td>All of the above, and not yet cut over. The banner names the next one.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="pages">The other pages</h2>
+
+<dl class="meta-list">
+  <dt><a href="/">Home</a></dt><dd>One tile per area, each linking to its page. Use it as the daily
+    starting point: counts, lint totals, review queue, readiness, recent log entries and commits.</dd>
+  <dt><a href="/tips">Tips</a>, <a href="/examples">Examples</a>, <a href="/faq">FAQ</a>,
+    <a href="/terms">Terms</a>, <a href="/keywords">Keywords</a>, <a href="/systems">Systems</a></dt>
+  <dd>One list per content type, filterable by status, section and system. Terms and keywords also show
+    how many pages reference them — a term with usage 0 is either premature or forgotten.</dd>
+  <dt><a href="/tags">Tags</a></dt><dd>The two vocabularies together: terms (arc42 concepts, with a
+    definition and a home) against keywords (navigation facets), plus every legacy site tag and the term
+    that now claims it. Terms without a definition sentence or a home are called out.</dd>
+  <dt><a href="/issues">Issues</a></dt><dd>Open <code>ISS-NNN</code> pages by severity and kind.
+    Contradictions and doubts found while ingesting become issues, never silent edits.</dd>
+  <dt><a href="/review">Review</a></dt><dd>Every page at <code>review</code>, oldest change first, with
+    the ingest workflow's own checklist beside it.</dd>
+  <dt><a href="/gaps">Gaps</a></dt><dd>Structural holes: tips with no example, examples with no tip,
+    subsections nothing links to, sections nothing references.</dd>
+  <dt><a href="/suggestions">Suggestions</a></dt><dd>Candidate <code>related:</code> pairs the vault does
+    not have yet, scored, with the reason for each. A proposal to judge, not a to-do list.</dd>
+  <dt><a href="/links">Links</a></dt><dd>External URL health, checked on request and cached: failures and
+    redirects first, with the pages naming each URL.</dd>
+  <dt><a href="/graph">Graph</a></dt><dd>The link graph, or the term graph
+    (<code>?kind=terms</code>).</dd>
+  <dt><a href="/log">Log</a></dt><dd>The newest entries of <code>_system/log.md</code> — one per
+    operation, append-only — and recent git commits.</dd>
+  <dt><a href="/search">Search</a></dt><dd>Titles, bodies and front matter across the vault.</dd>
+</dl>
+
+<h2 id="who">Who can do what</h2>
+
+<p>Every open tab sends a heartbeat and gets a nickname; <a href="/who">Who's here</a> lists them. The tab
+  that connected first and is still around is the <strong>facilitator</strong>, and only the facilitator
+  can start generate or preview — everyone else watches the run live. Nothing about presence is stored: a
+  server restart clears it, and the next tab to ping becomes facilitator.</p>
+
+<p><strong>Reload</strong> in the header drops the cached vault. You rarely need it — the cache already
+  reloads when a file under <code>wiki/</code>, <code>raw/sources/</code> or the generated site folders
+  changes — but it is the right button after a <code>git checkout</code>.</p>
+
+<h2 id="rules">Where the rules live</h2>
+
+<p>The dashboard reports; these files decide:</p>
+
+<dl class="meta-list">
+  <dt><code>docs-arc42-brain/CLAUDE.md</code></dt><dd>The schema: types, folders, required fields, the
+    status ladder, the two vocabularies, linking rules.</dd>
+  <dt><code>_system/workflows/</code></dt><dd><code>ingest.md</code> (the nine steps),
+    <code>cutover.md</code>, <code>audit.md</code>, <code>relations.md</code>,
+    <code>bootstrap.md</code>.</dd>
+  <dt><code>_system/adr/</code></dt><dd>Why the brain is built this way.</dd>
+  <dt><code>_system/log.md</code></dt><dd>Append-only record of every operation.</dd>
+</dl>
+
+<p>The same work from a terminal:</p>
+
+<table class="data-table">
+  <thead><tr><th>Command</th><th>Does</th></tr></thead>
+  <tbody>
+    <tr><td><code>make brain-lint</code></td><td>Validate the vault.</td></tr>
+    <tr><td><code>make brain-raw SECTION=N WHAT=all|page|content</code></td><td>Copy a section's site
+      files into <code>raw/</code>.</td></tr>
+    <tr><td><code>make brain-import BATCH=section-N-content</code></td><td>Turn a raw batch into
+      drafts.</td></tr>
+    <tr><td><code>make generate-check SECTION=N</code></td><td>Parity, without writing to the site.</td></tr>
+    <tr><td><code>make generate</code></td><td>Write the site files of all published pages.</td></tr>
+    <tr><td><code>make brain-check-generated</code></td><td>Fail if a generated file was hand-edited or is
+      stale.</td></tr>
+    <tr><td><code>make brain-test</code></td><td>braingen's unit tests.</td></tr>
+    <tr><td><code>make dashboard</code> / <code>dashboard-down</code> / <code>dashboard-logs</code></td>
+      <td>This dashboard, on port 4211.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

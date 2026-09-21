@@ -1,7 +1,8 @@
 # docs-arc42-brain dashboard
 
 Status tiles, list/detail pages, lint, link health, and the generate/preview
-actions for people curating the brain. Design:
+actions for people curating the brain. `/help` explains all of it to a
+curator — statuses, ingest states, lint, publish, parity, cut-over. Design:
 `../../../docs/superpowers/specs/2026-09-18-docs-arc42-brain-dashboard-design.md`.
 
 **Run**: `make dashboard` from the repo root (http://localhost:4211, repo

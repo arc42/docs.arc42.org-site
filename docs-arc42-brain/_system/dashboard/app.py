@@ -253,6 +253,11 @@ def create_app(repo: Path | None = None, **services) -> Flask:
         results = search(model.get(), q) if q else []
         return render_template("search.html", q=q, results=results)
 
+    @app.route("/help")
+    def help_page():
+        # Static prose: no vault, so it answers even when the vault fails to load.
+        return render_template("help.html")
+
     @app.route("/page/<slug>")
     def page_detail(slug):
         b = model.get()

@@ -6,10 +6,16 @@
 {% block main %}
 <h1>Sections</h1>
 {{ m.status_bar(counts) }}
+<div class="callout arc42-help">
+  <p><strong>Page</strong> is the status of the section page itself — <code>published</code> means that
+    page has been cut over and the site serves the generated version. <strong>Ingest</strong> is how far
+    the section's tips and examples have come, which the page status does not say.
+    <a href="/help#sections">What these mean</a>.</p>
+</div>
 <table class="data-table">
   <thead>
     <tr>
-      <th>#</th><th>Section</th><th>Status</th><th>Tips</th><th>Examples</th>
+      <th>#</th><th>Section</th><th>Page</th><th>Ingest</th><th>Tips</th><th>Examples</th>
       <th>Terms</th><th>Open issues</th><th>Parity</th>
     </tr>
   </thead>
@@ -19,6 +25,7 @@
       <td>{{ r.number }}</td>
       <td><a href="/page/{{ r.slug }}">{{ r.title or r.slug }}</a></td>
       <td>{{ m.status_badge(r.status) }}</td>
+      <td>{{ m.ingest_badge(r.ingest) }}</td>
       <td>{{ r.tips }}</td>
       <td>{{ r.examples }}</td>
       <td>{{ r.terms }}</td>
@@ -26,7 +33,7 @@
       <td>{{ r.parity or "—" }}</td>
     </tr>
     {% else %}
-    <tr><td colspan="8" class="empty">No sections yet.</td></tr>
+    <tr><td colspan="9" class="empty">No sections yet.</td></tr>
     {% endfor %}
   </tbody>
 </table>

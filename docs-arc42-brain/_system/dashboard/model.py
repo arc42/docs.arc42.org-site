@@ -21,6 +21,10 @@ from braingen.parse import Page, Vault, load_vault
 
 STATUSES = ("draft", "review", "published", "retired")
 
+# Section ingest states, least to most advanced (see `ingest_state`). Not a
+# front-matter field: derived from the section's pages and the site's files.
+INGEST_STATES = ("not ingested", "partial", "ingested", "cut over")
+
 FAQ_NOTE = "136 answers in faq.arc42.org, not yet ingested"
 
 LOG_LINE_RE = re.compile(r"^## \[(\d{4}-\d{2}-\d{2})\] ([\w-]+) \| (.*)$")
@@ -181,6 +185,7 @@ def sections_view(b: Brain, parity: dict[str, str]) -> dict:
             "slug": s.slug,
             "title": s.meta.get("title"),
             "status": s.status,
+            "ingest": ingest_state(b, s),
             "tips": len(_pages_in_section(b, "tip", n)),
             "examples": len(_pages_in_section(b, "example", n)),
             "terms": len(_pages_in_section(b, "term", n)),
@@ -374,6 +379,32 @@ def _ingested(b: Brain, number: int) -> bool:
         return False
     generated = {o.rel for o in p.outputs}
     return not not_ingested(b.vault, b.repo, number, generated)
+
+
+def ingest_state(b: Brain, section: Page) -> str:
+    """How far a section's *content* has come — which the section page's own
+    `status` does not say, because that status describes only that one page
+    and stays `draft` while the section's tips are already ingested:
+
+    - `cut over` — the section page is published, so braingen owns this
+      section on the site (`_system/workflows/cutover.md`).
+    - `ingested` — every tip and example the site carries under this section
+      also exists as a brain page.
+    - `partial` — some do, some still live only on the site.
+    - `not ingested` — the brain has no tip and no example for this section.
+
+    Says nothing about the status those brain pages carry (`draft` or
+    `review`): that is the Page column and `/cutover`."""
+    if section.status == "published":
+        return "cut over"
+    number = int(section.meta["number"])
+    pages = [
+        p for p in _pages_in_section(b, "tip", number) + _pages_in_section(b, "example", number)
+        if p.status != "retired"
+    ]
+    if not pages:
+        return "not ingested"
+    return "ingested" if _ingested(b, number) else "partial"
 
 
 def _related_ok(b: Brain, number: int) -> bool:

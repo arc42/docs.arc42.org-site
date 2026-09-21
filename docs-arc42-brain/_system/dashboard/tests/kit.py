@@ -123,14 +123,14 @@ def _section(root: Path, n: int, name: str, category: str, posts_dir: str, perma
 def _tip(root: Path, id_: str, status: str, section: str, related: list[str],
           terms: list[str], keywords: list[str] | None = None,
           legacy_tags: list[str] | None = None, body: str = "Some tip.\n",
-          updated: str | None = None) -> None:
+          updated: str | None = None, date: str = "2016-03-01") -> None:
     meta = _common(id_, "tip", f"Tip {id_}: Do it!", status, updated=updated or DAY)
     meta.update({
         "section": section,
         "keywords": keywords or [],
         "terms": terms,
         "legacy-tags": legacy_tags or [],
-        "date": "2016-03-01",
+        "date": date,
         "permalink": f"/tips/{id_}/",
         "related": related,
     })
@@ -207,6 +207,20 @@ def _ingest_workflow(vault: Path) -> None:
 def _placeholder(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("---\ntitle: x\n---\n", encoding="utf-8")
+
+
+def add_tip(root: Path, id_: str, section: str, status: str = "review",
+            date: str = "2016-03-01") -> None:
+    """Add one tip to an already-built fixture repo, for a section state
+    `build_repo` does not set up (a partly or fully ingested one). The
+    generated post is `_posts/<posts-dir>/<date>-t-<id>.md`, so `date` is
+    what decides whether it matches a site file placed by `add_site_post`."""
+    _tip(root / "docs-arc42-brain", id_, status, section, related=[], terms=[], date=date)
+
+
+def add_site_post(root: Path, posts_dir: str, name: str) -> None:
+    """A site post with no brain page behind it (makes a section partial)."""
+    _placeholder(root / "_posts" / posts_dir / name)
 
 
 def build_repo(root: Path) -> Path:
