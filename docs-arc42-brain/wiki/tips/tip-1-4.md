@@ -2,7 +2,7 @@
 id: 1-4
 type: tip
 title: 'Tip 1-4: Create an overview by grouping or clustering requirements!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

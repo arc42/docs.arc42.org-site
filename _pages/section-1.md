@@ -4,6 +4,7 @@ title: 1 - Introduction and Goals
 permalink: /section-1/
 number: 1
 order: 5
+# generated from docs-arc42-brain/wiki/sections/section-1.md — do not edit
 ---
 
 # 1. Introduction and Goals
@@ -105,6 +106,6 @@ Table with role names, person names, and their expectations with respect to the 
 
 
 {% include further-info.md
-  category="requirements"
+   category="requirements"
    topic="introduction, goals and requirements"
    faqlink="https://faq.arc42.org/category_c/#c-sec-1" %}

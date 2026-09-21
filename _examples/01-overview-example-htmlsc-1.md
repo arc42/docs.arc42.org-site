@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "Overview Example: HTML Sanity Checker"
-tags: overview example 
+tags: example requirement business-goal
 category: overview
 permalink: /examples/overview-example-htmlsc-1/
+related:
+- kind: subsection
+  title: "1.1 Requirements Overview"
+  url: /section-1/#11-requirements-overview
+- kind: tip
+  title: "Tip 1-1: Give a compact summary of requirements and driving forces!"
+  url: /tips/1-1/
+# generated from docs-arc42-brain/wiki/examples/01-overview-example-htmlsc-1.md — do not edit
 ---
 
 <div class="arc42-example">

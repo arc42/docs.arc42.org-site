@@ -2,7 +2,7 @@
 id: 1-6
 type: tip
 title: 'Tip 1-6: Use activity diagrams to describe functional requirements!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

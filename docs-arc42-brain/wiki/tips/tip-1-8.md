@@ -2,7 +2,7 @@
 id: 1-8
 type: tip
 title: 'Tip 1-8: Use a numbered list to describe functional requirements!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

@@ -2,9 +2,9 @@
 id: section-1
 type: section
 title: 1 - Introduction and Goals
-status: draft
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-21'
 sources:
 - '[[SRC-001-section-1-page]]'
 related: []

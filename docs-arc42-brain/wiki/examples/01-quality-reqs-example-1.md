@@ -2,7 +2,7 @@
 id: 01-quality-reqs-example-1
 type: example
 title: 'Quality Requirements Example: HTML Sanity Checker'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

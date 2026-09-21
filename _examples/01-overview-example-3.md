@@ -1,9 +1,26 @@
 ---
 layout: post
 title: "Overview Example: Traffic Pursuit Unit"
-tags: overview example 
+tags: example requirement functional-requirement business-goal
 category: overview
 permalink: /examples/overview-example-3/
+related:
+- kind: subsection
+  title: "1.1 Requirements Overview"
+  url: /section-1/#11-requirements-overview
+- kind: tip
+  title: "Tip 1-1: Give a compact summary of requirements and driving forces!"
+  url: /tips/1-1/
+- kind: tip
+  title: "Tip 1-2: Limit yourself to the essential tasks and use cases!"
+  url: /tips/1-2/
+- kind: tip
+  title: "Tip 1-3: Highlight the business goals of the system!"
+  url: /tips/1-3/
+- kind: tip
+  title: "Tip 1-4: Create an overview by grouping or clustering requirements!"
+  url: /tips/1-4/
+# generated from docs-arc42-brain/wiki/examples/01-overview-example-3.md — do not edit
 ---
 
 <div class="arc42-example">
@@ -38,9 +55,4 @@ The following goals have been established for this system:
 |F3|Show List of all recorded pursuits| |
 |F4|Play recording of a pursuit |replay the video documentation of a pursuit case i.e. to show it to the car driver in charge |
 |F5|Print protocol of a pursuit| | 
-|F6 |Show basic information | in idle state the system shall display default information like date and time and the current speed| 
-
-
-
-
-
+|F6 |Show basic information | in idle state the system shall display default information like date and time and the current speed|

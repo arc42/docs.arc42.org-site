@@ -1,9 +1,20 @@
 ---
 layout: post
 title: "Quality Requirements Example: HTML Sanity Checker"
-tags: quality-requirements example 
+tags: example quality-requirement quality-goal quality-scenario
 category: qualitygoals
 permalink: /examples/quality-requirements-1/
+related:
+- kind: subsection
+  title: "1.2 Quality Goals"
+  url: /section-1/#12-quality-goals
+- kind: tip
+  title: "Tip 1-12: Explain quality requirements through scenarios!"
+  url: /tips/1-12/
+- kind: tip
+  title: "Tip 1-18: Defer detailed and complete quality requirements to arc42 section 10!"
+  url: /tips/1-18/
+# generated from docs-arc42-brain/wiki/examples/01-quality-reqs-example-1.md — do not edit
 ---
 
 Some (simple) quality requirements (as scenarios), organized by priority in a table.

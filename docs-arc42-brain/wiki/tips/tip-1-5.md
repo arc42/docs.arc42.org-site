@@ -2,7 +2,7 @@
 id: 1-5
 type: tip
 title: 'Tip 1-5: Make sure you can reference (existing) requirements!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

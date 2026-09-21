@@ -2,7 +2,7 @@
 id: 1-7
 type: tip
 title: 'Tip 1-7: Use BPMN diagrams to describe functional requirements!'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:

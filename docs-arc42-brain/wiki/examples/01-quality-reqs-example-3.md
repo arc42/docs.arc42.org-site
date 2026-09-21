@@ -2,7 +2,7 @@
 id: 01-quality-reqs-example-3
 type: example
 title: 'Quality Requirements Example: Traffic Pursuit Unit'
-status: review
+status: published
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
