@@ -9,6 +9,7 @@ sources:
 - '[[SRC-015-section-1-content]]'
 related:
 - '[[quality-goal]]'
+- '[[risk]]'
 term: Assumption
 aliases:
 - Educated guess
@@ -25,7 +26,8 @@ customers or key stakeholders supply no explicit quality requirements, the team 
 educated guess, write it down as a scenario with two or three colleagues, and discuss it with the
 stakeholders — "such assumptions are always better than having no explicit quality requirements".
 The risk the tip names is the one section 11 exists to record: an implicit quality goal is a high
-risk of misunderstanding and of dissatisfaction all round.
+[[risk]] of misunderstanding and of dissatisfaction all round — an assumption becomes a risk
+exactly when it might not hold.
 
 **Distinguish from.** [[quality-goal]] — an assumption about a quality goal is a placeholder for
 one, held by the team rather than agreed with the stakeholders, and it stops being an assumption

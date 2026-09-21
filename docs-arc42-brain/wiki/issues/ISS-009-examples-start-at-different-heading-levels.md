@@ -6,10 +6,12 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-018-section-11-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[11-risk-example-tpu]]'
 - '[[04-solutionStrategy-example-htmlsc-1]]'
 - '[[04-solutionStrategy-example-mama-2]]'
 - '[[01-overview-example-3]]'
@@ -50,6 +52,14 @@ fix the entry level but not this, since the inner headings are part of the examp
 disagree about. That is evidence for option 2 being cheap here and expensive in section 1, and it
 confirms the inconsistency is not systematic — it is per example, which is why a generator-owned
 entry heading only solves the part that is.
+
+**Section 11 evidence (2026-09-21).** Both examples open at `## 11. Risks and Technical Debts`,
+so the entry level agrees — but one level down they diverge more sharply than section 1's pair
+did: [[11-risk-example-htmlsc]] uses `### 11.1 Technical risks` while
+[[11-risk-example-tpu]] has no headings at all below its title, only bold paragraphs
+([[ISS-023-tpu-risk-example-uses-bold-text-as-headings|ISS-023]]). Option 2 (generate the entry
+heading from `title`) would still leave these two pages structured differently, which is now
+confirmed for the third section in a row.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.

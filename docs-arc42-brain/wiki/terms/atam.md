@@ -7,9 +7,11 @@ created: '2026-09-21'
 updated: '2026-09-21'
 sources:
 - '[[SRC-017-section-10-content]]'
+- '[[SRC-018-section-11-content]]'
 related:
 - '[[quality-scenario]]'
 - '[[quality-tree]]'
+- '[[risk]]'
 term: ATAM
 aliases:
 - Architecture Tradeoff Analysis Method

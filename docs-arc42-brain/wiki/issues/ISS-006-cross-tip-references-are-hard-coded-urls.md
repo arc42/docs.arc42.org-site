@@ -6,12 +6,15 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-11-2]]'
+- '[[tip-11-3]]'
 - '[[tip-10-4]]'
 - '[[tip-10-6]]'
 - '[[tip-10-8]]'
@@ -79,6 +82,13 @@ over, most cross-section references in the remaining sections will be resolvable
 ingested, which turns option 1 from "one sweep, later" into "the sweep can start whenever we
 choose". Note also the spelling: `/tips/1-14/` has a trailing slash where every earlier reference
 had none, so a mechanical rewrite has to accept both.
+
+**Section 11 evidence (2026-09-21).** [[tip-11-2]] links `/section-3/` and `/tips/3-14`, and
+[[tip-11-3]] links `/tips/10-8`. The second one is a first: 10-8 was ingested minutes earlier in
+this same session, so `[[tip-10-8]]` resolves in the vault *although section 10 is not cut over* —
+the brain page is what a wikilink needs, not the published URL. Tip 3-14 is still out of reach.
+So the rule for the eventual sweep is now precise: a reference can be converted as soon as the
+target's brain page exists, regardless of either page's status.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

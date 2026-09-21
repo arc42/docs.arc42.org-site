@@ -6,12 +6,15 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[11-risk-example-htmlsc]]'
+- '[[11-risk-example-tpu]]'
 - '[[tip-10-2]]'
 - '[[tip-10-7]]'
 - '[[tip-10-8]]'
@@ -86,6 +89,11 @@ the SEI's ATAM page, Wikipedia on Murphy's law, a blog post on utility trees. Bo
 examples open with the empty `<p></p>`. Nothing new in kind, which is itself the finding: five
 sections in, the tally from section 1 still holds — anchors are mechanical, caption divs and
 `markdown="1"` are not.
+
+**Section 11 evidence (2026-09-21).** Both examples open with the empty `<p></p>` and neither
+contains anything else — no anchors, no caption div. Section 11's six tips are free of HTML
+entirely. Worth recording as the cheap case: for these two pages option 1 is a one-line deletion
+with nothing to weigh against it.
 
 **Options.**
 1. Normalise mechanically in the importer (anchor → Markdown link, drop `<p></p>`), covered by a

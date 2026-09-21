@@ -72,6 +72,12 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-10-6](../wiki/tips/tip-10-6.md) — Consider change (quality) scenarios!!
 - [tip-10-7](../wiki/tips/tip-10-7.md) — Consider fault/error/failure (quality) scenarios!!
 - [tip-10-8](../wiki/tips/tip-10-8.md) — Use (quality) scenarios for architecture analysis or evaluation!
+- [tip-11-1](../wiki/tips/tip-11-1.md) — Search for problems and risks with different stakeholders!
+- [tip-11-2](../wiki/tips/tip-11-2.md) — Analyze (external) interfaces for problems and risks!
+- [tip-11-3](../wiki/tips/tip-11-3.md) — Identify problems or risks by qualitative evaluation!
+- [tip-11-4](../wiki/tips/tip-11-4.md) — Analyze _processes_ for problems and risks!
+- [tip-11-5](../wiki/tips/tip-11-5.md) — Analyze data or data structures for problems and risks!
+- [tip-11-6](../wiki/tips/tip-11-6.md) — Analyze source-code for problems and risks!
 
 ## Examples
 
@@ -87,6 +93,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [09-decision-example-tpu-2](../wiki/examples/09-decision-example-tpu-2.md) — TrafficPursuitUnit
 - [10-quality-scenario-example-htmlsc-2](../wiki/examples/10-quality-scenario-example-htmlsc-2.md) — HTML Sanity Checker
 - [10-quality-scenario-example-tpu-1](../wiki/examples/10-quality-scenario-example-tpu-1.md) — TrafficPursuitUnit
+- [11-risk-example-htmlsc](../wiki/examples/11-risk-example-htmlsc.md) — HTML Sanity Checker
+- [11-risk-example-tpu](../wiki/examples/11-risk-example-tpu.md) — TrafficPursuitUnit
 
 ## Terms
 
@@ -111,6 +119,11 @@ One line per page, grouped by type. Updated on every ingest.
 - [view](../wiki/terms/view.md) — View
 - [concept](../wiki/terms/concept.md) — Concept
 - [atam](../wiki/terms/atam.md) — ATAM
+- [risk](../wiki/terms/risk.md) — Risk
+- [problem](../wiki/terms/problem.md) — Problem
+- [technical-debt](../wiki/terms/technical-debt.md) — Technical debt
+- [interface](../wiki/terms/interface.md) — Interface
+- [external-interface](../wiki/terms/external-interface.md) — External interface
 
 ## Keywords
 
@@ -154,6 +167,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-020](../wiki/issues/ISS-020-section-4-bodies-carry-editorial-defects.md) — open, gap: section 4 typos, plus an unclosed parenthesis in the MaMa table
 - [ISS-021](../wiki/issues/ISS-021-tip-10-2-is-marked-deprecated-but-still-published.md) — open, question: tip 10-2 says "(deprecated!)" in its title and still recommends what it withdraws
 - [ISS-022](../wiki/issues/ISS-022-section-10-bodies-carry-editorial-defects.md) — open, gap: section 10 typos, including a misplaced bracket that breaks the link in tip 10-6
+- [ISS-023](../wiki/issues/ISS-023-tpu-risk-example-uses-bold-text-as-headings.md) — open, gap: the TPU risk example has no headings below its title, only bold paragraphs, so nothing in it can be linked to
+- [ISS-024](../wiki/issues/ISS-024-section-11-bodies-carry-editorial-defects.md) — open, gap: nine typos, seven of them in the TPU example
 
 ## Sources
 
@@ -174,6 +189,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-015](../raw/sources/SRC-015-section-1-content.md) — section-1-content
 - [SRC-016](../raw/sources/SRC-016-section-4-content.md) — section-4-content
 - [SRC-017](../raw/sources/SRC-017-section-10-content.md) — section-10-content
+- [SRC-018](../raw/sources/SRC-018-section-11-content.md) — section-11-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

@@ -6,9 +6,11 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
+- '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[11-risk-example-htmlsc]]'
 - '[[10-quality-scenario-example-htmlsc-2]]'
 - '[[tip-1-4]]'
 - '[[01-quality-reqs-example-1]]'
@@ -38,6 +40,12 @@ pair of data rows — four of them in a three-scenario table — so kramdown ren
 of dashes inside the quality-scenario table the example exists to show. Two instances were a
 pattern; four across three sections is a habit, which strengthens option 2 (a lint rule) over
 fixing them one at a time.
+
+**Section 11 evidence (2026-09-21).** A fifth instance, in a new position:
+[[11-risk-example-htmlsc]] ends its two-row risk table with a trailing
+`|------|------|` separator, so kramdown renders a row of dashes as the table's last line. The
+earlier four put separators *between* data rows; this one is after the last, which a lint rule
+would have to catch as the same defect.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into
