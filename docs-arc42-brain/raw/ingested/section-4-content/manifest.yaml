@@ -1,0 +1,19 @@
+section: 4
+what: content
+name: Solution Strategy
+category: solution-strategy
+permalink: /section-4/
+posts_dir: 04-strategy
+order: 8
+title: 4 - Solution strategy
+example_categories:
+- solutionstrategy
+files:
+- posts/2016-03-01-t-4-1.md
+- posts/2016-03-01-t-4-2.md
+- posts/2016-03-01-t-4-3.md
+- posts/2016-03-01-t-4-4.md
+- posts/2016-03-01-t-4-5.md
+- posts/2016-03-01-t-4-6.md
+- examples/04-solutionStrategy-example-htmlsc-1.md
+- examples/04-solutionStrategy-example-mama-2.md

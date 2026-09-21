@@ -48,6 +48,12 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-2-3](../wiki/tips/tip-2-3.md) — Document organizational constraints!
 - [tip-2-4](../wiki/tips/tip-2-4.md) — Document design and development constraints!
 - [tip-2-5](../wiki/tips/tip-2-5.md) — Differentiate different categories of constraints!
+- [tip-4-1](../wiki/tips/tip-4-1.md) — Explain the solution strategy as compact as possible (e.g. as list of keywords)!
+- [tip-4-2](../wiki/tips/tip-4-2.md) — Describe the solution approaches as a table!
+- [tip-4-3](../wiki/tips/tip-4-3.md) — Describe solution approaches in context of quality requirements!
+- [tip-4-4](../wiki/tips/tip-4-4.md) — In the solution strategy, refer to concepts, views or code!
+- [tip-4-5](../wiki/tips/tip-4-5.md) — Let the solution strategy grow iteratively / incrementally!
+- [tip-4-6](../wiki/tips/tip-4-6.md) — Justify the solution strategy!
 - [tip-9-1](../wiki/tips/tip-9-1.md) — Document only architecturally relevant decisions!
 - [tip-9-2](../wiki/tips/tip-9-2.md) — Document decision criteria!
 - [tip-9-3](../wiki/tips/tip-9-3.md) — Provide reasons for important decisions!
@@ -66,6 +72,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [01-quality-reqs-example-1](../wiki/examples/01-quality-reqs-example-1.md) — HTML Sanity Checker
 - [01-quality-reqs-example-3](../wiki/examples/01-quality-reqs-example-3.md) — Traffic Pursuit Unit
 - [02-constraint-example-1](../wiki/examples/02-constraint-example-1.md) — HTML Sanity Checker
+- [04-solutionStrategy-example-htmlsc-1](../wiki/examples/04-solutionStrategy-example-htmlsc-1.md) — HTML Sanity Checker
+- [04-solutionStrategy-example-mama-2](../wiki/examples/04-solutionStrategy-example-mama-2.md) — MaMa
 - [09-decision-example-adr](../wiki/examples/09-decision-example-adr.md) — Use ADRs in Nygard format
 - [09-decision-example-htmlsc-1](../wiki/examples/09-decision-example-htmlsc-1.md) — HTML Sanity Checker
 - [09-decision-example-tpu-2](../wiki/examples/09-decision-example-tpu-2.md) — TrafficPursuitUnit
@@ -90,6 +98,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [decision-criteria](../wiki/terms/decision-criteria.md) — Decision criteria
 - [stakeholder](../wiki/terms/stakeholder.md) — Stakeholder
 - [quality-requirement](../wiki/terms/quality-requirement.md) — Quality requirement
+- [view](../wiki/terms/view.md) — View
+- [concept](../wiki/terms/concept.md) — Concept
 
 ## Keywords
 
@@ -99,6 +109,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [example](../wiki/keywords/example.md) — The page shows a worked example rather than guidance
 - [tooling](../wiki/keywords/tooling.md) — The page is about tools that support the practice
 - [notation](../wiki/keywords/notation.md) — The page recommends a particular notation or diagram type, with its trade-offs
+- [source-code](../wiki/keywords/source-code.md) — The page is about the relationship between the documentation and the implementation
+- [table](../wiki/keywords/table.md) — The page's advice is a table — its columns are the actual recommendation
 
 ## Systems
 
@@ -127,6 +139,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-016](../wiki/issues/ISS-016-repeated-separator-rows-in-tables.md) — open, gap: tables use separator rows as row dividers, which kramdown renders as data rows
 - [ISS-017](../wiki/issues/ISS-017-blanket-requirement-tag-on-every-section-1-post.md) — resolved 2026-09-21, ambiguity: is the `requirement` tag on 22 of 24 section 1 tips a section marker? No — the tag is correctly given, the term was restored on all 22
 - [ISS-018](../wiki/issues/ISS-018-three-tips-overlap-on-the-quality-model.md) — open, question: tips 1-14, 1-15 and 1-24 all send the reader to the arc42 quality model
+- [ISS-019](../wiki/issues/ISS-019-the-quality-goal-table-is-maintained-in-three-places.md) — open, risk: the quality-goal table is written out three times (section 4's Form, tips 4-2 and 4-3)
+- [ISS-020](../wiki/issues/ISS-020-section-4-bodies-carry-editorial-defects.md) — open, gap: section 4 typos, plus an unclosed parenthesis in the MaMa table
 
 ## Sources
 
@@ -145,6 +159,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-013](../raw/sources/SRC-013-section-9-content.md) — section-9-content
 - [SRC-014](../raw/sources/SRC-014-section-2-content.md) — section-2-content
 - [SRC-015](../raw/sources/SRC-015-section-1-content.md) — section-1-content
+- [SRC-016](../raw/sources/SRC-016-section-4-content.md) — section-4-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

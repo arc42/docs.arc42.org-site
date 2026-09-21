@@ -6,9 +6,12 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[04-solutionStrategy-example-htmlsc-1]]'
+- '[[04-solutionStrategy-example-mama-2]]'
 - '[[01-overview-example-3]]'
 - '[[01-overview-example-htmlsc-1]]'
 - '[[09-decision-example-adr]]'
@@ -40,6 +43,13 @@ inconsistency displaced: [[01-overview-example-3]] uses `## 1. Introduction` fol
 [[01-overview-example-htmlsc-1]] uses `## 1. Introduction` then `### 1.1 Overview for HTML Sanity
 Checker`. Option 2 — emit the heading from `title` and let the generator own the levels — would
 fix the entry level but not this, since the inner headings are part of the example's content.
+
+**Section 4 evidence (2026-09-21).** The first pair that agrees exactly: both
+[[04-solutionStrategy-example-htmlsc-1]] and [[04-solutionStrategy-example-mama-2]] open at
+`## 4. Solution Strategy` and neither has an inner heading at all, so there is nothing left to
+disagree about. That is evidence for option 2 being cheap here and expensive in section 1, and it
+confirms the inconsistency is not systematic — it is per example, which is why a generator-owned
+entry heading only solves the part that is.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.

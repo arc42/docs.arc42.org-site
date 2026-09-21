@@ -4,8 +4,9 @@ type: issue
 title: Tips reference other tips by hard-coded site URL instead of a wikilink
 status: open
 created: '2026-09-17'
-updated: '2026-09-20'
+updated: '2026-09-21'
 sources:
+- '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
@@ -21,6 +22,10 @@ related:
 - '[[tip-9-5]]'
 - '[[tip-2-3]]'
 - '[[tip-2-4]]'
+- '[[tip-4-1]]'
+- '[[tip-4-3]]'
+- '[[tip-4-4]]'
+- '[[section-4]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -50,6 +55,16 @@ be converted at any time, cross-section tip references only in ingest order, and
 too early would fail the lint. Also affected: [[tip-1-8]] → 1-6 twice, [[tip-1-11]] → 1-12,
 [[tip-1-14]] → 1-15, [[tip-1-15]] → 1-12 and 1-24, [[tip-1-16]] → 1-12 (with the stale label
 "tip IV-12", see [[ISS-015-section-1-tip-bodies-carry-editorial-defects|ISS-015]]).
+
+**Section 4 evidence (2026-09-21).** Four more references, all section-internal: [[tip-4-1]] and
+[[tip-4-3]] link `/tips/4-2`, and [[tip-4-4]] links both `/tips/4-2` and `/tips/4-3`. Two things
+are new. First, a *section page* does it too: section 4's *Form* links `/section-5` and
+`/section-8` from inside its `[!arc42-help]` callout, so the issue is not limited to tips — the
+title's wording is now narrower than the finding. Second, the cross-section case from section 1 is
+resolvable for the first time: with section 4 ingested, [[tip-1-17]]'s `/tips/4-2` could become
+`[[tip-4-2]]` today. It was deliberately left as it is, so that the rewrite stays one reviewable
+sweep instead of a trickle that follows the ingest order; this issue is the record that it is now
+possible.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the
