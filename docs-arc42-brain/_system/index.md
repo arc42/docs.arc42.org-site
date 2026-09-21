@@ -78,6 +78,12 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-11-4](../wiki/tips/tip-11-4.md) — Analyze _processes_ for problems and risks!
 - [tip-11-5](../wiki/tips/tip-11-5.md) — Analyze data or data structures for problems and risks!
 - [tip-11-6](../wiki/tips/tip-11-6.md) — Analyze source-code for problems and risks!
+- [tip-12-1](../wiki/tips/tip-12-1.md) — Take the glossary seriously!
+- [tip-12-2](../wiki/tips/tip-12-2.md) — Document the glossary as a table!
+- [tip-12-3](../wiki/tips/tip-12-3.md) — Amend the glossary by a (graphical) model!
+- [tip-12-4](../wiki/tips/tip-12-4.md) — Include translations in the glossary!
+- [tip-12-5](../wiki/tips/tip-12-5.md) — Keep the glossary compact! Avoid trivia.
+- [tip-12-6](../wiki/tips/tip-12-6.md) — Make your ''product owner'' or ''project manager'' responsible for
 
 ## Examples
 
@@ -95,6 +101,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [10-quality-scenario-example-tpu-1](../wiki/examples/10-quality-scenario-example-tpu-1.md) — TrafficPursuitUnit
 - [11-risk-example-htmlsc](../wiki/examples/11-risk-example-htmlsc.md) — HTML Sanity Checker
 - [11-risk-example-tpu](../wiki/examples/11-risk-example-tpu.md) — TrafficPursuitUnit
+- [12-glossary-example-htmlsc-1](../wiki/examples/12-glossary-example-htmlsc-1.md) — HTML Sanity Checker
 
 ## Terms
 
@@ -124,6 +131,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [technical-debt](../wiki/terms/technical-debt.md) — Technical debt
 - [interface](../wiki/terms/interface.md) — Interface
 - [external-interface](../wiki/terms/external-interface.md) — External interface
+- [glossary](../wiki/terms/glossary.md) — Glossary
+- [i18n](../wiki/terms/i18n.md) — Internationalization
 
 ## Keywords
 
@@ -135,6 +144,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [notation](../wiki/keywords/notation.md) — The page recommends a particular notation or diagram type, with its trade-offs
 - [source-code](../wiki/keywords/source-code.md) — The page is about the relationship between the documentation and the implementation
 - [table](../wiki/keywords/table.md) — The page's advice is a table — its columns are the actual recommendation
+- [translation](../wiki/keywords/translation.md) — The page is about documentation in more than one language
 
 ## Systems
 
@@ -169,6 +179,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-022](../wiki/issues/ISS-022-section-10-bodies-carry-editorial-defects.md) — open, gap: section 10 typos, including a misplaced bracket that breaks the link in tip 10-6
 - [ISS-023](../wiki/issues/ISS-023-tpu-risk-example-uses-bold-text-as-headings.md) — open, gap: the TPU risk example has no headings below its title, only bold paragraphs, so nothing in it can be linked to
 - [ISS-024](../wiki/issues/ISS-024-section-11-bodies-carry-editorial-defects.md) — open, gap: nine typos, seven of them in the TPU example
+- [ISS-025](../wiki/issues/ISS-025-section-12-example-table-uses-an-exotic-separator.md) — open, gap: the glossary example's table mixes two separator styles and is not alphabetical, though tip 12-2 asks for that
 
 ## Sources
 
@@ -190,6 +201,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-016](../raw/sources/SRC-016-section-4-content.md) — section-4-content
 - [SRC-017](../raw/sources/SRC-017-section-10-content.md) — section-10-content
 - [SRC-018](../raw/sources/SRC-018-section-11-content.md) — section-11-content
+- [SRC-019](../raw/sources/SRC-019-section-12-content.md) — section-12-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
@@ -13,6 +14,8 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-12-2]]'
+- '[[12-glossary-example-htmlsc-1]]'
 - '[[tip-11-2]]'
 - '[[tip-11-3]]'
 - '[[tip-10-4]]'
@@ -89,6 +92,14 @@ this same session, so `[[tip-10-8]]` resolves in the vault *although section 10 
 the brain page is what a wikilink needs, not the published URL. Tip 3-14 is still out of reach.
 So the rule for the eventual sweep is now precise: a reference can be converted as soon as the
 target's brain page exists, regardless of either page's status.
+
+**Section 12 evidence (2026-09-21).** [[tip-12-2]] links `/section-8`, which resolves as
+`[[section-8]]` today — every section page has existed since the bootstrap, so section links were
+never the blocked case. The new variant is in
+[[12-glossary-example-htmlsc-1]]: "Another version can be found in the concept section" is a
+cross-reference with **no link at all**, which no rewrite can fix mechanically. A sweep therefore
+has three classes to handle, not one: URLs that can become wikilinks, URLs whose target is not in
+the brain yet, and references in prose that were never links.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

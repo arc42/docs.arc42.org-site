@@ -6,10 +6,12 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-21'
 sources:
+- '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[12-glossary-example-htmlsc-1]]'
 - '[[11-risk-example-htmlsc]]'
 - '[[10-quality-scenario-example-htmlsc-2]]'
 - '[[tip-1-4]]'
@@ -46,6 +48,13 @@ fixing them one at a time.
 `|------|------|` separator, so kramdown renders a row of dashes as the table's last line. The
 earlier four put separators *between* data rows; this one is after the last, which a lint rule
 would have to catch as the same defect.
+
+**Section 12 evidence (2026-09-21).** A sixth instance, and the one that matters most to a reader:
+the glossary example — the single table whose job is to be read row by row — has a separator
+between every pair of its four terms, and opens with an exotic `|=====|:==========|` header row.
+Kept as [[ISS-025-section-12-example-table-uses-an-exotic-separator|ISS-025]] for the parts this
+issue does not cover. Six instances across four sections settles the question of whether this is
+incidental.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into

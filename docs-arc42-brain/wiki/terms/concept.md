@@ -7,9 +7,12 @@ created: '2026-09-21'
 updated: '2026-09-21'
 sources:
 - '[[SRC-016-section-4-content]]'
+- '[[SRC-019-section-12-content]]'
 related:
 - '[[view]]'
 - '[[solution-strategy]]'
+- '[[glossary]]'
+- '[[i18n]]'
 term: Concept
 aliases:
 - Crosscutting concept

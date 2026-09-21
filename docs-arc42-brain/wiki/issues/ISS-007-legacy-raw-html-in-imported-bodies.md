@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-21'
 sources:
+- '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
@@ -13,6 +14,7 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[12-glossary-example-htmlsc-1]]'
 - '[[11-risk-example-htmlsc]]'
 - '[[11-risk-example-tpu]]'
 - '[[tip-10-2]]'
@@ -94,6 +96,11 @@ sections in, the tally from section 1 still holds — anchors are mechanical, ca
 contains anything else — no anchors, no caption div. Section 11's six tips are free of HTML
 entirely. Worth recording as the cheap case: for these two pages option 1 is a one-line deletion
 with nothing to weigh against it.
+
+**Section 12 evidence (2026-09-21).** [[12-glossary-example-htmlsc-1]] carries the caption div
+with authored text ("Here you find an example of a glossary.") and, unlike every earlier example,
+**no** empty `<p></p>` — so that artifact is not universal, and option 1's "drop `<p></p>`" rule
+must tolerate its absence. The six section 12 tips contain no HTML.
 
 **Options.**
 1. Normalise mechanically in the importer (anchor → Markdown link, drop `<p></p>`), covered by a

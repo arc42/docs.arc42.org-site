@@ -1,0 +1,19 @@
+section: 12
+what: content
+name: Glossary
+category: glossary
+permalink: /section-12/
+posts_dir: 12-glossary
+order: 16
+title: 12 - Glossary
+example_categories:
+- glossary
+files:
+- posts/2016-03-01-t-12-1.md
+- posts/2016-03-01-t-12-2.md
+- posts/2016-03-01-t-12-3.md
+- posts/2016-03-01-t-12-4.md
+- posts/2016-03-01-t-12-5.md
+- posts/2016-03-01-t-12-6.md
+- examples/12-glossary-example-htmlsc-1.md
+- assets/sections/12/graphical-glossary.png
