@@ -17,6 +17,7 @@ keywords:
 terms:
 - '[[requirement]]'
 - '[[functional-requirement]]'
+- '[[activity-diagram]]'
 legacy-tags: []
 date: '2016-03-01'
 permalink: /tips/1-6/

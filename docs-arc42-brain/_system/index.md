@@ -81,6 +81,9 @@ One line per page, grouped by type. Updated on every ingest.
 - [quality-tree](../wiki/terms/quality-tree.md) — Quality tree
 - [assumption](../wiki/terms/assumption.md) — Assumption
 - [solution-strategy](../wiki/terms/solution-strategy.md) — Solution strategy
+- [activity-diagram](../wiki/terms/activity-diagram.md) — Activity diagram
+- [bpmn](../wiki/terms/bpmn.md) — BPMN
+- [plantuml](../wiki/terms/plantuml.md) — PlantUML
 - [constraint](../wiki/terms/constraint.md) — Constraint
 - [architecture-decision](../wiki/terms/architecture-decision.md) — Architecture decision
 - [adr](../wiki/terms/adr.md) — Architecture Decision Record (ADR)

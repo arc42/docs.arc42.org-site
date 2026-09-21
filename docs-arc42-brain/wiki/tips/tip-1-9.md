@@ -17,6 +17,8 @@ keywords:
 terms:
 - '[[requirement]]'
 - '[[functional-requirement]]'
+- '[[plantuml]]'
+- '[[activity-diagram]]'
 legacy-tags: []
 date: '2016-03-01'
 permalink: /tips/1-9/

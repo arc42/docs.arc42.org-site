@@ -16,7 +16,10 @@ For readers who have decided *what* to document and are looking for a form to wr
 arc42 offers alternatives rather than a rule, so the pages under this facet are meant to be read
 against each other.
 
-Legacy site tags mapped here: `activity-diagram`, `bpmn`. The tool that renders a notation is a
-separate question — `plantUML` maps to [[tooling]] as well as here (see [[tip-1-9]]). Keywords
-carry no `legacy-tags` field of their own (ADR-0003), so this paragraph is the mapping record for
-the ingests still to come.
+This facet sits *on top of* the notations, it does not replace them: the site's
+`activity-diagram`, `bpmn` and `plantUML` tags are terms of their own
+([[activity-diagram]], [[bpmn]], [[plantuml]]), so those names survive on the site's keyword page,
+and `notation` is what a page gets in addition for recommending a form at all. A tip can
+therefore be found by the notation it names *and* by the fact that it is about notation. The tool
+that renders a notation is a third question — [[plantuml]] also carries [[tooling]]
+(see [[tip-1-9]]).

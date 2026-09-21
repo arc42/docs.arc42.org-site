@@ -10,6 +10,9 @@ sources:
 - '[[SRC-015-section-1-content]]'
 related:
 - '[[requirement]]'
+- '[[activity-diagram]]'
+- '[[bpmn]]'
+- '[[plantuml]]'
 term: Functional requirement
 aliases: []
 legacy-tags:
