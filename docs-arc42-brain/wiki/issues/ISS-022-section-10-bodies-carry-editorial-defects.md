@@ -4,7 +4,7 @@ type: issue
 title: Section 10 bodies carry editorial defects, one of them a broken link
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-017-section-10-content]]'
 related:
@@ -12,6 +12,7 @@ related:
 - '[[tip-10-5]]'
 - '[[tip-10-6]]'
 - '[[tip-10-7]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -47,3 +48,5 @@ bracket in [[tip-10-6]] leaves a stray parenthesis in the rendered link text.
 [[ISS-020-section-4-bodies-carry-editorial-defects|ISS-020]]). The broken link in 10-6 is the
 first defect in this class that a reader plainly sees, which argues for fixing that one ahead of
 the rest rather than waiting for a vault-wide pass.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

@@ -2,12 +2,13 @@
 id: ISS-001
 type: issue
 title: Does the legacy tag `quality` on tips 9-1 and 9-4 mean the arc42 quality requirement?
-status: open
+status: resolved
 created: '2026-09-17'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
+- '[[SRC-017-section-10-content]]'
 related:
 - '[[tip-1-11]]'
 - '[[tip-1-14]]'
@@ -17,7 +18,7 @@ related:
 severity: minor
 kind: ambiguity
 raised-by: agent
-resolved: null
+resolved: '2026-09-22'
 ---
 
 **What's unresolved.** The legacy tag `quality` sits on tip 9-1 and tip 9-4. The ingest mapped it
@@ -45,5 +46,30 @@ the rule — which strengthens option 1 below.
 3. Introduce a keyword for "documentation quality" — a new facet for a single page; likely too
    fine-grained.
 
-**Resolution.** Open. The mapping of option 1 is in place so that `legacy-tags` could be emptied;
-revisit when section 10 is ingested and the meaning of `quality` across the site is known.
+**Resolution (2026-09-22): resolved, and the answer is yes for tip 9-1 and "no evidence" for tip 9-4.**
+
+This issue set its own condition — "revisit when section 10 is ingested and the meaning of
+`quality` across the site is known". Section 10 was ingested on 2026-09-21, and the census can now
+be taken rather than guessed.
+
+The site tag `quality` sits on **eleven** pages: the seven section 10 tips, the two section 10
+quality-scenario examples, and [[tip-9-1]] and [[tip-9-4]]. Nine of the eleven are section 10, where
+the tag can only mean the arc42 concept, and `quality-requirement` is the **only** vocabulary page
+in the vault claiming the name in `legacy-tags`. So the tag is not ambiguous site-wide, which is
+what this issue suspected it might be.
+
+[[tip-9-1]] confirms the mapping from its own body: it asks the reader to document decisions that
+are "critical or important for the system" and "influencing important quality attributes". That is
+the arc42 concept, and the mapping to [[quality-requirement]] is right.
+
+[[tip-9-4]] does not. Its body compares mind maps with tables as notations for recording decisions
+and never mentions quality in any sense — neither the arc42 concept nor the quality of the
+documentation, which was this issue's alternative reading. So the tag has no support in the text at
+all; it is a stray, not an ambiguity. The mapping is therefore not *wrong* so much as unmotivated,
+and since section 9 is cut over it is already published: a reader filtering `quality-requirement`
+meets a tip about mind maps. Dropping it costs one tag on one page and breaks no URL.
+
+**What this leaves.** One line for whatever editorial pass is eventually run: remove
+`quality-requirement` from [[tip-9-4]] unless the arc42 authors meant something by the tag that the
+body does not say. Recorded there rather than kept open here, because the question this issue
+asked — what does the tag mean — now has a measured answer.

@@ -13,6 +13,7 @@ related:
 - '[[tip-7-10]]'
 - '[[07-deployment-example-tpu-1]]'
 - '[[07-deployment-sample-tpu-2]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -47,3 +48,5 @@ two different sections and one unclosed parenthesis.
 the second case of a defect that spans sections — after `ubiqitous` vs `ubiquitous` — and neither
 would be found by reading one section at a time, which is the argument for one pass over the whole
 vault once section 5 is in.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

@@ -285,3 +285,58 @@ Append-only. One entry per operation, prefix exact so it stays greppable:
 - lint: 0 errors, 252 warnings (227 before). Content pages produce **zero**; every warning is an issue page's deliberate one-way `related`
 - tests: `make brain-test` 141 passed (140 before) — the parity guard picked section 6 up on its own. `make brain-check-generated` 0 problems
 - state: **all 12 sections ingested.** The ingest phase of the bootstrap is finished. Counted from the vault: 144 tips, 35 examples, 43 terms, 12 keywords, 43 issues, 12 sections, 4 systems. Ten sections sit at `review` awaiting cut-over; 1, 2, 4 and 9 are cut over
+
+## [2026-09-22] review | issues, for closures and duplication
+
+With every section ingested, all 44 issues were read together for the first time. Three things
+came out of it: two issues that describe the same construct with two *different wrong*
+explanations, one issue whose own revisit condition had been met, and one decision that ten issues
+have each asked for separately.
+
+- **ISS-005 and ISS-025 both describe `|====` wrongly, in opposite directions.** ISS-005 said the
+  `=` row "is not a GFM table separator" and that "the block therefore does not render as a table";
+  ISS-025 said the same construct is "kramdown's *header separator with alignment*, which is
+  valid". Reading the built HTML settles it: `|====` is kramdown's **footer** separator. Both
+  tables render, and both render *without a header* — the column titles become `<td>` in `<tbody>`
+  and the data rows land in `<tfoot>` (tip 9-2) — while the correct table on the very same page
+  opens `<thead><tr><th>`. One construct, two issues, two wrong accounts; ISS-005 now carries the
+  verified one and ISS-025 points at it. Neither would have been caught by reading a section at a
+  time, which is the same argument ISS-044 makes below
+- **ISS-001 resolved.** It set its own condition — "revisit when section 10 is ingested" — and
+  section 10 went in on 2026-09-21, so the census could be taken instead of guessed. The tag
+  `quality` sits on eleven pages, nine of them section 10, and `quality-requirement` is the only
+  vocabulary page claiming the name: not ambiguous site-wide. [[tip-9-1]] confirms the mapping from
+  its own body ("influencing important quality attributes"). [[tip-9-4]] does not — it compares mind
+  maps with tables and never mentions quality in any sense — so the tag there is a stray rather than
+  an ambiguity, and since section 9 is cut over it is already published. Leaves one line for the
+  editorial pass, not an open issue
+- **ISS-019's blocking condition also met, and the answer is no.** It asked to be decided "before
+  section 5, in case the duplication is wider". Section 5 is in: [[tip-5-7]] is the only other page
+  with the `table` facet and its tables are blackbox templates, and a vault-wide grep for "Quality
+  goal" finds only the four copies already recorded plus [[tip-1-11]], which is prose. Scope settled
+  at four variants; the issue stays open but no longer waits for anything
+- **ISS-044 raised, and it is the only issue this review added.** Ten per-section editorial issues
+  each end by saying the same thing: this is one decision, not ten. None of them owned it, so it was
+  re-asked at every ingest and never answered. ISS-044 owns the decision and the roll-up; the ten
+  keep their defect lists and now point at it. What the roll-up shows that none of the ten could:
+  the size is about **ninety** corrections across **twelve** sections (nine issues state 78 between
+  them; section 1's list is untotalled; sections 9 and 12 are covered by ISS-005 and ISS-025, so the
+  pass is twelve sections wide, not ten), two defects span sections and are invisible from inside
+  either (`ubiqitous`/`ubiquitous`, `neccessary` in 7 and 8), one inverts a security warning
+  (`sensible data`, ISS-030) and is the argument for not making it wait, and the German residue in
+  five issues is a *translation artefact* rather than carelessness — ISS-036's `sons- tige`, a
+  German word broken by a print hyphen, is the proof. A spellchecker finds `propegation`; it does
+  not find `sensible data`, `contain always contain`, or a hyphen inside *sonstige*
+- **two smaller repairs.** ISS-011's `Resolution` was empty — the only issue in the vault without
+  one — and is now filled, with `braingen` verified to contain no `noopener`, so spec §4.4 is
+  unimplemented rather than half-implemented; it is also marked as one question with ISS-007 rather
+  than two. ISS-006's title had been narrower than its finding since the section 4 note observed
+  that section pages do it too, and now matches
+- **not changed, deliberately.** Three more families share a decision without being duplicates, and
+  naming an owner for each is a judgement for the facilitator, not a tidy-up: the overlapping-tip
+  pairs (ISS-008, ISS-018, ISS-031, ISS-040), where ISS-018 and ISS-031 *both* claim their option
+  would be the project's first retirement of a tip URL; the example-heading family (ISS-009,
+  ISS-023, ISS-028), each of which already argues in writing why it is separate; and the table
+  family (ISS-005, ISS-016, ISS-025), now linked but still three
+- gates unchanged: lint 0 errors / 252 warnings, `brain-test` 141 passed. Issues 44 total, 40 open,
+  4 resolved (ISS-001, ISS-010, ISS-017, ISS-034)

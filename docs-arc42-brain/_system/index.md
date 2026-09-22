@@ -272,12 +272,12 @@ One line per page, grouped by type. Updated on every ingest.
 
 ## Issues
 
-- [ISS-001](../wiki/issues/ISS-001-quality-tag-on-tips-9-1-and-9-4.md) — open, ambiguity: does the legacy tag `quality` on tips 9-1 and 9-4 mean the arc42 quality requirement?
+- [ISS-001](../wiki/issues/ISS-001-quality-tag-on-tips-9-1-and-9-4.md) — resolved, ambiguity: `quality` means the arc42 concept; confirmed on tip 9-1, unsupported by tip 9-4's body
 - [ISS-002](../wiki/issues/ISS-002-adr-structure-omits-timestamp-and-criteria.md) — open, contradiction: the ADR structure proposed in section 9 omits timestamp and decision criteria
 - [ISS-003](../wiki/issues/ISS-003-pugh-matrix-link-leads-to-unrelated-site.md) — open, risk: the Pugh matrix link in tip 9-2 now leads to an unrelated site
 - [ISS-004](../wiki/issues/ISS-004-external-links-redirect.md) — open, risk: three external links in the section 9 content redirect
 - [ISS-005](../wiki/issues/ISS-005-tip-9-2-table-markup-broken.md) — open, gap: the second criteria table in tip 9-2 has an invalid separator row
-- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: cross-references are hard-coded site URLs; census complete — 77 references on 55 pages, none with a missing target
+- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: cross-references (tips *and* section pages) are hard-coded site URLs; census complete — 77 references on 55 pages, none with a missing target
 - [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies carry legacy raw HTML (sections 9 and 2)
 - [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
 - [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
@@ -315,6 +315,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-041](../wiki/issues/ISS-041-the-sequence-diagram-on-tips-6-6-and-6-11-contradicts-itself.md) — open, contradiction: the section's specimen diagram calls L and is answered by H
 - [ISS-042](../wiki/issues/ISS-042-two-section-6-figures-live-in-the-section-7-image-folder.md) — open, gap: tip 6-3's two figures sit under sections/07 and nothing in section 7 uses them
 - [ISS-043](../wiki/issues/ISS-043-section-6-publishes-dated-claims-never-revisited.md) — open, risk: a 2017 PlantUML limitation and a "(planned)" step the figure already draws as built
+- [ISS-044](../wiki/issues/ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for.md) — open, question: ten per-section editorial issues ask one question; this one owns it (~90 defects, twelve sections)
 
 ## Sources
 

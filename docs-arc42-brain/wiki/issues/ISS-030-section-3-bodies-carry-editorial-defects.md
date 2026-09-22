@@ -20,6 +20,7 @@ related:
 - '[[tip-3-19]]'
 - '[[03-context-example-business-2]]'
 - '[[03-context-example-business-1]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -78,3 +79,5 @@ statement, which argues for fixing it ahead of whatever happens to the rest. And
 constructions are the first evidence that these sections were translated rather than written in
 English — which means a vault-wide pass should look for the pattern (*sensible*, *eventually*,
 *actual*, hyphen elisions) and not only for misspellings.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

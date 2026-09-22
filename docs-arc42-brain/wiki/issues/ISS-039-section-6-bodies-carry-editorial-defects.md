@@ -16,6 +16,7 @@ related:
 - '[[06-runtime-example-htmlsc-1]]'
 - '[[06-runtime-example-mama-2]]'
 - '[[06-runtime-example-tpu-1]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -75,7 +76,13 @@ fixing alone.
    [[ISS-038-section-5-bodies-carry-editorial-defects|ISS-038]] all describe.
 
 **Resolution.** Open. The tenth and last of the per-section editorial issues: with section 6
-ingested, every one of the twelve sections has now been read, and nine of the twelve carry
-defects of this kind. Defect 9 is the third section in which the German source shows through the
+ingested, every one of the twelve sections has now been read. **Ten** sections have an
+editorial issue of their own; the other two are not clean, their defects are simply recorded
+elsewhere — section 9's "to hypothetical sets" in
+[[ISS-005-tip-9-2-table-markup-broken|ISS-005]] and section 12's unsorted glossary in
+[[ISS-025-section-12-example-table-uses-an-exotic-separator|ISS-025]]. So the pass has to cover
+twelve sections, not ten. Defect 9 is the third section in which the German source shows through the
 English, after sections 3 and 5, which is the argument for one pass over the whole vault rather
 than ten separate ones.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

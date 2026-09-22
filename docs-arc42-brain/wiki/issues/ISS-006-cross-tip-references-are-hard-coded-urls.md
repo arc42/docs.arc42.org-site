@@ -1,7 +1,7 @@
 ---
 id: ISS-006
 type: issue
-title: Tips reference other tips by hard-coded site URL instead of a wikilink
+title: Cross-references are hard-coded site URLs instead of wikilinks
 status: open
 created: '2026-09-17'
 updated: '2026-09-22'

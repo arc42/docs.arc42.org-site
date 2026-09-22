@@ -4,12 +4,13 @@ type: issue
 title: Section 4 bodies carry editorial defects
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-016-section-4-content]]'
 related:
 - '[[tip-4-4]]'
 - '[[04-solutionStrategy-example-mama-2]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -44,3 +45,5 @@ a reader can trip over.
 typo issue each, none of them a cut-over blocker. Worth deciding once, for all sections, rather
 than three times — the answer is probably option 1 plus a spell-check pass over the whole vault
 after the last section is ingested.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

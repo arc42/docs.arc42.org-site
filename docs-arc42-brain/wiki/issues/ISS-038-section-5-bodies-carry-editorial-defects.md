@@ -21,6 +21,7 @@ related:
 - '[[05-buildingblock-example-status]]'
 - '[[05-buildingblock-example-tpu-lev-1]]'
 - '[[05-buildingblock-example-tpu-lev-2]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -78,3 +79,5 @@ pass proposed in [[ISS-030-section-3-bodies-carry-editorial-defects|ISS-030]] a 
 now be taken on almost complete information — nine issues, one per section, describing one job.
 `detailling` joins `ubiqitous` and `neccessary` as a misspelling that appears in more than one
 place and that no per-section reading would catch.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

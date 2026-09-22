@@ -1,10 +1,11 @@
 ---
 id: ISS-015
 type: issue
-title: The section 1 bodies carry typos, a stale tip label and an empty image alt text
+title: The section 1 bodies carry typos, a stale tip label and an empty image alt
+  text
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-015-section-1-content]]'
 related:
@@ -17,6 +18,7 @@ related:
 - '[[tip-1-20]]'
 - '[[tip-1-21]]'
 - '[[01-overview-example-3]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -58,3 +60,5 @@ matches the site's own numbering, and an image with no alt text.
 [[ISS-013-section-2-tip-bodies-carry-editorial-defects|ISS-013]], now with a second section's
 evidence: two sections in, every ingest has found this class of defect, so the rule should be set
 once rather than per section.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

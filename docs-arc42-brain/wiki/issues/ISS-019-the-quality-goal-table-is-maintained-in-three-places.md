@@ -4,7 +4,7 @@ type: issue
 title: The quality-goal table is maintained in three places
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-016-section-4-content]]'
@@ -59,3 +59,15 @@ table with a documented variation is the only option that fits both.
 **Resolution.** Open. Not a cut-over blocker: the site already serves all three copies, so
 generating them changes nothing a reader sees. Decide before section 5, whose tips carry the same
 `table` tag (tip 5-7, not ingested yet), in case the duplication is wider than section 4.
+
+**Section 5 checked (2026-09-22).** This issue asked to be decided "before section 5, whose tips
+carry the same `table` tag, in case the duplication is wider". Section 5 is now ingested and the
+answer is no: [[tip-5-7]] is the only other page carrying the `table` facet, and its two tables are
+blackbox templates — `Purpose/Responsibility`, `Interface(s)`, optional quality characteristics —
+a different table entirely. A grep for "Quality goal" across the whole vault returns
+[[section-4]], [[tip-4-2]], [[tip-4-3]] and [[tip-10-8]], the four copies already recorded here,
+plus [[tip-1-11]], which mentions quality goals in prose and reproduces no table.
+
+So the scope is settled at **four variants and no more**, with all twelve sections read. That
+removes the reason this issue was waiting, and it can be decided whenever the four copies are worth
+one generated block.

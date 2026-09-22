@@ -4,13 +4,14 @@ type: issue
 title: The section 2 tip bodies carry a typo and mix British and American spelling
 status: open
 created: '2026-09-20'
-updated: '2026-09-20'
+updated: '2026-09-22'
 sources:
 - '[[SRC-014-section-2-content]]'
 related:
 - '[[tip-2-2]]'
 - '[[tip-2-4]]'
 - '[[tip-2-5]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -45,3 +46,5 @@ either before the section 2 cut-over or as an edit right after it.
 
 **Resolution.** Open. Deciding this also sets the rule for the ten sections still to be ingested:
 does an ingest correct obvious typos, or does the brain stay byte-faithful until cut-over?
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

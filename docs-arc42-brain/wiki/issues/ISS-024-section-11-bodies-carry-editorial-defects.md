@@ -4,7 +4,7 @@ type: issue
 title: Section 11 bodies carry editorial defects, mostly in the TPU example
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-018-section-11-content]]'
 related:
@@ -12,6 +12,7 @@ related:
 - '[[tip-11-4]]'
 - '[[tip-11-6]]'
 - '[[11-risk-example-tpu]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -47,3 +48,5 @@ TPU example's density is a different order from the three tips'.
 [[ISS-020-section-4-bodies-carry-editorial-defects|ISS-020]],
 [[ISS-022-section-10-bodies-carry-editorial-defects|ISS-022]]). Five separate issues describing
 one decision is itself the argument: these should be one vault-wide spelling pass, decided once.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.

@@ -4,7 +4,7 @@ type: issue
 title: Section 8 bodies carry editorial defects
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-020-section-8-content]]'
 related:
@@ -12,6 +12,7 @@ related:
 - '[[tip-8-5]]'
 - '[[tip-8-10]]'
 - '[[tip-8-11]]'
+- '[[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -45,3 +46,5 @@ resolved: null
 decision, which is the argument for a single vault-wide spelling pass rather than a seventh at
 section 3 — the `ubiqitous`/`ubiquitous` split is the first case where two pages disagree with each
 other rather than with a dictionary, and only a pass over the whole vault would notice that class.
+
+**The decision this issue asks for lives in [[ISS-044-one-editorial-pass-owns-the-decision-ten-issues-ask-for|ISS-044]]** (2026-09-22). Ten per-section issues each asked the same question — correct in the brain, or stay byte-faithful until cut-over? — and none of them owned the answer. This one keeps its own defect list, which is what the eventual pass works from.
