@@ -146,6 +146,17 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-11-4](../wiki/tips/tip-11-4.md) — Analyze _processes_ for problems and risks!
 - [tip-11-5](../wiki/tips/tip-11-5.md) — Analyze data or data structures for problems and risks!
 - [tip-11-6](../wiki/tips/tip-11-6.md) — Analyze source-code for problems and risks!
+- [tip-6-1](../wiki/tips/tip-6-1.md) — Always map existing building blocks to the activities within runtime scenarios!
+- [tip-6-2](../wiki/tips/tip-6-2.md) — Document only a few runtime scenarios!
+- [tip-6-3](../wiki/tips/tip-6-3.md) — Document 'schematic' (instead of detailed) scenarios!
+- [tip-6-4](../wiki/tips/tip-6-4.md) — Document detailed scenarios (with caution)!
+- [tip-6-5](../wiki/tips/tip-6-5.md) — Use scenarios primarily to `discover` building blocks, not so much for documentation!
+- [tip-6-6](../wiki/tips/tip-6-6.md) — Describe excerpts of scenarios (partial scenarios)!
+- [tip-6-7](../wiki/tips/tip-6-7.md) — Use activity diagrams with swimlanes to describe or specify runtime scenarios!
+- [tip-6-8](../wiki/tips/tip-6-8.md) — Use activity diagrams with partitions to describe or specify runtime scenarios!
+- [tip-6-9](../wiki/tips/tip-6-9.md) — Use a textual notation to describe runtime scenarios!
+- [tip-6-10](../wiki/tips/tip-6-10.md) — Use both small and large building blocks in scenarios!
+- [tip-6-11](../wiki/tips/tip-6-11.md) — Use sequence diagrams to describe or specify runtime scenarios!
 - [tip-12-1](../wiki/tips/tip-12-1.md) — Take the glossary seriously!
 - [tip-12-2](../wiki/tips/tip-12-2.md) — Document the glossary as a table!
 - [tip-12-3](../wiki/tips/tip-12-3.md) — Amend the glossary by a (graphical) model!
@@ -172,6 +183,9 @@ One line per page, grouped by type. Updated on every ingest.
 - [05-buildingblock-example-status](../wiki/examples/05-buildingblock-example-status.md) — status.arc42.org, level 1 only
 - [05-buildingblock-example-tpu-lev-1](../wiki/examples/05-buildingblock-example-tpu-lev-1.md) — TrafficPursuitUnit, level 1
 - [05-buildingblock-example-tpu-lev-2](../wiki/examples/05-buildingblock-example-tpu-lev-2.md) — TrafficPursuitUnit, level 2
+- [06-runtime-example-htmlsc-1](../wiki/examples/06-runtime-example-htmlsc-1.md) — HTML Sanity Checker
+- [06-runtime-example-mama-2](../wiki/examples/06-runtime-example-mama-2.md) — MaMa
+- [06-runtime-example-tpu-1](../wiki/examples/06-runtime-example-tpu-1.md) — TrafficPursuitUnit
 - [07-deployment-example-tpu-1](../wiki/examples/07-deployment-example-tpu-1.md) — TrafficPursuitUnit
 - [07-deployment-sample-htmlsc-1](../wiki/examples/07-deployment-sample-htmlsc-1.md) — HTML Sanity Checker
 - [07-deployment-sample-tpu-2](../wiki/examples/07-deployment-sample-tpu-2.md) — TrafficPursuitUnit Level 2
@@ -232,6 +246,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [cohesion](../wiki/terms/cohesion.md) — Cohesion
 - [runtime-view](../wiki/terms/runtime-view.md) — Runtime view
 - [runtime-scenario](../wiki/terms/runtime-scenario.md) — Runtime scenario
+- [sequence-diagram](../wiki/terms/sequence-diagram.md) — Sequence diagram
 
 ## Keywords
 
@@ -262,7 +277,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-003](../wiki/issues/ISS-003-pugh-matrix-link-leads-to-unrelated-site.md) — open, risk: the Pugh matrix link in tip 9-2 now leads to an unrelated site
 - [ISS-004](../wiki/issues/ISS-004-external-links-redirect.md) — open, risk: three external links in the section 9 content redirect
 - [ISS-005](../wiki/issues/ISS-005-tip-9-2-table-markup-broken.md) — open, gap: the second criteria table in tip 9-2 has an invalid separator row
-- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: cross-references are hard-coded site URLs; after section 3 only three remain blocked, all pointing into section 5
+- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: cross-references are hard-coded site URLs; census complete — 77 references on 55 pages, none with a missing target
 - [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies carry legacy raw HTML (sections 9 and 2)
 - [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
 - [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
@@ -295,6 +310,11 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-036](../wiki/issues/ISS-036-two-section-5-tips-ship-unfinished-text.md) — open, gap: tip 5-1 publishes an editor's TODO and tip 5-24 an untranslated German paragraph with a print hyphenation artefact
 - [ISS-037](../wiki/issues/ISS-037-the-status-building-block-example-is-an-empty-stub.md) — open, gap: the status.arc42.org building block example publishes a table with two blank rows
 - [ISS-038](../wiki/issues/ISS-038-section-5-bodies-carry-editorial-defects.md) — open, gap: sixteen section 5 defects, incl. `detailling` twice and a German "und" in a heading
+- [ISS-039](../wiki/issues/ISS-039-section-6-bodies-carry-editorial-defects.md) — open, gap: eleven section 6 defects, incl. a doubled German-order verb and a published ellipsis
+- [ISS-040](../wiki/issues/ISS-040-tips-6-6-and-6-11-publish-the-same-figure-and-listing.md) — open, gap: two tips share one figure and one PlantUML listing, character for character
+- [ISS-041](../wiki/issues/ISS-041-the-sequence-diagram-on-tips-6-6-and-6-11-contradicts-itself.md) — open, contradiction: the section's specimen diagram calls L and is answered by H
+- [ISS-042](../wiki/issues/ISS-042-two-section-6-figures-live-in-the-section-7-image-folder.md) — open, gap: tip 6-3's two figures sit under sections/07 and nothing in section 7 uses them
+- [ISS-043](../wiki/issues/ISS-043-section-6-publishes-dated-claims-never-revisited.md) — open, risk: a 2017 PlantUML limitation and a "(planned)" step the figure already draws as built
 
 ## Sources
 
@@ -321,6 +341,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-021](../raw/sources/SRC-021-section-7-content.md) — section-7-content
 - [SRC-022](../raw/sources/SRC-022-section-3-content.md) — section-3-content
 - [SRC-023](../raw/sources/SRC-023-section-5-content.md) — section-5-content
+- [SRC-024](../raw/sources/SRC-024-section-6-content.md) — section-6-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

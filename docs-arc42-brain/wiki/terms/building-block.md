@@ -10,6 +10,7 @@ sources:
 - '[[SRC-021-section-7-content]]'
 - '[[SRC-022-section-3-content]]'
 - '[[SRC-023-section-5-content]]'
+- '[[SRC-024-section-6-content]]'
 related:
 - '[[concept]]'
 - '[[view]]'

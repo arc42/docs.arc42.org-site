@@ -1,0 +1,42 @@
+section: 6
+what: content
+name: Runtime View
+category: runtime
+permalink: /section-6/
+posts_dir: 06-runtime
+order: 10
+title: 6 - Runtime view
+example_categories:
+- runtime
+files:
+- posts/2016-03-01-t-6-1.md
+- posts/2016-03-01-t-6-2.md
+- posts/2016-03-01-t-6-3.md
+- posts/2016-03-01-t-6-4.md
+- posts/2016-03-01-t-6-5.md
+- posts/2016-03-01-t-6-6.md
+- posts/2016-03-01-t-6-7.md
+- posts/2016-03-01-t-6-8.md
+- posts/2016-03-01-t-6-9.md
+- posts/2016-03-02-t-6-10.md
+- posts/2016-03-02-t-6-11.md
+- examples/06-runtime-example-htmlsc-1.md
+- examples/06-runtime-example-mama-2.md
+- examples/06-runtime-example-tpu-1.md
+- assets/sections/06/activity-with-partition.png
+- assets/sections/06/activity-with-swimlane.png
+- assets/sections/06/long-and-mostly-boring.png
+- assets/sections/06/mixed-abstraction-levels.webp
+- assets/sections/06/plantuml-example.png
+- assets/sections/06/short-and-interesting.png
+- assets/sections/06/textual-sequence.png
+- assets/sections/07/level-1-for-schematic-sequence.png
+- assets/sections/07/schematic-sequence.png
+- assets/examples/htmlsc/6-2-1-report-results.png
+- assets/examples/htmlsc/6-main-loop.png
+- assets/examples/mama/9-getRawFile.png
+- assets/examples/mama/9-validateRawData.png
+- assets/examples/tpu/III61_MeasurementPropagationAD-EXT.webp
+- assets/examples/tpu/III61_MeasurementPropagationAD.jpg
+- assets/examples/tpu/III61_MeasurementPropagationCD.jpg
+- assets/examples/tpu/III61_MeasurementPropagationSD.webp

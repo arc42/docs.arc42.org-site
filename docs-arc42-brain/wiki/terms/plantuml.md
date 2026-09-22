@@ -4,13 +4,15 @@ type: term
 title: PlantUML
 status: review
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-015-section-1-content]]'
+- '[[SRC-024-section-6-content]]'
 related:
 - '[[activity-diagram]]'
 - '[[functional-requirement]]'
+- '[[sequence-diagram]]'
 term: PlantUML
 aliases: []
 legacy-tags:

@@ -13,6 +13,7 @@ sources:
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
+- '[[SRC-024-section-6-content]]'
 related:
 - '[[05-buildingblock-example-hsc]]'
 - '[[05-buildingblock-example-status]]'
@@ -34,6 +35,9 @@ related:
 - '[[09-decision-example-adr]]'
 - '[[09-decision-example-htmlsc-1]]'
 - '[[09-decision-example-tpu-2]]'
+- '[[06-runtime-example-htmlsc-1]]'
+- '[[06-runtime-example-mama-2]]'
+- '[[06-runtime-example-tpu-1]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -110,6 +114,23 @@ sensible numbering *of building blocks*, and it collides head-on with the arc42 
 every other heading on the site uses — so a reader meets "1.1 MuServices" inside a page about
 section 5 and has to work out which numbering they are in. Any rule this issue eventually adopts
 has to say whether example headings number the arc42 structure or the system's own.
+
+**Section 6 evidence (2026-09-22), and the census is complete.** All three runtime examples
+open at the same level for once — `## 6. Runtime View` — and then diverge on the very next line.
+[[06-runtime-example-htmlsc-1]] and [[06-runtime-example-mama-2]] write `### 6.1`, and MaMa nests
+correctly to `#### 6.1.1` and `#### 6.1.2`. [[06-runtime-example-tpu-1]] writes `## 6.1` — a
+subsection at the same depth as the section it belongs to, so its page outline has two peers where
+there should be a parent and a child.
+
+This is the same TPU habit section 5 showed, and it is now visible in three of the system's
+examples, which makes it the clearest pattern this issue has: the *level* varies by author, not by
+section. Every HtmlSC example nests; every TPU example flattens. That is useful, because it means
+option 2 — having the generator emit the top heading — would fix the top line everywhere but leave
+TPU's flattening of everything below it untouched. A rule has to cover depth, not just the first
+heading.
+
+With section 6 read, all twelve sections are in and the evidence is complete: 35 examples, and
+the four distinct heading schemes this issue has collected.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.

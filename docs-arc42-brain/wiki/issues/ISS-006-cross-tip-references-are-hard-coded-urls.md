@@ -17,6 +17,7 @@ sources:
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
+- '[[SRC-024-section-6-content]]'
 related:
 - '[[tip-5-3]]'
 - '[[tip-5-4]]'
@@ -67,6 +68,11 @@ related:
 - '[[tip-4-3]]'
 - '[[tip-4-4]]'
 - '[[section-4]]'
+- '[[tip-6-1]]'
+- '[[tip-6-2]]'
+- '[[tip-6-4]]'
+- '[[tip-6-9]]'
+- '[[tip-6-11]]'
 severity: minor
 kind: gap
 raised-by: agent
@@ -184,6 +190,25 @@ The twenty-fourth reference is the exception that needs a different fix:
 [[ISS-035-tip-5-23-sends-readers-to-section-7-for-runtime-scenarios|ISS-035]]. A mechanical sweep
 would faithfully convert it to `[[section-7]]` and preserve the error, so that one must be fixed
 by hand first.
+
+**Section 6 evidence (2026-09-22), and the census is complete.** Seven references from five tips,
+all convertible today: [[tip-6-1]] → `/section-5` and `/tips/6-11`; [[tip-6-2]] → 6-3 and 6-5;
+[[tip-6-4]] → 6-3; [[tip-6-9]] → 6-5; [[tip-6-11]] → 6-5. Tip 6-5 is referenced from three
+different tips, the most-linked target in the section, and no section 6 example carries a
+reference of any kind.
+
+With section 6 ingested, all twelve sections have been read and the count is final: **77
+hard-coded references on 55 pages** — 74 from tips, 3 from section-page callouts — and **not one
+of them has a missing target**. Every `](/tips/N-M)` and `](/section-N)` in the vault resolves to
+a brain page that exists today, at any status, cut over or not. There is nothing left to wait
+for, and no reason to convert them section by section.
+
+Two things still have to be done by hand rather than by the sweep, and both are recorded
+elsewhere: [[tip-5-23]] → `/section-7` points at the wrong section
+([[ISS-035-tip-5-23-sends-readers-to-section-7-for-runtime-scenarios|ISS-035]]), and the
+reference-shaped prose that was never a link at all — [[12-glossary-example-htmlsc-1]]'s "can be
+found in the concept section" and [[08-concept-example-htmlsc-1]]'s `->Links` arrows — which a
+rewrite cannot resolve without deciding what each one should point at.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the
