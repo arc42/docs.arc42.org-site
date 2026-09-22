@@ -8,11 +8,13 @@ updated: '2026-09-22'
 sources:
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-021-section-7-content]]'
+- '[[SRC-022-section-3-content]]'
 related:
 - '[[concept]]'
 - '[[view]]'
 - '[[interface]]'
 - '[[deployment-view]]'
+- '[[port]]'
 term: Building block
 aliases:
 - Building-block

@@ -7,11 +7,13 @@ created: '2026-09-22'
 updated: '2026-09-22'
 sources:
 - '[[SRC-021-section-7-content]]'
+- '[[SRC-022-section-3-content]]'
 related:
 - '[[view]]'
 - '[[infrastructure]]'
 - '[[hardware]]'
 - '[[building-block]]'
+- '[[technical-context]]'
 term: Deployment view
 aliases:
 - Deployment

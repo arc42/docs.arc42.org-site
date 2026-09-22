@@ -48,6 +48,25 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-2-3](../wiki/tips/tip-2-3.md) — Document organizational constraints!
 - [tip-2-4](../wiki/tips/tip-2-4.md) — Document design and development constraints!
 - [tip-2-5](../wiki/tips/tip-2-5.md) — Differentiate different categories of constraints!
+- [tip-3-1](../wiki/tips/tip-3-1.md) — Explicitly demarcate your system from its environment!
+- [tip-3-2](../wiki/tips/tip-3-2.md) — Show the context as diagram!
+- [tip-3-3](../wiki/tips/tip-3-3.md) — Combine the context diagram with a table!
+- [tip-3-4](../wiki/tips/tip-3-4.md) — Explicitly indicate risks in the context!
+- [tip-3-5](../wiki/tips/tip-3-5.md) — Restrict the context to an overview, avoid too many details!
+- [tip-3-6](../wiki/tips/tip-3-6.md) — Simplify the context by categorization!
+- [tip-3-7](../wiki/tips/tip-3-7.md) — If many external systems are involved, aggregate (cluster) them by explicit criteria!
+- [tip-3-8](../wiki/tips/tip-3-8.md) — Aggregate (cluster) similar neighbour systems with ports!
+- [tip-3-9](../wiki/tips/tip-3-9.md) — Show all (all!) external interfaces!
+- [tip-3-10](../wiki/tips/tip-3-10.md) — Differentiate business and technical context!
+- [tip-3-11](../wiki/tips/tip-3-11.md) — In the business context, show data flows (instead of dependencies)!
+- [tip-3-12](../wiki/tips/tip-3-12.md) — Show external influences in the context!
+- [tip-3-13](../wiki/tips/tip-3-13.md) — Show transitive dependencies in the context!
+- [tip-3-14](../wiki/tips/tip-3-14.md) — Pay attention to quality requirements at external interfaces!
+- [tip-3-15](../wiki/tips/tip-3-15.md) — Show the technical context (in case hardware is central to your system)!
+- [tip-3-16](../wiki/tips/tip-3-16.md) — Use the technical context to describe protocols or channels!
+- [tip-3-17](../wiki/tips/tip-3-17.md) — Combine business context with technical information!
+- [tip-3-18](../wiki/tips/tip-3-18.md) — Explain the relationship between domain interfaces and their technical realization!
+- [tip-3-19](../wiki/tips/tip-3-19.md) — Defer technical context to the deployment view!
 - [tip-4-1](../wiki/tips/tip-4-1.md) — Explain the solution strategy as compact as possible (e.g. as list of keywords)!
 - [tip-4-2](../wiki/tips/tip-4-2.md) — Describe the solution approaches as a table!
 - [tip-4-3](../wiki/tips/tip-4-3.md) — Describe solution approaches in context of quality requirements!
@@ -113,6 +132,12 @@ One line per page, grouped by type. Updated on every ingest.
 - [01-quality-reqs-example-1](../wiki/examples/01-quality-reqs-example-1.md) — HTML Sanity Checker
 - [01-quality-reqs-example-3](../wiki/examples/01-quality-reqs-example-3.md) — Traffic Pursuit Unit
 - [02-constraint-example-1](../wiki/examples/02-constraint-example-1.md) — HTML Sanity Checker
+- [03-context-example-business-1](../wiki/examples/03-context-example-business-1.md) — HTML Sanity Checker, business context
+- [03-context-example-business-2](../wiki/examples/03-context-example-business-2.md) — MaMa, business context
+- [03-context-example-business-3](../wiki/examples/03-context-example-business-3.md) — TrafficPursuitUnit, business context
+- [03-context-example-business-4](../wiki/examples/03-context-example-business-4.md) — status.arc42.org, business context
+- [03-context-example-technical-1](../wiki/examples/03-context-example-technical-1.md) — HTML Sanity Checker, technical context
+- [03-context-example-technical-4](../wiki/examples/03-context-example-technical-4.md) — TrafficPursuitUnit, technical context
 - [04-solutionStrategy-example-htmlsc-1](../wiki/examples/04-solutionStrategy-example-htmlsc-1.md) — HTML Sanity Checker
 - [04-solutionStrategy-example-mama-2](../wiki/examples/04-solutionStrategy-example-mama-2.md) — MaMa
 - [07-deployment-example-tpu-1](../wiki/examples/07-deployment-example-tpu-1.md) — TrafficPursuitUnit
@@ -166,6 +191,10 @@ One line per page, grouped by type. Updated on every ingest.
 - [deployment-view](../wiki/terms/deployment-view.md) — Deployment view
 - [infrastructure](../wiki/terms/infrastructure.md) — Infrastructure
 - [hardware](../wiki/terms/hardware.md) — Hardware
+- [context](../wiki/terms/context.md) — Context
+- [business-context](../wiki/terms/business-context.md) — Business context
+- [technical-context](../wiki/terms/technical-context.md) — Technical context
+- [port](../wiki/terms/port.md) — Port
 
 ## Keywords
 
@@ -181,6 +210,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [test](../wiki/keywords/test.md) — The page uses tests as documentation, or documents how the system is tested
 - [hierarchy](../wiki/keywords/hierarchy.md) — The page advises documenting in levels, refining one element at a time
 - [mapping](../wiki/keywords/mapping.md) — The page is about mapping one structure onto another, usually software onto hardware
+- [cluster](../wiki/keywords/cluster.md) — The page groups many elements into fewer, so that a diagram stays readable
+- [criteria](../wiki/keywords/criteria.md) — The page insists the rule behind a grouping is written down, not just applied
 
 ## Systems
 
@@ -196,7 +227,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-003](../wiki/issues/ISS-003-pugh-matrix-link-leads-to-unrelated-site.md) — open, risk: the Pugh matrix link in tip 9-2 now leads to an unrelated site
 - [ISS-004](../wiki/issues/ISS-004-external-links-redirect.md) — open, risk: three external links in the section 9 content redirect
 - [ISS-005](../wiki/issues/ISS-005-tip-9-2-table-markup-broken.md) — open, gap: the second criteria table in tip 9-2 has an invalid separator row
-- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: tips reference other tips by hard-coded site URL (sections 9 and 2)
+- [ISS-006](../wiki/issues/ISS-006-cross-tip-references-are-hard-coded-urls.md) — open, gap: cross-references are hard-coded site URLs; after section 3 only three remain blocked, all pointing into section 5
 - [ISS-007](../wiki/issues/ISS-007-legacy-raw-html-in-imported-bodies.md) — open, gap: imported bodies carry legacy raw HTML (sections 9 and 2)
 - [ISS-008](../wiki/issues/ISS-008-tips-9-8-and-9-9-overlap-on-timestamps.md) — open, question: tip 9-8 is contained in the quotation of tip 9-9
 - [ISS-009](../wiki/issues/ISS-009-examples-start-at-different-heading-levels.md) — open, gap: the three decision examples start at different heading levels
@@ -220,6 +251,10 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-027](../wiki/issues/ISS-027-section-8-bodies-carry-editorial-defects.md) — open, gap: section 8 typos, including `ubiqitous` where tip 12-2 spells the same DDD term correctly
 - [ISS-028](../wiki/issues/ISS-028-tpu-deployment-example-numbers-two-sections-7-1.md) — open, contradiction: the TPU deployment example has two H2 headings both numbered 7.1
 - [ISS-029](../wiki/issues/ISS-029-section-7-bodies-carry-editorial-defects.md) — open, gap: section 7 typos, including `neccessary` for the second time in the vault
+- [ISS-030](../wiki/issues/ISS-030-section-3-bodies-carry-editorial-defects.md) — open, gap: fourteen section 3 defects, four of them German constructions, one of which inverts a security warning
+- [ISS-031](../wiki/issues/ISS-031-tips-3-12-and-3-13-overlap-on-transitive-dependencies.md) — open, gap: tips 3-12 and 3-13 embed the same figure and explain the same two arrows
+- [ISS-032](../wiki/issues/ISS-032-the-comprehensive-context-diagram-is-german-and-renames-its-system.md) — open, gap: big-context.png is half German and names its system VENOM where its English twin says Big System
+- [ISS-033](../wiki/issues/ISS-033-context-example-numbers-and-permalinks-do-not-line-up.md) — open, gap: business-4 and technical-4 are different systems, and one permalink reverses its own words
 
 ## Sources
 
@@ -244,6 +279,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-019](../raw/sources/SRC-019-section-12-content.md) — section-12-content
 - [SRC-020](../raw/sources/SRC-020-section-8-content.md) — section-8-content
 - [SRC-021](../raw/sources/SRC-021-section-7-content.md) — section-7-content
+- [SRC-022](../raw/sources/SRC-022-section-3-content.md) — section-3-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

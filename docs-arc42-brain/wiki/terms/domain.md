@@ -4,12 +4,14 @@ type: term
 title: Domain
 status: review
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-020-section-8-content]]'
+- '[[SRC-022-section-3-content]]'
 related:
 - '[[concept]]'
 - '[[glossary]]'
+- '[[business-context]]'
 term: Domain
 aliases:
 - Domain model

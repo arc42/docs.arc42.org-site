@@ -1,0 +1,48 @@
+---
+id: 3-4
+type: tip
+title: 'Tip 3-4: Explicitly indicate risks in the context!'
+status: review
+created: '2026-09-22'
+updated: '2026-09-22'
+sources:
+- '[[SRC-022-section-3-content]]'
+related:
+- '[[tip-3-12]]'
+- '[[tip-3-14]]'
+- '[[03-context-example-business-1]]'
+section: '[[section-3]]'
+keywords: []
+terms:
+- '[[context]]'
+- '[[risk]]'
+legacy-tags: []
+date: '2016-03-01'
+permalink: /tips/3-4/
+---
+
+Some examples of risks that you should point out clearly in the
+context:
+
+* Availability risk: if external systems influences the availability of your system.
+* Cost risk: if using an external system is expensive, individual calls or other types of use cost money. Examples are credit card checks or payment/booking services.
+* Security risks: if you receive/send sensible data from/to external systems. That could make these interfaces particularly interesting for a potential attacker.
+* Volatility (high probability of change) of external systems: if interfaces of external systems change often (they are "work in progress"). The syntax and semantics of the transmitted data could be changed on short notice, which means that you either have effort adapting to these changes or you need to develop a flexible consumer for these interfaces.
+* Complexity risks: if using this interface is exceptionally complex or difficult, because it might have complex data structures, uses esoteric frameworks, complicated handshakes or an arbitrary mixture of those.
+* Operational risks: if operating/administering the interface is especially difficult or requires
+high manual effort.
+
+
+See the following example, where a risk is explicitly marked with a red label:
+
+![html sanity check context with 'checks external websites and resources' marked as risk](../assets/sections/03/context-with-risk.png)
+
+
+
+### Options to document such risks
+
+You can:
+
+* use flashy colors or other visual means to indicate risk in the context diagram,
+* use text color in the table explaining the diagram, or
+* create an explicit risk-list for risks at external interfaces or neighbour systems

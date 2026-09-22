@@ -4,13 +4,16 @@ type: term
 title: Interface
 status: review
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-020-section-8-content]]'
+- '[[SRC-022-section-3-content]]'
 related:
 - '[[external-interface]]'
 - '[[building-block]]'
+- '[[context]]'
+- '[[port]]'
 term: Interface
 aliases: []
 legacy-tags:

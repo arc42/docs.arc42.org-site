@@ -6,6 +6,7 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-22'
 sources:
+- '[[SRC-022-section-3-content]]'
 - '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
@@ -13,6 +14,11 @@ sources:
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[03-context-example-business-1]]'
+- '[[03-context-example-business-2]]'
+- '[[03-context-example-technical-1]]'
+- '[[tip-3-3]]'
+- '[[tip-7-7]]'
 - '[[07-deployment-sample-htmlsc-1]]'
 - '[[08-concept-example-htmlsc-1]]'
 - '[[12-glossary-example-htmlsc-1]]'
@@ -74,6 +80,31 @@ table lines), concept 8.1 (14 of 30), concept 8.3 (5 of 10), quality scenarios (
 not a habit that travels with a table's purpose, as the section 8 note guessed; it tracks the
 author of the example. That makes it one editing pass over one set of pages, and it means the
 lint rule of option 2 would flag exactly those six.
+
+**Section 3 evidence (2026-09-22), and the author theory survives with one exception.** Three more
+example pages, and this time the count was run over every table in the vault by grouping contiguous
+table blocks and counting separator rows *after the first in each block*, rather than per page — so
+the figures below supersede the ones in the section 7 note above, which counted separator rows
+against total table lines and could not tell a two-table page from a ruled one.
+
+The full list, thirteen pages: [[08-concept-example-htmlsc-1]] 14 surplus rows,
+[[10-quality-scenario-example-htmlsc-2]] 7, [[01-quality-reqs-example-1]] 6,
+[[07-deployment-sample-htmlsc-1]] 5, [[12-glossary-example-htmlsc-1]] 5,
+[[03-context-example-technical-1]] 5, [[08-concept-example-htmlsc-2]] 4,
+[[03-context-example-business-1]] 4, [[11-risk-example-htmlsc]] 2 (one in each of its two tables),
+[[03-context-example-business-2]] 1, [[tip-1-4]] 1, [[tip-3-3]] 1, [[tip-7-7]] 1.
+
+Every example on that list is an HtmlSC example — **except one**. [[03-context-example-business-2]]
+is a MaMa example, and it closes its table with the single character pair `|-`. That falsifies the
+section 7 note's claim that "no TPU or MaMa example has a single one" in its strict form, and it
+matters for option 2 rather than for the prose: a lint rule looking for a row of dashes and pipes
+below the first separator would have to match a row one character wide, or it would miss this page.
+
+Three tips also carry one surplus row each ([[tip-1-4]], [[tip-3-3]], [[tip-7-7]]), always a
+closing rule under the last data row — a different gesture from the HtmlSC examples' rule between
+*every* pair, and one no author theory explains. So the honest summary is: one author accounts for
+the systematic habit, and a separate, milder habit of closing a table with a rule is spread across
+three sections and two page types.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into

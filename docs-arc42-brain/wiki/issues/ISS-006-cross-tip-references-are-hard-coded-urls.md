@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-22'
 sources:
+- '[[SRC-022-section-3-content]]'
 - '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
@@ -16,6 +17,13 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-3-8]]'
+- '[[tip-3-9]]'
+- '[[tip-3-12]]'
+- '[[tip-3-14]]'
+- '[[tip-3-15]]'
+- '[[tip-3-16]]'
+- '[[tip-3-19]]'
 - '[[tip-7-4]]'
 - '[[tip-7-7]]'
 - '[[tip-8-4]]'
@@ -123,6 +131,20 @@ what it should point at.
 the only section still un-ingested, and therefore the last blocked reference in the vault. Once
 section 5 is ingested, every URL reference of the first class is convertible, which makes the
 sweep a single reviewable change rather than a sequence.
+
+**Section 3 evidence (2026-09-22), and a correction.** Ten references, the largest crop from
+any one section, and every one of them section-internal: [[tip-3-8]] → 3-7; [[tip-3-9]] → 3-7 and
+3-8; [[tip-3-12]] → 3-4; [[tip-3-14]] → 3-4; [[tip-3-15]] → 3-10 **twice**, from two different
+paragraphs; [[tip-3-16]] → 3-10 and 3-17; and [[tip-3-19]] → `/section-7`, which resolves as
+`[[section-7]]`. All ten are convertible today.
+
+The correction is to this issue's own section 7 note, which called [[tip-7-4]] → `/tips/5-2` "the
+last blocked reference in the vault" because section 5 was "the only section still un-ingested".
+That was wrong: sections 3, 5 and 6 were all un-ingested at the time. With section 3 now in, the
+true count is exactly **three** blocked references left, all pointing into section 5 —
+[[tip-7-4]] → 5-2 and [[tip-8-11]] → 5-10 twice — and none anywhere pointing into section 6. So
+the sweep becomes possible after section 5 regardless of when section 6 is ingested, which is a
+stronger statement than the one it replaces, arrived at by counting rather than by assuming.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

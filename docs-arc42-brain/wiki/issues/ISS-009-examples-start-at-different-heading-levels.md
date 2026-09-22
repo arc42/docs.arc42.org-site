@@ -4,14 +4,21 @@ type: issue
 title: The three decision examples start at different heading levels
 status: open
 created: '2026-09-17'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
+- '[[SRC-022-section-3-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[03-context-example-business-1]]'
+- '[[03-context-example-business-2]]'
+- '[[03-context-example-business-3]]'
+- '[[03-context-example-business-4]]'
+- '[[03-context-example-technical-1]]'
+- '[[03-context-example-technical-4]]'
 - '[[08-concept-example-tpu-1]]'
 - '[[08-concept-example-tpu-2]]'
 - '[[11-risk-example-tpu]]'
@@ -71,6 +78,19 @@ confirmed for the third section in a row.
 examples show three different entry levels between them (H2+H3, H2 only, H3 only). That is an
 argument *for* option 2: a generator that emits the entry heading from `title` would give tpu-2
 the H2 it is missing, which no per-page fix would generalise to.
+
+**Section 3 evidence (2026-09-22).** Six examples in two categories, and they disagree about what
+their top heading is *for*. [[03-context-example-business-1]] and [[03-context-example-technical-1]]
+both open `## 3. Context View` and then put the half they actually show one level down —
+`### 3.1 Business Context`, `### 3.2 Technical Context`. [[03-context-example-technical-4]] puts
+the same content in its top heading instead: `## 3.2 Technical Context View`. And
+[[03-context-example-business-3]] and [[03-context-example-business-4]] use `## 3. Business Context
+View` — the subsection's name at the section's number.
+
+So one page's `##` is another's `###`, and a third page's `##` carries a number the other two
+reserve for `###`. This is the first section where the same pair of numbers (3.1 and 3.2) appears
+at two different depths within one category, which is what makes it useful evidence: a rule that
+only fixes the *level* would still leave `3.` and `3.2` competing for the top line.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.
