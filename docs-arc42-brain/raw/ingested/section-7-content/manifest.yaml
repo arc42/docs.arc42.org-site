@@ -1,0 +1,35 @@
+section: 7
+what: content
+name: Deployment View
+category: deployment
+permalink: /section-7/
+posts_dir: 07-deployment
+order: 11
+title: 7 - Deployment view
+example_categories:
+- deployment
+files:
+- posts/2016-03-01-t-7-1.md
+- posts/2016-03-01-t-7-2.md
+- posts/2016-03-01-t-7-3.md
+- posts/2016-03-01-t-7-4.md
+- posts/2016-03-01-t-7-5.md
+- posts/2016-03-01-t-7-6.md
+- posts/2016-03-01-t-7-7.md
+- posts/2016-03-01-t-7-8.md
+- posts/2016-03-01-t-7-9.md
+- posts/2016-03-02-t-7-10.md
+- examples/07-deployment-example-tpu-1.md
+- examples/07-deployment-sample-htmlsc-1.md
+- examples/07-deployment-sample-tpu-2.md
+- assets/sections/07/deployment-diagram.png
+- assets/sections/07/deployment-hierarchy.jpg
+- assets/sections/07/deployment-options.webp
+- assets/sections/07/deployment-overview.png
+- assets/sections/07/infrastructure-with-symbols.png
+- assets/examples/htmlsc/7_1-deployment.png
+- assets/examples/tpu/71-HardwareVonOben.webp
+- assets/examples/tpu/71-Infrastructure.webp
+- assets/examples/tpu/72-VideoCards.webp
+- assets/examples/tpu/73-VideoboardMit2Insertern.webp
+- assets/examples/tpu/74-CodecBoard.webp

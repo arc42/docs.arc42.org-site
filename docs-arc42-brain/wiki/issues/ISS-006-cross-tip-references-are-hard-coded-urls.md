@@ -4,8 +4,9 @@ type: issue
 title: Tips reference other tips by hard-coded site URL instead of a wikilink
 status: open
 created: '2026-09-17'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
+- '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
@@ -15,6 +16,8 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-7-4]]'
+- '[[tip-7-7]]'
 - '[[tip-8-4]]'
 - '[[tip-8-5]]'
 - '[[tip-8-9]]'
@@ -114,6 +117,12 @@ section 12 also reappears inside a table:
 [[08-concept-example-htmlsc-1]] writes cross-references between glossary entries as `->Links` and
 `->Internal Link` — an arrow convention, never a link, which no sweep can convert without deciding
 what it should point at.
+
+**Section 7 evidence (2026-09-22).** Two references, one of each remaining kind: [[tip-7-7]] links
+`/tips/7-6` (section-internal, convertible now) and [[tip-7-4]] links `/tips/5-2` — section 5,
+the only section still un-ingested, and therefore the last blocked reference in the vault. Once
+section 5 is ingested, every URL reference of the first class is convertible, which makes the
+sweep a single reviewable change rather than a sequence.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

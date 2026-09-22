@@ -4,14 +4,16 @@ type: issue
 title: Tables use separator rows as row dividers, which kramdown renders as data rows
 status: open
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
+- '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[07-deployment-sample-htmlsc-1]]'
 - '[[08-concept-example-htmlsc-1]]'
 - '[[12-glossary-example-htmlsc-1]]'
 - '[[11-risk-example-htmlsc]]'
@@ -62,6 +64,16 @@ incidental.
 [[08-concept-example-htmlsc-1]]'s domain-terminology table separates every pair of entries, the
 same shape as the section 12 glossary example. Both are glossary-style tables, which suggests the
 habit travels with the table's *purpose* rather than with the author.
+
+**Section 7 evidence (2026-09-22), and the pattern resolved.**
+[[07-deployment-sample-htmlsc-1]]'s node/artifact table separates every pair of rows. Counting
+separator rows across every ingested example settles what this issue is actually about: the six
+pages carrying the habit are **all six HtmlSC examples** — deployment (6 separator rows of 12
+table lines), concept 8.1 (14 of 30), concept 8.3 (5 of 10), quality scenarios (8 of 16), risks
+(4 of 9) and the glossary (6 of 12) — and **no TPU or MaMa example has a single one**. So this is
+not a habit that travels with a table's purpose, as the section 8 note guessed; it tracks the
+author of the example. That makes it one editing pass over one set of pages, and it means the
+lint rule of option 2 would flag exactly those six.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into

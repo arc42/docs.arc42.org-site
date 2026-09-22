@@ -4,8 +4,9 @@ type: issue
 title: Imported bodies carry legacy raw HTML
 status: open
 created: '2026-09-17'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
+- '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-018-section-11-content]]'
@@ -15,6 +16,8 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-7-9]]'
+- '[[tip-7-3]]'
 - '[[08-concept-example-htmlsc-2]]'
 - '[[12-glossary-example-htmlsc-1]]'
 - '[[11-risk-example-htmlsc]]'
@@ -112,6 +115,15 @@ confirming section 12's finding that the artifact is not universal. New: [[tip-8
 `{:width="85%"}`), and [[08-concept-example-htmlsc-2]] fences its Java with `~~~~` tildes rather
 than backticks. Neither is HTML, but both are kramdown-specific syntax that a "Markdown only"
 normaliser has to preserve deliberately — parity confirms braingen already round-trips them.
+
+**Section 7 evidence (2026-09-22).** A new construct, and the largest content-bearing block of
+HTML so far: [[tip-7-9]] writes its list of five devops tools as a raw `<ul><li>` with an anchor
+in every item, where Markdown bullets would render identically. Unlike `<p></p>` this is not an
+artifact and unlike the caption divs it carries no styling class — it is simply HTML doing
+Markdown's job, which makes it the clearest case for option 1's mechanical conversion.
+[[tip-7-3]] adds an entity variant: `&laquo;executionEnvironment&raquo;` and `&reg;`, where
+[[tip-8-11]] writes the same guillemets literally («X-service»). Two pages, two spellings of one
+character — the same class of disagreement as `ubiqitous`/`ubiquitous`.
 
 **Options.**
 1. Normalise mechanically in the importer (anchor → Markdown link, drop `<p></p>`), covered by a

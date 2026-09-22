@@ -4,13 +4,15 @@ type: term
 title: Building block
 status: review
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-020-section-8-content]]'
+- '[[SRC-021-section-7-content]]'
 related:
 - '[[concept]]'
 - '[[view]]'
 - '[[interface]]'
+- '[[deployment-view]]'
 term: Building block
 aliases:
 - Building-block

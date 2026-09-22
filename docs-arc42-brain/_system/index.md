@@ -54,6 +54,16 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-4-4](../wiki/tips/tip-4-4.md) — In the solution strategy, refer to concepts, views or code!
 - [tip-4-5](../wiki/tips/tip-4-5.md) — Let the solution strategy grow iteratively / incrementally!
 - [tip-4-6](../wiki/tips/tip-4-6.md) — Justify the solution strategy!
+- [tip-7-1](../wiki/tips/tip-7-1.md) — Document your technical infrastructure (hardware)!
+- [tip-7-2](../wiki/tips/tip-7-2.md) — Explain hardware and infrastructure decisions!
+- [tip-7-3](../wiki/tips/tip-7-3.md) — Document the various environments!
+- [tip-7-4](../wiki/tips/tip-7-4.md) — Document the deployment view hierarchically!
+- [tip-7-5](../wiki/tips/tip-7-5.md) — Document the mapping of building-blocks to hardware!
+- [tip-7-6](../wiki/tips/tip-7-6.md) — Use UML deployment diagrams to document software/hardware mapping!
+- [tip-7-7](../wiki/tips/tip-7-7.md) — Use tables to document software/hardware mapping!!
+- [tip-7-8](../wiki/tips/tip-7-8.md) — Explain your nodes!
+- [tip-7-9](../wiki/tips/tip-7-9.md) — Explain what (else) is relevant for productive use (aka operation)
+- [tip-7-10](../wiki/tips/tip-7-10.md) — Leave hardware decisions to hardware-experts!
 - [tip-8-1](../wiki/tips/tip-8-1.md) — Explain the Concepts!
 - [tip-8-2](../wiki/tips/tip-8-2.md) — Concepts are approaches, rules, principles, tactics, strategies etc...
 - [tip-8-3](../wiki/tips/tip-8-3.md) — Restrict documentation of concepts to the most important topics!
@@ -105,6 +115,9 @@ One line per page, grouped by type. Updated on every ingest.
 - [02-constraint-example-1](../wiki/examples/02-constraint-example-1.md) — HTML Sanity Checker
 - [04-solutionStrategy-example-htmlsc-1](../wiki/examples/04-solutionStrategy-example-htmlsc-1.md) — HTML Sanity Checker
 - [04-solutionStrategy-example-mama-2](../wiki/examples/04-solutionStrategy-example-mama-2.md) — MaMa
+- [07-deployment-example-tpu-1](../wiki/examples/07-deployment-example-tpu-1.md) — TrafficPursuitUnit
+- [07-deployment-sample-htmlsc-1](../wiki/examples/07-deployment-sample-htmlsc-1.md) — HTML Sanity Checker
+- [07-deployment-sample-tpu-2](../wiki/examples/07-deployment-sample-tpu-2.md) — TrafficPursuitUnit Level 2
 - [08-concept-example-htmlsc-1](../wiki/examples/08-concept-example-htmlsc-1.md) — HTML Sanity Checker
 - [08-concept-example-htmlsc-2](../wiki/examples/08-concept-example-htmlsc-2.md) — HTML Sanity Checker
 - [08-concept-example-tpu-1](../wiki/examples/08-concept-example-tpu-1.md) — TrafficPursuitUnit
@@ -150,6 +163,9 @@ One line per page, grouped by type. Updated on every ingest.
 - [i18n](../wiki/terms/i18n.md) — Internationalization
 - [domain](../wiki/terms/domain.md) — Domain
 - [building-block](../wiki/terms/building-block.md) — Building block
+- [deployment-view](../wiki/terms/deployment-view.md) — Deployment view
+- [infrastructure](../wiki/terms/infrastructure.md) — Infrastructure
+- [hardware](../wiki/terms/hardware.md) — Hardware
 
 ## Keywords
 
@@ -163,6 +179,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [table](../wiki/keywords/table.md) — The page's advice is a table — its columns are the actual recommendation
 - [translation](../wiki/keywords/translation.md) — The page is about documentation in more than one language
 - [test](../wiki/keywords/test.md) — The page uses tests as documentation, or documents how the system is tested
+- [hierarchy](../wiki/keywords/hierarchy.md) — The page advises documenting in levels, refining one element at a time
+- [mapping](../wiki/keywords/mapping.md) — The page is about mapping one structure onto another, usually software onto hardware
 
 ## Systems
 
@@ -200,6 +218,8 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-025](../wiki/issues/ISS-025-section-12-example-table-uses-an-exotic-separator.md) — open, gap: the glossary example's table mixes two separator styles and is not alphabetical, though tip 12-2 asks for that
 - [ISS-026](../wiki/issues/ISS-026-german-field-names-in-the-hospital-data-model.md) — open, gap: five German attribute names inside tip 8-7's otherwise English PlantUML source, which the reader is invited to reuse
 - [ISS-027](../wiki/issues/ISS-027-section-8-bodies-carry-editorial-defects.md) — open, gap: section 8 typos, including `ubiqitous` where tip 12-2 spells the same DDD term correctly
+- [ISS-028](../wiki/issues/ISS-028-tpu-deployment-example-numbers-two-sections-7-1.md) — open, contradiction: the TPU deployment example has two H2 headings both numbered 7.1
+- [ISS-029](../wiki/issues/ISS-029-section-7-bodies-carry-editorial-defects.md) — open, gap: section 7 typos, including `neccessary` for the second time in the vault
 
 ## Sources
 
@@ -223,6 +243,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-018](../raw/sources/SRC-018-section-11-content.md) — section-11-content
 - [SRC-019](../raw/sources/SRC-019-section-12-content.md) — section-12-content
 - [SRC-020](../raw/sources/SRC-020-section-8-content.md) — section-8-content
+- [SRC-021](../raw/sources/SRC-021-section-7-content.md) — section-7-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs
