@@ -9,11 +9,14 @@ sources:
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-021-section-7-content]]'
+- '[[SRC-023-section-5-content]]'
 related:
 - '[[concept]]'
 - '[[solution-strategy]]'
 - '[[building-block]]'
 - '[[deployment-view]]'
+- '[[whitebox]]'
+- '[[runtime-view]]'
 term: View
 aliases:
 - Architecture view

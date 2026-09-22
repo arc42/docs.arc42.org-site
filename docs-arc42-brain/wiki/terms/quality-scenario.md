@@ -4,15 +4,17 @@ type: term
 title: Quality scenario
 status: review
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-001-section-1-page]]'
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-017-section-10-content]]'
+- '[[SRC-023-section-5-content]]'
 related:
 - '[[quality-requirement]]'
 - '[[quality-goal]]'
 - '[[atam]]'
+- '[[runtime-scenario]]'
 term: Quality scenario
 aliases:
 - Scenario

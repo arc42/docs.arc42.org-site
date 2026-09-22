@@ -6,6 +6,7 @@ status: open
 created: '2026-09-21'
 updated: '2026-09-22'
 sources:
+- '[[SRC-023-section-5-content]]'
 - '[[SRC-022-section-3-content]]'
 - '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
@@ -14,6 +15,9 @@ sources:
 - '[[SRC-017-section-10-content]]'
 - '[[SRC-015-section-1-content]]'
 related:
+- '[[05-buildingblock-example-hsc]]'
+- '[[05-buildingblock-example-status]]'
+- '[[tip-5-7]]'
 - '[[03-context-example-business-1]]'
 - '[[03-context-example-business-2]]'
 - '[[03-context-example-technical-1]]'
@@ -105,6 +109,31 @@ closing rule under the last data row — a different gesture from the HtmlSC exa
 *every* pair, and one no author theory explains. So the honest summary is: one author accounts for
 the systematic habit, and a separate, milder habit of closing a table with a rule is spread across
 three sections and two page types.
+
+**Section 5 evidence (2026-09-22): the worst page, a third system, and two corrections.**
+
+[[05-buildingblock-example-hsc]] carries **14 surplus separator rows across three tables** (5, 5
+and 4), which ties [[08-concept-example-htmlsc-1]] for the worst page in the vault and makes it
+the eighth HtmlSC example with the habit.
+
+[[05-buildingblock-example-status]] is the correction that matters: it is a **status.arc42.org**
+example, not HtmlSC, MaMa or TPU, and it puts separators between its rows too. With
+[[03-context-example-business-2]] (MaMa) that is now two non-HtmlSC pages, so the section 7 note's
+"it tracks the author" should be read as a strong tendency, not a rule: the habit is on eight
+HtmlSC examples, one MaMa and one status page. A lint rule is therefore still worth more than a
+list of pages to fix, which strengthens option 2.
+
+Two things about the counting itself, both learned here:
+
+- A row of *empty* cells matches "only pipes, dashes, colons and spaces" just as a rule does. The
+  status example's table is `| | |` rows between separators — so of its four flagged rows only
+  two are surplus separators and two are empty data rows, which belong to
+  [[ISS-037-the-status-building-block-example-is-an-empty-stub|ISS-037]]. Option 2's rule must
+  require at least one dash in the row or it will flag empty rows as separators.
+- Kramdown does **not** require a separator row at all. [[tip-5-7]]'s two blackbox templates have
+  none, and both render as proper tables — correctly, since they are label/value templates with no
+  header. So the rule cannot simply treat "the first `|` row is the header"; the defect is a
+  dash-row *below* a genuine separator, not the presence or absence of one.
 
 **Options.**
 1. Delete the surplus separator rows when the brain owns the content, and fold the fix into

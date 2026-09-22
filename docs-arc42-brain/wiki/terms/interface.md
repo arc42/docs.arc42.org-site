@@ -9,11 +9,13 @@ sources:
 - '[[SRC-018-section-11-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-022-section-3-content]]'
+- '[[SRC-023-section-5-content]]'
 related:
 - '[[external-interface]]'
 - '[[building-block]]'
 - '[[context]]'
 - '[[port]]'
+- '[[blackbox]]'
 term: Interface
 aliases: []
 legacy-tags:

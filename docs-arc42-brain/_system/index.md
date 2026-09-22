@@ -73,6 +73,34 @@ One line per page, grouped by type. Updated on every ingest.
 - [tip-4-4](../wiki/tips/tip-4-4.md) — In the solution strategy, refer to concepts, views or code!
 - [tip-4-5](../wiki/tips/tip-4-5.md) — Let the solution strategy grow iteratively / incrementally!
 - [tip-4-6](../wiki/tips/tip-4-6.md) — Justify the solution strategy!
+- [tip-5-1](../wiki/tips/tip-5-1.md) — Use common structures for sections of the building block view!
+- [tip-5-2](../wiki/tips/tip-5-2.md) — Organize the building block view hierarchically!
+- [tip-5-3](../wiki/tips/tip-5-3.md) — Always describe level-1 of the building block view ('Level-1 is your friend')!
+- [tip-5-4](../wiki/tips/tip-5-4.md) — Ensure consistency of external interfaces to level-1
+- [tip-5-5](../wiki/tips/tip-5-5.md) — Describe the responsibility or purpose of every (important) blackbox!
+- [tip-5-6](../wiki/tips/tip-5-6.md) — Hide the inner workings of blackboxes!
+- [tip-5-7](../wiki/tips/tip-5-7.md) — Use tables to efficiently document/specify blackboxes!
+- [tip-5-8](../wiki/tips/tip-5-8.md) — Justify every whitebox structure!
+- [tip-5-9](../wiki/tips/tip-5-9.md) — Use runtime views to explain or specify whiteboxes!
+- [tip-5-10](../wiki/tips/tip-5-10.md) — Use crosscutting concepts to describe or specify similarities in building blocks!
+- [tip-5-11](../wiki/tips/tip-5-11.md) — Show multiple levels of the building block view!
+- [tip-5-12](../wiki/tips/tip-5-12.md) — Refine building-blocks consistently!
+- [tip-5-13](../wiki/tips/tip-5-13.md) — Explain the mapping of source-code to building blocks!
+- [tip-5-14](../wiki/tips/tip-5-14.md) — Explain where to find the source code of your building blocks!
+- [tip-5-15](../wiki/tips/tip-5-15.md) — Align the mapping of source-code to building-blocks along the directory and file structure!
+- [tip-5-16](../wiki/tips/tip-5-16.md) — Map building blocks according to modularization constructs of your programming language!
+- [tip-5-17](../wiki/tips/tip-5-17.md) — 'Cohesion' shall be the primary driver when creating architecture building blocks!
+- [tip-5-18](../wiki/tips/tip-5-18.md) — Ensure **every** piece of source code can be located in the building block view!
+- [tip-5-19](../wiki/tips/tip-5-19.md) — In exceptional cases include third-party software in the building block view!
+- [tip-5-20](../wiki/tips/tip-5-20.md) — Clearly indicate third-party elements in the building block view!
+- [tip-5-21](../wiki/tips/tip-5-21.md) — Describe or specify internal interfaces with minimal effort!
+- [tip-5-22](../wiki/tips/tip-5-22.md) — Document or specify interfaces with unit-tests!
+- [tip-5-23](../wiki/tips/tip-5-23.md) — Document or specify interfaces with runtime scenarios!
+- [tip-5-24](../wiki/tips/tip-5-24.md) — Use building-block level-1 for **other** information!
+- [tip-5-25](../wiki/tips/tip-5-25.md) — If useful, refine several building blocks at once!
+- [tip-5-26](../wiki/tips/tip-5-26.md) — Make the origin of lower-level building blocks explicit!
+- [tip-5-27](../wiki/tips/tip-5-27.md) — Refine only a few building blocks!
+- [tip-5-28](../wiki/tips/tip-5-28.md) — Explain concepts instead of building blocks!
 - [tip-7-1](../wiki/tips/tip-7-1.md) — Document your technical infrastructure (hardware)!
 - [tip-7-2](../wiki/tips/tip-7-2.md) — Explain hardware and infrastructure decisions!
 - [tip-7-3](../wiki/tips/tip-7-3.md) — Document the various environments!
@@ -140,6 +168,10 @@ One line per page, grouped by type. Updated on every ingest.
 - [03-context-example-technical-4](../wiki/examples/03-context-example-technical-4.md) — TrafficPursuitUnit, technical context
 - [04-solutionStrategy-example-htmlsc-1](../wiki/examples/04-solutionStrategy-example-htmlsc-1.md) — HTML Sanity Checker
 - [04-solutionStrategy-example-mama-2](../wiki/examples/04-solutionStrategy-example-mama-2.md) — MaMa
+- [05-buildingblock-example-hsc](../wiki/examples/05-buildingblock-example-hsc.md) — HTML Sanity Checker, levels 1 to 3
+- [05-buildingblock-example-status](../wiki/examples/05-buildingblock-example-status.md) — status.arc42.org, level 1 only
+- [05-buildingblock-example-tpu-lev-1](../wiki/examples/05-buildingblock-example-tpu-lev-1.md) — TrafficPursuitUnit, level 1
+- [05-buildingblock-example-tpu-lev-2](../wiki/examples/05-buildingblock-example-tpu-lev-2.md) — TrafficPursuitUnit, level 2
 - [07-deployment-example-tpu-1](../wiki/examples/07-deployment-example-tpu-1.md) — TrafficPursuitUnit
 - [07-deployment-sample-htmlsc-1](../wiki/examples/07-deployment-sample-htmlsc-1.md) — HTML Sanity Checker
 - [07-deployment-sample-tpu-2](../wiki/examples/07-deployment-sample-tpu-2.md) — TrafficPursuitUnit Level 2
@@ -195,6 +227,11 @@ One line per page, grouped by type. Updated on every ingest.
 - [business-context](../wiki/terms/business-context.md) — Business context
 - [technical-context](../wiki/terms/technical-context.md) — Technical context
 - [port](../wiki/terms/port.md) — Port
+- [blackbox](../wiki/terms/blackbox.md) — Blackbox
+- [whitebox](../wiki/terms/whitebox.md) — Whitebox
+- [cohesion](../wiki/terms/cohesion.md) — Cohesion
+- [runtime-view](../wiki/terms/runtime-view.md) — Runtime view
+- [runtime-scenario](../wiki/terms/runtime-scenario.md) — Runtime scenario
 
 ## Keywords
 
@@ -255,6 +292,11 @@ One line per page, grouped by type. Updated on every ingest.
 - [ISS-031](../wiki/issues/ISS-031-tips-3-12-and-3-13-overlap-on-transitive-dependencies.md) — open, gap: tips 3-12 and 3-13 embed the same figure and explain the same two arrows
 - [ISS-032](../wiki/issues/ISS-032-the-comprehensive-context-diagram-is-german-and-renames-its-system.md) — open, gap: big-context.png is half German and names its system VENOM where its English twin says Big System
 - [ISS-033](../wiki/issues/ISS-033-context-example-numbers-and-permalinks-do-not-line-up.md) — open, gap: business-4 and technical-4 are different systems, and one permalink reverses its own words
+- [ISS-034](../wiki/issues/ISS-034-the-site-tag-scenario-means-two-different-things.md) — in-progress, ambiguity: `scenario` means a quality scenario on 4 pages and a runtime scenario on 12; policy decided, section 3 still to follow it
+- [ISS-035](../wiki/issues/ISS-035-tip-5-23-sends-readers-to-section-7-for-runtime-scenarios.md) — open, contradiction: tip 5-23 links section 7 for runtime scenarios, which are section 6
+- [ISS-036](../wiki/issues/ISS-036-two-section-5-tips-ship-unfinished-text.md) — open, gap: tip 5-1 publishes an editor's TODO and tip 5-24 an untranslated German paragraph with a print hyphenation artefact
+- [ISS-037](../wiki/issues/ISS-037-the-status-building-block-example-is-an-empty-stub.md) — open, gap: the status.arc42.org building block example publishes a table with two blank rows
+- [ISS-038](../wiki/issues/ISS-038-section-5-bodies-carry-editorial-defects.md) — open, gap: sixteen section 5 defects, incl. `detailling` twice and a German "und" in a heading
 
 ## Sources
 
@@ -280,6 +322,7 @@ One line per page, grouped by type. Updated on every ingest.
 - [SRC-020](../raw/sources/SRC-020-section-8-content.md) — section-8-content
 - [SRC-021](../raw/sources/SRC-021-section-7-content.md) — section-7-content
 - [SRC-022](../raw/sources/SRC-022-section-3-content.md) — section-3-content
+- [SRC-023](../raw/sources/SRC-023-section-5-content.md) — section-5-content
 
 ## Architecture Decisions (ADR)
 - [ADR-0001](adr/0001-record-architecture-decisions.md) — Record decisions about the brain as ADRs

@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-22'
 sources:
+- '[[SRC-023-section-5-content]]'
 - '[[SRC-022-section-3-content]]'
 - '[[SRC-021-section-7-content]]'
 - '[[SRC-020-section-8-content]]'
@@ -17,6 +18,20 @@ sources:
 - '[[SRC-013-section-9-content]]'
 - '[[SRC-014-section-2-content]]'
 related:
+- '[[tip-5-3]]'
+- '[[tip-5-4]]'
+- '[[tip-5-6]]'
+- '[[tip-5-10]]'
+- '[[tip-5-11]]'
+- '[[tip-5-13]]'
+- '[[tip-5-14]]'
+- '[[tip-5-16]]'
+- '[[tip-5-19]]'
+- '[[tip-5-20]]'
+- '[[tip-5-21]]'
+- '[[tip-5-23]]'
+- '[[tip-5-26]]'
+- '[[tip-5-28]]'
 - '[[tip-3-8]]'
 - '[[tip-3-9]]'
 - '[[tip-3-12]]'
@@ -145,6 +160,30 @@ true count is exactly **three** blocked references left, all pointing into secti
 [[tip-7-4]] → 5-2 and [[tip-8-11]] → 5-10 twice — and none anywhere pointing into section 6. So
 the sweep becomes possible after section 5 regardless of when section 6 is ingested, which is a
 stronger statement than the one it replaces, arrived at by counting rather than by assuming.
+
+**Section 5 evidence (2026-09-22), and the issue is now unblocked.** Twenty-three references
+across fourteen tips, the largest crop of all — and **every single one is convertible today**.
+Twenty are section-internal ([[tip-5-3]] → 5-4; [[tip-5-6]] → 5-3; [[tip-5-11]] → 5-2, 5-10 and
+5-12; [[tip-5-13]] → 5-14, 5-15 and 5-16; [[tip-5-14]] → 5-15; [[tip-5-16]] → 5-17; [[tip-5-19]]
+→ 5-20 **twice**; [[tip-5-20]] → 5-19; [[tip-5-21]] → 5-22; [[tip-5-26]] → 5-25; [[tip-5-28]] →
+5-3 and 5-10; [[tip-5-10]] → 5-28). Two are cross-section and now resolve: [[tip-5-10]] and
+[[tip-5-28]] both link `/tips/8-11`, and section 8 has been in the brain since 2026-09-21. Three
+point at section pages — [[tip-5-4]] → `/section-3`, [[tip-5-10]] → `/section-8/`, [[tip-5-1]] →
+`/section-5/`, its own — which have existed since the bootstrap.
+
+**Section 5 was the block, and it is gone.** The three references that were waiting for it —
+[[tip-7-4]] → `/tips/5-2` and [[tip-8-11]] → `/tips/5-10` twice — now have their targets in the
+vault. There is no reference anywhere in the brain whose target is missing, and none pointing into
+section 6, the one section still un-ingested. The sweep of option 1 can therefore be done as a
+single reviewable change whenever it is wanted, which is exactly the condition this issue has been
+recording since section 1.
+
+The twenty-fourth reference is the exception that needs a different fix:
+[[tip-5-23]] → `/section-7` is not a hard-coded URL that should be a wikilink, it is a link to the
+**wrong section** — see
+[[ISS-035-tip-5-23-sends-readers-to-section-7-for-runtime-scenarios|ISS-035]]. A mechanical sweep
+would faithfully convert it to `[[section-7]]` and preserve the error, so that one must be fixed
+by hand first.
 
 **Options.**
 1. Rewrite them to `[[tip-9-2]]` when the brain owns the content (after cutover), and let the

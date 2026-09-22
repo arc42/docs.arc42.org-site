@@ -4,11 +4,12 @@ type: term
 title: Concept
 status: review
 created: '2026-09-21'
-updated: '2026-09-21'
+updated: '2026-09-22'
 sources:
 - '[[SRC-016-section-4-content]]'
 - '[[SRC-019-section-12-content]]'
 - '[[SRC-020-section-8-content]]'
+- '[[SRC-023-section-5-content]]'
 related:
 - '[[view]]'
 - '[[solution-strategy]]'
@@ -16,6 +17,7 @@ related:
 - '[[i18n]]'
 - '[[domain]]'
 - '[[building-block]]'
+- '[[cohesion]]'
 term: Concept
 aliases:
 - Crosscutting concept

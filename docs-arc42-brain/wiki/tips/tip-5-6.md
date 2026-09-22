@@ -1,0 +1,71 @@
+---
+id: 5-6
+type: tip
+title: 'Tip 5-6: Hide the inner workings of blackboxes!'
+status: review
+created: '2026-09-22'
+updated: '2026-09-22'
+sources:
+- '[[SRC-023-section-5-content]]'
+related:
+- '[[tip-5-3]]'
+- '[[tip-5-5]]'
+- '[[tip-5-7]]'
+section: '[[section-5]]'
+keywords:
+- '[[lean]]'
+- '[[essential]]'
+terms:
+- '[[building-block]]'
+- '[[blackbox]]'
+legacy-tags: []
+date: '2016-03-01'
+permalink: /tips/5-6/
+---
+
+Blackboxes respect the information hiding principle: To use a black box,
+you only need to know its responsibility and its input and output interfaces.
+Additional details from its inner workings are (usually) not required.
+
+This concealment provides a number of advantages:
+
+* You can change or modify the inner workings, without users (clients, consumers)
+needing to adapt to those changes.
+* You might refrain from documenting the whitebox of this building block.
+That can reduce the maintenance effort of your documentation.
+* Eventually you reduce the level of details that some stakeholders have to consider or know.
+
+In extreme cases you restrict the building block view to level-1
+(see [tip 5-3 ('level-1 is your friend')](/tips/5-3)),
+the whitebox of the overall system - without detailling any of the
+top-level building blocks.
+
+### Information sometimes required
+
+According to "blackbox-theory", knowing the responsibility and
+interface of such a blockbox is sufficient. But in reality, sometimes
+additional properties of such a building-block are required -
+for example runtime- or deployment properties or other kinds
+of qualities.
+
+Let's consider a simple blackbox - the square-root function (short "sqrt")
+has a very simple interface ("API"):
+
+`sqrt( number ) -> number`
+
+where number > 0.
+
+For a sqrt-blackbox the following several other properties might be
+important:
+
+* what precision does our sqrt-blackbox provide, how many digits will
+it deliver. ("Correctness")
+* are all users allowed to use sqrt, or is our sqrt restricted
+to specific users ("Authorization")
+* can our sqrt-function be called by many parallel users
+("parallelism, multi-user-capability")
+* will usage of our sqrt-function cost money
+* how fast will our function deliver its results ("performance efficiency")
+
+From the examples you see that several "Qualities" might be relevant
+for your blackboxes.

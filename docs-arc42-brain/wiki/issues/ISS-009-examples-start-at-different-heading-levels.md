@@ -6,6 +6,7 @@ status: open
 created: '2026-09-17'
 updated: '2026-09-22'
 sources:
+- '[[SRC-023-section-5-content]]'
 - '[[SRC-022-section-3-content]]'
 - '[[SRC-020-section-8-content]]'
 - '[[SRC-018-section-11-content]]'
@@ -13,6 +14,10 @@ sources:
 - '[[SRC-015-section-1-content]]'
 - '[[SRC-013-section-9-content]]'
 related:
+- '[[05-buildingblock-example-hsc]]'
+- '[[05-buildingblock-example-status]]'
+- '[[05-buildingblock-example-tpu-lev-1]]'
+- '[[05-buildingblock-example-tpu-lev-2]]'
 - '[[03-context-example-business-1]]'
 - '[[03-context-example-business-2]]'
 - '[[03-context-example-business-3]]'
@@ -91,6 +96,20 @@ So one page's `##` is another's `###`, and a third page's `##` carries a number 
 reserve for `###`. This is the first section where the same pair of numbers (3.1 and 3.2) appears
 at two different depths within one category, which is what makes it useful evidence: a rule that
 only fixes the *level* would still leave `3.` and `3.2` competing for the top line.
+
+**Section 5 evidence (2026-09-22), and a fourth scheme.** The four building block examples use
+three different conventions between them. [[05-buildingblock-example-hsc]] and
+[[05-buildingblock-example-status]] open at `### 5.1`, one level below every other example on the
+site, and HtmlSC then nests properly down to `##### 5.2.1.1 Checker (Blackbox)` — five levels
+deep, the deepest page in the vault. The two TPU examples open at `## 5.1` and `## 5.2`.
+
+The fourth scheme is new and is not about levels at all: inside their `## 5.x` heading both TPU
+examples number their building blocks `### 1.`, `### 2.`, `### 3.`, `### 4.`, and the level-2 page
+continues `### 1.1` … `### 1.7` to mean "the parts of building block 1". That is a perfectly
+sensible numbering *of building blocks*, and it collides head-on with the arc42 section numbering
+every other heading on the site uses — so a reader meets "1.1 MuServices" inside a page about
+section 5 and has to work out which numbering they are in. Any rule this issue eventually adopts
+has to say whether example headings number the arc42 structure or the system's own.
 
 **Options.**
 1. Demote the ADR example to H2 — one character, makes the three consistent.
