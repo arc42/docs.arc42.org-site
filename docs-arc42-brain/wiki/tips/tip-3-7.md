@@ -13,9 +13,7 @@ related:
 - '[[tip-3-8]]'
 - '[[tip-3-9]]'
 section: '[[section-3]]'
-keywords:
-- '[[cluster]]'
-- '[[criteria]]'
+keywords: []
 terms:
 - '[[context]]'
 legacy-tags: []

@@ -247,8 +247,6 @@ One line per page, grouped by type. Updated on every ingest.
 - [test](../wiki/keywords/test.md) — The page uses tests as documentation, or documents how the system is tested
 - [hierarchy](../wiki/keywords/hierarchy.md) — The page advises documenting in levels, refining one element at a time
 - [mapping](../wiki/keywords/mapping.md) — The page is about mapping one structure onto another, usually software onto hardware
-- [cluster](../wiki/keywords/cluster.md) — The page groups many elements into fewer, so that a diagram stays readable
-- [criteria](../wiki/keywords/criteria.md) — The page insists the rule behind a grouping is written down, not just applied
 
 ## Systems
 

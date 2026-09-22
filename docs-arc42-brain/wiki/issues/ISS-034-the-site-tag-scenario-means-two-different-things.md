@@ -2,7 +2,7 @@
 id: ISS-034
 type: issue
 title: The site tag `scenario` means two different things, and two earlier tags did the same
-status: in-progress
+status: resolved
 created: '2026-09-22'
 updated: '2026-09-22'
 sources:
@@ -15,7 +15,7 @@ related:
 severity: major
 kind: ambiguity
 raised-by: agent
-resolved: null
+resolved: '2026-09-22'
 ---
 
 **What's unresolved.** `scenario` sits on 16 pages and means a *quality* scenario on four of them
@@ -55,7 +55,15 @@ delta on one page. [[quality-scenario]] keeps the `scenario` legacy tag, since i
 majority reading and two sections already fold that way; [[runtime-scenario]] does not claim it,
 and says in its *Distinguish from* paragraph why.
 
-Left to do: apply the same rule to [[tip-3-7]], where `cluster` and `criteria` should fold into
-the term the page is actually about rather than stand as keywords of their own. That is a change
-to a section already committed, so it travels as its own commit. Section 6 will then be
-straightforward: every `scenario` there is a runtime scenario.
+Applied to [[tip-3-7]] in the same session. Its `cluster` and `criteria` fold into [[context]],
+the term the page already carried — on that page the two tags only say "group the neighbours, and
+say by what rule", which is what the context section is for. Neither name is claimed by
+[[context]] in `legacy-tags`, because [[requirement]] and [[decision-criteria]] hold those claims
+for their own sections; the exception is recorded in [[context]]'s prose and here. Both tags reach
+**zero** at section 3's cut-over, which finishes the consolidation sections 1 and 9 began, and the
+two keyword pages created for them are deleted.
+
+So the rule, stated once: **one term owns a legacy tag name; a page whose use of that tag means
+something else is mapped by meaning, and the exception is recorded in this issue and in the
+receiving term's prose.** Every name in the vault is now claimed by exactly one vocabulary page.
+Section 6 needs no new decision — all eleven of its tips mean a runtime scenario.

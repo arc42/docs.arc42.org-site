@@ -33,6 +33,14 @@ usual advice and asks for *all* external neighbours — while [[tip-3-5]] forbid
 completeness invites. The two hold together only through abstraction, which is why grouping
 neighbours ([[tip-3-6]], [[tip-3-7]], [[tip-3-8]]) takes three tips of its own.
 
+**On the tags.** [[tip-3-7]] also carried `cluster` and `criteria`, which say nothing about the
+context that this term does not: on that page they mean "group the neighbours, and say by what
+rule". Both names were already claimed by other terms for other meanings — `cluster` by
+[[requirement]] since section 1, `criteria` by [[decision-criteria]] since section 9 — so under
+the policy of [[ISS-034-the-site-tag-scenario-means-two-different-things|ISS-034]] they fold here
+by meaning without being claimed here by name. Both reach zero at section 3's cut-over, finishing
+a consolidation sections 1 and 9 began.
+
 **Distinguish from.** [[external-interface]] — the context is the *set* of partners and the
 boundary around them; an external interface is one crossing of that boundary. The distinction
 matters because the context can be complete while the interfaces stay unspecified, which is
