@@ -340,3 +340,14 @@ have each asked for separately.
   family (ISS-005, ISS-016, ISS-025), now linked but still three
 - gates unchanged: lint 0 errors / 252 warnings, `brain-test` 141 passed. Issues 44 total, 40 open,
   4 resolved (ISS-001, ISS-010, ISS-017, ISS-034)
+
+## [2026-09-23] generate | dashboard, 0 files changed
+
+## [2026-09-23] cutover | section 6
+
+- pages: the section page, `tip-6-1` … `tip-6-11` and the three runtime examples — **15 pages**, all `draft`/`review` → `published`, and 15 new URLs recorded in `_system/published-permalinks.txt` (now 76)
+- `make generate`: 15 written, then **0 written, 0 deleted** on the second run. `make generate-check SECTION=6` PASS 15 files, `make check` all sanity checks passed and 425 local targets resolved, `make check-links` html-proofer finished successfully over 201 files, `brain-check-generated` 0 problems
+- **the two folds are live, and one tag reached zero.** Verified in the built `_site/keywords/index.html` rather than assumed: `runtime-scenario` 5 → 12, `scenario` 16 → 5, and `runtime` **has no anchor at all any more** — the three examples were its only holders. Exactly the outcome the section 3 correction predicted for a tag reaching zero: an anchor disappears from the single `/keywords/` page, no URL is retired, nothing enters `retired-permalinks.txt`
+- the five remaining `scenario` pages are [[tip-5-23]] and the four section 10 tips, all still hand-written. Section 10's cut-over will take the tag to **zero**, since those four already reference [[quality-scenario]] in the brain
+- meta descriptions checked in `_site` for tips 6-1 and 6-11, section-6 and the HtmlSC example: all carry real body text, none the marker comment. The marker sits on the last front-matter line of every generated file (line 26 of `2016-03-01-t-6-1.md`, with `---` on 27)
+- state: **5 of 12 sections cut over** — 1, 2, 4, 9 and now 6. Seven remain at `review`: 3, 5, 7, 8, 10, 11, 12

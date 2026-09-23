@@ -1,11 +1,21 @@
 ---
 layout: post
 title: "Example Runtime View: HTML Sanity Checker"
-tags: runtime example 
+tags: example runtime-view
 category: runtime
 permalink: /examples/runtime-1/
+related:
+- kind: section
+  title: "6 - Runtime view"
+  url: /section-6/
+- kind: tip
+  title: "Tip 6-2: Document only a few runtime scenarios!"
+  url: /tips/6-2/
+- kind: tip
+  title: "Tip 6-11: Use sequence diagrams to describe or specify runtime scenarios!"
+  url: /tips/6-11/
+# generated from docs-arc42-brain/wiki/examples/06-runtime-example-htmlsc-1.md — do not edit
 ---
-
 
 <div class="arc42-example">
 <br>

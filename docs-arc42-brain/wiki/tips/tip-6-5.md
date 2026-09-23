@@ -3,9 +3,9 @@ id: 6-5
 type: tip
 title: 'Tip 6-5: Use scenarios primarily to `discover` building blocks, not so much
   for documentation!'
-status: review
+status: published
 created: '2026-09-22'
-updated: '2026-09-22'
+updated: '2026-09-23'
 sources:
 - '[[SRC-024-section-6-content]]'
 related:

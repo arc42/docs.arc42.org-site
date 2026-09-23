@@ -4,6 +4,7 @@ title: 6 - Runtime view
 permalink: /section-6/
 number: 6
 order: 10
+# generated from docs-arc42-brain/wiki/sections/section-6.md — do not edit
 ---
 
 # 6. Runtime View

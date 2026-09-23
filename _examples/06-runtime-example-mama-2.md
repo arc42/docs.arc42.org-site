@@ -1,9 +1,20 @@
 ---
 layout: post
 title: "Example Runtime View: MaMa"
-tags: runtime example 
+tags: example runtime-view
 category: runtime
 permalink: /examples/runtime-mama-2/
+related:
+- kind: section
+  title: "6 - Runtime view"
+  url: /section-6/
+- kind: tip
+  title: "Tip 6-6: Describe excerpts of scenarios (partial scenarios)!"
+  url: /tips/6-6/
+- kind: tip
+  title: "Tip 6-9: Use a textual notation to describe runtime scenarios!"
+  url: /tips/6-9/
+# generated from docs-arc42-brain/wiki/examples/06-runtime-example-mama-2.md — do not edit
 ---
 
 <p></p>
@@ -50,4 +61,3 @@ In _good cases_ there will be no errors.
 Calls to `ImportErrorHandler` are only executed if errors occur!
 
 ![(Second part of data import:) Validate imported data]({{ site.exampleimages }}/mama/9-validateRawData.png)
-

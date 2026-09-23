@@ -2,9 +2,9 @@
 id: 6-4
 type: tip
 title: 'Tip 6-4: Document detailed scenarios (with caution)!'
-status: review
+status: published
 created: '2026-09-22'
-updated: '2026-09-22'
+updated: '2026-09-23'
 sources:
 - '[[SRC-024-section-6-content]]'
 related:

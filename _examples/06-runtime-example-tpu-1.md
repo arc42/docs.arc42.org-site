@@ -1,11 +1,24 @@
 ---
 layout: post
 title: "Example Runtime View: TrafficPursuitUnit"
-tags: runtime example 
+tags: example runtime-view
 category: runtime
 permalink: /examples/runtime-tpu-1/
+related:
+- kind: section
+  title: "6 - Runtime view"
+  url: /section-6/
+- kind: tip
+  title: "Tip 6-1: Always map existing building blocks to the activities within runtime scenarios!"
+  url: /tips/6-1/
+- kind: tip
+  title: "Tip 6-4: Document detailed scenarios (with caution)!"
+  url: /tips/6-4/
+- kind: tip
+  title: "Tip 6-7: Use activity diagrams with swimlanes to describe or specify runtime scenarios!"
+  url: /tips/6-7/
+# generated from docs-arc42-brain/wiki/examples/06-runtime-example-tpu-1.md — do not edit
 ---
-
 
 <div class="arc42-example">
 <br>
@@ -43,4 +56,3 @@ This extended activity diagram includes the concurrency by showing asynchonously
 
 
 ![Fig. 6.4: Extended Activity Diagram]({{ site.exampleimages }}/tpu/III61_MeasurementPropagationAD-EXT.webp)
-

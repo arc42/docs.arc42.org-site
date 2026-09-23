@@ -2,9 +2,9 @@
 id: section-6
 type: section
 title: 6 - Runtime view
-status: draft
+status: published
 created: '2026-09-17'
-updated: '2026-09-17'
+updated: '2026-09-23'
 sources:
 - '[[SRC-006-section-6-page]]'
 related: []
