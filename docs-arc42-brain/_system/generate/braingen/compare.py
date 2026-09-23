@@ -14,6 +14,13 @@ Pass condition:
 
 EXPECTED_BODY lists the documented differences; each is applied to the
 original before comparing and reported as a note.
+
+A body difference the brain introduced on purpose passes only when it is
+recorded in `_system/approved-body-edits.tsv` (ADR-0006): `approvals` maps
+(site path, fingerprint of the new body) to the approval, and a hit turns the
+failure into a note naming the issue that authorised it. An unapproved
+difference still fails, and so does a *further* edit to an approved page,
+because its body has a different fingerprint.
 """
 from __future__ import annotations
 
@@ -44,6 +51,12 @@ class FileReport:
 
 
 HARD_BREAK_RE = re.compile(r" {2,}$")
+
+
+def _fingerprint(body: str) -> str:
+    from .approvals import fingerprint
+
+    return fingerprint(body)
 
 
 def normalise_line(line: str) -> str:
@@ -83,7 +96,8 @@ def leading_blank_lines(text: str) -> int:
     return len(rest) - len(rest.lstrip("\n"))
 
 
-def compare_file(rel: str, original: str, generated: str, section: int, aliases: dict[str, str]) -> FileReport:
+def compare_file(rel: str, original: str, generated: str, section: int, aliases: dict[str, str],
+                 approvals: dict | None = None) -> FileReport:
     rep = FileReport(rel)
     o, g = frontmatter.loads(original), frontmatter.loads(generated)
     for key, value in o.metadata.items():
@@ -113,7 +127,12 @@ def compare_file(rel: str, original: str, generated: str, section: int, aliases:
         rep.problems.append(f"further-info foot: {ofoot} -> {gfoot}")
     ol, gl = normalise_lines(obody), normalise_lines(gbody)
     if ol != gl:
-        diff = list(difflib.unified_diff(ol, gl, "original", "generated", lineterm="", n=1))
-        rep.problems.append("body differs:\n    " + "\n    ".join(diff[:40]))
+        approved = (approvals or {}).get((rel, _fingerprint(gbody)))
+        if approved:
+            rep.notes.append(
+                f"approved body edit ({approved.issue}, {approved.date}): {approved.reason}")
+        else:
+            diff = list(difflib.unified_diff(ol, gl, "original", "generated", lineterm="", n=1))
+            rep.problems.append("body differs:\n    " + "\n    ".join(diff[:40]))
     rep.ok = not rep.problems
     return rep

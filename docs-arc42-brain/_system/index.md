@@ -273,7 +273,7 @@ One line per page, grouped by type. Updated on every ingest.
 ## Issues
 
 - [ISS-001](../wiki/issues/ISS-001-quality-tag-on-tips-9-1-and-9-4.md) — resolved, ambiguity: `quality` means the arc42 concept; confirmed on tip 9-1, unsupported by tip 9-4's body
-- [ISS-002](../wiki/issues/ISS-002-adr-structure-omits-timestamp-and-criteria.md) — open, contradiction: the ADR structure proposed in section 9 omits timestamp and decision criteria
+- [ISS-002](../wiki/issues/ISS-002-adr-structure-omits-timestamp-and-criteria.md) — resolved, contradiction: the ADR structure proposed in section 9 omits timestamp and decision criteria
 - [ISS-003](../wiki/issues/ISS-003-pugh-matrix-link-leads-to-unrelated-site.md) — open, risk: the Pugh matrix link in tip 9-2 now leads to an unrelated site
 - [ISS-004](../wiki/issues/ISS-004-external-links-redirect.md) — open, risk: three external links in the section 9 content redirect
 - [ISS-005](../wiki/issues/ISS-005-tip-9-2-table-markup-broken.md) — open, gap: the second criteria table in tip 9-2 has an invalid separator row
@@ -350,3 +350,4 @@ One line per page, grouped by type. Updated on every ingest.
 - [ADR-0003](adr/0003-two-vocabularies.md) — Terms and keywords are separate vocabularies
 - [ADR-0004](adr/0004-explicit-related-links.md) — The site renders only explicit related links
 - [ADR-0005](adr/0005-no-liquid-callouts-and-directives.md) — No Liquid in the brain; callouts and directives instead
+- [0006](../_system/adr/0006-approved-body-edits.md) — corrections to published bodies are approved one at a time, against a diff

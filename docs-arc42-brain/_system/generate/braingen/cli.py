@@ -1,4 +1,4 @@
-"""braingen command line: lint | raw | import | generate | generate-check | check-generated."""
+"""braingen command line: lint | raw | import | generate | generate-check | check-generated | approve-edit."""
 from __future__ import annotations
 
 import argparse
@@ -103,6 +103,53 @@ def cmd_check_generated(args: argparse.Namespace) -> int:
     return 1 if problems else 0
 
 
+def cmd_approve_edit(args: argparse.Namespace) -> int:
+    """Show what an edit does to a published body, and record it only on --yes.
+
+    Corrections to published text are the point of the brain owning the
+    content, but the raw-parity guard cannot tell a correction from an emitter
+    regression. So a correction is approved by a human who has seen the diff,
+    and the approval covers exactly the body it was shown (ADR-0006).
+    """
+    import difflib
+    from datetime import date
+
+    from .approvals import Approval, append, fingerprint, original_from_raw
+    from .compare import normalise_lines, split_foot
+    from .generate import plan
+    from .parity import PARITY_STATUSES
+
+    vault = load_vault(args.vault)
+    outputs = {o.rel: o for o in plan(vault, statuses=PARITY_STATUSES).outputs}
+    if args.rel not in outputs:
+        print(f"{args.rel}: not a file this vault generates")
+        return 1
+    original = original_from_raw(args.vault, args.rel)
+    if original is None:
+        print(f"{args.rel}: no hand-written original in raw/ingested/ — nothing to approve against")
+        return 1
+
+    import frontmatter
+
+    old, _ = split_foot(frontmatter.loads(original).content)
+    new, _ = split_foot(frontmatter.loads(outputs[args.rel].text).content)
+    ol, nl = normalise_lines(old), normalise_lines(new)
+    if ol == nl:
+        print(f"{args.rel}: body is unchanged from the original — no approval needed")
+        return 0
+    diff = list(difflib.unified_diff(ol, nl, "as ingested", "as it would be published", lineterm="", n=3))
+    print("\n".join(diff))
+    fp = fingerprint(new)
+    print(f"\n{args.rel}\nfingerprint {fp}\nissue {args.issue}\nreason {args.reason}")
+    if not args.yes:
+        print("\nnot recorded. Re-run with --yes to approve exactly this body.")
+        return 1
+    path = append(args.vault, Approval(args.rel, fp, args.issue, args.today or date.today().isoformat(),
+                                       args.reason))
+    print(f"\nrecorded in {path.relative_to(args.vault)}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="braingen", description="docs-arc42-brain tooling")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -130,6 +177,14 @@ def build_parser() -> argparse.ArgumentParser:
     pc.add_argument("--section", type=int, default=None, help="one section; default: every section in the brain")
     pc.add_argument("--out", type=Path, required=True, help="scratch folder, e.g. docs-arc42-brain/build/parity")
     pc.set_defaults(func=cmd_generate_check)
+    ae = sub.add_parser("approve-edit", help="show an edit to a published body and record it on --yes")
+    ae.add_argument("--vault", type=Path, required=True)
+    ae.add_argument("--rel", required=True, help="site path, e.g. _pages/section-9.md")
+    ae.add_argument("--issue", required=True, help="the issue that decided it, e.g. ISS-002")
+    ae.add_argument("--reason", required=True, help="one line, what the edit does and why")
+    ae.add_argument("--today", default=None)
+    ae.add_argument("--yes", action="store_true", help="record it; without this the diff is only shown")
+    ae.set_defaults(func=cmd_approve_edit)
     cg = sub.add_parser("check-generated", help="fail if a generated file differs from a fresh generate")
     cg.add_argument("--vault", type=Path, required=True)
     cg.add_argument("--site", type=Path, required=True)

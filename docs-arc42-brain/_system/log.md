@@ -351,3 +351,45 @@ have each asked for separately.
 - the five remaining `scenario` pages are [[tip-5-23]] and the four section 10 tips, all still hand-written. Section 10's cut-over will take the tag to **zero**, since those four already reference [[quality-scenario]] in the brain
 - meta descriptions checked in `_site` for tips 6-1 and 6-11, section-6 and the HtmlSC example: all carry real body text, none the marker comment. The marker sits on the last front-matter line of every generated file (line 26 of `2016-03-01-t-6-1.md`, with `---` on 27)
 - state: **5 of 12 sections cut over** — 1, 2, 4, 9 and now 6. Seven remain at `review`: 3, 5, 7, 8, 10, 11, 12
+
+## [2026-09-23] fix | ISS-002, and the mechanism that made it possible
+
+- **ISS-002 resolved by the facilitator's ruling**: add the date, add the criteria too, mark the
+  criteria optional. Section 9's ADR table now carries `| Date |` after *Title* and
+  `| (optional) Criteria |` after *Decision*, each labelled *(an arc42 addition, not part of the
+  original Nygard structure)* so the "thanx to Michael Nygard for this proposal" two lines above
+  stays true
+- the two rows differ in force because the two tips do. [[tip-9-8]] is flat — "decisions (e.g.
+  ADRs) should contain a timestamp attribute" — and the ADR example backs it with "(we propose to
+  always use such a timestamp!)". [[tip-9-5]] hedges its own: "but maybe I'm overly peculiar in
+  that aspect". `(optional)` is the site's own way of saying that: [[tip-5-7]]'s blackbox template
+  uses it four times and section 7's page for a whole heading, so no new convention was invented
+- side effect: [[09-decision-example-adr]] stops being the "third way" ISS-002 complained about.
+  It wrote the date into its body with an aside proposing it; now it simply demonstrates the
+  proposal
+- **the edit did not work, and that is the interesting part.** This was the first correction the
+  brain has ever made to a published body, and `test_parity_against_the_ingested_originals` failed
+  it. That test compares every ingested section against the immutable copy in `raw/ingested/` and,
+  in its own docstring, is "the only guard that survives cut-over" — so it cannot tell a
+  deliberate correction from an emitter regression. Every queued content fix was blocked by it
+  without anyone noticing: ISS-035, ISS-036, ISS-041 and all ~90 corrections of ISS-044
+- **ADR-0006**, on the facilitator's instruction that corrections need "an explicit go from the
+  user showing before/after similar to a diff": a body edit is approved one change at a time by a
+  human who has seen the diff, and the approval is appended to `_system/approved-body-edits.tsv`
+  (`<site path> <sha256 of the normalised new body> <issue> <date> <reason>`), append-only like
+  the two permalink registries. `make brain-approve-edit REL=… ISSUE=… REASON="…"` prints the
+  unified diff from the ingested original to the body that would be published and **records
+  nothing**; only `YES=1` appends
+- **the fingerprint is what makes it per-change rather than per-file.** A line exempts one version
+  of one page. Verified both ways, not assumed: with the approval recorded the suite is green, and
+  a second unapproved word added to the same already-approved page fails it again. Front matter,
+  tags, the foot and every other page are compared exactly as before
+- the fingerprint is taken after the comparison's own normalisation (foot removed, trailing
+  whitespace and blank lines), so reflowing a paragraph does not force a re-approval for a change
+  no reader sees
+- new: `braingen/approvals.py`, `braingen approve-edit`, `make brain-approve-edit`,
+  `tests/test_approvals.py` (9 tests), ADR-0006. CLAUDE.md and `_system/workflows/cutover.md`
+  carry the rule
+- gates: `brain-test` **150 passed** (141 before), lint 0 errors / 254 warnings, `generate-check
+  SECTION=9` PASS 14 files, `check-generated` 0 problems, `make check` and `make check-links`
+  clean. Issues 44 total, **39 open, 5 resolved** (001, 002, 010, 017, 034)

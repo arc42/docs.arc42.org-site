@@ -22,6 +22,7 @@ from pathlib import Path
 
 import frontmatter
 
+from .approvals import load as load_approvals
 from .compare import FileReport, compare_file, split_tags
 from .generate import Plan, plan
 from .parse import Vault
@@ -125,13 +126,15 @@ def check_section(vault: Vault, site: Path, section: int, out_dir: Path) -> Sect
     if target.exists():
         shutil.rmtree(target)
     aliases = alias_table(vault)
+    approvals = load_approvals(vault.root)
     for o in p.outputs:
         dst = target / o.rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.write_text(o.text, encoding="utf-8")
         orig = site / o.rel
         if orig.exists():
-            rep.files.append(compare_file(o.rel, orig.read_text(encoding="utf-8"), o.text, section, aliases))
+            rep.files.append(compare_file(o.rel, orig.read_text(encoding="utf-8"), o.text,
+                                          section, aliases, approvals))
         else:
             rep.files.append(FileReport(o.rel, notes=["new: no original on the site"]))
     problems, notes = anchor_check(vault, site, section)

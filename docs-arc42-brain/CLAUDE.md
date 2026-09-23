@@ -84,6 +84,7 @@ make brain-test                      unit tests of the tooling
 make generate-check SECTION=9        parity: generate into build/parity/ and compare with the site
 make generate                        write the Jekyll files of every published page
 make brain-check-generated           fail if a generated file was hand-edited or a published URL would vanish (runs in make check)
+make brain-approve-edit REL=… ISSUE=… REASON="…" [YES=1]   show a correction to a published body as a diff; record it with YES=1
 make dashboard                       start the curator dashboard in Docker (http://localhost:4211)
 make dashboard-down                  stop the dashboard
 ```
@@ -99,3 +100,13 @@ Published URLs are permanent: `_system/published-permalinks.txt` (written by
 generate refuses to run when one of them would disappear. Retiring a URL on
 purpose means an entry with a reason in `_system/retired-permalinks.txt`.
 Never edit the registry by hand.
+
+**Correcting published text** (ADR-0006): the parity guard compares every
+ingested section against the immutable copy in `raw/ingested/`, so any edit to
+a body the brain publishes fails it until the edit is approved. Approve one
+change at a time with `make brain-approve-edit`, which prints the diff and
+records nothing without `YES=1`; the approval lands in
+`_system/approved-body-edits.tsv` (append-only, never edited by hand) and is
+keyed by a fingerprint of the body it was shown, so it does not cover the next
+edit to the same page. Fixing a typo in a published body is therefore a
+deliberate, reviewable act — which is the point.

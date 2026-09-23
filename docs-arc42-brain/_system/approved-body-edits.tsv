@@ -1,0 +1,4 @@
+# Approved edits to published bodies — append-only, see _system/adr/0006-approved-body-edits.md
+# Each line exempts ONE version of ONE page from the raw-parity body comparison.
+# <site path>	sha256 of the normalised new body	issue	date	reason
+_pages/section-9.md	e3b2676a1a20b3bc48438a5f400cbed1323402cb671452781d0993d948458629	ISS-002	2026-09-23	ADR table gains a Date row and an (optional) Criteria row, both marked as arc42 additions

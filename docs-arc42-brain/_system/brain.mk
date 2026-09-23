@@ -8,6 +8,7 @@ BRAIN_GEN := $(BRAIN_DIR)/_system/generate
 BRAINGEN  := uv run --directory $(BRAIN_GEN) braingen
 
 .PHONY: brain-test brain-lint brain-raw brain-import generate generate-check brain-check-generated \
+        brain-approve-edit \
         dashboard dashboard-down dashboard-logs dashboard-test
 
 brain-test: ## Run the braingen unit tests
@@ -39,6 +40,15 @@ generate-check: ## Parity: brain vs. site into build/parity/ (SECTION=9, default
 
 brain-check-generated: ## Fail if a generated file was hand-edited or is stale
 	$(BRAINGEN) check-generated --vault $(BRAIN_DIR) --site $(CURDIR)
+
+REL ?=
+ISSUE ?=
+REASON ?=
+YES ?=
+
+brain-approve-edit: ## Show an edit to a published body; record it with YES=1 (ADR-0006)
+	@test -n "$(REL)$(ISSUE)$(REASON)" || { echo 'usage: make brain-approve-edit REL=_pages/section-9.md ISSUE=ISS-002 REASON="..." [YES=1]'; exit 2; }
+	$(BRAINGEN) approve-edit --vault $(BRAIN_DIR) --rel $(REL) --issue $(ISSUE) --reason $(REASON) $(if $(YES),--yes)
 
 DASH_DIR     := $(BRAIN_DIR)/_system/dashboard
 DASH_COMPOSE := REPO_DIR=$(CURDIR) DASH_UID=$$(id -u) DASH_GID=$$(id -g) docker compose -f $(DASH_DIR)/compose.yaml

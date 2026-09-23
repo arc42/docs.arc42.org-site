@@ -38,6 +38,17 @@ brain-lint` reports 0 errors.
    front-matter line), blank lines after the front matter — no marker in the
    body, never a body change.
 
+## After cut-over: correcting the text
+
+Once a section is cut over the brain owns its bodies, and correcting one is the
+point. It is not free: the pytest guard of step 5 compares every ingested
+section against `raw/ingested/`, and a deliberate edit looks exactly like an
+emitter regression to it. Approve the edit with `make brain-approve-edit`
+(ADR-0006) — it prints the diff and records nothing without `YES=1` — and the
+comparison reports it as a note naming the issue instead of failing. One
+approval covers one version of one body; the next edit to the same page needs
+its own.
+
 ## After cut-over: URLs are permanent
 
 `_system/published-permalinks.txt` lists every URL `make generate` has
