@@ -88,7 +88,7 @@ def test_approve_edit_records_nothing_without_yes(tmp_path, capsys, monkeypatch)
 
     args = ["approve-edit", "--vault", str(vault), "--rel", "_pages/section-9.md",
             "--issue", "ISS-002", "--reason", "why"]
-    assert main(args) == 1
+    assert main(args) == 0, "the preview is the expected first step, not a failure"
     out = capsys.readouterr().out
     assert "not recorded" in out and "as it would be published" in out
     assert not approvals.register_path(vault).exists()
@@ -96,3 +96,39 @@ def test_approve_edit_records_nothing_without_yes(tmp_path, capsys, monkeypatch)
     assert main(args + ["--yes", "--today", "2026-09-23"]) == 0
     recorded = load(vault)
     assert [a.issue for a in recorded.values()] == ["ISS-002"]
+
+
+def test_body_diff_applies_the_documented_ingest_normalisations():
+    """compare_file rewrites section 10's hard-coded image paths before diffing;
+    body_diff must do the same or every section 10 page looks edited."""
+    from braingen.approvals import body_diff
+
+    original = "---\ntitle: t\n---\n\n![x](/assets/images/sections/10/a.png)\n"
+    generated = "---\ntitle: t\n---\n\n![x]({{ site.imageurl }}/10/a.png)\n"
+    assert body_diff(original, generated, section=10)[0] == ""
+    assert body_diff(original, generated, section=9)[0] != ""
+
+
+def test_pending_lists_changed_bodies_and_marks_the_approved_ones(tmp_path):
+    from braingen.approvals import Approval, append, fingerprint, pending
+
+    raw = tmp_path / "raw/ingested/section-9-all/pages"
+    raw.mkdir(parents=True)
+    (raw / "section-9.md").write_text(ORIGINAL, encoding="utf-8")
+    (raw / "section-4.md").write_text(ORIGINAL, encoding="utf-8")
+
+    outputs = {
+        "_pages/section-9.md": (EDITED, 9),
+        "_pages/section-4.md": (ORIGINAL, 4),          # unchanged: not pending
+        "_pages/section-7.md": (EDITED, 7),            # no original in raw/: skipped
+    }
+    items = pending(tmp_path, outputs)
+    assert [p.rel for p in items] == ["_pages/section-9.md"]
+    assert items[0].approved is None
+    assert items[0].diff.startswith("--- as ingested")
+
+    append(tmp_path, Approval("_pages/section-9.md", items[0].fingerprint,
+                              "ISS-002", "2026-09-23", "why"))
+    again = pending(tmp_path, outputs)
+    assert again[0].approved is not None and again[0].approved.issue == "ISS-002"
+    assert again[0].as_dict()["approved"]["reason"] == "why"

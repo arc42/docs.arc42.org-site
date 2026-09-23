@@ -14,6 +14,14 @@
     either job; everyone connected can watch it run.</p>
 </div>
 
+<div class="callout arc42-help">
+  <p><strong><a href="/approvals">Approve edits to published text</a></strong> is the third action,
+    and the only one that changes words rather than files. A correction to a page the site already
+    publishes has to be approved against its diff before the parity check will accept it, because a
+    correction and a generator bug look the same to that check (ADR-0006). The page lists every body
+    that differs from the copy captured at ingest.</p>
+</div>
+
 <div class="actions-bar">
   <button type="button" class="btn-primary" data-action="generate" disabled>Lint + generate</button>
   <button type="button" class="btn-secondary" data-action="preview" disabled>Preview (parity)</button>

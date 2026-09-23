@@ -1,4 +1,4 @@
-"""braingen command line: lint | raw | import | generate | generate-check | check-generated | approve-edit."""
+"""braingen command line: lint | raw | import | generate | generate-check | check-generated | approve-edit | pending-edits."""
 from __future__ import annotations
 
 import argparse
@@ -111,16 +111,18 @@ def cmd_approve_edit(args: argparse.Namespace) -> int:
     regression. So a correction is approved by a human who has seen the diff,
     and the approval covers exactly the body it was shown (ADR-0006).
     """
-    import difflib
     from datetime import date
 
-    from .approvals import Approval, append, fingerprint, original_from_raw
-    from .compare import normalise_lines, split_foot
+    from .approvals import Approval, append, body_diff, original_from_raw
     from .generate import plan
     from .parity import PARITY_STATUSES
 
     vault = load_vault(args.vault)
-    outputs = {o.rel: o for o in plan(vault, statuses=PARITY_STATUSES).outputs}
+    outputs = {}
+    for page in vault.by_type("section"):
+        n = int(page.meta["number"])
+        for o in plan(vault, statuses=PARITY_STATUSES, section=n).outputs:
+            outputs[o.rel] = (o.text, n)
     if args.rel not in outputs:
         print(f"{args.rel}: not a file this vault generates")
         return 1
@@ -129,24 +131,51 @@ def cmd_approve_edit(args: argparse.Namespace) -> int:
         print(f"{args.rel}: no hand-written original in raw/ingested/ — nothing to approve against")
         return 1
 
-    import frontmatter
-
-    old, _ = split_foot(frontmatter.loads(original).content)
-    new, _ = split_foot(frontmatter.loads(outputs[args.rel].text).content)
-    ol, nl = normalise_lines(old), normalise_lines(new)
-    if ol == nl:
+    text, section = outputs[args.rel]
+    diff, fp = body_diff(original, text, section)
+    if not diff:
         print(f"{args.rel}: body is unchanged from the original — no approval needed")
         return 0
-    diff = list(difflib.unified_diff(ol, nl, "as ingested", "as it would be published", lineterm="", n=3))
-    print("\n".join(diff))
-    fp = fingerprint(new)
+    print(diff)
     print(f"\n{args.rel}\nfingerprint {fp}\nissue {args.issue}\nreason {args.reason}")
     if not args.yes:
-        print("\nnot recorded. Re-run with --yes to approve exactly this body.")
-        return 1
+        print("\nnot recorded — this is the preview. Re-run the same command with --yes "
+              "(make: YES=1) to approve exactly this body.")
+        return 0
     path = append(args.vault, Approval(args.rel, fp, args.issue, args.today or date.today().isoformat(),
                                        args.reason))
     print(f"\nrecorded in {path.relative_to(args.vault)}")
+    return 0
+
+
+def cmd_pending_edits(args: argparse.Namespace) -> int:
+    """List published bodies that differ from the copy captured at ingest.
+
+    The queue the dashboard shows and `approve-edit` works through: each entry
+    is one page whose text the brain has changed, with the diff and whether it
+    has already been approved (ADR-0006).
+    """
+    import json
+
+    from .approvals import pending
+    from .generate import plan
+    from .parity import PARITY_STATUSES
+
+    vault = load_vault(args.vault)
+    outputs = {}
+    for page in vault.by_type("section"):
+        n = int(page.meta["number"])
+        for o in plan(vault, statuses=PARITY_STATUSES, section=n).outputs:
+            outputs[o.rel] = (o.text, n)
+    items = pending(args.vault, outputs)
+    if args.json:
+        print(json.dumps([p.as_dict() for p in items], indent=2))
+        return 0
+    for p in items:
+        state = (f"approved {p.approved.issue} {p.approved.date}: {p.approved.reason}"
+                 if p.approved else "NOT APPROVED")
+        print(f"{p.rel}  [{state}]")
+    print(f"{len(items)} changed bodies, {sum(1 for p in items if not p.approved)} not approved")
     return 0
 
 
@@ -185,6 +214,10 @@ def build_parser() -> argparse.ArgumentParser:
     ae.add_argument("--today", default=None)
     ae.add_argument("--yes", action="store_true", help="record it; without this the diff is only shown")
     ae.set_defaults(func=cmd_approve_edit)
+    pe = sub.add_parser("pending-edits", help="list published bodies that differ from the ingested original")
+    pe.add_argument("--vault", type=Path, required=True)
+    pe.add_argument("--json", action="store_true")
+    pe.set_defaults(func=cmd_pending_edits)
     cg = sub.add_parser("check-generated", help="fail if a generated file differs from a fresh generate")
     cg.add_argument("--vault", type=Path, required=True)
     cg.add_argument("--site", type=Path, required=True)

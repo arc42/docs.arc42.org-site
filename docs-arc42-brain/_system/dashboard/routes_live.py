@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from flask import Blueprint, current_app, jsonify, redirect, render_template, request
 
-from actions import actions_view
+from actions import Approvals, actions_view, approvals_view
 from linkcheck import external_urls, link_summary
 from presence import client_id
 
@@ -120,6 +120,35 @@ def actions_page():
     b = services["model"].get()
     view = actions_view(b, services["runner"])
     return render_template("actions.html", known=set(b.vault.pages), **view)
+
+
+def _approvals() -> Approvals:
+    """Built from the runner so that /approvals needs no new entry in the
+    services dict — same repo, same braingen invocation."""
+    runner = _services()["runner"]
+    return Approvals(runner.repo, runner.braingen)
+
+
+@bp.route("/approvals")
+def approvals_page():
+    return render_template("approvals.html", **approvals_view(_approvals()))
+
+
+@bp.route("/approvals/approve", methods=["POST"])
+def approvals_approve():
+    """Record one approval. Facilitator-gated and JSON-only, like generate:
+    this appends to an append-only register, so it is a write to the vault."""
+    if not request.is_json:
+        return jsonify(error="expected application/json"), 415
+    services = _services()
+    if not services["presence"].is_facilitator(client_id(request)):
+        return jsonify(error="only the facilitator can approve an edit"), 403
+    data = request.get_json(silent=True) or {}
+    rel, issue, reason = (str(data.get(k, "")).strip() for k in ("rel", "issue", "reason"))
+    if not (rel and issue and reason):
+        return jsonify(error="rel, issue and reason are all required"), 400
+    ok, output = _approvals().approve(rel, issue, reason)
+    return jsonify(ok=ok, output=output), (200 if ok else 500)
 
 
 @bp.route("/links")

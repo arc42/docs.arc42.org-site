@@ -17,6 +17,27 @@ help: ## Show this help
 	@$(HELP_AWK) Makefile
 	@printf '\nBrain (docs-arc42-brain, runs via uv):\n'
 	@$(HELP_AWK) docs-arc42-brain/_system/brain.mk
+	@printf '\nExamples — the brain targets that take variables:\n\n'
+	@printf '  \033[36mmake brain-raw SECTION=6 WHAT=content\033[0m\n'
+	@printf '      Copy section 6'"'"'s tips and examples into docs-arc42-brain/raw/section-6-content/.\n'
+	@printf '      WHAT=page is the section page only, WHAT=all is both.\n\n'
+	@printf '  \033[36mmake brain-import BATCH=section-6-content\033[0m\n'
+	@printf '      Turn that batch into draft wiki pages with legacy-tags filled in.\n\n'
+	@printf '  \033[36mmake generate-check SECTION=6\033[0m\n'
+	@printf '      Parity: generate section 6 into build/parity/ and diff it against the live site.\n'
+	@printf '      Leave SECTION off to check every section.\n\n'
+	@printf '  \033[36mmake brain-approve-edit REL=_pages/section-9.md ISSUE=ISS-002 \\\n'
+	@printf '                          REASON="ADR table gains a Date row"\033[0m\n'
+	@printf '      Correcting text on a page the brain already publishes (ADR-0006).\n'
+	@printf '      This first form RECORDS NOTHING: it prints the diff from the copy captured at\n'
+	@printf '      ingest to the body that would go live, so you can read the change before\n'
+	@printf '      allowing it. Re-run the identical line with YES=1 to approve exactly that body:\n\n'
+	@printf '  \033[36mmake brain-approve-edit REL=_pages/section-9.md ISSUE=ISS-002 \\\n'
+	@printf '                          REASON="ADR table gains a Date row" YES=1\033[0m\n'
+	@printf '      Appends one line to docs-arc42-brain/_system/approved-body-edits.tsv.\n'
+	@printf '      REL is the site path, not the vault path. The approval is keyed by a checksum\n'
+	@printf '      of the new body, so it covers that one version of that one page — the next\n'
+	@printf '      edit to the same page needs its own approval.\n'
 	@echo
 
 dev: ## Start the local Jekyll dev server with live reload (http://localhost:4210)

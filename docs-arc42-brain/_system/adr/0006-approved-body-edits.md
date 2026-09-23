@@ -40,6 +40,11 @@ Without `YES=1` the command prints the unified diff from the ingested original t
 would be published, and records nothing. The comparison then reports an approved difference as
 a note naming the issue, instead of failing.
 
+`braingen pending-edits [--json]` lists every published body that differs from its ingested
+copy, unapproved ones first. The dashboard renders that list with the diffs at `/approvals`,
+where the facilitator approves with a button; it is the same register and the same command
+underneath, so the two routes cannot drift apart.
+
 **The fingerprint is what makes this per-change rather than per-file.** A line exempts one
 version of one page. A later edit to the same page produces a different body, so its
 fingerprint no longer matches and the guard fails again until that edit is approved in its

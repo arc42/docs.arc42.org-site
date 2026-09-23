@@ -393,3 +393,33 @@ have each asked for separately.
 - gates: `brain-test` **150 passed** (141 before), lint 0 errors / 254 warnings, `generate-check
   SECTION=9` PASS 14 files, `check-generated` 0 problems, `make check` and `make check-links`
   clean. Issues 44 total, **39 open, 5 resolved** (001, 002, 010, 017, 034)
+
+## [2026-09-23] tooling | approve-edit in make help and on the dashboard
+
+- `make help` gained an **Examples** block for the brain targets that take variables — brain-raw,
+  brain-import, generate-check and, in full, both forms of brain-approve-edit: the preview line and
+  the same line again with `YES=1`, with what REL means and why an approval covers one version of
+  one page
+- **two bugs found by running the line the help now prints.** `--reason $(REASON)` was unquoted, so
+  any reason containing a space broke argparse — the documented example was itself a failing
+  command. And the guard `test -n "$(REL)$(ISSUE)$(REASON)"` passed when any *one* of the three was
+  set. Both fixed; the usage message now prints a worked example
+- the preview now exits **0** instead of 1. It is the expected first step, not a failure, and under
+  `make` a non-zero exit printed a red `Error 1` after a perfectly normal diff
+- `braingen pending-edits [--json]`: every published body that differs from its ingested copy,
+  unapproved first. Writing it immediately found a **false positive in my own `body_diff`** — it
+  reported `_pages/section-10.md` as edited, because `compare_file` rewrites section 10's
+  hard-coded image paths through `EXPECTED_BODY` before diffing and `body_diff` did not. Now
+  section-aware, shared with `approve-edit` so the preview and the queue cannot disagree, and
+  covered by a test that pins both directions
+- **dashboard `/approvals`**: the same queue with the diffs, linked from Actions. Read the diff,
+  name the issue, approve — facilitator-gated and JSON-only like generate, because it writes to the
+  register. It shells out to the same `braingen` commands rather than reimplementing them
+- kept out of the files another session has uncommitted work in: `Approvals` is built from the
+  runner instead of a new entry in the services dict, so `app.py` is untouched, and the page's
+  script is inline instead of in `static/app.js`. One seam was needed and already existed —
+  `app.js` publishes `window.brainClientId`, which the POST must send or presence sees `anon` and
+  refuses the facilitator's own click. That was a real bug in the first draft, caught by a test and
+  now pinned by one
+- gates: `brain-test` **152 passed** (150 before), dashboard suite **154 passed** including the
+  other session's in-flight changes, lint 0 errors / 254 warnings, check-generated 0 problems

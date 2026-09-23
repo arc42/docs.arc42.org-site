@@ -2,6 +2,11 @@
 (D18). A `Runner` serializes jobs with a process-wide lock, gates
 `generate` on `brain-lint`, caches `generate-check` parity, writes a run
 log for every job, and appends one log.md line per successful generate.
+
+`Approvals` is the second, much smaller action: approving a correction to a
+body the brain already publishes (ADR-0006). It is not a Runner job — the
+calls are fast and synchronous, and the point is that a human reads a diff
+and then says yes, which is a page and a button rather than a log tail.
 """
 from __future__ import annotations
 
@@ -292,4 +297,56 @@ def actions_view(b: Brain, runner: Runner) -> dict:
         "is_current": runner.current is not None,
         "lint": lint_view(b) if job is not None and job.stage == "lint" else None,
         "parity_rows": sections_view(b, runner.parity())["rows"],
+    }
+
+
+_BRAINGEN_TIMEOUT = 120   # listing and approving are fast; this is a stuck-process guard.
+
+
+class Approvals:
+    """The ADR-0006 register, through `braingen`.
+
+    Every correction to a published body has to be approved against its diff,
+    and the register is append-only, so this class only ever lists and
+    appends. It shells out rather than importing braingen because the
+    dashboard runs in its own container with its own environment, exactly as
+    the Runner does.
+    """
+
+    def __init__(self, repo: Path, braingen: str = f"{sys.executable} -m braingen.cli"):
+        self.repo = Path(repo)
+        self.braingen = braingen
+        self.vault = self.repo / "docs-arc42-brain"
+
+    def _argv(self, *args: str) -> list[str]:
+        return [*self.braingen.split(), *args, "--vault", str(self.vault)]
+
+    def _run(self, argv: list[str]) -> subprocess.CompletedProcess:
+        return subprocess.run(argv, cwd=self.repo, capture_output=True, text=True,
+                              timeout=_BRAINGEN_TIMEOUT)
+
+    def pending(self) -> list[dict]:
+        """Bodies that differ from the copy captured at ingest, unapproved first."""
+        proc = self._run(self._argv("pending-edits", "--json"))
+        if proc.returncode != 0:
+            return []
+        try:
+            items = json.loads(proc.stdout)
+        except json.JSONDecodeError:
+            return []
+        return sorted(items, key=lambda i: (i["approved"] is not None, i["rel"]))
+
+    def approve(self, rel: str, issue: str, reason: str) -> tuple[bool, str]:
+        """Append one approval. Returns (ok, output) for the flash message."""
+        argv = self._argv("approve-edit", "--rel", rel, "--issue", issue,
+                          "--reason", reason, "--yes")
+        proc = self._run(argv)
+        return proc.returncode == 0, (proc.stdout + proc.stderr).strip()
+
+
+def approvals_view(approvals: Approvals) -> dict:
+    items = approvals.pending()
+    return {
+        "items": items,
+        "waiting": sum(1 for i in items if i["approved"] is None),
     }

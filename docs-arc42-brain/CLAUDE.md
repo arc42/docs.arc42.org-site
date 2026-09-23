@@ -85,6 +85,7 @@ make generate-check SECTION=9        parity: generate into build/parity/ and com
 make generate                        write the Jekyll files of every published page
 make brain-check-generated           fail if a generated file was hand-edited or a published URL would vanish (runs in make check)
 make brain-approve-edit REL=… ISSUE=… REASON="…" [YES=1]   show a correction to a published body as a diff; record it with YES=1
+braingen pending-edits --vault … [--json]   list published bodies that differ from the ingested copy
 make dashboard                       start the curator dashboard in Docker (http://localhost:4211)
 make dashboard-down                  stop the dashboard
 ```
@@ -109,4 +110,6 @@ records nothing without `YES=1`; the approval lands in
 `_system/approved-body-edits.tsv` (append-only, never edited by hand) and is
 keyed by a fingerprint of the body it was shown, so it does not cover the next
 edit to the same page. Fixing a typo in a published body is therefore a
-deliberate, reviewable act — which is the point.
+deliberate, reviewable act — which is the point. `braingen pending-edits` lists
+what is waiting; the dashboard shows the same queue with the diffs at
+`/approvals`.

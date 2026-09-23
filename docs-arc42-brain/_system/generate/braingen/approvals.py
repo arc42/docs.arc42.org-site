@@ -110,3 +110,66 @@ def original_from_raw(vault: Path, rel: str) -> str | None:
             if f.exists():
                 return f.read_text(encoding="utf-8")
     return None
+
+
+@dataclass(frozen=True)
+class Pending:
+    """A published body that differs from the copy captured at ingest."""
+    rel: str
+    fingerprint: str
+    diff: str
+    approved: Approval | None
+
+    def as_dict(self) -> dict:
+        return {"rel": self.rel, "fingerprint": self.fingerprint, "diff": self.diff,
+                "approved": None if self.approved is None else {
+                    "issue": self.approved.issue, "date": self.approved.date,
+                    "reason": self.approved.reason}}
+
+
+def body_diff(original: str, generated: str, section: int | None = None) -> tuple[str, str]:
+    """(unified diff, fingerprint of the new body). Empty diff means no change.
+
+    Applies the same documented normalisations to the original that
+    `compare.compare_file` applies, so this reports the differences the brain
+    introduced and not the ones the ingest is allowed to make.
+    """
+    import difflib
+
+    import frontmatter
+
+    from .compare import EXPECTED_BODY, normalise_lines, split_foot
+
+    obody = frontmatter.loads(original).content
+    for n, old_text, new_text, _why in EXPECTED_BODY:
+        if n == section and old_text in obody:
+            obody = obody.replace(old_text, new_text)
+    old, _ = split_foot(obody)
+    new, _ = split_foot(frontmatter.loads(generated).content)
+    ol, nl = normalise_lines(old), normalise_lines(new)
+    if ol == nl:
+        return "", fingerprint(new)
+    diff = difflib.unified_diff(ol, nl, "as ingested", "as it would be published",
+                                lineterm="", n=3)
+    return "\n".join(diff), fingerprint(new)
+
+
+def pending(vault: Path, outputs: dict[str, tuple[str, int | None]]) -> list[Pending]:
+    """Every generated file whose body differs from its ingested original.
+
+    `outputs` maps site path → (generated text, section number). Files with no
+    original in `raw/ingested/` are skipped: there is nothing to have deviated
+    from. Already-approved bodies are included with their approval, so a caller
+    can show the register as well as the queue.
+    """
+    known = load(vault)
+    out: list[Pending] = []
+    for rel in sorted(outputs):
+        original = original_from_raw(vault, rel)
+        if original is None:
+            continue
+        text, section = outputs[rel]
+        diff, fp = body_diff(original, text, section)
+        if diff:
+            out.append(Pending(rel, fp, diff, known.get((rel, fp))))
+    return out

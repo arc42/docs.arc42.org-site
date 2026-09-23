@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Approve edits — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Approve edits to published text</h1>
+
+<div class="callout arc42-help">
+  <p>The brain owns the words on the site, so it can fix them — but a correction has to be
+    told apart from a bug in the generator, because to the parity check they look the same.
+    So every change to a body the site already publishes is approved here, one at a time,
+    against its diff (ADR-0006).</p>
+  <p>Below is every page whose text now differs from the copy captured when the section was
+    ingested. Read the diff, name the issue that decided it, and approve. The approval covers
+    <em>exactly</em> that wording: edit the page again and it comes back here for a second look.
+    Only the facilitator can approve. On the command line the same thing is
+    <code>make brain-approve-edit</code>.</p>
+</div>
+
+{% if waiting %}
+<p><strong>{{ waiting }}</strong> waiting for approval.</p>
+{% endif %}
+
+{% for item in items %}
+<section class="approval" data-rel="{{ item.rel }}">
+  <h2 class="mono">{{ item.rel }}</h2>
+  {% if item.approved %}
+  <p class="badge status-badge published">approved</p>
+  <dl class="meta-list">
+    <dt>Issue</dt><dd>{{ item.approved.issue }}</dd>
+    <dt>Date</dt><dd>{{ item.approved.date }}</dd>
+    <dt>Reason</dt><dd>{{ item.approved.reason }}</dd>
+  </dl>
+  {% else %}
+  <p class="badge status-badge draft">not approved</p>
+  {% endif %}
+  <pre class="mono-block diff">{{ item.diff }}</pre>
+  {% if not item.approved %}
+  <div class="approve-form">
+    <label>Issue <input type="text" name="issue" placeholder="ISS-002" size="10"></label>
+    <label>Reason <input type="text" name="reason" placeholder="what the edit does and why" size="60"></label>
+    <button type="button" class="btn-primary approve-btn">Approve this wording</button>
+    <span class="approve-result"></span>
+  </div>
+  {% endif %}
+</section>
+{% else %}
+<p class="empty">No published body differs from the copy captured at ingest.</p>
+{% endfor %}
+
+<script>
+// Inline rather than in app.js: this is the only page that uses it, and the
+// POST has to be JSON so that a cross-site form can't reach it (the blueprint
+// refuses non-JSON, which forces a preflight Flask never answers).
+document.querySelectorAll(".approve-btn").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var box = btn.closest(".approval");
+    var out = box.querySelector(".approve-result");
+    var body = {
+      // presence identifies the facilitator by the per-tab id app.js keeps in
+      // sessionStorage and publishes as window.brainClientId; without it the
+      // server sees "anon" and refuses the write.
+      client_id: window.brainClientId,
+      rel: box.dataset.rel,
+      issue: box.querySelector('input[name="issue"]').value.trim(),
+      reason: box.querySelector('input[name="reason"]').value.trim(),
+    };
+    if (!body.issue || !body.reason) {
+      out.textContent = "Issue and reason are both required.";
+      return;
+    }
+    btn.disabled = true;
+    out.textContent = "Recording…";
+    fetch("/approvals/approve", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok && res.j.ok) { window.location.reload(); return; }
+        out.textContent = res.j.error || res.j.output || "Failed.";
+        btn.disabled = false;
+      })
+      .catch(function (e) { out.textContent = String(e); btn.disabled = false; });
+  });
+});
+</script>
+{% endblock %}
