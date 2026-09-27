@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-27T09:14:52+00:00",
+  "generated": "2026-09-27T09:29:48+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -32,7 +32,7 @@
           "language": "de",
           "format": "public",
           "status": "waitlist",
-          "url": "https://www.arc42.de/termine#msa-dez-2026"
+          "url": "https://trainings.arc42.org/#msa-dez-2026"
         },
         {
           "city": "München",
@@ -53,7 +53,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-mar-2027"
+          "url": "https://trainings.arc42.org/#msa-mar-2027"
         },
         {
           "city": "Mannheim",
@@ -74,7 +74,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-jun-2027"
+          "url": "https://trainings.arc42.org/#msa-jun-2027"
         },
         {
           "city": "Frankfurt/Main",
@@ -95,7 +95,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-sep-2027"
+          "url": "https://trainings.arc42.org/#msa-sep-2027"
         },
         {
           "city": "München",
@@ -116,7 +116,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-dez-2027"
+          "url": "https://trainings.arc42.org/#msa-dez-2027"
         },
         {
           "trainers": [
@@ -134,7 +134,7 @@
           "language": "en",
           "format": "online",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-27-02-online"
+          "url": "https://trainings.arc42.org/#msa-27-02-online"
         },
         {
           "trainers": [
@@ -152,7 +152,7 @@
           "language": "en",
           "format": "online",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-06-2027"
+          "url": "https://trainings.arc42.org/#msa-06-2027"
         },
         {
           "trainers": [
@@ -170,7 +170,7 @@
           "language": "en",
           "format": "online",
           "status": "open",
-          "url": "https://www.arc42.de/termine#msa-sep-2027-en"
+          "url": "https://trainings.arc42.org/#msa-sep-2027-en"
         }
       ]
     },
@@ -209,7 +209,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#improve-nov-2026"
+          "url": "https://trainings.arc42.org/#improve-nov-2026"
         },
         {
           "city": "Hamburg",
@@ -227,7 +227,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#improve-jun-2027"
+          "url": "https://trainings.arc42.org/#improve-jun-2027"
         },
         {
           "city": "Hamburg",
@@ -245,7 +245,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#improve-nov-2027"
+          "url": "https://trainings.arc42.org/#improve-nov-2027"
         },
         {
           "trainers": [
@@ -263,7 +263,7 @@
           "language": "en",
           "format": "online",
           "status": "open",
-          "url": "https://www.arc42.de/termine#improve-apr-2027"
+          "url": "https://trainings.arc42.org/#improve-apr-2027"
         }
       ]
     },
@@ -300,7 +300,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#req4arc-mar-2027"
+          "url": "https://trainings.arc42.org/#req4arc-mar-2027"
         },
         {
           "city": "Frankfurt/Main",
@@ -318,7 +318,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#req4arc-sep-2027"
+          "url": "https://trainings.arc42.org/#req4arc-sep-2027"
         },
         {
           "country": "DE",
@@ -338,7 +338,7 @@
           "language": "en",
           "format": "online",
           "status": "open",
-          "url": "https://www.arc42.de/termine#req4arc-jun-2027"
+          "url": "https://trainings.arc42.org/#req4arc-jun-2027"
         }
       ]
     },
@@ -377,7 +377,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#adoc-oct-2026"
+          "url": "https://trainings.arc42.org/#adoc-oct-2026"
         },
         {
           "city": "Mannheim",
@@ -398,7 +398,7 @@
           "language": "de",
           "format": "public",
           "status": "open",
-          "url": "https://www.arc42.de/termine#adoc-jun-2027"
+          "url": "https://trainings.arc42.org/#adoc-jun-2027"
         },
         {
           "country": "DE",
@@ -418,7 +418,7 @@
           "language": "en",
           "format": "online",
           "status": "open",
-          "url": "https://www.arc42.de/termine#adoc-oct-2027"
+          "url": "https://trainings.arc42.org/#adoc-oct-2027"
         }
       ]
     }
