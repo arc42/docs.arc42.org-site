@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-09-26T10:54:36+00:00",
+  "generated": "2026-09-27T09:14:52+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -31,7 +31,7 @@
           "end": "2026-12-04",
           "language": "de",
           "format": "public",
-          "status": "open",
+          "status": "waitlist",
           "url": "https://www.arc42.de/termine#msa-dez-2026"
         },
         {
