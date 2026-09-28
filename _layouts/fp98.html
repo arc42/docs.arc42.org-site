@@ -69,10 +69,10 @@
 
     {%- comment -%}
       Analytics stay. Anachronistic, invisible, and the only way to learn whether
-      anyone actually opens this. Same comma-separated data-domain as
-      default.html so the rollup.arc42.com journey dashboard still sees the hit.
+      anyone actually opens this. Same snippet as default.html: this site's
+      own dashboard only (rollup dropped 2026-09-28, meta.arc42.org ADR-0011).
     {%- endcomment %}
-    <script defer data-domain="docs.arc42.org,rollup.arc42.com" src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
+    <script defer data-domain="docs.arc42.org" src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
 </head>
 <body>
 
