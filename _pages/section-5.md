@@ -55,7 +55,7 @@ It contains
 
 * (optional:) important interfaces, that are not explained in the black box templates of a building block, but are very important for understanding the white box.
 
-Since there are so many ways to specify interfaces why do not provide a specific template for them.
+Since there are so many ways to specify interfaces, we do not provide a specific template for them.
 
 In the best case you will get away with examples or simple
 signatures.
