@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Contributors — docs-arc42-brain{% endblock %}
+
+{% block main %}
+<h1>Contributors</h1>
+<p class="summary">Everyone who authored a commit in this repository. Names and addresses as
+<code>.mailmap</code> resolves them; the short names it folded in are listed as aliases.</p>
+
+<table class="data-table">
+  <thead><tr><th>Name</th><th>Email</th><th>Commits</th><th>First</th><th>Last</th><th>Also committed as</th></tr></thead>
+  <tbody>
+    {% for p in people %}
+    <tr>
+      <td>{{ p.name }}{% if p.bot %} <span class="badge count">bot</span>{% endif %}</td>
+      <td><a href="mailto:{{ p.email }}">{{ p.email }}</a></td>
+      <td>{{ p.commits }}</td>
+      <td>{{ p.first }}</td>
+      <td>{{ p.last }}</td>
+      <td>{{ p.aliases|join(", ") or "—" }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6" class="empty">No commits found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -14,11 +14,12 @@ from flask import Flask, abort, jsonify, render_template, request
 from markupsafe import Markup
 
 from actions import Runner
+from filters import section_chips, sections_arg
 from linkcheck import LinkChecker, link_summary
 from model import (
-    STATUSES, Model, examples_view, faq_view, gaps, issues_touching_sections,
+    STATUSES, Model, contributors, examples_view, faq_view, gaps, issues_touching_sections,
     issues_view, lint_view, list_rows, log_entries, git_log, readiness,
-    review_queue, sections_view, status_counts, tags_view, tips_view,
+    review_queue, section_numbers, sections_view, status_counts, tags_view, tips_view,
 )
 from presence import Presence
 from relations import (
@@ -27,6 +28,10 @@ from relations import (
 )
 from render import render, render_meta
 from routes_live import bp as actions_bp
+from version import VERSION
+
+# List pages whose rows carry a section, and so get the section toggles.
+SECTIONED = ("tip", "example", "term")
 
 
 def _fmt_meta(value, known=None):
@@ -64,35 +69,29 @@ def create_app(repo: Path | None = None, **services) -> Flask:
 
     app.register_blueprint(actions_bp)
 
-    def _section_arg():
-        """The `section` query arg as an int, or None (missing/not a number
-        is "no filter", matching the list-page filter form)."""
-        raw = request.args.get("section")
-        if not raw:
-            return None
-        try:
-            return int(raw)
-        except ValueError:
-            return None
+    @app.context_processor
+    def _version():
+        return {"version": VERSION}
 
-    def _filter_args():
-        return {
-            "status": request.args.get("status", ""),
-            "section": request.args.get("section", ""),
-            "system": request.args.get("system", ""),
-        }
+    def _sections():
+        return sections_arg(request.args.getlist("section"))
 
     def _list_page(title, ptype, pages_rows, counts, notes):
+        status, system = request.args.get("status", ""), request.args.get("system", "")
+        selected = _sections()
+        chips = (section_chips(request.path, section_numbers(model.get()), selected, status, system)
+                 if ptype in SECTIONED else [])
         return render_template(
-            "list.html", title=title, ptype=ptype, pages=pages_rows, counts=counts,
-            notes=notes, filters=_filter_args(), statuses=STATUSES,
+            "list.html", title=title, ptype=ptype, pages=pages_rows, counts=counts, notes=notes,
+            filters={"status": status, "system": system, "sections": sorted(selected)},
+            chips=chips, statuses=STATUSES,
         )
 
     def _filtered_rows(b, ptype):
         return list_rows(
             b, ptype,
             status=request.args.get("status") or None,
-            section=_section_arg(),
+            sections=_sections(),
             system=request.args.get("system") or None,
         )
 
@@ -215,6 +214,10 @@ def create_app(repo: Path | None = None, **services) -> Flask:
     def log_page():
         b = model.get()
         return render_template("log.html", entries=log_entries(b, 5), commits=git_log(repo, 10))
+
+    @app.route("/contributors")
+    def contributors_page():
+        return render_template("contributors.html", people=contributors(repo))
 
     @app.route("/review")
     def review_page():

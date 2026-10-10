@@ -32,6 +32,7 @@
           <a href="/gaps">Gaps</a>
           <a href="/suggestions">Suggestions</a>
           <a href="/log">Log</a>
+          <a href="/contributors">Contributors</a>
           <a href="/links">Links</a>
           <a href="/help">Help</a>
         </div>
@@ -42,6 +43,10 @@
       <input type="search" name="q" placeholder="Search…" aria-label="Search">
       <button type="submit">Search</button>
     </form>
+    <span class="masthead-me" id="presence-me" hidden>
+      <img class="avatar" id="presence-avatar" src="{{ url_for('static', filename='yoda.jpg') }}" alt="" width="28" height="27" hidden>
+      <span id="presence-name"></span>
+    </span>
     <form class="masthead-reload" method="post" action="/reload">
       <button type="submit" title="Clear the cached vault and reload">Reload</button>
     </form>
@@ -51,6 +56,8 @@
     <span id="presence-count"></span>
     <a href="/who">Who's here</a>
     <a href="/help">Help</a>
+    <span class="footer-made">Made with <span class="heart" aria-label="love">&hearts;</span> in Cologne</span>
+    <span class="footer-version">v{{ version }}</span>
   </footer>
 </body>
 </html>

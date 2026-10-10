@@ -1,11 +1,12 @@
 import os
+import subprocess
 import threading
 import time
 
 import model as model_module
-from model import (Model, examples_view, faq_view, gaps, ingest_state, issues_touching_sections,
-                   issues_view, lint_view, list_rows, log_entries, readiness, review_queue,
-                   sections_view, tags_view, tips_view)
+from model import (Model, contributors, examples_view, faq_view, gaps, ingest_state,
+                   issues_touching_sections, issues_view, lint_view, list_rows, log_entries,
+                   readiness, review_queue, section_numbers, sections_view, tags_view, tips_view)
 
 from .kit import add_site_post, add_tip
 
@@ -186,8 +187,49 @@ def test_list_rows_unfiltered(repo):
 def test_list_rows_filters_by_status_and_section(repo):
     b = brain(repo)
     assert [r["slug"] for r in list_rows(b, "tip", status="draft")] == ["tip-9-2"]
-    assert [r["slug"] for r in list_rows(b, "tip", section=9)] == ["tip-9-1", "tip-9-2", "tip-9-3"]
-    assert list_rows(b, "tip", section=3) == []
+    assert [r["slug"] for r in list_rows(b, "tip", sections={9})] == ["tip-9-1", "tip-9-2", "tip-9-3"]
+    assert list_rows(b, "tip", sections={3}) == []
+
+
+def test_list_rows_several_sections_are_or_ed_and_empty_means_no_filter(repo):
+    b = brain(repo)
+    everything = [r["slug"] for r in list_rows(b, "tip")]
+    assert [r["slug"] for r in list_rows(b, "tip", sections={3, 9})] == everything
+    assert [r["slug"] for r in list_rows(b, "tip", sections=set())] == everything
+
+
+def test_section_numbers_come_from_the_section_pages(repo):
+    assert section_numbers(brain(repo)) == [3, 9]
+
+
+def _commit(repo, name, email, date, msg):
+    env = {**os.environ, "GIT_AUTHOR_NAME": name, "GIT_AUTHOR_EMAIL": email,
+           "GIT_COMMITTER_NAME": name, "GIT_COMMITTER_EMAIL": email,
+           "GIT_AUTHOR_DATE": f"{date}T12:00:00", "GIT_COMMITTER_DATE": f"{date}T12:00:00"}
+    subprocess.run(["git", "-C", str(repo), "commit", "-q", "--allow-empty", "-m", msg],
+                   env=env, check=True)
+
+
+def test_contributors_fold_identities_via_mailmap(tmp_path):
+    subprocess.run(["git", "init", "-q", str(tmp_path)], check=True)
+    (tmp_path / ".mailmap").write_text("Real Name <real@example.org> <old@example.org>\n")
+    _commit(tmp_path, "Real Name", "real@example.org", "2026-01-01", "one")
+    _commit(tmp_path, "host@laptop", "old@example.org", "2026-02-01", "two")
+    _commit(tmp_path, "host@laptop", "old@example.org", "2026-03-01", "three")
+    _commit(tmp_path, "Other Person", "other@example.org", "2026-02-15", "four")
+    _commit(tmp_path, "dependabot[bot]", "1+dependabot[bot]@users.noreply.github.com", "2026-04-01", "bump")
+    assert contributors(tmp_path) == [
+        {"name": "Real Name", "email": "real@example.org", "commits": 3,
+         "first": "2026-01-01", "last": "2026-03-01", "aliases": ["host@laptop"], "bot": False},
+        {"name": "Other Person", "email": "other@example.org", "commits": 1,
+         "first": "2026-02-15", "last": "2026-02-15", "aliases": [], "bot": False},
+        {"name": "dependabot[bot]", "email": "1+dependabot[bot]@users.noreply.github.com",
+         "commits": 1, "first": "2026-04-01", "last": "2026-04-01", "aliases": [], "bot": True},
+    ]
+
+
+def test_contributors_is_empty_outside_a_git_repo(tmp_path):
+    assert contributors(tmp_path) == []
 
 
 def test_list_rows_system_name_and_filter(repo):

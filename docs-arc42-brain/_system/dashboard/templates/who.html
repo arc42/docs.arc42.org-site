@@ -15,7 +15,9 @@
     <tbody>
       {% for entry in entries %}
       <tr>
-        <td>{{ entry.nickname }}</td>
+        <td class="who-name">
+          {%- if entry.is_facilitator %}<img class="avatar avatar-lg" src="{{ url_for('static', filename='yoda.jpg') }}" alt="" width="48" height="47">{% endif -%}
+          {{ entry.nickname }}</td>
         <td>{{ "Facilitator" if entry.is_facilitator else "" }}</td>
         <td>{{ entry.connected_seconds }}s connected</td>
       </tr>

@@ -118,17 +118,24 @@ def section_number(b: Brain, page: Page | None) -> int | None:
     return None
 
 
-def list_rows(b: Brain, ptype: str, status: str | None = None, section: int | None = None,
+def section_numbers(b: Brain) -> list[int]:
+    """Numbers of the section pages in the vault, ascending — the choices of
+    the list pages' section toggles."""
+    return sorted(section_number(b, p) for p in b.vault.by_type("section"))
+
+
+def list_rows(b: Brain, ptype: str, status: str | None = None, sections: set[int] | None = None,
               system: str | None = None) -> list[dict]:
     """Filtered, sorted row dicts for a type-list page (`/tips`, `/examples`,
     …): slug, title, status, section, system, updated. A filter is applied
-    only when given; the caller (request parsing) is responsible for turning
-    a query-string `section` into an int or None."""
+    only when given; several `sections` match any of them, an empty set is no
+    filter. The caller (request parsing) turns query-string `section` values
+    into ints."""
     pages = b.vault.by_type(ptype)
     if status:
         pages = [p for p in pages if p.status == status]
-    if section is not None:
-        pages = [p for p in pages if section_number(b, p) == section]
+    if sections:
+        pages = [p for p in pages if section_number(b, p) in sections]
     if system:
         pages = [p for p in pages if any(l.target == system for l in p.links_in("system"))]
     rows = []
@@ -321,6 +328,41 @@ def git_log(repo: Path, n: int = 10) -> list[dict]:
         if len(parts) != 3:
             continue
         out.append({"hash": parts[0], "date": parts[1], "subject": parts[2]})
+    return out
+
+
+def contributors(repo: Path) -> list[dict]:
+    """Everyone who authored a commit in the repo, one entry per identity as
+    `.mailmap` resolves it: {name, email, commits, first, last, aliases, bot}.
+    `aliases` are the raw author names (e.g. `user@host`) that `.mailmap`
+    folded into `name`. People before bots, most commits first; [] on any
+    failure."""
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo), "log", "--date=short", "--format=%aN%x1f%aE%x1f%an%x1f%ad"],
+            capture_output=True, text=True, timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return []
+    if result.returncode != 0:
+        return []
+    people: dict[tuple[str, str], dict] = {}
+    for line in result.stdout.splitlines():
+        parts = line.split("\x1f")
+        if len(parts) != 4:
+            continue
+        name, email, raw_name, date = parts
+        p = people.setdefault((name, email.lower()), {
+            "name": name, "email": email, "commits": 0, "first": date, "last": date,
+            "aliases": set(), "bot": name.endswith("[bot]"),
+        })
+        p["commits"] += 1
+        p["first"], p["last"] = min(p["first"], date), max(p["last"], date)
+        if raw_name != name:
+            p["aliases"].add(raw_name)
+    out = sorted(people.values(), key=lambda p: (p["bot"], -p["commits"], p["name"].lower()))
+    for p in out:
+        p["aliases"] = sorted(p["aliases"])
     return out
 
 

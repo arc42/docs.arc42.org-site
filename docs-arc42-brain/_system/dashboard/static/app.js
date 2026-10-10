@@ -38,6 +38,13 @@
         var countEl = document.getElementById("presence-count");
         if (countEl) { countEl.textContent = data.count + " connected"; }
         document.body.dataset.facilitator = data.is_facilitator ? "yes" : "no";
+        // This tab's own name in the masthead; only Yoda gets the avatar.
+        var me = document.getElementById("presence-me");
+        if (me) {
+          document.getElementById("presence-name").textContent = data.nickname;
+          document.getElementById("presence-avatar").hidden = !data.is_facilitator;
+          me.hidden = false;
+        }
         document.dispatchEvent(new CustomEvent("brain:presence", { detail: data }));
       })
       .catch(function () {});

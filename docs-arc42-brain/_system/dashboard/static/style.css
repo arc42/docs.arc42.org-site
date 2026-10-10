@@ -219,6 +219,11 @@ main {
   flex-wrap: wrap;
 }
 
+/* Presence and links on the left, credits and version pushed right. */
+.footer-made { margin-left: auto; }
+.footer-made .heart { color: var(--coral); }
+.footer-version { font-family: var(--font-code); font-size: 0.85em; }
+
 /* Tiles */
 .tiles {
   display: grid;
@@ -417,6 +422,59 @@ tr.ready td {
 
 .mono { font-family: var(--font-code); font-size: 0.85em; }
 
+/* Section toggles on list pages: links, one per section; on = in the filter */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+  margin: var(--s4) 0 0;
+}
+
+.chips-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-right: var(--s1);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: 2rem;
+  padding: 0 var(--s3);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.chip:hover {
+  background: var(--surface-hover);
+  text-decoration: none;
+}
+
+.chip.on {
+  background: var(--signal-blue);
+  border-color: var(--signal-blue);
+  color: #fff;
+}
+
+.chip.on:hover {
+  background: var(--deep-blue);
+  border-color: var(--deep-blue);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--signal-blue);
+  outline-offset: 2px;
+}
+
 /* Filter form */
 .filter-form {
   display: flex;
@@ -580,6 +638,38 @@ tr.ready td {
 
 .summary {
   color: var(--muted);
+}
+
+/* This tab's own name ("Yoda" for the facilitator, a nickname otherwise);
+   hidden until the first /ping answers. Only Yoda has an avatar. */
+.masthead-me {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.masthead-me[hidden], .avatar[hidden] { display: none; }
+
+.avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.avatar-lg {
+  width: 3rem;
+  height: 3rem;
+  border-color: var(--hairline);
+}
+
+.who-name {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
 }
 
 /* Masthead search + reload */

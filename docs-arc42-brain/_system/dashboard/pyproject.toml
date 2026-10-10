@@ -1,6 +1,6 @@
 [project]
 name = "brain-dashboard"
-version = "0.1.0"
+version = "0.2.2"
 description = "Dashboard for docs-arc42-brain (phase 3)"
 requires-python = ">=3.12"
 dependencies = [

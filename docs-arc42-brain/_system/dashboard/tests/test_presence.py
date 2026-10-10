@@ -74,3 +74,18 @@ def test_anon_does_not_take_over_facilitator_from_a_real_client():
     assert p.facilitator() == "a"
     # anon still counts as a live/connected client, just not facilitator.
     assert p.live() == ["a", "anon"] and r["count"] == 2
+
+
+def test_facilitator_is_named_yoda_everyone_else_keeps_a_nickname():
+    c = Clock(); p = Presence(clock=c)
+    assert p.ping("a")["nickname"] == "Yoda"
+    c.t += 1
+    assert p.ping("b")["nickname"] == nickname("b") != "Yoda"
+    assert [w["nickname"] for w in p.who()] == ["Yoda", nickname("b")]
+
+
+def test_yoda_name_passes_on_with_the_role():
+    c = Clock(); p = Presence(clock=c)
+    p.ping("a"); c.t += 1; p.ping("b")
+    p.leaving("a"); c.t += 6
+    assert p.ping("b")["nickname"] == "Yoda"

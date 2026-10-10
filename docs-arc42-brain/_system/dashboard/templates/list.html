@@ -11,14 +11,21 @@
 <div class="callout arc42-help"><p>{{ note }}</p></div>
 {% endfor %}
 
+{% if chips %}
+<nav class="chips" aria-label="Filter by section">
+  <span class="chips-label">Sections</span>
+  {% for c in chips %}<a class="chip{{ ' on' if c.on }}"{{ ' aria-current="true"'|safe if c.on }} href="{{ c.href }}">{{ c.label }}</a>{% endfor %}
+</nav>
+{% endif %}
+
 <form class="filter-form" method="get">
+  {% for n in filters.sections %}<input type="hidden" name="section" value="{{ n }}">{% endfor %}
   <label>Status
     <select name="status">
       <option value="">All</option>
       {% for s in statuses %}<option value="{{ s }}" {{ "selected" if filters.status == s else "" }}>{{ s }}</option>{% endfor %}
     </select>
   </label>
-  <label>Section <input type="number" name="section" value="{{ filters.section }}"></label>
   <label>System <input type="text" name="system" value="{{ filters.system }}"></label>
   <button type="submit">Filter</button>
 </form>

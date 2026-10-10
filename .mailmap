@@ -1,0 +1,9 @@
+# Canonical author identities, used by `git log`/`git shortlog` and by the
+# brain dashboard's /contributors page. Format: `git help gitmailmap`.
+#   Proper Name <proper@email> [Commit Name] <commit@email>
+
+# Every identity committing as gs@gernotstarke.de (machine names such as
+# GernotStarke@MadZorg42, the update-ads Docker container, …) is Gernot.
+Dr. Gernot Starke <gernotstarke@mailbox.org> <gs@gernotstarke.de>
+
+Peter Hruschka <hruschka@b-agile.de> Hruschka <hruschka@b-agile.de>

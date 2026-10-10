@@ -11,6 +11,10 @@ import threading
 import time
 import zlib
 
+# The facilitator is not given a generated nickname: whoever holds the role
+# is "Yoda" (as in eTSU), and only Yoda gets an avatar (static/yoda.jpg).
+FACILITATOR_NAME = "Yoda"
+
 _NICKNAME_ADJECTIVES = ["Curious", "Swift", "Quiet", "Bold", "Sunny", "Clever",
                          "Gentle", "Brisk", "Merry", "Wandering", "Sharp", "Calm"]
 _NICKNAME_ANIMALS = ["Otter", "Falcon", "Fox", "Heron", "Lynx", "Puffin",
@@ -39,6 +43,10 @@ def client_id(request) -> str:
         data = {}
     cid = str(data.get("client_id") or "").strip()[:64]
     return cid or "anon"
+
+
+def display_name(cid: str, is_facilitator: bool) -> str:
+    return FACILITATOR_NAME if is_facilitator else nickname(cid)
 
 
 class Presence:
@@ -97,7 +105,7 @@ class Presence:
             self._leaving.pop(cid, None)
             is_facilitator = cid == self._facilitator_locked()
             count = len(self._last)
-        return {"nickname": nickname(cid), "is_facilitator": is_facilitator, "count": count}
+        return {"nickname": display_name(cid, is_facilitator), "is_facilitator": is_facilitator, "count": count}
 
     def leaving(self, cid: str) -> None:
         with self._lock:
@@ -129,7 +137,7 @@ class Presence:
             cids = sorted(self._first, key=self._first.get)
             return [
                 {
-                    "nickname": nickname(cid),
+                    "nickname": display_name(cid, cid == fac),
                     "is_facilitator": cid == fac,
                     "connected_seconds": int(now - self._first[cid]),
                 }
