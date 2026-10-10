@@ -1,0 +1,789 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Brain to Published Page</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+  /* ------------------------------------------------------------------
+     Palette, type and spacing are NOT invented here: they are the live
+     tokens of docs.arc42.org (_sass/_tokens.scss), so this explainer
+     reads as part of the site it describes. The cool/warm pairing is
+     load-bearing there and kept here: cool blue = arc42 is telling you
+     something, warm = a worked example.
+     ------------------------------------------------------------------ */
+  :root {
+    --paper:      #fcfdff;
+    --ink:        #2a2e34;
+    --muted:      #5e6975;
+    --hairline:   rgba(20, 44, 82, 0.12);
+    --hairline-2: rgba(20, 44, 82, 0.16);
+    --signal:     #1675b9;
+    --signal-dk:  #115e94;
+    --deep:       #0e4f80;
+    --tint:       #eaf4fc;
+    --tint-soft:  #d3e6f7;
+    --sky:        #dceefa;
+    --surface-1:  #f2f5f8;
+    --surface-2:  #f7fafd;
+    --code-bg:    #f6f8fa;
+    --help-bg:    #e3f2fe;
+    --help-ink:   #0c3d66;
+    --ex-bg:      #fdebe7;
+    --ex-ink:     #9a3b2e;
+    --ex-ink-dk:  #7d2f24;
+    --ex-icon:    #c8654f;
+    --pill-bg:    #aee3f8;
+    --pill-ink:   #115e94;
+    --green:      #2e9e67;
+    --amber:      #ffc95c;
+    --coral:      #ff5c7c;
+    --hl:         #fff3c4;
+    --hl-edge:    #e0bb4a;
+
+    --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+    --sans:  "Atkinson Hyperlegible", "Atkinson Hyperlegible Next", system-ui, -apple-system, Segoe UI, sans-serif;
+    --mono:  ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+    --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+    --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
+    --measure: 68ch;
+    --wide: 1080px;
+    --radius: 4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #11161c;
+      --ink:        #dfe6ee;
+      --muted:      #9aa7b4;
+      --hairline:   rgba(170, 200, 235, 0.16);
+      --hairline-2: rgba(170, 200, 235, 0.26);
+      --signal:     #63b3e8;
+      --signal-dk:  #8ecbf3;
+      --deep:       #0b3c63;
+      --tint:       #eaf4fc;
+      --tint-soft:  #bcd8ef;
+      --sky:        #16304a;
+      --surface-1:  #171e26;
+      --surface-2:  #1b232c;
+      --code-bg:    #161d25;
+      --help-bg:    #112c45;
+      --help-ink:   #d2e8fb;
+      --ex-bg:      #36211c;
+      --ex-ink:     #f2c4b6;
+      --ex-ink-dk:  #f6d6cc;
+      --ex-icon:    #d98a72;
+      --pill-bg:    #1d4a6b;
+      --pill-ink:   #b6def7;
+      --green:      #5cc48d;
+      --hl:         #3d3418;
+      --hl-edge:    #8a7429;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #11161c;
+    --ink:        #dfe6ee;
+    --muted:      #9aa7b4;
+    --hairline:   rgba(170, 200, 235, 0.16);
+    --hairline-2: rgba(170, 200, 235, 0.26);
+    --signal:     #63b3e8;
+    --signal-dk:  #8ecbf3;
+    --deep:       #0b3c63;
+    --tint:       #eaf4fc;
+    --tint-soft:  #bcd8ef;
+    --sky:        #16304a;
+    --surface-1:  #171e26;
+    --surface-2:  #1b232c;
+    --code-bg:    #161d25;
+    --help-bg:    #112c45;
+    --help-ink:   #d2e8fb;
+    --ex-bg:      #36211c;
+    --ex-ink:     #f2c4b6;
+    --ex-ink-dk:  #f6d6cc;
+    --ex-icon:    #d98a72;
+    --pill-bg:    #1d4a6b;
+    --pill-ink:   #b6def7;
+    --green:      #5cc48d;
+    --hl:         #3d3418;
+    --hl-edge:    #8a7429;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.62;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ---------- masthead ---------- */
+  .band {
+    background: var(--deep);
+    color: var(--tint);
+    padding-block: var(--s7) var(--s6);
+    padding-inline: var(--s4);
+    border-bottom: 3px solid var(--signal);
+  }
+  .band > div { max-width: var(--wide); margin: 0 auto; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--tint-soft); margin: 0 0 var(--s3);
+  }
+  .band h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(30px, 6vw, 50px); line-height: 1.1;
+    margin: 0 0 var(--s4); text-wrap: balance; color: var(--tint);
+  }
+  .band p.sub {
+    margin: 0; max-width: 56ch; font-size: clamp(16px, 2.3vw, 19px);
+    color: var(--tint-soft);
+  }
+
+  /* ---------- shell ---------- */
+  .shell { padding-inline: var(--s4); padding-block: var(--s7) var(--s8); }
+  .prose, .wide, section > h2, section > p, .rule { max-width: var(--measure); margin-inline: auto; }
+  .wide { max-width: var(--wide); }
+
+  section { margin-block: var(--s8); }
+  h2 {
+    font-family: var(--serif); font-size: clamp(23px, 3.6vw, 31px);
+    line-height: 1.2; margin: 0 0 var(--s4); color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 .num {
+    font-family: var(--mono); font-size: 0.5em; color: var(--signal);
+    display: block; letter-spacing: 0.08em; margin-bottom: var(--s2);
+    font-weight: 400;
+  }
+  h3 {
+    font-family: var(--sans); font-size: 17px; font-weight: 700;
+    margin: var(--s6) 0 var(--s3); color: var(--signal-dk);
+  }
+  p { margin: 0 0 var(--s4); }
+  a { color: var(--signal); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  strong { font-weight: 700; }
+  code {
+    font-family: var(--mono); font-size: 0.88em;
+    background: var(--code-bg); border: 1px solid var(--hairline);
+    border-radius: 3px; padding: 1px 4px; overflow-wrap: break-word;
+  }
+  .lede { font-family: var(--serif); font-size: clamp(19px, 2.8vw, 23px); line-height: 1.45; }
+  .lede em { color: var(--signal-dk); font-style: italic; }
+  hr.rule { border: 0; border-top: 1px solid var(--hairline); margin-block: var(--s7); }
+
+  /* ---------- callouts: cool = guidance, warm = example ---------- */
+  .note, .example {
+    border-radius: var(--radius); padding: var(--s4) var(--s5);
+    margin: var(--s5) auto; max-width: var(--measure);
+    border: 1px solid var(--hairline-2); font-size: 15.5px;
+  }
+  .wide .note, .wide .example { max-width: none; }
+  .note { background: var(--help-bg); color: var(--help-ink); border-left: 4px solid var(--signal); }
+  .example { background: var(--ex-bg); color: var(--ex-ink); border-left: 4px solid var(--ex-icon); }
+  .note > :last-child, .example > :last-child { margin-bottom: 0; }
+  .note code { background: rgba(255,255,255,0.45); border-color: rgba(12,61,102,0.18); color: inherit; }
+  .example code { background: rgba(255,255,255,0.45); border-color: rgba(154,59,46,0.2); color: inherit; }
+  :root[data-theme="dark"] .note code,
+  :root[data-theme="dark"] .example code { background: rgba(0,0,0,0.3); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .note code,
+    :root:not([data-theme="light"]) .example code { background: rgba(0,0,0,0.3); }
+  }
+  .label {
+    display: block; font-family: var(--sans); font-size: 11.5px;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+    margin-bottom: var(--s2); opacity: 0.85;
+  }
+
+  /* ---------- the pipeline ---------- */
+  .flow {
+    display: grid; gap: var(--s3);
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: stretch; margin: var(--s6) auto;
+  }
+  .stage {
+    background: var(--surface-1); border: 1px solid var(--hairline-2);
+    border-radius: var(--radius); padding: var(--s4);
+    display: flex; flex-direction: column; gap: var(--s1);
+  }
+  .stage .who {
+    font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; color: var(--muted);
+  }
+  .stage .what { font-family: var(--mono); font-size: 13px; color: var(--signal-dk); font-weight: 700; }
+  .stage .count { font-size: 13.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .stage.final { background: var(--sky); border-color: var(--signal); }
+  .step-arrow {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: var(--s1); color: var(--signal); min-width: 94px; text-align: center;
+  }
+  .step-arrow .glyph { font-size: 20px; line-height: 1; }
+  .step-arrow .cmd { font-family: var(--mono); font-size: 11.5px; font-weight: 700; }
+  @media (max-width: 860px) {
+    .flow { grid-template-columns: 1fr; }
+    .step-arrow { min-width: 0; flex-direction: row; }
+    .step-arrow .glyph { transform: rotate(90deg); }
+  }
+
+  /* ---------- paired brain / site panels ---------- */
+  .pair { display: grid; gap: var(--s4); grid-template-columns: 1fr 1fr; margin: var(--s5) 0; }
+  @media (max-width: 880px) { .pair { grid-template-columns: 1fr; } }
+  .panel {
+    border: 1px solid var(--hairline-2); border-radius: var(--radius);
+    background: var(--code-bg); overflow: hidden; display: flex; flex-direction: column;
+  }
+  .panel > header {
+    padding: var(--s2) var(--s3); border-bottom: 1px solid var(--hairline-2);
+    background: var(--surface-2); display: flex; flex-wrap: wrap;
+    align-items: baseline; gap: var(--s2) var(--s3);
+  }
+  .panel > header .side {
+    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+    background: var(--pill-bg); color: var(--pill-ink);
+    padding: 2px 7px; border-radius: 999px;
+  }
+  .panel > header .file { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  pre {
+    margin: 0; padding: var(--s3); overflow-x: auto;
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+    color: var(--ink); tab-size: 2;
+  }
+  .hl {
+    background: var(--hl); box-shadow: inset 0 -1px 0 var(--hl-edge);
+    border-radius: 2px; padding: 0 1px;
+  }
+  .dim { color: var(--muted); }
+  .gone { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--hairline-2); }
+
+  /* ---------- tables ---------- */
+  .tablewrap { overflow-x: auto; margin: var(--s5) auto; max-width: var(--wide); }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  th, td { text-align: left; padding: var(--s2) var(--s3); border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  thead th {
+    background: var(--surface-2); color: var(--signal-dk);
+    font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase;
+    border-bottom: 1px solid var(--hairline-2);
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  td code { white-space: nowrap; }
+  td.n { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--muted); }
+
+  /* ---------- section status strip ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s4) 0 var(--s3); }
+  .chip {
+    border: 1px solid var(--hairline-2); border-radius: var(--radius);
+    padding: var(--s2) var(--s3); min-width: 88px; background: var(--surface-1);
+  }
+  .chip .no { font-family: var(--mono); font-weight: 700; font-size: 15px; }
+  .chip .nm { display: block; font-size: 11.5px; color: var(--muted); line-height: 1.3; }
+  .chip.live { background: var(--help-bg); border-color: var(--signal); color: var(--help-ink); }
+  .chip.live .nm { color: var(--help-ink); opacity: 0.8; }
+  .legend { display: flex; flex-wrap: wrap; gap: var(--s4); font-size: 13.5px; color: var(--muted); }
+  .legend span { display: flex; align-items: center; gap: var(--s2); }
+  .swatch { width: 13px; height: 13px; border-radius: 3px; border: 1px solid var(--hairline-2); display: inline-block; }
+
+  /* ---------- rails ---------- */
+  .rails { display: grid; gap: var(--s4); grid-template-columns: repeat(2, 1fr); margin: var(--s5) 0; }
+  @media (max-width: 760px) { .rails { grid-template-columns: 1fr; } }
+  .rail {
+    border: 1px solid var(--hairline-2); border-top: 3px solid var(--signal);
+    border-radius: var(--radius); padding: var(--s4); background: var(--surface-2);
+  }
+  .rail h3 { margin: 0 0 var(--s2); color: var(--ink); font-size: 16px; }
+  .rail p { font-size: 14.5px; margin-bottom: var(--s3); }
+  .rail p:last-child { margin-bottom: 0; }
+  .rail .guards { font-family: var(--mono); font-size: 12px; color: var(--signal-dk); }
+
+  /* ---------- numbered steps ---------- */
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: var(--s5) auto; max-width: var(--measure); }
+  ol.steps > li {
+    counter-increment: s; position: relative; padding-left: 52px;
+    padding-bottom: var(--s5); border-left: 1px solid var(--hairline-2);
+    margin-left: 15px;
+  }
+  ol.steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: -16px; top: 0;
+    width: 31px; height: 31px; border-radius: 999px;
+    background: var(--deep); color: var(--tint);
+    font-family: var(--mono); font-size: 14px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  ol.steps > li > strong { display: block; margin-bottom: var(--s1); }
+  ol.steps p { font-size: 15px; margin-bottom: var(--s2); }
+  ol.steps p:last-child { margin-bottom: 0; }
+
+  /* ---------- terminal ---------- */
+  .term {
+    background: var(--deep); color: var(--tint); border-radius: var(--radius);
+    padding: var(--s4); margin: var(--s5) auto; max-width: var(--measure);
+    font-family: var(--mono); font-size: 13.5px; line-height: 1.75;
+    overflow-x: auto; border: 1px solid var(--signal);
+  }
+  .wide .term { max-width: none; }
+  .term .c { color: var(--tint-soft); }
+  .term .p { color: #8fc9ef; }
+  .term b { color: #ffffff; }
+
+  dl.gloss { max-width: var(--measure); margin: var(--s5) auto 0; }
+  dl.gloss dt { font-weight: 700; color: var(--signal-dk); margin-top: var(--s4); font-size: 15px; }
+  dl.gloss dd { margin: var(--s1) 0 0; font-size: 15px; color: var(--ink); }
+
+  ul.plain { padding-left: 1.2em; margin: 0 0 var(--s4); }
+  ul.plain li { margin-bottom: var(--s2); }
+
+  footer.foot {
+    border-top: 1px solid var(--hairline); margin-top: var(--s8);
+    padding-block: var(--s5); font-size: 13.5px; color: var(--muted);
+    max-width: var(--measure); margin-inline: auto;
+  }
+  :focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="band">
+  <div>
+    <p class="eyebrow">docs.arc42.org · the second brain</p>
+    <h1>Brain to Published Page</h1>
+    <p class="sub">How a page in our second brain becomes a page on the website — and why changing one, afterwards, is deliberately not easy.</p>
+  </div>
+</div>
+
+<div class="shell">
+
+  <section>
+    <p class="lede">The second brain does <em>not</em> build the website. It writes the website's source files — and then the website gets built exactly the way it always was.</p>
+
+    <p>That one sentence is the whole arrangement. Jekyll, the program that turns our Markdown into the HTML a reader sees, never looks inside the brain. It only ever sees the ordinary content files in <code>_pages/</code>, <code>_posts/</code> and <code>_examples/</code>, just as it did before the brain existed. What changed is <em>who writes those files</em>: for the sections we have handed over, a generator writes them from the brain. For the rest, they are still the files we wrote by hand years ago.</p>
+
+    <div class="wide">
+      <div class="flow">
+        <div class="stage">
+          <span class="who">We edit</span>
+          <span class="what">docs-arc42-brain/wiki/</span>
+          <span class="count">294 pages, in Obsidian</span>
+        </div>
+        <div class="step-arrow">
+          <span class="glyph" aria-hidden="true">→</span>
+          <span class="cmd">make generate</span>
+        </div>
+        <div class="stage">
+          <span class="who">Jekyll's input</span>
+          <span class="what">_pages/ _posts/ _examples/</span>
+          <span class="count">74 files + 28 images</span>
+        </div>
+        <div class="step-arrow">
+          <span class="glyph" aria-hidden="true">→</span>
+          <span class="cmd">make dev</span>
+        </div>
+        <div class="stage final">
+          <span class="who">Readers see</span>
+          <span class="what">_site/</span>
+          <span class="count">199 pages of HTML</span>
+        </div>
+      </div>
+    </div>
+
+    <p>So "creating the site from the brain" is two commands, and the first one is the only one that is new:</p>
+
+    <div class="term">
+<span class="p">$</span> <b>make generate</b>   <span class="c"># brain → the website's source files</span>
+<span class="p">$</span> <b>make dev</b>        <span class="c"># source files → the site, at http://localhost:4210</span>
+    </div>
+
+    <div class="note">
+      <span class="label">Worth knowing</span>
+      <p><code>make generate</code> is safe to run at any time. It writes only what actually changed, and if nothing in the brain changed it says so. Run just now, it reported <strong>0 written, 0 deleted, 102 unchanged</strong> — the 74 content files plus 28 images it is responsible for.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">01</span>Two worlds, one repository</h2>
+
+    <p>Everything lives in the same repository, in two neighbouring folders. The brain holds one page per <em>thing</em>, richly cross-linked; the site holds one file per <em>URL</em>. They are not the same list, and that difference is deliberate.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>In the brain</th><th class="n">Pages</th><th>What becomes of it on the site</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>wiki/sections/</code></td><td class="n">12</td><td><code>_pages/section-N.md</code> — one per arc42 section</td></tr>
+          <tr><td><code>wiki/tips/</code></td><td class="n">144</td><td><code>_posts/06-runtime/…</code> — one per tip</td></tr>
+          <tr><td><code>wiki/examples/</code></td><td class="n">35</td><td><code>_examples/…</code> — one per example</td></tr>
+          <tr><td><code>wiki/terms/</code></td><td class="n">43</td><td><strong>No page.</strong> A term lends its name to the tags on tips</td></tr>
+          <tr><td><code>wiki/keywords/</code></td><td class="n">12</td><td><strong>No page.</strong> Same — and the <code>/keywords/</code> index builds itself from them</td></tr>
+          <tr><td><code>wiki/systems/</code></td><td class="n">4</td><td><strong>No page.</strong> The example systems, as a shared reference</td></tr>
+          <tr><td><code>wiki/issues/</code></td><td class="n">44</td><td><strong>No page.</strong> Our own list of open questions and known defects</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>That is why the brain has 294 pages but writes only 74 files: more than half of the brain is vocabulary, worklist and provenance — the scaffolding that keeps the published half consistent. It is for us, not for the reader.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">02</span>One tip, before and after</h2>
+
+    <p>This is the real tip 6-4, as it exists in the brain today and as it is published. The text of the tip is <strong>identical, character for character</strong>. Everything that changes is in the header — what Jekyll calls the <em>front matter</em>, the block of <code>key: value</code> lines between the two <code>---</code> markers that tells the site how to treat the page.</p>
+
+    <div class="wide">
+      <div class="pair">
+        <div class="panel">
+          <header><span class="side">Brain</span><span class="file">wiki/tips/tip-6-4.md</span></header>
+<pre>---
+id: 6-4
+type: tip
+title: 'Tip 6-4: Document detailed scenarios (with caution)!'
+<span class="hl">status: published</span>
+updated: '2026-09-23'
+sources:
+- '[[SRC-024-section-6-content]]'
+<span class="hl">related:
+- '[[tip-6-2]]'
+- '[[tip-6-3]]'
+- '[[06-runtime-example-tpu-1]]'</span>
+section: '[[section-6]]'
+<span class="hl">keywords:
+- '[[thorough]]'
+terms:
+- '[[runtime-view]]'
+- '[[runtime-scenario]]'</span>
+legacy-tags: []
+date: '2016-03-01'
+permalink: /tips/6-4/
+---
+
+This tip contrasts to [tip 6-3 (schematic
+scenarios)](/tips/6-3).
+
+The original intention of UML sequence diagrams
+was showing interactions between concrete
+_instances_ of classes, …
+</pre>
+        </div>
+        <div class="panel">
+          <header><span class="side">Site</span><span class="file">_posts/06-runtime/2016-03-01-t-6-4.md</span></header>
+<pre>---
+layout: post
+title: "Tip 6-4: Document detailed scenarios (with caution)!"
+<span class="hl">tags: thorough runtime-view runtime-scenario</span>
+category: runtime
+permalink: /tips/6-4/
+<span class="hl">related:
+- kind: section
+  title: "6 - Runtime view"
+  url: /section-6/
+- kind: tip
+  title: "Tip 6-2: Document only a few runtime scenarios!"
+  url: /tips/6-2/
+- kind: tip
+  title: "Tip 6-3: Document 'schematic' (instead of …"
+  url: /tips/6-3/
+- kind: example
+  title: "Example Runtime View: TrafficPursuitUnit"
+  url: /examples/runtime-tpu-1/</span>
+<span class="hl"># generated from docs-arc42-brain/wiki/tips/tip-6-4.md — do not edit</span>
+---
+
+This tip contrasts to [tip 6-3 (schematic
+scenarios)](/tips/6-3).
+
+The original intention of UML sequence diagrams
+was showing interactions between concrete
+_instances_ of classes, …
+</pre>
+        </div>
+      </div>
+    </div>
+
+    <h3>What the generator did, in plain terms</h3>
+    <ul class="plain">
+      <li><strong>Vocabulary became tags.</strong> One keyword, <code>[[thorough]]</code>, and two terms, <code>[[runtime-view]]</code> and <code>[[runtime-scenario]]</code>, collapsed into the single line <code>tags: thorough runtime-view runtime-scenario</code>. The name of the vocabulary page <em>is</em> the tag — which is how we stopped having both <code>runtime</code> and <code>runtime-view</code> mean the same thing.</li>
+      <li><strong>Links became a "see also" block, spelled out.</strong> In the brain we write <code>[[tip-6-3]]</code> and nothing else. The generator knows that page's real title and its real URL, so it writes both into the published file. If we rename a tip, every "see also" that points at it is corrected everywhere, by regenerating.</li>
+      <li><strong>The section link became the first see-also entry.</strong> A tip always points back to its section; we never type that link twice.</li>
+      <li><strong>A warning line was added.</strong> The last line of the header says where this file came from and not to edit it.</li>
+    </ul>
+
+    <div class="note">
+      <span class="label">Why the warning line sits in the header</span>
+      <p>It has to live inside the front matter, not in the text. As a line of body text it would be picked up as the page's excerpt — and would wipe out the description search engines show.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">03</span>What else gets translated</h2>
+
+    <p>Section pages need more work than tips, because the published section pages contain a handful of instructions for Jekyll — written in curly braces, a little language called Liquid. <strong>The brain contains none of it</strong>, by rule, so that a brain page stays plain, readable Markdown that renders correctly in Obsidian. The generator puts the machinery back.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>We write, in the brain</th><th>The reader gets, on the site</th></tr></thead>
+        <tbody>
+          <tr><td>A callout, <code>&gt; [!arc42-help]</code></td><td>The blue guidance box, <code>&lt;div class="arc42-help"&gt;</code></td></tr>
+          <tr><td><code>%% examples: runtime %%</code></td><td>The examples for this section, collected automatically</td></tr>
+          <tr><td><code>%% examples-link %%</code></td><td>The link out to the complete real-system documentation</td></tr>
+          <tr><td><code>../assets/sections/09/x.png</code></td><td>The site's image location, <code>{{ site.imageurl }}/09/x.png</code></td></tr>
+          <tr><td>The section's <code>category</code> and <code>faq-topic</code></td><td>The "further information" foot, with the right link into the FAQ</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example">
+      <span class="label">Real example — the end of section 6</span>
+      <p>In the brain the guidance is one quoted block and two comments. Published, it is a help box and two includes:</p>
+    </div>
+
+    <div class="wide">
+      <div class="pair">
+        <div class="panel">
+          <header><span class="side">Brain</span><span class="file">wiki/sections/section-6.md</span></header>
+<pre><span class="hl">&gt; [!arc42-help]</span>
+&gt;
+&gt; <span class="dim">## Content</span>
+&gt; <span class="dim">The runtime view describes concrete</span>
+&gt; <span class="dim">behavior and interactions …</span>
+&gt;
+&gt; &lt;!-- collect all examples related
+&gt;      to this section of arc42 --&gt;
+&gt; <span class="hl">%% examples: runtime %%</span>
+&gt;
+
+&lt;!-- the same section, inside complete
+     documentation of real systems --&gt;
+<span class="hl">%% examples-link %%</span>
+</pre>
+        </div>
+        <div class="panel">
+          <header><span class="side">Site</span><span class="file">_pages/section-6.md</span></header>
+<pre><span class="hl">&lt;div class="arc42-help" markdown="1"&gt;</span>
+
+<span class="dim">## Content</span>
+<span class="dim">The runtime view describes concrete</span>
+<span class="dim">behavior and interactions …</span>
+
+&lt;!-- collect all examples related
+     to this section of arc42 --&gt;
+<span class="hl">{% include example.md category="runtime" %}</span>
+<span class="hl">&lt;/div&gt;</span>
+
+&lt;!-- the same section, inside complete
+     documentation of real systems --&gt;
+<span class="hl">{% include examples-link.html variant="inline" %}</span>
+</pre>
+        </div>
+      </div>
+    </div>
+
+    <p>Note what this buys us beyond tidiness: the <code>&gt;</code> quoting means the guidance text is visibly, structurally <em>guidance</em> while we are editing it in Obsidian. We can no longer accidentally write our own commentary inside an arc42 help block, because the block has a shape.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">04</span>A page only reaches the site when we say so</h2>
+
+    <p>Every brain page carries a status, and it climbs one ladder:</p>
+
+    <div class="term">draft  →  review  →  <b>published</b>  →  retired
+<span class="c">                   └── only this one reaches the website</span></div>
+
+    <p>This is the switch that makes the whole transition gradual and safe. A section can be fully written up in the brain — every tip, every example, every term, all cross-linked and checked — and still be completely invisible to readers. Nothing happens until we flip it to <code>published</code> and regenerate.</p>
+
+    <p>All twelve sections are in the brain. Five of them are published <em>from</em> the brain; for the other seven the reader still gets the hand-written originals, unchanged:</p>
+
+    <div class="wide">
+      <div class="chips">
+        <div class="chip live"><span class="no">1</span><span class="nm">Introduction and Goals</span></div>
+        <div class="chip live"><span class="no">2</span><span class="nm">Constraints</span></div>
+        <div class="chip"><span class="no">3</span><span class="nm">Context and scope</span></div>
+        <div class="chip live"><span class="no">4</span><span class="nm">Solution strategy</span></div>
+        <div class="chip"><span class="no">5</span><span class="nm">Building block view</span></div>
+        <div class="chip live"><span class="no">6</span><span class="nm">Runtime view</span></div>
+        <div class="chip"><span class="no">7</span><span class="nm">Deployment view</span></div>
+        <div class="chip"><span class="no">8</span><span class="nm">Concepts</span></div>
+        <div class="chip live"><span class="no">9</span><span class="nm">Architecture decisions</span></div>
+        <div class="chip"><span class="no">10</span><span class="nm">Quality</span></div>
+        <div class="chip"><span class="no">11</span><span class="nm">Risks and technical debt</span></div>
+        <div class="chip"><span class="no">12</span><span class="nm">Glossary</span></div>
+      </div>
+      <div class="legend">
+        <span><i class="swatch" style="background: var(--help-bg); border-color: var(--signal);"></i> published from the brain</span>
+        <span><i class="swatch" style="background: var(--surface-1);"></i> still the hand-written original</span>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="label">A small surprise</span>
+      <p>Terms and keywords keep their own status forever and it does not matter. <code>thorough</code> is still a <code>draft</code> page in the brain, yet the published tip 6-4 carries <code>thorough</code> as a tag — because vocabulary pages never become pages on the site. Only sections, tips and examples have a status that readers can feel.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">05</span>Four rails that keep it honest</h2>
+
+    <p>A generator that overwrites a live, widely-cited website is only as good as what stops it. There are four independent checks, and each exists because of a specific way this could go wrong.</p>
+
+    <div class="wide">
+      <div class="rails">
+        <div class="rail">
+          <h3>It must reproduce today's page first</h3>
+          <p>Before a section is handed over, the generator writes it into a scratch folder and compares it, line by line, with what is on the site right now. Differences in the text are <em>never</em> accepted — they are a bug in the brain page or the generator. Only tag changes are allowed through, and they get written into the pull request.</p>
+          <p class="guards">make generate-check SECTION=6</p>
+        </div>
+        <div class="rail">
+          <h3>Nobody can edit the output</h3>
+          <p>The warning line in each generated file is also a lock. The generator refuses to overwrite a file that does <em>not</em> carry it — so a hand-written original can never be clobbered by accident — and a separate check fails the build if a generated file was edited directly, instead of its brain page.</p>
+          <p class="guards">make brain-check-generated</p>
+        </div>
+        <div class="rail">
+          <h3>Published URLs can never vanish</h3>
+          <p>Every URL the generator has ever published is recorded — 74 so far, and the list only ever grows. If a change would stop one of them being served, the generator <strong>stops</strong>. The site has no forwarding mechanism, so a dropped URL is a dead link for everyone who ever cited it. Retiring one on purpose means writing down the reason. So far: none.</p>
+          <p class="guards">_system/published-permalinks.txt</p>
+        </div>
+        <div class="rail">
+          <h3>Changing published text needs a yes</h3>
+          <p>An immutable copy of every page as it was before hand-over is kept. Any later change to published text is compared against it — so a deliberate correction looks exactly like a generator malfunction. The fix is to show the change as a before/after and approve that one change explicitly.</p>
+          <p class="guards">make brain-approve-edit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">06</span>Hand-over: the one-time ceremony per section</h2>
+
+    <p>Generating is routine and happens constantly. <strong>Hand-over happens once per section</strong>, as its own pull request, and it is the moment responsibility for that section's text moves from the old files to the brain. In order:</p>
+
+    <ol class="steps">
+      <li>
+        <strong>Prove it reproduces the page.</strong>
+        <p>The comparison must pass with no differences in the text. Every note it prints gets read: tag changes go into the pull request description, anything else is a defect to fix first.</p>
+      </li>
+      <li>
+        <strong>Flip the statuses to <code>published</code>.</strong>
+        <p>The section page, each of its tips, each of its examples. Terms, keywords and systems are left alone — they are not pages on the site.</p>
+      </li>
+      <li>
+        <strong>Delete the hand-written originals.</strong>
+        <p>This feels alarming and is the crux of the whole design. It must come before the next step, precisely <em>because</em> the generator refuses to overwrite a file it does not own. Deleting them is how we consciously transfer ownership.</p>
+      </li>
+      <li>
+        <strong>Generate.</strong>
+        <p>The files reappear at the very same paths, now carrying the warning line and the "see also" block. Run it a second time: it must report nothing to do. The first run records the section's URLs in the permanent list.</p>
+      </li>
+      <li>
+        <strong>Run everything.</strong>
+        <p>The parity check, the unit tests, the site build and sanity checks, and the link checker. From here on, the regression net is the automatic comparison against the untouched copies taken at ingest.</p>
+      </li>
+      <li>
+        <strong>Write the log entry.</strong>
+        <p>One line in the brain's own log, so the history of what was handed over when is readable without digging through commits.</p>
+      </li>
+      <li>
+        <strong>One commit.</strong>
+        <p>Statuses, generated files, log. The diff should show header changes and nothing else — <em>never</em> a change to the text of a page. If it does, something is wrong.</p>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">07</span>Afterwards: fixing a typo is a decision</h2>
+
+    <p>Once a section is handed over, the brain owns its text — and correcting it is the entire point of having done this. But because an untouched copy of the original is kept as the regression net, a deliberate correction is indistinguishable from the generator quietly breaking. So a correction is shown and approved, one at a time:</p>
+
+    <div class="term">
+<span class="p">$</span> <b>make brain-approve-edit</b> REL=_pages/section-9.md \
+      ISSUE=ISS-002 REASON=<span class="c">"ADR table gains a Date row"</span>
+<span class="c">  … prints the before/after. Records nothing.</span>
+
+<span class="p">$</span> <span class="c"># satisfied? the identical line again, with YES=1</span>
+<span class="p">$</span> <b>make brain-approve-edit</b> … <b>YES=1</b>
+    </div>
+
+    <p>The approval is written down, with the issue that justified it:</p>
+
+    <div class="wide">
+      <div class="panel">
+        <header><span class="side">Register</span><span class="file">_system/approved-body-edits.tsv</span></header>
+<pre>_pages/section-9.md   ISS-002   2026-09-23
+  ADR table gains a Date row and an (optional) Criteria row,
+  both marked as arc42 additions
+</pre>
+      </div>
+    </div>
+
+    <p>Each approval covers <strong>exactly one version of one page</strong> — it is keyed to a fingerprint of the approved text, so the next change to the same page needs its own yes. That sounds heavy, and is meant to: this is a template thousands of teams copy, and its wording is the product.</p>
+
+    <div class="example">
+      <span class="label">The first real one</span>
+      <p>So far there is exactly one approved change: section 9's ADR table gained a <strong>Date</strong> row — when was this decision taken — and an <strong>(optional) Criteria</strong> row. Both are marked as arc42's own additions to Nygard's original structure.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">08</span>Making yourself a local copy to look at</h2>
+
+    <p>Nothing of this has been published yet. To see the current state as a working website on your own machine:</p>
+
+    <div class="term">
+<span class="p">$</span> <b>make generate</b>   <span class="c"># only if you changed something in the brain</span>
+<span class="p">$</span> <b>make check</b>      <span class="c"># validate the brain, then build and sanity-check the site</span>
+<span class="p">$</span> <b>make dev</b>        <span class="c"># serve it, rebuilding as you edit</span>
+    </div>
+
+    <p>Then open <strong>http://localhost:4210</strong> — written out in full, because Firefox refuses the <code>0.0.0.0</code> form the server prints. The curator dashboard runs separately on port 4211 and the two do not interfere.</p>
+
+    <p>The order matters for one reason only: <code>make check</code> validates the brain <em>before</em> building the site, so a broken brain page fails in seconds rather than after a full build. What you will be looking at is a deliberate mixture — five sections written by the brain, seven still the originals — and if the parity checks have done their job, <strong>you should not be able to tell which is which</strong>.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2><span class="num">09</span>Words that keep coming up</h2>
+
+    <dl class="gloss">
+      <dt>Jekyll</dt>
+      <dd>The program that turns our Markdown files into the HTML a browser shows. GitHub runs it for us on every push.</dd>
+
+      <dt>Front matter</dt>
+      <dd>The header block at the top of every content file, between two lines of <code>---</code>. It is where title, URL, tags and layout live. Almost everything the generator does happens here.</dd>
+
+      <dt>Liquid</dt>
+      <dd>The small instruction language in curly braces that Jekyll understands — <code>{% include … %}</code>, <code>{{ site.imageurl }}</code>. The brain is kept completely free of it.</dd>
+
+      <dt>Permalink</dt>
+      <dd>The public URL of a page, e.g. <code>/tips/6-4/</code>. Treated as a permanent promise: these are cited from books, talks and other sites.</dd>
+
+      <dt>Slug</dt>
+      <dd>The short machine name of a brain page, taken from its filename — <code>runtime-view</code>. For terms and keywords, the slug is exactly the tag that appears on the site.</dd>
+
+      <dt>Wikilink</dt>
+      <dd>A link between brain pages, written <code>[[runtime-view]]</code>. Obsidian follows them; the generator turns them into real titles and URLs.</dd>
+
+      <dt>Parity check</dt>
+      <dd>Generating a section into a scratch folder and comparing it with the live site, without touching anything. Our proof that handing a section over changes nothing for readers.</dd>
+    </dl>
+  </section>
+
+  <footer class="foot">
+    <p>Figures measured in the working repository on 5 October 2026, branch <code>docs-arc42-brain</code>: 294 brain pages, 74 generated content files and 28 images, 74 published URLs, none retired, one approved correction. Nothing pushed.</p>
+  </footer>
+
+</div>
+
+</body></html>
