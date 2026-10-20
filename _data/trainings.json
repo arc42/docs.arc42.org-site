@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-10-14T13:08:42+00:00",
+  "generated": "2026-10-20T20:11:05+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -354,27 +354,6 @@
         "Gernot Starke"
       ],
       "dates": [
-        {
-          "city": "Zürich",
-          "country": "CH",
-          "trainers": [
-            "Gernot Starke"
-          ],
-          "pricing": "Normalpreis: 1.500 € (für unsere Alumni 1.350 €)",
-          "price": {
-            "amount": 1500,
-            "currency": "EUR",
-            "alumni": 1350
-          },
-          "id": "adoc-oct-2026",
-          "code": "26-10 ADOC",
-          "start": "2026-10-27",
-          "end": "2026-10-28",
-          "language": "de",
-          "format": "public",
-          "status": "open",
-          "url": "https://trainings.arc42.org/#adoc-oct-2026"
-        },
         {
           "city": "Mannheim",
           "country": "DE",
