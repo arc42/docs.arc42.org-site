@@ -1,0 +1,27 @@
+# The 42 family, shown in the "42" popover in the masthead and in the footer.
+#
+# Same entries, same wording and same order on every family site, so the menu
+# reads as one shared component. Order follows the work: requirements, then
+# architecture, then agentic engineering built on both.
+#
+# color: req (green), arc (blue) or s42 (both) — see the --family-* tokens.
+# here:  set on the entry this site belongs to. docs.arc42.org is part of
+#        arc42 rather than a sibling of it, so `here_host` names the subsite the
+#        reader is actually on, while the link still leads to arc42.org.
+- name: req42
+  host: req42.de
+  url: https://req42.de
+  color: req
+  short: The practical framework for requirements engineering.
+- name: arc42
+  host: arc42.org
+  url: https://arc42.org
+  color: arc
+  here: true
+  here_host: docs.arc42.org
+  short: The proven template for documenting software architecture.
+- name: systems42
+  host: systems42.org
+  url: https://systems42.org
+  color: s42
+  short: Agentic engineering based on req42 and arc42.

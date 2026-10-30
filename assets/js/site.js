@@ -375,6 +375,60 @@
     })();
 
     // ========================================================================
+    // 3b. Family menu ("42" in the masthead)
+    // ========================================================================
+    // Contract with _includes/family-menu.html: a .family-toggle button whose
+    // aria-controls names the panel; the panel is closed while it carries
+    // `hidden`. Same rule as the rail: aria-expanded and the panel's state are
+    // flipped together and never disagree.
+    //
+    // Closes on a click outside, on Escape (focus goes back to the button), and
+    // when keyboard focus leaves the menu. Opened by keyboard, focus moves to the
+    // first link; opened by mouse it stays put (e.detail is 0 for a keyboard
+    // "click").
+
+    (function familyMenu() {
+        var btn = document.querySelector('.family-toggle');
+        if (!btn) return;
+
+        var panel = document.getElementById(btn.getAttribute('aria-controls') || 'family-panel');
+        if (!panel) return;
+
+        var wrap = btn.parentNode;
+
+        function setOpen(open) {
+            panel.hidden = !open;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        btn.addEventListener('click', function (e) {
+            var open = panel.hidden;
+            setOpen(open);
+            if (open && e.detail === 0) {
+                var first = panel.querySelector('a');
+                if (first) first.focus();
+            }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!panel.hidden && !wrap.contains(e.target)) setOpen(false);
+        });
+
+        wrap.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !panel.hidden) {
+                setOpen(false);
+                btn.focus();
+            }
+        });
+
+        wrap.addEventListener('focusout', function (e) {
+            if (!panel.hidden && e.relatedTarget && !wrap.contains(e.relatedTarget)) {
+                setOpen(false);
+            }
+        });
+    })();
+
+    // ========================================================================
     // 4. Keyboard: "/" focuses search, Escape leaves it
     // ========================================================================
 

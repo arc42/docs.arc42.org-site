@@ -1,0 +1,37 @@
+{%- comment -%}
+  The "42" family menu: a small button in the masthead and the popover it opens,
+  listing the sibling sites from _data/family.yml.
+
+  Prototyped here first, to be carried to arc42.org, req42.de and systems42.org.
+  The markup follows systems42's family-menu.html so the component stays the
+  same family-wide; only the colours are this site's own.
+
+  Contract with assets/js/site.js ("Family menu"): a .family-toggle button whose
+  aria-controls names the panel, and the panel carrying the `hidden` attribute
+  while closed. Without JavaScript the button does nothing — the same links are
+  always reachable in the footer.
+{%- endcomment -%}
+
+<div class="family">
+  <button class="family-toggle" type="button" aria-expanded="false" aria-controls="family-panel"
+          aria-label="The 42 family: {% for m in site.data.family %}{{ m.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}"
+          title="The 42 family">42</button>
+  <div class="family-panel" id="family-panel" hidden>
+    <p class="family-title">Member of the 42 family</p>
+    <ul class="family-list">
+      {%- for m in site.data.family %}
+      <li>
+        <a href="{{ m.url }}"{% if m.here %} aria-describedby="family-here"{% endif %}>
+          <span class="family-dot family-dot--{{ m.color }}" aria-hidden="true"></span>
+          <span class="family-name">{{ m.name }}</span>
+          <span class="family-host">{{ m.host }}</span>
+        </a>
+        {%- if m.here %}
+        <span class="family-here" id="family-here">You are here</span>
+        {%- endif %}
+        <p>{{ m.short }}{% if m.here_host %} You are on <b>{{ m.here_host }}</b>, its documentation.{% endif %}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>

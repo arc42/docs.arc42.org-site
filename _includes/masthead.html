@@ -23,6 +23,9 @@
   data-baseurl off that form. It then injects <div class="search-panel"> with
   form.insertAdjacentElement('afterend', …) — which is why .masthead-search is
   the positioned ancestor the panel hangs from.
+
+  The "42" FAMILY MENU follows search in both variants: last in the tab order,
+  rightmost on the bar. See _includes/family-menu.html.
 {%- endcomment -%}
 
 {%- assign home_url = '/home/' | relative_url -%}
@@ -56,6 +59,7 @@
       </p>
     </div>
     {{ search_form }}
+    {% include family-menu.html %}
   </div>
 </header>
 
@@ -69,6 +73,7 @@
     <p class="masthead-title"><a href="{{ home_url }}">{{ site.masthead_title | default: site.title }}</a></p>
     <span class="spark" aria-hidden="true"></span>
     {{ search_form }}
+    {% include family-menu.html %}
   </div>
 </header>
 

@@ -86,6 +86,15 @@
   --maroon-bg:  #fcefef;
   --amber:      #ffc95c;   // sparing warm accent, always paired with text or icon
 
+  // ---- Family identifiers --------------------------------------------------
+  // The dots in the "42" family menu (_family.scss), and nothing else. They name
+  // the sibling sites, so they are the same values systems42.org uses and are
+  // meant to match on every family site. Decorative: each dot sits next to the
+  // site's name in text. The one sanctioned use of another site's hue here; see
+  // DESIGN.md, "Family".
+  --family-arc: #1d7fe0;
+  --family-req: #17b59d;
+
   // ---- Type ----------------------------------------------------------------
   // Self-hosted (see _base.scss). "Next" is the current Braille Institute release
   // and the family quality.arc42.org ships; plain Atkinson Hyperlegible is kept as

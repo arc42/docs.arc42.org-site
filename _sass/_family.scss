@@ -1,0 +1,172 @@
+// ============================================================================
+// Family menu — the "42" button in the masthead and the popover listing the
+// sibling sites (req42, arc42, systems42). Markup: _includes/family-menu.html.
+//
+// Ported from systems42.org's .btn-42 / .family-pop, restyled for this site:
+// the button sits on the --deep band like the search field does, and the panel
+// is the same paper surface with the hard --deep offset as .search-panel, so it
+// reads as something the masthead dropped rather than as a floating card.
+//
+// The only new colours are the three family dots (--family-*), shared with
+// systems42 and meant to look identical on every family site.
+//
+// Colour pairs, measured:
+//   --tint      on --deep        7.70:1   (button label and border at rest)
+//   --deep      on --tint        7.70:1   (button while open, inverted)
+//   --ink       on --paper      13.4:1    (site names)
+//   --muted     on --paper       5.50:1   (title, hosts, descriptions)
+//   --pill-ink  on --pill-bg     4.96:1   ("You are here")
+// ============================================================================
+
+.family {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.family-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 36px;
+  padding: 0;
+  border: 1.5px solid var(--tint-soft);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--tint);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+
+  &:hover {
+    border-color: var(--paper);
+    color: var(--paper);
+  }
+
+  // Open state is inverted, not just highlighted: the reader should see at a
+  // glance which control the panel below belongs to.
+  &[aria-expanded="true"] {
+    background: var(--tint);
+    border-color: var(--tint);
+    color: var(--deep);
+  }
+}
+
+// `hidden` is kept as the closed state so the panel's links leave the tab
+// order. systems42 overrides [hidden] to display:block for its fade, which
+// leaves invisible links focusable; visibility does the same fade without that.
+.family-panel {
+  position: absolute;
+  top: calc(100% + var(--s2));
+  right: 0;
+  z-index: 40;
+  width: min(360px, calc(100vw - 2 * var(--s4)));
+  padding: var(--s3) var(--s4);
+
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 0 var(--deep);
+  font-size: 0.95rem;
+  text-align: left;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.family-title {
+  margin: var(--s1) 0 var(--s2);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.family-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: var(--s2) 0;
+    border-top: 1px solid var(--hairline);
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+
+  a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s2);
+    padding: var(--s1) var(--s2);
+    margin-left: calc(-1 * var(--s2));
+    border-radius: var(--radius);
+    color: var(--ink);
+    text-decoration: none;
+
+    &:hover {
+      background: var(--surface-hover);
+
+      .family-name {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
+
+    b {
+      color: var(--ink);
+    }
+  }
+}
+
+.family-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.family-host {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+// Decorative: each site is always named in text next to its dot.
+.family-dot {
+  flex: none;
+  align-self: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  &--req { background: var(--family-req); }
+  &--arc { background: var(--family-arc); }
+  &--s42 { background: linear-gradient(90deg, var(--family-arc), var(--family-req)); }
+}
+
+.family-here {
+  display: inline-block;
+  margin-left: var(--s1);
+  padding: 2px var(--s2);
+  border-radius: var(--radius-pill);
+  background: var(--pill-bg);
+  color: var(--pill-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 0.15em;
+}

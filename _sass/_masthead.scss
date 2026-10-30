@@ -215,6 +215,13 @@
       flex-basis: 100%;
       max-width: none;
       margin-left: 0;
+      // The field takes the second row; the "42" button stays up on the first,
+      // at its right end, instead of wrapping onto a row of its own.
+      order: 1;
+    }
+
+    .family {
+      margin-left: auto;
     }
   }
 }

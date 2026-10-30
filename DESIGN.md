@@ -12,6 +12,8 @@ colors:
   coral: "#ff5c7c"
   coral-deep: "#c22b47"
   amber: "#ffc95c"
+  family-arc: "#1d7fe0"
+  family-req: "#17b59d"
   help-bg: "#e3f2fe"
   help-ink: "#0c3d66"
   example-bg: "#fdebe7"
@@ -264,6 +266,15 @@ documents live in **meta.arc42.org** (`BRAND.md`, `DESIGN.md`, `adr/`):
   pinned-note shadow (this site's implementation is the family's canonical
   form, ADR-0002), and the shared accents amber `#ffc95c`, coral `#ff5c7c`,
   coral-deep `#c22b47`, emerald `#2e9e67`.
+- **Family menu** (prototype, 2026-10): the "42" button in the masthead opens
+  a popover listing req42, arc42 and systems42 (`_data/family.yml`,
+  `_includes/family-menu.html`, `_sass/_family.scss`), with the same links
+  repeated in the footer. Its three dots use `--family-arc` `#1d7fe0` and
+  `--family-req` `#17b59d` (systems42 is the gradient of both), the values
+  systems42.org ships. **This is a deliberate exception** to "uses no other
+  site's hue": the dots are identifiers *of* the other sites, decorative and
+  always next to the site's name, never a colour this site wears. If the menu
+  goes family-wide, these tokens belong in meta's BRAND.md.
 - **Site-local, never exported**: the help/example callout hues, Tag Cyan,
   the maroon sponsor quarantine, the syntax-highlighting palette.
 
