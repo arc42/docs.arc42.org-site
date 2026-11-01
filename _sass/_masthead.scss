@@ -85,16 +85,33 @@
   transform: rotate(45deg);
 }
 
+// Search and the "42" family button form one right-aligned group. The group is
+// what wraps, never its two members separately: the family popover hangs from
+// the button's right edge (see _family.scss), which is only ever on-screen while
+// the button is the rightmost item of its row. With search and button as loose
+// flex items, flex-wrap dropped the button alone onto a new row at the left
+// gutter and the popover opened 300px off-screen. Keep this group when carrying
+// the menu to another site; it is the whole of the layout contract.
+.masthead-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  flex: 1 1 15rem;
+  min-width: 0;
+  // The field's own cap plus the button and the gap, so the field still grows
+  // to the width it had before the button joined it.
+  max-width: calc(26rem + 44px + var(--s3));
+  margin-left: auto;
+}
+
 // Search is anchored here rather than in the rail: the rail is suppressed on
 // /home/, and a documentation site whose landing page cannot be searched has the
 // box in the wrong place. position: relative is the hook the .search-panel that
 // assets/js/search.js injects after the form hangs from.
 .masthead-search {
   position: relative;
-  flex: 1 1 15rem;
+  flex: 1 1 auto;
   min-width: 0;
-  max-width: 26rem;
-  margin-left: auto;
 }
 
 // ---- Hero variant -----------------------------------------------------------
@@ -120,7 +137,11 @@
 
   .masthead-text {
     flex: 1 1 16rem;
-    min-width: 0;
+    // No min-width: 0 here, on purpose. The flex default (min-content) stops
+    // this column shrinking below the wordmark's longest word, so the tools
+    // group wraps to the next row instead. With min-width: 0 the column went
+    // narrower than "Documentation" and body's word-wrap: break-word split it
+    // mid-word ("Documentatio / n") between ~700 and ~900px.
   }
 
   .masthead-title {
@@ -202,26 +223,19 @@
   }
 }
 
-// Below this the bar cannot hold wordmark and field on one line without
-// squeezing the field to uselessness, so the field takes its own row and the bar
-// grows past --bar-h. min-height, not height, is why that works.
+// Below this the bar cannot hold wordmark and tools on one line without
+// squeezing the field to uselessness, so the tools group takes its own full row
+// (field stretched, "42" at its right end) and the bar grows past --bar-h.
+// min-height, not height, is why that works.
 @media (max-width: 560px) {
   .masthead--bar {
     .masthead-inner {
       padding: var(--s2) var(--s4) var(--s3);
     }
 
-    .masthead-search {
+    .masthead-tools {
       flex-basis: 100%;
       max-width: none;
-      margin-left: 0;
-      // The field takes the second row; the "42" button stays up on the first,
-      // at its right end, instead of wrapping onto a row of its own.
-      order: 1;
-    }
-
-    .family {
-      margin-left: auto;
     }
   }
 }

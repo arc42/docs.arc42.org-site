@@ -18,6 +18,11 @@
 //   --pill-ink  on --pill-bg     4.96:1   ("You are here")
 // ============================================================================
 
+// The panel is anchored to the button's right edge, so the button has to be the
+// rightmost item of its row at every width. The masthead guarantees that by
+// keeping search and button together in .masthead-tools (see _masthead.scss);
+// a bare .family dropped into a wrapping flex row would wrap alone to the left
+// gutter and open the panel off-screen.
 .family {
   position: relative;
   flex: 0 0 auto;

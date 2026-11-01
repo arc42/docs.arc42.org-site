@@ -10,6 +10,11 @@
   aria-controls names the panel, and the panel carrying the `hidden` attribute
   while closed. Without JavaScript the button does nothing — the same links are
   always reachable in the footer.
+
+  Layout contract with the masthead: the panel hangs from the button's right
+  edge, so include this as the LAST child of a right-aligned group that does
+  not wrap internally (.masthead-tools). Never as a loose item in a wrapping
+  flex row — see the note in _sass/_masthead.scss.
 {%- endcomment -%}
 
 <div class="family">
