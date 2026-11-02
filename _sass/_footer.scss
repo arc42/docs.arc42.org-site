@@ -54,6 +54,12 @@
   }
 }
 
+// The sibling sites, from _data/family.yml. Same middots as the site links; the
+// label is plain muted text (5.11:1), so the first link needs no separator.
+.footer-family-label {
+  color: var(--muted);
+}
+
 // (The green status glyph and its colour-not-alone rationale left with the
 // footer icons, 2026-07-30 — the plain word "Status" carries everything.)
 

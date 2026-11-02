@@ -23,18 +23,29 @@
   data-baseurl off that form. It then injects <div class="search-panel"> with
   form.insertAdjacentElement('afterend', …) — which is why .masthead-search is
   the positioned ancestor the panel hangs from.
+
+  SEARCH and the "42" FAMILY MENU travel together in .masthead-tools, a
+  right-aligned group that never wraps internally. That is the layout invariant
+  the family popover relies on: it hangs from the button's right edge, so the
+  button must always be the rightmost thing on its row. Left as loose flex
+  items, flex-wrap would drop the button alone onto a new row at the LEFT
+  gutter and the popover would open off-screen (seen between ~560 and ~830px).
+  Carry the group, not just the button, to the other family sites.
 {%- endcomment -%}
 
 {%- assign home_url = '/home/' | relative_url -%}
 
-{%- capture search_form -%}
-<div class="masthead-search">
-  <form action="{{ site.baseurl }}/search/" data-baseurl="{{ site.baseurl }}" role="search">
-    <label class="search-field" for="search">
-      {% include icon.html name="search" %}
-      <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" aria-label="{{ site.str_search }}">
-    </label>
-  </form>
+{%- capture tools -%}
+<div class="masthead-tools">
+  <div class="masthead-search">
+    <form action="{{ site.baseurl }}/search/" data-baseurl="{{ site.baseurl }}" role="search">
+      <label class="search-field" for="search">
+        {% include icon.html name="search" %}
+        <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" aria-label="{{ site.str_search }}">
+      </label>
+    </form>
+  </div>
+  {% include family-menu.html %}
 </div>
 {%- endcapture -%}
 
@@ -55,7 +66,7 @@
         <b>{{ site.examples | size }}</b> worked examples
       </p>
     </div>
-    {{ search_form }}
+    {{ tools }}
   </div>
 </header>
 
@@ -68,7 +79,7 @@
     </a>
     <p class="masthead-title"><a href="{{ home_url }}">{{ site.masthead_title | default: site.title }}</a></p>
     <span class="spark" aria-hidden="true"></span>
-    {{ search_form }}
+    {{ tools }}
   </div>
 </header>
 
