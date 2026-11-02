@@ -38,10 +38,12 @@ check-links: site ## Validate internal links, images, and HTML in the built _sit
 	docker compose run --rm jekyll bundle exec htmlproofer ./_site --disable-external --allow-hash-href
 
 clean: ## Remove generated _site AND the Docker cache volumes (a true reset)
-	rm -rf _site .sass-cache .jekyll-cache .jekyll-metadata
-	@# .jekyll-cache/.sass-cache live in named Docker volumes, not on the host,
-	@# so a host rm alone leaves them stale — wipe the volumes too.
+	@# Stop the container FIRST. .jekyll-cache/.sass-cache are the host-side mount
+	@# points of named Docker volumes; while the dev server runs, Docker Desktop's
+	@# file sharing refuses to delete them ("Permission denied"), and a host rm
+	@# alone would leave the volumes' contents stale anyway.
 	-docker compose down -v --remove-orphans
+	rm -rf _site .sass-cache .jekyll-cache .jekyll-metadata
 
 install: build ## Install/refresh gems into the dev image after editing the Gemfile
 	docker compose run --rm jekyll bundle install
