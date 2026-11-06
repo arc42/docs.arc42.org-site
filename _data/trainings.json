@@ -1,9 +1,10 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-10-20T20:11:05+00:00",
+  "generated": "2026-11-06T15:14:44+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
+      "blurb_en": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
       "certification": "iSAQB CPSA-Foundation",
       "url_en": "https://trainings.arc42.org/courses/msa/",
       "id": "msa",
@@ -35,14 +36,10 @@
         {
           "city": "München",
           "country": "DE",
-          "pricing": "Frühbucherpreis bei Anmeldung bis 2. November 2026: 2.690 €, Normalpreis: 2.890 €",
+          "pricing": "2.890 €",
           "price": {
             "amount": 2890,
-            "currency": "EUR",
-            "early_bird": {
-              "amount": 2690,
-              "until": "2026-11-02"
-            }
+            "currency": "EUR"
           },
           "id": "msa-mar-2027",
           "code": "27-03 MSA",
@@ -174,6 +171,7 @@
     },
     {
       "blurb": "Learn to effectively evolve and maintain systems.",
+      "blurb_en": "Learn to effectively evolve and maintain systems.",
       "certification": "iSAQB CPSA-A (Advanced)",
       "credits": "20 methodische und 10 technische Punkte",
       "credit_points": {
@@ -265,6 +263,7 @@
     },
     {
       "blurb": "What to do if your requirements need improvement.",
+      "blurb_en": "What to do if your requirements need improvement.",
       "certification": "iSAQB CPSA-A (Advanced)",
       "credits": "20 methodische und 10 kommunikative Punkte",
       "credit_points": {
@@ -340,6 +339,7 @@
     },
     {
       "blurb": "How to efficiently and effectively create and maintain useful technical documentation, with a strong focus on arc42. Within this practical course you improve your own documentation! From the founders and maintainers of arc42.",
+      "blurb_en": "How to efficiently and effectively create and maintain useful technical documentation, with a strong focus on arc42. Within this practical course you improve your own documentation! From the founders and maintainers of arc42.",
       "certification": "iSAQB CPSA-A (Advanced)",
       "credits": "20 methodische Punkte",
       "credit_points": {
