@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-11-06T15:14:44+00:00",
+  "generated": "2026-11-08T12:51:21+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -196,24 +196,6 @@
             "currency": "EUR",
             "alumni": 2050
           },
-          "id": "improve-nov-2026",
-          "code": "26-11 IMPROVE",
-          "start": "2026-11-24",
-          "end": "2026-11-26",
-          "language": "de",
-          "format": "public",
-          "status": "waitlist",
-          "url": "https://trainings.arc42.org/#improve-nov-2026"
-        },
-        {
-          "city": "Hamburg",
-          "country": "DE",
-          "pricing": "Normalpreis: 2.200 € (für unsere Alumni 2.050 €)",
-          "price": {
-            "amount": 2200,
-            "currency": "EUR",
-            "alumni": 2050
-          },
           "id": "improve-jun-2027",
           "code": "27-06 IMPROVE",
           "start": "2027-06-22",
@@ -394,6 +376,49 @@
           "format": "online",
           "status": "open",
           "url": "https://trainings.arc42.org/#adoc-oct-2027"
+        }
+      ]
+    },
+    {
+      "blurb": "One specification for requirements and architecture as the foundation for agentic software engineering",
+      "blurb_de": "Eine Spezifikation für Requirements und Architektur als Basis für agentisches Software-Engineering.",
+      "blurb_en": "One specification for requirements and architecture as the foundation for agentic software engineering",
+      "show_on": [
+        "www.arc42.de",
+        "arc42.org",
+        "www.systems42.org"
+      ],
+      "id": "maispec",
+      "short_title": "maispec",
+      "title": "Mastering AI-Driven Specification",
+      "url": "https://www.arc42.de/info-maispec/",
+      "trainers": [
+        "Dr. Peter Hruschka",
+        "Dr. Gernot Starke",
+        "Peter Gerstbach"
+      ],
+      "dates": [
+        {
+          "city": "Wien",
+          "country": "DE",
+          "trainers": [
+            "Peter Gerstbach",
+            "Peter Hruschka"
+          ],
+          "pricing": "Normalpreis: 1.500 € (für unsere Alumni 1.350 €)",
+          "price": {
+            "amount": 1500,
+            "currency": "EUR",
+            "alumni": 1350
+          },
+          "id": "maispec-jan-2027",
+          "code": "27-01 maispec",
+          "start": "2027-01-28",
+          "end": "2027-01-29",
+          "language": "de",
+          "format": "public",
+          "status": "open",
+          "url": "https://trainings.arc42.org/#maispec-jan-2027"
         }
       ]
     }
