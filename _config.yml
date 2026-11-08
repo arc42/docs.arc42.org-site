@@ -157,3 +157,8 @@ exclude:
   - _config-dev.yml
   - _docker-compose-dev.yml
   - docs-arc42-org-site.code-workspace
+
+# This site's name in the trainings feed's `show_on` lists (a course that has
+# the list and does not name this site is not shown here). Spelled as in the
+# admin app's KnownSites and trainings.arc42.org's scripts/verify_consumers.sh.
+trainings_site_name: "docs.arc42.org"
