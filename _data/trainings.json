@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-11-08T12:51:21+00:00",
+  "generated": "2026-11-08T13:39:07+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -386,7 +386,9 @@
       "show_on": [
         "www.arc42.de",
         "arc42.org",
-        "www.systems42.org"
+        "www.systems42.org",
+        "docs.arc42.org",
+        "examples.arc42.org"
       ],
       "id": "maispec",
       "short_title": "maispec",
