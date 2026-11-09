@@ -1,6 +1,6 @@
 {
   "$schema": "https://trainings.arc42.org/api/trainings.schema.json",
-  "generated": "2026-11-09T14:39:37+00:00",
+  "generated": "2026-11-09T14:47:56+00:00",
   "courses": [
     {
       "blurb": "Two expert trainers at all times, highly practical and pragmatic, ideal preparation for iSAQB CPSA-Foundation certification.",
@@ -407,11 +407,15 @@
             "Peter Gerstbach",
             "Peter Hruschka"
           ],
-          "pricing": "Normalpreis: 1.500 € (für unsere Alumni 1.350 €)",
+          "pricing": "Frühbucherpreis bei Anmeldung bis 18. Dezember 2026: 1.350 €, Normalpreis: 1.500 € (für unsere Alumni 1.350 €)",
           "price": {
             "amount": 1500,
             "currency": "EUR",
-            "alumni": 1350
+            "alumni": 1350,
+            "early_bird": {
+              "amount": 1350,
+              "until": "2026-12-18"
+            }
           },
           "id": "maispec-jan-2027",
           "code": "27-01 maispec",
